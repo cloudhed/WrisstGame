@@ -1,0 +1,241 @@
+[gd_scene load_steps=21 format=3 uid="uid://bsk688e4ksiee"]
+
+[ext_resource type="Shader" uid="uid://tdm2ibh3v5sa" path="res://Shaders/testshader.gdshader" id="1_2rr60"]
+[ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="1_68n6a"]
+[ext_resource type="Script" uid="uid://nto65f0jy0qu" path="res://Code/time_of_day.gd" id="1_be0m3"]
+[ext_resource type="Texture2D" uid="uid://caaf5ux7pxo74" path="res://Assets/Backgrounds/mapIsland.jpg" id="1_cbwp5"]
+[ext_resource type="Script" uid="uid://15m4ao5uotgl" path="res://Code/daynightCyclecolors.gd" id="1_l47sy"]
+[ext_resource type="Script" uid="uid://dpihe8ldbonef" path="res://Code/debug_label.gd" id="1_ltgev"]
+[ext_resource type="Script" uid="uid://gewf0begkw6p" path="res://Code/player_dot.gd" id="2_5xsid"]
+[ext_resource type="Script" uid="uid://0qnc5lrimymu" path="res://Code/islandbiome_mountain.gd" id="5_14vbl"]
+[ext_resource type="Script" uid="uid://drxlt2argte2" path="res://Code/islandbiome_shores.gd" id="5_xh3bp"]
+[ext_resource type="Script" uid="uid://gs5pjca5gun7" path="res://Code/islandbiome_forests.gd" id="6_xh3bp"]
+[ext_resource type="Script" uid="uid://ctfaj2d5vhtp3" path="res://Code/islandbiome_fields.gd" id="7_s8mij"]
+[ext_resource type="Script" uid="uid://clq6t52fwieia" path="res://Code/PlayerCameraFollow.gd" id="9_s8mij"]
+[ext_resource type="Script" uid="uid://bmm0gshj54yld" path="res://Code/worldenvironment_controller.gd" id="10_c7vby"]
+
+[sub_resource type="Gradient" id="Gradient_0bjjx"]
+offsets = PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.6, 0.7, 0.9, 1)
+colors = PackedColorArray(0.151833, 0.250376, 0.414948, 1, 0.152941, 0.25098, 0.415686, 1, 0.568141, 0.354899, 0.829397, 1, 0.961561, 0.384513, 0.681699, 1, 1, 0.499649, 0.378353, 1, 0.993422, 0.764018, 0.425318, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_div00"]
+gradient = SubResource("Gradient_0bjjx")
+width = 2048
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l47sy"]
+shader = ExtResource("1_2rr60")
+
+[sub_resource type="Gradient" id="Gradient_2rr60"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l47sy"]
+gradient = SubResource("Gradient_2rr60")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xsid"]
+radius = 8.0
+
+[sub_resource type="Environment" id="Environment_be0m3"]
+background_mode = 3
+tonemap_mode = 1
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.15
+glow_hdr_threshold = 0.9
+glow_hdr_scale = 0.14
+fog_depth_curve = 2.37841
+fog_depth_begin = 0.0
+fog_depth_end = 134.5
+adjustment_enabled = true
+
+[node name="overworld_node" type="Node2D"]
+y_sort_enabled = true
+
+[node name="DayNightCycleColors" type="CanvasModulate" parent="."]
+script = ExtResource("1_l47sy")
+gradient = SubResource("GradientTexture1D_div00")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_l47sy")
+texture = SubResource("GradientTexture2D_l47sy")
+
+[node name="mapIsland" type="Sprite2D" parent="."]
+position = Vector2(572.654, 326.5)
+scale = Vector2(0.909856, 0.909856)
+texture = ExtResource("1_cbwp5")
+metadata/_edit_lock_ = true
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(-1, 1)
+zoom = Vector2(2, 2)
+limit_left = -95
+limit_top = -50
+limit_right = 1240
+limit_bottom = 700
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+script = ExtResource("9_s8mij")
+target_path = NodePath("../PlayerDot")
+
+[node name="PlayerDot" type="CharacterBody2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(464.585, 572.595)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_5xsid")
+difterrain_slowdown_percentage = 0.75
+verydifterrain_slowdown_percentage = 0.5
+
+[node name="ColorRect" type="ColorRect" parent="PlayerDot"]
+custom_minimum_size = Vector2(10, 10)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDot"]
+visible = false
+shape = SubResource("CircleShape2D_5xsid")
+
+[node name="PlayerDetectionArea" type="Area2D" parent="PlayerDot"]
+visible = false
+
+[node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDot/PlayerDetectionArea"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_5xsid")
+debug_color = Color(0.894383, 0.317796, 0.0852838, 0.42)
+
+[node name="IslandBoundary" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="IslandBoundaryShape" type="CollisionPolygon2D" parent="IslandBoundary"]
+build_mode = 1
+polygon = PackedVector2Array(622, 70, 642, 79, 648, 86, 664, 92, 705, 104, 751, 111, 788, 107, 798, 100, 815, 95, 838, 96, 847, 100, 851, 105, 846, 107, 842, 109, 839, 112, 845, 115, 843, 118, 836, 119, 831, 122, 831, 126, 836, 127, 846, 126, 843, 132, 843, 135, 845, 138, 847, 140, 841, 143, 841, 147, 855, 154, 859, 157, 860, 160, 861, 161, 865, 161, 871, 161, 874, 163, 874, 165, 873, 169, 872, 171, 874, 174, 877, 174, 882.907, 172.759, 888, 176, 897.626, 178.608, 920, 191, 933, 194, 939, 199, 949, 200, 955.396, 205.07, 1027, 224, 1041, 226, 1078, 228, 1085, 230, 1091, 236, 1094, 241, 1093, 244, 1089, 248, 1089.51, 250.381, 1082, 255, 1082.19, 259.052, 1078, 263, 1077, 266, 1074, 269, 1070, 274, 1073, 280, 1072, 288, 1077, 291, 1077, 295, 1085, 300, 1087, 309, 1096, 315, 1107, 320, 1113, 326, 1119, 332, 1116, 341, 1108, 349, 1100, 354, 1095, 355, 1089, 360, 1073, 369, 1039, 374, 1025, 374, 1013.45, 379.788, 1005, 382, 999, 387, 992.541, 383.642, 987, 385, 980, 391, 969, 397, 967, 403, 967, 410, 964, 413, 960, 417, 955, 422, 955, 427, 957, 431, 957, 436, 953, 439, 947, 444, 937, 454, 927, 461, 918, 469, 907, 476, 902, 477, 900, 481, 894, 484, 889, 485, 886, 484, 883, 483, 867, 481, 850.548, 481.151, 840, 480, 826, 479, 819, 480, 807, 481, 797, 481, 793, 479, 778, 476, 768, 475, 758, 477, 743, 479, 725, 481, 713, 482, 691, 484, 687, 487, 684, 489, 678, 489, 670, 493, 662, 496, 655, 499, 647, 502, 640, 508, 634, 513, 632, 517, 629, 521, 626, 526, 619, 532, 616, 535, 615, 538, 616, 542, 615, 547, 614, 553, 616, 558, 620, 561, 624, 563, 624, 566, 621, 570, 609, 579, 595, 585, 580, 584, 565, 582, 544, 583, 524, 586, 519, 589, 508, 589, 493, 589, 479, 590, 470, 590, 465.663, 586.444, 445, 583, 429, 574, 414, 561, 410, 554, 411, 547, 411, 541, 409, 533, 403.005, 530.802, 396, 528, 396, 522, 398, 517, 408, 511, 418, 504, 418, 500, 419, 494, 415, 492, 414, 483, 411, 479, 405, 480, 400, 479, 396, 473, 390.356, 469.073, 382, 464, 373, 461, 371, 457, 367, 453, 358, 449, 349, 446, 344, 444, 343, 440, 333, 438, 324, 437, 316, 436, 304, 435, 297, 437, 289, 436, 281, 435, 269, 433, 261, 432, 258, 434, 252, 435, 239, 439, 226, 444, 220, 449, 214, 449, 209, 447, 207, 444, 217, 430, 218, 425, 215, 422, 209, 421, 207, 408, 199, 405, 195, 401, 175, 395, 151, 393, 127, 390, 105, 392, 93, 394, 88, 393, 86.3835, 389.015, 73, 385, 70.6503, 381.247, 38, 367, 36, 360, 32, 358, 30, 351, 40, 348, 46, 345, 53, 341, 53, 337, 56, 330, 57, 324, 53, 311, 41, 311, 38, 302, 33, 297, 51, 286, 62, 287, 150, 265, 161, 261, 163, 256, 168, 253, 182, 249, 185, 244, 197, 225, 207, 203, 213, 185, 220.74, 160.027, 224, 153, 226, 146, 243, 140, 252.065, 135.522, 269, 133, 270.238, 127.079, 278, 125, 294, 119, 312, 117, 343, 107, 358, 104, 368, 104, 373, 106, 382, 103, 390, 99, 400, 99, 410, 99, 419, 94, 429, 93, 449, 92, 466, 89, 475, 88, 486, 87, 498, 81, 514, 79, 539, 72, 557, 64, 576, 58, 590, 57, 610, 61)
+metadata/_edit_lock_ = true
+
+[node name="IslandBiome_Fields" type="Area2D" parent="IslandBoundary"]
+visible = false
+priority = 2
+script = ExtResource("7_s8mij")
+metadata/_edit_lock_ = true
+
+[node name="FieldsShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Fields"]
+polygon = PackedVector2Array(519, 535, 508, 532, 500, 526, 492, 522, 486, 513, 479, 506, 484, 498, 480, 487, 479.785, 478.609, 476, 476, 484, 461, 479, 448, 468, 434, 427, 424, 418, 427, 387, 419, 330, 399, 309, 398, 288, 397, 264, 385, 260, 366, 202, 362, 167, 355, 122, 341, 110, 341, 108, 322, 111, 300, 151, 282, 185, 273, 214, 261, 229, 242, 241, 234, 242, 228, 254, 223, 270, 222, 264, 215, 265, 202, 275, 196, 294, 173, 308, 140, 374, 110, 495, 91, 555, 80, 613, 103, 650, 128, 700, 136, 763, 156, 793, 170, 854, 195, 920, 227, 1017, 254, 1040, 323, 1026, 331, 981, 339, 936, 356, 916, 378, 895, 403, 873, 407, 854, 434, 807, 438, 757, 429, 696, 443, 655, 450, 629, 473, 592, 482, 579, 485, 571, 491, 564, 493, 561, 501, 561, 513, 559, 525, 550, 530, 540, 534, 527, 535)
+metadata/_edit_lock_ = true
+
+[node name="IslandBiome_Shores" type="Area2D" parent="IslandBoundary"]
+visible = false
+priority = 1
+script = ExtResource("5_xh3bp")
+metadata/_edit_lock_ = true
+
+[node name="ShoresShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Shores"]
+polygon = PackedVector2Array(437, 417, 474, 426, 494, 453, 491, 476, 490, 490, 490, 503, 498, 508, 520, 520, 538, 521, 546, 509, 553, 499, 566, 488, 581, 474, 642, 457, 660, 446, 741, 430, 765, 430, 805, 435, 849, 433, 860, 418, 873, 404, 896, 393, 916, 378, 923, 367, 942, 351, 965, 344, 989, 335, 1012, 332, 1029, 328, 1035, 322, 1028, 294, 1018, 261, 954, 239, 913, 224, 879, 211, 828, 187, 790, 168, 779, 160, 736, 148, 685, 137, 647, 128, 596, 97, 571, 89, 515, 90, 559, 63, 598, 57, 739, 60, 898, 89, 1161, 236, 1142, 398, 876, 551, 547, 634, 323, 568, 2, 373, 9, 243, 200, 105, 369, 100, 370, 113, 352, 119, 323, 127, 302, 137, 294, 148, 291, 160, 288, 171, 279, 192, 266, 209, 260, 225, 253, 235, 244, 242, 233, 249, 216, 264, 189, 274, 159, 280, 134, 291, 119, 303, 119, 331, 132, 337, 163, 345, 200, 350, 244, 356, 270, 368, 278, 381, 307, 386, 349, 396, 393, 412, 415, 420)
+metadata/_edit_lock_ = true
+
+[node name="IslandBiome_Mountain" type="Area2D" parent="IslandBoundary"]
+visible = false
+priority = 4
+script = ExtResource("5_14vbl")
+metadata/_edit_lock_ = true
+
+[node name="MountainShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Mountain"]
+polygon = PackedVector2Array(470, 212, 481, 196, 496, 184, 513, 173, 528, 171, 543, 163, 565, 162, 575, 162, 594, 160, 620, 163, 650, 171, 673, 181, 697, 201, 684, 203, 680, 212, 694, 223, 685, 226, 676, 240, 664, 250, 652, 263, 670, 272, 661, 276, 670, 294, 685, 314, 665, 309, 656, 302, 645, 277, 636, 258, 625, 247, 629, 261, 615, 262, 613, 274, 607, 285, 592, 289, 592, 307, 582, 318, 561, 328, 540, 329, 517, 321, 500, 319, 484, 336, 474, 336, 478, 319, 473, 298, 458, 291, 447, 298, 453, 282, 438, 278, 453, 263, 459, 245)
+metadata/_edit_lock_ = true
+
+[node name="IslandBiome_Forests" type="Area2D" parent="IslandBoundary"]
+visible = false
+priority = 3
+script = ExtResource("6_xh3bp")
+metadata/_edit_lock_ = true
+
+[node name="ForestEastShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Forests"]
+polygon = PackedVector2Array(486, 433, 486, 467, 481, 504, 519, 524, 553, 508, 570, 477, 603, 471, 641, 450, 719, 428, 786, 422, 831, 419, 882, 390, 928, 360, 953, 339, 1008, 329, 1032, 318, 1024, 269, 1006, 251, 965, 244, 939, 257, 905, 269, 881, 301, 848, 323, 821, 335, 810, 354, 756, 352, 728, 355, 679, 382, 654, 404, 631, 410, 609, 409, 568, 400, 518, 422)
+metadata/_edit_lock_ = true
+
+[node name="ForestWest1Shape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Forests"]
+polygon = PackedVector2Array(240, 355, 240, 330, 257, 299, 312, 282, 313, 263, 288, 257, 264, 239, 204, 266, 147, 280, 115, 300, 117, 331, 150, 329, 172, 337, 183, 345, 215, 343)
+metadata/_edit_lock_ = true
+
+[node name="ForestWest2Shape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Forests"]
+polygon = PackedVector2Array(605, 131, 634, 134, 645, 123, 594, 91, 563, 78, 519, 78, 437, 87, 371, 103, 324, 127, 298, 137, 284, 172, 296, 199, 356, 168, 457, 150, 529, 135, 560, 132, 573, 132, 590, 136)
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_ltgev")
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 134.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.249886, 0.286901, 1)
+theme_override_fonts/font = ExtResource("1_68n6a")
+theme_override_font_sizes/font_size = 16
+text = "hours:minutes"
+
+[node name="DebugLabel" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 134.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.249886, 0.286901, 1)
+theme_override_fonts/font = ExtResource("1_68n6a")
+theme_override_font_sizes/font_size = 16
+text = "Biome: Unknown"
+
+[node name="PostProcessControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -93.0
+offset_top = -50.0
+offset_right = -93.0
+offset_bottom = -50.0
+script = ExtResource("10_c7vby")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="PostProcessControl"]
+environment = SubResource("Environment_be0m3")
+
+[node name="TimeOfDayControl" type="Control" parent="."]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -148.0
+offset_top = -107.0
+offset_right = -108.0
+offset_bottom = -67.0
+script = ExtResource("1_be0m3")
+day_length_seconds = 120.0
+
+[connection signal="body_entered" from="IslandBoundary/IslandBiome_Fields" to="IslandBoundary/IslandBiome_Fields" method="_on_body_entered"]
+[connection signal="body_exited" from="IslandBoundary/IslandBiome_Fields" to="IslandBoundary/IslandBiome_Fields" method="_on_body_exited"]
+[connection signal="body_entered" from="IslandBoundary/IslandBiome_Shores" to="IslandBoundary/IslandBiome_Shores" method="_on_body_entered"]
+[connection signal="body_exited" from="IslandBoundary/IslandBiome_Shores" to="IslandBoundary/IslandBiome_Shores" method="_on_body_exited"]
+[connection signal="body_entered" from="IslandBoundary/IslandBiome_Mountain" to="IslandBoundary/IslandBiome_Mountain" method="_on_body_entered"]
+[connection signal="body_exited" from="IslandBoundary/IslandBiome_Mountain" to="IslandBoundary/IslandBiome_Mountain" method="_on_body_exited"]
+[connection signal="body_entered" from="IslandBoundary/IslandBiome_Forests" to="IslandBoundary/IslandBiome_Forests" method="_on_body_entered"]
+[connection signal="body_exited" from="IslandBoundary/IslandBiome_Forests" to="IslandBoundary/IslandBiome_Forests" method="_on_body_exited"]

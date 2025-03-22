@@ -1,0 +1,27 @@
+
+# debug_label.gd
+extends CanvasLayer
+
+@onready var debug_label = $DebugLabel
+
+func set_biome(biome_name: String) -> void:
+	debug_label.text = "Biome: " + biome_name
+
+func _process(delta):
+	# This is just a placeholder; replace get_current_biome() with your detection logic
+	debug_label.text = "Biome: " + get_current_biome()
+	
+func get_current_biome() -> String:
+	# Insert your logic to determine the biome
+	# For now, it's just a placeholder returning "Shores"
+	return "Shores"
+	
+player_dot.gd remove exit check
+func _on_detection_area_exited(area: Node):
+	print("DEBUG: Exited area: ", area.name, " | Type: ", area.get_class())
+	# If it's a biome we were tracking, remove it
+	if area is IslandBiome and area in current_biomes:
+		current_biomes.erase(area)
+		print("DEBUG: Removed biome: ", area.biome_name, " | Total biomes: ", current_biomes.size())
+	else:
+		print("DEBUG: Area not found in current_biomes or not a biome.")
