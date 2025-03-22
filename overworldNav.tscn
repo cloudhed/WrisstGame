@@ -15,9 +15,10 @@
 [ext_resource type="Script" uid="uid://bmm0gshj54yld" path="res://Code/worldenvironment_controller.gd" id="10_c7vby"]
 
 [sub_resource type="Gradient" id="Gradient_0bjjx"]
-offsets = PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.6, 0.7, 0.9, 1)
-colors = PackedColorArray(0.151833, 0.250376, 0.414948, 1, 0.152941, 0.25098, 0.415686, 1, 0.568141, 0.354899, 0.829397, 1, 0.961561, 0.384513, 0.681699, 1, 1, 0.499649, 0.378353, 1, 0.993422, 0.764018, 0.425318, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.35, 0.6, 0.65, 0.75, 1)
+colors = PackedColorArray(0.26374, 0.403166, 0.635567, 1, 0.26374, 0.403166, 0.635567, 1, 0.852247, 0.598395, 0.736017, 1, 0.97, 0.879467, 0.776, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 metadata/_snap_enabled = true
+metadata/_snap_count = 20
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_div00"]
 gradient = SubResource("Gradient_0bjjx")
@@ -41,15 +42,11 @@ radius = 8.0
 [sub_resource type="Environment" id="Environment_be0m3"]
 background_mode = 3
 tonemap_mode = 1
-glow_enabled = true
-glow_intensity = 0.4
-glow_bloom = 0.15
-glow_hdr_threshold = 0.9
-glow_hdr_scale = 0.14
+glow_intensity = 2.0
+glow_bloom = 0.2
 fog_depth_curve = 2.37841
 fog_depth_begin = 0.0
 fog_depth_end = 134.5
-adjustment_enabled = true
 
 [node name="overworld_node" type="Node2D"]
 y_sort_enabled = true
@@ -95,8 +92,6 @@ y_sort_enabled = true
 position = Vector2(464.585, 572.595)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("2_5xsid")
-difterrain_slowdown_percentage = 0.75
-verydifterrain_slowdown_percentage = 0.5
 
 [node name="ColorRect" type="ColorRect" parent="PlayerDot"]
 custom_minimum_size = Vector2(10, 10)
@@ -229,7 +224,6 @@ offset_top = -107.0
 offset_right = -108.0
 offset_bottom = -67.0
 script = ExtResource("1_be0m3")
-day_length_seconds = 120.0
 
 [connection signal="body_entered" from="IslandBoundary/IslandBiome_Fields" to="IslandBoundary/IslandBiome_Fields" method="_on_body_entered"]
 [connection signal="body_exited" from="IslandBoundary/IslandBiome_Fields" to="IslandBoundary/IslandBiome_Fields" method="_on_body_exited"]

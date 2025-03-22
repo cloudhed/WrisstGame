@@ -4,8 +4,8 @@ extends CharacterBody2D
 var current_biomes: Array = []
 # var default_move_speed := move_speed # Store the initial move speed
 
-@export var difterrain_slowdown_percentage: float = 0.5 # 0.5 for a 50% slowdown
-@export var verydifterrain_slowdown_percentage: float = 0.2 # 0.5 for a 50% slowdown
+@export var difterrain_slowdown_percentage: float = 0.7 # 0.5 for a 50% slowdown
+@export var verydifterrain_slowdown_percentage: float = 0.5 # 0.5 for a 50% slowdown
 
 func _physics_process(_delta):
 	# Debug prints to check current_biomes status:
