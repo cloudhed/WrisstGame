@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjc6eaise28y8"]
+
+[ext_resource type="Texture2D" uid="uid://bbrswebkl4jjt" path="res://Assets/Sprites/Map/mapmarkerFlag.png" id="1_a6nge"]
+[ext_resource type="Script" uid="uid://dbujn0bndso7g" path="res://Assets/Objects/MapObjects/map_flag.gd" id="1_h86rv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h86rv"]
+
+[node name="MapFlag" type="Node2D"]
+
+[node name="mapFlagSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_a6nge")
+
+[node name="MapFlagInteractable" type="Area2D" parent="."]
+script = ExtResource("1_h86rv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapFlagInteractable"]
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(1.975, 1.975)
+shape = SubResource("CircleShape2D_h86rv")

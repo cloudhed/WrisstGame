@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://n2ph37g6j3q7"]
+
+[ext_resource type="Script" uid="uid://gewf0begkw6p" path="res://Code/player_dot.gd" id="1_8covg"]
+[ext_resource type="Script" uid="uid://bje4bfe0omhkk" path="res://Characters/Player/interaction_area_map.gd" id="2_opcru"]
+[ext_resource type="Texture2D" uid="uid://cl3prflv62lrj" path="res://Assets/Sprites/Map/mapmarkerPlayer.png" id="3_vbhwa"]
+
+[sub_resource type="Gradient" id="Gradient_1o44n"]
+offsets = PackedFloat32Array(0.2, 0.7)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2rbov"]
+gradient = SubResource("Gradient_1o44n")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqhni"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_ohuvh"]
+offsets = PackedFloat32Array(0.5, 0.7, 1)
+colors = PackedColorArray(0.06, 0.165, 0.24, 0.501961, 0, 0, 0, 0, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ufkn7"]
+gradient = SubResource("Gradient_ohuvh")
+width = 256
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="MapPlayer" type="Node2D"]
+
+[node name="PlayerDot" type="CharacterBody2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_8covg")
+
+[node name="PlayerLight" type="PointLight2D" parent="PlayerDot"]
+scale = Vector2(2, 2)
+color = Color(1, 0.75, 0.5, 1)
+energy = 0.32
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_2rbov")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDot"]
+visible = false
+shape = SubResource("CircleShape2D_qqhni")
+
+[node name="PlayerInteractionArea" type="Area2D" parent="PlayerDot" node_paths=PackedStringArray("interactor")]
+script = ExtResource("2_opcru")
+interactor = NodePath("..")
+
+[node name="PlayerInteractionShape" type="CollisionShape2D" parent="PlayerDot/PlayerInteractionArea"]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_qqhni")
+debug_color = Color(0.894383, 0.317796, 0.0852838, 0.42)
+
+[node name="PlayerDetectionArea" type="Area2D" parent="PlayerDot"]
+
+[node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDot/PlayerDetectionArea"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_qqhni")
+debug_color = Color(0.894383, 0.317796, 0.0852838, 0.42)
+
+[node name="PlayerSprite" type="Sprite2D" parent="PlayerDot"]
+light_mask = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_vbhwa")
+
+[node name="PlayerSpriteShadow" type="Sprite2D" parent="PlayerDot/PlayerSprite"]
+light_mask = 2
+scale = Vector2(1.2, 1.2)
+texture = SubResource("GradientTexture2D_ufkn7")
+offset = Vector2(0, 106)

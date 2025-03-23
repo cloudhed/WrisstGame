@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var DistanceLabel: Node = get_tree().get_root().get_node("overworld_node/CanvasLayer/DistanceLabel") # Doing DISTANCE stuff
 @export var move_speed := 32.0
 var current_biomes: Array = []
 # var default_move_speed := move_speed # Store the initial move speed
@@ -7,14 +8,33 @@ var current_biomes: Array = []
 @export var difterrain_slowdown_percentage: float = 0.7 # 0.5 for a 50% slowdown
 @export var verydifterrain_slowdown_percentage: float = 0.5 # 0.5 for a 50% slowdown
 
+var step_size : int = 7
+
+# Doing DISTANCE stuff
+var distance_in_pixel : float = 0.0:
+	set(value):
+			distance_in_pixel = value
+			var step = distance_in_pixel / step_size
+
+			DistanceLabel.text = "Steps since last event: %d" % step
+			
+			if step >= Manager.encounter_number:
+				set_physics_process(false)
+				
+				Manager.save_player_data(self)
+				Manager.change_scene()
+func _ready():
+	# Connect signals from the child Area2D to our callbacks
+	$PlayerDetectionArea.connect("area_entered", Callable(self, "_on_detection_area_entered"))
+	$PlayerDetectionArea.connect("area_exited", Callable(self, "_on_detection_area_exited"))
+	position = Manager.player_last_position
+#	_update_biome_display()
+
 func _physics_process(_delta):
-	# Debug prints to check current_biomes status:
-#	print("DEBUG: current_biomes count: ", current_biomes.size())
-#	for biome in current_biomes:
-#		print("DEBUG: biome in list: ", biome.biome_name)
 	var current_move_speed := move_speed
+	var initial_position = position # Doing DISTANCE stuff
 		
-			# Check if the player is in Very Difficult Terrain biome
+	# Check if the player is in Very Difficult Terrain biome
 	var in_verydifterrain_biome := false
 	for biome in current_biomes:
 		if biome.biome_name == "Mountains": 
@@ -51,31 +71,27 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	
-			
-func _ready():
-	# Connect signals from the child Area2D to our callbacks
-	$PlayerDetectionArea.connect("area_entered", Callable(self, "_on_detection_area_entered"))
-	$PlayerDetectionArea.connect("area_exited", Callable(self, "_on_detection_area_exited"))
-#	_update_biome_display()
+	# Doing DISTANCE stuff, checking how far we've gone.
+	distance_in_pixel += position.distance_to(initial_position)
 
 func _on_detection_area_entered(area: Node):
 	# If the area is a biome and it's not already in our list, add it to our list
-	print("DEBUG: Entered area: ", area.name, " | Type: ", area.get_class())
+#	print("DEBUG: Entered area: ", area.name, " | Type: ", area.get_class())
 	if area is IslandBiome and not current_biomes.has(area):
 		current_biomes.append(area)
-		print("DEBUG: Added biome: ", area.biome_name, " | Total biomes: ", current_biomes.size())
+#		print("DEBUG: Added biome: ", area.biome_name, " | Total biomes: ", current_biomes.size())
 		_update_biome_display() # Call the function to update the debug label
-	else:
-		print("DEBUG: Not a biome area or already in the list.")
+#	else:
+#		print("DEBUG: Not a biome area or already in the list.")
 		
 func _on_detection_area_exited(area: Node):
 	# If the area is a biome and it's in our list, remove it from our list
 	if area is IslandBiome and current_biomes.has(area):
 		current_biomes.erase(area)
-		print("DEBUG: Removed biome: ", area.biome_name, " | Total biomes: ", current_biomes.size())
+#		print("DEBUG: Removed biome: ", area.biome_name, " | Total biomes: ", current_biomes.size())
 		_update_biome_display() # Call the function to update the debug label
-	else:
-		print("DEBUG: Tried to remove biome, but it wasn't in the list or not a biome: ", area.biome_name)
+#	else:
+#		print("DEBUG: Tried to remove biome, but it wasn't in the list or not a biome: ", area.biome_name)
 		
 
 func get_current_biomes() -> IslandBiome:
@@ -109,7 +125,7 @@ func _update_biome_display() -> void:
 
 	debug_text += "\nAll Overlapping Biomes: " + ", ".join(biome_names)
 
-	# 4) Pass that string to the debug GUI:
+	# 4) Pass that string to the debug GUI, with the Label
 	var debug_gui = get_tree().get_root().get_node("overworld_node/CanvasLayer")
 	if debug_gui:
 		debug_gui.set_biome(debug_text)

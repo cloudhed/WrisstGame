@@ -1,6 +1,6 @@
 extends Node
 
-@export var day_length_seconds: float = 30.0 # How many real-time seconds make one in-game day
+@export var day_length_seconds: float = 120.0 # How many real-time seconds make one in-game day
 @export var start_time_hours: int = 6 # Starting hour
 @export var start_time_minutes: int = 0 # Starting minute
 

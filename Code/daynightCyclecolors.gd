@@ -3,7 +3,7 @@ extends CanvasModulate
 @export var gradient:GradientTexture1D
 @onready var time_of_day_control: Node = get_node("../TimeOfDayControl") # Adjust path if needed
 
-func _process(delta):
+func _process(_delta):
 	if time_of_day_control and time_of_day_control.has_method("get_current_time"):
 		var current_time = time_of_day_control.get_current_time()
 		var hours = current_time.hours

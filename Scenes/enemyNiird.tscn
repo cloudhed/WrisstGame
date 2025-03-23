@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cttkpt5swfbn2"]
+
+[ext_resource type="Texture2D" uid="uid://csv4awrqbnphj" path="res://Assets/Sprites/Enemies/enemyNiird.png" id="1_nnnum"]
+
+[node name="EnemyNiird" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(98, -97)
+scale = Vector2(0.501506, 0.501506)
+texture = ExtResource("1_nnnum")

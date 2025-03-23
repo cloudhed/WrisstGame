@@ -12,7 +12,10 @@ func _ready():
 			printerr("Error: Camera target node not found at path:", target_path)
 	else:
 		printerr("Error: Camera target path not set in the Inspector.")
+	position = Manager.player_last_position
 
 func _physics_process(_delta):
 	if is_instance_valid(target):
 		global_position = target.global_position
+	else:
+		printerr("Error: Camera target not valid.")

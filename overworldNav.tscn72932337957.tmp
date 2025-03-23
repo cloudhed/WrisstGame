@@ -212,6 +212,7 @@ script = ExtResource("3_ohuvh")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="WorldAudioManager"]
 stream = SubResource("AudioStreamInteractive_j4r2r")
+autoplay = true
 bus = &"music"
 script = ExtResource("10_7vspy")
 
@@ -289,7 +290,6 @@ scale = Vector2(0.909856, 0.909856)
 occluder = SubResource("OccluderPolygon2D_47t8u")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-position = Vector2(460, 520)
 zoom = Vector2(2, 2)
 limit_left = -95
 limit_top = -50
@@ -316,7 +316,7 @@ position = Vector2(454, 510)
 [node name="PlayerDot" type="CharacterBody2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(460, 572)
+position = Vector2(464.585, 572.595)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("2_5xsid")
 
@@ -418,12 +418,6 @@ metadata/_edit_lock_ = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("1_ltgev")
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 368.0
-offset_bottom = 168.0
-
 [node name="TimeLabel" type="Label" parent="CanvasLayer"]
 offset_left = 16.0
 offset_top = 16.0
@@ -447,10 +441,11 @@ theme_override_font_sizes/font_size = 16
 text = "Biome: Unknown"
 
 [node name="DistanceLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
 offset_left = 16.0
-offset_top = 88.0
+offset_top = 81.0
 offset_right = 150.0
-offset_bottom = 111.0
+offset_bottom = 104.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.249886, 0.286901, 1)
 theme_override_fonts/font = ExtResource("1_68n6a")
