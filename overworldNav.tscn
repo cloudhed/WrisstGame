@@ -1,18 +1,57 @@
-[gd_scene load_steps=21 format=3 uid="uid://bsk688e4ksiee"]
+[gd_scene load_steps=26 format=3 uid="uid://bsk688e4ksiee"]
 
+[ext_resource type="AudioStream" uid="uid://faqrtb1uggnb" path="res://Audio/sound_ambience_overworld_day.ogg" id="1_0bjjx"]
 [ext_resource type="Shader" uid="uid://tdm2ibh3v5sa" path="res://Shaders/testshader.gdshader" id="1_2rr60"]
 [ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="1_68n6a"]
 [ext_resource type="Script" uid="uid://nto65f0jy0qu" path="res://Code/time_of_day.gd" id="1_be0m3"]
 [ext_resource type="Texture2D" uid="uid://caaf5ux7pxo74" path="res://Assets/Backgrounds/mapIsland.jpg" id="1_cbwp5"]
 [ext_resource type="Script" uid="uid://15m4ao5uotgl" path="res://Code/daynightCyclecolors.gd" id="1_l47sy"]
 [ext_resource type="Script" uid="uid://dpihe8ldbonef" path="res://Code/debug_label.gd" id="1_ltgev"]
+[ext_resource type="Script" uid="uid://0yaek5xq2gc7" path="res://Code/world_audio_manager.gd" id="1_ohuvh"]
+[ext_resource type="AudioStream" uid="uid://p1f5mpu6o6ws" path="res://Audio/sound_ambience_overworld_night.ogg" id="2_1o44n"]
 [ext_resource type="Script" uid="uid://gewf0begkw6p" path="res://Code/player_dot.gd" id="2_5xsid"]
+[ext_resource type="Script" uid="uid://1titwtotlxt2" path="res://Code/audio_stream_player.gd" id="3_ohuvh"]
 [ext_resource type="Script" uid="uid://0qnc5lrimymu" path="res://Code/islandbiome_mountain.gd" id="5_14vbl"]
 [ext_resource type="Script" uid="uid://drxlt2argte2" path="res://Code/islandbiome_shores.gd" id="5_xh3bp"]
 [ext_resource type="Script" uid="uid://gs5pjca5gun7" path="res://Code/islandbiome_forests.gd" id="6_xh3bp"]
 [ext_resource type="Script" uid="uid://ctfaj2d5vhtp3" path="res://Code/islandbiome_fields.gd" id="7_s8mij"]
 [ext_resource type="Script" uid="uid://clq6t52fwieia" path="res://Code/PlayerCameraFollow.gd" id="9_s8mij"]
 [ext_resource type="Script" uid="uid://bmm0gshj54yld" path="res://Code/worldenvironment_controller.gd" id="10_c7vby"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3xhtu"]
+clip_count = 2
+clip_0/name = &"SoundAmbMapDay"
+clip_0/stream = ExtResource("1_0bjjx")
+clip_0/auto_advance = 0
+clip_1/name = &"SoundAmbMapNight"
+clip_1/stream = ExtResource("2_1o44n")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, -1): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(0, 1): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, -1): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 0): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
 
 [sub_resource type="Gradient" id="Gradient_0bjjx"]
 offsets = PackedFloat32Array(0, 0.35, 0.6, 0.65, 0.75, 1)
@@ -50,6 +89,17 @@ fog_depth_end = 134.5
 
 [node name="overworld_node" type="Node2D"]
 y_sort_enabled = true
+
+[node name="WorldAudioManager" type="Node" parent="." node_paths=PackedStringArray("amb_audio_player")]
+script = ExtResource("1_ohuvh")
+amb_audio_player = NodePath("AmbiencePlayer")
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="WorldAudioManager"]
+stream = SubResource("AudioStreamInteractive_3xhtu")
+volume_db = -20.0
+autoplay = true
+bus = &"ambience"
+script = ExtResource("3_ohuvh")
 
 [node name="DayNightCycleColors" type="CanvasModulate" parent="."]
 script = ExtResource("1_l47sy")
