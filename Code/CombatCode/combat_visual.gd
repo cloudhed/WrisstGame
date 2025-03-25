@@ -7,31 +7,31 @@ extends Node2D
 @export var shores_bg: Texture2D
 
 @onready var bg_sprite: Sprite2D = $CombatBGSprite
+@onready var whiteout_anim = $AnimationPlayer
 
-func _ready():
-	# Connect to the biome_updated signal from Manager (your autoload)
-	if Manager.has_signal("biome_updated"):
-		Manager.connect("biome_updated", _on_biome_updated)
-	# Also set the background based on current value
+var biome_textures: Dictionary = {}
+
+func _ready() -> void:
+# Populate dictionary once
+	biome_textures = {
+		"Forest": forest_bg,
+		"Plains": plains_bg,
+		"Mountains": mountains_bg,
+		"Shores": shores_bg,
+		"Default": default_bg
+	}
+	# Connect signal directly
+	Manager.biome_updated.connect(_on_biome_updated)
+	# Set initial background
 	set_biome_background(Manager.combat_biome)
 
 func _on_biome_updated(new_biome: String) -> void:
 	set_biome_background(new_biome)
 
-func set_biome_background(biome_name: String):
-	match biome_name:
-		"Forest":
-			bg_sprite.texture = forest_bg
-		"Plains":
-			bg_sprite.texture = plains_bg
-		"Mountains":
-			bg_sprite.texture = mountains_bg
-		"Shores":
-			bg_sprite.texture = shores_bg
-		_:  # Includes "Default" and any unexpected values
-			bg_sprite.texture = default_bg
-#			if biome_name != "Default":
-#				printerr("Unknown biome '%s', using default background" % biome_name)
-func _exit_tree():
-	if Manager.is_connected("biome_updated", _on_biome_updated):
-		Manager.disconnect("biome_updated", _on_biome_updated)
+func set_biome_background(biome_name: String) -> void:
+	var texture = biome_textures.get(biome_name, default_bg)
+	if texture:
+		bg_sprite.texture = texture
+	else:
+		print("Warning: No texture for biome '%s', using default" % biome_name)
+		bg_sprite.texture = default_bg

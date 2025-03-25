@@ -380,6 +380,7 @@ metadata/_edit_lock_ = true
 [node name="IslandBiome_Fields" type="Area2D" parent="IslandBoundary"]
 priority = 2
 script = ExtResource("7_s8mij")
+speed_modifier = 2.0
 metadata/_edit_lock_ = true
 
 [node name="FieldsShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Fields"]
@@ -395,8 +396,10 @@ metadata/_edit_lock_ = true
 polygon = PackedVector2Array(437, 417, 474, 426, 494, 453, 491, 476, 490, 490, 490, 503, 498, 508, 520, 520, 538, 521, 546, 509, 553, 499, 566, 488, 581, 474, 642, 457, 660, 446, 741, 430, 765, 430, 805, 435, 849, 433, 860, 418, 873, 404, 896, 393, 916, 378, 923, 367, 942, 351, 965, 344, 989, 335, 1012, 332, 1029, 328, 1035, 322, 1028, 294, 1018, 261, 954, 239, 913, 224, 879, 211, 828, 187, 790, 168, 779, 160, 736, 148, 685, 137, 647, 128, 596, 97, 571, 89, 515, 90, 559, 63, 598, 57, 739, 60, 898, 89, 1161, 236, 1142, 398, 876, 551, 547, 634, 323, 568, 2, 373, 9, 243, 200, 105, 369, 100, 370, 113, 352, 119, 323, 127, 302, 137, 294, 148, 291, 160, 288, 171, 279, 192, 266, 209, 260, 225, 253, 235, 244, 242, 233, 249, 216, 264, 189, 274, 159, 280, 134, 291, 119, 303, 119, 331, 132, 337, 163, 345, 200, 350, 244, 356, 270, 368, 278, 381, 307, 386, 349, 396, 393, 412, 415, 420)
 
 [node name="IslandBiome_Mountain" type="Area2D" parent="IslandBoundary"]
-priority = 4
+priority = 3
 script = ExtResource("5_14vbl")
+biome_priority = 3
+speed_modifier = 0.2
 
 [node name="MountainShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Mountain"]
 polygon = PackedVector2Array(470, 212, 481, 196, 496, 184, 513, 173, 528, 171, 543, 163, 565, 162, 575, 162, 594, 160, 620, 163, 650, 171, 673, 181, 697, 201, 684, 203, 680, 212, 694, 223, 685, 226, 676, 240, 664, 250, 652, 263, 670, 272, 661, 276, 670, 294, 685, 314, 665, 309, 656, 302, 645, 277, 636, 258, 625, 247, 629, 261, 615, 262, 613, 274, 607, 285, 592, 289, 592, 307, 582, 318, 561, 328, 540, 329, 517, 321, 500, 319, 484, 336, 474, 336, 478, 319, 473, 298, 458, 291, 447, 298, 453, 282, 438, 278, 453, 263, 459, 245)
@@ -405,6 +408,7 @@ metadata/_edit_lock_ = true
 [node name="IslandBiome_Forests" type="Area2D" parent="IslandBoundary"]
 priority = 3
 script = ExtResource("6_xh3bp")
+speed_modifier = 0.5
 metadata/_edit_lock_ = true
 
 [node name="ForestEastShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Forests"]

@@ -3,6 +3,7 @@ extends IslandBiome
 # Change this variable for each biome area
 @export var biome_name: String = "Forest"
 @export var biome_priority = 3
+@export var speed_modifier: float = 1.0
 
 #func _on_body_entered(body: Node) -> void:
 #	if body.name == "PlayerDot":
