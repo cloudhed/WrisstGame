@@ -15,6 +15,12 @@ func _ready():
 	# Initialize last_displayed_minute based on the starting time
 	last_displayed_minute = floor((current_time_seconds / day_length_seconds) * total_minutes_in_day)
 
+# Suppose encounterManager is autoloaded as Manager
+	if Manager.last_time_of_day.size() > 0:
+		var hours = Manager.last_time_of_day["hours"]
+		var minutes = Manager.last_time_of_day["minutes"]
+		set_current_time(hours, minutes)
+
 func _process(delta):
 	current_time_seconds += delta
 	if current_time_seconds >= day_length_seconds:
@@ -38,6 +44,10 @@ func get_current_time() -> Dictionary:
 	var hours = floor(current_minutes_float / 60)
 	var minutes = floor(fmod(current_minutes_float, 60))
 	return {"hours": hours, "minutes": minutes}
+	
+func set_current_time(hours: int, minutes: int) -> void:
+	# Calculate current_time_seconds from hours and minutes
+	current_time_seconds = (hours * 60 + minutes) * (day_length_seconds / total_minutes_in_day)
 
 # New function to determine the current time period
 func get_time_period() -> String:

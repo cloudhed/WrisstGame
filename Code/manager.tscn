@@ -12,9 +12,9 @@ combat_scene = ExtResource("2_tbk4x")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ManagerDebug"]
 offset_left = 16.0
-offset_top = 179.0
+offset_top = 671.0
 offset_right = 297.0
-offset_bottom = 219.0
+offset_bottom = 711.0
 
 [node name="EncounterLabel" type="Label" parent="ManagerDebug/HBoxContainer"]
 unique_name_in_owner = true
@@ -31,4 +31,3 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.249886, 0.286901, 1)
 theme_override_fonts/font = ExtResource("2_qalwd")
 theme_override_font_sizes/font_size = 16
-text = "Encounter Label Text"

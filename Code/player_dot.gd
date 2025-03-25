@@ -2,56 +2,124 @@ extends CharacterBody2D
 
 @onready var DistanceLabel: Node = get_tree().get_root().get_node("overworld_node/CanvasLayer/DistanceLabel") # Doing DISTANCE stuff
 @export var move_speed := 32.0
-var current_biomes: Array = []
-# var default_move_speed := move_speed # Store the initial move speed
+var current_biomes: Array = [] # How we manage overlapping biomes
+var last_valid_biome: IslandBiome = null # Prepping to CACHE, motherfuckers
 
-@export var difterrain_slowdown_percentage: float = 0.7 # 0.5 for a 50% slowdown
-@export var verydifterrain_slowdown_percentage: float = 0.5 # 0.5 for a 50% slowdown
+# ---------------------------
+# Biome Management Functions
+# ---------------------------
 
-var step_size : int = 7
 
-# Doing DISTANCE stuff
-var distance_in_pixel : float = 0.0:
-	set(value):
-			distance_in_pixel = value
-			var step = distance_in_pixel / step_size
+		
+# THE ABOVE WAS MOVED, IT WAS RECENTLY JUST BEFORE THE STEP SIZE THINGS BELOW
 
-			DistanceLabel.text = "Steps since last event: %d" % step
-			
-			if step >= Manager.encounter_number:
-				set_physics_process(false)
-				
-				Manager.save_player_data(self)
-				Manager.change_scene()
+func add_biome(biome: IslandBiome) -> void:
+	if biome not in current_biomes:
+		current_biomes.append(biome)
+		print("Added biome:", biome.biome_name)
+	# Update cached biome if necessary
+	if last_valid_biome == null or biome.biome_priority > last_valid_biome.biome_priority:
+		last_valid_biome = biome
+
+func remove_biome(biome: IslandBiome) -> void:
+	if biome in current_biomes:
+		current_biomes.erase(biome)
+		print("Removed biome:", biome.biome_name)
+	# Update cache if needed
+	if last_valid_biome == biome:
+		if current_biomes.size() > 0:
+			last_valid_biome = get_current_biomes()
+		else:
+			last_valid_biome = null
+
+func get_current_biomes() -> IslandBiome:
+	if current_biomes.is_empty():
+		if last_valid_biome:
+			print("get_current_biomes: No current biomes, using cached biome: ", last_valid_biome.biome_name)
+			return last_valid_biome
+		else:
+			print("get_current_biomes: No biomes ever detected! Unlucky.")
+			return null
+
+	var highest_priority_biome = current_biomes[0]
+	for biome in current_biomes:
+		print("get_current_biomes: Found biome: ", biome.biome_name, " with priority: ", biome.biome_priority)
+		if biome.biome_priority > highest_priority_biome.biome_priority:
+			highest_priority_biome = biome
+
+	last_valid_biome = highest_priority_biome  # Cache the current biome.
+	print("get_current_biomes: Selected and cached highest biome: ", highest_priority_biome.biome_name)
+	return highest_priority_biome
+
+# ---------------------------
+# Rest of your code
+# ---------------------------
+
+@export var difterrain_slowdown_percentage: float = 0.7
+@export var verydifterrain_slowdown_percentage: float = 0.5
+
 func _ready():
-	# Connect signals from the child Area2D to our callbacks
 	$PlayerDetectionArea.connect("area_entered", Callable(self, "_on_detection_area_entered"))
 	$PlayerDetectionArea.connect("area_exited", Callable(self, "_on_detection_area_exited"))
 	position = Manager.player_last_position
-#	_update_biome_display()
+	can_move = true
+	
+func _on_detection_area_entered(area: Node) -> void:
+	if area is IslandBiome and not current_biomes.has(area):
+		add_biome(area)
+		print("player_dot, on_detection_area_entered: Entered biome: ", area.biome_name)
+#		current_biomes.append(area)
+		_update_biome_display()
+
+func _on_detection_area_exited(area: Node) -> void:
+	if area is IslandBiome and current_biomes.has(area):
+		remove_biome(area)
+		print("player_dot, on_detection_area_exited: Exited biome: ", area.biome_name)
+#		current_biomes.erase(area)
+		_update_biome_display()
+
+func _update_biome_display() -> void:
+	var highest_biome = get_current_biomes()
+	var biome_names: Array[String] = []
+	for biome in current_biomes:
+		biome_names.append(biome.biome_name)
+
+	var debug_text = ""
+	if highest_biome:
+		debug_text = "Biome: " + highest_biome.biome_name
+	else:
+		debug_text = "Biome: !NO BIOME!"
+	debug_text += "\nAll Overlapping Biomes: " + ", ".join(biome_names)
+
+	var debug_gui = get_tree().get_root().get_node("overworld_node/CanvasLayer")
+	if debug_gui:
+		debug_gui.set_biome(debug_text)
+		
+var can_move := true
 
 func _physics_process(_delta):
+	if not can_move:
+		velocity = Vector2.ZERO
+		return # SKIPPING INPUT PROCESSING
 	var current_move_speed := move_speed
-	var initial_position = position # Doing DISTANCE stuff
+	var initial_position = position
 		
-	# Check if the player is in Very Difficult Terrain biome
 	var in_verydifterrain_biome := false
 	for biome in current_biomes:
-		if biome.biome_name == "Mountains": 
+		if biome.biome_name == "Mountains_0": 
 			in_verydifterrain_biome = true
 			break
 			
 	var in_difterrain_biome := false
 	for biome in current_biomes:
-		if biome.biome_name == "Forest": 
+		if biome.biome_name == "Forest_0": 
 			in_difterrain_biome = true
 			break
-	# Set the move speed based on the biome
+		
 	if in_verydifterrain_biome:
 		current_move_speed = move_speed * verydifterrain_slowdown_percentage
 	if in_difterrain_biome:
-		current_move_speed = move_speed * difterrain_slowdown_percentage # Reduce the move speed when in the Mountain biome
-#	else: current_move_speed # Reset to the default speed when not in the Mountain biome
+		current_move_speed = move_speed * difterrain_slowdown_percentage
 		
 	var input_vector = Vector2.ZERO
 	if Input.is_action_pressed("ui_right"):
@@ -65,67 +133,30 @@ func _physics_process(_delta):
 
 	if input_vector != Vector2.ZERO:
 		input_vector = input_vector.normalized()
-		velocity = input_vector * current_move_speed # Use the temp var for movement
+		velocity = input_vector * current_move_speed
 	else:
 		velocity = Vector2.ZERO
 
 	move_and_slide()
-	
-	# Doing DISTANCE stuff, checking how far we've gone.
 	distance_in_pixel += position.distance_to(initial_position)
 
-func _on_detection_area_entered(area: Node):
-	# If the area is a biome and it's not already in our list, add it to our list
-#	print("DEBUG: Entered area: ", area.name, " | Type: ", area.get_class())
-	if area is IslandBiome and not current_biomes.has(area):
-		current_biomes.append(area)
-#		print("DEBUG: Added biome: ", area.biome_name, " | Total biomes: ", current_biomes.size())
-		_update_biome_display() # Call the function to update the debug label
-#	else:
-#		print("DEBUG: Not a biome area or already in the list.")
-		
-func _on_detection_area_exited(area: Node):
-	# If the area is a biome and it's in our list, remove it from our list
-	if area is IslandBiome and current_biomes.has(area):
-		current_biomes.erase(area)
-#		print("DEBUG: Removed biome: ", area.biome_name, " | Total biomes: ", current_biomes.size())
-		_update_biome_display() # Call the function to update the debug label
-#	else:
-#		print("DEBUG: Tried to remove biome, but it wasn't in the list or not a biome: ", area.biome_name)
-		
 
-func get_current_biomes() -> IslandBiome:
-	if current_biomes.is_empty():
-		return null
+
+var step_size : int = 3
+#var step_size_difterrain : int = 3 * difterrain_slowdown_percentage
+#var step_size_verydifterrain : int = 3 * verydifterrain_slowdown_percentage
+
+var distance_in_pixel : float = 0.0:
 	
-	var highest_priority_biome = current_biomes[0]
-	for biome in current_biomes:
-		if biome.biome_priority > highest_priority_biome.biome_priority:
-			highest_priority_biome = biome
-	
-	return highest_priority_biome
-	
-	
-func _update_biome_display() -> void:
-	# 1) Figure out highest-priority biome:
-	var highest_biome = get_current_biomes() # your function that returns the top biome or null
-
-	# 2) Convert entire array to a comma-separated list of names:
-	var biome_names: Array[String] = []
-	for biome in current_biomes:
-		biome_names.append(biome.biome_name)
-
-	# 3) Build the debug string:
-	var debug_text = ""
-
-	if highest_biome:
-		debug_text = "Biome: " + highest_biome.biome_name
-	else:
-		debug_text = "Biome: !NO BIOME!"
-
-	debug_text += "\nAll Overlapping Biomes: " + ", ".join(biome_names)
-
-	# 4) Pass that string to the debug GUI, with the Label
-	var debug_gui = get_tree().get_root().get_node("overworld_node/CanvasLayer")
-	if debug_gui:
-		debug_gui.set_biome(debug_text)
+	set(value):
+		distance_in_pixel = value
+		var step = distance_in_pixel / step_size
+		DistanceLabel.text = "Steps since last event: %d" % step
+		if step >= Manager.encounter_number:
+			print("player_dot, Manager.encounter_number: Saved player data")
+			can_move = false
+			print("player_dot, Manager.encounter_number: Steps reached")
+			Manager.save_player_data(self)
+			print("player_dot, Manager.encounter_number: movement False")
+			Manager.change_scene()
+			print("player_dot, Manager.encounter_number: changes scene")

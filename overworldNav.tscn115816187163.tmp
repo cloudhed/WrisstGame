@@ -212,6 +212,7 @@ script = ExtResource("3_ohuvh")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="WorldAudioManager"]
 stream = SubResource("AudioStreamInteractive_j4r2r")
+autoplay = true
 bus = &"music"
 script = ExtResource("10_7vspy")
 
@@ -238,42 +239,36 @@ modulate = Color(1, 1, 1, 0.313726)
 position = Vector2(572.654, 326.5)
 scale = Vector2(0.909855, 0.909855)
 occluder = SubResource("OccluderPolygon2D_7vspy")
-metadata/_edit_lock_ = true
 
 [node name="MapLightOccluder_marker02" type="LightOccluder2D" parent="mapIsland/MapLightOccluders"]
 modulate = Color(1, 1, 1, 0.313726)
 position = Vector2(1093.69, 623.568)
 scale = Vector2(0.827837, 0.827837)
 occluder = SubResource("OccluderPolygon2D_j4r2r")
-metadata/_edit_lock_ = true
 
 [node name="MapLightOccluder_marker03" type="LightOccluder2D" parent="mapIsland/MapLightOccluders"]
 modulate = Color(1, 1, 1, 0.313726)
 position = Vector2(1999.08, 1139.78)
 scale = Vector2(0.685314, 0.685314)
 occluder = SubResource("OccluderPolygon2D_bfnb6")
-metadata/_edit_lock_ = true
 
 [node name="MapLightOccluder_forest01" type="LightOccluder2D" parent="mapIsland/MapLightOccluders"]
 modulate = Color(1, 1, 1, 0.313726)
 position = Vector2(572.654, 326.5)
 scale = Vector2(0.909855, 0.909855)
 occluder = SubResource("OccluderPolygon2D_7obsb")
-metadata/_edit_lock_ = true
 
 [node name="MapLightOccluder_forest02" type="LightOccluder2D" parent="mapIsland/MapLightOccluders"]
 modulate = Color(1, 1, 1, 0.313726)
 position = Vector2(572.654, 326.5)
 scale = Vector2(0.909855, 0.909855)
 occluder = SubResource("OccluderPolygon2D_rtp31")
-metadata/_edit_lock_ = true
 
 [node name="MapLightOccluder_forest03" type="LightOccluder2D" parent="mapIsland/MapLightOccluders"]
 modulate = Color(1, 1, 1, 0.313726)
 position = Vector2(572.654, 326.5)
 scale = Vector2(0.909855, 0.909855)
 occluder = SubResource("OccluderPolygon2D_embca")
-metadata/_edit_lock_ = true
 
 [node name="MapLightOccluder_mountain01" type="LightOccluder2D" parent="mapIsland/MapLightOccluders"]
 modulate = Color(1, 1, 1, 0.313726)
@@ -281,21 +276,18 @@ position = Vector2(572.654, 326.5)
 scale = Vector2(0.909856, 0.909856)
 occluder = SubResource("OccluderPolygon2D_ohuvh")
 sdf_collision = false
-metadata/_edit_lock_ = true
 
 [node name="MapLightOccluder_mountain02" type="LightOccluder2D" parent="mapIsland/MapLightOccluders"]
 modulate = Color(1, 1, 1, 0.313726)
 position = Vector2(572.654, 326.5)
 scale = Vector2(0.909856, 0.909856)
 occluder = SubResource("OccluderPolygon2D_3xhtu")
-metadata/_edit_lock_ = true
 
 [node name="MapLightOccluder_mountain03" type="LightOccluder2D" parent="mapIsland/MapLightOccluders"]
 modulate = Color(1, 1, 1, 0.313726)
 position = Vector2(572.654, 326.5)
 scale = Vector2(0.909856, 0.909856)
 occluder = SubResource("OccluderPolygon2D_47t8u")
-metadata/_edit_lock_ = true
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 position = Vector2(460, 520)
@@ -353,7 +345,6 @@ debug_color = Color(0.894383, 0.317796, 0.0852838, 0.42)
 [node name="PlayerDetectionArea" type="Area2D" parent="PlayerDot"]
 
 [node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDot/PlayerDetectionArea"]
-position = Vector2(0, 9)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_5xsid")
 debug_color = Color(0.894383, 0.317796, 0.0852838, 0.42)
@@ -378,6 +369,7 @@ polygon = PackedVector2Array(622, 70, 642, 79, 648, 86, 664, 92, 705, 104, 751, 
 metadata/_edit_lock_ = true
 
 [node name="IslandBiome_Fields" type="Area2D" parent="IslandBoundary"]
+visible = false
 priority = 2
 script = ExtResource("7_s8mij")
 metadata/_edit_lock_ = true
@@ -387,22 +379,27 @@ polygon = PackedVector2Array(519, 535, 508, 532, 500, 526, 492, 522, 486, 513, 4
 metadata/_edit_lock_ = true
 
 [node name="IslandBiome_Shores" type="Area2D" parent="IslandBoundary"]
+visible = false
 priority = 1
 script = ExtResource("5_xh3bp")
 metadata/_edit_lock_ = true
 
 [node name="ShoresShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Shores"]
 polygon = PackedVector2Array(437, 417, 474, 426, 494, 453, 491, 476, 490, 490, 490, 503, 498, 508, 520, 520, 538, 521, 546, 509, 553, 499, 566, 488, 581, 474, 642, 457, 660, 446, 741, 430, 765, 430, 805, 435, 849, 433, 860, 418, 873, 404, 896, 393, 916, 378, 923, 367, 942, 351, 965, 344, 989, 335, 1012, 332, 1029, 328, 1035, 322, 1028, 294, 1018, 261, 954, 239, 913, 224, 879, 211, 828, 187, 790, 168, 779, 160, 736, 148, 685, 137, 647, 128, 596, 97, 571, 89, 515, 90, 559, 63, 598, 57, 739, 60, 898, 89, 1161, 236, 1142, 398, 876, 551, 547, 634, 323, 568, 2, 373, 9, 243, 200, 105, 369, 100, 370, 113, 352, 119, 323, 127, 302, 137, 294, 148, 291, 160, 288, 171, 279, 192, 266, 209, 260, 225, 253, 235, 244, 242, 233, 249, 216, 264, 189, 274, 159, 280, 134, 291, 119, 303, 119, 331, 132, 337, 163, 345, 200, 350, 244, 356, 270, 368, 278, 381, 307, 386, 349, 396, 393, 412, 415, 420)
+metadata/_edit_lock_ = true
 
 [node name="IslandBiome_Mountain" type="Area2D" parent="IslandBoundary"]
+visible = false
 priority = 4
 script = ExtResource("5_14vbl")
+metadata/_edit_lock_ = true
 
 [node name="MountainShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Mountain"]
 polygon = PackedVector2Array(470, 212, 481, 196, 496, 184, 513, 173, 528, 171, 543, 163, 565, 162, 575, 162, 594, 160, 620, 163, 650, 171, 673, 181, 697, 201, 684, 203, 680, 212, 694, 223, 685, 226, 676, 240, 664, 250, 652, 263, 670, 272, 661, 276, 670, 294, 685, 314, 665, 309, 656, 302, 645, 277, 636, 258, 625, 247, 629, 261, 615, 262, 613, 274, 607, 285, 592, 289, 592, 307, 582, 318, 561, 328, 540, 329, 517, 321, 500, 319, 484, 336, 474, 336, 478, 319, 473, 298, 458, 291, 447, 298, 453, 282, 438, 278, 453, 263, 459, 245)
 metadata/_edit_lock_ = true
 
 [node name="IslandBiome_Forests" type="Area2D" parent="IslandBoundary"]
+visible = false
 priority = 3
 script = ExtResource("6_xh3bp")
 metadata/_edit_lock_ = true
@@ -486,6 +483,7 @@ offset_bottom = -67.0
 script = ExtResource("1_be0m3")
 day_length_seconds = 160.0
 start_time_hours = 5
+start_time_minutes = null
 metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="IslandBoundary/IslandBiome_Fields" to="IslandBoundary/IslandBiome_Fields" method="_on_body_entered"]
