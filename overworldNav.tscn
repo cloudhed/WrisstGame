@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bsk688e4ksiee"]
+[gd_scene load_steps=48 format=3 uid="uid://bsk688e4ksiee"]
 
 [ext_resource type="AudioStream" uid="uid://faqrtb1uggnb" path="res://Audio/sound_ambience_overworld_day.ogg" id="1_0bjjx"]
 [ext_resource type="Texture2D" uid="uid://bbrswebkl4jjt" path="res://Assets/Sprites/Map/mapmarkerFlag.png" id="1_7obsb"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://bgacujrf8waoa" path="res://sfx_player.gd" id="13_r3enb"]
 [ext_resource type="Texture2D" uid="uid://cl3prflv62lrj" path="res://Assets/Sprites/Map/mapmarkerPlayer.png" id="15_7vspy"]
 [ext_resource type="Script" uid="uid://bje4bfe0omhkk" path="res://Characters/Player/interaction_area_map.gd" id="15_j4r2r"]
+[ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="15_r3enb"]
 [ext_resource type="PackedScene" uid="uid://n2ph37g6j3q7" path="res://Assets/Objects/MapObjects/map_Player.tscn" id="26_53o4l"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3xhtu"]
@@ -93,16 +94,6 @@ loop = false
 stream_count = 1
 stream_0 = ExtResource("12_w08pr")
 
-[sub_resource type="Gradient" id="Gradient_0bjjx"]
-offsets = PackedFloat32Array(0, 0.35, 0.6, 0.65, 0.75, 1)
-colors = PackedColorArray(0.26374, 0.403166, 0.635567, 1, 0.26374, 0.403166, 0.635567, 1, 0.852247, 0.598395, 0.736017, 1, 0.97, 0.8342, 0.679, 1, 1, 1, 1, 1, 1, 1, 1, 1)
-metadata/_snap_enabled = true
-metadata/_snap_count = 20
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_div00"]
-gradient = SubResource("Gradient_0bjjx")
-width = 2048
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7vspy"]
 polygon = PackedVector2Array(534.531, 2.74768, 544.423, 2.74768, 543.324, 0.54953, 540.026, -0.54953, 536.729, -0.54953, 533.432, 1.64862, 532.333, 2.74768)
 
@@ -130,26 +121,26 @@ polygon = PackedVector2Array(-78.7531, -130.24, -68.8614, -133.538, -64.4651, -1
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_47t8u"]
 polygon = PackedVector2Array(170.737, -128.042, 180.629, -123.646, 199.313, -117.052, 211.403, -112.655, 226.79, -110.457, 232.285, -109.358, 234.483, -111.556, 232.285, -113.754, 221.294, -115.952, 214.7, -120.349, 204.808, -124.745, 193.818, -129.141, 182.827, -133.538, 177.331, -135.736, 169.638, -135.736, 168.539, -132.439)
 
-[sub_resource type="Gradient" id="Gradient_5v8ck"]
+[sub_resource type="Gradient" id="Gradient_w08pr"]
 offsets = PackedFloat32Array(0.2, 0.7)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ohuvh"]
-gradient = SubResource("Gradient_5v8ck")
+gradient = SubResource("Gradient_w08pr")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xsid"]
 radius = 8.0
 
-[sub_resource type="Gradient" id="Gradient_w08pr"]
+[sub_resource type="Gradient" id="Gradient_r3enb"]
 offsets = PackedFloat32Array(0.5, 0.7, 1)
 colors = PackedColorArray(0.06, 0.165, 0.24, 0.501961, 0, 0, 0, 0, 0, 0, 0, 0)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3xhtu"]
-gradient = SubResource("Gradient_w08pr")
+gradient = SubResource("Gradient_r3enb")
 width = 256
 height = 128
 fill = 1
@@ -166,6 +157,7 @@ fog_depth_end = 134.5
 
 [node name="overworld_node" type="Node2D"]
 y_sort_enabled = true
+metadata/_edit_lock_ = true
 
 [node name="mapLocations" type="Node2D" parent="."]
 light_mask = 2
@@ -212,6 +204,7 @@ script = ExtResource("3_ohuvh")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="WorldAudioManager"]
 stream = SubResource("AudioStreamInteractive_j4r2r")
+autoplay = true
 bus = &"music"
 script = ExtResource("10_7vspy")
 
@@ -223,7 +216,7 @@ script = ExtResource("13_r3enb")
 
 [node name="DayNightCycleColors" type="CanvasModulate" parent="."]
 script = ExtResource("1_l47sy")
-gradient = SubResource("GradientTexture1D_div00")
+gradient = ExtResource("15_r3enb")
 
 [node name="mapIsland" type="Sprite2D" parent="."]
 position = Vector2(572.654, 326.5)
@@ -488,8 +481,6 @@ offset_top = -107.0
 offset_right = -108.0
 offset_bottom = -67.0
 script = ExtResource("1_be0m3")
-day_length_seconds = 160.0
-start_time_hours = 5
 metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="IslandBoundary/IslandBiome_Fields" to="IslandBoundary/IslandBiome_Fields" method="_on_body_entered"]
