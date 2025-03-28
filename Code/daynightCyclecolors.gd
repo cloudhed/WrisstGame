@@ -13,13 +13,7 @@ func _process(_delta):
 		# Calculate normalized time (0.0 to 1.0 over 24 hours)
 		var normalized_time = total_minutes_in_day / 1440.0  # 1440 minutes in a day
 		# Create a triangle wave that peaks at noon (normalized_time == 0.5) and is 0 at midnight:
-#		var progress = 1.0 - abs(normalized_time - 0.5) * 2.0
 		var progress = sin(normalized_time * PI)
-
-#		if total_minutes_in_day < 12 * 60: # From 00:00 to 11:59 (before noon)
-#			progress = float(total_minutes_in_day) / (12 * 60)
-#		else: # From 12:00 to 23:59 (noon to before midnight)
-#			progress = 1.0 - float(total_minutes_in_day - 12 * 60) / (12 * 60)
 
 		if gradient:
 			self.color = gradient.gradient.sample(progress)

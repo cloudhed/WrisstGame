@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c6k5mhha4mujr"]
+
+[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="1_v7tbr"]
+[ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="2_5g5uy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7tbr"]
+bg_color = Color(0.698039, 0.698039, 0.698039, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv185"]
+bg_color = Color(0.698039, 0.698039, 0.698039, 1)
+
+[resource]
+default_font = ExtResource("1_v7tbr")
+default_font_size = 16
+Button/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
+Button/fonts/font = ExtResource("1_v7tbr")
+Button/styles/normal = SubResource("StyleBoxFlat_v7tbr")
+Label/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+LineEdit/font_sizes/font_size = 16
+RichTextLabel/colors/default_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+RichTextLabel/colors/selection_color = Color(0.219501, 0.219501, 0.219501, 0.8)
+RichTextLabel/fonts/bold_font = ExtResource("1_v7tbr")
+RichTextLabel/fonts/normal_font = ExtResource("2_5g5uy")
+TextEdit/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
+TextEdit/styles/normal = SubResource("StyleBoxFlat_nv185")

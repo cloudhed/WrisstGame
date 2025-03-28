@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c1p0164at7n2g"]
+
+[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="1_ygo56"]
+
+[resource]
+default_font = ExtResource("1_ygo56")
+default_font_size = 32

@@ -16,7 +16,7 @@ var last_time_period: String = "Day"
 
 func _ready() -> void:
 	seed(randi())  # Better than randomize() for consistency
-	encounter_number = randi_range(30, 100)
+	encounter_number = randi_range(300, 600) #(30, 100)
 
 func save_player_data(player: PlayerDot) -> void:
 	var biome_obj = player.get_highest_priority_biome()

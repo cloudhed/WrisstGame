@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwe18c1an1i8y"]
+
+[ext_resource type="Script" uid="uid://bw8tci7hlwmbj" path="res://Scenes/TileUI/tile_ui.gd" id="1_753lx"]
+[ext_resource type="Theme" uid="uid://c1p0164at7n2g" path="res://Themes/tile_theme.tres" id="1_imaao"]
+[ext_resource type="Script" uid="uid://c2nndpp4j8mf1" path="res://Scenes/TileUI/tile_state_machine.gd" id="3_xhcwm"]
+[ext_resource type="Script" uid="uid://bmgiulnoxvqf5" path="res://Scenes/TileUI/tile_states/tile_base_state.gd" id="4_18qtx"]
+[ext_resource type="Script" uid="uid://befi7jv3qj0wu" path="res://Scenes/TileUI/tile_states/tile_hover_state.gd" id="5_xeywo"]
+[ext_resource type="Script" uid="uid://c66kmifc6qwxg" path="res://Scenes/TileUI/tile_states/tile_clicked_state.gd" id="6_xljor"]
+[ext_resource type="Script" uid="uid://cyi1bcx3rujnr" path="res://Scenes/TileUI/tile_states/tile_dragging_state.gd" id="7_75cnn"]
+[ext_resource type="Script" uid="uid://bfaicwbobvo2c" path="res://Scenes/TileUI/tile_states/tile_released_state.gd" id="8_w1bd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imaao"]
+size = Vector2(96, 96)
+
+[node name="TileUI" type="Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1184.0
+offset_bottom = -624.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_753lx")
+
+[node name="Color" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.441337, 0.193165, 0.244527, 1)
+
+[node name="State" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_imaao")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DropPointDetector" type="Area2D" parent="."]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
+position = Vector2(48, 48)
+shape = SubResource("RectangleShape2D_imaao")
+
+[node name="TileStateMachine" type="Node" parent="." node_paths=PackedStringArray("intitial_state")]
+script = ExtResource("3_xhcwm")
+intitial_state = NodePath("TileBaseState")
+
+[node name="TileBaseState" type="Node" parent="TileStateMachine"]
+script = ExtResource("4_18qtx")
+
+[node name="TileHoverState" type="Node" parent="TileStateMachine"]
+script = ExtResource("5_xeywo")
+state = 1
+
+[node name="TileClickedState" type="Node" parent="TileStateMachine"]
+script = ExtResource("6_xljor")
+state = 2
+
+[node name="TileDraggingState" type="Node" parent="TileStateMachine"]
+script = ExtResource("7_75cnn")
+state = 3
+
+[node name="TileReleasedState" type="Node" parent="TileStateMachine"]
+script = ExtResource("8_w1bd1")
+state = 4
