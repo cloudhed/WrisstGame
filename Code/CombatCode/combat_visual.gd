@@ -9,7 +9,7 @@ extends Node2D
 
 @onready var bg_sprite: Sprite2D = $CombatBGSprite
 @onready var canvas_mod: CanvasModulate = $CanvasModulate
-@onready var whiteout_anim = $AnimationPlayer
+#@onready var whiteout_anim = $AnimationPlayer
 
 var biome_textures: Dictionary = {}
 

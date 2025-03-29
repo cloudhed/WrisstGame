@@ -1,7 +1,15 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c1p0164at7n2g"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c1p0164at7n2g"]
 
 [ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="1_ygo56"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ygo56"]
 
 [resource]
 default_font = ExtResource("1_ygo56")
 default_font_size = 32
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.4)
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_ygo56")
+Label/styles/normal = SubResource("StyleBoxEmpty_ygo56")
