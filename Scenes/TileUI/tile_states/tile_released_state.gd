@@ -3,8 +3,6 @@ extends TileState
 var played: bool
 
 func enter() -> void:
-	tile_ui.color.color = Color.DARK_VIOLET
-	tile_ui.state.text = "RELEASED"
 	
 	played = false
 	

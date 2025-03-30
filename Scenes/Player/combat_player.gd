@@ -3,7 +3,7 @@ extends Node2D
 
 @export var stats: CharacterStats : set = set_character_stats
 
-@onready var stats_ui: StatsUI = $StatsUI as StatsUI
+@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
 
 
 func set_character_stats(value: CharacterStats) -> void:

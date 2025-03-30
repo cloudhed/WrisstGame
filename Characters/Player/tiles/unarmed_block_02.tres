@@ -1,10 +1,17 @@
-[gd_resource type="Resource" script_class="Tile" load_steps=2 format=3 uid="uid://c7bxe17nq3spp"]
+[gd_resource type="Resource" script_class="Tile" load_steps=4 format=3 uid="uid://c7bxe17nq3spp"]
 
 [ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="1_6qgq4"]
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_ekhp4"]
+[ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_jyglk"]
 
 [resource]
 script = ExtResource("1_6qgq4")
-id = ""
+id = "unarmed_block_02"
 type = 1
 target = 0
+cost = 1
+amount = 2
+background = ExtResource("1_ekhp4")
+icon = ExtResource("2_jyglk")
+tooltip_text = ""
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

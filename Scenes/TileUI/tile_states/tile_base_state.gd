@@ -4,8 +4,6 @@ func enter() -> void:
 	if not tile_ui.is_node_ready():
 		await tile_ui.ready
 	tile_ui.reparent_requested.emit(tile_ui)
-	tile_ui.color.color = Color.WEB_GREEN
-	tile_ui.state.text = "BASE"
 	tile_ui.pivot_offset = Vector2.ZERO
 
 func on_gui_input(event: InputEvent) -> void:

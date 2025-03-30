@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckpnn4op5ijoc"]
+
+[ext_resource type="Script" uid="uid://dn66lon8vn5d6" path="res://Scenes/Enemy/enemy.gd" id="1_dmwl5"]
+[ext_resource type="Texture2D" uid="uid://c6op4xuhunqrb" path="res://Assets/Sprites/Enemies/meehp_f_portrait.png" id="2_d40jh"]
+[ext_resource type="Texture2D" uid="uid://bb4pmi3r217i2" path="res://Assets/UI/ui_icon_arrow.png" id="3_dmwl5"]
+[ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="4_d40jh"]
+[ext_resource type="PackedScene" uid="uid://qvnuroju8vc0" path="res://Scenes/UI/stats_ui.tscn" id="4_pqgp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ley77"]
+size = Vector2(22, 20.3209)
+
+[node name="Enemy" type="Area2D" groups=["enemies"]]
+collision_layer = 4
+script = ExtResource("1_dmwl5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_d40jh")
+centered = false
+region_rect = Rect2(4.89728, 0, 851.59, 539.611)
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(212, 270)
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_dmwl5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(417, 271.275)
+scale = Vector2(15, 26.645)
+shape = SubResource("RectangleShape2D_ley77")
+debug_color = Color(0.99, 0.8811, 0.396, 0.133333)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -303.0
+offset_top = -134.0
+offset_right = -32.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("4_d40jh")
+
+[node name="StatsUI" parent="CanvasLayer/Panel" instance=ExtResource("4_pqgp3")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 235.0
+offset_bottom = 97.0
+grow_horizontal = 1

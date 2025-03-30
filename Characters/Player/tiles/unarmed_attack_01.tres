@@ -1,10 +1,17 @@
-[gd_resource type="Resource" script_class="Tile" load_steps=2 format=3 uid="uid://bo586ptyhvu6e"]
+[gd_resource type="Resource" script_class="Tile" load_steps=4 format=3 uid="uid://bo586ptyhvu6e"]
 
-[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="1_q417e"]
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_fww7e"]
+[ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="2_gw16c"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="3_7fti5"]
 
 [resource]
-script = ExtResource("1_q417e")
-id = ""
+script = ExtResource("3_7fti5")
+id = "unarmed_attack_01"
 type = 0
 target = 1
+cost = 1
+amount = 1
+background = ExtResource("1_fww7e")
+icon = ExtResource("2_gw16c")
+tooltip_text = ""
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

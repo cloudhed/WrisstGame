@@ -3,10 +3,14 @@ extends Control
 
 signal reparent_requested(which_tile_ui: TileUI)
 
-@export var tile: Tile
+@export var tile: Tile : set = _set_tile
 
-@onready var color: ColorRect = $Color
-@onready var state: Label = $State
+#@onready var background: Panel = $Background
+@onready var icon: TextureRect = $Icon
+@onready var cost: Label = $Cost
+@onready var amount: Label = $Amount
+
+
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var tile_state_machine: TileStateMachine = $TileStateMachine as TileStateMachine
 @onready var targets: Array[Node] = []
@@ -26,6 +30,16 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	tile_state_machine.on_mouse_exited(null)
 
+func _set_tile(value: Tile) -> void:
+	if not is_node_ready():
+		await ready
+	
+	tile = value
+	cost.text = str(tile.cost)
+	amount.text = str(tile.amount) if tile.amount > 0 else "" #hide string if 0
+#	amount.text = str(tile.amount) old version
+	icon.texture = tile.icon
+#	background.texture = tile.background
 
 func _on_drop_point_detector_area_entered(area: Area2D) -> void:
 	if not targets.has(area):
