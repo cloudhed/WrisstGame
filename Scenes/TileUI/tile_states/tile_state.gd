@@ -1,7 +1,7 @@
 class_name TileState
 extends Node
 
-enum State {BASE, HOVER, CLICKED, DRAGGING, RELEASED}
+enum State {BASE, HOVER, CLICKED, DRAGGING, RELEASED, AIMING}
 
 signal transition_requested(from: TileState, to: State)
 

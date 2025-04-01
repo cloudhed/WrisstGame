@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwe18c1an1i8y"]
+[gd_scene load_steps=14 format=3 uid="uid://dwe18c1an1i8y"]
 
 [ext_resource type="Script" uid="uid://bw8tci7hlwmbj" path="res://Scenes/TileUI/tile_ui.gd" id="1_753lx"]
 [ext_resource type="Theme" uid="uid://c1p0164at7n2g" path="res://Themes/tile_theme.tres" id="1_imaao"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c66kmifc6qwxg" path="res://Scenes/TileUI/tile_states/tile_clicked_state.gd" id="6_xljor"]
 [ext_resource type="Script" uid="uid://cyi1bcx3rujnr" path="res://Scenes/TileUI/tile_states/tile_dragging_state.gd" id="7_75cnn"]
 [ext_resource type="Script" uid="uid://bfaicwbobvo2c" path="res://Scenes/TileUI/tile_states/tile_released_state.gd" id="8_w1bd1"]
+[ext_resource type="Script" uid="uid://b70x6362s50uc" path="res://Scenes/TileUI/tile_states/tile_aiming_state.gd" id="11_w1bd1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75cnn"]
 texture = ExtResource("3_75cnn")
@@ -64,6 +65,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Amount" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -103,7 +105,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DropPointDetector" type="Area2D" parent="."]
-visible = false
 collision_mask = 2
 monitorable = false
 
@@ -134,6 +135,10 @@ state = 3
 [node name="TileReleasedState" type="Node" parent="TileStateMachine"]
 script = ExtResource("8_w1bd1")
 state = 4
+
+[node name="TileAimingState" type="Node" parent="TileStateMachine"]
+script = ExtResource("11_w1bd1")
+state = 5
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

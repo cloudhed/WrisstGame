@@ -6,6 +6,7 @@ var minimum_drag_time_elapsed := false
 
 
 func enter() -> void:
+	print("DRAGGING") #debug to check DRAGGING
 	var ui_layer := get_tree().get_first_node_in_group("ui_layer")
 	if ui_layer:
 		tile_ui.reparent(ui_layer)
@@ -15,10 +16,15 @@ func enter() -> void:
 		threshold_timer.timeout.connect(func(): minimum_drag_time_elapsed = true)
 		
 func on_input(event: InputEvent) -> void:
+	var single_targeted := tile_ui.tile.is_single_targeted()
 	var mouse_motion := event is InputEventMouseMotion
 	var cancel = event.is_action_pressed("right_mouse")
 	var confirm = event.is_action_released("left_mouse") or event.is_action_pressed("left_mouse")
 	
+	if single_targeted and mouse_motion and tile_ui.targets.size() > 0:
+		transition_requested.emit(self, TileState.State.AIMING)
+		return
+
 	if mouse_motion:
 		tile_ui.global_position = tile_ui.get_global_mouse_position() - tile_ui.pivot_offset
 	

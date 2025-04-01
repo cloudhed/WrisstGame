@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwkg0siiotr5k"]
+
+[ext_resource type="Script" uid="uid://bn1bemuytayob" path="res://Themes/dialogic themes/CenteredChoices/vn_choice_layer.gd" id="1_kurgw"]
+[ext_resource type="Script" uid="uid://dxo6vun76hgdg" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="1_w632k"]
+[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="2_7hax8"]
+[ext_resource type="Script" uid="uid://b5d58exe12vtk" path="res://addons/dialogic/Modules/Choice/node_button_sound.gd" id="2_mgko6"]
+[ext_resource type="AudioStream" uid="uid://b6c1p14bc20p1" path="res://addons/dialogic/Example Assets/sound-effects/typing1.wav" id="3_mql8i"]
+[ext_resource type="StyleBox" uid="uid://cfn0o30rgf3r0" path="res://Themes/style_box_flat_ui.tres" id="3_wu4fc"]
+[ext_resource type="AudioStream" uid="uid://c2viukvbub6v6" path="res://addons/dialogic/Example Assets/sound-effects/typing4.wav" id="4_420fr"]
+[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="4_qy2hr"]
+[ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="5_gth1j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7tbr"]
+bg_color = Color(0.698039, 0.698039, 0.698039, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.821789, 0.821789, 0.821788, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="Theme" id="Theme_l0dnr"]
+default_font = ExtResource("4_qy2hr")
+default_font_size = 16
+Button/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
+Button/fonts/font = ExtResource("2_7hax8")
+Button/styles/normal = SubResource("StyleBoxFlat_v7tbr")
+Label/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+Label/font_sizes/font_size = 19
+LineEdit/font_sizes/font_size = 16
+Panel/styles/panel = ExtResource("3_wu4fc")
+PanelContainer/styles/panel = ExtResource("3_wu4fc")
+RichTextLabel/colors/default_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+RichTextLabel/colors/selection_color = Color(0.219501, 0.219501, 0.219501, 0.8)
+RichTextLabel/fonts/bold_font = ExtResource("4_qy2hr")
+RichTextLabel/fonts/normal_font = ExtResource("5_gth1j")
+TextEdit/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
+TextEdit/styles/normal = ExtResource("3_wu4fc")
+
+[sub_resource type="AudioStream" id="AudioStream_pe27w"]
+
+[node name="VN_ChoiceLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kurgw")
+
+[node name="Choices" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 407.0
+offset_bottom = 132.0
+mouse_filter = 2
+theme = SubResource("Theme_l0dnr")
+metadata/_edit_layout_mode = 1
+
+[node name="DialogicNode_ChoiceButton1" type="Button" parent="Choices"]
+layout_mode = 2
+text = "Short text"
+alignment = 0
+script = ExtResource("1_w632k")
+
+[node name="DialogicNode_ChoiceButton2" type="Button" parent="Choices"]
+layout_mode = 2
+text = "Some text more"
+alignment = 0
+script = ExtResource("1_w632k")
+
+[node name="DialogicNode_ChoiceButton3" type="Button" parent="Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("1_w632k")
+
+[node name="DialogicNode_ChoiceButton4" type="Button" parent="Choices"]
+layout_mode = 2
+text = "Some other text more text why can't I align to left please"
+alignment = 0
+script = ExtResource("1_w632k")
+
+[node name="DialogicNode_ButtonSound" type="AudioStreamPlayer" parent="Choices"]
+unique_name_in_owner = true
+script = ExtResource("2_mgko6")
+sound_pressed = ExtResource("3_mql8i")
+sound_hover = ExtResource("4_420fr")
+sound_focus = SubResource("AudioStream_pe27w")

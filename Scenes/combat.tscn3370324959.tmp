@@ -1,0 +1,320 @@
+[gd_scene load_steps=26 format=3 uid="uid://d2pnx4ne5hfgc"]
+
+[ext_resource type="Script" uid="uid://bbhhymceklnpi" path="res://Code/combat_camera.gd" id="1_fe60u"]
+[ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Code/CombatCode/combat_visual.gd" id="1_yt1oa"]
+[ext_resource type="Texture2D" uid="uid://bdd5p34m8m7o1" path="res://Assets/Backgrounds/CombatBGDefault.png" id="2_fe60u"]
+[ext_resource type="Texture2D" uid="uid://dh50otyhtmjfi" path="res://Assets/Backgrounds/CombatBGForest.png" id="3_avwh6"]
+[ext_resource type="Script" uid="uid://cf244xen40ftr" path="res://Code/CombatCode/combat_button_run.gd" id="3_ubpar"]
+[ext_resource type="Texture2D" uid="uid://csm7crxa56lxf" path="res://Assets/Backgrounds/CombatBGPlains.png" id="4_twsak"]
+[ext_resource type="PackedScene" uid="uid://bsk688e4ksiee" path="res://overworldNav.tscn" id="4_ut0kg"]
+[ext_resource type="Texture2D" uid="uid://dgifx3c7w4b5s" path="res://Assets/Backgrounds/CombatBGMountains.png" id="5_w6tjk"]
+[ext_resource type="Texture2D" uid="uid://c56heifv18ir" path="res://Assets/Backgrounds/CombatBGShores.png" id="6_xisnc"]
+[ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="7_f8ge6"]
+[ext_resource type="PackedScene" uid="uid://ckpnn4op5ijoc" path="res://Scenes/Enemy/enemy.tscn" id="9_tmuf1"]
+[ext_resource type="Resource" uid="uid://ds0v4323mnjq0" path="res://enemies/meehp_f/meehp_f_stats.tres" id="10_5kjvk"]
+[ext_resource type="PackedScene" uid="uid://f536kff4iqbq" path="res://Scenes/TileTargetSelector/tile_target_selector.tscn" id="11_nar6d"]
+[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="12_f8ge6"]
+[ext_resource type="PackedScene" uid="uid://by7co2c71yp2n" path="res://Scenes/Player/combat_player.tscn" id="13_tmuf1"]
+[ext_resource type="Resource" uid="uid://cnwrtxw8tktmj" path="res://Characters/Player/player.tres" id="14_5kjvk"]
+[ext_resource type="Script" uid="uid://bku5mw8nd76qj" path="res://Scenes/UI/hand.gd" id="15_50454"]
+[ext_resource type="PackedScene" uid="uid://dwe18c1an1i8y" path="res://Scenes/TileUI/tile_ui.tscn" id="16_50454"]
+[ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="16_ceo1n"]
+[ext_resource type="Resource" uid="uid://bo586ptyhvu6e" path="res://Characters/Player/tiles/unarmed_attack_01.tres" id="17_ley77"]
+[ext_resource type="Resource" uid="uid://7hq4y1qs62sy" path="res://Characters/Player/tiles/unarmed_block_01.tres" id="18_tmuf1"]
+[ext_resource type="Resource" uid="uid://c0jf23ehy6wkh" path="res://Characters/Player/tiles/action_empty.tres" id="19_5kjvk"]
+[ext_resource type="PackedScene" uid="uid://coqflun3u7db" path="res://Scenes/UI/stamina_ui.tscn" id="22_3cqtn"]
+[ext_resource type="Texture2D" uid="uid://w3t56lsitde2" path="res://Assets/UI/ui_icon_shield.png" id="24_umvpd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8ge6"]
+size = Vector2(844, 542)
+
+[node name="Combat" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="CombatVisual" type="Node2D" parent="."]
+script = ExtResource("1_yt1oa")
+default_bg = ExtResource("2_fe60u")
+forest_bg = ExtResource("3_avwh6")
+plains_bg = ExtResource("4_twsak")
+mountains_bg = ExtResource("5_w6tjk")
+shores_bg = ExtResource("6_xisnc")
+gradient = ExtResource("7_f8ge6")
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CombatVisual"]
+color = Color(0.497177, 0, 0.167032, 1)
+
+[node name="CombatBGSprite" type="Sprite2D" parent="CombatVisual"]
+position = Vector2(640, 360)
+
+[node name="CombatCamera" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+script = ExtResource("1_fe60u")
+metadata/_edit_lock_ = true
+
+[node name="TileDropArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDropArea"]
+position = Vector2(858, 271)
+shape = SubResource("RectangleShape2D_f8ge6")
+debug_color = Color(0, 0.595, 0.7, 0.117647)
+
+[node name="Enemy" parent="." instance=ExtResource("9_tmuf1")]
+position = Vector2(436, 0)
+stats = ExtResource("10_5kjvk")
+
+[node name="TileTargetSelector" parent="." instance=ExtResource("11_nar6d")]
+
+[node name="CombatUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CombatUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -170.0
+offset_right = 1248.0
+offset_bottom = -29.0
+grow_vertical = 0
+theme = ExtResource("16_ceo1n")
+theme_override_constants/separation = 16
+
+[node name="PlayerVBoxContainer" type="VBoxContainer" parent="CombatUI/HBoxContainer"]
+custom_minimum_size = Vector2(271.055, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource("16_ceo1n")
+theme_override_constants/separation = 14
+
+[node name="PlayerMenuUI" type="HBoxContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer"]
+layout_mode = 2
+
+[node name="CombatButtonTILES" type="Button" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TILES"
+
+[node name="CombatButtonBAG" type="Button" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BAG"
+
+[node name="CombatButtonRUN" type="Button" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RUN"
+script = ExtResource("3_ubpar")
+world = ExtResource("4_ut0kg")
+
+[node name="CombatPlayer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer" instance=ExtResource("13_tmuf1")]
+position = Vector2(4, 47)
+stats = ExtResource("14_5kjvk")
+
+[node name="PlayerInfoUI" type="PanelContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 102)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerInfoMargin" type="MarginContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PlayerHealth" type="HBoxContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="PlayerHealthLabel" type="Label" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/PlayerHealth"]
+layout_mode = 2
+text = "---"
+vertical_alignment = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/PlayerHealth"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="PlayerHealthBar" type="ColorRect" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/PlayerHealth/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="Label1" type="Label" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_f8ge6")
+text = "10/10"
+vertical_alignment = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ColorRect" type="ColorRect" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CombatTextUI" type="PanelContainer" parent="CombatUI/HBoxContainer"]
+custom_minimum_size = Vector2(0, 71.01)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("16_ceo1n")
+
+[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/CombatTextUI"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CombatText" type="RichTextLabel" parent="CombatUI/HBoxContainer/CombatTextUI/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("16_ceo1n")
+bbcode_enabled = true
+text = "Action text"
+
+[node name="EnemyVBoxContainer" type="VBoxContainer" parent="CombatUI/HBoxContainer"]
+custom_minimum_size = Vector2(271.055, 0)
+layout_mode = 2
+theme = ExtResource("16_ceo1n")
+theme_override_constants/separation = 14
+
+[node name="EnemyInfoUI" type="PanelContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 94.6)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EnemyInfoMargin" type="MarginContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="EnemyNameLabel" type="Label" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("16_ceo1n")
+text = "Name"
+
+[node name="EnemyHealth" type="HBoxContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="EnemyHealthLabel" type="Label" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/EnemyHealth"]
+layout_mode = 2
+text = "EnemyHealth"
+vertical_alignment = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/EnemyHealth"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="EnemyHealthBar" type="ColorRect" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/EnemyHealth/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="Label1" type="Label" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_f8ge6")
+text = "10/10"
+vertical_alignment = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ColorRect" type="ColorRect" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hand" type="VBoxContainer" parent="CombatUI"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 119.0
+offset_top = -274.0
+offset_right = 215.0
+offset_bottom = 146.0
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+script = ExtResource("15_50454")
+
+[node name="TileUI" parent="CombatUI/Hand" instance=ExtResource("16_50454")]
+layout_mode = 2
+tile = ExtResource("17_ley77")
+
+[node name="TileUI2" parent="CombatUI/Hand" instance=ExtResource("16_50454")]
+layout_mode = 2
+tile = ExtResource("18_tmuf1")
+
+[node name="TileUI3" parent="CombatUI/Hand" instance=ExtResource("16_50454")]
+layout_mode = 2
+tile = ExtResource("19_5kjvk")
+
+[node name="StaminaUI" parent="CombatUI" instance=ExtResource("22_3cqtn")]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 72.0
+offset_bottom = 72.0
+char_stats = ExtResource("14_5kjvk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(436, -422)
+texture = ExtResource("24_umvpd")
+
+[connection signal="pressed" from="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" to="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" method="_on_pressed"]

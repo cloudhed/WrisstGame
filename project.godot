@@ -18,12 +18,57 @@ config/icon="res://icon.svg"
 [autoload]
 
 Manager="*res://Code/manager.tscn"
+Events="*res://global/events.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"Bitalgut_dialogic": "res://Characters/Bitalgut/Bitalgut_dialogic.dch"
+}
+directories/dtl_directory={
+"timeline_base": "res://Timelines/timeline_base.dtl"
+}
+glossary/default_case_sensitive=true
+layout/style_list=["res://Themes/dialogic themes/SecondTry_Dialogic_Theme/SecondTry_Dialogic_Theme_01.tres"]
+layout/default_style="res://Themes/dialogic themes/SecondTry_Dialogic_Theme/SecondTry_Dialogic_Theme_01.tres"
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.02
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=1.0
+choices/reveal_by_input=true
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
+audio/channel_defaults={
+"": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
+animations/join_default="Fade In"
+animations/leave_default="Fade Out"
+animations/cross_fade_default="Fade Cross"
+variables={}
 
 [display]
 
@@ -98,6 +143,7 @@ dialogic_default_action={
 
 [layer_names]
 
+2d_physics/layer_1="tile_target_selector"
 2d_physics/layer_3="enemies"
 
 [rendering]

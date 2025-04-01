@@ -1,16 +1,15 @@
-[gd_resource type="Resource" script_class="Tile" load_steps=4 format=3 uid="uid://7hq4y1qs62sy"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://7hq4y1qs62sy"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_fbqqi"]
 [ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_gnkm3"]
-[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="3_3oado"]
+[ext_resource type="Script" uid="uid://d0sw7cwo1y0xi" path="res://Characters/Player/tiles/unarmed_block_02.gd" id="3_fbqqi"]
 
 [resource]
-script = ExtResource("3_3oado")
+script = ExtResource("3_fbqqi")
 id = "unarmed_block_01"
 type = 1
 target = 0
 cost = 1
-amount = 1
 background = ExtResource("1_fbqqi")
 icon = ExtResource("2_gnkm3")
 tooltip_text = ""

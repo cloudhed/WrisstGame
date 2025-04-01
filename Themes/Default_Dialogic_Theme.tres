@@ -1,0 +1,110 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=21 format=3 uid="uid://dcyqmopng4348"]
+
+[ext_resource type="PackedScene" uid="uid://tjwos3vfdnv8" path="res://Themes/dialogic themes/CustomDefaultDialogicTheme/custom_default_dialogic_theme.tscn" id="1_qwfhp"]
+[ext_resource type="Script" uid="uid://bwdmdhelnqbiu" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_aamnc"]
+[ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="3_2tji1"]
+[ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="4_ov30f"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="5_4qkq6"]
+[ext_resource type="PackedScene" uid="uid://bf13bqrnha43h" path="res://Themes/dialogic themes/VisualNovelTextbox/custom_visual_novel_textbox.tscn" id="6_qwfhp"]
+[ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="7_10bfh"]
+[ext_resource type="PackedScene" uid="uid://cwkg0siiotr5k" path="res://Themes/dialogic themes/CenteredChoices/custom_centered_choices.tscn" id="8_qwfhp"]
+[ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="9_yuvq1"]
+[ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="10_078e8"]
+[ext_resource type="Script" uid="uid://bfpa3hvh5lcc3" path="res://addons/dialogic/Resources/dialogic_style.gd" id="11_vv8t7"]
+
+[sub_resource type="Resource" id="Resource_tyw67"]
+script = ExtResource("2_aamnc")
+scene = ExtResource("1_qwfhp")
+overrides = {
+"canvas_layer": "2.0",
+"global_font": "\"res://Assets/Fonts/HyperlegibleNext-Regular.ttf\"",
+"global_font_size": "16.0"
+}
+
+[sub_resource type="Resource" id="Resource_cy6kk"]
+script = ExtResource("2_aamnc")
+scene = ExtResource("3_2tji1")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_4yura"]
+script = ExtResource("2_aamnc")
+scene = ExtResource("4_ov30f")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_4lgys"]
+script = ExtResource("2_aamnc")
+scene = ExtResource("5_4qkq6")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_p4p0w"]
+script = ExtResource("2_aamnc")
+scene = ExtResource("6_qwfhp")
+overrides = {
+"bold_font": "\"res://Assets/Fonts/HyperlegibleNext-ExtraBold.ttf\"",
+"bold_italics_font": "\"res://Assets/Fonts/GrenzeGotisch-Medium.ttf\"",
+"box_animation_in": "0",
+"box_animation_out": "0",
+"box_color_custom": "Color(0.447059, 0.447059, 0.447059, 1)",
+"box_color_use_global": "false",
+"box_panel": "\"res://Themes/combatUI_theme.tres\"",
+"italics_font": "\"res://Assets/Fonts/HyperlegibleNext-Italic.ttf\"",
+"name_label_box_modulate": "Color(0.345098, 0.345098, 0.345098, 1)",
+"name_label_box_use_global_color": "false",
+"name_label_custom_font_size": "16.0",
+"next_indicator_animation": "2",
+"next_indicator_texture": "\"res://Assets/UI/ui_icon_arrow.png\"",
+"normal_font": "\"res://Assets/Fonts/HyperlegibleNext-Regular.ttf\"",
+"text_custom_color": "Color(0.0980392, 0.0980392, 0.0980392, 1)",
+"text_size": "16.0",
+"text_use_global_color": "false",
+"text_use_global_font": "false",
+"typing_sounds_enabled": "false"
+}
+
+[sub_resource type="Resource" id="Resource_mh6d8"]
+script = ExtResource("2_aamnc")
+scene = ExtResource("7_10bfh")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_nk3qg"]
+script = ExtResource("2_aamnc")
+scene = ExtResource("8_qwfhp")
+overrides = {
+"boxes_fill_width": "false",
+"boxes_min_size": "Vector2(75, 0)",
+"boxes_v_separation": "6.0",
+"font_custom": "\"res://Assets/Fonts/HyperlegibleNext-Regular.ttf\"",
+"font_size_custom": "14.0",
+"font_size_use_global": "false",
+"font_use_global": "false",
+"sounds_volume": "-40.0"
+}
+
+[sub_resource type="Resource" id="Resource_cqfod"]
+script = ExtResource("2_aamnc")
+scene = ExtResource("9_yuvq1")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_r3620"]
+script = ExtResource("2_aamnc")
+scene = ExtResource("10_078e8")
+overrides = {}
+
+[resource]
+script = ExtResource("11_vv8t7")
+name = "Default_Dialogic_Theme"
+layer_list = Array[String](["10", "11", "12", "13", "14", "15", "16", "17"])
+layer_info = {
+"": SubResource("Resource_tyw67"),
+"10": SubResource("Resource_cy6kk"),
+"11": SubResource("Resource_4yura"),
+"12": SubResource("Resource_4lgys"),
+"13": SubResource("Resource_p4p0w"),
+"14": SubResource("Resource_mh6d8"),
+"15": SubResource("Resource_nk3qg"),
+"16": SubResource("Resource_cqfod"),
+"17": SubResource("Resource_r3620")
+}
+base_overrides = {}
+layers = Array[ExtResource("2_aamnc")]([])
+metadata/_latest_layer = "16"

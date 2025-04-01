@@ -18,12 +18,6 @@ texture = ExtResource("2_d40jh")
 centered = false
 region_rect = Rect2(4.89728, 0, 851.59, 539.611)
 
-[node name="Arrow" type="Sprite2D" parent="."]
-position = Vector2(212, 270)
-rotation = 1.5708
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_dmwl5")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(417, 271.275)
 scale = Vector2(15, 26.645)
@@ -31,6 +25,15 @@ shape = SubResource("RectangleShape2D_ley77")
 debug_color = Color(0.99, 0.8811, 0.396, 0.133333)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Arrow" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(740, 243)
+rotation = -1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_dmwl5")
+offset = Vector2(-1.76, -128.8)
+flip_v = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 anchors_preset = 3
@@ -56,3 +59,6 @@ offset_top = 2.0
 offset_right = 235.0
 offset_bottom = 97.0
 grow_horizontal = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

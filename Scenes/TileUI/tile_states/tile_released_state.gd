@@ -8,7 +8,9 @@ func enter() -> void:
 	
 	if not tile_ui.targets.is_empty():
 		played = true
+		tile_ui.play()
 		print("play tile for target:", tile_ui.targets)
+		
 
 		
 func on_input(_event: InputEvent) -> void:

@@ -481,6 +481,7 @@ offset_top = -107.0
 offset_right = -108.0
 offset_bottom = -67.0
 script = ExtResource("1_be0m3")
+day_length_seconds = 120.0
 metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="IslandBoundary/IslandBiome_Fields" to="IslandBoundary/IslandBiome_Fields" method="_on_body_entered"]
