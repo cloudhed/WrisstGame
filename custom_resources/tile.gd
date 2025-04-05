@@ -10,11 +10,13 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var target: Target
 @export var cost: int
 #amount is added by me, not tutorial. might need to turn off if "amount" is happening elsewhere idk
-#@export var amount: int
+@export var effect_amount: int = 0
 
 @export_group("Tile Visuals")
 @export var background: Texture
 @export var icon: Texture
+@export var tooltip_icon: Texture
+@export var tooltip_source_label: String
 @export_multiline var tooltip_text: String
 
 func is_single_targeted() -> bool:

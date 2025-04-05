@@ -5,6 +5,9 @@ extends Panel
 
 @onready var stamina_label: Label = $StaminaLabel
 
+func _ready() -> void:
+	await get_tree().create_timer(2).timeout
+	char_stats.stamina = 1
 
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
@@ -19,4 +22,4 @@ func _set_char_stats(value: CharacterStats) -> void:
 
 
 func _on_stats_changed() -> void:
-	stamina_label.text = "%s / %s" % [char_stats.stamina, char_stats.max_stamina]
+	stamina_label.text = "%s/%s" % [char_stats.stamina, char_stats.max_stamina]

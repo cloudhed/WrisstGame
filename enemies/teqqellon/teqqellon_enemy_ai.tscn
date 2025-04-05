@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://lwwyf3857u6g"]
+
+[ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scenes/Enemy/enemy_action_picker.gd" id="1_0vyqd"]
+[ext_resource type="Script" uid="uid://dgcficmmkycgp" path="res://enemies/teqqellon/teqqellon_attack_action.gd" id="2_rdh1j"]
+[ext_resource type="Script" uid="uid://bndjoyy1g7g45" path="res://enemies/teqqellon/teqqellon_block_action.gd" id="3_vcmfx"]
+[ext_resource type="Script" uid="uid://mce3ckan8cvx" path="res://enemies/teqqellon/teqqellon_leech_action.gd" id="4_8b302"]
+[ext_resource type="Script" uid="uid://g7lt5qykb82e" path="res://enemies/teqqellon/teqqellon_mega_block_action.gd" id="5_ewsoj"]
+
+[node name="TeqqellonEnemyAi" type="Node"]
+script = ExtResource("1_0vyqd")
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_rdh1j")
+type = 1
+chance_weight = 1.0
+
+[node name="BlockAction" type="Node" parent="."]
+script = ExtResource("3_vcmfx")
+type = 1
+chance_weight = 1.0
+
+[node name="LeechAction" type="Node" parent="."]
+script = ExtResource("4_8b302")
+damage = 4
+type = 1
+
+[node name="MegaBlockAction" type="Node" parent="."]
+script = ExtResource("5_ewsoj")

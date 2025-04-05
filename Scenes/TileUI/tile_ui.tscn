@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwe18c1an1i8y"]
+[gd_scene load_steps=15 format=3 uid="uid://dwe18c1an1i8y"]
 
 [ext_resource type="Script" uid="uid://bw8tci7hlwmbj" path="res://Scenes/TileUI/tile_ui.gd" id="1_753lx"]
 [ext_resource type="Theme" uid="uid://c1p0164at7n2g" path="res://Themes/tile_theme.tres" id="1_imaao"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c2nndpp4j8mf1" path="res://Scenes/TileUI/tile_state_machine.gd" id="3_xhcwm"]
 [ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="3_xljor"]
 [ext_resource type="Script" uid="uid://bmgiulnoxvqf5" path="res://Scenes/TileUI/tile_states/tile_base_state.gd" id="4_18qtx"]
+[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="5_4mhft"]
 [ext_resource type="Script" uid="uid://befi7jv3qj0wu" path="res://Scenes/TileUI/tile_states/tile_hover_state.gd" id="5_xeywo"]
 [ext_resource type="Script" uid="uid://c66kmifc6qwxg" path="res://Scenes/TileUI/tile_states/tile_clicked_state.gd" id="6_xljor"]
 [ext_resource type="Script" uid="uid://cyi1bcx3rujnr" path="res://Scenes/TileUI/tile_states/tile_dragging_state.gd" id="7_75cnn"]
@@ -65,17 +66,10 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Amount" type="Label" parent="."]
-visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -24.5
-offset_right = 12.0
-offset_bottom = 24.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_imaao")
@@ -84,7 +78,8 @@ theme_override_colors/font_shadow_color = Color(0.55, 0.317075, 0.1265, 0.160784
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 5
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("5_4mhft")
+theme_override_font_sizes/font_size = 48
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1

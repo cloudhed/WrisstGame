@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://c6k5mhha4mujr"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://c6k5mhha4mujr"]
 
 [ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="1_v7tbr"]
 [ext_resource type="StyleBox" uid="uid://cfn0o30rgf3r0" path="res://Themes/style_box_flat_ui.tres" id="2_nv185"]
@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://dvs4q1dskmivb" path="res://Assets/Fonts/GrenzeGotisch-Medium.ttf" id="4_qa8ib"]
 [ext_resource type="FontFile" uid="uid://bwmsf3im26hm3" path="res://Assets/Fonts/HyperlegibleNext-Italic.ttf" id="5_2il07"]
 [ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="6_1n2vt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g01mi"]
+bg_color = Color(0.477674, 0.22098, 0.38408, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7tbr"]
 bg_color = Color(0.698039, 0.698039, 0.698039, 1)
@@ -26,6 +29,7 @@ default_font = ExtResource("1_v7tbr")
 default_font_size = 16
 Button/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
 Button/fonts/font = ExtResource("1_v7tbr")
+Button/styles/hover = SubResource("StyleBoxFlat_g01mi")
 Button/styles/normal = SubResource("StyleBoxFlat_v7tbr")
 Label/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.196078)

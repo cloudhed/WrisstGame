@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://cqg2t3bu607tf"]
+
+[ext_resource type="Texture2D" uid="uid://b4bvaxrb8sw6f" path="res://Assets/Sprites/Enemies/teqqellon_portrait.png" id="1_64at0"]
+[ext_resource type="PackedScene" uid="uid://lwwyf3857u6g" path="res://enemies/teqqellon/teqqellon_enemy_ai.tscn" id="1_j7ut2"]
+[ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="2_5k5u0"]
+
+[resource]
+script = ExtResource("2_5k5u0")
+ai = ExtResource("1_j7ut2")
+max_health = 10
+art = ExtResource("1_64at0")
+playername = "Teqqellon"
+metadata/_custom_type_script = "uid://dlksefa8n68ng"

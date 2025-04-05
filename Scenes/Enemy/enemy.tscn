@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckpnn4op5ijoc"]
+[gd_scene load_steps=8 format=3 uid="uid://ckpnn4op5ijoc"]
 
 [ext_resource type="Script" uid="uid://dn66lon8vn5d6" path="res://Scenes/Enemy/enemy.gd" id="1_dmwl5"]
 [ext_resource type="Texture2D" uid="uid://c6op4xuhunqrb" path="res://Assets/Sprites/Enemies/meehp_f_portrait.png" id="2_d40jh"]
+[ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="2_gx76c"]
 [ext_resource type="Texture2D" uid="uid://bb4pmi3r217i2" path="res://Assets/UI/ui_icon_arrow.png" id="3_dmwl5"]
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="4_d40jh"]
 [ext_resource type="PackedScene" uid="uid://qvnuroju8vc0" path="res://Scenes/UI/stats_ui.tscn" id="4_pqgp3"]
@@ -12,6 +13,7 @@ size = Vector2(22, 20.3209)
 [node name="Enemy" type="Area2D" groups=["enemies"]]
 collision_layer = 4
 script = ExtResource("1_dmwl5")
+stats = ExtResource("2_gx76c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_d40jh")
@@ -27,7 +29,6 @@ debug_color = Color(0.99, 0.8811, 0.396, 0.133333)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Arrow" type="Sprite2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(740, 243)
 rotation = -1.5708
 scale = Vector2(0.2, 0.2)

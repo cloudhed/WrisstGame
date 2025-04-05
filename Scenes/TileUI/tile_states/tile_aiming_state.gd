@@ -1,6 +1,6 @@
 extends TileState
 
-const MOUSE_Y_SNAPBACK_THRESHOLD := 138
+# const MOUSE_Y_SNAPBACK_THRESHOLD := 138
 
 func enter() -> void:
 	print("AIMING")
@@ -22,6 +22,21 @@ func on_input(event: InputEvent) -> void:
 	#adding back the dragging, hoping that it fixes the snapback (EDIT: Nope, still snaps back.)
 	if mouse_motion:
 		tile_ui.global_position = tile_ui.get_global_mouse_position() - tile_ui.pivot_offset
+		
+				# Update tooltip position to follow tile
+		var tooltip := get_tree().get_first_node_in_group("tooltip")
+		if tooltip:
+			var screen_size := get_viewport().get_window().size
+			var tile_pos := tile_ui.global_position
+			var tile_size := tile_ui.size
+			
+			var offset := Vector2(tile_ui.size.x + 12, 0)
+			
+			# Flip to left if too close to screen edge
+			if tile_pos.x + tile_size.x + tooltip.size.x + 12 > screen_size.x:
+				offset = Vector2(-tooltip.size.x - 12, 0)
+				
+			tooltip.global_position = tile_ui.global_position + offset
 	
 	if event.is_action_pressed("right_mouse"): #this WAS if (mouse_motion and mouse_at_bottom) or event.is_action_pressed("right_mouse"):
 		transition_requested.emit(self, TileState.State.BASE)

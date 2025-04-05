@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://d2pnx4ne5hfgc"]
+[gd_scene load_steps=27 format=3 uid="uid://d2pnx4ne5hfgc"]
 
+[ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scenes/Combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://bbhhymceklnpi" path="res://Code/combat_camera.gd" id="1_fe60u"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Code/CombatCode/combat_visual.gd" id="1_yt1oa"]
 [ext_resource type="Texture2D" uid="uid://bdd5p34m8m7o1" path="res://Assets/Backgrounds/CombatBGDefault.png" id="2_fe60u"]
@@ -10,25 +11,27 @@
 [ext_resource type="Texture2D" uid="uid://dgifx3c7w4b5s" path="res://Assets/Backgrounds/CombatBGMountains.png" id="5_w6tjk"]
 [ext_resource type="Texture2D" uid="uid://c56heifv18ir" path="res://Assets/Backgrounds/CombatBGShores.png" id="6_xisnc"]
 [ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="7_f8ge6"]
+[ext_resource type="Texture2D" uid="uid://wl136llg6fmh" path="res://Assets/Backgrounds/CombatBGDesert.png" id="8_5g3cp"]
 [ext_resource type="PackedScene" uid="uid://ckpnn4op5ijoc" path="res://Scenes/Enemy/enemy.tscn" id="9_tmuf1"]
-[ext_resource type="Resource" uid="uid://ds0v4323mnjq0" path="res://enemies/meehp_f/meehp_f_stats.tres" id="10_5kjvk"]
 [ext_resource type="PackedScene" uid="uid://f536kff4iqbq" path="res://Scenes/TileTargetSelector/tile_target_selector.tscn" id="11_nar6d"]
+[ext_resource type="Script" uid="uid://dj5k02ip2tecw" path="res://Scenes/Enemy/enemy_handler.gd" id="12_e8ln5"]
 [ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="12_f8ge6"]
 [ext_resource type="Script" uid="uid://ced4ekxl4k3l6" path="res://Code/CombatCode/combat_ui.gd" id="12_umvpd"]
 [ext_resource type="PackedScene" uid="uid://by7co2c71yp2n" path="res://Scenes/Player/combat_player.tscn" id="13_tmuf1"]
+[ext_resource type="Resource" uid="uid://cqg2t3bu607tf" path="res://enemies/teqqellon/teqqellon_enemy.tres" id="13_umvpd"]
 [ext_resource type="Resource" uid="uid://cnwrtxw8tktmj" path="res://Characters/Player/player.tres" id="14_5kjvk"]
+[ext_resource type="Script" uid="uid://bvman73aw84wc" path="res://Scenes/Player/player_handler.gd" id="14_r5ubg"]
 [ext_resource type="Script" uid="uid://bku5mw8nd76qj" path="res://Scenes/UI/hand.gd" id="15_50454"]
-[ext_resource type="PackedScene" uid="uid://dwe18c1an1i8y" path="res://Scenes/TileUI/tile_ui.tscn" id="16_50454"]
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="16_ceo1n"]
-[ext_resource type="Resource" uid="uid://bo586ptyhvu6e" path="res://Characters/Player/tiles/unarmed_attack_01.tres" id="17_ley77"]
-[ext_resource type="Resource" uid="uid://7hq4y1qs62sy" path="res://Characters/Player/tiles/unarmed_block_01.tres" id="18_tmuf1"]
-[ext_resource type="Resource" uid="uid://c0jf23ehy6wkh" path="res://Characters/Player/tiles/action_empty.tres" id="19_5kjvk"]
 [ext_resource type="PackedScene" uid="uid://coqflun3u7db" path="res://Scenes/UI/stamina_ui.tscn" id="22_3cqtn"]
+[ext_resource type="PackedScene" uid="uid://cnuyeim88cd6g" path="res://Scenes/UI/tooltip.tscn" id="25_e8ln5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8ge6"]
 size = Vector2(844, 542)
 
 [node name="Combat" type="Node2D"]
+script = ExtResource("1_2n3pb")
+char_stats = ExtResource("14_5kjvk")
 metadata/_edit_lock_ = true
 
 [node name="CombatVisual" type="Node2D" parent="."]
@@ -42,10 +45,10 @@ gradient = ExtResource("7_f8ge6")
 metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CombatVisual"]
-color = Color(0.497177, 0, 0.167032, 1)
 
 [node name="CombatBGSprite" type="Sprite2D" parent="CombatVisual"]
 position = Vector2(640, 360)
+texture = ExtResource("8_5g3cp")
 
 [node name="CombatCamera" type="Camera2D" parent="."]
 position = Vector2(640, 360)
@@ -69,11 +72,18 @@ position = Vector2(858, 271)
 shape = SubResource("RectangleShape2D_f8ge6")
 debug_color = Color(0, 0.595, 0.7, 0.117647)
 
-[node name="Enemy" parent="." instance=ExtResource("9_tmuf1")]
+[node name="EnemyHandler" type="Node2D" parent="."]
+script = ExtResource("12_e8ln5")
+
+[node name="Enemy" parent="EnemyHandler" instance=ExtResource("9_tmuf1")]
 position = Vector2(436, 0)
-stats = ExtResource("10_5kjvk")
+stats = ExtResource("13_umvpd")
 
 [node name="TileTargetSelector" parent="." instance=ExtResource("11_nar6d")]
+
+[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("14_r5ubg")
+hand = NodePath("../CombatUI/Hand")
 
 [node name="CombatUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("12_umvpd")
@@ -285,29 +295,20 @@ size_flags_horizontal = 3
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 119.0
+offset_left = 32.0
 offset_top = -274.0
-offset_right = 215.0
+offset_right = 128.0
 offset_bottom = 146.0
 grow_vertical = 2
 theme_override_constants/separation = 32
 alignment = 1
 script = ExtResource("15_50454")
 
-[node name="TileUI" parent="CombatUI/Hand" instance=ExtResource("16_50454")]
-layout_mode = 2
-tile = ExtResource("17_ley77")
-char_stats = ExtResource("14_5kjvk")
-
-[node name="TileUI2" parent="CombatUI/Hand" instance=ExtResource("16_50454")]
-layout_mode = 2
-tile = ExtResource("18_tmuf1")
-char_stats = ExtResource("14_5kjvk")
-
-[node name="TileUI3" parent="CombatUI/Hand" instance=ExtResource("16_50454")]
-layout_mode = 2
-tile = ExtResource("19_5kjvk")
-char_stats = ExtResource("14_5kjvk")
+[node name="Tooltip" parent="CombatUI" instance=ExtResource("25_e8ln5")]
+offset_left = 146.0
+offset_top = 14.0
+offset_right = 346.0
+offset_bottom = 114.0
 
 [node name="StaminaUI" parent="CombatUI" instance=ExtResource("22_3cqtn")]
 offset_left = 32.0
@@ -315,5 +316,22 @@ offset_top = 32.0
 offset_right = 72.0
 offset_bottom = 72.0
 char_stats = ExtResource("14_5kjvk")
+
+[node name="EndTurnButton" type="Button" parent="CombatUI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -177.0
+offset_right = -33.0
+offset_bottom = -144.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+theme = ExtResource("16_ceo1n")
+text = "End Turn"
 
 [connection signal="pressed" from="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" to="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" method="_on_pressed"]

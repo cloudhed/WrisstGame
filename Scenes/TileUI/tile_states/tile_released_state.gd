@@ -7,6 +7,7 @@ func enter() -> void:
 	played = false
 	
 	if not tile_ui.targets.is_empty():
+		Events.tooltip_hide_requested.emit()
 		played = true
 		tile_ui.play()
 		print("play tile for target:", tile_ui.targets)

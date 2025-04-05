@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bo586ptyhvu6e"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bo586ptyhvu6e"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_fww7e"]
 [ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="2_gw16c"]
 [ext_resource type="Script" uid="uid://tifqe76g8ymv" path="res://Characters/Player/tiles/unarmed_attack_01.gd" id="3_fww7e"]
+[ext_resource type="Texture2D" uid="uid://bp08yx8c03uy3" path="res://Assets/UI/icons/icon_attack_mini.png" id="4_gw16c"]
 
 [resource]
 script = ExtResource("3_fww7e")
@@ -10,7 +11,10 @@ id = "unarmed_attack_01"
 type = 0
 target = 1
 cost = 1
+effect_amount = 1
 background = ExtResource("1_fww7e")
 icon = ExtResource("2_gw16c")
-tooltip_text = ""
+tooltip_icon = ExtResource("4_gw16c")
+tooltip_source_label = "Unarmed"
+tooltip_text = "[center]Strike for [b][color=red]1[/color][/b] damage.[/center]"
 metadata/_custom_type_script = "uid://gape1d7i5cw0"
