@@ -21,8 +21,8 @@ chance_weight = 1.0
 
 [node name="LeechAction" type="Node" parent="."]
 script = ExtResource("4_8b302")
-damage = 4
 type = 1
+chance_weight = 0.5
 
 [node name="MegaBlockAction" type="Node" parent="."]
 script = ExtResource("5_ewsoj")

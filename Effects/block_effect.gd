@@ -2,7 +2,7 @@ class_name BlockEffect
 extends Effect
 
 var amount := 0
-var message_template := "You'll block [b][color=blue]{amount}[/color][/b] of incoming damage!" #added by me
+var message_template := "{target_name} will block [b][color=blue]{amount}[/color][/b] of incoming damage." #added by me
 
 
 func execute(targets: Array[Node]) -> void:

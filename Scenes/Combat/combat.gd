@@ -8,6 +8,7 @@ extends Node2D
 @onready var player: CombatPlayer = $CombatUI/HBoxContainer/PlayerVBoxContainer/CombatPlayer as CombatPlayer
 
 
+
 func _ready() -> void:
 	# Normally, we would do this on a 'Run'
 	# level if Roguelike, so we keep health, gold and deck

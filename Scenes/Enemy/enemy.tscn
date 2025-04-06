@@ -1,14 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckpnn4op5ijoc"]
+[gd_scene load_steps=14 format=3 uid="uid://ckpnn4op5ijoc"]
 
 [ext_resource type="Script" uid="uid://dn66lon8vn5d6" path="res://Scenes/Enemy/enemy.gd" id="1_dmwl5"]
 [ext_resource type="Texture2D" uid="uid://c6op4xuhunqrb" path="res://Assets/Sprites/Enemies/meehp_f_portrait.png" id="2_d40jh"]
 [ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="2_gx76c"]
 [ext_resource type="Texture2D" uid="uid://bb4pmi3r217i2" path="res://Assets/UI/ui_icon_arrow.png" id="3_dmwl5"]
+[ext_resource type="Texture2D" uid="uid://o4l41y2r53y0" path="res://Assets/Sprites/Particles/particle_cluster.png" id="4_4ad2a"]
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="4_d40jh"]
 [ext_resource type="PackedScene" uid="uid://qvnuroju8vc0" path="res://Scenes/UI/stats_ui.tscn" id="4_pqgp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ley77"]
 size = Vector2(22, 20.3209)
+
+[sub_resource type="Gradient" id="Gradient_kiqm3"]
+offsets = PackedFloat32Array(0, 0.518293, 0.851626)
+colors = PackedColorArray(0.961518, 4.45209e-06, 9.62615e-07, 1, 0.742342, 0, 0.255824, 1, 0.248, 0.93, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r5ubg"]
+gradient = SubResource("Gradient_kiqm3")
+
+[sub_resource type="Curve" id="Curve_6j3ko"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8fshu"]
+curve = SubResource("Curve_6j3ko")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2chwy"]
+particle_flag_disable_z = true
+angle_min = -119.1
+angle_max = 28.5
+spread = 11.496
+initial_velocity_min = 391.35
+initial_velocity_max = 431.35
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_8fshu")
+color_ramp = SubResource("GradientTexture1D_r5ubg")
+turbulence_noise_strength = 2.5
+turbulence_noise_scale = 0.55
+turbulence_noise_speed = Vector3(2.905, 0, 0)
 
 [node name="Enemy" type="Area2D" groups=["enemies"]]
 collision_layer = 4
@@ -25,6 +56,16 @@ position = Vector2(417, 271.275)
 scale = Vector2(15, 26.645)
 shape = SubResource("RectangleShape2D_ley77")
 debug_color = Color(0.99, 0.8811, 0.396, 0.133333)
+
+[node name="ParticleVFX" type="Node2D" parent="."]
+
+[node name="LifestealVFX" type="GPUParticles2D" parent="ParticleVFX"]
+position = Vector2(21, 297)
+emitting = false
+amount = 100
+texture = ExtResource("4_4ad2a")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_2chwy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

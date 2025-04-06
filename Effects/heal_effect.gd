@@ -2,7 +2,7 @@ class_name HealEffect
 extends Effect
 
 var amount := 0
-var message_template := "<Source> heals [b][color=green]{amount}[/color][/b] hitpoints." #added by me
+var message_template := "{target_name} heals [b][color=green]{amount}[/color][/b] hitpoints." #added by me
 
 
 func execute(targets: Array[Node]) -> void:
@@ -19,4 +19,8 @@ func execute(targets: Array[Node]) -> void:
 				"amount": amount
 			}) #END custom shit
 			Events.emit_signal("combat_text_emitted", message) #emitting to eventmanager, to combat ui text
-			target.stats.health += amount
+			if "health" in target.stats and "max_health" in target.stats:
+				target.stats.health = min(target.stats.health + amount, target.stats.max_health)
+#			target.stats.health += amount
+func get_preview_amount() -> int:
+	return amount

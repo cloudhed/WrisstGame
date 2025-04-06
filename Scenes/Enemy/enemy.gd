@@ -8,10 +8,15 @@ extends Area2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var arrow: Sprite2D = $CanvasLayer/Arrow
 @onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
+@onready var lifesteal_vfx: GPUParticles2D = $ParticleVFX/LifestealVFX
 
 var enemy_action_picker: EnemyActionPicker
 var current_action: EnemyAction : set = set_current_action
 
+# debug anim
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		lifesteal_vfx.restart()
 
 func set_current_action(value: EnemyAction) -> void:
 	current_action = value

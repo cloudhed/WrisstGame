@@ -61,9 +61,16 @@ func discard_tiles() -> void:
 	)
 
 
+#func reshuffle_deck_from_discard() -> void:
+#	if not character.draw_pile.empty(): # I think I wanna remove this for real game
+#		return # mostly because draw pile will be the same odds every turn
+
 func reshuffle_deck_from_discard() -> void:
-	if not character.draw_pile.empty(): # I think I wanna remove this for real game
-		return # mostly because draw pile will be the same odds every turn
+	while not character.discard.empty():
+		character.draw_pile.add_tile(character.discard.draw_tile())
+
+	character.draw_pile.shuffle()
+
 	
 	while not character.discard.empty():
 		character.draw_pile.add_tile(character.discard.draw_tile())

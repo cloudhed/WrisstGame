@@ -2,7 +2,7 @@ class_name DamageEffect
 extends Effect
 
 var amount := 0
-var message_template := "You hit the [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] damage!" #added by me
+var message_template := "[b]{target_name}[/b] is hurt for [b][color=red]{amount}[/color][/b] damage!" #added by me
 
 
 func execute(targets: Array[Node]) -> void:
