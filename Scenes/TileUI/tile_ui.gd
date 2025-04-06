@@ -14,8 +14,8 @@ signal reparent_requested(which_tile_ui: TileUI)
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var tile_state_machine: TileStateMachine = $TileStateMachine as TileStateMachine
 @onready var targets: Array[Node] = []
-@onready var original_index := self.get_index()
 
+var original_index := 0
 var parent_hand: Hand
 var playable := true : set = _set_playable
 var disabled := false

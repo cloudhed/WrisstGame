@@ -21,24 +21,18 @@ func set_block(value : int) -> void:
 	stats_changed.emit()
 
 
-func take_damage(damage: int) -> int:
+func take_damage(damage: int) -> void:
 	if damage <= 0:
-		return 0
+		return
 
-	var initial_health: int = health
-	var blocked: int = min(damage, block)
-	var net_damage: int = damage - blocked
-
-	self.block = clampi(block - blocked, 0, 999)
-	self.health = clampi(health - net_damage, 0, max_health)
-
-	return initial_health - health # actual damage taken
+	var initial_damage: = damage
+	damage = clampi(damage - block, 0, damage)
+	self.block = clampi(block - initial_damage, 0, block)
+	self.health -= damage
 
 
-func heal(amount: int) -> int:
-	var pre_health := health
+func heal(amount: int) -> void:
 	self.health += amount
-	return health - pre_health
 	
 	
 func create_instance() -> Resource:

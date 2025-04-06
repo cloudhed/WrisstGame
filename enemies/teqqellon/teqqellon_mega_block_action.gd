@@ -1,7 +1,7 @@
 extends EnemyAction
 
 @export var block := 16
-@export var hp_threshold := 6
+@export var hp_threshold := 3
 
 var already_used := false
 
@@ -23,6 +23,11 @@ func perform_action() -> void:
 	var block_effect := BlockEffect.new()
 	block_effect.amount = block
 	block_effect.execute([enemy])
+	
+		# Play VFX
+	if enemy.has_node("ParticleVFX/MegaBlockVFX"):
+		print("Megablock VFX!")
+		enemy.mega_block_vfx.restart()
 	
 	get_tree().create_timer(0.6, false).timeout.connect(
 		func():

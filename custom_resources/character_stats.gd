@@ -20,6 +20,13 @@ func reset_stamina() -> void:
 	self.stamina = max_stamina
 
 
+func take_damage(damage: int) -> void:
+	var initial_health := health
+	super.take_damage(damage)
+	if initial_health > health:
+		Events.player_hit.emit()
+
+
 func can_play_tile(tile: Tile) -> bool:
 	return stamina >= tile.cost
 

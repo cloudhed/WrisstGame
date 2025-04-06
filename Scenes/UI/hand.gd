@@ -5,10 +5,10 @@ extends VBoxContainer
 
 @onready var tile_ui := preload("res://Scenes/TileUI/tile_ui.tscn")
 
-var tiles_played_this_turn := 0
+#var tiles_played_this_turn := 0
 
-func _ready() -> void:
-	Events.tile_played.connect(_on_tile_played)
+#func _ready() -> void:
+#	Events.tile_played.connect(_on_tile_played)
 
 
 func add_tile(tile: Tile) -> void:
@@ -34,11 +34,13 @@ func disable_hand() -> void:
 #		tile_ui.reparent_requested.connect(_on_tile_ui_reparent_requested)
 
 
-func _on_tile_played(_tile: Tile) -> void:
-	tiles_played_this_turn += 1
+#func _on_tile_played(_tile: Tile) -> void:
+#	tiles_played_this_turn += 1
 
 
 func _on_tile_ui_reparent_requested(child: TileUI) -> void:
+#	tile.disabled = true
 	child.reparent(self)
-	var new_index := clampi(child.original_index - tiles_played_this_turn, 0, get_child_count())
+	var new_index := clampi(child.original_index, 0, get_child_count())
 	move_child.call_deferred(child, new_index)
+	child.set_deferred("disabled", false)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wq484x7bw45r"
-path="res://.godot/imported/particle_round_large.jpg-a8c313b102bd0a166ef7ae382edd96b5.ctex"
+uid="uid://bvfovvi65akmd"
+path="res://.godot/imported/particle_star_med.png-ea321b7f0a7936d9b5e0daa43188fc5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Particles/particle_round_large.jpg"
-dest_files=["res://.godot/imported/particle_round_large.jpg-a8c313b102bd0a166ef7ae382edd96b5.ctex"]
+source_file="res://Assets/Sprites/Particles/particle_star_med.png"
+dest_files=["res://.godot/imported/particle_star_med.png-ea321b7f0a7936d9b5e0daa43188fc5a.ctex"]
 
 [params]
 

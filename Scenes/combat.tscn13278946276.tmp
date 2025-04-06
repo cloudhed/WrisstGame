@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d2pnx4ne5hfgc"]
+[gd_scene load_steps=27 format=3 uid="uid://d2pnx4ne5hfgc"]
 
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scenes/Combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://bbhhymceklnpi" path="res://Code/combat_camera.gd" id="1_fe60u"]
@@ -25,7 +25,6 @@
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="16_ceo1n"]
 [ext_resource type="PackedScene" uid="uid://coqflun3u7db" path="res://Scenes/UI/stamina_ui.tscn" id="22_3cqtn"]
 [ext_resource type="PackedScene" uid="uid://cnuyeim88cd6g" path="res://Scenes/UI/tooltip.tscn" id="25_e8ln5"]
-[ext_resource type="Script" uid="uid://djg7l81sp5m6x" path="res://Scenes/UI/red_flash.gd" id="26_5g3cp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8ge6"]
 size = Vector2(844, 542)
@@ -334,22 +333,5 @@ grow_vertical = 0
 size_flags_horizontal = 8
 theme = ExtResource("16_ceo1n")
 text = "End Turn"
-
-[node name="RedFlash" type="CanvasLayer" parent="."]
-layer = 2
-script = ExtResource("26_5g3cp")
-
-[node name="ColorRect" type="ColorRect" parent="RedFlash"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.51, 0, 0.051, 0)
-
-[node name="Timer" type="Timer" parent="RedFlash"]
-wait_time = 0.1
-one_shot = true
 
 [connection signal="pressed" from="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" to="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" method="_on_pressed"]

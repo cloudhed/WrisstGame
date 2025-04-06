@@ -1,8 +1,11 @@
 class_name CombatPlayer
 extends Node2D
 
+const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres")
+
 @export var stats: CharacterStats : set = set_character_stats
 
+#@onready var sprite_2d: Sprite2D = $Sprite2D # For player sprite white flash
 @onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
 
 
@@ -32,8 +35,24 @@ func update_stats() -> void:
 func take_damage(damage: int) -> void:
 	if stats.health <= 0:
 		return
+		
+#	sprite_2d.material = WHITE_SPRITE_MATERIAL # For player sprite white flash
 	
-	stats.take_damage(damage)
+	var tween := create_tween()
+	tween.tween_callback(Shaker.shake.bind(self, 16, 0.15))
+	tween.tween_callback(stats.take_damage.bind(damage))
+	tween.tween_interval(0.17)
 	
-	if stats.health <= 0:
-		queue_free()
+	tween.finished.connect(
+		func():
+#			sprite_2d.material = null # For player sprite white flash
+			
+			if stats.health <= 0:
+				Events.player_died.emit()
+				queue_free()
+	)
+#	stats.take_damage(damage)
+	
+#	if stats.health <= 0:
+#		Events.player_died.emit()
+#		queue_free()
