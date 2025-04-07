@@ -8,7 +8,7 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var arrow: Sprite2D = $CanvasLayer/Arrow
-@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
+#@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
 @onready var intent_ui: IntentUI = $CanvasLayer/IntentUI as IntentUI
 
 # Onready VFX
@@ -50,8 +50,16 @@ func setup_ai() -> void:
 	update_action()
 
 
-func update_stats() -> void:
+var stats_ui: StatsUI = null
+
+func assign_stats_ui(ui: StatsUI) -> void:
+	stats_ui = ui
 	stats_ui.update_stats(stats)
+
+
+func update_stats() -> void:
+	if stats_ui:
+		stats_ui.update_stats(stats)
 
 
 func update_action() -> void:
@@ -74,13 +82,16 @@ func update_enemy() -> void:
 		await ready
 		
 	sprite_2d.texture = stats.art
+	setup_ai()
+	
+	if stats_ui:
+		update_stats()
+		
+	update_action()
 #	arrow.position = Vector2.UP * (sprite_2d.get_rect().size.x / 2 + ARROW_OFFSET)
 #	print("Sprite rect size:", sprite_2d.get_rect().size)
 #	print("Setting arrow position to:", Vector2.LEFT * (sprite_2d.get_rect().size.x / 2 + ARROW_OFFSET))
 #	print("Arrow global position after update:", arrow.global_position)
-	setup_ai()
-	update_stats()
-	update_action()
 
 
 func do_turn() -> void:

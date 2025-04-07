@@ -11,6 +11,7 @@ signal tile_aim_ended(tile_ui: TileUI)
 signal tile_played(tile: Tile)
 
 # Player-related events
+signal player_ready(player: CombatPlayer)
 signal player_hand_drawn
 signal player_hand_discarded
 signal player_turn_ended

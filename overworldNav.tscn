@@ -321,6 +321,7 @@ y_sort_enabled = true
 position = Vector2(460, 572)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("2_5xsid")
+step_size = 1
 
 [node name="PlayerLight" type="PointLight2D" parent="PlayerDot"]
 scale = Vector2(2, 2)

@@ -21,6 +21,7 @@ func _ready() -> void:
 func save_player_data(player: PlayerDot) -> void:
 	var biome_obj = player.get_highest_priority_biome()
 	combat_biome = biome_obj.biome_name if biome_obj else "Default"
+	GameState.player_stats = player.get_stats()
 	player_last_position = player.position
 	
 	var time_node = get_tree().get_root().get_node_or_null("overworld_node/TimeOfDayControl")

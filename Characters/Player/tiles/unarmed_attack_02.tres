@@ -11,10 +11,10 @@ id = "unarmed_attack_02"
 type = 0
 target = 1
 cost = 1
-effect_amount = 2
+effect_amount = 4
 background = ExtResource("1_l5mlj")
 icon = ExtResource("2_xi7xq")
 tooltip_icon = ExtResource("4_xi7xq")
 tooltip_source_label = "Unarmed"
-tooltip_text = "[center]Strike for [b][color=red]2[/color][/b] damage.[/center]"
+tooltip_text = "[center]Strike for [b][color=red]4[/color][/b] damage.[/center]"
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

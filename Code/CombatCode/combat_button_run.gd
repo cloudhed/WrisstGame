@@ -1,3 +1,4 @@
+class_name RunButton
 extends Button
 
 @export var world : PackedScene

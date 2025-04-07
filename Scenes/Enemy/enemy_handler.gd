@@ -1,6 +1,7 @@
 class_name EnemyHandler
 extends Node2D
 
+var enemy_ui: StatsUI
 
 func _ready() -> void:
 	Events.enemy_action_completed.connect(_on_enemy_action_completed)
@@ -8,8 +9,10 @@ func _ready() -> void:
 
 func reset_enemy_actions() -> void:
 	var enemy: Enemy
-	for child in get_children():
-		enemy = child as Enemy
+	for i in get_child_count():
+		enemy = get_child(i) as Enemy
+		# Path to the correct StatsUI instance (adjust as needed!)
+		enemy.assign_stats_ui(enemy_ui)
 		enemy.current_action = null
 		enemy.update_action()
 

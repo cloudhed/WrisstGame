@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://ckpnn4op5ijoc" path="res://Scenes/Enemy/enemy.tscn" id="9_tmuf1"]
 [ext_resource type="PackedScene" uid="uid://f536kff4iqbq" path="res://Scenes/TileTargetSelector/tile_target_selector.tscn" id="11_nar6d"]
 [ext_resource type="Script" uid="uid://dj5k02ip2tecw" path="res://Scenes/Enemy/enemy_handler.gd" id="12_e8ln5"]
-[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="12_f8ge6"]
 [ext_resource type="Script" uid="uid://ced4ekxl4k3l6" path="res://Code/CombatCode/combat_ui.gd" id="12_umvpd"]
 [ext_resource type="PackedScene" uid="uid://by7co2c71yp2n" path="res://Scenes/Player/combat_player.tscn" id="13_tmuf1"]
 [ext_resource type="Resource" uid="uid://cqg2t3bu607tf" path="res://enemies/teqqellon/teqqellon_enemy.tres" id="13_umvpd"]
@@ -24,6 +23,7 @@
 [ext_resource type="Script" uid="uid://bku5mw8nd76qj" path="res://Scenes/UI/hand.gd" id="15_50454"]
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="16_ceo1n"]
 [ext_resource type="PackedScene" uid="uid://coqflun3u7db" path="res://Scenes/UI/stamina_ui.tscn" id="22_3cqtn"]
+[ext_resource type="PackedScene" uid="uid://qvnuroju8vc0" path="res://Scenes/UI/stats_ui.tscn" id="22_5g3cp"]
 [ext_resource type="PackedScene" uid="uid://cnuyeim88cd6g" path="res://Scenes/UI/tooltip.tscn" id="25_e8ln5"]
 [ext_resource type="Script" uid="uid://djg7l81sp5m6x" path="res://Scenes/UI/red_flash.gd" id="26_5g3cp"]
 
@@ -46,6 +46,7 @@ gradient = ExtResource("7_f8ge6")
 metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CombatVisual"]
+color = Color(1, 1, 1, 0.607843)
 
 [node name="CombatBGSprite" type="Sprite2D" parent="CombatVisual"]
 position = Vector2(640, 360)
@@ -80,16 +81,20 @@ script = ExtResource("12_e8ln5")
 position = Vector2(436, 0)
 stats = ExtResource("13_umvpd")
 
-[node name="TileTargetSelector" parent="." instance=ExtResource("11_nar6d")]
-
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("14_r5ubg")
 hand = NodePath("../CombatUI/Hand")
 
+[node name="CombatPlayer" parent="PlayerHandler" instance=ExtResource("13_tmuf1")]
+position = Vector2(279.17, 460.94)
+stats = ExtResource("14_5kjvk")
+
+[node name="TileTargetSelector" parent="." instance=ExtResource("11_nar6d")]
+
 [node name="CombatUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("12_umvpd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CombatUI"]
+[node name="StatsUIManager" type="HBoxContainer" parent="CombatUI"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -101,7 +106,7 @@ grow_vertical = 0
 theme = ExtResource("16_ceo1n")
 theme_override_constants/separation = 16
 
-[node name="PlayerVBoxContainer" type="VBoxContainer" parent="CombatUI/HBoxContainer"]
+[node name="PlayerVBoxContainer" type="VBoxContainer" parent="CombatUI/StatsUIManager"]
 custom_minimum_size = Vector2(271.055, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -109,102 +114,47 @@ size_flags_vertical = 0
 theme = ExtResource("16_ceo1n")
 theme_override_constants/separation = 14
 
-[node name="CombatPlayer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer" instance=ExtResource("13_tmuf1")]
-position = Vector2(4, 47)
-stats = ExtResource("14_5kjvk")
-
-[node name="PlayerMenuUI" type="HBoxContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer"]
+[node name="PlayerMenuUI" type="HBoxContainer" parent="CombatUI/StatsUIManager/PlayerVBoxContainer"]
 layout_mode = 2
 
-[node name="CombatButtonTILES" type="Button" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI"]
+[node name="CombatButtonTILES" type="Button" parent="CombatUI/StatsUIManager/PlayerVBoxContainer/PlayerMenuUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "TILES"
 
-[node name="CombatButtonBAG" type="Button" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI"]
+[node name="CombatButtonBAG" type="Button" parent="CombatUI/StatsUIManager/PlayerVBoxContainer/PlayerMenuUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "BAG"
 
-[node name="CombatButtonRUN" type="Button" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI"]
+[node name="CombatButtonRUN" type="Button" parent="CombatUI/StatsUIManager/PlayerVBoxContainer/PlayerMenuUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "RUN"
 script = ExtResource("3_ubpar")
 world = ExtResource("4_ut0kg")
 
-[node name="PlayerInfoUI" type="PanelContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 102)
+[node name="Panel" type="Panel" parent="CombatUI/StatsUIManager/PlayerVBoxContainer"]
+custom_minimum_size = Vector2(0, 95)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("16_ceo1n")
 
-[node name="PlayerInfoMargin" type="MarginContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+[node name="StatsUIPlayer" parent="CombatUI/StatsUIManager/PlayerVBoxContainer/Panel" instance=ExtResource("22_5g3cp")]
+layout_mode = 1
+offset_left = -133.5
+offset_top = 2.0
+offset_right = 97.5
+offset_bottom = 97.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
-
-[node name="PlayerHealth" type="HBoxContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 26
-
-[node name="PlayerHealthLabel" type="Label" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/PlayerHealth"]
-layout_mode = 2
-text = "---"
-vertical_alignment = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/PlayerHealth"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="PlayerHealthBar" type="ColorRect" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/PlayerHealth/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 26
-
-[node name="Label1" type="Label" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("12_f8ge6")
-text = "10/10"
-vertical_alignment = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="ColorRect" type="ColorRect" parent="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerInfoUI/PlayerInfoMargin/VBoxContainer/HBoxContainer3/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CombatTextUI" type="PanelContainer" parent="CombatUI/HBoxContainer"]
+[node name="CombatTextUI" type="PanelContainer" parent="CombatUI/StatsUIManager"]
 custom_minimum_size = Vector2(0, 71.01)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 theme = ExtResource("16_ceo1n")
 
-[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/CombatTextUI"]
+[node name="MarginContainer" type="MarginContainer" parent="CombatUI/StatsUIManager/CombatTextUI"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
@@ -212,85 +162,37 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="CombatText" type="RichTextLabel" parent="CombatUI/HBoxContainer/CombatTextUI/MarginContainer"]
+[node name="CombatText" type="RichTextLabel" parent="CombatUI/StatsUIManager/CombatTextUI/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("16_ceo1n")
 bbcode_enabled = true
 
-[node name="EnemyVBoxContainer" type="VBoxContainer" parent="CombatUI/HBoxContainer"]
+[node name="EnemyVBoxContainer" type="VBoxContainer" parent="CombatUI/StatsUIManager"]
 custom_minimum_size = Vector2(271.055, 0)
 layout_mode = 2
 theme = ExtResource("16_ceo1n")
 theme_override_constants/separation = 14
 
-[node name="EnemyInfoUI" type="PanelContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 94.6)
+[node name="MarginContainer" type="MarginContainer" parent="CombatUI/StatsUIManager/EnemyVBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_stretch_ratio = 0.03
 
-[node name="EnemyInfoMargin" type="MarginContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI"]
-visible = false
+[node name="Panel" type="Panel" parent="CombatUI/StatsUIManager/EnemyVBoxContainer"]
+custom_minimum_size = Vector2(0, 95)
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
-
-[node name="EnemyNameLabel" type="Label" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
 theme = ExtResource("16_ceo1n")
-text = "Name"
 
-[node name="EnemyHealth" type="HBoxContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 26
-
-[node name="EnemyHealthLabel" type="Label" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/EnemyHealth"]
-layout_mode = 2
-text = "EnemyHealth"
-vertical_alignment = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/EnemyHealth"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="EnemyHealthBar" type="ColorRect" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/EnemyHealth/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 26
-
-[node name="Label1" type="Label" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("12_f8ge6")
-text = "10/10"
-vertical_alignment = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="ColorRect" type="ColorRect" parent="CombatUI/HBoxContainer/EnemyVBoxContainer/EnemyInfoUI/EnemyInfoMargin/VBoxContainer/HBoxContainer3/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="StatsUIEnemy" parent="CombatUI/StatsUIManager/EnemyVBoxContainer/Panel" instance=ExtResource("22_5g3cp")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 235.0
+offset_bottom = 97.0
+grow_horizontal = 1
 
 [node name="Hand" type="VBoxContainer" parent="CombatUI"]
 anchors_preset = 4
@@ -347,9 +249,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.51, 0, 0.051, 0)
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="RedFlash"]
 wait_time = 0.1
 one_shot = true
 
-[connection signal="pressed" from="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" to="CombatUI/HBoxContainer/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" method="_on_pressed"]
+[connection signal="pressed" from="CombatUI/StatsUIManager/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" to="CombatUI/StatsUIManager/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN" method="_on_pressed"]

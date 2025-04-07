@@ -34,4 +34,4 @@ func execute(targets: Array[Node]) -> void:
 		if target is Enemy or target is CombatPlayer:
 				var message := get_new_random_message() #part of RandomMessage
 				Events.emit_signal("combat_text_emitted", message) #emitting to eventmanager, to combat ui text
-				target.take_damage(amount)
+#				target.take_damage(amount)

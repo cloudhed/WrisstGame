@@ -18,17 +18,25 @@ var distance_in_pixel: float = 0.0:
 		if steps >= Manager.encounter_number:
 			can_move = false
 			call_deferred("_trigger_encounter")
-			
+
+
+func get_stats() -> CharacterStats:
+	return stats
+
+
 func _trigger_encounter():
 	Manager.save_player_data(self)
 	Manager.change_scene()
 
 var can_move := true
+var stats: CharacterStats = null
+
 
 func _ready() -> void:
 	$PlayerDetectionArea.area_entered.connect(_on_detection_area_entered)
 	$PlayerDetectionArea.area_exited.connect(_on_detection_area_exited)
 	position = Manager.player_last_position
+
 
 func _physics_process(_delta: float) -> void:
 	if not can_move:
@@ -46,11 +54,13 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	distance_in_pixel += position.distance_to(initial_position)
 
+
 # Biome Management
 func add_biome(biome: IslandBiome) -> void:
 	if biome not in current_biomes:
 		current_biomes.append(biome)
 		_update_biome_display()
+
 
 func remove_biome(biome: IslandBiome) -> void:
 	if biome in current_biomes:
@@ -58,6 +68,7 @@ func remove_biome(biome: IslandBiome) -> void:
 		if biome == last_valid_biome:
 			last_valid_biome = get_highest_priority_biome()
 		_update_biome_display()
+
 
 func get_highest_priority_biome() -> IslandBiome:
 	if current_biomes.is_empty():
@@ -69,11 +80,13 @@ func get_highest_priority_biome() -> IslandBiome:
 	last_valid_biome = highest
 	return highest
 
+
 func _get_biome_speed_modifier() -> float:
 	var modifier = 1.0
 	for biome in current_biomes:
 		modifier = min(modifier, biome.get_speed_modifier() if biome.has_method("get_speed_modifier") else 1.0)
 	return modifier
+
 
 func _update_biome_display() -> void:
 	var highest = get_highest_priority_biome()
@@ -85,10 +98,17 @@ func _update_biome_display() -> void:
 	if debug_gui:
 		debug_gui.set_biome(text)
 
+
 func _on_detection_area_entered(area: Node) -> void:
 	if area is IslandBiome:
 		add_biome(area)
 
+
 func _on_detection_area_exited(area: Node) -> void:
 	if area is IslandBiome:
 		remove_biome(area)
+
+
+func set_stats(new_stats: CharacterStats) -> void:
+	stats = new_stats
+	print("PlayerDot stats set to:", stats)

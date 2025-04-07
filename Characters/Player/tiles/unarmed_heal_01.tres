@@ -11,10 +11,10 @@ id = "unarmed_attack_01"
 type = 2
 target = 0
 cost = 1
-effect_amount = 8
+effect_amount = 2
 background = ExtResource("1_urw20")
 icon = ExtResource("2_urw20")
 tooltip_icon = ExtResource("4_g2i0d")
 tooltip_source_label = "Unarmed"
-tooltip_text = "[center]Heal for [b][color=green]{[/color][/b] damage.[/center]"
+tooltip_text = "[center]Heal for [b][color=green]2[/color][/b] damage.[/center]"
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

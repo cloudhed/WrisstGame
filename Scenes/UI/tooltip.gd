@@ -41,17 +41,17 @@ func hide_tooltip() -> void:
 	
 	
 func hide_animation() -> void:
-#	if not is_visible:
-#		tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-#		tween.tween_property(self, "modulate", Color.TRANSPARENT, fade_seconds)
-#	tween.tween_callback(hide)
-# NEW CHATGPT HIDING THINGS
-	if tween:
-		tween.kill()
-		
-	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	
 	if not is_visible:
+		tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(self, "modulate", Color.TRANSPARENT, fade_seconds)
-	
 	tween.tween_callback(hide)
+# NEW CHATGPT HIDING THINGS
+#	if tween:
+#		tween.kill()
+		
+#	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	
+#	if not is_visible:
+#		tween.tween_property(self, "modulate", Color.TRANSPARENT, fade_seconds)
+	
+#	tween.tween_callback(hide)

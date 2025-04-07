@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var hand: Hand = $Hand as Hand
 @onready var stamina_ui: StaminaUI = $StaminaUI as StaminaUI
 @onready var end_turn_button: Button = %EndTurnButton
-@onready var combat_text = $HBoxContainer/CombatTextUI/MarginContainer/CombatText as RichTextLabel
+@onready var combat_text = $StatsUIManager/CombatTextUI/MarginContainer/CombatText as RichTextLabel
 
 func _ready() -> void:
 	Events.player_hand_drawn.connect(_on_player_hand_drawn)

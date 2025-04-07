@@ -5,8 +5,18 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 
 @export var stats: CharacterStats : set = set_character_stats
 
-#@onready var sprite_2d: Sprite2D = $Sprite2D # For player sprite white flash
-@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
+@onready var sprite_2d: Sprite2D = $Sprite2D # For player sprite white flash
+#@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
+var stats_ui: StatsUI = null
+
+
+func _ready() -> void:
+	Events.player_ready.emit(self)
+
+
+func assign_stats_ui(ui: StatsUI) -> void:
+	stats_ui = ui
+	stats_ui.update_stats(stats)
 
 
 func set_character_stats(value: CharacterStats) -> void:
@@ -29,14 +39,15 @@ func update_player() -> void:
 
 
 func update_stats() -> void:
-	stats_ui.update_stats(stats)
+	if stats_ui:
+		stats_ui.update_stats(stats)
 
 
 func take_damage(damage: int) -> void:
 	if stats.health <= 0:
 		return
 		
-#	sprite_2d.material = WHITE_SPRITE_MATERIAL # For player sprite white flash
+	sprite_2d.material = WHITE_SPRITE_MATERIAL # For player sprite white flash
 	
 	var tween := create_tween()
 	tween.tween_callback(Shaker.shake.bind(self, 16, 0.15))
@@ -45,7 +56,7 @@ func take_damage(damage: int) -> void:
 	
 	tween.finished.connect(
 		func():
-#			sprite_2d.material = null # For player sprite white flash
+			sprite_2d.material = null # For player sprite white flash
 			
 			if stats.health <= 0:
 				Events.player_died.emit()

@@ -11,5 +11,5 @@
 
 [resource]
 script = ExtResource("1_1cmi0")
-tiles = Array[ExtResource("2_ybma2")]([ExtResource("3_tpwkp"), ExtResource("3_tpwkp"), ExtResource("3_tpwkp"), ExtResource("4_f2lte"), ExtResource("5_4l2cd"), ExtResource("5_4l2cd"), ExtResource("6_8o1bg"), ExtResource("7_8o1bg"), ExtResource("7_8o1bg"), ExtResource("7_cud32"), ExtResource("7_cud32"), ExtResource("7_cud32")])
+tiles = Array[ExtResource("2_ybma2")]([ExtResource("3_tpwkp"), ExtResource("3_tpwkp"), ExtResource("3_tpwkp"), ExtResource("4_f2lte"), ExtResource("5_4l2cd"), ExtResource("5_4l2cd"), ExtResource("6_8o1bg"), ExtResource("7_8o1bg"), ExtResource("7_cud32"), ExtResource("7_cud32"), ExtResource("7_cud32")])
 metadata/_custom_type_script = "uid://sek4bydajub3"

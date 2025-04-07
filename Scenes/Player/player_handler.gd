@@ -6,6 +6,8 @@ const HAND_DISCARD_INTERVAL := 0.1
 
 @export var hand: Hand
 
+var combat_player: CombatPlayer
+var stats_ui: StatsUI
 var character: CharacterStats
 
 
@@ -18,6 +20,11 @@ func start_combat(char_stats: CharacterStats) -> void:
 	character.draw_pile = character.deck.duplicate(true)
 	character.draw_pile.shuffle()
 	character.discard = TilePile.new()
+
+	# Assign player stats
+	combat_player.stats = character
+	combat_player.assign_stats_ui(stats_ui)
+
 	start_turn()
 
 
