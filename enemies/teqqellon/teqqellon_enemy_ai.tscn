@@ -42,12 +42,14 @@ script = ExtResource("2_rdh1j")
 intent = SubResource("Resource_6yoig")
 type = 1
 chance_weight = 1.0
+message_template = "[b]{source_name}[/b] strikes [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] damage!"
 
 [node name="BlockAction" type="Node" parent="."]
 script = ExtResource("3_vcmfx")
 intent = SubResource("Resource_7jwsv")
 type = 1
 chance_weight = 1.0
+message_template = "[b]{source_name}[/b] hardens its gelatinous body and prepares to block for [b][color=blue]{amount}[/color][/b] damage!"
 
 [node name="LeechAction" type="Node" parent="."]
 script = ExtResource("4_8b302")
@@ -59,3 +61,4 @@ chance_weight = 0.3
 [node name="MegaBlockAction" type="Node" parent="."]
 script = ExtResource("5_ewsoj")
 intent = SubResource("Resource_0cdi0")
+message_template = "[b]{source_name}[/b] in its paniced state turns all of its debris attached to its back into a shield. It prepares to block for [b][color=blue]{amount}[/color][/b] damage!"

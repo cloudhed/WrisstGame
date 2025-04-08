@@ -11,8 +11,6 @@ func perform_action() -> void:
 	block_effect.amount = block
 	block_effect.execute([enemy])
 	
-	emit_combat_message(enemy, target, message_template, block)
-	
 	get_tree().create_timer(0.6, false).timeout.connect(
 		func():
 			Events.enemy_action_completed.emit(enemy)

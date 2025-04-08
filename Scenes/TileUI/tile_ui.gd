@@ -68,6 +68,13 @@ func _set_tile(value: Tile) -> void:
 #	amount.text = str(tile.amount) old version
 	
 #	background.texture = tile.background
+
+
+func setup_tile_ui(_player_node: Node, _char_stats: CharacterStats):
+	player_node = _player_node
+	char_stats = _char_stats
+
+
 func _set_playable(value: bool) -> void:
 	playable = value
 	if not playable:
@@ -78,9 +85,14 @@ func _set_playable(value: bool) -> void:
 		icon.modulate = Color(1, 1, 1, 1)
 
 
+
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
 	char_stats.stats_changed.connect(_on_char_stats_changed)
+
+
+var player_node: Node
+
 
 func _on_drop_point_detector_area_entered(area: Area2D) -> void:
 	if not targets.has(area):

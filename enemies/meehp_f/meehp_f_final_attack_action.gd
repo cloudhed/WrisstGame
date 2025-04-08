@@ -24,8 +24,6 @@ func perform_action() -> void:
 	block_effect.amount = block
 	block_effect.execute([enemy])
 	
-	emit_combat_message(enemy, target, message_template, block)
-	
 		# Play VFX
 	if enemy.has_node("ParticleVFX/MegaBlockVFX"):
 		print("Megablock VFX!")

@@ -18,10 +18,10 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 var enemy_action_picker: EnemyActionPicker
 var current_action: EnemyAction : set = set_current_action
 
-# debug anim
-#func _input(event):
-#	if event.is_action_pressed("ui_accept"):
-#		lifesteal_vfx.restart()
+
+func get_stats():
+	return stats
+
 
 func set_current_action(value: EnemyAction) -> void:
 	current_action = value

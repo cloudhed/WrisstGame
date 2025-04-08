@@ -11,6 +11,8 @@ func enter() -> void:
 		played = true
 		tile_ui.play()
 		print("play tile for target:", tile_ui.targets)
+	else:
+		set_particles_emitting(true) # Maybe re-highlight on release if not played?
 		
 
 		

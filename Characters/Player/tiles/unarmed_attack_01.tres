@@ -17,4 +17,5 @@ icon = ExtResource("2_gw16c")
 tooltip_icon = ExtResource("4_gw16c")
 tooltip_source_label = "Unarmed"
 tooltip_text = "[center]Strike for [b][color=red]1[/color][/b] damage.[/center]"
+message_template = "[b]{source_name}[/b] strikes [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] damage!"
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

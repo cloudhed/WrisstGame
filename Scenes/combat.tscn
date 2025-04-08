@@ -3,15 +3,14 @@
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scenes/Combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://bbhhymceklnpi" path="res://Code/combat_camera.gd" id="1_fe60u"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Code/CombatCode/combat_visual.gd" id="1_yt1oa"]
-[ext_resource type="Texture2D" uid="uid://bdd5p34m8m7o1" path="res://Assets/Backgrounds/CombatBGDefault.png" id="2_fe60u"]
 [ext_resource type="Texture2D" uid="uid://dh50otyhtmjfi" path="res://Assets/Backgrounds/CombatBGForest.png" id="3_avwh6"]
 [ext_resource type="Script" uid="uid://cf244xen40ftr" path="res://Code/CombatCode/combat_button_run.gd" id="3_ubpar"]
+[ext_resource type="Texture2D" uid="uid://cscyo4o42qif" path="res://Assets/Backgrounds/CombatBGFields_placeholder2.jpg" id="4_5g3cp"]
 [ext_resource type="Texture2D" uid="uid://csm7crxa56lxf" path="res://Assets/Backgrounds/CombatBGPlains.png" id="4_twsak"]
 [ext_resource type="PackedScene" uid="uid://bsk688e4ksiee" path="res://overworldNav.tscn" id="4_ut0kg"]
 [ext_resource type="Texture2D" uid="uid://dgifx3c7w4b5s" path="res://Assets/Backgrounds/CombatBGMountains.png" id="5_w6tjk"]
 [ext_resource type="Texture2D" uid="uid://c56heifv18ir" path="res://Assets/Backgrounds/CombatBGShores.png" id="6_xisnc"]
 [ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="7_f8ge6"]
-[ext_resource type="Texture2D" uid="uid://wl136llg6fmh" path="res://Assets/Backgrounds/CombatBGDesert.png" id="8_5g3cp"]
 [ext_resource type="PackedScene" uid="uid://ckpnn4op5ijoc" path="res://Scenes/Enemy/enemy.tscn" id="9_tmuf1"]
 [ext_resource type="PackedScene" uid="uid://f536kff4iqbq" path="res://Scenes/TileTargetSelector/tile_target_selector.tscn" id="11_nar6d"]
 [ext_resource type="Script" uid="uid://dj5k02ip2tecw" path="res://Scenes/Enemy/enemy_handler.gd" id="12_e8ln5"]
@@ -24,6 +23,7 @@
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="16_ceo1n"]
 [ext_resource type="PackedScene" uid="uid://coqflun3u7db" path="res://Scenes/UI/stamina_ui.tscn" id="22_3cqtn"]
 [ext_resource type="PackedScene" uid="uid://qvnuroju8vc0" path="res://Scenes/UI/stats_ui.tscn" id="22_5g3cp"]
+[ext_resource type="Script" uid="uid://c6imkn3dt8fdm" path="res://Scenes/UI/combat_text.gd" id="23_2n3pb"]
 [ext_resource type="PackedScene" uid="uid://cnuyeim88cd6g" path="res://Scenes/UI/tooltip.tscn" id="25_e8ln5"]
 [ext_resource type="Script" uid="uid://djg7l81sp5m6x" path="res://Scenes/UI/red_flash.gd" id="26_5g3cp"]
 
@@ -37,7 +37,7 @@ metadata/_edit_lock_ = true
 
 [node name="CombatVisual" type="Node2D" parent="."]
 script = ExtResource("1_yt1oa")
-default_bg = ExtResource("2_fe60u")
+default_bg = ExtResource("4_5g3cp")
 forest_bg = ExtResource("3_avwh6")
 plains_bg = ExtResource("4_twsak")
 mountains_bg = ExtResource("5_w6tjk")
@@ -46,11 +46,11 @@ gradient = ExtResource("7_f8ge6")
 metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CombatVisual"]
-color = Color(1, 1, 1, 0.607843)
 
 [node name="CombatBGSprite" type="Sprite2D" parent="CombatVisual"]
 position = Vector2(640, 360)
-texture = ExtResource("8_5g3cp")
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("4_5g3cp")
 
 [node name="CombatCamera" type="Camera2D" parent="."]
 position = Vector2(640, 360)
@@ -153,6 +153,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 theme = ExtResource("16_ceo1n")
+script = ExtResource("23_2n3pb")
 
 [node name="MarginContainer" type="MarginContainer" parent="CombatUI/StatsUIManager/CombatTextUI"]
 layout_mode = 2
@@ -198,9 +199,9 @@ grow_horizontal = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 32.0
+offset_left = 119.0
 offset_top = -274.0
-offset_right = 128.0
+offset_right = 215.0
 offset_bottom = 146.0
 grow_vertical = 2
 theme_override_constants/separation = 32

@@ -33,7 +33,7 @@ func can_play_tile(tile: Tile) -> bool:
 
 func create_instance() -> Resource:
 	var instance: CharacterStats = self.duplicate()
-	instance.playername = playername
+	instance.player_name = player_name
 	instance.health = max_health
 	instance.block = 0
 	instance.reset_stamina()

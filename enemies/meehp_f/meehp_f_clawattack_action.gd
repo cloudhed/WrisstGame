@@ -27,8 +27,6 @@ func perform_action() -> void:
 		var effect := DamageEffect.new()
 		effect.amount = damage
 		effect.execute([target])
-		
-		emit_combat_message(enemy, target, message_template, damage)
 	)
 	# Step 3: Move back to original position
 	tween.tween_property(enemy, "global_position", start_pos, 0.1)

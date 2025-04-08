@@ -5,7 +5,7 @@ signal stats_changed
 
 @export var max_health := 1
 @export var art: Texture
-@export var playername: String = ""
+@export var player_name: String = ""
 
 var health: int : set = set_health
 var block: int : set = set_block
@@ -39,5 +39,5 @@ func create_instance() -> Resource:
 	var instance: Stats = self.duplicate()
 	instance.health = max_health
 	instance.block = 0
-	instance.playername = playername
+	instance.player_name = player_name
 	return instance

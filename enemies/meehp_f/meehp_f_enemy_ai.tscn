@@ -1,6 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://br1rla8w2usxt"]
+[gd_scene load_steps=13 format=3 uid="uid://br1rla8w2usxt"]
 
 [ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scenes/Enemy/enemy_action_picker.gd" id="1_lrdxd"]
+[ext_resource type="Script" uid="uid://cn0jp8734f31q" path="res://enemies/meehp_f/meehp_f_attack_action.gd" id="2_tkr82"]
+[ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_ch0wi"]
+[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="4_ibfek"]
+[ext_resource type="Script" uid="uid://dr1as1h20an04" path="res://enemies/meehp_f/meehp_f_clawattack_action.gd" id="5_ef0kp"]
+[ext_resource type="Script" uid="uid://c1wf5yx8vcy48" path="res://enemies/meehp_f/meehp_f_rage_action.gd" id="6_emfcc"]
+[ext_resource type="Texture2D" uid="uid://dhmkraw3jt45h" path="res://Assets/UI/intent/intent_special.png" id="7_88v6k"]
+[ext_resource type="Script" uid="uid://lxcbveynt2i" path="res://enemies/meehp_f/meehp_f_final_attack_action.gd" id="8_an75i"]
 
-[node name="EnemyActionPicker" type="Node"]
+[sub_resource type="Resource" id="Resource_3oku1"]
+script = ExtResource("4_ibfek")
+number = "1-3"
+icon = ExtResource("3_ch0wi")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_13eaw"]
+script = ExtResource("4_ibfek")
+number = "5"
+icon = ExtResource("3_ch0wi")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_7oljo"]
+script = ExtResource("4_ibfek")
+number = ""
+icon = ExtResource("7_88v6k")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_wsidw"]
+script = ExtResource("4_ibfek")
+number = "16"
+icon = ExtResource("7_88v6k")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[node name="MeehpFEnemyAi" type="Node"]
 script = ExtResource("1_lrdxd")
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_tkr82")
+max_damage = 3
+intent = SubResource("Resource_3oku1")
+type = 1
+chance_weight = 1.0
+
+[node name="ClawattackAction" type="Node" parent="."]
+script = ExtResource("5_ef0kp")
+min_damage = 5
+max_damage = 5
+intent = SubResource("Resource_13eaw")
+type = 1
+chance_weight = 0.4
+
+[node name="RageAction" type="Node" parent="."]
+script = ExtResource("6_emfcc")
+block = 0
+intent = SubResource("Resource_7oljo")
+type = 1
+chance_weight = 0.2
+
+[node name="FinalAttackAction" type="Node" parent="."]
+script = ExtResource("8_an75i")
+hp_threshold = 2
+intent = SubResource("Resource_wsidw")

@@ -7,6 +7,9 @@ var minimum_drag_time_elapsed := false
 
 func enter() -> void:
 	print("DRAGGING") #debug to check DRAGGING
+	
+	set_particles_emitting(false) # Dragging = no selection effect
+	
 	var ui_layer := get_tree().get_first_node_in_group("ui_layer")
 	if ui_layer:
 		tile_ui.reparent(ui_layer)

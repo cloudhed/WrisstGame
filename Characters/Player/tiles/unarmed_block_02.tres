@@ -17,4 +17,5 @@ icon = ExtResource("2_jyglk")
 tooltip_icon = ExtResource("4_jyglk")
 tooltip_source_label = "Unarmed"
 tooltip_text = "[center]Gain [b][color=blue]2[/color][/b] block.[/center]"
+message_template = "[b]{source_name}[/b] raises their arms in front of their body and prepares to block for [b][color=blue]{amount}[/color][/b] damage."
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

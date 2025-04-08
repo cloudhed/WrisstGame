@@ -6,6 +6,13 @@ func enter() -> void:
 	tile_ui.reparent_requested.emit(tile_ui)
 	tile_ui.pivot_offset = Vector2.ZERO
 	Events.tooltip_hide_requested.emit()
+	
+	# Cache the particle nodes
+	particles_bg = tile_ui.get_node("TileVFX/GPUParticles2D_HoverBG")
+	particles_fg = tile_ui.get_node("TileVFX/GPUParticles2D_HoverFG")
+
+	# Make sure they're off initially
+	set_particles_emitting(false)
 
 func on_gui_input(event: InputEvent) -> void:
 	if not tile_ui.playable or tile_ui.disabled:
@@ -18,7 +25,9 @@ func on_gui_input(event: InputEvent) -> void:
 func on_mouse_entered() -> void:
 	if not tile_ui.playable or tile_ui.disabled:
 		return
-		
+
+	set_particles_emitting(true)
+
 	Events.tile_tooltip_requested.emit(tile_ui.tile.tooltip_icon, tile_ui.tile.tooltip_text, tile_ui.tile.tooltip_source_label)
 	
 	# Find tooltip node (must be in group "tooltip")
@@ -32,5 +41,7 @@ func on_mouse_entered() -> void:
 func on_mouse_exited() -> void:
 	if not tile_ui.playable or tile_ui.disabled:
 		return
-		
+
+	set_particles_emitting(false)
+
 	Events.tooltip_hide_requested.emit()

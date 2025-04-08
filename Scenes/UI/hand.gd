@@ -5,6 +5,7 @@ extends VBoxContainer
 
 @onready var tile_ui := preload("res://Scenes/TileUI/tile_ui.tscn")
 
+var player_node: Node  # 👈 this will be assigned from CombatUI.gd
 #var tiles_played_this_turn := 0
 
 #func _ready() -> void:
@@ -14,10 +15,12 @@ extends VBoxContainer
 func add_tile(tile: Tile) -> void:
 	var new_tile_ui := tile_ui.instantiate()
 	add_child(new_tile_ui)
+	
 	new_tile_ui.reparent_requested.connect(_on_tile_ui_reparent_requested)
 	new_tile_ui.tile = tile
 	new_tile_ui.parent_hand = self
-	new_tile_ui.char_stats = char_stats
+	
+	new_tile_ui.setup_tile_ui(player_node, char_stats)
 
 
 func discard_tile(tile: TileUI) -> void:
