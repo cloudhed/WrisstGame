@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://c16wqkevk8kkc"]
+
+[ext_resource type="AudioStream" uid="uid://bm3h46mveseb8" path="res://Audio/SFX/tile_sfx/tile_foley1.wav" id="1_jmr8o"]
+[ext_resource type="AudioStream" uid="uid://b2te1akrnefdo" path="res://Audio/SFX/tile_sfx/tile_foley2.wav" id="2_iifv6"]
+[ext_resource type="AudioStream" uid="uid://baceg8p8euspe" path="res://Audio/SFX/tile_sfx/tile_foley3.wav" id="3_duwvu"]
+[ext_resource type="AudioStream" uid="uid://blfa8y1sbu0k7" path="res://Audio/SFX/tile_sfx/tile_foley4.wav" id="4_8rdhw"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("1_jmr8o")
+stream_1/stream = ExtResource("2_iifv6")
+stream_2/stream = ExtResource("3_duwvu")
+stream_3/stream = ExtResource("4_8rdhw")

@@ -15,6 +15,7 @@ func perform_action() -> void:
 	# Damage first
 	var damage_effect := DamageEffect.new()
 	damage_effect.amount = damage
+	damage_effect.sound = sound
 	damage_effect.execute(target_array)
 	
 	emit_combat_message(enemy, target, damage_message_template, damage)

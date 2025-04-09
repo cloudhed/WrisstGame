@@ -13,6 +13,9 @@ func enter() -> void:
 
 	# Make sure they're off initially
 	set_particles_emitting(false)
+	
+	
+	
 
 func on_gui_input(event: InputEvent) -> void:
 	if not tile_ui.playable or tile_ui.disabled:
@@ -27,6 +30,9 @@ func on_mouse_entered() -> void:
 		return
 
 	set_particles_emitting(true)
+	
+	# SFX for ui sounds
+	SFXPlayer.play(ui_sound)
 
 	Events.tile_tooltip_requested.emit(tile_ui.tile.tooltip_icon, tile_ui.tile.tooltip_text, tile_ui.tile.tooltip_source_label)
 	

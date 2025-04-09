@@ -10,8 +10,10 @@ func enter() -> void:
 		Events.tooltip_hide_requested.emit()
 		played = true
 		tile_ui.play()
+		
 		print("play tile for target:", tile_ui.targets)
 	else:
+		SFXPlayer.play(ui_sound)
 		set_particles_emitting(true) # Maybe re-highlight on release if not played?
 		
 

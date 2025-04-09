@@ -127,11 +127,11 @@ func take_damage(damage: int) -> void:
 
 func _on_area_entered(_area: Area2D) -> void:
 	print("Enemy hovered!")
-	arrow.show()
-	print("Arrow should be showing!")
+	#arrow.show()
+	#print("Arrow should be showing!")
 
 
 func _on_area_exited(_area: Area2D) -> void:
 	print("Enemy not hovered anymore!")
-	arrow.hide()
-	print("Arrow should be hidden!")
+	#arrow.hide()
+	#print("Arrow should be hidden!")

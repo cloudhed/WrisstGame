@@ -1,9 +1,11 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://7hq4y1qs62sy"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://7hq4y1qs62sy"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_fbqqi"]
 [ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_gnkm3"]
 [ext_resource type="Script" uid="uid://btuq1wykar8co" path="res://Characters/Player/tiles/unarmed_block_01.gd" id="3_gnkm3"]
+[ext_resource type="AudioStream" uid="uid://nsn44qwidaih" path="res://Audio/SFX/sfx_attack_block.wav" id="4_3oado"]
 [ext_resource type="Texture2D" uid="uid://4blmsmmfytuf" path="res://Assets/UI/icons/icon_defend_mini.png" id="4_gnkm3"]
+[ext_resource type="AudioStream" uid="uid://c16wqkevk8kkc" path="res://Audio/SFX/tile_sfx/tile_foley_randomizer.tres" id="6_idq8b"]
 
 [resource]
 script = ExtResource("3_gnkm3")
@@ -18,4 +20,6 @@ tooltip_icon = ExtResource("4_gnkm3")
 tooltip_source_label = "Unarmed"
 tooltip_text = "[center]Gain [b][color=blue]1[/color][/b] block.[/center]"
 message_template = "[b]{source_name}[/b] raises their arms in front of their face and prepares to block for [b][color=blue]{amount}[/color][/b] damage."
+sound = ExtResource("4_3oado")
+ui_sound = ExtResource("6_idq8b")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

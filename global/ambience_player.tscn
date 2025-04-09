@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://disw4kify850u"]
+
+[ext_resource type="Script" uid="uid://c1orc7drn75i4" path="res://global/audio_player.gd" id="1_vtumv"]
+
+[node name="AmbiencePlayer" type="Node"]
+script = ExtResource("1_vtumv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"ambience"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+bus = &"ambience"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+bus = &"ambience"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+bus = &"ambience"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
+bus = &"ambience"
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="."]
+bus = &"ambience"

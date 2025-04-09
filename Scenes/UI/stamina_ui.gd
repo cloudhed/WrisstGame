@@ -6,7 +6,7 @@ extends Panel
 @onready var stamina_label: Label = $StaminaLabel
 
 func _ready() -> void:
-	await get_tree().create_timer(2).timeout
+#	await get_tree().create_timer(2).timeout
 	char_stats.stamina = 1
 
 func _set_char_stats(value: CharacterStats) -> void:

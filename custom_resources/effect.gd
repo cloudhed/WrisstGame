@@ -1,6 +1,8 @@
 class_name Effect
 extends RefCounted
 
-#earlier:
+var sound: AudioStream
+
+
 func execute(_targets: Array[Node]) -> void:
 	pass

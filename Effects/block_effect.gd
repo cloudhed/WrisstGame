@@ -10,3 +10,4 @@ func execute(targets: Array[Node]) -> void:
 			continue
 		if target is Enemy or target is CombatPlayer:
 			target.stats.block += amount
+			SFXPlayer.play(sound)

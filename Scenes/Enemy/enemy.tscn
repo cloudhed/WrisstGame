@@ -93,15 +93,24 @@ script = ExtResource("1_dmwl5")
 stats = ExtResource("2_gx76c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 22)
 texture = ExtResource("2_d40jh")
 centered = false
 region_rect = Rect2(4.89728, 0, 851.59, 539.611)
 
-[node name="PlayerPositionMarker" type="Marker2D" parent="."]
-position = Vector2(0, 300)
-scale = Vector2(15, 26.645)
-gizmo_extents = 94.5
+[node name="PlayerPositionMarker" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = 320.0
+offset_right = -181.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(417, 271.275)
@@ -123,17 +132,19 @@ explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_pqgp3")
 
 [node name="LifestealVFX" type="GPUParticles2D" parent="ParticleVFX"]
-position = Vector2(21, 297)
+position = Vector2(-173.865, 324.935)
 emitting = false
-amount = 20
+amount = 40
 texture = ExtResource("4_4ad2a")
-lifetime = 0.68
+lifetime = 1.25
 one_shot = true
+randomness = 0.76
 process_material = SubResource("ParticleProcessMaterial_2chwy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Arrow" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(740, 243)
 rotation = -1.5708
 scale = Vector2(0.2, 0.2)

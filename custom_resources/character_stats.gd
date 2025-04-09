@@ -12,6 +12,10 @@ var draw_pile: TilePile
 
 
 func set_stamina(value: int) -> void:
+	if stamina == value:
+		return # Don't emit if nothing changed
+
+	print("[DEBUG] Stamina changed from", stamina, "to", value)
 	stamina = value
 	stats_changed.emit()
 

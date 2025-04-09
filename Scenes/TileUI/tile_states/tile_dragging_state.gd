@@ -52,6 +52,7 @@ func on_input(event: InputEvent) -> void:
 			tooltip.global_position = tile_ui.global_position + offset
 	
 	if cancel:
+		SFXPlayer.play(ui_sound)
 		transition_requested.emit(self, TileState.State.BASE)
 	elif minimum_drag_time_elapsed and confirm:
 		get_viewport().set_input_as_handled()

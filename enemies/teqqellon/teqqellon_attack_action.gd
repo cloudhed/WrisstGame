@@ -26,6 +26,7 @@ func perform_action() -> void:
 #		print("Tween midpoint: applying damage effect")
 		var effect := DamageEffect.new()
 		effect.amount = damage
+		effect.sound = sound
 		effect.execute([target])
 		
 		emit_combat_message(enemy, target, message_template, damage)

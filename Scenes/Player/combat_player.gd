@@ -7,6 +7,9 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 
 @onready var sprite_2d: Sprite2D = $Sprite2D # For player sprite white flash
 #@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
+@onready var end_turn_timer: Timer = $EndTurnTimer
+var has_scheduled_end_turn: bool = false
+
 var stats_ui: StatsUI = null
 
 
@@ -41,6 +44,18 @@ func update_player() -> void:
 func update_stats() -> void:
 	if stats_ui:
 		stats_ui.update_stats(stats)
+	
+	print("[DEBUG] update_stats called — Stamina:", stats.stamina, " | has_scheduled_end_turn:", has_scheduled_end_turn)
+	
+	# Start end turn countdown ONLY ONCE when stamina hits 0
+	if stats.stamina <= 0 and not has_scheduled_end_turn:
+		print("[DEBUG] Stamina is 0 — starting end turn timer.")
+		has_scheduled_end_turn = true
+		end_turn_timer.start()
+	elif stats.stamina > 0 and has_scheduled_end_turn:
+		print("[DEBUG] Stamina restored — canceling timer and resetting flag.")
+		has_scheduled_end_turn = false
+		end_turn_timer.stop()
 
 
 func take_damage(damage: int) -> void:
@@ -67,3 +82,15 @@ func take_damage(damage: int) -> void:
 #	if stats.health <= 0:
 #		Events.player_died.emit()
 #		queue_free()
+
+
+func _on_end_turn_timer_timeout() -> void:
+	print("[DEBUG] Timer timeout reached. Checking stamina...")
+
+	if stats.stamina <= 0:
+		print("[DEBUG] Confirmed 0 stamina — emitting player_turn_ended.")
+		Events.player_turn_ended.emit()
+	else:
+		print("[DEBUG] Stamina recovered before timer finished — no turn end.")
+
+	has_scheduled_end_turn = false

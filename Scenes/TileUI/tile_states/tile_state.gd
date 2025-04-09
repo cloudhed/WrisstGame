@@ -6,6 +6,7 @@ enum State {BASE, HOVER, CLICKED, DRAGGING, RELEASED, AIMING}
 signal transition_requested(from: TileState, to: State)
 
 @export var state: State
+@export var ui_sound: AudioStream
 var tile_ui: TileUI
 var particles_bg: GPUParticles2D
 var particles_fg: GPUParticles2D

@@ -10,4 +10,4 @@ func execute(targets: Array[Node]) -> void:
 		if not target:
 			continue
 		if target is Enemy or target is CombatPlayer:
-				return
+			SFXPlayer.play(sound)

@@ -22,6 +22,9 @@ Events="*res://global/events.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Shaker="*res://global/shaker.gd"
 GameState="*res://global/gamestate.gd"
+MusicPlayer="*res://global/music_player.tscn"
+SFXPlayer="*res://global/sfx_player.tscn"
+AmbiencePlayer="*res://global/ambience_player.tscn"
 
 [dialogic]
 

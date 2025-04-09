@@ -20,6 +20,9 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export_multiline var tooltip_text: String
 @export_multiline var message_template := ""
 @export var message_pool_resource: RandomMessagePool
+@export_group("Tile SFX")
+@export var sound: AudioStream
+#@export var ui_sound: AudioStream
 
 var source_stats: CharacterStats
 

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var char_stats: CharacterStats
+@export var music: AudioStream
 
 @onready var combat_ui: CombatUI = $CombatUI as CombatUI
 @onready var player_handler: PlayerHandler = $PlayerHandler as PlayerHandler
@@ -13,9 +14,9 @@ func _ready() -> void:
 	# Normally, we would do this on a 'Run'
 	# level if Roguelike, so we keep health, gold and deck
 	# between combat. (Let's see how we implement this in RPG style later, probably just remove? I'll ask ChatGPT later.)
+	
 	var new_stats: CharacterStats = char_stats.create_instance()
 	combat_ui.char_stats = new_stats
-#	player.stats = new_stats
 	
 	# Connect player ready
 	Events.player_ready.connect(_on_player_ready)
@@ -50,6 +51,7 @@ func _on_player_ready(p: CombatPlayer) -> void:
 
 func start_combat(stats: CharacterStats) -> void:
 	print("Combat has started!")
+	MusicPlayer.play(music, true)
 	enemy_handler.reset_enemy_actions()
 	player_handler.start_combat(stats)
 

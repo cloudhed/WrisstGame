@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://d2pnx4ne5hfgc"]
+[gd_scene load_steps=29 format=3 uid="uid://d2pnx4ne5hfgc"]
 
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scenes/Combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://bbhhymceklnpi" path="res://Code/combat_camera.gd" id="1_fe60u"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Code/CombatCode/combat_visual.gd" id="1_yt1oa"]
+[ext_resource type="AudioStream" uid="uid://bi40x2y8sqyu4" path="res://Audio/Music/MusicCombat/140713 ShadowsOfSaturn.mp3" id="3_2n3pb"]
 [ext_resource type="Texture2D" uid="uid://dh50otyhtmjfi" path="res://Assets/Backgrounds/CombatBGForest.png" id="3_avwh6"]
 [ext_resource type="Script" uid="uid://cf244xen40ftr" path="res://Code/CombatCode/combat_button_run.gd" id="3_ubpar"]
 [ext_resource type="Texture2D" uid="uid://cscyo4o42qif" path="res://Assets/Backgrounds/CombatBGFields_placeholder2.jpg" id="4_5g3cp"]
@@ -33,6 +34,7 @@ size = Vector2(844, 542)
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_2n3pb")
 char_stats = ExtResource("14_5kjvk")
+music = ExtResource("3_2n3pb")
 metadata/_edit_lock_ = true
 
 [node name="CombatVisual" type="Node2D" parent="."]
@@ -86,7 +88,7 @@ script = ExtResource("14_r5ubg")
 hand = NodePath("../CombatUI/Hand")
 
 [node name="CombatPlayer" parent="PlayerHandler" instance=ExtResource("13_tmuf1")]
-position = Vector2(279.17, 460.94)
+position = Vector2(267, 460.94)
 stats = ExtResource("14_5kjvk")
 
 [node name="TileTargetSelector" parent="." instance=ExtResource("11_nar6d")]
@@ -215,6 +217,7 @@ offset_right = 346.0
 offset_bottom = 114.0
 
 [node name="StaminaUI" parent="CombatUI" instance=ExtResource("22_3cqtn")]
+visible = false
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 72.0
@@ -223,6 +226,7 @@ char_stats = ExtResource("14_5kjvk")
 
 [node name="EndTurnButton" type="Button" parent="CombatUI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0

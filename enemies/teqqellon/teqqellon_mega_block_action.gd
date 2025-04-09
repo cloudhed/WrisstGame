@@ -22,6 +22,7 @@ func perform_action() -> void:
 	
 	var block_effect := BlockEffect.new()
 	block_effect.amount = block
+	block_effect.sound = sound
 	block_effect.execute([enemy])
 	
 	emit_combat_message(enemy, target, message_template, block)

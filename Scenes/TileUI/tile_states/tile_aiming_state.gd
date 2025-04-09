@@ -39,6 +39,7 @@ func on_input(event: InputEvent) -> void:
 			tooltip.global_position = tile_ui.global_position + offset
 	
 	if event.is_action_pressed("right_mouse"): #this WAS if (mouse_motion and mouse_at_bottom) or event.is_action_pressed("right_mouse"):
+		SFXPlayer.play(ui_sound)
 		transition_requested.emit(self, TileState.State.BASE)
 	elif event.is_action_released("left_mouse") or event.is_action_pressed("left_mouse"):
 		get_viewport().set_input_as_handled()
