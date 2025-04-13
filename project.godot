@@ -19,12 +19,12 @@ config/icon="res://icon.svg"
 
 Manager="*res://Code/manager.tscn"
 Events="*res://global/events.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Shaker="*res://global/shaker.gd"
 GameState="*res://global/gamestate.gd"
 MusicPlayer="*res://global/music_player.tscn"
 SFXPlayer="*res://global/sfx_player.tscn"
 AmbiencePlayer="*res://global/ambience_player.tscn"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
@@ -35,8 +35,8 @@ directories/dtl_directory={
 "timeline_base": "res://Timelines/timeline_base.dtl"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://Themes/dialogic themes/SecondTry_Dialogic_Theme/SecondTry_Dialogic_Theme_01.tres"]
-layout/default_style="res://Themes/dialogic themes/SecondTry_Dialogic_Theme/SecondTry_Dialogic_Theme_01.tres"
+layout/style_list=["res://Themes/Dialogic Styles/Main Style.tres", "res://Themes/Dialogic Styles/Speech Style.tres"]
+layout/default_style="res://Themes/Dialogic Styles/Main Style.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.02
 text/initial_text_reveal_skippable=true
@@ -49,7 +49,7 @@ animations/join_default_wait=true
 animations/leave_default_length=0.5
 animations/leave_default_wait=true
 animations/cross_fade_default_length=0.5
-choices/autofocus_first=true
+choices/autofocus_first=false
 choices/delay=0.2
 choices/reveal_delay=1.0
 choices/reveal_by_input=true
@@ -74,6 +74,10 @@ animations/join_default="Fade In"
 animations/leave_default="Fade Out"
 animations/cross_fade_default="Fade Cross"
 variables={}
+text/split_at_new_lines_as=1
+text/input_action="dialogic_default_action"
+text/split_at_new_lines=false
+audio/type_sound_bus="sfx"
 
 [display]
 
@@ -91,6 +95,10 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[inkgd]
+
+register_templates=true
 
 [input]
 

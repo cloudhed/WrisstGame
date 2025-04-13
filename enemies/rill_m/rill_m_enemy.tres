@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://bd5xt3o07upvw"]
+
+[ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="1_klunu"]
+
+[resource]
+script = ExtResource("1_klunu")
+max_health = 26
+player_name = ""
+metadata/_custom_type_script = "uid://dlksefa8n68ng"

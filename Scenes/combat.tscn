@@ -79,7 +79,7 @@ debug_color = Color(0, 0.595, 0.7, 0.117647)
 [node name="EnemyHandler" type="Node2D" parent="."]
 script = ExtResource("12_e8ln5")
 
-[node name="Enemy" parent="EnemyHandler" instance=ExtResource("9_tmuf1")]
+[node name="TeqqellonEnemy" parent="EnemyHandler" instance=ExtResource("9_tmuf1")]
 position = Vector2(436, 0)
 stats = ExtResource("13_umvpd")
 
@@ -161,9 +161,9 @@ script = ExtResource("23_2n3pb")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 6
 
 [node name="CombatText" type="RichTextLabel" parent="CombatUI/StatsUIManager/CombatTextUI/MarginContainer"]
 layout_mode = 2

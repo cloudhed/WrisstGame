@@ -1,39 +1,22 @@
-Bitalgut_dialogic: Dialogic uses Unit Tests to ensure specific parts function as expected. These tests run on every git push and pull request. The framework to do these tests is called gdUnit4 and our tests reside in the /Tests/Unit path. We recommend installing the gdUnit4 add-on from the AssetLib, with this add-on, you can run tests locally.\
-\
-While you can use them, they may change in their behavior or change their signature, causing breakage in your code while moving between versions. Most private methods are used inside public ones; if you need help, check the documentation.
-- One one 1 one one one one one One one 1 one one one one one
-- Two two two two two two two Two two two two two two two
-- Three three Three Three Three Three Three Three
-- Foooooooooooooouuuuuuuuuuuurrrrrrrrrrr i said foooouuuurrrrr
 [background arg="res://Assets/Backgrounds/black.png" fade="0.0"]
-I must've hit my head pretty hard...
-[wait time="2.0"]
-. . .
-[background arg="res://Assets/Backgrounds/cave.png" fade="3.0"]
-W-where am I? What is this place?\
-I don't recognize anything, nor do I remember what happened..!
-Oh god.
-[wait time="4.0"]
-Well, I guess I should try and find something to... wear...\
-And, oh god, I'm starving.\
+You wake to heat on your cheek and a sharp tug in your chest. Your muscles ache. Your mouth tastes like copper and salt. The sand is gone—there’s moss beneath your back now, damp and cool.\
 \
-I guess that's the plan;\
-• Find some clothes.\
-• Find something to eat.\
-\
-[i]You get up, knees still weak and wobbly from before, steady yourself against the wet cave walls, and limp out in the bright light outside.[/i]
-[background arg="res://Assets/Backgrounds/white.jpg" fade="1.0"]
+You groan and roll onto your side.
+[background arg="res://Assets/Backgrounds/Forest/bitalgut_fire.jpg" fade="3.0"]
+A fire crackles ahead of you. Big. Too big for one person. Orange light flickers against roots and low fog. Someone’s speaking—casual, rhythmic, already mid-thought.
+- Continue to listen in silence. | [=""]
+- W-what..?
+- Who's there?
+[wait time="0.5"]
+[style name="Speech Style"]
+Bitalgut_dialogic: You ever see the lobe twitch like that before, Bolk? Hells, I haven’t. Not that close. Not with the core-light running all twitchy.
+[wait time="0.1"]
+[style name="Main Style"]
+A small figure squats beside the fire, knees spread. His skin glistens faintly—smooth, amphibian-dark, flecked with old scars or moss-stains. One hand grips a long walking stick jabbed into the dirt. The other stirs a steaming tin cup set atop a flat rock.
+He doesn’t look at you. Just stares into the flames like they’re talking back.
 [wait time="1.0"]
-[background arg="res://Assets/Backgrounds/CombatBGDesert.jpg" fade="4.0"]
+[style name="Speech Style"]
+Bitalgut_dialogic: Teqqellon’s a quiet one. Doesn’t strike first unless it thinks you’ll wriggle nice. And you?
+join Bitalgut_dialogic right
+Bitalgut_dialogic: You wriggled.
 [wait time="1.0"]
-[i]As your eyes get used to the bright sunlight, you look around and see nothing but sand.[/i]\
-\
-Just sand. Except...
-[i]You find two prodruding objects sticking up in the warm, unfamiliar sand of the desert you found yourself in.\
-Right now, you're too weak to carry them both even if you wanted. But[/i] [b]one[/b] [i]of them wouldn't be a problem...\
-\
-...Right?[/i]
-- The one...
-- ...Or the other.
-- I don't think I need any of them, to be honest.
-- Greed washes over you. Why shouldn't you grab both? No one else is here, and noone seems to miss them. You reach out your hands towards both objects...

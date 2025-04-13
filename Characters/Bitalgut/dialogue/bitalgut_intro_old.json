@@ -1,0 +1,28 @@
+[
+  {
+    "id": "intro",
+    "type": "narration",
+    "text": "You wake to heat on your cheek and a sharp tug in your chest."
+  },
+  {
+    "id": "bitalgut_intro",
+    "type": "npc",
+    "name": "Bitalgut",
+    "text": "You wriggled."
+  },
+  {
+    "id": "choice_start",
+    "type": "choice",
+    "options": [
+      {
+        "text": "Groan and roll onto your side.",
+        "next": "fire_scene"
+      }
+    ]
+  },
+  {
+    "id": "fire_scene",
+    "type": "narration",
+    "text": "A fire crackles ahead of you. Big. Too big for one person."
+  }
+]

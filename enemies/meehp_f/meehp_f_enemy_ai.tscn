@@ -29,8 +29,8 @@ metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_wsidw"]
 script = ExtResource("4_ibfek")
-number = "16"
-icon = ExtResource("7_88v6k")
+number = "8"
+icon = ExtResource("3_ch0wi")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [node name="MeehpFEnemyAi" type="Node"]
@@ -42,6 +42,7 @@ max_damage = 3
 intent = SubResource("Resource_3oku1")
 type = 1
 chance_weight = 1.0
+message_template = "The Meehp hits you in the chest for damage."
 
 [node name="ClawattackAction" type="Node" parent="."]
 script = ExtResource("5_ef0kp")
@@ -50,15 +51,18 @@ max_damage = 5
 intent = SubResource("Resource_13eaw")
 type = 1
 chance_weight = 0.4
+message_template = "The female Meehp slashes you with her sharp claws."
 
 [node name="RageAction" type="Node" parent="."]
 script = ExtResource("6_emfcc")
-block = 0
 intent = SubResource("Resource_7oljo")
 type = 1
 chance_weight = 0.2
+message_template = "An enraged clattering escapes the Meeph's throat, and her beady eyes turn into slits of rage."
 
 [node name="FinalAttackAction" type="Node" parent="."]
 script = ExtResource("8_an75i")
+damage = 8
 hp_threshold = 2
 intent = SubResource("Resource_wsidw")
+message_template = "The Meeph unleashes her last energy into a furious swipe of her sharp hinleg claws. She slashes you for 8 damage."

@@ -1,15 +1,17 @@
 extends EnemyAction
 
-@export var block := 2
+@export var rage := 2
 
 
 func perform_action() -> void:
 	if not enemy or not target:
 		return
 	
-	var block_effect := BlockEffect.new()
-	block_effect.amount = block
-	block_effect.execute([enemy])
+	var rage_effect := BlockEffect.new()
+	rage_effect.amount = rage
+	rage_effect.execute([enemy])
+	
+	emit_combat_message(enemy, target, message_template, rage)
 	
 	get_tree().create_timer(0.6, false).timeout.connect(
 		func():

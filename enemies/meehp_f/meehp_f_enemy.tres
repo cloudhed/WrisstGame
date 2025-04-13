@@ -9,5 +9,5 @@ script = ExtResource("1_351ve")
 ai = ExtResource("1_sn2da")
 max_health = 14
 art = ExtResource("1_6e0v0")
-playername = "Meehp ♀"
+player_name = "Meehp"
 metadata/_custom_type_script = "uid://dlksefa8n68ng"

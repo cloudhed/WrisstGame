@@ -6,6 +6,8 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 
 @export var stats: EnemyStats : set = set_enemy_stats
 
+#@export var intent_offset := Vector2(0, 0)
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var arrow: Sprite2D = $CanvasLayer/Arrow
 #@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
@@ -29,13 +31,36 @@ func set_current_action(value: EnemyAction) -> void:
 		intent_ui.update_intent(current_action.intent)
 
 
+#func update_anchor() -> void:
+#	if sprite_2d.texture:
+#		var size = sprite_2d.texture.get_size()
+#		sprite_2d.offset = Vector2(0, size.y / 2.0)
+#		sprite_2d.centered = true
+
+
+#func update_intent_ui_position() -> void:
+#	if not is_inside_tree() or not is_instance_valid(intent_ui):
+#		return
+
+#	var canvas_xform := get_viewport().get_canvas_transform()
+#	var inverse := canvas_xform.affine_inverse()
+
+	# Calculate the *top* of the sprite (assuming bottom-center pivot)
+#	var sprite_size := sprite_2d.texture.get_size()
+#	var sprite_top_world_pos := sprite_2d.global_position - Vector2(0, sprite_size.y)
+
+#	var screen_pos := inverse * (sprite_top_world_pos + intent_offset)
+
+#	intent_ui.position = screen_pos
+
+
 func set_enemy_stats(value: EnemyStats) -> void:
 	stats = value.create_instance()
 	
 	if not stats.stats_changed.is_connected(update_stats):
 		stats.stats_changed.connect(update_stats)
 		stats.stats_changed.connect(update_action)
-		
+	
 	update_enemy()
 
 
@@ -83,6 +108,8 @@ func update_enemy() -> void:
 		
 	sprite_2d.texture = stats.art
 	setup_ai()
+#	update_anchor()
+#	update_intent_ui_position()
 	
 	if stats_ui:
 		update_stats()

@@ -1,6 +1,6 @@
 extends EnemyAction
 
-@export var block := 16
+@export var damage := 16
 @export var hp_threshold := 3
 
 var already_used := false
@@ -20,16 +20,31 @@ func perform_action() -> void:
 	if not enemy or not target:
 		return
 	
-	var block_effect := BlockEffect.new()
-	block_effect.amount = block
-	block_effect.execute([enemy])
+	var damage_effect := DamageEffect.new()
+	var start_pos := enemy.global_position
+	var attack_offset := Vector2.LEFT * 12  # Adjust direction based on side!
+	var attack_pos := start_pos + attack_offset
 	
-		# Play VFX
-	if enemy.has_node("ParticleVFX/MegaBlockVFX"):
-		print("Megablock VFX!")
-		enemy.mega_block_vfx.restart()
+#	print("Attacking from", start_pos, "to", attack_pos)
+	var tween := create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	
-	get_tree().create_timer(0.6, false).timeout.connect(
-		func():
+	# Step 1: Lunge forward
+	tween.tween_property(enemy, "global_position", attack_pos, 0.1)
+	
+	# Step 2: Apply damage
+	tween.tween_callback(func():
+#		print("Tween midpoint: applying damage effect")
+		var effect := DamageEffect.new()
+		effect.amount = damage
+		effect.execute([target])
+		
+		emit_combat_message(enemy, target, message_template, damage)
+	)
+	# Step 3: Move back to original position
+	tween.tween_property(enemy, "global_position", start_pos, 0.1)
+	
+	# Step 4: End action
+	tween.finished.connect(func():
+#			print("Tween finished: attack action completed")
 			Events.enemy_action_completed.emit(enemy)
 	)

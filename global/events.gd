@@ -22,10 +22,15 @@ signal player_died
 signal enemy_action_completed(enemy: Enemy)
 signal enemy_turn_ended
 
-
 #Combat Text Log
 signal combat_text_emitted(message: String)
 
 #Tooltip
 signal tile_tooltip_requested(tile: Tile)
 signal tooltip_hide_requested
+
+#Combat-related events
+	#Pre combat
+	
+	#Post combat
+signal combat_over_screen_requested(text: String, type: )

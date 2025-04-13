@@ -2,7 +2,7 @@
 "@path": "res://addons/dialogic/Resources/character.gd",
 "@subpath": NodePath(""),
 &"_translation_id": "",
-&"color": Color(0.921875, 0.849966, 0.792236, 1),
+&"color": Color(0.121569, 0.262745, 0.494118, 1),
 &"custom_info": {
 "prefix": "",
 "sound_mood_default": "",
@@ -10,12 +10,22 @@
 "style": "",
 "suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "base_bitalgut",
 &"description": "",
 &"display_name": "Bitalgut",
 &"mirror": false,
-&"nicknames": [""],
+&"nicknames": ["Strange monster"],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"base_bitalgut": {
+"export_overrides": {
+"image": "\"res://Assets/Sprites/Characters/bitalgut_base.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }
