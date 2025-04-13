@@ -7,11 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://bdd5p34m8m7o1" path="res://Assets/Backgrounds/CombatBGDefault.png" id="3_6w2xp"]
 [ext_resource type="PackedScene" uid="uid://dot6fkkrthtyc" path="res://Scenes/UI/choice_box.tscn" id="3_aa73e"]
 [ext_resource type="Theme" uid="uid://bq6onie4e1pjk" path="res://Themes/narrative_theme.tres" id="3_i24h7"]
-[ext_resource type="Texture2D" uid="uid://c6op4xuhunqrb" path="res://Assets/Sprites/Enemies/meehp_f_portrait.png" id="4_6w2xp"]
+[ext_resource type="Script" uid="uid://bii1koy5ss3sq" path="res://Narrative/dialog_line_spawner.gd" id="5_8y4ma"]
 
 [node name="DialogScene" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_q2h70")
 dialog_scene_data = ExtResource("2_6w2xp")
 
@@ -25,22 +29,54 @@ flip_h = true
 [node name="CharacterPortraitMain" type="Sprite2D" parent="."]
 position = Vector2(1000, 417)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("4_6w2xp")
+
+[node name="DialogLineSpawner" type="Control" parent="." node_paths=PackedStringArray("container")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_8y4ma")
+container = NodePath("MarginContainer/LineStack")
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogLineSpawner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="LineStack" type="VBoxContainer" parent="DialogLineSpawner/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="SpeechBubble" parent="." instance=ExtResource("2_i24h7")]
 visible = false
-layout_mode = 0
-offset_left = 722.0
-offset_top = 321.71
-offset_right = 1222.0
-offset_bottom = 321.71
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 937.0
+offset_top = 180.0
+offset_right = 937.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
 
 [node name="NarrationBox" parent="." instance=ExtResource("2_fvo3m")]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 33.0
-offset_right = 633.0
-offset_bottom = 33.0
+visible = false
+layout_mode = 2
+offset_right = 100.0
+offset_bottom = 40.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 

@@ -1,24 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgkpmtmspfop4"]
+[gd_scene load_steps=3 format=3 uid="uid://bhnb55ihf76om"]
 
 [ext_resource type="Theme" uid="uid://bq6onie4e1pjk" path="res://Themes/narrative_theme.tres" id="1_b6tns"]
 [ext_resource type="Script" uid="uid://kcgfuo01bp82" path="res://Scenes/UI/narration_box.gd" id="1_mp87l"]
 
 [node name="NarrationBox" type="Control"]
-custom_minimum_size = Vector2(600, 98.435)
+custom_minimum_size = Vector2(100, 40)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 40.0
 theme = ExtResource("1_b6tns")
 script = ExtResource("1_mp87l")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(600, 45)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
-offset_right = 600.0
-offset_bottom = 21.04
+offset_right = 100.0
+offset_bottom = 100.0
 
 [node name="Text" type="RichTextLabel" parent="Panel"]
 clip_contents = false
-layout_mode = 0
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 40.0
 theme = ExtResource("1_b6tns")
 bbcode_enabled = true
 text = "hello"

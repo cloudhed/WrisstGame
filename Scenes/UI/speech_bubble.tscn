@@ -4,28 +4,30 @@
 [ext_resource type="Script" uid="uid://driok6au7vhfy" path="res://Scenes/UI/speech_bubble.gd" id="2_r5lct"]
 
 [node name="SpeechBubble" type="Control"]
+custom_minimum_size = Vector2(500, 96.485)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 96.485
 theme = ExtResource("1_guhem")
 script = ExtResource("2_r5lct")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="BubbleWrapper" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="BubbleWrapper"]
+layout_mode = 2
 theme = ExtResource("1_guhem")
 
-[node name="BubbleText" type="RichTextLabel" parent="Panel"]
+[node name="BubbleText" type="RichTextLabel" parent="BubbleWrapper/Panel"]
 clip_contents = false
-layout_mode = 1
-offset_right = 43.705
-offset_bottom = 324.0
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 63.0
 theme = ExtResource("1_guhem")
 bbcode_enabled = true
-text = "Hello World?"
+text = "!!!"
 fit_content = true
 scroll_active = false

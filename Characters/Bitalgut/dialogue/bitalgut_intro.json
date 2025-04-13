@@ -3,7 +3,7 @@
     "id": "intro",
     "type": "npc",
     "name": "Bitalgut",
-    "text": "You wake to heat on your cheek and a sharp tug in your chest.[p][b]Your muscles ache.[/b] Your mouth tastes like copper and salt. The sand is gone—there's moss beneath your back now,[p]damp and cool."
+    "text": "You wake to heat on your cheek and a sharp tug in your chest. Your muscles ache. Your mouth tastes like copper and salt. The sand is gone—there's moss beneath your back now, damp and cool."
   },
   {
     "id": "intro_choice",
