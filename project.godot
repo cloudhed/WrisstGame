@@ -28,9 +28,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
-directories/dch_directory={
-"Bitalgut_dialogic": "res://Characters/Bitalgut/Bitalgut_dialogic.dch"
-}
+directories/dch_directory={}
 directories/dtl_directory={
 "timeline_base": "res://Timelines/timeline_base.dtl"
 }

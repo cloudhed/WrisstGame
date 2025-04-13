@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=6 format=3 uid="uid://dtar7g2x5j77k"]
+
+[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="1_8dse5"]
+[ext_resource type="Texture2D" uid="uid://dih8gjwengrhp" path="res://Assets/Backgrounds/Forest/bitalgut_fire.jpg" id="2_dabfm"]
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="3_mg2vs"]
+[ext_resource type="Resource" uid="uid://dbi8cn6fh0e4o" path="res://Characters/Bitalgut/bitalgut_resource.tres" id="4_bt8vm"]
+
+[sub_resource type="Resource" id="Resource_3etik"]
+script = ExtResource("3_mg2vs")
+id = &"Bitalgut"
+character_resource = ExtResource("4_bt8vm")
+metadata/_custom_type_script = "uid://cgc7i24b66gt8"
+
+[resource]
+script = ExtResource("1_8dse5")
+background_texture = ExtResource("2_dabfm")
+dialogue_path = "res://Characters/Bitalgut/dialogue/bitalgut_intro.json"
+characters = Array[ExtResource("3_mg2vs")]([SubResource("Resource_3etik")])
+flags_required = Array[String]([])
+flags_set_on_start = {}
+metadata/_custom_type_script = "uid://5m151tkuttgt"

@@ -1,11 +1,18 @@
+class_name DialogScene
 extends Node
 
+@export var dialog_scene_data: DialogSceneResource
+
+@onready var parser := DialogParser.new()
 @onready var narration_box = $NarrationBox
 @onready var choice_box = $ChoiceBox
 @onready var speech_bubble = $SpeechBubble
+@onready var background: TextureRect = $Background
+@onready var char_port_main: Sprite2D = $CharacterPortraitMain
 
 var dialogue: Array = []
 var current_index: int = 0
+var character_map: Dictionary[StringName, CharacterResource] = {}
 
 var chunk_list: Array = []
 var chunk_index: int = 0
@@ -15,9 +22,42 @@ var current_choice_entry: Dictionary = {}
 var flags := {}
 
 func _ready():
+	if dialog_scene_data:
+		apply_scene_resource(dialog_scene_data)
+	else:
+		push_warning("No DialogSceneResource assigned.")
+
 	choice_box.choice_selected.connect(choose)
-	load_dialogue("res://Characters/Bitalgut/dialogue/bitalgut_intro.json")
 	show_next_line()
+
+
+func apply_scene_resource(data: DialogSceneResource) -> void:
+	# Background
+	$Background.texture = data.background_texture
+
+	# Music
+	if data.music:
+		$MusicPlayer.stream = data.music
+		$MusicPlayer.play()
+
+	# Ambience
+	if data.ambience:
+		$AmbiencePlayer.stream = data.ambience
+		$AmbiencePlayer.play()
+
+	# Flags
+	for flag_name in data.flags_set_on_start.keys():
+		flags[flag_name] = data.flags_set_on_start[flag_name]
+
+	# Character map (convert array to dictionary)
+	character_map.clear()
+	for entry in data.characters:
+		if entry is CharacterEntry:
+			character_map[entry.id] = entry.character_resource
+
+	# Load dialogue
+	load_dialogue(data.dialogue_path)
+
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and !choice_box.visible and waiting_for_input:
@@ -35,7 +75,7 @@ func load_dialogue(path: String):
 
 		# ✅ Start with the first entry immediately
 		current_index = 0
-		chunk_list = parse_dialog_chunks(dialogue[0].text)
+		chunk_list = parser.parse_dialog_chunks(dialogue[0]["text"])
 		chunk_index = 0
 		show_next_line()
 	else:
@@ -102,7 +142,7 @@ func show_next_line():
 			return
 
 		"npc":
-			chunk_list = parse_dialog_chunks(entry.text)
+			chunk_list = parser.parse_dialog_chunks(entry["text"])
 			chunk_index = 0
 			begin_entry_chunks()
 			return
@@ -149,7 +189,7 @@ func choose(index: int):
 				show_next_line()
 
 			"npc":
-				chunk_list = parse_dialog_chunks(new_entry.text)
+				chunk_list = parser.parse_dialog_chunks(new_entry["text"])
 				chunk_index = 0
 				show_next_line()
 
@@ -165,28 +205,6 @@ func choose(index: int):
 	else:
 		print("❌ Next ID not found in dialogue.")
 
-func parse_dialog_chunks(text: String) -> Array:
-	var chunks: Array = []
-	var regex = RegEx.new()
-	regex.compile(r'"(.*?)"')
-	var matches = regex.search_all(text)
-	var last_index = 0
-
-	for match in matches:
-		var narration = text.substr(last_index, match.get_start() - last_index).strip_edges()
-		if narration != "":
-			chunks.append({ "type": "narration", "text": narration })
-
-		var quote = match.get_string(1)
-		chunks.append({ "type": "speech", "text": quote })
-
-		last_index = match.get_end()
-
-	var tail = text.substr(last_index).strip_edges()
-	if tail != "":
-		chunks.append({ "type": "narration", "text": tail })
-
-	return chunks
 
 func _find_entry_index_by_id(id: String) -> int:
 	for i in dialogue.size():
@@ -194,13 +212,16 @@ func _find_entry_index_by_id(id: String) -> int:
 			return i
 	return -1
 
+
 func handle_command(cmd: String):
 	match cmd:
 		"clear_all":
 			clear_dialog()
 		"SHOW_PORTRAIT":
-			print("🧑‍🎨 [Command Triggered] SHOW_PORTRAIT")
-			# Handle additional UI/animation here
+			show_character_portrait(dialogue[current_index].name)
+		"HIDE_PORTRAIT":
+			hide_character_portrait()
+
 
 func clear_dialog():
 	narration_box.set_text("")
@@ -208,13 +229,40 @@ func clear_dialog():
 	narration_box.hide()
 	speech_bubble.hide()
 
+
+func show_character_portrait(name: String):
+	var character = character_map.get(name)
+	if character and character.portrait:
+		char_port_main.texture = character.portrait
+		char_port_main.modulate.a = 0.0 # start transparent
+		char_port_main.show()
+
+		var tween := create_tween()
+		tween.tween_property(char_port_main, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	else:
+		print("❌ No character or portrait found for:", name)
+
+
+func hide_character_portrait():
+	if char_port_main.visible:
+		var tween := create_tween()
+		tween.tween_property(char_port_main, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		await tween.finished
+		speech_bubble.hide()
+		char_port_main.hide()
+
+
 func show_speech_bubble(text: String, speaker: String):
-	print("[🗨️ Speech Bubble] ", speaker, ": ", text)
-	var speaker_colors = {
-		"Bitalgut": Color.html("6deecc"),
-	}
-	var color = speaker_colors.get(speaker, Color.WHITE)
-	speech_bubble.set_text(text, color)
+	var char_res: CharacterResource = character_map.get(speaker, null)
+	if char_res:
+		speech_bubble.set_text(
+			text,
+			char_res.color,
+			char_res.speech_bubble_color,
+			char_res.speech_bubble_font
+		)
+	else:
+		speech_bubble.set_text(text)
 
 func begin_entry_chunks():
 	if chunk_list.size() > 0:

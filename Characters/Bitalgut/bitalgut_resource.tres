@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://dbi8cn6fh0e4o"]
+
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="1_m2yjv"]
+[ext_resource type="Texture2D" uid="uid://cy4ls78tvm7yo" path="res://Assets/Sprites/Characters/bitalgut_base.png" id="1_qwycp"]
+
+[resource]
+script = ExtResource("1_m2yjv")
+name = &"Bitalgut"
+display_name = "Bitalgut"
+portrait = ExtResource("1_qwycp")
+color = Color(0.369499, 0.750278, 0.589775, 1)
+speech_bubble_color = Color(0.00392157, 0.0980392, 0.141176, 1)
+stats = {}
+default_flags = {}
+metadata/_custom_type_script = "uid://dqihe2ny7afn"

@@ -13,13 +13,27 @@ func _ready():
 	update_box_size()
 
 
-func set_text(text: String, color: Color = Color.WHITE) -> void:
+func set_text(text: String, text_color: Color = Color.WHITE, bubble_color: Color = Color.DIM_GRAY, font_override: Font = null) -> void:
 	label.bbcode_enabled = true
 	label.clear()
-	label.push_color(color)
+
+	# Font override (optional)
+	if font_override:
+		label.add_theme_font_override("normal_font", font_override)
+
+	# Text color override
+	label.push_color(text_color)
 	label.append_text(text)
-	label.pop() # closes the color tag
+	label.pop()
+
 	await get_tree().process_frame
+
+	# Bubble background color override
+	if panel.has_theme_stylebox("panel"):
+		var stylebox = panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
+		stylebox.bg_color = bubble_color
+		panel.add_theme_stylebox_override("panel", stylebox)
+
 	update_box_size()
 	animate_floaty_drift()
 
