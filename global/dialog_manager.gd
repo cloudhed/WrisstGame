@@ -64,11 +64,12 @@ func apply_scene_resource(data: DialogSceneResource) -> void:
 
 
 func _input(event):
+	if GameUI.is_ui_open():
+		return  # block dialog from responding while UI is open
+
 	if event.is_action_pressed("ui_accept") and !choice_box.visible and waiting_for_input:
 		waiting_for_input = false
 		show_next_line()
-		print("→ Chunks left:", chunk_list.size() - chunk_index)
-		print("→ Current index:", current_index)
 
 func load_dialogue(path: String):
 	var file = FileAccess.open(path, FileAccess.READ)

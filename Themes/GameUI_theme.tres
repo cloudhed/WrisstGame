@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b83wp6l46xi84"]
+
+[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="1_a53mh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a53mh"]
+bg_color = Color(0, 0, 0, 0.588235)
+
+[resource]
+default_font = ExtResource("1_a53mh")
+default_font_size = 16
+Panel/styles/panel = SubResource("StyleBoxFlat_a53mh")
