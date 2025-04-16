@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://bh5fpfamwy0ct"]
+
+[ext_resource type="Script" uid="uid://bjf6b1p05ub8o" path="res://global/dialog_manager.gd" id="1_q2h70"]
+[ext_resource type="Resource" uid="uid://dtar7g2x5j77k" path="res://Narrative/bitalgut_01_firstmeeting.tres" id="2_6w2xp"]
+[ext_resource type="PackedScene" uid="uid://bgkpmtmspfop4" path="res://Scenes/UI/narration_box.tscn" id="2_fvo3m"]
+[ext_resource type="PackedScene" uid="uid://c33yygdd0xpkd" path="res://Scenes/UI/speech_bubble.tscn" id="2_i24h7"]
+[ext_resource type="Texture2D" uid="uid://bdd5p34m8m7o1" path="res://Assets/Backgrounds/CombatBGDefault.png" id="3_6w2xp"]
+[ext_resource type="PackedScene" uid="uid://dot6fkkrthtyc" path="res://Scenes/UI/choice_box.tscn" id="3_aa73e"]
+[ext_resource type="Theme" uid="uid://bq6onie4e1pjk" path="res://Themes/narrative_theme.tres" id="3_i24h7"]
+[ext_resource type="Script" uid="uid://bii1koy5ss3sq" path="res://Narrative/dialog_line_spawner.gd" id="5_8y4ma"]
+
+[node name="DialogScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q2h70")
+dialog_scene_data = ExtResource("2_6w2xp")
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+texture = ExtResource("3_6w2xp")
+expand_mode = 2
+flip_h = true
+
+[node name="CharacterPortraitMain" type="Sprite2D" parent="."]
+position = Vector2(1000, 417)
+scale = Vector2(0.8, 0.8)
+
+[node name="DialogLineSpawner" type="Control" parent="." node_paths=PackedStringArray("narration_container", "speech_container")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_8y4ma")
+narration_container = NodePath("MarginContainer/HBoxContainer/NarrationStack")
+speech_container = NodePath("MarginContainer/HBoxContainer/SpeechStack")
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogLineSpawner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogLineSpawner/MarginContainer"]
+layout_mode = 2
+
+[node name="NarrationStack" type="VBoxContainer" parent="DialogLineSpawner/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="SpeechStack" type="VBoxContainer" parent="DialogLineSpawner/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 2
+
+[node name="SpeechBubble" parent="." instance=ExtResource("2_i24h7")]
+visible = false
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 937.0
+offset_top = 180.0
+offset_right = 937.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="NarrationBox" parent="." instance=ExtResource("2_fvo3m")]
+visible = false
+layout_mode = 2
+offset_right = 100.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ChoicePanel" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 138)
+layout_mode = 0
+offset_top = 582.0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme = ExtResource("3_i24h7")
+color = Color(0, 0, 0, 0.196078)
+
+[node name="ChoiceBox" parent="." instance=ExtResource("3_aa73e")]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 582.0
+offset_right = 1615.0
+offset_bottom = 720.0

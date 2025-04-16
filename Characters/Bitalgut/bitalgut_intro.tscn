@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bh5fpfamwy0ct"]
+[gd_scene load_steps=11 format=3 uid="uid://bh5fpfamwy0ct"]
 
 [ext_resource type="Script" uid="uid://bjf6b1p05ub8o" path="res://global/dialog_manager.gd" id="1_q2h70"]
 [ext_resource type="Resource" uid="uid://dtar7g2x5j77k" path="res://Narrative/bitalgut_01_firstmeeting.tres" id="2_6w2xp"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bdd5p34m8m7o1" path="res://Assets/Backgrounds/CombatBGDefault.png" id="3_6w2xp"]
 [ext_resource type="PackedScene" uid="uid://dot6fkkrthtyc" path="res://Scenes/UI/choice_box.tscn" id="3_aa73e"]
 [ext_resource type="Theme" uid="uid://bq6onie4e1pjk" path="res://Themes/narrative_theme.tres" id="3_i24h7"]
+[ext_resource type="Texture2D" uid="uid://c5inpmy7ph07" path="res://Assets/Sprites/Particles/particle_sphere_med.png" id="4_8y4ma"]
+[ext_resource type="Texture2D" uid="uid://bgsx4b11orhww" path="res://Assets/Sprites/Particles/particle_round_large.png" id="4_mxheu"]
 [ext_resource type="Script" uid="uid://bii1koy5ss3sq" path="res://Narrative/dialog_line_spawner.gd" id="5_8y4ma"]
 
 [node name="DialogScene" type="Control"]
@@ -24,23 +26,46 @@ custom_minimum_size = Vector2(1280, 720)
 layout_mode = 0
 texture = ExtResource("3_6w2xp")
 expand_mode = 2
-flip_h = true
 
 [node name="CharacterPortraitMain" type="Sprite2D" parent="."]
-position = Vector2(1000, 417)
+light_mask = 3
+position = Vector2(1000, 720)
 scale = Vector2(0.8, 0.8)
+offset = Vector2(0, -384)
 
-[node name="DialogLineSpawner" type="Control" parent="." node_paths=PackedStringArray("container")]
-layout_mode = 1
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.39726, 0.610735, 0.804556, 1)
+
+[node name="SceneLight" type="PointLight2D" parent="."]
+position = Vector2(434, 461)
+color = Color(0.740623, 0.549335, 0.279605, 1)
+energy = 1.5
+texture = ExtResource("4_mxheu")
+texture_scale = 2.04
+
+[node name="CharacterLight" type="PointLight2D" parent="."]
+position = Vector2(825, 365)
+color = Color(0.788815, 0.356876, 0.0489577, 1)
+energy = 1.5
+range_item_cull_mask = 2
+texture = ExtResource("4_8y4ma")
+texture_scale = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogLineSpawner" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("narration_container", "speech_container")]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("5_8y4ma")
-container = NodePath("MarginContainer/LineStack")
+narration_container = NodePath("MarginContainer/HBoxContainer/NarrationStack")
+speech_container = NodePath("MarginContainer/HBoxContainer/SpeechStack")
 
-[node name="MarginContainer" type="MarginContainer" parent="DialogLineSpawner"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DialogLineSpawner"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,20 +73,35 @@ anchor_bottom = 1.0
 offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="LineStack" type="VBoxContainer" parent="DialogLineSpawner/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DialogLineSpawner/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NarrationStack" type="VBoxContainer" parent="CanvasLayer/DialogLineSpawner/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme_override_constants/separation = 24
 
-[node name="SpeechBubble" parent="." instance=ExtResource("2_i24h7")]
-visible = false
+[node name="SpeechStack" type="VBoxContainer" parent="CanvasLayer/DialogLineSpawner/MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.25
+mouse_filter = 2
+theme_override_constants/separation = 24
+alignment = 2
+
+[node name="SpeechBubble" parent="CanvasLayer" instance=ExtResource("2_i24h7")]
+visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 937.0
@@ -72,25 +112,21 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 
-[node name="NarrationBox" parent="." instance=ExtResource("2_fvo3m")]
+[node name="NarrationBox" parent="CanvasLayer" instance=ExtResource("2_fvo3m")]
 visible = false
-layout_mode = 2
-offset_right = 100.0
-offset_bottom = 40.0
+offset_bottom = 60.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="ChoicePanel" type="ColorRect" parent="."]
+[node name="ChoicePanel" type="ColorRect" parent="CanvasLayer"]
 custom_minimum_size = Vector2(0, 138)
-layout_mode = 0
 offset_top = 582.0
 offset_right = 1280.0
 offset_bottom = 720.0
 theme = ExtResource("3_i24h7")
 color = Color(0, 0, 0, 0.196078)
 
-[node name="ChoiceBox" parent="." instance=ExtResource("3_aa73e")]
-layout_mode = 0
+[node name="ChoiceBox" parent="CanvasLayer" instance=ExtResource("3_aa73e")]
 offset_left = 335.0
 offset_top = 582.0
 offset_right = 1615.0

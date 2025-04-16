@@ -1,0 +1,78 @@
+[
+	{
+		"id": "furrow_enter_01",
+		"type": "narration",
+		"text": "You push aside the heavy orange-dyed, and somewhat scented, curtain that hangs over the doorway and step inside The Furrow. The air feels warm and humid, carrying faint notes of herbal oil and heated stone. The interior is dimly lit, with alcoves separated by faded fabric curtains lining one side. A single desk occupies the front, cluttered with small bottles, folded linens, and a stack of wax tablets.",
+		"next": "furrow_enter_02"
+	},
+	{
+		"id": "furrow_enter_02",
+		"type": "narration",
+		"text": "Behind the desk, a young Monster woman sits on a stool slightly too tall for her. She's hunched over, scribbling something onto a wax tablet, her chin resting heavily on her palm. Her fur is golden-brown, and two slender teal horns rise gently from her forehead, reflecting the lantern's soft glow. A fluffy tail curls loosely around the stool's legs, occasionally twitching.",
+		"next": "furrow_sign",
+		"clear": false
+	},
+	{
+		"id": "furrow_sign",
+		"type": "npc",
+		"name": "Sign",
+		"text": "A green wax sign on the counter reads: \"- 8 öre for a short rest[p][p]- 32 öre for a relaxing massage\"",
+		"next": "furrow_sign_choice"
+	},
+	{
+		"id": "furrow_sign_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Inspect the room]",
+				"next": "furrow_inspect_pick_01"
+			},
+			{
+				"text": "> [Talk to the Monster woman]",
+				"next": "furrow_talk_pick"
+			},
+			{
+				"text": "> [Leave the way you came in]",
+				"next": "furrow_leave_nocontact"
+			}
+		]
+	},
+	{
+		"id": "furrow_leave_nocontact",
+		"type": "narration",
+		"text": "You give the room a quick glance, before turning around.",
+		"clear": false,
+		"next": "furrow_leave_end"
+	},
+	{
+		"id": "furrow_inspect_pick_01",
+		"type": "narration",
+		"text": "The lighting is dim and flickering, provided by a single glass-shielded lantern mounted above the front desk and a few recessed glowstones tucked into wall-cracks. To the right, three treatment alcoves line the wall, each curtained off with faded cloth dyed in uneven purples and browns. The curtains are stained from repeated washing and hang slightly askew. One sways gently as if recently used.[nb]A small wooden cart sits nearby, stocked with folded towels, small clay bottles, and a basin of warm water. The scent in the room is layered—heat-treated oil, faint herbs, stone soap, and something slightly animal beneath it all.",
+		"next": "furrow_inspect_pick_02"
+	},
+	{
+		"id": "furrow_inspect_pick_02",
+		"type": "narration",
+		"text": "A row of low wooden benches hugs the left-hand wall. One is covered in a folded coat and satchel, neither belonging to you. A cracked ceramic cup sits forgotten on the floor beneath it, dried leaves stuck to its rim. The desk in front of you is cluttered but organized—wax tablets stacked in a tray, a few rolls of coiled twine, a chipped inkstone, and a short reed-cut stylus. A small bell, half-collapsed from denting, rests near the edge.",
+		"next": "furrow_sign_choice"
+	},
+	{
+		"id": "furrow_talk_pick",
+		"type": "npc",
+		"name": "Minttärä",
+		"text": "You clear your throat. The Monster woman does not look up from her wax tablet. \"Welcome to The Furrow. Short rest is eight öre, full massage is thirty-two.\"The tone in her voice makes it sound like she's said these lines a thousand times before.\"If you're bleeding or covered in something sticky, please let me know now—cleaning costs extra.\""
+	},
+	{
+		"id": "mintarra_show_portrait",
+		"type": "command",
+		"name": "Minttärä",
+		"command": "SHOW_PORTRAIT",
+		"clear": false
+	},
+	{
+		"id": "furrow_leave_end",
+		"type": "narration",
+		"text": "As the scented curtain swings closed behind you, you find yourself standing in the street outside again.",
+		"end": true
+	}
+]

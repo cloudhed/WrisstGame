@@ -1,99 +1,99 @@
 [
   {
-    "id": "intro",
-    "type": "npc",
-    "name": "Bitalgut",
+    "id": "btlgt_intro",
+    "type": "narration",
     "text": "You wake to heat on your cheek and a sharp tug in your chest. Your muscles ache. Your mouth tastes like copper and salt. The sand is gone—there's moss beneath your back now, damp and cool."
   },
   {
-    "id": "intro_choice",
+    "id": "btlgt_intro_choice",
     "type": "choice",
     "options": [
       {
         "text": "> You groan and roll onto your side.",
-        "next": "fire_scene"
+        "next": "btlgt_fire_scene"
       }
     ]
   },
   {
-    "id": "fire_scene",
+    "id": "btlgt_fire_scene",
     "type": "narration",
     "text": "A fire crackles ahead of you."
   },
   {
-    "id": "fire_scene_2",
-    "type": "narration",
-    "text": "It's a large fire. Too large for one person. Orange light flickers against roots and low fog. Someone's speaking—casual, rhythmic, already mid-thought."
-  },
-  {
-    "id": "bitalgut_1",
-    "type": "npc",
+    "id": "btlgt_fire_scene_2",
+	"type": "npc",
     "name": "Bitalgut",
-    "text": "\"You ever see the lobe twitch like that before, [b]Bolk?[/b] Ucruss, I haven't. Not that close. Not with the core-light running all twitchy.\""
+    "text": "It's a large fire. Too large for one person. Orange light flickers against roots and low fog. Someone's speaking—casual, rhythmic, already mid-thought. \"You ever see the lobe twitch like that before, [b]Bolk?[/b] Ucruss, I haven't. Not that close. Not with the core-light running all twitchy.\""
   },
   {
-    "id": "bitalgut_scene",
+    "id": "btlgt_fire_scene_3",
     "type": "narration",
     "text": "A small figure squats beside the fire, knees spread, tail curled against his side. His skin glistens faintly—smooth, amphibian-dark, flecked with old scars or moss-stains. One hand grips a long walking stick jabbed into the dirt. The other stirs a steaming tin cup set atop a flat rock."
   },
   {
-    "id": "bitalgut_2",
+    "id": "btlgt_fire_scene_4",
     "type": "narration",
     "text": "He doesn't look at you. Just stares into the flames like they're talking back."
   },
   {
-    "id": "bitalgut_3",
+    "id": "btlgt_teqqellon_01",
     "type": "npc",
     "name": "Bitalgut",
-    "text": "\"Teqqellon's a quiet one. Doesn't strike first unless it thinks you'll wriggle nice...\""
+    "text": "\"Teqqellon's a quiet one. Doesn't strike first unless it thinks you'll wriggle nice...\"",
+	"clear": true
   },
   {
-    "id": "bitalgut_4",
+    "id": "btlgt_teqqellon_02",
     "type": "npc",
     "name": "Bitalgut",
     "text": "\"And you?\""
   },
   {
-    "id": "show_portrait",
+    "id": "btlgt_show_portrait",
     "type": "command",
     "name": "Bitalgut",
-    "command": "SHOW_PORTRAIT"
+    "command": "SHOW_PORTRAIT",
+	"clear": true
   },
   {
-    "id": "bitalgut_5",
+    "id": "btlgt_teqqellon_03",
     "type": "npc",
     "name": "Bitalgut",
     "text": "\"You wriggled.\""
   },
   {
-    "id": "end_scene",
+    "id": "btlgt_teqqellon_04",
     "type": "narration",
-    "text": "His eyes flick your way. Wide. Too wide. Reflecting the fire like polished stone."
+    "text": "His eyes flick your way. Wide. Too wide. Reflecting the fire like polished stone.",
+	"clear": true
   },
   {
-    "id": "bitalgut_stands",
+    "id": "btlgt_exposition_01",
     "type": "narration",
     "text": "Then he stands. Quick, balanced. Pads over and drops a bundle of patchwork leather onto your chest. Bits of barkplate, snapped cord, a few straps that don’t match."
   },
   {
-    "id": "bitalgut_gift",
+    "id": "btlgt_gift_01",
     "type": "npc",
     "name": "Bitalgut",
-    "text": "\"Wear that. Better than nothing. Probably smells like swamp and vinegar, but it’s tougher than your skin.\""
+    "text": "\"Wear that. Better than nothing. Probably smells like swamp and vinegar, but it’s tougher than your skin.\"",
+	"clear": true
   },
   {
-    "id": "bitalgut_sits_again",
-    "type": "narration",
-    "text": "He flicks a stray twig off your shoulder, then turns back to the fire. Settles into the same squat. Stir. Sip. Humming now."
+    "id": "btlgt_exposition_02",
+    "type": "npc",
+	"name": "Bitalgut",
+    "text": "He flicks a stray twig off your shoulder, then turns back to the fire and settles into the same squat. \"Stir. Sip. Humming now.\" He seems to narrate to himself."
   },
   {
-    "id": "bitalgut_name",
+    "id": "btlgt_exposition_03",
     "type": "npc",
     "name": "Bitalgut",
+	"clear": true,
     "text": "\"I’m [b]Bitalgut.[/b][p]You can call me that. Or not.[p]I’ll call you [b]Bolk[/b] regardless. Means [b]‘idiot’[/b] in Old Mire. Good fit, yis?\""
   },
   {
-    "id": "bitalgut_invite",
+    "id": "btlgt_exposition_04",
     "type": "npc",
     "name": "Bitalgut",
     "text": "\"You got questions? Ask ‘em while you’ve got breath. I don’t hang around long.[p]Things get curious. And I don’t like being noticed by the wrong sort.\""
@@ -116,7 +116,7 @@
     "id": "where_am_i",
     "type": "npc",
     "name": "Bitalgut",
-  "text": "\"Edge of Deprot. Near the hollow-rift where the Meehp don’t go.You fell in a bad way.[p]I dragged you in a better one.\""
+  "text": "\"Edge of Deprot. Near the hollow-rift where the Meehp don’t go. You fell in a bad way.[p]I dragged you in a better one.\""
   },
   {
     "id": "where_am_i_2",
@@ -124,8 +124,17 @@
     "name": "Bitalgut",
   "text": "\"Didn’t loot you. Could’ve.[p]Should’ve, maybe.[p]But I’m curious, yis. Not cruel.\"",
     "set_flag": "heard_where",
-    "next": "question_choices"
+	"next": "check_if_both_questions"
   },
+  {
+  "id": "check_if_both_questions",
+  "type": "logic",
+  "check_flags": {
+    "flags": ["heard_where", "heard_what"],
+    "on_success": "bitalgut_sips",
+    "on_fail": "question_choices"
+	}
+  },	
   {
     "id": "what_are_you",
     "type": "npc",
@@ -138,7 +147,7 @@
     "name": "Bitalgut",
     "text": "\"Folk’ve called me skioad, runt-thing, bogfetch, crawlkin, leather-nodder...[p]but mostly I’m just [b]Bitalgut.[/b][p]And you don’t know what you are yet, so don’t start flinging questions you can’t handle backwards.\"",
     "set_flag": "heard_what",
-    "next": "bitalgut_sips"
+    "next": "check_if_both_questions"
   },
   {
     "id": "bitalgut_sips",
@@ -175,7 +184,8 @@
     "id": "bitalgut_monsterfolk",
     "type": "npc",
     "name": "Bitalgut",
-    "text": "He stirs the fire again and yawns. \"We’re [b]Monsterfolk.[/b] Talkers. Builders. Thinkers, most days. Some of us have markets. Some of us have rules. Most of us don’t even eat the ones we dislike. And that’s more than you can say for a rill.\""
+    "text": "He stirs the fire again and yawns. \"We’re [b]Monsterfolk.[/b] Talkers. Builders. Thinkers, most days. Some of us have markets. Some of us have rules. Most of us don’t even eat the ones we dislike. And that’s more than you can say for a rill.\"",
+	"clear": true
   },
   {
     "id": "bitalgut_name_warning",
@@ -249,7 +259,7 @@
     "id": "bitalgut_logbook",
     "type": "npc",
     "name": "Bitalgut",
-    "text": "Bitalgut reaches into his large backpack and rummages around for a bit. \"Here. Took it off a dead courier. Pages are clean. Start writing, [b]Bolk[/b]. What you see, what you fight, what you fuck—put it down.\" He blinks. \"This place doesn’t forgive forgettin’. You call it what you like. I called it the [b]Logbook[/b].  Holds your memory when you don’t.\""
+    "text": "Bitalgut reaches into his large backpack and rummages around for a bit. \"Here. Took it off a dead courier. Pages are clean. Start writing, [b]Bolk[/b]. What you see, what you fight, what you hug — put it down.\" He blinks. \"This place doesn’t forgive forgettin’. You call it what you like. I called it the [b]Logbook[/b].  Holds your memory when you don’t.\""
   },
   {
     "id": "logbook_received",
@@ -259,12 +269,14 @@
   {
     "id": "logbook_tracking",
     "type": "narration",
-    "text": "Your Logbook now tracks: Current Objectives (Quests), Known Monsterfolk (Filled automatically after encounters or dialogue), Bestiary (Empty—for now)"
+    "text": "Your Logbook now tracks: Current Objectives (Quests), Known Monsterfolk (Filled automatically after encounters or dialogue), Bestiary (Empty—for now)",
+	"clear": true
   },
   {
     "id": "logbook_entry_bitalgut",
     "type": "narration",
-    "text": "[b][Entry added: Bitalgut – Fringe-Aligned Scavenger. See Monsterfolk Log.][/b]"
+    "text": "[b][Entry added: Bitalgut – Fringe-Aligned Scavenger. See Monsterfolk Log.][/b]",
+	"clear": true
   },
   {
     "id": "bitalgut_departure",
@@ -276,11 +288,13 @@
     "id": "bitalgut_hide",
     "type": "command",
     "name": "Bitalgut",
-    "command": "HIDE_PORTRAIT"
+    "command": "HIDE_PORTRAIT",
+	"clear": true
   },
   {
     "id": "bitalgut_exits",
     "type": "narration",
-    "text": "And then he’s gone. The fire crackles alone."
+    "text": "And then he’s gone. The fire crackles alone.",
+	"clear": true
   }
 ]

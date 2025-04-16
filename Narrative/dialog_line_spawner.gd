@@ -1,13 +1,15 @@
 class_name DialogLineSpawner
 extends Control
 
-@export var container: VBoxContainer
+@export var narration_container: VBoxContainer
+@export var speech_container: VBoxContainer
 
 var active_lines: Array[Control] = []
 
+
 func spawn_chunk(chunk: Dictionary, speaker: String, character_map: Dictionary) -> void:
-	print("💥 Spawning chunk of type:", chunk.get("type", "???"))
-	print("CHUNK DATA:", chunk)
+#	print("💥 Spawning chunk of type:", chunk.get("type", "???"))
+#	print("CHUNK DATA:", chunk)
 
 	var node: Control
 	var chunk_type: String = chunk.get("type", "")
@@ -18,14 +20,8 @@ func spawn_chunk(chunk: Dictionary, speaker: String, character_map: Dictionary) 
 			var speech_scene = preload("res://Scenes/UI/speech_bubble.tscn")
 			node = speech_scene.instantiate()
 
-			if node == null:
-				push_error("❌ SpeechBubble instancing failed!")
-				return
-			else:
-				print("✅ SpeechBubble node instanced")
-
-			if not node.has_method("set_text"):
-				push_error("❌ SpeechBubble is missing `set_text()` method!")
+			if node == null or not node.has_method("set_text"):
+				push_error("❌ Failed to instantiate or setup SpeechBubble!")
 				return
 
 			var character: CharacterResource = character_map.get(speaker, null)
@@ -34,71 +30,71 @@ func spawn_chunk(chunk: Dictionary, speaker: String, character_map: Dictionary) 
 					chunk_text,
 					character.color,
 					character.speech_bubble_color,
-					character.speech_bubble_font
+					character.speech_bubble_font,
+					#character.speech_bubble_font_size,
+					#character.speech_bubble_style
 				)
 			else:
 				node.set_text(chunk_text)
+
+			if speech_container == null:
+				push_error("❌ speech_container is not assigned!")
+				return
+
+			speech_container.add_child(node)
+			active_lines.append(node)
+#			print("📤 SpeechBubble added to speech_container")
 
 		"narration":
 			var narration_scene = preload("res://Scenes/UI/narration_box.tscn")
 			node = narration_scene.instantiate()
 
-			if node == null:
-				push_error("❌ NarrationBox instancing failed!")
-				return
-			else:
-				print("✅ NarrationBox node instanced")
-
-			if not node.has_method("set_text"):
-				push_error("❌ NarrationBox is missing `set_text()` method!")
+			if node == null or not node.has_method("set_text"):
+				push_error("❌ Failed to instantiate or setup NarrationBox!")
 				return
 
 			node.set_text(chunk_text)
+
+			if narration_container == null:
+				push_error("❌ narration_container is not assigned!")
+				return
+
+			narration_container.add_child(node)
+			active_lines.append(node)
+#			print("📖 NarrationBox added to narration_container")
 
 		_:
 			push_warning("⚠️ Unknown chunk type: " + str(chunk_type))
 			return
 
-	# Final step: Add to container if valid
-	if node:
-		if container == null:
-			push_error("❌ container (VBoxContainer) is null! Cannot add node.")
-			return
-		else:
-			print("📦 Container is valid:", container.name)
+	# Finalize node after it's added
+	await node.ready
+	node.visible = true
 
-		# Add before awaiting ready
-		container.add_child(node)
-		await node.ready
+	# Debug output
+#	print("🧭 Spawned node:", node.name)
+#	print("🗺️ Global position:", node.global_position)
+#	print("📐 Node size:", node.size)
 
-		node.visible = true
+#	if node.has_node("Panel"):
+#		var panel = node.get_node("Panel")
+#		print("🪟 Panel size:", panel.size)
+#		if panel.has_node("Text"):
+#			print("📝 Label size:", panel.get_node("Text").size)
+#		elif panel.has_node("BubbleText"):
+#			print("📝 Label size:", panel.get_node("BubbleText").size)
 
-		print("🧭 Spawned node:", node.name)
-		print("📦 Container now has:", container.get_child_count(), "children")
-		print("🗺️ Global position:", node.global_position)
-		print("📐 Node size:", node.size)
-
-		if node.has_node("Panel"):
-			var panel = node.get_node("Panel")
-			print("🪟 Panel size:", panel.size)
-			if panel.has_node("Text"):
-				print("📝 Label size:", panel.get_node("Text").size)
-			elif panel.has_node("BubbleText"):
-				print("📝 Label size:", panel.get_node("BubbleText").size)
-
-		node.queue_redraw()
-		container.queue_redraw()
-		container.queue_sort()
-
-		active_lines.append(node)
-		print("✅ Chunk added to container")
-	else:
-		push_error("❌ Node was never instantiated.")
+	node.queue_redraw()
+	active_lines.append(node)
+#	print("✅ Chunk added to correct container")
 
 
 func clear_lines():
-	print("🧹 Clearing", active_lines.size(), "active lines")
+#	print("🧹 Clearing", active_lines.size(), "active lines")
 	for node in active_lines:
-		if node:
+		if node and is_instance_valid(node):
+#			print("❌ Removing:", node.name, node)
 			node.queue_free()
+#		else:
+#			print("⚠️ Skipped invalid or already-freed node:", node)
 	active_lines.clear()

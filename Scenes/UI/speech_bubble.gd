@@ -14,12 +14,15 @@ extends Control
 
 
 func set_text(
+	
 	text: String,
 	text_color: Color = Color.WHITE,
 	bubble_color: Color = Color.DIM_GRAY,
 	font_override: Font = null
 ) -> void:
-
+	
+	visible = false  # Hide while sizing
+	
 	var panel: Panel = get_node("BubbleWrapper/Panel")
 	var label: RichTextLabel = panel.get_node("BubbleText")
 
@@ -79,6 +82,7 @@ func update_box_size(panel: Panel, label: RichTextLabel) -> void:
 
 	# Apply label offset
 	label.position = Vector2(padding, padding)
+	visible = true
 
 	# Force resize up the chain
 	var wrapper = get_node("BubbleWrapper") if has_node("BubbleWrapper") else null

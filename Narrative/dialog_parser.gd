@@ -11,7 +11,9 @@ func parse_dialog_chunks(text: String) -> Array:
 	for match in matches:
 		var narration = text.substr(last_index, match.get_start() - last_index).strip_edges()
 		if narration != "":
-			chunks.append({ "type": "narration", "text": narration })
+			var narration_parts = narration.split("[nb]")
+			for part in narration_parts:
+				chunks.append({ "type": "narration", "text": part.strip_edges() })
 
 		var quote = match.get_string(1)
 		chunks.append({ "type": "speech", "text": quote })
@@ -20,6 +22,9 @@ func parse_dialog_chunks(text: String) -> Array:
 
 	var tail = text.substr(last_index).strip_edges()
 	if tail != "":
-		chunks.append({ "type": "narration", "text": tail })
-
+		var tail_parts = tail.split("[nb]")
+		for part in tail_parts:
+			chunks.append({ "type": "narration", "text": part.strip_edges() })
+	
+	print("🧩 Parsed chunks:", chunks)
 	return chunks

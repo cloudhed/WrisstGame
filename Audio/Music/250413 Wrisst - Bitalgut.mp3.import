@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://eysphlhhq5tn"
+path="res://.godot/imported/250413 Wrisst - Bitalgut.mp3-95e1f3aeadcf36f65189763364c479aa.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/250413 Wrisst - Bitalgut.mp3"
+dest_files=["res://.godot/imported/250413 Wrisst - Bitalgut.mp3-95e1f3aeadcf36f65189763364c479aa.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=140.0
+beat_count=192
+bar_beats=4
