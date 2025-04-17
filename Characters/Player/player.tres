@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://cnwrtxw8tktmj"]
 
 [ext_resource type="Script" uid="uid://do8l63rpnsjld" path="res://custom_resources/character_stats.gd" id="1_60o6r"]
-[ext_resource type="Resource" uid="uid://b62ypd3ru20s" path="res://Characters/Player/player_starting_deck.tres" id="2_3nh1y"]
+[ext_resource type="Resource" uid="uid://b62ypd3ru20s" path="res://Characters/Player/tiles/player_starting_deck.tres" id="2_3nh1y"]
 
 [resource]
 script = ExtResource("1_60o6r")

@@ -17,19 +17,19 @@
 		"type": "npc",
 		"name": "Sign",
 		"text": "A green wax sign on the counter reads: \"- 8 öre for a short rest[p]- 32 öre for a relaxing massage\"",
-		"next": "furrow_sign_choice_new"
+		"next": "furrow_sign_choice"
 	},
 	{
-		"id": "furrow_sign_choice_new",
+		"id": "furrow_sign_choice",
 		"type": "choice",
 		"options": [
 			{
 				"text": "> [Inspect the room]",
-				"next": "furrow_inspect_pick_new"
+				"next": "furrow_inspect_pick"
 			},
 			{
 				"text": "> [Talk to the Monster woman]",
-				"next": "furrow_talk_pick_new"
+				"next": "furrow_talk_pick"
 			},
 			{
 				"text": "> [Leave the way you came in]",
@@ -38,25 +38,7 @@
 		]
 	},
 	{
-		"id": "furrow_sign_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Inspect the Furrow]",
-				"next": "furrow_inspect_pick"
-			},
-			{
-				"text": "> [Talk to Minttärä]",
-				"next": "furrow_talk_pick"
-			},
-			{
-				"text": "> [Leave]",
-				"next": "furrow_leave_end"
-			}
-		]
-	},
-	{
-		"id": "furrow_inspect_pick_new",
+		"id": "furrow_inspect_pick",
 		"type": "narration",
 		"text": "The lighting is dim and flickering, provided by a single glass-shielded lantern mounted above the front desk and a few recessed glowstones tucked into wall-cracks. To the right, three treatment alcoves line the wall, each curtained off with faded cloth dyed in uneven purples and browns. The curtains are stained from repeated washing and hang slightly askew. One sways gently as if recently used.[nb]A small wooden cart sits nearby, stocked with folded towels, small clay bottles, and a basin of warm water. The scent in the room is layered—heat-treated oil, faint herbs, stone soap, and something slightly animal beneath it all.",
 		"next": "furrow_inspect_pick_02"
@@ -68,7 +50,7 @@
 		"next": "furrow_sign_choice"
 	},
 	{
-		"id": "furrow_talk_pick_new",
+		"id": "furrow_talk_pick",
 		"type": "npc",
 		"name": "Minttärä",
 		"text": "You clear your throat. The Monster woman does not look up from her wax tablet. \"Welcome to The Furrow. Short rest is eight öre, full massage is thirty-two.\" Her voice is droning on like she's repeated these words a thousand times before.\"Table seven’s dry. If you’re bleeding or leaking, you’ll need to tell me now. Boss hates cleanup.\"",
@@ -157,11 +139,13 @@
 		"options": [
 			{
 				"text": "> Pay 8 öre for a short rest",
-				"next": "furrow_service_shortrest_check"
+				"next": "furrow_service_shortrest",
+				"set_flag": "furrow_paid_shortrest_check"
 			},
 			{
 				"text": "> Pay 32 öre for a relaxing massage",
-				"next": "furrow_service_massage_check"
+				"next": "furrow_service_massage",
+				"set_flag": "furrow_paid_massage_check"
 			},
 			{
 				"text": "> \"Maybe later.\"",
@@ -174,38 +158,12 @@
 		"type": "logic",
 		"logic_type": "condition",
 		"condition": {
-			"currency": "ore",
-			"amount": 8.0,
-			"deduct": true,
-			"on_success": "furrow_service_shortrest",
-			"on_fail": "furrow_denied_shortrest"
-		}
-	},
-	{
-		"id": "furrow_service_massage_check",
-		"type": "logic",
-		"logic_type": "condition",
-		"condition": {
-			"currency": "ore",
-			"amount": 32.0,
-			"deduct": true,
-			"on_success": "furrow_service_massage",
-			"on_fail": "furrow_denied_massage"
-		}
-	},
-	{
-		"id": "furrow_denied_shortrest",
-		"type": "npc",
-		"name": "Minttärä",
-		"text": "\"Mmm... looks like your pouch’s light. I’d let you nap for free, but then my boss might nap me through a wall.\"",
-		"next": "furrow_sign_choice"
-	},
-	{
-		"id": "furrow_denied_massage",
-		"type": "npc",
-		"name": "Minttärä",
-		"text": "\"Thirty-two öre, stranger. My boss would have my paws if I even hinted at giving you a discount. Which I won't.[p]Come back when you’ve got a clink or two.\"",
-		"next": "furrow_sign_choice"
+		  "currency": "ore",
+		  "amount": 8,
+		  "deduct": true,
+		  "on_success": "furrow_service_shortrest",
+		  "on_fail": "lacking_ore_for_shortrest"
+		  }
 	},
 	{
 		"id": "furrow_service_shortrest",
@@ -213,12 +171,11 @@
 		"name": "Minttärä",
 		"text": "You hand over 8 öre. Minttärä points to a low bench in the back corner.\"Feet up. Head back. No talking unless you snore.\"You settle into the corner seat. The bench is warm to the touch.[nb]Time passes quietly.",
 		"set_flag": "furrow_paid_shortrest",
-		"end": false
+		"end": true
 	},
 	{
 		"id": "furrow_service_massage",
-		"type": "npc",
-		"name": "Minttärä",
+		"type": "narration",
 		"text": "You hand over 32 öre. Minttärä gives you a brief nod, already moving toward the alcoves.\"Table Seven. Drop the gear, keep the towel. I’ll be right there.\"",
 		"command": "remove_ore 32",
 		"next": "furrow_service_massage_start"

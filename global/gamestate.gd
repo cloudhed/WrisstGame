@@ -23,36 +23,45 @@ var npc_reputation: Dictionary = {}
 # Here be the money-stuff!
 func add_ore(amount: int) -> void:
 	player_ore += amount
+	print("💰 Öre +%d → Total: %d" % [amount, player_ore])
 	emit_signal("money_changed", "ore", player_ore)
 
 func remove_ore(amount: int) -> bool:
 	if amount > player_ore:
+		print("❌ Tried to remove %d öre, but only %d available" % [amount, player_ore])
 		return false
 	player_ore -= amount
+	print("💸 Öre -%d → Total: %d" % [amount, player_ore])
 	emit_signal("money_changed", "ore", player_ore)
 	return true
 
 
 func add_crowns(amount: int) -> void:
 	player_crowns += amount
+	print("💰 Crowns +%d → Total: %d" % [amount, player_crowns])
 	emit_signal("money_changed", "crowns", player_crowns)
 
 func remove_crowns(amount: int) -> bool:
 	if amount > player_crowns:
+		print("❌ Tried to remove %d crowns, but only %d available" % [amount, player_crowns])
 		return false
 	player_crowns -= amount
+	print("💸 Crowns -%d → Total: %d" % [amount, player_crowns])
 	emit_signal("money_changed", "crowns", player_crowns)
 	return true
 
 
 func add_drots(amount: int) -> void:
 	player_drots += amount
+	print("💰 Drots +%d → Total: %d" % [amount, player_drots])
 	emit_signal("money_changed", "drots", player_drots)
 
 func remove_drots(amount: int) -> bool:
 	if amount > player_drots:
+		print("❌ Tried to remove %d drots, but only %d available" % [amount, player_drots])
 		return false
 	player_drots -= amount
+	print("💸 Drots -%d → Total: %d" % [amount, player_drots])
 	emit_signal("money_changed", "drots", player_drots)
 	return true
 
@@ -61,13 +70,16 @@ func remove_drots(amount: int) -> bool:
 # Inventory management
 func add_item(item) -> void:
 	player_inventory.append(item)
+	print("📦 Added item:", item)
 	emit_signal("inventory_changed", "add", item)
 
 func remove_item(item) -> bool:
 	if player_inventory.has(item):
 		player_inventory.erase(item)
+		print("🗑️ Removed item:", item)
 		emit_signal("inventory_changed", "remove", item)
 		return true
+	print("❌ Tried to remove item not in inventory:", item)
 	return false
 
 func has_item(item) -> bool:
@@ -80,6 +92,8 @@ func add_reputation(npc_id: String, amount: int) -> void:
 	var old = npc_reputation.get(npc_id, 0)
 	var nw = old + amount
 	npc_reputation[npc_id] = nw
+	print("Reputation increased by %d" % [nw])
+	print("Or is it: Reputation increased by %d" % [amount])
 	emit_signal("reputation_changed", npc_id, nw)
 
 func remove_reputation(npc_id: String, amount: int) -> bool:
@@ -88,6 +102,7 @@ func remove_reputation(npc_id: String, amount: int) -> bool:
 		return false
 	var nw = old - amount
 	npc_reputation[npc_id] = nw
+	print("Reputation decreased by %d" % [nw])
 	emit_signal("reputation_changed", npc_id, nw)
 	return true
 

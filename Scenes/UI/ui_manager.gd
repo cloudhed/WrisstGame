@@ -6,7 +6,16 @@ extends Control
 # Cache node paths for easier access:
 @onready var inv_screen                    = $UIContainer/InventoryScreen
 @onready var item_list                     = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer/ItemList    # adjust if you used a different container
+
+
 @onready var inventory_list: VBoxContainer = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList
+@onready var current_ore_label: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentOreLabel
+@onready var current_crowns: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentCrownsLabel
+@onready var current_drots: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentDrotsLabel
+@onready var current_tiles_amount: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentTilesLabel
+@onready var current_tiles_list: ItemList = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentTilesList
+
+
 @onready var popup_panel                   = $UIContainer/NotificationPopup
 @onready var popup_label                   = $UIContainer/NotificationPopup/Label
 @onready var hide_timer: Timer             = $UIContainer/NotificationPopup/HideTimer
@@ -67,6 +76,11 @@ func _refresh_inventory():
 	# Add each item in GameState.player_inventory
 	for item in GameState.player_inventory:
 		item_list.add_item(str(item))  # or item.name if it’s an object
+	
+		# Update currency labels
+	current_ore_label.text = "Öre: %d" % GameState.player_ore
+	current_crowns.text = "Crowns: %d" % GameState.player_crowns
+	current_drots.text = "Drots: %d" % GameState.player_drots
 
 
 # Called whenever add_item or remove_item happens
@@ -102,6 +116,14 @@ func _on_money_changed(currency: String, new_amount: int) -> void:
 	# Capitalize the currency name and show the new total
 	var pretty = "%s: %d" % [currency.capitalize(), new_amount]
 	notify(pretty)
+
+	match currency:
+		"ore":
+			current_ore_label.text = "Ore: %d" % new_amount
+		"crowns":
+			current_crowns.text = "Crowns: %d" % new_amount
+		"drots":
+			current_drots.text = "Drots: %d" % new_amount
 
 func _on_reputation_changed(npc_id: String, new_value: int) -> void:
 	# Show rep with the NPC by name

@@ -99,7 +99,7 @@ theme_override_constants/separation = 24
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-theme_override_constants/separation = 34
+theme_override_constants/separation = 14
 alignment = 2
 
 [node name="SpeechBubble" parent="CanvasLayer" instance=ExtResource("7_fer38")]

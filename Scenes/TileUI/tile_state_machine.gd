@@ -25,11 +25,11 @@ func on_gui_input(event: InputEvent) -> void:
 	if current_state:
 		current_state.on_gui_input(event)
 		
-func on_mouse_entered(event: InputEvent) -> void:
+func _on_mouse_entered(event: InputEvent) -> void:
 	if current_state:
 		current_state.on_mouse_entered()
 		
-func on_mouse_exited(event: InputEvent) -> void:
+func _on_mouse_exited(event: InputEvent) -> void:
 	if current_state:
 		current_state.on_mouse_exited()
 
