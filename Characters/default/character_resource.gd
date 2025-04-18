@@ -3,7 +3,12 @@ extends Resource
 
 @export var name: StringName = ""
 @export var display_name: String = ""
-@export var portrait: Texture2D
+@export_group("Sprites")
+#@export var portrait: Texture2D
+
+@export var portrait: PortraitDeck = PortraitDeck.new()
+
+@export_group("Speech")
 @export var voice_clip: AudioStream
 @export var color: Color = Color.WHITE
 @export var speech_bubble_color: Color = Color.html("242424c8")

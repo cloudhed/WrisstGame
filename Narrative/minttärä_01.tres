@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=14 format=3 uid="uid://dnsn2llylpk6v"]
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=15 format=3 uid="uid://dnsn2llylpk6v"]
 
-[ext_resource type="Texture2D" uid="uid://cvu8jpg0dhlyk" path="res://Assets/Backgrounds/EnvInt/env_int_furrow.jpg" id="1_6adca"]
+[ext_resource type="Texture2D" uid="uid://c421eli328k23" path="res://Assets/Backgrounds/EnvInt/env_int_furrow.png" id="1_bsbb7"]
 [ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="2_lqaee"]
 [ext_resource type="Resource" uid="uid://ci0n5huurah7d" path="res://Characters/Minttärä/minttärä_resource.tres" id="3_bsbb7"]
 [ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="4_3bcjy"]
 [ext_resource type="FontFile" uid="uid://djxswkeeywbsp" path="res://Assets/Fonts/Holidays Homework.ttf" id="5_sx7hl"]
 [ext_resource type="Texture2D" uid="uid://cnuviw40mwts6" path="res://Assets/UI/ui backgrounds/jade_wax_tile.png" id="6_lqaee"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="6_xgeds"]
+[ext_resource type="Resource" uid="uid://cfjs0xhqw6wb5" path="res://Narrative/SlideDecks/slidedeck_furrow_minttärä_debug_massage/slidedeck_furrow_minttärä_debug_massage.tres" id="8_bsbb7"]
 
 [sub_resource type="Resource" id="Resource_3etik"]
 script = ExtResource("2_lqaee")
@@ -47,10 +48,11 @@ metadata/_custom_type_script = "uid://cgc7i24b66gt8"
 
 [resource]
 script = ExtResource("6_xgeds")
-background_texture = ExtResource("1_6adca")
+background_texture = ExtResource("1_bsbb7")
 music = SubResource("AudioStreamInteractive_mg2vs")
 dialogue_path = "res://Characters/Minttärä/minttärä_intro.json"
 characters = Array[ExtResource("2_lqaee")]([SubResource("Resource_3etik"), SubResource("Resource_20i03")])
+slide_deck = ExtResource("8_bsbb7")
 flags_required = Array[String]([])
 flags_set_on_start = {}
 metadata/_custom_type_script = "uid://5m151tkuttgt"

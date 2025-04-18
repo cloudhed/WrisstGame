@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://ci0n5huurah7d"]
 
-[ext_resource type="Texture2D" uid="uid://daskre0gej4pg" path="res://Assets/Sprites/Characters/minttärä_base.png" id="1_hxxve"]
+[ext_resource type="Resource" uid="uid://do3hffxalmafu" path="res://Characters/Minttärä/Minttärä_portraits/minttärä_portrait_deck.tres" id="1_hxxve"]
 [ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="2_jwyta"]
 
 [resource]
@@ -10,6 +10,7 @@ display_name = "Minttärä"
 portrait = ExtResource("1_hxxve")
 color = Color(0.922991, 0.550172, 0.441057, 1)
 speech_bubble_color = Color(0.14, 0.0056, 0.07952, 0.784314)
+speech_bubble_font_size = 18
 stats = {}
 default_flags = {}
 metadata/_custom_type_script = "uid://dqihe2ny7afn"

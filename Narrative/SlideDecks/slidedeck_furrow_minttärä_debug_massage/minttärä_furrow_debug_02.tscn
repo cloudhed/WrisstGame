@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ceokg52sheyg5"]
+
+[ext_resource type="Texture2D" uid="uid://b07exnmqv1e03" path="res://Narrative/SlideDecks/slidedeck_furrow_minttärä_debug_massage/minttärä_debug02.png" id="1_0afku"]
+[ext_resource type="Texture2D" uid="uid://r8wiumxww7nh" path="res://Narrative/SlideDecks/slidedeck_furrow_minttärä_debug_massage/slide_bg.png" id="1_3nmws"]
+[ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="3_6hsvl"]
+[ext_resource type="Material" uid="uid://bxntkmfcekw4v" path="res://Assets/Sprites/Particles/minttärä_furrow_debug_01_particleProcessMaterial.tres" id="4_ucm67"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dwqi5"]
+blend_mode = 1
+
+[node name="MinttäräFurrowDebug02" type="Node2D"]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.667, 0.667)
+texture = ExtResource("1_3nmws")
+centered = false
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+scale = Vector2(0.667, 0.667)
+texture = ExtResource("1_0afku")
+centered = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_dwqi5")
+position = Vector2(635.43, 359.455)
+scale = Vector2(6.89, 4.075)
+amount = 30
+texture = ExtResource("3_6hsvl")
+lifetime = 6.0
+preprocess = 12.0
+randomness = 0.5
+process_material = ExtResource("4_ucm67")

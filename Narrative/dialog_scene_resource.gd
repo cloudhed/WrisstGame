@@ -8,6 +8,7 @@ extends Resource
 @export_file("*.json") var dialogue_path: String
 
 @export var characters: Array[CharacterEntry] = []
+@export var slide_deck: SlideDeck
 
 @export var flags_required: Array[String] = []
 @export var flags_set_on_start: Dictionary = {}

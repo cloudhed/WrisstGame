@@ -52,7 +52,7 @@
     "id": "btlgt_show_portrait",
     "type": "command",
     "name": "Bitalgut",
-    "command": "SHOW_PORTRAIT",
+    "command": "@SHOW_PORTRAIT base",
 	"clear": true
   },
   {
@@ -264,7 +264,7 @@
   {
     "id": "logbook_received",
     "type": "command",
-    "command": "RECEIVE_LOGBOOK"
+    "command": "@RECEIVE_LOGBOOK"
   },
   {
     "id": "logbook_tracking",
@@ -288,7 +288,7 @@
     "id": "bitalgut_hide",
     "type": "command",
     "name": "Bitalgut",
-    "command": "HIDE_PORTRAIT",
+    "command": "@HIDE_PORTRAIT",
 	"clear": true
   },
   {

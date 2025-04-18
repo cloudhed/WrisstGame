@@ -33,11 +33,12 @@ func parse_dialog_chunks(text: String) -> Array:
 func parse_inline_commands(text: String) -> Array:
 	var commands: Array = []
 	var pattern = RegEx.new()
-	pattern.compile(r"\[(.+?)\]")  # matches [add_ore 5], etc.
+	pattern.compile(r"\[@(.+?)\]")  # Match only [@COMMANDS]
+
 	var matches = pattern.search_all(text)
 
 	for match in matches:
-		var cmd = match.get_string(1)
-		commands.append(cmd)
+		var cmd = match.get_string(1).strip_edges()
+		commands.append("@" + cmd)
 
 	return commands

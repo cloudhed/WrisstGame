@@ -9,7 +9,7 @@
 [ext_resource type="Theme" uid="uid://bq6onie4e1pjk" path="res://Themes/narrative_theme.tres" id="3_i24h7"]
 [ext_resource type="Texture2D" uid="uid://c5inpmy7ph07" path="res://Assets/Sprites/Particles/particle_sphere_med.png" id="4_8y4ma"]
 [ext_resource type="Texture2D" uid="uid://bgsx4b11orhww" path="res://Assets/Sprites/Particles/particle_round_large.png" id="4_mxheu"]
-[ext_resource type="Script" uid="uid://bii1koy5ss3sq" path="res://Narrative/dialog_line_spawner.gd" id="5_8y4ma"]
+[ext_resource type="Script" path="res://Code/DialogCode/dialog_line_spawner.gd" id="5_8y4ma"]
 
 [node name="DialogScene" type="Control"]
 layout_mode = 3
