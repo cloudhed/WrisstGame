@@ -186,11 +186,11 @@
 		"logic_type": "condition",
 		"condition": {
 			"currency": "ore",
-			"amount": 8,
+			"amount": 8.0,
 			"deduct": true,
 			"on_success": "furrow_service_shortrest",
 			"on_fail": "furrow_denied_shortrest"
-			}
+		}
 	},
 	{
 		"id": "furrow_service_massage_check",
@@ -198,11 +198,11 @@
 		"logic_type": "condition",
 		"condition": {
 			"currency": "ore",
-			"amount": 32,
+			"amount": 32.0,
 			"deduct": true,
 			"on_success": "furrow_service_massage",
 			"on_fail": "furrow_denied_massage"
-			}
+		}
 	},
 	{
 		"id": "furrow_denied_shortrest",
@@ -317,7 +317,7 @@
 		"type": "command",
 		"command": "@HIDE_SCENE",
 		"clear": true,
-		"next": "furrow_sign_choice"
+		"next": "furrow_debug_post_clean"
 	},
 	{
 		"id": "furrow_debug_post_clean",

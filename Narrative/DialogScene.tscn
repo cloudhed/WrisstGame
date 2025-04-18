@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://xyxvn2yghvwa"]
+[gd_scene load_steps=11 format=3 uid="uid://xyxvn2yghvwa"]
 
 [ext_resource type="Script" uid="uid://bjf6b1p05ub8o" path="res://global/dialog_manager.gd" id="1_a8n6i"]
 [ext_resource type="Resource" uid="uid://dnsn2llylpk6v" path="res://Narrative/minttärä_01.tres" id="2_sdxh1"]
 [ext_resource type="Texture2D" uid="uid://bdd5p34m8m7o1" path="res://Assets/Backgrounds/CombatBGDefault.png" id="3_gaw0d"]
 [ext_resource type="Texture2D" uid="uid://bgsx4b11orhww" path="res://Assets/Sprites/Particles/particle_round_large.png" id="4_npc7l"]
-[ext_resource type="Texture2D" uid="uid://c5inpmy7ph07" path="res://Assets/Sprites/Particles/particle_sphere_med.png" id="5_n3268"]
 [ext_resource type="Texture2D" uid="uid://dq7yfdfo43jqc" path="res://Assets/Sprites/Characters/minttärä_portrait_base.png" id="5_svokt"]
 [ext_resource type="Script" path="res://Code/DialogCode/dialog_line_spawner.gd" id="6_l6df8"]
 [ext_resource type="PackedScene" uid="uid://c33yygdd0xpkd" path="res://Scenes/UI/speech_bubble.tscn" id="7_fer38"]
@@ -37,22 +36,24 @@ scale = Vector2(0.667, 0.667)
 texture = ExtResource("5_svokt")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.39726, 0.610735, 0.804556, 1)
 
 [node name="SceneLight" type="PointLight2D" parent="."]
 visible = false
-position = Vector2(434, 461)
+position = Vector2(719, 367)
 color = Color(0.740623, 0.549335, 0.279605, 1)
 energy = 1.5
 texture = ExtResource("4_npc7l")
 texture_scale = 2.04
 
 [node name="CharacterLight" type="PointLight2D" parent="."]
-position = Vector2(825, 365)
+visible = false
+position = Vector2(678, 365)
 color = Color(0.788815, 0.356876, 0.0489577, 1)
 energy = 1.5
 range_item_cull_mask = 2
-texture = ExtResource("5_n3268")
+texture = ExtResource("4_npc7l")
 offset = Vector2(103.02, 1.985)
 texture_scale = 2.0
 
