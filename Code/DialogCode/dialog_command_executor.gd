@@ -122,9 +122,8 @@ func _show_character_portrait(context: Dictionary) -> void:
 	fade_in.tween_property(char_port_main, "modulate:a", 1.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
-
 func _hide_character_portrait(context: Dictionary) -> void:
-	var char_port_main: Sprite2D = context.get("portrait_node")
+	var char_port_main: TextureRect = context.get("portrait_node")
 	if char_port_main and char_port_main.visible:
 		var tween: Tween = char_port_main.create_tween()
 		tween.tween_property(char_port_main, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
@@ -200,6 +199,9 @@ func _hide_scene(context: Dictionary) -> void:
 	var container: Node = context.get("slide_container")
 	if container:
 		queue_free_children(container)
+
+
+# === SOUND EFFECTS ===
 
 
 # === UTILITY ===

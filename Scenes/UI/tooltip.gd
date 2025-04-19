@@ -19,14 +19,42 @@ func _ready() -> void:
 	hide()
 
 
-func show_tooltip(icon: Texture, text: String, source: String) -> void:
+func show_tooltip(icon: Texture, text: String, source: String, tile_global_position: Vector2, tile_size: Vector2) -> void:
+	print("🖥️ ACTUAL screen size reported:", get_viewport().get_window().size)
 	is_visible = true
 	if tween:
 		tween.kill()
-	
+
 	tooltip_icon.texture = icon
 	tooltip_text_label.text = text
 	tooltip_source_label.text = source
+
+	var screen_size: Vector2 = get_viewport().get_window().size
+	var offset_x: float = 12.0
+	var margin_buffer: float = 24.0
+
+	# Default offset is to the right
+	var offset: Vector2 = Vector2(tile_size.x + offset_x, 0)
+	var tooltip_pos: Vector2 = tile_global_position + offset
+	tooltip_pos.y += (tile_size.y * 0.5) - (size.y * 0.5)
+
+	var tooltip_right_edge: float = tooltip_pos.x + size.x
+	var screen_right_limit: float = screen_size.x - margin_buffer
+
+
+	if tooltip_right_edge > screen_right_limit:
+		offset.x = -size.x - offset_x
+		tooltip_pos = tile_global_position + offset
+		tooltip_pos.y += (tile_size.y * 0.5) - (size.y * 0.5)
+		print("Flipping to LEFT")
+	else:
+		print("Staying on RIGHT")
+
+	print("Final tooltip position:", tooltip_pos)
+	print("[END DEBUG]\n")
+
+	global_position = tooltip_pos
+
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_callback(show)
 	tween.tween_property(self, "modulate", Color.WHITE, fade_seconds)

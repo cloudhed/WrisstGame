@@ -30,19 +30,12 @@ func on_mouse_entered() -> void:
 		return
 
 	set_particles_emitting(true)
-	
-	# SFX for ui sounds
 	SFXPlayer.play(ui_sound)
 
-	Events.tile_tooltip_requested.emit(tile_ui.tile.tooltip_icon, tile_ui.tile.tooltip_text, tile_ui.tile.tooltip_source_label)
-	
-	# Find tooltip node (must be in group "tooltip")
-	var tooltip := get_tree().get_first_node_in_group("tooltip")
-	if tooltip:
-		var tile_pos := tile_ui.global_position
-		var tile_size := tile_ui.size
-		var offset := Vector2(tile_size.x + 12, 0) # Move 12 pixels to the right of the tile
-		tooltip.global_position = tile_pos + offset
+	var tile_pos: Vector2 = tile_ui.global_position
+	var tile_size: Vector2 = tile_ui.size
+
+	Events.tile_tooltip_requested.emit(tile_ui.tile.tooltip_icon, tile_ui.tile.tooltip_text, tile_ui.tile.tooltip_source_label, tile_pos, tile_size)
 	
 func on_mouse_exited() -> void:
 	if not tile_ui.playable or tile_ui.disabled:

@@ -11,7 +11,7 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var arrow: Sprite2D = $CanvasLayer/Arrow
 #@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
-@onready var intent_ui: IntentUI = $CanvasLayer/IntentUI as IntentUI
+@onready var intent_ui: IntentUI = $IntentUI as IntentUI
 
 # Onready VFX
 @onready var lifesteal_vfx: GPUParticles2D = $ParticleVFX/LifestealVFX

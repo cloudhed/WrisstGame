@@ -28,7 +28,16 @@
   {
     "id": "btlgt_fire_scene_3",
     "type": "narration",
-    "text": "A small figure squats beside the fire, knees spread, tail curled against his side. His skin glistens faintly—smooth, amphibian-dark, flecked with old scars or moss-stains. One hand grips a long walking stick jabbed into the dirt. The other stirs a steaming tin cup set atop a flat rock."
+    "text": "A small figure squats beside the fire, knees spread, tail curled against his side. His skin glistens faintly—smooth, amphibian-dark, flecked with old scars or moss-stains. One hand grips a long walking stick jabbed into the dirt. The other stirs a steaming tin cup set atop a flat rock.",
+	"next": "btlgt_show_portrait_squat"
+  },
+  {
+    "id": "btlgt_show_portrait_squat",
+    "type": "command",
+    "name": "Bitalgut",
+    "command": "@SHOW_PORTRAIT fire_squat",
+	"clear": true,
+	"next": "btlgt_fire_scene_4"
   },
   {
     "id": "btlgt_fire_scene_4",
@@ -49,10 +58,10 @@
     "text": "\"And you?\""
   },
   {
-    "id": "btlgt_show_portrait",
+    "id": "btlgt_show_portrait_look",
     "type": "command",
     "name": "Bitalgut",
-    "command": "@SHOW_PORTRAIT base",
+    "command": "@SHOW_PORTRAIT fire_squat_look",
 	"clear": true
   },
   {
@@ -70,13 +79,20 @@
   {
     "id": "btlgt_exposition_01",
     "type": "narration",
-    "text": "Then he stands. Quick, balanced. Pads over and drops a bundle of patchwork leather onto your chest. Bits of barkplate, snapped cord, a few straps that don’t match."
+    "text": "Then he stands. He pads over and drops a flask in the damp grass beside you.[p]The liquid within looks somewhat like amber-colored tar."
+  },
+  {
+    "id": "btlgt_show_portrait_stand",
+    "type": "command",
+    "name": "Bitalgut",
+    "command": "@SHOW_PORTRAIT fire_base.",
+	"next": "btlgt_gift_01"
   },
   {
     "id": "btlgt_gift_01",
     "type": "npc",
     "name": "Bitalgut",
-    "text": "\"Wear that. Better than nothing. Probably smells like swamp and vinegar, but it’s tougher than your skin.\"",
+    "text": "\"Drink that. Better than nothing. Probably smells like swamp and soot, but it's gonna make your skin tougher.\"\"Maybe not tougher. But it might accustom your body a bit better to this world and it's [b]creetchs.[b]\"",
 	"clear": true
   },
   {
@@ -86,11 +102,19 @@
     "text": "He flicks a stray twig off your shoulder, then turns back to the fire and settles into the same squat. \"Stir. Sip. Humming now.\" He seems to narrate to himself."
   },
   {
+    "id": "btlgt_show_portrait_squat_talk",
+    "type": "command",
+    "name": "Bitalgut",
+    "command": "@SHOW_PORTRAIT fire_squat",
+	"clear": true,
+	"next": "btlgt_exposition_03"
+  },
+  {
     "id": "btlgt_exposition_03",
     "type": "npc",
     "name": "Bitalgut",
 	"clear": true,
-    "text": "\"I’m [b]Bitalgut.[/b][p]You can call me that. Or not.[p]I’ll call you [b]Bolk[/b] regardless. Means [b]‘idiot’[/b] in Old Mire. Good fit, yis?\""
+    "text": "\"I’m [b]Bitalgut.[/b][p]You can call me that. Or not.[p]I’ll call you [b]Bolk[/b] regardless. Means [b]‘idiot’[/b] in Old Mire. Yis, good fit.\""
   },
   {
     "id": "btlgt_exposition_04",
@@ -116,13 +140,13 @@
     "id": "where_am_i",
     "type": "npc",
     "name": "Bitalgut",
-  "text": "\"Edge of Deprot. Near the hollow-rift where the Meehp don’t go. You fell in a bad way.[p]I dragged you in a better one.\""
+    "text": "\"Edge of Deprot. Near the hollow-rift where the Meehp don’t go. You fell in a bad way.[p]I dragged you in a better one.\""
   },
   {
     "id": "where_am_i_2",
     "type": "npc",
     "name": "Bitalgut",
-  "text": "\"Didn’t loot you. Could’ve.[p]Should’ve, maybe.[p]But I’m curious, yis. Not cruel.\"",
+    "text": "\"Didn’t loot you. Could’ve.[p]Should’ve, maybe.[p]But I’m curious, yis. Not cruel.\"",
     "set_flag": "heard_where",
 	"next": "check_if_both_questions"
   },
@@ -264,7 +288,7 @@
   {
     "id": "logbook_received",
     "type": "command",
-    "command": "@RECEIVE_LOGBOOK"
+    "command": "@add_item logbook"
   },
   {
     "id": "logbook_tracking",
@@ -279,6 +303,13 @@
 	"clear": true
   },
   {
+    "id": "btlgt_show_portrait_stand_again",
+    "type": "command",
+    "name": "Bitalgut",
+    "command": "@SHOW_PORTRAIT fire_base",
+	"next": "bitalgut_departure"
+  },
+  {
     "id": "bitalgut_departure",
     "type": "npc",
     "name": "Bitalgut",
@@ -289,12 +320,13 @@
     "type": "command",
     "name": "Bitalgut",
     "command": "@HIDE_PORTRAIT",
-	"clear": true
+	"clear": true,
+	"next": "bitalgut_exits"
   },
   {
     "id": "bitalgut_exits",
     "type": "narration",
     "text": "And then he’s gone. The fire crackles alone.",
-	"clear": true
+	"end": true
   }
 ]

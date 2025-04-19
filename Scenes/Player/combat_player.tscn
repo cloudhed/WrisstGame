@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://by7co2c71yp2n"]
 
 [ext_resource type="Script" uid="uid://jdvrbblc1rew" path="res://Scenes/Player/combat_player.gd" id="1_duq1a"]
-[ext_resource type="Texture2D" uid="uid://biy4cpx0hmoxl" path="res://Assets/Sprites/combat_player_ikea.png" id="2_b84tv"]
+[ext_resource type="Texture2D" uid="uid://nygmvi43m6bm" path="res://Assets/Sprites/combat_player_blur.png" id="2_b84tv"]
 
 [node name="CombatPlayer" type="Node2D" groups=["player"]]
 script = ExtResource("1_duq1a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.9, 1.9)
 texture = ExtResource("2_b84tv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

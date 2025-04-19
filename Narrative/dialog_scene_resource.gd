@@ -4,6 +4,7 @@ extends Resource
 @export var background_texture: Texture2D
 @export var music: AudioStream
 @export var ambience: AudioStream
+@export var sfx_library: Dictionary = {}
 
 @export_file("*.json") var dialogue_path: String
 

@@ -68,4 +68,4 @@ chance_weight = 0.3
 script = ExtResource("5_ewsoj")
 intent = SubResource("Resource_0cdi0")
 sound = ExtResource("8_6yoig")
-message_template = "[b]{source_name}[/b] in its paniced state turns all of its debris attached to its back into a shield. It prepares to block for [b][color=blue]{amount}[/color][/b] damage!"
+message_template = "[b]{source_name}[/b] in its paniced state turns all of its debris attached to its back into a shield. It will block for [b][color=blue]{amount}[/color][/b] damage!"

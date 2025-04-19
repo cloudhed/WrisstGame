@@ -1,7 +1,7 @@
 class_name NarrationBox
 extends Control
 
-@export var max_width: float = 600.0
+@export var max_width: float = 850.0
 @export var padding: float = 12.0
 
 @export var gust_range_x: float = 6.0

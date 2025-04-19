@@ -1,27 +1,28 @@
 extends Control
 
-# We assume GameState is your autoload singleton
-@onready var inventory_screen: Panel       = $UIContainer/InventoryScreen
-
 # Cache node paths for easier access:
-@onready var inv_screen                    = $UIContainer/InventoryScreen
-@onready var item_list                     = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer/ItemList    # adjust if you used a different container
-
-
+@onready var inv_screen: Panel = $UIContainer/InventoryScreen
+#LEFT STIDE
+@onready var item_list: ItemList = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer/MarginContainer/ItemList
+#RIGHT STIDE
 @onready var inventory_list: VBoxContainer = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList
+
 @onready var current_ore_label: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentOreLabel
 @onready var current_crowns: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentCrownsLabel
 @onready var current_drots: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentDrotsLabel
 @onready var current_tiles_amount: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentTilesLabel
-@onready var current_tiles_list: ItemList = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentTilesList
+@onready var current_tiles_list: ItemList = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/CurrentTilesList
 
 
-@onready var popup_panel                   = $UIContainer/NotificationPopup
-@onready var popup_label                   = $UIContainer/NotificationPopup/Label
-@onready var hide_timer: Timer             = $UIContainer/NotificationPopup/HideTimer
+@onready var popup_panel                   = $UIContainer/VBoxContainer/HBoxContainer/NotificationPopup
+@onready var popup_label                   = $UIContainer/VBoxContainer/HBoxContainer/NotificationPopup/Label
+@onready var hide_timer: Timer             = $UIContainer/VBoxContainer/HBoxContainer/NotificationPopup/HideTimer
 
 
 func _ready():
+	inv_screen.visible = false
+	popup_panel.visible = false
+	
 	print("▶️ UIManager is running in:", self.name)
 	print("Popup panel:", popup_panel)
 	print("HideTimer:", hide_timer)
@@ -61,7 +62,7 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func is_ui_open() -> bool:
-	return inv_screen.visible or popup_panel.visible
+	return inv_screen.visible #or popup_panel.visible
 # ──────────────────────────────────────────────────
 # Inventory methods
 

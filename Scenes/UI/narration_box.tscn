@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgkpmtmspfop4"]
+[gd_scene load_steps=4 format=3 uid="uid://bgkpmtmspfop4"]
 
 [ext_resource type="Theme" uid="uid://bq6onie4e1pjk" path="res://Themes/narrative_theme.tres" id="1_b6tns"]
 [ext_resource type="Script" uid="uid://kcgfuo01bp82" path="res://Scenes/UI/narration_box.gd" id="1_mp87l"]
+[ext_resource type="Theme" uid="uid://by10iex6r6prc" path="res://Themes/narrative_choice_theme.tres" id="3_o380u"]
 
 [node name="NarrationBox" type="Control"]
-custom_minimum_size = Vector2(600, 90)
+custom_minimum_size = Vector2(850, 90)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 600.0
+offset_right = 850.0
 offset_bottom = 90.0
 theme = ExtResource("1_b6tns")
 script = ExtResource("1_mp87l")
@@ -15,18 +16,11 @@ padding = 14.0
 
 [node name="BoxWrapper" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 280.0
-offset_top = -17.0
-offset_right = -280.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 45.825
+offset_bottom = 48.645
 
 [node name="Panel" type="Panel" parent="BoxWrapper"]
+custom_minimum_size = Vector2(27.825, 20.645)
 layout_mode = 2
 
 [node name="Text" type="RichTextLabel" parent="BoxWrapper/Panel"]
@@ -34,7 +28,7 @@ clip_contents = false
 layout_mode = 0
 offset_right = 1.0
 offset_bottom = 29.41
-theme = ExtResource("1_b6tns")
+theme = ExtResource("3_o380u")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false

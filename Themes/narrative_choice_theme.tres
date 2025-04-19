@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://by10iex6r6prc"]
+
+[ext_resource type="FontFile" uid="uid://q7ie3cje7c1y" path="res://Assets/Fonts/HyperlegibleNext-ExtraBold.ttf" id="1_al1vr"]
+[ext_resource type="FontFile" uid="uid://s6rw5y3v44oc" path="res://Assets/Fonts/HyperlegibleNext-ExtraBoldItalic.ttf" id="2_rygg5"]
+[ext_resource type="FontFile" uid="uid://bwmsf3im26hm3" path="res://Assets/Fonts/HyperlegibleNext-Italic.ttf" id="3_0l16j"]
+[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="4_v875f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skubk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsm7u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vucu7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jry3a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfhyy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfhyy"]
+bg_color = Color(0, 0, 0, 0.588235)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dq4dg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skkow"]
+bg_color = Color(0, 0, 0, 0.247059)
+draw_center = false
+expand_margin_left = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itvog"]
+bg_color = Color(0.421141, 0.212102, 0.507426, 1)
+
+[resource]
+default_font_size = 18
+Button/colors/font_focus_color = Color(0.620317, 0.026731, 0.0258182, 1)
+Button/colors/font_hover_color = Color(0.351131, 0.00124986, 0.810978, 1)
+Button/colors/font_hover_pressed_color = Color(0.480299, 0.273354, 0.132355, 1)
+Button/colors/font_pressed_color = Color(0.480299, 0.273354, 0.132355, 1)
+Button/fonts/font = ExtResource("1_al1vr")
+Button/styles/disabled = SubResource("StyleBoxEmpty_skubk")
+Button/styles/focus = SubResource("StyleBoxEmpty_wsm7u")
+Button/styles/hover = SubResource("StyleBoxEmpty_vucu7")
+Button/styles/normal = SubResource("StyleBoxEmpty_jry3a")
+Button/styles/pressed = SubResource("StyleBoxEmpty_lfhyy")
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 12
+MarginContainer/constants/margin_right = 6
+MarginContainer/constants/margin_top = 12
+Panel/styles/panel = SubResource("StyleBoxFlat_lfhyy")
+RichTextLabel/colors/font_background_color = Color(0.48, 0, 0, 1)
+RichTextLabel/fonts/bold_font = ExtResource("1_al1vr")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_rygg5")
+RichTextLabel/fonts/italics_font = ExtResource("3_0l16j")
+RichTextLabel/fonts/normal_font = ExtResource("4_v875f")
+RichTextLabel/styles/background = SubResource("StyleBoxEmpty_dq4dg")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_skkow")
+VBoxContainer/styles/normal = SubResource("StyleBoxFlat_itvog")

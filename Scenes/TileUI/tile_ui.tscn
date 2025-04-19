@@ -52,6 +52,7 @@ curve = SubResource("Curve_ikwie")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q7ap7"]
 particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.67, 1.67, 1)
 emission_shape = 4
 emission_point_texture = SubResource("ImageTexture_x0i70")
 emission_point_count = 2686
@@ -77,6 +78,7 @@ gradient = SubResource("Gradient_x0i70")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4mhft"]
 particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.333, 1.333, 1)
 emission_shape = 4
 emission_point_texture = SubResource("ImageTexture_x0i70")
 emission_point_count = 2686
@@ -95,18 +97,14 @@ alpha_curve = SubResource("CurveTexture_anfrt")
 texture = ExtResource("3_75cnn")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imaao"]
-size = Vector2(96, 96)
+size = Vector2(128, 128)
 
 [node name="TileUI" type="Control"]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1184.0
-offset_bottom = -624.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
 theme = ExtResource("1_imaao")
 script = ExtResource("1_753lx")
 
@@ -114,7 +112,7 @@ script = ExtResource("1_753lx")
 
 [node name="GPUParticles2D_HoverBG" type="GPUParticles2D" parent="TileVFX"]
 material = SubResource("CanvasItemMaterial_6l571")
-position = Vector2(48, 48)
+position = Vector2(64, 64)
 scale = Vector2(0.25, 0.25)
 amount = 128
 texture = ExtResource("4_anfrt")
@@ -122,7 +120,7 @@ process_material = SubResource("ParticleProcessMaterial_q7ap7")
 
 [node name="GPUParticles2D_HoverFG" type="GPUParticles2D" parent="TileVFX"]
 material = SubResource("CanvasItemMaterial_45mda")
-position = Vector2(48, 48)
+position = Vector2(64, 64)
 scale = Vector2(0.25, 0.25)
 amount = 512
 texture = ExtResource("4_anfrt")
@@ -130,7 +128,6 @@ lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_4mhft")
 
 [node name="Background2" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,10 +136,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_75cnn")
-expand_mode = 1
+expand_mode = 2
 stretch_mode = 5
 
 [node name="Background" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,8 +153,8 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_75cnn")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1
-offset_right = 96.0
-offset_bottom = 96.0
+offset_right = 128.0
+offset_bottom = 128.0
 mouse_filter = 2
 texture = ExtResource("3_xljor")
 expand_mode = 1
@@ -171,12 +169,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_imaao")
 theme_override_colors/font_color = Color(0.635294, 0.427451, 0.207843, 1)
-theme_override_colors/font_shadow_color = Color(0.55, 0.317075, 0.1265, 0.160784)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_fonts/font = ExtResource("5_4mhft")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 64
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -202,7 +197,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
-position = Vector2(48, 48)
+position = Vector2(64, 64)
 shape = SubResource("RectangleShape2D_imaao")
 debug_color = Color(0, 0.595, 0.7, 0.0784314)
 

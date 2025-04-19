@@ -1,7 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://d2pnx4ne5hfgc"]
 
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scenes/Combat/combat.gd" id="1_2n3pb"]
-[ext_resource type="Script" uid="uid://bbhhymceklnpi" path="res://Code/combat_camera.gd" id="1_fe60u"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Code/CombatCode/combat_visual.gd" id="1_yt1oa"]
 [ext_resource type="AudioStream" uid="uid://bi40x2y8sqyu4" path="res://Audio/Music/MusicCombat/140713 ShadowsOfSaturn.mp3" id="3_2n3pb"]
 [ext_resource type="Texture2D" uid="uid://dh50otyhtmjfi" path="res://Assets/Backgrounds/CombatBGForest.png" id="3_avwh6"]
@@ -17,19 +16,20 @@
 [ext_resource type="Script" uid="uid://dj5k02ip2tecw" path="res://Scenes/Enemy/enemy_handler.gd" id="12_e8ln5"]
 [ext_resource type="Script" uid="uid://ced4ekxl4k3l6" path="res://Code/CombatCode/combat_ui.gd" id="12_umvpd"]
 [ext_resource type="PackedScene" uid="uid://by7co2c71yp2n" path="res://Scenes/Player/combat_player.tscn" id="13_tmuf1"]
-[ext_resource type="Resource" uid="uid://cqg2t3bu607tf" path="res://enemies/teqqellon/teqqellon_enemy.tres" id="13_umvpd"]
 [ext_resource type="Resource" uid="uid://cnwrtxw8tktmj" path="res://Characters/Player/player.tres" id="14_5kjvk"]
 [ext_resource type="Script" uid="uid://bvman73aw84wc" path="res://Scenes/Player/player_handler.gd" id="14_r5ubg"]
+[ext_resource type="Resource" uid="uid://6snc8lofjfxy" path="res://enemies/meehp_f/meehp_f_enemy.tres" id="14_ycqky"]
 [ext_resource type="Script" uid="uid://bku5mw8nd76qj" path="res://Scenes/UI/hand.gd" id="15_50454"]
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="16_ceo1n"]
 [ext_resource type="PackedScene" uid="uid://coqflun3u7db" path="res://Scenes/UI/stamina_ui.tscn" id="22_3cqtn"]
 [ext_resource type="PackedScene" uid="uid://qvnuroju8vc0" path="res://Scenes/UI/stats_ui.tscn" id="22_5g3cp"]
 [ext_resource type="Script" uid="uid://c6imkn3dt8fdm" path="res://Scenes/UI/combat_text.gd" id="23_2n3pb"]
 [ext_resource type="PackedScene" uid="uid://cnuyeim88cd6g" path="res://Scenes/UI/tooltip.tscn" id="25_e8ln5"]
+[ext_resource type="PackedScene" uid="uid://dot6fkkrthtyc" path="res://Scenes/UI/choice_box.tscn" id="26_2n3pb"]
 [ext_resource type="Script" uid="uid://djg7l81sp5m6x" path="res://Scenes/UI/red_flash.gd" id="26_5g3cp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8ge6"]
-size = Vector2(844, 542)
+size = Vector2(1409.48, 905.14)
 
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_2n3pb")
@@ -50,38 +50,22 @@ metadata/_edit_lock_ = true
 [node name="CanvasModulate" type="CanvasModulate" parent="CombatVisual"]
 
 [node name="CombatBGSprite" type="Sprite2D" parent="CombatVisual"]
-position = Vector2(640, 360)
-scale = Vector2(0.67, 0.67)
 texture = ExtResource("4_5g3cp")
-
-[node name="CombatCamera" type="Camera2D" parent="."]
-position = Vector2(640, 360)
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
-script = ExtResource("1_fe60u")
-metadata/_edit_lock_ = true
+centered = false
 
 [node name="TileDropArea" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileDropArea"]
-position = Vector2(858, 271)
+position = Vector2(1216, 452.02)
 shape = SubResource("RectangleShape2D_f8ge6")
 debug_color = Color(0, 0.595, 0.7, 0.117647)
 
 [node name="EnemyHandler" type="Node2D" parent="."]
 script = ExtResource("12_e8ln5")
 
-[node name="TeqqellonEnemy" parent="EnemyHandler" instance=ExtResource("9_tmuf1")]
-position = Vector2(436, 0)
-stats = ExtResource("13_umvpd")
+[node name="Enemy" parent="EnemyHandler" instance=ExtResource("9_tmuf1")]
+stats = ExtResource("14_ycqky")
 
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("14_r5ubg")
@@ -102,7 +86,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
 offset_top = -170.0
-offset_right = 1248.0
+offset_right = 1886.0
 offset_bottom = -29.0
 grow_vertical = 0
 theme = ExtResource("16_ceo1n")
@@ -153,7 +137,7 @@ offset_bottom = 97.0
 custom_minimum_size = Vector2(0, 71.01)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 5.0
 theme = ExtResource("16_ceo1n")
 script = ExtResource("23_2n3pb")
 
@@ -201,20 +185,17 @@ grow_horizontal = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 119.0
-offset_top = -274.0
-offset_right = 215.0
-offset_bottom = 146.0
+offset_left = 104.0
+offset_top = -361.0
+offset_right = 232.0
+offset_bottom = 279.0
 grow_vertical = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 64
 alignment = 1
 script = ExtResource("15_50454")
 
 [node name="Tooltip" parent="CombatUI" instance=ExtResource("25_e8ln5")]
-offset_left = 146.0
-offset_top = 14.0
-offset_right = 346.0
-offset_bottom = 114.0
+offset_bottom = 100.0
 
 [node name="StaminaUI" parent="CombatUI" instance=ExtResource("22_3cqtn")]
 visible = false
@@ -241,6 +222,11 @@ grow_vertical = 0
 size_flags_horizontal = 8
 theme = ExtResource("16_ceo1n")
 text = "End Turn"
+
+[node name="ChoiceBox" parent="CombatUI" instance=ExtResource("26_2n3pb")]
+visible = false
+offset_top = 880.0
+offset_bottom = 1080.0
 
 [node name="RedFlash" type="CanvasLayer" parent="."]
 layer = 2

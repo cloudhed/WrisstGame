@@ -68,10 +68,14 @@ func apply_scene_resource(data: DialogSceneResource) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	#print("📥 _input() received:", event)
+	
 	if GameUI.is_ui_open():
+		print("❌ UI is open, blocking input")
 		return
 
 	if event.is_action_pressed("ui_accept") and not choice_box.visible and waiting_for_input:
+		print("✅ Advancing dialogue with ui_accept")
 		waiting_for_input = false
 		show_next_line()
 

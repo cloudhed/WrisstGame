@@ -24,33 +24,30 @@ func exit() -> void:
 	Events.tile_drag_ended.emit(tile_ui)
 
 func on_input(event: InputEvent) -> void:
-	var single_targeted := tile_ui.tile.is_single_targeted()
-	var mouse_motion := event is InputEventMouseMotion
-	var cancel = event.is_action_pressed("right_mouse")
-	var confirm = event.is_action_released("left_mouse") or event.is_action_pressed("left_mouse")
-	
+	var single_targeted: bool = tile_ui.tile.is_single_targeted()
+	var mouse_motion: bool = event is InputEventMouseMotion
+	var cancel: bool = event.is_action_pressed("right_mouse")
+	var confirm: bool = event.is_action_released("left_mouse") or event.is_action_pressed("left_mouse")
+
 	if single_targeted and mouse_motion and tile_ui.targets.size() > 0:
 		transition_requested.emit(self, TileState.State.AIMING)
 		return
 
 	if mouse_motion:
 		tile_ui.global_position = tile_ui.get_global_mouse_position() - tile_ui.pivot_offset
-		
-		# Update tooltip position to follow tile
-		var tooltip := get_tree().get_first_node_in_group("tooltip")
-		if tooltip:
-			var screen_size := get_viewport().get_window().size
-			var tile_pos := tile_ui.global_position
-			var tile_size := tile_ui.size
-			
-			var offset := Vector2(tile_ui.size.x + 12, 0)
-			
-			# Flip to left if too close to screen edge
-			if tile_pos.x + tile_size.x + tooltip.size.x + 12 > screen_size.x:
-				offset = Vector2(-tooltip.size.x - 12, 0)
-			
-			tooltip.global_position = tile_ui.global_position + offset
-	
+
+		# Let Tooltip.gd handle positioning instead
+		var tile_pos: Vector2 = tile_ui.global_position
+		var tile_size: Vector2 = tile_ui.size
+
+		Events.tile_tooltip_requested.emit(
+			tile_ui.tile.tooltip_icon,
+			tile_ui.tile.tooltip_text,
+			tile_ui.tile.tooltip_source_label,
+			tile_pos,
+			tile_size
+		)
+
 	if cancel:
 		SFXPlayer.play(ui_sound)
 		transition_requested.emit(self, TileState.State.BASE)

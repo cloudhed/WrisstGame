@@ -26,7 +26,7 @@ signal enemy_turn_ended
 signal combat_text_emitted(message: String)
 
 #Tooltip
-signal tile_tooltip_requested(tile: Tile)
+signal tile_tooltip_requested(icon: Texture, text: String, source: String, global_position: Vector2, tile_size: Vector2)
 signal tooltip_hide_requested
 
 #Combat-related events

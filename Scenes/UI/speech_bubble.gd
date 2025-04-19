@@ -1,7 +1,7 @@
 class_name SpeechBubble
 extends Control
 
-@export var max_width: float = 500.0
+@export var max_width: float = 750.0
 @export var padding: float = 2.0
 
 @export var gust_range_x: float = 30.0

@@ -41,7 +41,6 @@ script = ExtResource("2_71wt1")
 layer = 2
 
 [node name="InventoryScreen" type="Panel" parent="UIContainer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -110,7 +109,13 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="ItemList" type="ItemList" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="ItemList" type="ItemList" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -145,7 +150,13 @@ text = "Drots: "
 layout_mode = 2
 text = "Tiles in Deck: "
 
-[node name="CurrentTilesList" type="ItemList" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="CurrentTilesList" type="ItemList" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 auto_width = true
@@ -160,14 +171,30 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NotificationPopup" type="Panel" parent="UIContainer"]
-visible = false
-offset_left = 1158.0
-offset_right = 1158.0
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 36.0
+
+[node name="NotificationPopup" type="Panel" parent="UIContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.84
 focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_tog36")
 
-[node name="Label" type="Label" parent="UIContainer/NotificationPopup"]
+[node name="Label" type="Label" parent="UIContainer/VBoxContainer/HBoxContainer/NotificationPopup"]
 layout_mode = 1
 offset_left = -82.0
 offset_right = 118.0
@@ -183,6 +210,6 @@ text = "50 öre removed"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="HideTimer" type="Timer" parent="UIContainer/NotificationPopup"]
+[node name="HideTimer" type="Timer" parent="UIContainer/VBoxContainer/HBoxContainer/NotificationPopup"]
 wait_time = 2.0
 one_shot = true

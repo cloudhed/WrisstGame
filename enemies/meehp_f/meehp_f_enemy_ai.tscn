@@ -42,7 +42,7 @@ max_damage = 3
 intent = SubResource("Resource_3oku1")
 type = 1
 chance_weight = 1.0
-message_template = "The Meehp hits you in the chest for damage."
+message_template = "The [b]Meehp[/b] hits you in the chest for [b][color=red]{amount}[/color][/b] damage."
 
 [node name="ClawattackAction" type="Node" parent="."]
 script = ExtResource("5_ef0kp")
@@ -51,18 +51,18 @@ max_damage = 5
 intent = SubResource("Resource_13eaw")
 type = 1
 chance_weight = 0.4
-message_template = "The female Meehp slashes you with her sharp claws."
+message_template = "The female [b]Meehp[/b] slashes you with her sharp claws. She slashes you for [b][color=red]{amount}[/color][/b] damage, ouch!"
 
 [node name="RageAction" type="Node" parent="."]
 script = ExtResource("6_emfcc")
 intent = SubResource("Resource_7oljo")
 type = 1
 chance_weight = 0.2
-message_template = "An enraged clattering escapes the Meeph's throat, and her beady eyes turn into slits of rage."
+message_template = "An enraged clattering escapes the [b]Meeph's[/b] throat, and her beady eyes turn into slits of rage."
 
 [node name="FinalAttackAction" type="Node" parent="."]
 script = ExtResource("8_an75i")
 damage = 8
 hp_threshold = 2
 intent = SubResource("Resource_wsidw")
-message_template = "The Meeph unleashes her last energy into a furious swipe of her sharp hinleg claws. She slashes you for 8 damage."
+message_template = "The [b]Meeph[/b] unleashes her last energy into a furious swipe of her sharp hinleg claws. She slashes you for [b][color=red]{amount}[/color][/b]  damage."

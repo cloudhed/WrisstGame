@@ -42,8 +42,8 @@ func play() -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	tile_state_machine.on_gui_input(event)
 
-func _on_mouse_entered() -> void:
-	tile_state_machine.on_mouse_entered(null)
+func _on_mouse_entered() -> void: 
+	tile_state_machine.on_mouse_entered(null) #HERE'S WHERE IT POINTS THE CRASH and says: Invalid call. Nonexistent function 'on_mouse_entered' in base 'Node (TileStateMachine)'.
 	
 func _on_mouse_exited() -> void:
 	tile_state_machine.on_mouse_exited(null)

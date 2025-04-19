@@ -50,6 +50,7 @@ metadata/_custom_type_script = "uid://cgc7i24b66gt8"
 script = ExtResource("6_xgeds")
 background_texture = ExtResource("1_bsbb7")
 music = SubResource("AudioStreamInteractive_mg2vs")
+sfx_library = {}
 dialogue_path = "res://Characters/Minttärä/minttärä_intro.json"
 characters = Array[ExtResource("2_lqaee")]([SubResource("Resource_3etik"), SubResource("Resource_20i03")])
 slide_deck = ExtResource("8_bsbb7")

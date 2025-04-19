@@ -8,13 +8,14 @@ point_count = 3
 curve = SubResource("Curve_qsbrg")
 
 [resource]
+emission_shape_offset = Vector3(39.355, 0, 0)
 emission_shape = 3
-emission_box_extents = Vector3(102.86, 82.785, 80)
+emission_box_extents = Vector3(183.435, 164.395, 80)
 gravity = Vector3(-100, -10, -20)
 tangential_accel_min = -15.24
 tangential_accel_max = -0.630002
 scale_min = 0.05
-scale_max = 0.4
+scale_max = 0.7
 color = Color(0.542621, 0.385964, 0.159616, 1)
 alpha_curve = SubResource("CurveTexture_2hxa2")
 turbulence_enabled = true

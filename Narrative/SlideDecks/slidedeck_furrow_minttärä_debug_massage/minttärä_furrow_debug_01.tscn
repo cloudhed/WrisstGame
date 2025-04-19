@@ -11,12 +11,10 @@ blend_mode = 1
 [node name="MinttäräFurrowDebug01" type="Node2D"]
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.667, 0.667)
 texture = ExtResource("2_xgx04")
 centered = false
 
 [node name="ForegroundSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.667, 0.667)
 texture = ExtResource("1_n841h")
 centered = false
 
