@@ -1,15 +1,48 @@
-[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=8 format=3 uid="uid://dtar7g2x5j77k"]
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=16 format=3 uid="uid://dtar7g2x5j77k"]
 
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="1_8dse5"]
 [ext_resource type="Texture2D" uid="uid://dobuepwhglsx7" path="res://Assets/Backgrounds/Forest/bitalgut_fire.png" id="1_mg2vs"]
 [ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="3_mg2vs"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="4_3etik"]
 [ext_resource type="Resource" uid="uid://dbi8cn6fh0e4o" path="res://Characters/Bitalgut/bitalgut_resource.tres" id="4_bt8vm"]
+[ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Characters/portrait_entry.gd" id="4_ew8ep"]
 [ext_resource type="AudioStream" uid="uid://eysphlhhq5tn" path="res://Audio/Music/250413 Wrisst - Bitalgut.mp3" id="4_mg2vs"]
+[ext_resource type="Texture2D" uid="uid://ctlbbo2eamynl" path="res://Characters/Bitalgut/Bitalgut_portraits/bitalgut_fire_bag.png" id="5_vc164"]
+[ext_resource type="Script" uid="uid://dh0gvf3ssl3yi" path="res://Characters/portrait_deck.gd" id="6_b5em8"]
 
 [sub_resource type="Resource" id="Resource_3etik"]
 script = ExtResource("3_mg2vs")
 id = &"Bitalgut"
 character_resource = ExtResource("4_bt8vm")
+metadata/_custom_type_script = "uid://cgc7i24b66gt8"
+
+[sub_resource type="Resource" id="Resource_h7bum"]
+script = ExtResource("4_ew8ep")
+id = &"fire_bag"
+portrait = ExtResource("5_vc164")
+metadata/_custom_type_script = "uid://bbcjegrw16og0"
+
+[sub_resource type="Resource" id="Resource_iue31"]
+script = ExtResource("6_b5em8")
+portraits = Array[ExtResource("4_ew8ep")]([SubResource("Resource_h7bum")])
+metadata/_custom_type_script = "uid://dh0gvf3ssl3yi"
+
+[sub_resource type="Resource" id="Resource_25iut"]
+script = ExtResource("4_3etik")
+name = &"Bitalgut\'s bag"
+display_name = "Bitalgut's bag"
+portrait = SubResource("Resource_iue31")
+color = Color(1, 1, 1, 1)
+speech_bubble_color = null
+speech_bubble_font_size = 18
+stats = {}
+default_flags = {}
+metadata/_custom_type_script = "uid://dqihe2ny7afn"
+
+[sub_resource type="Resource" id="Resource_btseo"]
+script = ExtResource("3_mg2vs")
+id = &"Bitalgut\'s bag"
+character_resource = SubResource("Resource_25iut")
 metadata/_custom_type_script = "uid://cgc7i24b66gt8"
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_mg2vs"]
@@ -24,7 +57,7 @@ background_texture = ExtResource("1_mg2vs")
 music = SubResource("AudioStreamInteractive_mg2vs")
 sfx_library = {}
 dialogue_path = "res://Characters/Bitalgut/dialogue/bitalgut_intro.json"
-characters = Array[ExtResource("3_mg2vs")]([SubResource("Resource_3etik")])
+characters = Array[ExtResource("3_mg2vs")]([SubResource("Resource_3etik"), SubResource("Resource_btseo")])
 flags_required = Array[String]([])
 flags_set_on_start = {}
 metadata/_custom_type_script = "uid://5m151tkuttgt"

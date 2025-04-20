@@ -12,6 +12,7 @@ extends Node
 @onready var choice_box: ChoiceBox = $CanvasLayer/ChoiceBox
 @onready var background: TextureRect = $Background
 @onready var char_portrait: TextureRect = $CharacterPortraitMain
+@onready var char_extra: TextureRect = $CharacterPortraitExtra
 @onready var slideshow_image: TextureRect = $SlideshowImage
 @onready var slide_container: Node2D = $CanvasLayer/SlideContainer
 
@@ -278,6 +279,7 @@ func handle_command(cmd: String) -> void:
 		"line_spawner": line_spawner,
 		"choice_box": choice_box,
 		"portrait_node": char_portrait,
+		"portrait2_node": char_extra,
 		"name": dialogue[current_index].get("name", ""),
 		"character_map": character_map,
 		"slideshow_node": slideshow_image,
@@ -306,6 +308,7 @@ func show_character_portrait(name: String) -> void:
 		char_portrait.texture = character.portrait
 		char_portrait.modulate.a = 0.0
 		char_portrait.show()
+		
 
 		var tween: Tween = create_tween()
 		tween.tween_property(char_portrait, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -319,6 +322,27 @@ func hide_character_portrait() -> void:
 		tween.tween_property(char_portrait, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		await tween.finished
 		char_portrait.hide()
+
+func show_character_extra(name: String) -> void:
+	var character = character_map.get(name)
+	if character and character.portrait:
+		char_extra.texture = character.portrait
+		char_extra.modulate.a = 0.0
+		char_extra.show()
+		
+
+		var tween: Tween = create_tween()
+		tween.tween_property(char_extra, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	else:
+		print("❌ No character or portrait found for:", name)
+
+
+func hide_character_extra() -> void:
+	if char_extra.visible:
+		var tween: Tween = create_tween()
+		tween.tween_property(char_extra, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		await tween.finished
+		char_extra.hide()
 
 
 func begin_entry_chunks() -> void:

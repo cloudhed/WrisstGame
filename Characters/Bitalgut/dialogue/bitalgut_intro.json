@@ -1,5 +1,12 @@
 [
   {
+    "id": "btlgt_show_bag",
+    "type": "command",
+    "name": "Bitalgut's bag",
+    "command": "@SHOW_EXTRA fire_bag",
+	"next": "btlgt_intro"
+  },
+  {
     "id": "btlgt_intro",
     "type": "narration",
     "text": "You wake to heat on your cheek and a sharp tug in your chest. Your muscles ache. Your mouth tastes like copper and salt. The sand is gone—there's moss beneath your back now, damp and cool."
@@ -303,6 +310,13 @@
 	"clear": true
   },
   {
+    "id": "btlgt_hide_bag",
+    "type": "command",
+    "name": "Bitalgut's bag",
+    "command": "@HIDE_EXTRA fire_bag",
+	"next": "btlgt_show_portrait_stand_again"
+  },
+  {
     "id": "btlgt_show_portrait_stand_again",
     "type": "command",
     "name": "Bitalgut",
@@ -313,7 +327,7 @@
     "id": "bitalgut_departure",
     "type": "npc",
     "name": "Bitalgut",
-    "text": "\"Don’t get attached, [b]Bolk.[/b] I’m not your guide. I’m just the first thing that didn’t bite you. Forest’s east. Stay on the mossy path till the dirt smells like clay.\" On thin, yet strong legs, he starts to stand up. \"Follow the bark-scars—four in a row, like claw marks but too clean. Means you’re close. You’ll see stone. Tall. Too proud to crumble. That’s the town of [b]Kezzen.[/b] Big trade town.\" One of his eyes looks over at you. \"Folk there know things. Buy things. Might even know what to call [b]you.[/b] You don’t belong, but you’re not the first thing to show up that didn’t.\" He turns away, facing the forest. \"So maybe they’ll listen. Maybe they won’t. You make it that far, I’ll hear about it.  Word travels faster than feet in this land.\""
+    "text": "\"Don’t get attached, [b]Bolk.[/b] I’m not your guide. I’m just the first thing that didn’t bite you. Forest’s east. Stay on the mossy path till the dirt smells like clay.\" On thin, yet strong legs, he starts to stand up. \"Follow the bark-scars—four in a row, like claw marks but too clean. Means you’re close. There will be a scar in the ground. Rift. You’ll see stone. Tall. Too proud to crumble. That’s the town of [b]Klyftet.[/b] Big trade town.\" One of his eyes looks over at you. \"Folk there know things. Buy things. Might even know where you came from. You don’t belong, but you’re not the first thing to show up that didn’t.\" He turns away, facing the forest. \"Maybe they’ll listen. Maybe they won’t. You make it that far, I’ll hear about it. Word travels faster than feet in this land.\""
   },
   {
     "id": "bitalgut_hide",

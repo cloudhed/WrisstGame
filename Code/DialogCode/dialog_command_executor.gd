@@ -21,6 +21,10 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_show_character_portrait(context)
 		"HIDE_PORTRAIT":
 			_hide_character_portrait(context)
+		"SHOW_EXTRA":
+			_show_character_extra(context)
+		"HIDE_EXTRA":
+			_hide_character_extra(context)
 		"SHOW_SLIDESHOW":
 			_show_slideshow(context)
 		"HIDE_SLIDESHOW":
@@ -129,6 +133,69 @@ func _hide_character_portrait(context: Dictionary) -> void:
 		tween.tween_property(char_port_main, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		await tween.finished
 		char_port_main.hide()
+
+#EXTRA PORTRAIT
+func _show_character_extra(context: Dictionary) -> void:
+	var char_name: String = context.get("name", "")
+	var raw_cmd: String = context.get("raw_command", "")
+	var char_port_extra: TextureRect = context.get("portrait2_node")
+	var character_map: Dictionary = context.get("character_map", {})
+
+	if char_port_extra == null:
+		print("❌ portrait2_node is missing in context!")
+		return
+
+	var parts := raw_cmd.split(" ")
+	var portrait_id: String = ""
+	if parts.size() > 1:
+		portrait_id = parts[1]
+	else:
+		print("❌ Missing portrait ID in SHOW_EXTRA command:", raw_cmd)
+		return
+
+	var character_res := character_map.get(char_name) as CharacterResource
+	if character_res == null:
+		print("❌ Character not found or wrong type for:", char_name)
+		return
+
+	if character_res.portrait == null:
+		print("❌ No portrait deck found for character:", char_name)
+		return
+
+	# 🔍 Find portrait by ID
+	var selected_texture: Texture2D = null
+	for entry in character_res.portrait.portraits:
+		if entry.id == portrait_id:
+			selected_texture = entry.portrait
+			break
+
+	if selected_texture == null:
+		print("❌ Portrait ID not found in deck:", portrait_id)
+		return
+
+	# 🎭 Fade out current portrait if one is shown
+	if char_port_extra.visible and char_port_extra.modulate.a > 0.0:
+		var fade_out := char_port_extra.create_tween()
+		fade_out.tween_property(char_port_extra, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		await fade_out.finished
+
+	# 🖼️ Switch to new texture
+	char_port_extra.texture = selected_texture
+	char_port_extra.modulate.a = 0.0
+	char_port_extra.show()
+
+	# 🌅 Fade in new portrait
+	var fade_in := char_port_extra.create_tween()
+	fade_in.tween_property(char_port_extra, "modulate:a", 1.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+
+func _hide_character_extra(context: Dictionary) -> void:
+	var char_port_extra: TextureRect = context.get("portrait2_node")
+	if char_port_extra and char_port_extra.visible:
+		var tween: Tween = char_port_extra.create_tween()
+		tween.tween_property(char_port_extra, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		await tween.finished
+		char_port_extra.hide()
 
 
 # === STATIC SLIDESHOW ===

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dot6fkkrthtyc" path="res://Scenes/UI/choice_box.tscn" id="3_aa73e"]
 [ext_resource type="Texture2D" uid="uid://c5inpmy7ph07" path="res://Assets/Sprites/Particles/particle_sphere_med.png" id="4_8y4ma"]
 [ext_resource type="Texture2D" uid="uid://bgsx4b11orhww" path="res://Assets/Sprites/Particles/particle_round_large.png" id="4_mxheu"]
-[ext_resource type="Script" path="res://Code/DialogCode/dialog_line_spawner.gd" id="5_8y4ma"]
+[ext_resource type="Script" uid="uid://bii1koy5ss3sq" path="res://Code/DialogCode/dialog_line_spawner.gd" id="5_8y4ma"]
 [ext_resource type="Theme" uid="uid://by10iex6r6prc" path="res://Themes/narrative_choice_theme.tres" id="9_mxheu"]
 
 [node name="DialogScene" type="Control"]
