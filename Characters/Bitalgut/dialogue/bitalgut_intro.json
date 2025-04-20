@@ -341,6 +341,13 @@
     "id": "bitalgut_exits",
     "type": "narration",
     "text": "And then he’s gone. The fire crackles alone.",
+	"end": false,
+	"next": "bitalgut_end"
+  },
+  {
+    "id": "bitalgut_end",
+    "type": "narration",
+    "text": "END SCENE",
 	"end": true
   }
 ]

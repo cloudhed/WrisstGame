@@ -20,7 +20,7 @@ func _ready() -> void:
 
 
 func show_tooltip(icon: Texture, text: String, source: String, tile_global_position: Vector2, tile_size: Vector2) -> void:
-	print("🖥️ ACTUAL screen size reported:", get_viewport().get_window().size)
+	#print("🖥️ ACTUAL screen size reported:", get_viewport().get_window().size)
 	is_visible = true
 	if tween:
 		tween.kill()
@@ -46,12 +46,12 @@ func show_tooltip(icon: Texture, text: String, source: String, tile_global_posit
 		offset.x = -size.x - offset_x
 		tooltip_pos = tile_global_position + offset
 		tooltip_pos.y += (tile_size.y * 0.5) - (size.y * 0.5)
-		print("Flipping to LEFT")
-	else:
-		print("Staying on RIGHT")
+#		print("Flipping to LEFT")
+#	else:
+#		print("Staying on RIGHT")
 
-	print("Final tooltip position:", tooltip_pos)
-	print("[END DEBUG]\n")
+#	print("Final tooltip position:", tooltip_pos)
+#	print("[END DEBUG]\n")
 
 	global_position = tooltip_pos
 

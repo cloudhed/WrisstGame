@@ -11,7 +11,7 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var arrow: Sprite2D = $CanvasLayer/Arrow
 #@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
-@onready var intent_ui: IntentUI = $IntentUI as IntentUI
+#@onready var intent_ui: IntentUI = $IntentUI as IntentUI
 
 # Onready VFX
 @onready var lifesteal_vfx: GPUParticles2D = $ParticleVFX/LifestealVFX
@@ -19,39 +19,18 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 
 var enemy_action_picker: EnemyActionPicker
 var current_action: EnemyAction : set = set_current_action
+var is_defeated: bool = false
 
 
 func get_stats():
 	return stats
 
+var intent_ui: IntentUI = null
 
 func set_current_action(value: EnemyAction) -> void:
 	current_action = value
-	if current_action:
+	if current_action and intent_ui:
 		intent_ui.update_intent(current_action.intent)
-
-
-#func update_anchor() -> void:
-#	if sprite_2d.texture:
-#		var size = sprite_2d.texture.get_size()
-#		sprite_2d.offset = Vector2(0, size.y / 2.0)
-#		sprite_2d.centered = true
-
-
-#func update_intent_ui_position() -> void:
-#	if not is_inside_tree() or not is_instance_valid(intent_ui):
-#		return
-
-#	var canvas_xform := get_viewport().get_canvas_transform()
-#	var inverse := canvas_xform.affine_inverse()
-
-	# Calculate the *top* of the sprite (assuming bottom-center pivot)
-#	var sprite_size := sprite_2d.texture.get_size()
-#	var sprite_top_world_pos := sprite_2d.global_position - Vector2(0, sprite_size.y)
-
-#	var screen_pos := inverse * (sprite_top_world_pos + intent_offset)
-
-#	intent_ui.position = screen_pos
 
 
 func set_enemy_stats(value: EnemyStats) -> void:
@@ -122,6 +101,10 @@ func update_enemy() -> void:
 
 
 func do_turn() -> void:
+	if is_defeated:
+		print("🚫 Enemy is defeated — skipping turn.")
+		return
+		
 	stats.block = 0
 	
 	if not current_action:
@@ -148,7 +131,11 @@ func take_damage(damage: int) -> void:
 			sprite_2d.material = null
 			
 			if stats.health <= 0:
-				queue_free()
+				print("☠️ Enemy defeated, deferring deletion.")
+				is_defeated = true
+				visible = true
+				Events.enemy_defeated.emit()
+				#queue_free()
 	)
 
 

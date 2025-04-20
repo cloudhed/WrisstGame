@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://xyxvn2yghvwa"]
+[gd_scene load_steps=9 format=3 uid="uid://xyxvn2yghvwa"]
 
 [ext_resource type="Script" uid="uid://bjf6b1p05ub8o" path="res://global/dialog_manager.gd" id="1_a8n6i"]
 [ext_resource type="Resource" uid="uid://dtar7g2x5j77k" path="res://Narrative/bitalgut_01_firstmeeting.tres" id="2_sdxh1"]
-[ext_resource type="Texture2D" uid="uid://bdd5p34m8m7o1" path="res://Assets/Backgrounds/CombatBGDefault.png" id="3_gaw0d"]
 [ext_resource type="Texture2D" uid="uid://bgsx4b11orhww" path="res://Assets/Sprites/Particles/particle_round_large.png" id="4_npc7l"]
 [ext_resource type="Texture2D" uid="uid://dq7yfdfo43jqc" path="res://Assets/Sprites/Characters/minttärä_portrait_base.png" id="5_svokt"]
 [ext_resource type="Script" uid="uid://bii1koy5ss3sq" path="res://Code/DialogCode/dialog_line_spawner.gd" id="6_l6df8"]
@@ -24,11 +23,12 @@ dialog_scene_data = ExtResource("2_sdxh1")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("3_gaw0d")
 expand_mode = 2
 
 [node name="CharacterPortraitExtra" type="TextureRect" parent="."]
+visible = false
 light_mask = 3
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
@@ -117,6 +117,11 @@ mouse_filter = 2
 theme_override_constants/separation = 26
 alignment = 2
 
+[node name="ChoiceBox" parent="CanvasLayer" instance=ExtResource("10_7201p")]
+custom_minimum_size = Vector2(0, 0)
+offset_top = 894.0
+offset_bottom = 1084.0
+
 [node name="SpeechBubble" parent="CanvasLayer" instance=ExtResource("7_fer38")]
 visible = false
 anchors_preset = 15
@@ -135,8 +140,3 @@ visible = false
 offset_bottom = 45.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-
-[node name="ChoiceBox" parent="CanvasLayer" instance=ExtResource("10_7201p")]
-custom_minimum_size = Vector2(0, 0)
-offset_top = 894.0
-offset_bottom = 1084.0

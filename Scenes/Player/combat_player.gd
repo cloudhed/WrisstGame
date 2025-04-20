@@ -15,6 +15,8 @@ var stats_ui: StatsUI = null
 
 func _ready() -> void:
 	Events.player_ready.emit(self)
+	if not end_turn_timer.timeout.is_connected(_on_end_turn_timer_timeout):
+		end_turn_timer.timeout.connect(_on_end_turn_timer_timeout)
 
 
 func assign_stats_ui(ui: StatsUI) -> void:
@@ -44,18 +46,27 @@ func update_player() -> void:
 func update_stats() -> void:
 	if stats_ui:
 		stats_ui.update_stats(stats)
-	
+
 	print("[DEBUG] update_stats called — Stamina:", stats.stamina, " | has_scheduled_end_turn:", has_scheduled_end_turn)
-	
-	# Start end turn countdown ONLY ONCE when stamina hits 0
+
+	# Start the end-turn countdown ONLY ONCE when stamina hits 0
 	if stats.stamina <= 0 and not has_scheduled_end_turn:
-		print("[DEBUG] Stamina is 0 — starting end turn timer.")
+		print("[DEBUG] Stamina is 0 — scheduling end turn.")
 		has_scheduled_end_turn = true
 		end_turn_timer.start()
 	elif stats.stamina > 0 and has_scheduled_end_turn:
-		print("[DEBUG] Stamina restored — canceling timer and resetting flag.")
+		print("[DEBUG] Stamina restored — canceling timer and reset flag.")
 		has_scheduled_end_turn = false
 		end_turn_timer.stop()
+
+
+func spend_stamina(amount: int) -> void:
+	if stats.stamina <= 0:
+		return
+	
+	var new_value: int = max(0, stats.stamina - amount)
+	stats.stamina = new_value
+	update_stats()
 
 
 func take_damage(damage: int) -> void:
@@ -89,6 +100,12 @@ func _on_end_turn_timer_timeout() -> void:
 
 	if stats.stamina <= 0:
 		print("[DEBUG] Confirmed 0 stamina — emitting player_turn_ended.")
+		
+		# Prevent another turn from starting before enemy goes
+		var parent := get_parent()
+		if parent is PlayerHandler:
+			parent.turn_blocked = true
+
 		Events.player_turn_ended.emit()
 	else:
 		print("[DEBUG] Stamina recovered before timer finished — no turn end.")

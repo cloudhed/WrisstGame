@@ -55,10 +55,14 @@ func _get_targets(targets: Array[Node]) -> Array[Node]:
 
 
 func play(targets: Array[Node], char_stats: CharacterStats) -> void:
+	if not char_stats.can_play_tile(self):
+		print("[DEBUG] Tried to play a tile with not enough stamina! Tile cost:", cost, " | Current stamina:", char_stats.stamina)
+		return
+	
 	Events.tile_played.emit(self)
 	char_stats.stamina -= cost
 	source_stats = char_stats
-	
+
 	if is_single_targeted():
 		apply_effects(targets)
 	else:

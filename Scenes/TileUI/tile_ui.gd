@@ -32,10 +32,23 @@ func _input(event: InputEvent) -> void:
 	
 	
 func play() -> void:
-	if not tile:
+	if not tile or not char_stats:
+		return
+	
+	if char_stats.stamina < tile.cost:
+		print("[DEBUG] Not enough stamina to play this tile.")
+		return
+	
+	if player_node is CombatPlayer and player_node.has_scheduled_end_turn:
+		print("[DEBUG] Turn already ending — ignoring tile play.")
 		return
 	
 	tile.play(targets, char_stats)
+
+	# 🔧 Force update stats manually in case the signal doesn't emit fast enough
+	if player_node is CombatPlayer:
+		player_node.update_stats()
+
 	queue_free()
 	
 	

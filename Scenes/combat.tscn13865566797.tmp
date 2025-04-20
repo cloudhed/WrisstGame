@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d2pnx4ne5hfgc"]
+[gd_scene load_steps=29 format=3 uid="uid://d2pnx4ne5hfgc"]
 
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scenes/Combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Code/CombatCode/combat_visual.gd" id="1_yt1oa"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://ckpnn4op5ijoc" path="res://Scenes/Enemy/enemy.tscn" id="9_tmuf1"]
 [ext_resource type="PackedScene" uid="uid://f536kff4iqbq" path="res://Scenes/TileTargetSelector/tile_target_selector.tscn" id="11_nar6d"]
 [ext_resource type="Script" uid="uid://dj5k02ip2tecw" path="res://Scenes/Enemy/enemy_handler.gd" id="12_e8ln5"]
-[ext_resource type="PackedScene" uid="uid://c70f5rm6i5pcd" path="res://Scenes/UI/intent_ui.tscn" id="12_r5ubg"]
 [ext_resource type="Script" uid="uid://ced4ekxl4k3l6" path="res://Code/CombatCode/combat_ui.gd" id="12_umvpd"]
 [ext_resource type="Resource" uid="uid://cqg2t3bu607tf" path="res://enemies/teqqellon/teqqellon_enemy.tres" id="13_2n3pb"]
 [ext_resource type="PackedScene" uid="uid://by7co2c71yp2n" path="res://Scenes/Player/combat_player.tscn" id="13_tmuf1"]
@@ -36,6 +35,7 @@ size = Vector2(1409.48, 905.14)
 script = ExtResource("1_2n3pb")
 char_stats = ExtResource("14_5kjvk")
 music = ExtResource("3_2n3pb")
+metadata/_edit_lock_ = true
 
 [node name="CombatVisual" type="Node2D" parent="."]
 script = ExtResource("1_yt1oa")
@@ -60,12 +60,6 @@ collision_layer = 2
 position = Vector2(1216, 452.02)
 shape = SubResource("RectangleShape2D_f8ge6")
 debug_color = Color(0, 0.595, 0.7, 0.117647)
-
-[node name="IntentUI" parent="." instance=ExtResource("12_r5ubg")]
-offset_left = 1617.0
-offset_top = 298.0
-offset_right = 1763.0
-offset_bottom = 490.0
 
 [node name="EnemyHandler" type="Node2D" parent="."]
 script = ExtResource("12_e8ln5")
@@ -204,7 +198,6 @@ script = ExtResource("15_50454")
 offset_bottom = 100.0
 
 [node name="StaminaUI" parent="CombatUI" instance=ExtResource("22_3cqtn")]
-visible = false
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 72.0
@@ -232,6 +225,7 @@ text = "End Turn"
 [node name="DialogUILayer" type="CanvasLayer" parent="."]
 
 [node name="DialogScene" parent="DialogUILayer" instance=ExtResource("26_2n3pb")]
+visible = false
 dialog_scene_data = null
 
 [node name="RedFlash" type="CanvasLayer" parent="."]

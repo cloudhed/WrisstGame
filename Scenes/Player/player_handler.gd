@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func start_combat(char_stats: CharacterStats) -> void:
+	print("Player_handler starting combat")
 	character = char_stats
 	character.draw_pile = character.deck.duplicate(true)
 	character.draw_pile.shuffle()
@@ -27,14 +28,26 @@ func start_combat(char_stats: CharacterStats) -> void:
 
 	start_turn()
 
+var turn_blocked := false
 
 func start_turn() -> void:
+	var combat = get_tree().get_current_scene() as Combat
+	if combat and combat.combat_over:
+		print("⛔ Combat is over — skipping player start_turn.")
+		return
+	
+	if turn_blocked:
+		print("[DEBUG] Turn is currently blocked, not starting turn.")
+		return
+
+	print("Starting player turn.")
 	character.block = 0
 	character.reset_stamina()
 	draw_tiles(character.tiles_per_turn)
 
 
 func end_turn() -> void:
+	print("Ending player turn.")
 	hand.disable_hand()
 	discard_tiles()
 
@@ -46,6 +59,7 @@ func draw_tile() -> void:
 
 
 func draw_tiles(amount: int) -> void:
+	print("Starting to draw_tiles.")
 	var tween := create_tween()
 	for i in range(amount):
 		tween.tween_callback(draw_tile)
@@ -56,6 +70,7 @@ func draw_tiles(amount: int) -> void:
 	)
 
 func discard_tiles() -> void:
+	print("Starting to discard_tiles.")
 	var tween := create_tween()
 	for tile_ui in hand.get_children():
 		tween.tween_callback(character.discard.add_tile.bind(tile_ui.tile))
@@ -64,6 +79,7 @@ func discard_tiles() -> void:
 
 	tween.finished.connect(
 		func():
+			print("Tween finished, discarded_tiles, going to emit to: Events.player_hand_discarded.emit()")
 			Events.player_hand_discarded.emit()
 	)
 

@@ -21,6 +21,7 @@ signal player_died
 # Enemy-related events
 signal enemy_action_completed(enemy: Enemy)
 signal enemy_turn_ended
+signal enemy_defeated
 
 #Combat Text Log
 signal combat_text_emitted(message: String)

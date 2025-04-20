@@ -1,0 +1,46 @@
+[
+  {
+    "id": "teqqellon_precombat",
+    "type": "narration",
+    "text": "You see a Teqqellon rummaging around on the ground. It doesn't look like it has noticed you just yet.",
+	"next": "teqqellon_precombat_choice"
+  },
+  {
+    "id": "teqqellon_precombat_choice",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> Attack",
+        "next": "teqqellon_choice_attack"
+      },
+      {
+        "text": "> Leave",
+        "next": "teqqellon_choice_leave"
+      }
+    ]
+  },
+  {
+    "id": "teqqellon_choice_attack",
+    "type": "narration",
+    "text": "You lunge at the Teqqellon.",
+	"next": "teqqellon_startcombat"
+  },
+  {
+	"id": "teqqellon_startcombat",
+	"type": "command",
+	"command": "@START_COMBAT",
+	"end": true
+  },
+  {
+    "id": "teqqellon_choice_leave",
+    "type": "narration",
+    "text": "You slowly start to back away before it notices you, and leave the Teqqellon to its' business.",
+	"next": "teqqellon_end"
+  },
+  {
+    "id": "teqqellon_end",
+    "type": "narration",
+    "text": "END SCENE",
+	"end": true
+  }
+]

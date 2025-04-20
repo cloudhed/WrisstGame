@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="2_gx76c"]
 [ext_resource type="Texture2D" uid="uid://bb4pmi3r217i2" path="res://Assets/UI/ui_icon_arrow.png" id="3_dmwl5"]
 [ext_resource type="Texture2D" uid="uid://o4l41y2r53y0" path="res://Assets/Sprites/Particles/particle_cluster.png" id="4_4ad2a"]
-[ext_resource type="Texture2D" uid="uid://71lgg7h1dh4h" path="res://enemies/meehp_f/meehp_f_base.png" id="4_6j3ko"]
+[ext_resource type="Texture2D" uid="uid://ygjj6hs1qdcs" path="res://enemies/teqqellon/teqqellon_base.png" id="4_6j3ko"]
 [ext_resource type="Texture2D" uid="uid://bgsx4b11orhww" path="res://Assets/Sprites/Particles/particle_round_large.png" id="4_kiqm3"]
 [ext_resource type="Texture2D" uid="uid://nygmvi43m6bm" path="res://Assets/Sprites/combat_player_blur.png" id="8_2chwy"]
 [ext_resource type="PackedScene" uid="uid://c70f5rm6i5pcd" path="res://Scenes/UI/intent_ui.tscn" id="9_kiqm3"]
@@ -94,6 +94,7 @@ script = ExtResource("1_dmwl5")
 stats = ExtResource("2_gx76c")
 
 [node name="IntentUI" parent="." instance=ExtResource("9_kiqm3")]
+visible = false
 offset_left = 1001.0
 offset_right = 1147.0
 offset_bottom = 192.0

@@ -33,6 +33,8 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_show_named_slide(context)
 		"HIDE_SCENE":
 			_hide_scene(context)
+		"START_COMBAT":
+			_start_combat(context)
 		_:
 			_handle_money_command(cmd)
 
@@ -266,6 +268,17 @@ func _hide_scene(context: Dictionary) -> void:
 	var container: Node = context.get("slide_container")
 	if container:
 		queue_free_children(container)
+
+
+# === START COMBAT ===
+func _start_combat(context: Dictionary) -> void:
+	var dialog_manager = context.get("dialog_manager")
+	if dialog_manager == null:
+		print("❌ dialog_manager not passed to START_COMBAT context.")
+		return
+	
+	print("🎬 START_COMBAT called from dialog. Ending dialog...")
+	dialog_manager.end_dialog()
 
 
 # === SOUND EFFECTS ===

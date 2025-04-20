@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bsk688e4ksiee"]
+[gd_scene load_steps=39 format=3 uid="uid://cpwr4dslnsq8l"]
 
 [ext_resource type="AudioStream" uid="uid://faqrtb1uggnb" path="res://Audio/sound_ambience_overworld_day.ogg" id="1_0bjjx"]
 [ext_resource type="Texture2D" uid="uid://bbrswebkl4jjt" path="res://Assets/Sprites/Map/mapmarkerFlag.png" id="1_7obsb"]
@@ -199,12 +199,12 @@ scale = Vector2(1.44, 1.44)
 texture = ExtResource("1_cbwp5")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-position = Vector2(774, 859)
+position = Vector2(460, 520)
 zoom = Vector2(3, 3)
-limit_left = -115
-limit_top = -49
-limit_right = 2002
-limit_bottom = 1142
+limit_left = -95
+limit_top = -50
+limit_right = 1240
+limit_bottom = 700
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -226,10 +226,10 @@ position = Vector2(454, 510)
 [node name="PlayerDot" type="CharacterBody2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(757, 879)
+position = Vector2(749, 863)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("2_5xsid")
-step_size = 8
+step_size = 1
 
 [node name="PlayerLight" type="PointLight2D" parent="PlayerDot"]
 scale = Vector2(2, 2)
@@ -282,7 +282,6 @@ polygon = PackedVector2Array(622, 70, 642, 79, 648, 86, 664, 92, 705, 104, 751, 
 [node name="IslandBiome_Fields" type="Area2D" parent="IslandBoundary"]
 priority = 2
 script = ExtResource("7_s8mij")
-speed_modifier = 2.0
 
 [node name="FieldsShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Fields"]
 position = Vector2(42, 34)
@@ -302,7 +301,6 @@ polygon = PackedVector2Array(437, 417, 474, 426, 494, 453, 491, 476, 490, 490, 4
 priority = 3
 script = ExtResource("5_14vbl")
 biome_priority = 3
-speed_modifier = 0.2
 
 [node name="MountainShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Mountain"]
 position = Vector2(72.6359, 61.828)
@@ -312,7 +310,6 @@ polygon = PackedVector2Array(470, 212, 481, 196, 496, 184, 513, 173, 528, 171, 5
 [node name="IslandBiome_Forests" type="Area2D" parent="IslandBoundary"]
 priority = 3
 script = ExtResource("6_xh3bp")
-speed_modifier = 0.5
 
 [node name="ForestEastShape" type="CollisionPolygon2D" parent="IslandBoundary/IslandBiome_Forests"]
 position = Vector2(45, -48)

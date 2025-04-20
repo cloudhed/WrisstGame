@@ -21,6 +21,8 @@ func set_stamina(value: int) -> void:
 
 
 func reset_stamina() -> void:
+	print("🧠 reset_stamina() called — setting stamina to:", max_stamina)
+	print_stack() # <— this is the key line
 	self.stamina = max_stamina
 
 

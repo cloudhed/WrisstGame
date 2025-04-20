@@ -38,7 +38,17 @@ func _ready():
 	else:
 		push_warning("No DialogSceneResource assigned.")
 
-	choice_box.choice_selected.connect(choose)
+	if not choice_box.choice_selected.is_connected(choose):
+		choice_box.choice_selected.connect(choose)
+
+	show_next_line()
+
+
+func start_dialog(data: DialogSceneResource) -> void:
+	dialog_scene_data = data
+	apply_scene_resource(dialog_scene_data)
+
+	await get_tree().process_frame
 	show_next_line()
 
 
@@ -286,6 +296,7 @@ func handle_command(cmd: String) -> void:
 		"raw_command": cmd,
 		"slide_deck": slide_deck,
 		"slide_container": slide_container,
+		"dialog_manager": self,
 	}
 
 	command_executor.execute(cmd.trim_prefix("@"), context)
