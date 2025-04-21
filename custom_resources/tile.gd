@@ -8,20 +8,20 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var id: String
 @export var type: Type
 @export var target: Target
-@export var cost: int
+@export var cost: int = 1
 #amount is added by me, not tutorial. might need to turn off if "amount" is happening elsewhere idk
 @export var effect_amount: int = 0
 
 @export_group("Tile Visuals")
-@export var background: Texture
-@export var icon: Texture
-@export var tooltip_icon: Texture
-@export var tooltip_source_label: String
-@export_multiline var tooltip_text: String
-@export_multiline var message_template := ""
+@export var background: Texture = preload("res://Assets/UI/tile_base.png")
+@export var icon: Texture = preload("res://Assets/UI/icons/icon_attack_mini.png")
+@export var tooltip_icon: Texture = preload("res://Assets/UI/ui_arrow.png")
+@export var tooltip_source_label: String = "Unknown source"
+@export_multiline var tooltip_text: String = "[center]Do things for [b][color=red]{amount} or {effect_amount}[/color][/b] points.[/center]"
+@export_multiline var message_template: String = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] points!"
 @export var message_pool_resource: RandomMessagePool
 @export_group("Tile SFX")
-@export var sound: AudioStream
+@export var sound: AudioStream = preload("res://Audio/SFX/tile_sfx/tile_release1.wav")
 #@export var ui_sound: AudioStream
 
 var source_stats: CharacterStats
@@ -31,6 +31,13 @@ func get_random_message_template() -> String:
 	if message_pool_resource and message_pool_resource.messages.size() > 0:
 		return message_pool_resource.messages[randi() % message_pool_resource.messages.size()]
 	return message_template
+
+
+func get_formatted_tooltip_text() -> String:
+	return tooltip_text.format({
+		"amount": effect_amount,
+		"effect_amount": effect_amount
+	})
 
 
 func is_single_targeted() -> bool:

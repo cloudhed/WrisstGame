@@ -21,8 +21,7 @@ func set_stamina(value: int) -> void:
 
 
 func reset_stamina() -> void:
-	print("🧠 reset_stamina() called — setting stamina to:", max_stamina)
-	print_stack() # <— this is the key line
+	
 	self.stamina = max_stamina
 
 
@@ -43,7 +42,12 @@ func create_instance() -> Resource:
 	instance.health = max_health
 	instance.block = 0
 	instance.reset_stamina()
-	instance.deck = instance.starting_deck.duplicate()
+
+	# Use the logical deck created from equipment
+	instance.deck = PileManager.get_logical_deck()
+
+	# Create empty draw/discard piles for combat (will be populated later)
 	instance.draw_pile = TilePile.new()
 	instance.discard = TilePile.new()
+
 	return instance

@@ -35,7 +35,13 @@ func on_mouse_entered() -> void:
 	var tile_pos: Vector2 = tile_ui.global_position
 	var tile_size: Vector2 = tile_ui.size
 
-	Events.tile_tooltip_requested.emit(tile_ui.tile.tooltip_icon, tile_ui.tile.tooltip_text, tile_ui.tile.tooltip_source_label, tile_pos, tile_size)
+	Events.tile_tooltip_requested.emit(
+		tile_ui.tile.tooltip_icon,
+		tile_ui.tile.get_formatted_tooltip_text(),
+		tile_ui.tile.tooltip_source_label,
+		tile_pos,
+		tile_size
+	)
 	
 func on_mouse_exited() -> void:
 	if not tile_ui.playable or tile_ui.disabled:

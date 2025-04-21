@@ -62,10 +62,10 @@ shape = SubResource("RectangleShape2D_f8ge6")
 debug_color = Color(0, 0.595, 0.7, 0.117647)
 
 [node name="IntentUI" parent="." instance=ExtResource("12_r5ubg")]
-offset_left = 1617.0
-offset_top = 298.0
-offset_right = 1763.0
-offset_bottom = 490.0
+offset_left = 921.0
+offset_top = 403.0
+offset_right = 1067.0
+offset_bottom = 595.0
 
 [node name="EnemyHandler" type="Node2D" parent="."]
 script = ExtResource("12_e8ln5")

@@ -18,9 +18,9 @@ func _ready() -> void:
 func start_combat(char_stats: CharacterStats) -> void:
 	print("Player_handler starting combat")
 	character = char_stats
-	character.draw_pile = character.deck.duplicate(true)
-	character.draw_pile.shuffle()
-	character.discard = TilePile.new()
+
+	# Let PileManager set up draw and discard piles
+	PileManager.create_combat_piles(character)
 
 	# Assign player stats
 	combat_player.stats = character

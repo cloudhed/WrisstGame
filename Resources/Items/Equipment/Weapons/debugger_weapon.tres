@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=7 format=3 uid="uid://chy0mouwn8pdt"]
+
+[ext_resource type="Texture2D" uid="uid://c53nbaqk8ec4k" path="res://Assets/Sprites/Items/items_weapon_debugger_icon.png" id="1_o77jj"]
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="2_yqyl2"]
+[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="3_ppoq0"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="4_vyu15"]
+[ext_resource type="Resource" uid="uid://cxy6f8imoerai" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Debug of Clubs/debug_blunt_strike.tres" id="5_vyu15"]
+
+[sub_resource type="Resource" id="Resource_cupn3"]
+script = ExtResource("3_ppoq0")
+tiles = Array[ExtResource("4_vyu15")]([ExtResource("5_vyu15"), ExtResource("5_vyu15"), ExtResource("5_vyu15"), ExtResource("5_vyu15"), ExtResource("5_vyu15"), ExtResource("5_vyu15")])
+metadata/_custom_type_script = "uid://c814t8855evro"
+
+[resource]
+script = ExtResource("2_yqyl2")
+name = "Debug of Clubs"
+icon = ExtResource("1_o77jj")
+description = "A weapon told by the legends as lost forever.[p]The double helix allows its wielder to bug every de."
+item_type = "weapon"
+hand_slot = "1-handed"
+tile_bundle = SubResource("Resource_cupn3")
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

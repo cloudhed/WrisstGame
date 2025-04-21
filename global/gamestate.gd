@@ -11,6 +11,8 @@ var player_crowns: int = 0
 var player_drots: int = 0
 var player_inventory: Array = []
 
+##Is this a place where we should check for deck parts? Like the starter deck? And then Weapon/Armor and their influence on the deck?##
+
 # Flags for quests, dialogs, and events
 var quest_flags: Dictionary = {}
 var dialog_flags: Dictionary = {}
@@ -18,6 +20,18 @@ var event_flags: Dictionary = {}
 
 # NPC relationship points
 var npc_reputation: Dictionary = {}
+
+
+# ─────────────────────────────────────────────────────────────
+# Debugging in the ready() func!
+func _ready():
+	var debug_armor: EquipableItem = load("res://Resources/Items/Equipment/Armor/debugger_armor.tres")
+	var debug_weapon: EquipableItem = load("res://Resources/Items/Equipment/Weapons/debugger_weapon.tres")
+	var debug_trinket: EquipableItem = load("res://Resources/Items/Equipment/Trinkets/debugger_trinket.tres")
+	add_item(debug_armor)
+	add_item(debug_weapon)
+	add_item(debug_trinket)
+
 
 # ─────────────────────────────────────────────────────────────
 # Here be the money-stuff!
@@ -84,6 +98,37 @@ func remove_item(item) -> bool:
 
 func has_item(item) -> bool:
 	return player_inventory.has(item)
+
+
+# ─────────────────────────────────────────────────────────────
+# Equipable gear
+
+var equipped_weapon: EquipableItem = null
+var equipped_armor: EquipableItem = null
+var equipped_trinkets: Array[EquipableItem] = []
+
+func equip_weapon(item: EquipableItem) -> void:
+	print("🧪 Equipped weapon:", GameState.equipped_weapon)
+	if item.item_type != "weapon":
+		push_error("Trying to equip non-weapon as weapon.")
+		return
+	equipped_weapon = item
+
+func equip_armor(item: EquipableItem) -> void:
+	if item.item_type != "armor":
+		push_error("Trying to equip non-armor as armor.")
+		return
+	equipped_armor = item
+
+func equip_trinket(item: EquipableItem) -> void:
+	if item.item_type != "trinket":
+		push_error("Trying to equip non-trinket as trinket.")
+		return
+	if not equipped_trinkets.has(item):
+		equipped_trinkets.append(item)
+
+func unequip_trinket(item: EquipableItem) -> void:
+	equipped_trinkets.erase(item)
 
 
 # ─────────────────────────────────────────────────────────────

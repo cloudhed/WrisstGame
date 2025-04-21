@@ -44,6 +44,8 @@ layer = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
@@ -74,6 +76,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 16.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_71wt1")
 
 [node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel"]
@@ -83,6 +86,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -90,6 +94,7 @@ theme_override_constants/margin_bottom = 16
 
 [node name="Panel" type="Panel" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xkiwj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel"]
@@ -99,11 +104,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ItemListContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -111,6 +118,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -119,6 +127,7 @@ theme_override_constants/margin_right = 8
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+select_mode = 2
 auto_width = true
 auto_height = true
 
@@ -134,17 +143,36 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CurrentOreLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="CurrencyHbox" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="CurrentOreLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
 layout_mode = 2
 text = "Öre: "
 
-[node name="CurrentCrownsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="CurrentCrownsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
 layout_mode = 2
 text = "Crowns: "
 
-[node name="CurrentDrotsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="CurrentDrotsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
 layout_mode = 2
 text = "Drots: "
+
+[node name="EquippedWeaponLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Equipped Weapon:"
+
+[node name="EquippedArmorLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Equipped Armor:"
+
+[node name="EquippedTrinketsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Equipped Trinket(s):"
 
 [node name="CurrentTilesLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 layout_mode = 2
@@ -184,7 +212,7 @@ size_flags_vertical = 3
 [node name="MarginContainer" type="MarginContainer" parent="UIContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 36.0
+size_flags_stretch_ratio = 10.35
 
 [node name="NotificationPopup" type="Panel" parent="UIContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

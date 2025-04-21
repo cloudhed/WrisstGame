@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=3 format=3 uid="uid://ds3wgypgnsqh8"]
+
+[ext_resource type="Texture2D" uid="uid://d1ht4u6vxsinu" path="res://Assets/Sprites/Items/items_trinket_debugger_icon.png" id="1_0jsor"]
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="2_xrl6t"]
+
+[resource]
+script = ExtResource("2_xrl6t")
+name = "Necklace of Begud"
+icon = ExtResource("1_0jsor")
+description = "The necklace told by the legends as lost forever. The Skull of Begud has found its home at last."
+item_type = "trinket"
+hand_slot = "none"
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

@@ -7,13 +7,22 @@ extends Control
 #RIGHT STIDE
 @onready var inventory_list: VBoxContainer = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList
 
-@onready var current_ore_label: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentOreLabel
-@onready var current_crowns: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentCrownsLabel
-@onready var current_drots: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentDrotsLabel
+#-CURRENCY-#
+@onready var current_ore_label: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox/CurrentOreLabel
+@onready var current_crowns: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox/CurrentCrownsLabel
+@onready var current_drots: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox/CurrentDrotsLabel
+
+#-WEAPON, ARMOR, TRINKETS-#
+@onready var current_weapon_label: Label = %EquippedWeaponLabel
+@onready var current_armor_label: Label = %EquippedArmorLabel
+@onready var current_trinkets_label: Label = %EquippedTrinketsLabel
+
+
+#-TILE PILE-#
 @onready var current_tiles_amount: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentTilesLabel
 @onready var current_tiles_list: ItemList = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/CurrentTilesList
 
-
+#-NOTIFICATION POPUP-#
 @onready var popup_panel                   = $UIContainer/VBoxContainer/HBoxContainer/NotificationPopup
 @onready var popup_label                   = $UIContainer/VBoxContainer/HBoxContainer/NotificationPopup/Label
 @onready var hide_timer: Timer             = $UIContainer/VBoxContainer/HBoxContainer/NotificationPopup/HideTimer
@@ -23,13 +32,18 @@ func _ready():
 	inv_screen.visible = false
 	popup_panel.visible = false
 	
+	print("🎯 Equipped weapon label:", current_weapon_label)
+	
 	print("▶️ UIManager is running in:", self.name)
 	print("Popup panel:", popup_panel)
 	print("HideTimer:", hide_timer)
+
 	GameState.inventory_changed.connect(_on_inventory_changed)
 	GameState.money_changed.connect(_on_money_changed)
 	GameState.reputation_changed.connect(_on_reputation_changed)
 	hide_timer.timeout.connect(_on_hide_timer_timeout)
+
+	item_list.item_clicked.connect(_on_item_clicked)  # ✅ correct usage
 
 	inv_screen.focus_mode = Control.FOCUS_ALL
 	inv_screen.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -37,23 +51,24 @@ func _ready():
 	popup_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 
 
+func _on_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	print("🖱️ Item clicked at index:", index)
+	if index < 0 or index >= GameState.player_inventory.size():
+		return
+
+	var item = GameState.player_inventory[index]
+	if not item or not item is EquipableItem:
+		return
+
+	var is_selected: bool = item_list.is_selected(index)
+	_on_item_toggled(index, is_selected)
+
+
 func _unhandled_input(ev):
 	# Toggle inventory on “I” press (make sure you set ui_inventory in InputMap)
 	if ev.is_action_pressed("ui_inventory"):
 		_toggle_inventory()
 
-#func _input(event: InputEvent) -> void:
-	# If the inventory (or any blocking UI) is visible, consume accept + mouse clicks
-#	if inv_screen.visible:
-		# catch left-click
-#		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-			# eat the click so dialog doesn't advance
-#			get_tree().set_input_as_handled()
-#			return
-		# catch “ui_accept” (Enter, Space, etc)
-#		if event.is_action_pressed("ui_accept"):
-#			get_tree().set_input_as_handled()
-#			return
 
 # ← Put this **directly after** your _unhandled_input (or anywhere in the class body):
 func _gui_input(event: InputEvent) -> void:
@@ -74,14 +89,20 @@ func _toggle_inventory():
 
 func _refresh_inventory():
 	item_list.clear()
-	# Add each item in GameState.player_inventory
+
 	for item in GameState.player_inventory:
-		item_list.add_item(str(item))  # or item.name if it’s an object
-	
-		# Update currency labels
+		item_list.add_item(item.name, item.icon)  # ← no "true" here
+		var index := item_list.item_count - 1
+		if item == GameState.equipped_weapon or item == GameState.equipped_armor or GameState.equipped_trinkets.has(item):
+			item_list.select(index)
+		
+
+	# Update currency labels
 	current_ore_label.text = "Öre: %d" % GameState.player_ore
 	current_crowns.text = "Crowns: %d" % GameState.player_crowns
 	current_drots.text = "Drots: %d" % GameState.player_drots
+
+	_update_equipped_labels()  # keep equipped panel in sync
 
 
 # Called whenever add_item or remove_item happens
@@ -94,6 +115,51 @@ func _on_inventory_changed(action: String, item):
 		notify("Got “%s”!" % item)
 	else:
 		notify("Lost “%s”!" % item)
+
+# ──────────────────────────────────────────────────
+# ITEM AND EQUIPMENT #
+func _on_item_toggled(index: int, checked: bool) -> void:
+	var item = GameState.player_inventory[index]
+	if not item or not item is EquipableItem:
+		return
+
+	match item.item_type:
+		"weapon":
+			if checked:
+				GameState.equip_weapon(item)
+			elif GameState.equipped_weapon == item:
+				GameState.equipped_weapon = null
+
+		"armor":
+			if checked:
+				GameState.equip_armor(item)
+			elif GameState.equipped_armor == item:
+				GameState.equipped_armor = null
+
+		"trinket":
+			if checked:
+				GameState.equip_trinket(item)
+			else:
+				GameState.unequip_trinket(item)
+
+	print("🎯 Equipped weapon now:", GameState.equipped_weapon)
+	_update_equipped_labels()
+
+
+
+func _update_equipped_labels() -> void:
+	print("🔄 Updating equipped labels...")
+
+	current_weapon_label.text = "Weapon: " + (GameState.equipped_weapon.name if GameState.equipped_weapon != null else "None")
+	current_armor_label.text = "Armor: " + (GameState.equipped_armor.name if GameState.equipped_armor != null else "None")
+
+	var trinket_names: Array[String] = []
+	for trinket in GameState.equipped_trinkets:
+		trinket_names.append(trinket.name)
+
+	current_trinkets_label.text = "Trinkets: " + (", ".join(trinket_names) if trinket_names else "None")
+
+
 
 
 # ──────────────────────────────────────────────────
