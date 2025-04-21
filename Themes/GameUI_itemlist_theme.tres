@@ -1,0 +1,50 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://wii45adw77en"]
+
+[ext_resource type="FontFile" uid="uid://q7ie3cje7c1y" path="res://Assets/Fonts/HyperlegibleNext-ExtraBold.ttf" id="1_2ru7m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcu60"]
+bg_color = Color(0.9, 0.45495, 0.279, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4kms"]
+bg_color = Color(0.6, 0.6, 0.6, 0.243137)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdive"]
+bg_color = Color(0.7216, 0.492, 0.82, 1)
+draw_center = false
+border_color = Color(0.7216, 0.492, 0.82, 1)
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qelvv"]
+bg_color = Color(0.549078, 0.569822, 0.859249, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2woh"]
+bg_color = Color(0.3825, 0.645875, 0.75, 1)
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujvtk"]
+bg_color = Color(0.370821, 0.659621, 0.63947, 1)
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+
+[resource]
+default_font = ExtResource("1_2ru7m")
+default_font_size = 20
+ItemList/colors/font_color = Color(1, 1, 1, 1)
+ItemList/colors/font_outline_color = Color(0, 0, 0, 1)
+ItemList/colors/font_selected_outline_color = Color(0.764768, 0.0159228, 0.323429, 1)
+ItemList/constants/outline_size = 4
+ItemList/styles/cursor = SubResource("StyleBoxFlat_rcu60")
+ItemList/styles/cursor_unfocused = SubResource("StyleBoxFlat_l4kms")
+ItemList/styles/hovered = SubResource("StyleBoxFlat_mdive")
+ItemList/styles/hovered_selected = SubResource("StyleBoxFlat_qelvv")
+ItemList/styles/hovered_selected_focus = SubResource("StyleBoxFlat_b2woh")
+ItemList/styles/selected = SubResource("StyleBoxFlat_ujvtk")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_ujvtk")

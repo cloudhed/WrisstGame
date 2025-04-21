@@ -1,9 +1,11 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://c0jf23ehy6wkh"]
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://c0jf23ehy6wkh"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_orf04"]
+[ext_resource type="Texture2D" uid="uid://ev7upc3v2qc7" path="res://Assets/UI/ui_arrow.png" id="2_bl3ji"]
 [ext_resource type="Script" uid="uid://431wyyo4h25x" path="res://custom_resources/random_message_pool.gd" id="2_mvnql"]
 [ext_resource type="Script" uid="uid://cdyo2roy8l6au" path="res://Characters/Player/tiles/action_empty.gd" id="2_orf04"]
 [ext_resource type="AudioStream" uid="uid://bclmqond51wxr" path="res://Audio/SFX/tile_sfx/tile_release1.wav" id="4_mvnql"]
+[ext_resource type="Texture2D" uid="uid://bp08yx8c03uy3" path="res://Assets/UI/icons/icon_attack_mini.png" id="6_ij1uv"]
 
 [sub_resource type="Resource" id="Resource_ytk5t"]
 script = ExtResource("2_mvnql")
@@ -18,6 +20,8 @@ target = 0
 cost = 1
 effect_amount = 0
 background = ExtResource("1_orf04")
+icon = ExtResource("2_bl3ji")
+tooltip_icon = ExtResource("6_ij1uv")
 tooltip_source_label = "Sand in eyes"
 tooltip_text = "[center]An unfortunate fail.[/center]"
 message_template = ""

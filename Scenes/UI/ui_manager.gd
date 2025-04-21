@@ -23,9 +23,9 @@ extends Control
 @onready var current_tiles_list: ItemList = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/CurrentTilesList
 
 #-NOTIFICATION POPUP-#
-@onready var popup_panel                   = $UIContainer/VBoxContainer/HBoxContainer/NotificationPopup
-@onready var popup_label                   = $UIContainer/VBoxContainer/HBoxContainer/NotificationPopup/Label
-@onready var hide_timer: Timer             = $UIContainer/VBoxContainer/HBoxContainer/NotificationPopup/HideTimer
+@onready var popup_panel: Panel = %NotificationPopup
+@onready var popup_label: Label = %NotificationLabel
+@onready var hide_timer: Timer = %NotificationHideTimer
 
 
 func _ready():
@@ -41,9 +41,13 @@ func _ready():
 	GameState.inventory_changed.connect(_on_inventory_changed)
 	GameState.money_changed.connect(_on_money_changed)
 	GameState.reputation_changed.connect(_on_reputation_changed)
+	GameState.fallback_equipped.connect(_update_equipped_labels)
+	print("✅ Connected fallback_equipped to _update_equipped_labels")
+	
 	hide_timer.timeout.connect(_on_hide_timer_timeout)
 
-	item_list.item_clicked.connect(_on_item_clicked)  # ✅ correct usage
+	item_list.item_clicked.connect(_on_item_clicked)
+	
 
 	inv_screen.focus_mode = Control.FOCUS_ALL
 	inv_screen.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -91,11 +95,14 @@ func _refresh_inventory():
 	item_list.clear()
 
 	for item in GameState.player_inventory:
+		if item is EquipableItem and item.hidden_from_inventory:
+			continue  # Skip invisible items like "Naked" and "Unarmed"
+
 		item_list.add_item(item.name, item.icon)  # ← no "true" here
 		var index := item_list.item_count - 1
 		if item == GameState.equipped_weapon or item == GameState.equipped_armor or GameState.equipped_trinkets.has(item):
 			item_list.select(index)
-		
+
 
 	# Update currency labels
 	current_ore_label.text = "Öre: %d" % GameState.player_ore
@@ -127,28 +134,37 @@ func _on_item_toggled(index: int, checked: bool) -> void:
 		"weapon":
 			if checked:
 				GameState.equip_weapon(item)
+				notify("Equipped weapon: %s" % item.name)
 			elif GameState.equipped_weapon == item:
 				GameState.equipped_weapon = null
+				notify("Unequipped weapon: %s" % item.name)
 
 		"armor":
 			if checked:
 				GameState.equip_armor(item)
+				notify("Equipped armor: %s" % item.name)
 			elif GameState.equipped_armor == item:
 				GameState.equipped_armor = null
+				notify("Unequipped armor: %s" % item.name)
 
 		"trinket":
 			if checked:
 				GameState.equip_trinket(item)
+				notify("Equipped trinket: %s" % item.name)
 			else:
 				GameState.unequip_trinket(item)
+				notify("Unequipped trinket: %s" % item.name)
 
-	print("🎯 Equipped weapon now:", GameState.equipped_weapon)
+	# Check and apply fallback gear if anything is unequipped
+	GameState.check_and_equip_fallback()
+
+	#print("🎯 Equipped weapon now:", GameState.equipped_weapon)
 	_update_equipped_labels()
 
 
 
 func _update_equipped_labels() -> void:
-	print("🔄 Updating equipped labels...")
+	#print("🔄 [_update_equipped_labels()] called")
 
 	current_weapon_label.text = "Weapon: " + (GameState.equipped_weapon.name if GameState.equipped_weapon != null else "None")
 	current_armor_label.text = "Armor: " + (GameState.equipped_armor.name if GameState.equipped_armor != null else "None")

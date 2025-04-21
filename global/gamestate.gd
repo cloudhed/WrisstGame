@@ -3,6 +3,14 @@ extends Node
 signal money_changed(currency: String, new_amount: int)
 signal reputation_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
+signal fallback_equipped
+
+# DEFAULT FALLBACK NAKED&CONFUSED
+var FALLBACK_ARMOR: EquipableItem = load("res://Resources/Items/Equipment/Armor/naked_armor.tres")
+var FALLBACK_WEAPON: EquipableItem = load("res://Resources/Items/Equipment/Weapons/unarmed_weapon.tres")
+# FAILS FOR SOME REASON, CONST BEING PISSY ABOUT MY ARMOR RESOURCE NOT BEING A EQUIPABLEITEM EVEN THOUGH IT IS const FALLBACK_ARMOR := preload("res://Resources/Items/Equipment/Armor/fallback_naked_armor.res")
+# const FALLBACK_WEAPON := preload("res://Resources/Items/Equipment/Weapons/fallback_unarmed_weapon.res")
+
 
 # Player stats and resources
 var player_stats: CharacterStats = null
@@ -31,6 +39,8 @@ func _ready():
 	add_item(debug_armor)
 	add_item(debug_weapon)
 	add_item(debug_trinket)
+	
+	check_and_equip_fallback()
 
 
 # ─────────────────────────────────────────────────────────────
@@ -113,12 +123,14 @@ func equip_weapon(item: EquipableItem) -> void:
 		push_error("Trying to equip non-weapon as weapon.")
 		return
 	equipped_weapon = item
+	fallback_equipped.emit() #FALLBACK WEAPON AKA UNARMED
 
 func equip_armor(item: EquipableItem) -> void:
 	if item.item_type != "armor":
 		push_error("Trying to equip non-armor as armor.")
 		return
 	equipped_armor = item
+	fallback_equipped.emit() #FALLBACK ARMOR AKA NAKED
 
 func equip_trinket(item: EquipableItem) -> void:
 	if item.item_type != "trinket":
@@ -129,6 +141,17 @@ func equip_trinket(item: EquipableItem) -> void:
 
 func unequip_trinket(item: EquipableItem) -> void:
 	equipped_trinkets.erase(item)
+
+
+func check_and_equip_fallback() -> void:
+	if equipped_weapon == null:
+		equipped_weapon = FALLBACK_WEAPON
+		print("⚠️ No weapon equipped. Falling back to UNARMED.")
+	if equipped_armor == null:
+		equipped_armor = FALLBACK_ARMOR
+		print("⚠️ No armor equipped. Falling back to NAKED.")
+
+	fallback_equipped.emit()
 
 
 # ─────────────────────────────────────────────────────────────

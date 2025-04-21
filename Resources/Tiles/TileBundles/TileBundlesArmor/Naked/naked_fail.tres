@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://c0uw11luyek43"]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_vs0sj"]
+[ext_resource type="Script" uid="uid://431wyyo4h25x" path="res://custom_resources/random_message_pool.gd" id="2_dyhw8"]
+[ext_resource type="Script" uid="uid://cdyo2roy8l6au" path="res://Characters/Player/tiles/action_empty.gd" id="3_rw801"]
+[ext_resource type="AudioStream" uid="uid://bclmqond51wxr" path="res://Audio/SFX/tile_sfx/tile_release1.wav" id="4_r0uod"]
+
+[sub_resource type="Resource" id="Resource_ytk5t"]
+script = ExtResource("2_dyhw8")
+messages = Array[String](["You clumsily wave your fists around, hitting only air. But hey, at least the air has learned not to pick a fight with you, huh?", "You hit the... no, wait, you don't. [i]Wow.[/i] Not your day.", "You miss. Spectacularly.", "You nearly hit yourself. Bold move.", "The [b]{target_name}[/b] watches in confusion as you punch a tree instead."])
+metadata/_custom_type_script = "uid://431wyyo4h25x"
+
+[resource]
+script = ExtResource("3_rw801")
+id = "action_empty"
+type = 5
+target = 0
+cost = 1
+effect_amount = 0
+background = ExtResource("1_vs0sj")
+tooltip_source_label = "Sand in eyes"
+tooltip_text = "[center]An unfortunate fail.[/center]"
+message_template = ""
+message_pool_resource = SubResource("Resource_ytk5t")
+sound = ExtResource("4_r0uod")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

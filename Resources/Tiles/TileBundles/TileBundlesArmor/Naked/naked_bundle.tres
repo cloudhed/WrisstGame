@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TileBundle" load_steps=6 format=3 uid="uid://d2unukp8hvntr"]
+
+[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="1_yxjic"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="2_md3gm"]
+[ext_resource type="Resource" uid="uid://7hq4y1qs62sy" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_block_01.tres" id="3_jbqy3"]
+[ext_resource type="Resource" uid="uid://c1jwde77ibrby" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_block_02.tres" id="4_808f7"]
+[ext_resource type="Resource" uid="uid://c0uw11luyek43" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_fail.tres" id="5_usipe"]
+
+[resource]
+script = ExtResource("1_yxjic")
+tiles = Array[ExtResource("2_md3gm")]([ExtResource("3_jbqy3"), ExtResource("4_808f7"), ExtResource("5_usipe"), ExtResource("5_usipe"), ExtResource("5_usipe"), ExtResource("5_usipe")])
+metadata/_custom_type_script = "uid://c814t8855evro"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://da3xunfxujpsu"]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_c86dg"]
+[ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="2_lyf2l"]
+[ext_resource type="Script" uid="uid://dr20x2aqycs3b" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_attack_01.gd" id="3_c86dg"]
+[ext_resource type="AudioStream" uid="uid://cx2wcws563kk4" path="res://Audio/SFX/sfx_hit_low.wav" id="4_aqw8e"]
+[ext_resource type="Texture2D" uid="uid://bp08yx8c03uy3" path="res://Assets/UI/icons/icon_attack_mini.png" id="5_gqkhx"]
+
+[resource]
+script = ExtResource("3_c86dg")
+id = "unarmed_flail"
+type = 0
+target = 1
+cost = 1
+effect_amount = 1
+background = ExtResource("1_c86dg")
+icon = ExtResource("2_lyf2l")
+tooltip_icon = ExtResource("5_gqkhx")
+tooltip_source_label = "Unarmed"
+tooltip_text = "[center]Do [i]Thing/i] for [b][color=green]{effect_amount}[/color][/b] points.[/center]"
+message_template = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=green]{amount}[/color][/b] points!"
+sound = ExtResource("4_aqw8e")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

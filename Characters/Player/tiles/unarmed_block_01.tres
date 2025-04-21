@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://7hq4y1qs62sy"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bxgjwxl35wnpy"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_fbqqi"]
 [ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_gnkm3"]

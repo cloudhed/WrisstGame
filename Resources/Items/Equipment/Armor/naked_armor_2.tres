@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=3 format=3 uid="uid://ce22bxlo4a0ye"]
+
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_1b817"]
+[ext_resource type="Resource" uid="uid://d2unukp8hvntr" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_bundle.tres" id="2_f86gk"]
+
+[resource]
+script = ExtResource("1_1b817")
+name = "Naked"
+description = "You're not even wearing underwear!"
+item_type = "armor"
+hand_slot = "none"
+tile_bundle = ExtResource("2_f86gk")
+hidden_from_inventory = true
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

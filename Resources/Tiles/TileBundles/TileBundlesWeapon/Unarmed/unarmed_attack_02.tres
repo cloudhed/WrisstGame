@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://ck47tcw2hno3a"]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_83vj6"]
+[ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="2_yb1gs"]
+[ext_resource type="Script" uid="uid://t0mdbmb825hm" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_attack_02.gd" id="3_83vj6"]
+[ext_resource type="AudioStream" uid="uid://cx2wcws563kk4" path="res://Audio/SFX/sfx_hit_low.wav" id="4_7a551"]
+[ext_resource type="Texture2D" uid="uid://bp08yx8c03uy3" path="res://Assets/UI/icons/icon_attack_mini.png" id="5_xb3yj"]
+
+[resource]
+script = ExtResource("3_83vj6")
+id = "lucky_hit"
+type = 0
+target = 1
+cost = 1
+effect_amount = 4
+background = ExtResource("1_83vj6")
+icon = ExtResource("2_yb1gs")
+tooltip_icon = ExtResource("5_xb3yj")
+tooltip_source_label = "Unarmed"
+tooltip_text = "[center]Strike for [b][color=red]4[/color][/b] damage.[/center]"
+message_template = "[b]{source_name}[/b] strikes [b]{target_name}[/b] hard and forcefully for [b][color=red]{amount}[/color][/b] damage!"
+sound = ExtResource("4_7a551")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

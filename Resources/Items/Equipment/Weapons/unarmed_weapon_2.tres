@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=3 format=3 uid="uid://chtu6n1d2xib6"]
+
+[ext_resource type="Resource" uid="uid://bt4p7q80j43rt" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_bundle.tres" id="2_lmvds"]
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="2_vi4rn"]
+
+[resource]
+script = ExtResource("2_vi4rn")
+name = "Unarmed"
+description = "Nothing but your fists."
+item_type = "weapon"
+hand_slot = "2-handed"
+tile_bundle = ExtResource("2_lmvds")
+hidden_from_inventory = true
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

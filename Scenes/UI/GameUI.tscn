@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://da0p1vc21wthm"]
+[gd_scene load_steps=6 format=3 uid="uid://da0p1vc21wthm"]
 
 [ext_resource type="Script" uid="uid://dk4mquk7rtogq" path="res://Scenes/UI/ui_manager.gd" id="2_71wt1"]
+[ext_resource type="Theme" uid="uid://wii45adw77en" path="res://Themes/GameUI_itemlist_theme.tres" id="2_xkiwj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71wt1"]
 bg_color = Color(0.1421, 0.27028, 0.29, 1)
@@ -127,9 +128,14 @@ theme_override_constants/margin_right = 8
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+theme = ExtResource("2_xkiwj")
 select_mode = 2
+allow_search = false
 auto_width = true
 auto_height = true
+max_columns = 2
+same_column_width = true
+fixed_column_width = 495
 
 [node name="InventoryContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer"]
 layout_mode = 2
@@ -159,15 +165,15 @@ text = "Crowns: "
 layout_mode = 2
 text = "Drots: "
 
-[node name="EquippedWeaponLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Equipped Weapon:"
-
 [node name="EquippedArmorLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Equipped Armor:"
+
+[node name="EquippedWeaponLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Equipped Weapon:"
 
 [node name="EquippedTrinketsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 unique_name_in_owner = true
@@ -187,6 +193,7 @@ theme_override_constants/margin_right = 8
 [node name="CurrentTilesList" type="ItemList" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+allow_search = false
 auto_width = true
 auto_height = true
 
@@ -215,6 +222,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 10.35
 
 [node name="NotificationPopup" type="Panel" parent="UIContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 3
@@ -222,10 +230,11 @@ size_flags_stretch_ratio = 2.84
 focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_tog36")
 
-[node name="Label" type="Label" parent="UIContainer/VBoxContainer/HBoxContainer/NotificationPopup"]
+[node name="NotificationLabel" type="Label" parent="UIContainer/VBoxContainer/HBoxContainer/NotificationPopup"]
+unique_name_in_owner = true
 layout_mode = 1
-offset_left = -82.0
-offset_right = 118.0
+offset_left = 170.0
+offset_right = 370.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.3157, 0.732142, 0.77, 1)
@@ -238,6 +247,7 @@ text = "50 öre removed"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="HideTimer" type="Timer" parent="UIContainer/VBoxContainer/HBoxContainer/NotificationPopup"]
+[node name="NotificationHideTimer" type="Timer" parent="UIContainer/VBoxContainer/HBoxContainer/NotificationPopup"]
+unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true

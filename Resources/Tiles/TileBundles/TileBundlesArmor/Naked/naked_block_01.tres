@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://7hq4y1qs62sy"]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_eii1c"]
+[ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_b6ten"]
+[ext_resource type="Script" uid="uid://da4c0vjf14m4s" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_block_01.gd" id="3_etmjn"]
+[ext_resource type="AudioStream" uid="uid://nsn44qwidaih" path="res://Audio/SFX/sfx_attack_block.wav" id="4_rgfq1"]
+[ext_resource type="Texture2D" uid="uid://4blmsmmfytuf" path="res://Assets/UI/icons/icon_defend_mini.png" id="5_davgi"]
+
+[resource]
+script = ExtResource("3_etmjn")
+id = "naked_panicked_block"
+type = 1
+target = 0
+cost = 1
+effect_amount = 1
+background = ExtResource("1_eii1c")
+icon = ExtResource("2_b6ten")
+tooltip_icon = ExtResource("5_davgi")
+tooltip_source_label = "Naked"
+tooltip_text = "[center]Gain [b][color=blue]{effect_amount}[/color][/b] block.[/center]"
+message_template = "[b]{source_name}[/b] raises their arms in front of their face and prepares to block for [b][color=blue]{amount}[/color][/b] damage."
+sound = ExtResource("4_rgfq1")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

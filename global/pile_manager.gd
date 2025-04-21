@@ -2,8 +2,20 @@ extends Node
 
 func get_logical_deck() -> TilePile:
 	var combined_deck := TilePile.new()
+	
+# Equip fallback armor if none
+	if GameState.equipped_armor == null:
+		GameState.equip_armor(GameState.FALLBACK_ARMOR)
+		print("🧥 Fallback armor equipped:", GameState.FALLBACK_ARMOR.name)
+
+# Equip fallback weapon if none
+	if GameState.equipped_weapon == null:
+		GameState.equip_weapon(GameState.FALLBACK_WEAPON)
+		print("🧤 Fallback weapon equipped:", GameState.FALLBACK_WEAPON.name)
+
 
 	var added_any: bool = false
+
 
 	if GameState.equipped_weapon and GameState.equipped_weapon.tile_bundle:
 		for tile in GameState.equipped_weapon.tile_bundle.tiles:
