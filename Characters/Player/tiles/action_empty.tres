@@ -1,16 +1,11 @@
-[gd_resource type="Resource" load_steps=8 format=3 uid="uid://c0jf23ehy6wkh"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://c0jf23ehy6wkh"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_orf04"]
 [ext_resource type="Texture2D" uid="uid://ev7upc3v2qc7" path="res://Assets/UI/ui_arrow.png" id="2_bl3ji"]
-[ext_resource type="Script" uid="uid://431wyyo4h25x" path="res://custom_resources/random_message_pool.gd" id="2_mvnql"]
 [ext_resource type="Script" uid="uid://cdyo2roy8l6au" path="res://Characters/Player/tiles/action_empty.gd" id="2_orf04"]
+[ext_resource type="Resource" uid="uid://b3dbwkdr33mtr" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_fail_mespool.tres" id="3_bl3ji"]
 [ext_resource type="AudioStream" uid="uid://bclmqond51wxr" path="res://Audio/SFX/tile_sfx/tile_release1.wav" id="4_mvnql"]
 [ext_resource type="Texture2D" uid="uid://bp08yx8c03uy3" path="res://Assets/UI/icons/icon_attack_mini.png" id="6_ij1uv"]
-
-[sub_resource type="Resource" id="Resource_ytk5t"]
-script = ExtResource("2_mvnql")
-messages = Array[String](["You clumsily wave your fists around, hitting only air. But hey, at least the air has learned not to pick a fight with you, huh?", "You hit the... no, wait, you don't. [i]Wow.[/i] Not your day.", "You miss. Spectacularly.", "You nearly hit yourself. Bold move.", "The [b]{target_name}[/b] watches in confusion as you punch a tree instead."])
-metadata/_custom_type_script = "uid://431wyyo4h25x"
 
 [resource]
 script = ExtResource("2_orf04")
@@ -19,12 +14,13 @@ type = 5
 target = 0
 cost = 1
 effect_amount = 0
+secondary_effect_amount = 0
 background = ExtResource("1_orf04")
 icon = ExtResource("2_bl3ji")
 tooltip_icon = ExtResource("6_ij1uv")
 tooltip_source_label = "Sand in eyes"
 tooltip_text = "[center]An unfortunate fail.[/center]"
 message_template = ""
-message_pool_resource = SubResource("Resource_ytk5t")
+message_pool_resource = ExtResource("3_bl3ji")
 sound = ExtResource("4_mvnql")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

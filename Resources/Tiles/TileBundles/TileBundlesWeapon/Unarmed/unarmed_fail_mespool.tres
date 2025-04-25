@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RandomMessagePool" load_steps=2 format=3 uid="uid://b3dbwkdr33mtr"]
+
+[ext_resource type="Script" uid="uid://431wyyo4h25x" path="res://custom_resources/random_message_pool.gd" id="1_7cjin"]
+
+[resource]
+script = ExtResource("1_7cjin")
+messages = Array[String](["You clumsily wave your fists around, hitting only air. But hey, at least the air has learned not to pick a fight with you, huh?", "You hit the... no, wait, you don't. [i]Wow.[/i] Not your day.", "You miss. Spectacularly.", "You nearly hit yourself. Bold move.", "The [b]{target_name}[/b] watches in confusion as you punch a tree instead."])
+metadata/_custom_type_script = "uid://431wyyo4h25x"

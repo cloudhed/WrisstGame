@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://rry246pa60f1"]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_toeud"]
+[ext_resource type="Texture2D" uid="uid://d0gatuciw4bfr" path="res://Assets/UI/ui_icon_heart.png" id="2_ddj3h"]
+[ext_resource type="Script" uid="uid://bfr0rax514f3v" path="res://Resources/Tiles/TileBundles/TileBundlesTrinket/Necklace of Begud/begud_heal_01.gd" id="3_bnobc"]
+[ext_resource type="AudioStream" uid="uid://bdf24usukcenm" path="res://Audio/SFX/sfx_hit_high.wav" id="4_x8141"]
+[ext_resource type="Texture2D" uid="uid://28sa3spftnrs" path="res://Assets/UI/icons/icon_health_mini.png" id="5_msfv3"]
+
+[resource]
+script = ExtResource("3_bnobc")
+id = "begud_heal"
+type = 2
+target = 0
+cost = 1
+effect_amount = 16
+secondary_effect_amount = 0
+background = ExtResource("1_toeud")
+icon = ExtResource("2_ddj3h")
+tooltip_icon = ExtResource("5_msfv3")
+tooltip_source_label = "Neckace of Begud"
+tooltip_text = "[center]Heal for [b][color=dark_green]{effect_amount}[/color][/b] points.[/center]"
+message_template = "[b]{source_name}[/b] feels their {tooltip_source_label}vibrate, and heals for [b][color=dark_green]{amount}[/color][/b] damage."
+sound = ExtResource("4_x8141")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

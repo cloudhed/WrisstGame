@@ -15,7 +15,7 @@
 	{
 		"id": "furrow_enter_02",
 		"type": "narration",
-		"text": "Behind the desk, a young Monster woman sits on a stool slightly too tall for her. She's hunched over, scribbling something onto a wax tablet, her chin resting heavily on her palm.[nb]Her fur is golden-brown, and two slender teal horns rise gently from her forehead, reflecting the lantern's soft glow. A fluffy tail curls loosely around the stool's legs, occasionally twitching.",
+		"text": "Behind the desk, a young Monster woman sits on a stool slightly too tall for her. She's hunched over, scribbling something onto a wax tablet, her chin resting heavily on her palm.[nb]Her skin is golden-brown, and her slender teal horns cast reflections on the walls from the faint beams of sunlight that found themselves inside through the dust. Two antennae reach out into the air from her brow, occasionally twitching.",
 		"next": "furrow_sign",
 		"clear": false
 	},
@@ -50,17 +50,32 @@
 		"options": [
 			{
 				"text": "> [Inspect the Furrow]",
-				"next": "furrow_inspect_pick"
+				"next": "furrow_inspect_pick_CHECK"
 			},
 			{
-				"text": "> [Talk to Minttärä]",
-				"next": "furrow_talk_pick"
+				"text": "> [Talk to Minttärä] [TEMP]",
+				"next": "furrow_minttärä_offer"
 			},
 			{
 				"text": "> [Leave]",
 				"next": "furrow_leave_end"
 			}
 		]
+	},
+	{
+		"id": "furrow_inspect_pick_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["furrow_hasinspected"],
+			"on_success": "furrow_inspect",
+			"on_fail": "furrow_inspect_pick_new"
+		}
+	},
+	{
+		"id": "furrow_inspect",
+		"type": "narration",
+		"text": "The Furrow’s interior greets you with its warmth and dim, flickering light. A glass-shielded lantern glows above the front desk, aided by a few glowstones nestled into the cracked walls. To your right, the treatment alcoves stand quiet—curtains faded and stained, one still shifting gently as if someone just stepped out.[nb]The small wooden cart sits nearby with its towels, bottles, and warm basin. The scent in the room curls around you—oil, herbs, stone soap, and that ever-present trace of something animal.",
+		"next": "furrow_sign_choice"
 	},
 	{
 		"id": "furrow_inspect_pick_new",
@@ -72,6 +87,7 @@
 		"id": "furrow_inspect_pick_new02",
 		"type": "narration",
 		"text": "A row of low wooden benches hugs the left-hand wall. One is covered in a folded coat and satchel, neither belonging to you. A cracked ceramic cup sits forgotten on the floor beneath it, dried leaves stuck to its rim. The desk in front of you is cluttered but organized—wax tablets stacked in a tray, a few rolls of coiled twine, a chipped inkstone, and a short reed-cut stylus. A small bell, half-collapsed from denting, rests near the edge.",
+		"set_flag": "furrow_hasinspected",
 		"next": "furrow_sign_choice_new"
 	},
 	{
@@ -93,7 +109,7 @@
 		"id": "furrow_minttärä_meet",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "In the blink of an eye she sits up as her tail twitches slightly. There's a slight indent in her fur where her cheek rested in her paw.",
+		"text": "In the blink of an eye she sits up as her antennae twitches slightly. There's a slight indent in her skin where her cheek rested in her paw.",
 		"clear": true,
 		"next": "furrow_minttärä_meet_02"
 	},
@@ -101,7 +117,7 @@
 		"id": "furrow_minttärä_meet_02",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "\"...You're not one of the locals.\" Her tail twitches again. \"You do look sore, though.\"",
+		"text": "\"...You're not one of the locals.\" Her antennae twitches again. \"You do look sore, though.\"",
 		"set_flag": "minttärä_has_met",
 		"next": "furrow_minttärä_meet_03"
 	},
@@ -134,14 +150,14 @@
 		"id": "furrow_minttärä_reply_longday",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "\"Thought so.\" She crosses her arms lightly. \"Your shoulders are carrying something fierce just standing there. But hey—nobody’s judging. This room is for the sore and the tired.\"",
+		"text": "\"Thought so.\" She crosses her claws lightly. \"Your shoulders are carrying something fierce just standing there. But hey, nobody’s judging. This room is for the sore and the tired.\"",
 		"next": "furrow_minttärä_offer"
 	},
 	{
 		"id": "furrow_minttärä_reply_massage",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "She gives a short laugh. \"If I wasn’t, this place would’ve shut down three seasons ago.[nb]I’m Minttärä—I'm the one keeping the stones warm and the bad backs straight.\"",
+		"text": "She gives a short chirping whistle. \"If I wasn’t, this place would’ve shut down three seasons ago.\"\"I’m Minttärä. I'm the one keeping the stones warm and the bad backs straight.\"",
 		"next": "furrow_minttärä_offer"
 	},
 	{
@@ -215,14 +231,14 @@
 		"id": "furrow_denied_massage",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "\"Thirty-two öre, stranger. My boss would have my paws if I even hinted at giving you a discount. Which I won't. Come back when you’ve got a clink or two.\"",
+		"text": "\"Thirty-two öre, stranger. My boss would have my claws if I even hinted at giving you a discount. Which I won't. Come back when you’ve got a clink or two.\"",
 		"next": "furrow_sign_choice"
 	},
 	{
 		"id": "furrow_service_shortrest",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "You hand over 8 öre. Minttärä points to a low bench in the back corner.\"Feet up. Head back. No talking unless you snore.\"You settle into the corner seat. The bench is warm to the touch.[nb]Time passes quietly.",
+		"text": "You hand over 8 öre. Minttärä points to a low bench in the back corner.\"Feet up. Head back. No talking unless you're talked to.\"You settle into the corner seat. The bench is warm to the touch.[nb]Time passes quietly.",
 		"set_flag": "furrow_paid_shortrest",
 		"end": false,
 		"next": "furrow_sign_choice"
@@ -231,8 +247,8 @@
 		"id": "furrow_service_massage",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "You hand over 32 öre. Minttärä gives you a brief nod, already moving toward the alcoves.\"Table Seven. Drop the gear, keep the towel. I’ll be right there.\"",
-		"next": "furrow_service_massage_start"
+		"text": "You hand over 32 öre. Minttärä gives you a brief nod, already moving toward the alcoves.\"Table Seven. Drop the gear, grab a towel. I’ll be right there.\"",
+		"next": "furrow_service_debug_massage"
 	},
 	{
 		"id": "furrow_leave_nocontact",
@@ -246,70 +262,146 @@
 		"type": "npc",
 		"name": "Minttärä",
 		"text": "Minttärä smiles. \"Table Seven. Don't bother with a towel. I’ll be right there.\"",
-		"next": "furrow_debug_show_massage01"
+		"next": "furrow_debug_massage_gendercheck"
 	},
 	{
-		"id": "furrow_debug_show_massage01",
+		"id": "furrow_debug_massage_gendercheck",
+		"type": "logic",
+		"logic_type": "condition",
+		"condition": {
+			"stat": "player_gender",
+			"is": "male",
+			"on_success": "furrow_MALE_debug_show_massage01",
+			"on_fail": "furrow_FEMALE_debug_show_massage01"
+		}
+	},
+	{
+		"id": "furrow_MALE_debug_show_massage01",
 		"type": "command",
 		"command": "@SHOW_SCENE debug_01",
 		"clear": true,
-		"next": "furrow_debug_massage01"
+		"next": "furrow_MALE_debug_massage01"
 	},
 	{
-		"id": "furrow_debug_massage01",
+		"id": "furrow_FEMALE_debug_show_massage01",
+		"type": "command",
+		"command": "@SHOW_SCENE debug_01",
+		"clear": true,
+		"next": "furrow_FEMALE_debug_massage01"
+	},
+
+	{
+		"id": "furrow_MALE_debug_massage01",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "You stretch out on the padded bench, letting your weight sink into the warmth. Minttärä’s presence follows moments later—her paws already slicked with oil. Her padded paws feel warm as they press into your shoulders. She works with practiced rhythm, fingers rolling down your spine, smoothing across your sides. Her palms spread wide over your chest, strong and slow, her claws just grazing your skin.[nb]She circles your lower back in long, deliberate motions, pressing into the muscle just above your hips. As her fur brushes lightly along your side she leans over you. As her ministrations slide downwards, you sense her claws grazing your abdomen, just shy of your groin. She pauses slightly, before letting her padded thumbs trace along your inner thighs. The bench creaks slightly as she repositions, one paw drifting between your legs.",
+		"text": "You stretch out on the padded bench, letting your weight sink into the warmth. Minttärä’s presence follows moments later, her paws already slicked with oil. Her claws feel surprisingly warm and gentle as they press into your shoulders. She works with practiced rhythm, claws rolling down your spine, smoothing across your sides. The palm of her hands spread wide over your chest, strong and slow.[nb]She circles your lower back in long, deliberate motions, pressing into the muscle just above your hips. Her skin brushes lightly along your side she leans over you. As her ministrations slide downwards, you sense her claws grazing your abdomen, just shy of your groin. She pauses slightly, before letting her the back of her hand trace along your inner thighs. The bench creaks slightly as she repositions, one claw drifting between your legs.",
 		"clear": true,
-		"next": "furrow_debug_show_massage02"
+		"next": "furrow_MALE_debug_show_massage02"
 	},
 	{
-		"id": "furrow_debug_show_massage02",
+		"id": "furrow_FEMALE_debug_massage01",
+		"type": "npc",
+		"name": "Minttärä",
+		"text": "You stretch out on the padded bench, letting your weight sink into the warmth. Minttärä’s presence follows moments later, her paws already slicked with oil. Her claws feel surprisingly warm and gentle as they press into your shoulders. She works with practiced rhythm, claws rolling down your spine, smoothing across your sides. The palm of her hands spread wide over your chest, strong and slow.[nb]She circles your lower back in long, deliberate motions, pressing into the muscle just above your hips. Her skin brushes lightly along your side she leans over you. As her ministrations slide downwards, you sense her claws grazing your abdomen, just shy of your groin. She pauses slightly, before letting her the back of her hand trace along your inner thighs. The bench creaks slightly as she repositions, one claw drifting between your legs.",
+		"clear": true,
+		"next": "furrow_FEMALE_debug_show_massage02"
+	},
+	{
+		"id": "furrow_MALE_debug_show_massage02",
 		"type": "command",
 		"command": "@SHOW_SCENE debug_02",
 		"clear": true,
-		"next": "furrow_debug_massage02"
+		"next": "furrow_MALE_debug_massage02"
 	},
 	{
-		"id": "furrow_debug_massage02",
+		"id": "furrow_FEMALE_debug_show_massage02",
+		"type": "command",
+		"command": "@SHOW_SCENE debug_02",
+		"clear": true,
+		"next": "furrow_FEMALE_debug_massage02"
+	},
+	{
+		"id": "furrow_MALE_debug_massage02",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "She finds your cock—already hardening against the oiled cloth beneath you.[p]As she wraps both paws around you and starts to stroke gently, you let out a groan. Minttärä's oiled-up grip is snug but gentle, guiding your length between her palms in slow, steady passes. You feel your orgasm building.",
-		"next": "furrow_debug_show_massage_choice_finish"
+		"text": "She finds your cock, already hardening against the oiled cloth beneath you.[p]As she wraps both claws around you and starts to stroke gently, you let out a groan. Minttärä's oiled-up grip is snug but gentle, guiding your length between her folded claw-hands in slow, steady passes. You feel your orgasm building.",
+		"next": "furrow_MALE_debug_show_massage_choice_finish"
 	},
 	{
-		"id": "furrow_debug_show_massage_choice_finish",
+		"id": "furrow_FEMALE_debug_massage02",
+		"type": "npc",
+		"name": "Minttärä",
+		"text": "She finds your pussy already slick against the oiled cloth beneath you.[p]One tip of her clawed hand circle your clit in slow, steady motions while the other dip lower, sliding gently into your entrance, curling inside with practiced care. You gasp as her rhythm builds, her soft touch alternating pressure and motion. Pleasure tightens low in your belly as she works you closer to the edge.",
+		"next": "furrow_FEMALE_debug_massage_choice_finish"
+	},
+	{
+		"id": "furrow_MALE_debug_show_massage_choice_finish",
 		"type": "choice",
 		"options": [
 			{
-				"text": "> [Cum in her hands]",
-				"next": "furrow_debug_show_massage_finish"
+				"text": "> [Finish]",
+				"next": "furrow_MALE_debug_show_massage_finish"
 			},
 			{
-				"text": "> [Ask her to use her mouth]",
-				"next": "furrow_service_debug_ask_bj"
+				"text": "> I want to feel your mouth.",
+				"next": "furrow_MALE_service_debug_ask_bj"
 			}
 		]
 	},
 	{
-		"id": "furrow_service_debug_ask_bj",
-		"type": "npc",
-		"name": "Minttärä",
-		"text": "Minttärä giggles and increases her pace along your shaft. \"Not today, that scene hasn't been written yet.\"\"Now cum for me, hm?\"",
-		"next": "furrow_debug_show_massage_finish"
+		"id": "furrow_FEMALE_debug_massage_choice_finish",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Finish]",
+				"next": "furrow_FEMALE_debug_massage_finish"
+			},
+			{
+				"text": "> I want to feel your mouth.",
+				"next": "furrow_FEMALE_service_debug_ask_bj"
+			}
+		]
 	},
 	{
-		"id": "furrow_debug_show_massage_finish",
+		"id": "furrow_MALE_service_debug_ask_bj",
+		"type": "npc",
+		"name": "Minttärä",
+		"text": "Minttärä let's out a whistling giggle and increases her pace. \"Not today, that scene hasn't been written yet.\"\"Now cum for me, hm?\"",
+		"next": "furrow_MALE_debug_show_massage_finish"
+	},
+	{
+		"id": "furrow_FEMALE_service_debug_ask_bj",
+		"type": "npc",
+		"name": "Minttärä",
+		"text": "Minttärä let's out a whistling giggle and increases her pace. \"Not today, that scene hasn't been written yet.\"\"Now cum for me, hm?\"",
+		"next": "furrow_FEMALE_debug_show_massage_finish"
+	},
+	{
+		"id": "furrow_MALE_debug_show_massage_finish",
 		"type": "command",
-		"command": "@SHOW_SCENE debug_finish",
+		"command": "@SHOW_SCENE debug_male_finish",
 		"clear": true,
-		"next": "furrow_debug_massage_finish"
+		"next": "furrow_MALE_debug_massage_finish"
 	},
 	{
-		"id": "furrow_debug_massage_finish",
+		"id": "furrow_MALE_debug_massage_finish",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "Your cock throbs against her rhythm. She presses her paws tighter, curling her fingers just enough to squeeze from the base. You buck your hips lifting into her hands as you feel your orgasm wash over you.[p]Ropes of cum spurts across her wrist and your belly as she milks you with practiced care, stroking you through each pulse as your body softens beneath her touch. As your orgasm starts to recede, Minttärä's pace slows into a feather-light teasing. One paw rests just above your base. The other catches a stray drip with lazy precision.[p]She leans forward, her cheek brushing your ear as she purrs.\"Good boy.\"",
+		"text": "Your cock throbs against her rhythm. She curls her claws tighter, just enough to squeeze from the base. You buck your hips lifting into her grip as you feel your orgasm wash over you.[p]Ropes of cum spurts across her wrist and your belly as she milks you with practiced care, stroking you through each pulse as your body softens beneath her touch. As your orgasm starts to recede, Minttärä's pace slows into a feather-light teasing. One claw rests just above your base. The other catches a stray drip with lazy precision.[p]She leans forward, her cheek brushing your ear as she purrs.\"Good boy.\"",
+		"next": "furrow_debug_cleanup"
+	},
+	{
+		"id": "furrow_FEMALE_debug_show_massage_finish",
+		"type": "command",
+		"command": "@SHOW_SCENE debug_female_finish",
+		"clear": true,
+		"next": "furrow_FEMALE_debug_massage_finish"
+	},
+	{
+		"id": "furrow_FEMALE_debug_massage_finish",
+		"type": "npc",
+		"name": "Minttärä",
+		"text": "Your pussy clenches around her claw as the orgasm hits. Your thighs tremble and your hips buck slightly as you cry out, warmth pulsing through your core.[p]Minttärä doesn’t stop, her gentle claw stroke you through every twitch, the other hand firm against your mound. She finally slows, easing you down with soft, lingering touches.[p]She leans forward, her cheek brushing yours as she purrs.\"Good girl.\"",
 		"next": "furrow_debug_cleanup"
 	},
 	{

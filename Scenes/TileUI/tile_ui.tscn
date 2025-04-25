@@ -1,12 +1,13 @@
-[gd_scene load_steps=31 format=3 uid="uid://dwe18c1an1i8y"]
+[gd_scene load_steps=32 format=3 uid="uid://dwe18c1an1i8y"]
 
 [ext_resource type="Script" uid="uid://bw8tci7hlwmbj" path="res://Scenes/TileUI/tile_ui.gd" id="1_753lx"]
 [ext_resource type="Theme" uid="uid://c1p0164at7n2g" path="res://Themes/tile_theme.tres" id="1_imaao"]
+[ext_resource type="Texture2D" uid="uid://bvfovvi65akmd" path="res://Assets/Sprites/Particles/particle_star_med.png" id="3_6l571"]
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="3_75cnn"]
 [ext_resource type="Script" uid="uid://c2nndpp4j8mf1" path="res://Scenes/TileUI/tile_state_machine.gd" id="3_xhcwm"]
 [ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="3_xljor"]
 [ext_resource type="Script" uid="uid://bmgiulnoxvqf5" path="res://Scenes/TileUI/tile_states/tile_base_state.gd" id="4_18qtx"]
-[ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="4_anfrt"]
+[ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="4_x0i70"]
 [ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="5_4mhft"]
 [ext_resource type="Script" uid="uid://befi7jv3qj0wu" path="res://Scenes/TileUI/tile_states/tile_hover_state.gd" id="5_xeywo"]
 [ext_resource type="Script" uid="uid://c66kmifc6qwxg" path="res://Scenes/TileUI/tile_states/tile_clicked_state.gd" id="6_xljor"]
@@ -115,7 +116,7 @@ material = SubResource("CanvasItemMaterial_6l571")
 position = Vector2(64, 64)
 scale = Vector2(0.25, 0.25)
 amount = 128
-texture = ExtResource("4_anfrt")
+texture = ExtResource("3_6l571")
 process_material = SubResource("ParticleProcessMaterial_q7ap7")
 
 [node name="GPUParticles2D_HoverFG" type="GPUParticles2D" parent="TileVFX"]
@@ -123,7 +124,7 @@ material = SubResource("CanvasItemMaterial_45mda")
 position = Vector2(64, 64)
 scale = Vector2(0.25, 0.25)
 amount = 512
-texture = ExtResource("4_anfrt")
+texture = ExtResource("4_x0i70")
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_4mhft")
 

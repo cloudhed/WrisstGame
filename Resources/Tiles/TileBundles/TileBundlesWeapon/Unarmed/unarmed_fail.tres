@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://4hswreosnca7"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://4hswreosnca7"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_215io"]
 [ext_resource type="Script" uid="uid://c3buyj1mm5u6o" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_fail.gd" id="2_nm8c8"]
+[ext_resource type="Resource" uid="uid://b3dbwkdr33mtr" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_fail_mespool.tres" id="2_twepi"]
 [ext_resource type="AudioStream" uid="uid://bclmqond51wxr" path="res://Audio/SFX/tile_sfx/tile_release1.wav" id="3_twepi"]
 
 [resource]
@@ -11,9 +12,11 @@ type = 5
 target = 0
 cost = 1
 effect_amount = 0
+secondary_effect_amount = 0
 background = ExtResource("1_215io")
-tooltip_source_label = "Naked"
+tooltip_source_label = "Unarmed"
 tooltip_text = "[center]Your trembling hands is all that you have.[/center]"
-message_template = "Panic sets in, and you flair wildly without hitting anything."
+message_template = ""
+message_pool_resource = ExtResource("2_twepi")
 sound = ExtResource("3_twepi")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

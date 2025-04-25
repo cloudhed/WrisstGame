@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://chgvxbs5v02nn"]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_i41mf"]
+[ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="2_i41mf"]
+[ext_resource type="Script" uid="uid://dlb2lkyoatlfv" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_2hsmack.gd" id="3_i41mf"]
+[ext_resource type="AudioStream" uid="uid://bclmqond51wxr" path="res://Audio/SFX/tile_sfx/tile_release1.wav" id="4_exyty"]
+[ext_resource type="Texture2D" uid="uid://bp08yx8c03uy3" path="res://Assets/UI/icons/icon_attack_mini.png" id="5_jg4b4"]
+
+[resource]
+script = ExtResource("3_i41mf")
+id = "Two-handed block-strike"
+type = 0
+target = 1
+cost = 1
+effect_amount = 3
+secondary_effect_amount = 1
+background = ExtResource("1_i41mf")
+icon = ExtResource("2_i41mf")
+tooltip_icon = ExtResource("5_jg4b4")
+tooltip_source_label = "Long Stick"
+tooltip_text = "[center]Strike for [b][color=darkred]{effect_amount}[/color][/b] damage, and Block [b][color=dodgerblue]{secondary_effect_amount}[/color][/b].[/center]"
+message_template = "[b]You[/b] swing you Long Stick with both hands and hit the [b]{target_name}[/b] for [b][color=darkred]{amount}[/color][/b] damage. In one fluid motion you raise the stick and Block [b][color=dodgerblue]{secondary_effect_amount}[/color][/b] damage, it looks pretty sweet."
+sound = ExtResource("4_exyty")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

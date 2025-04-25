@@ -11,11 +11,12 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var cost: int = 1
 #amount is added by me, not tutorial. might need to turn off if "amount" is happening elsewhere idk
 @export var effect_amount: int = 0
+@export var secondary_effect_amount: int = 0
 
 @export_group("Tile Visuals")
 @export var background: Texture = preload("res://Assets/UI/tile_base.png")
-@export var icon: Texture = preload("res://Assets/UI/ui_arrow.png")
-@export var tooltip_icon: Texture = preload("res://Assets/UI/icons/icon_attack_mini.png")
+@export var icon: Texture
+@export var tooltip_icon: Texture
 @export var tooltip_source_label: String = "Unknown source"
 @export_multiline var tooltip_text: String = "[center]Do [i]Thing/i] for [b][color=green]{effect_amount}[/color][/b] points.[/center]"
 @export_multiline var message_template: String = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=green]{amount}[/color][/b] points!"
@@ -69,6 +70,12 @@ func play(targets: Array[Node], char_stats: CharacterStats) -> void:
 	Events.tile_played.emit(self)
 	char_stats.stamina -= cost
 	source_stats = char_stats
+	
+	if char_stats.entity == null:
+		for target in targets:
+			if target.has_method("get_stats") and target.get_stats() == char_stats:
+				char_stats.entity = target
+				break
 
 	if is_single_targeted():
 		apply_effects(targets)

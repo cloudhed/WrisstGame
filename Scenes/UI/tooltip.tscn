@@ -32,6 +32,7 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -62,4 +63,4 @@ theme_override_colors/default_color = Color(0.93845, 0.93845, 0.93845, 1)
 theme_override_constants/line_separation = -4
 bbcode_enabled = true
 text = "Deal 5-7 damage with your evil sword idk its not really evil [i]i suppose![/i]"
-scroll_following = true
+scroll_active = false

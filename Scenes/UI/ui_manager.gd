@@ -19,8 +19,11 @@ extends Control
 
 
 #-TILE PILE-#
-@onready var current_tiles_amount: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrentTilesLabel
-@onready var current_tiles_list: ItemList = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/CurrentTilesList
+@onready var current_tiles_amount: Label = %CurrentTilesLabel
+@onready var pile_power_label: Label = %PilePowerLabel
+
+@onready var tile_grid: GridContainer = %TileGrid
+
 
 #-NOTIFICATION POPUP-#
 @onready var popup_panel: Panel = %NotificationPopup
@@ -47,6 +50,8 @@ func _ready():
 	hide_timer.timeout.connect(_on_hide_timer_timeout)
 
 	item_list.item_clicked.connect(_on_item_clicked)
+	
+	_update_tile_grid()
 	
 
 	inv_screen.focus_mode = Control.FOCUS_ALL
@@ -129,38 +134,40 @@ func _on_item_toggled(index: int, checked: bool) -> void:
 	var item = GameState.player_inventory[index]
 	if not item or not item is EquipableItem:
 		return
-
+	
 	match item.item_type:
 		"weapon":
 			if checked:
+				# Unequip old weapon and uncheck its checkbox
+				if GameState.equipped_weapon and GameState.equipped_weapon != item:
+					_uncheck_item(GameState.equipped_weapon)
 				GameState.equip_weapon(item)
-				notify("Equipped weapon: %s" % item.name)
 			elif GameState.equipped_weapon == item:
-				GameState.equipped_weapon = null
-				notify("Unequipped weapon: %s" % item.name)
+				GameState.unequip_weapon()
 
 		"armor":
 			if checked:
+				if GameState.equipped_armor and GameState.equipped_armor != item:
+					_uncheck_item(GameState.equipped_armor)
 				GameState.equip_armor(item)
-				notify("Equipped armor: %s" % item.name)
 			elif GameState.equipped_armor == item:
-				GameState.equipped_armor = null
-				notify("Unequipped armor: %s" % item.name)
+				GameState.unequip_armor()
 
 		"trinket":
 			if checked:
 				GameState.equip_trinket(item)
-				notify("Equipped trinket: %s" % item.name)
 			else:
 				GameState.unequip_trinket(item)
-				notify("Unequipped trinket: %s" % item.name)
 
-	# Check and apply fallback gear if anything is unequipped
-	GameState.check_and_equip_fallback()
-
-	#print("🎯 Equipped weapon now:", GameState.equipped_weapon)
+	print("🎯 Equipped weapon now:", GameState.equipped_weapon)
 	_update_equipped_labels()
 
+
+func _uncheck_item(item: EquipableItem) -> void:
+	for i in GameState.player_inventory.size():
+		if GameState.player_inventory[i] == item:
+			item_list.deselect(i)
+			break
 
 
 func _update_equipped_labels() -> void:
@@ -174,8 +181,67 @@ func _update_equipped_labels() -> void:
 		trinket_names.append(trinket.name)
 
 	current_trinkets_label.text = "Trinkets: " + (", ".join(trinket_names) if trinket_names else "None")
+	
+	_update_tile_grid()
 
 
+func _update_tile_grid():
+	# Clear the grid first
+	for child in tile_grid.get_children():
+		tile_grid.remove_child(child)
+		child.queue_free()
+
+	var tile_pile: Array[Tile] = []
+
+	# Weapon tiles
+	if GameState.equipped_weapon and GameState.equipped_weapon.tile_bundle:
+		tile_pile += GameState.equipped_weapon.tile_bundle.tiles
+
+	# Armor tiles
+	if GameState.equipped_armor and GameState.equipped_armor.tile_bundle:
+		tile_pile += GameState.equipped_armor.tile_bundle.tiles
+
+	# Trinket tiles
+	for trinket in GameState.equipped_trinkets:
+		if trinket.tile_bundle:
+			tile_pile += trinket.tile_bundle.tiles
+
+	# Sort by effect_amount (descending)
+	tile_pile.sort_custom(func(a: Tile, b: Tile) -> bool:
+		return a.effect_amount > b.effect_amount
+	)
+
+	# Add to grid
+	for tile in tile_pile:
+		var card = preload("res://Scenes/TileUI/tile_grid_card.tscn").instantiate()
+		card.tile = tile
+		tile_grid.add_child(card)
+		
+		current_tiles_amount.text = "Tiles: %d" % tile_pile.size()
+	
+	var power = _calculate_deck_power(tile_pile)
+	pile_power_label.text = "Pile Power: %.1f" % power
+
+
+func _calculate_deck_power(tiles: Array[Tile]) -> float:
+	var total_value: float = 0.0
+	for tile in tiles:
+		match tile.type:
+			Tile.Type.ATTACK, Tile.Type.DEFEND:
+				total_value += tile.effect_amount
+			Tile.Type.POWER:
+				total_value += 86
+			Tile.Type.FAIL:
+				total_value -= 0.5
+			_:
+				total_value += 0  # Optional: skip BUFF/DEBUFF/OTHER types
+
+	if tiles.is_empty():
+		return 0.0
+
+	var average_value := total_value / tiles.size()
+	var final_score := average_value * 10.0
+	return round(final_score * 10) / 10.0  # Round to 1 decimal
 
 
 # ──────────────────────────────────────────────────

@@ -267,7 +267,17 @@ func handle_flag_check(entry: Dictionary) -> void:
 
 
 func handle_condition_check(entry: Dictionary) -> void:
-	var target_id: String = logic_handler.check_condition(entry)
+	var condition_dict: Dictionary = entry.get("condition", {})
+	var target_id: String = ""
+
+	if condition_dict.has("currency"):
+		target_id = logic_handler.check_condition(entry)
+	elif condition_dict.has("stat"):
+		target_id = logic_handler.check_stat_condition(entry)
+	else:
+		push_error("❌ Unknown condition type in logic entry.")
+		return
+
 	if target_id.is_empty():
 		push_error("❌ No valid target ID from condition check.")
 		return

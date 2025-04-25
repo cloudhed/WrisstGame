@@ -1,10 +1,9 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cxy6f8imoerai"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cxy6f8imoerai"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_itnl8"]
-[ext_resource type="Texture2D" uid="uid://dpnkbq481gn87" path="res://Assets/Sprites/Items/items_weapon_debugger.png" id="2_kn23m"]
+[ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="2_a6v58"]
 [ext_resource type="Script" uid="uid://tuady4krjvg4" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Debug of Clubs/debug_blunt_strike.gd" id="3_k7kix"]
 [ext_resource type="AudioStream" uid="uid://cx2wcws563kk4" path="res://Audio/SFX/sfx_hit_low.wav" id="4_hdov3"]
-[ext_resource type="Texture2D" uid="uid://bp08yx8c03uy3" path="res://Assets/UI/icons/icon_attack_mini.png" id="5_7px0a"]
 
 [resource]
 script = ExtResource("3_k7kix")
@@ -13,9 +12,9 @@ type = 0
 target = 1
 cost = 1
 effect_amount = 8
+secondary_effect_amount = 0
 background = ExtResource("1_itnl8")
-icon = ExtResource("2_kn23m")
-tooltip_icon = ExtResource("5_7px0a")
+icon = ExtResource("2_a6v58")
 tooltip_source_label = "Club of Debug"
 tooltip_text = "[center]Do [i]Thing[/i] for [b][color=red]{amount} or {effect_amount}[/color][/b] points.[/center]"
 message_template = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] points!"

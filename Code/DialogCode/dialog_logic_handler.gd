@@ -30,6 +30,36 @@ func check_flags(entry: Dictionary, flags: Dictionary) -> String:
 	return target_id
 
 
+# 🧬 Gender/Name condition check
+func check_stat_condition(entry: Dictionary) -> String:
+	if not entry.has("condition"):
+		push_error("❌ Logic entry missing 'condition'")
+		return ""
+
+	var condition: Dictionary = entry["condition"]
+	var stat: String = condition.get("stat", "")
+	var expected_value: Variant = condition.get("is", null)
+	var on_success: String = str(condition.get("on_success", ""))
+	var on_fail: String = str(condition.get("on_fail", ""))
+
+	if stat.is_empty() or expected_value == null:
+		push_error("❌ Missing 'stat' or 'is' in condition")
+		return on_fail
+
+	# Check supported stats
+	var actual_value: Variant = null
+	match stat:
+		"player_gender":
+			actual_value = game_state.player_gender
+		"player_name":
+			actual_value = game_state.player_name
+		_:
+			push_error("❌ Unsupported stat in condition: %s" % stat)
+			return on_fail
+
+	return on_success if actual_value == expected_value else on_fail
+
+
 # 💰 Check currency conditions and return next dialog ID (as String)
 func check_condition(entry: Dictionary) -> String:
 	if not entry.has("condition"):

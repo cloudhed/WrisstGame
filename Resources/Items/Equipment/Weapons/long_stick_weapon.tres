@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=8 format=3 uid="uid://bl3tkb6fogvxd"]
+
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_1gw54"]
+[ext_resource type="Texture2D" uid="uid://cir4vun6ndv7x" path="res://Assets/Sprites/Items/items_weapon_longstick_icon.png" id="1_iqfoy"]
+[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="2_757jb"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="3_beg6s"]
+[ext_resource type="Resource" uid="uid://2ypvnstw0l5s" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_smack.tres" id="4_beg6s"]
+[ext_resource type="Resource" uid="uid://chgvxbs5v02nn" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_2hsmack.tres" id="5_iqfoy"]
+
+[sub_resource type="Resource" id="Resource_iqfoy"]
+script = ExtResource("2_757jb")
+tiles = Array[ExtResource("3_beg6s")]([ExtResource("4_beg6s"), ExtResource("4_beg6s"), ExtResource("5_iqfoy"), ExtResource("5_iqfoy"), ExtResource("5_iqfoy"), ExtResource("5_iqfoy")])
+metadata/_custom_type_script = "uid://c814t8855evro"
+
+[resource]
+script = ExtResource("1_1gw54")
+name = "Long stick"
+icon = ExtResource("1_iqfoy")
+description = "It's a long stick. What more is there to say?"
+item_type = "weapon"
+hand_slot = "2-handed"
+tile_bundle = SubResource("Resource_iqfoy")
+hidden_from_inventory = false
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

@@ -27,7 +27,7 @@ func on_input(event: InputEvent) -> void:
 
 		Events.tile_tooltip_requested.emit(
 			tile_ui.tile.tooltip_icon,
-			tile_ui.tile.tooltip_text,
+			tile_ui.tile.get_formatted_tooltip_text(),
 			tile_ui.tile.tooltip_source_label,
 			tile_pos,
 			tile_size

@@ -5,6 +5,17 @@ signal reputation_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
 signal fallback_equipped
 
+# ─────────────────────────────────────────────────────────────
+# Player identity
+var player_name: String = "MilkshakeGirl"
+var player_gender: String = "female" # or "male",
+#var player_body_type: String = "curvy" # or "flat", "androgynous", etc.
+#var player_pronouns: Dictionary = {
+#	"they": "she",
+#	"them": "her",
+#	"their": "her"
+#}
+
 # DEFAULT FALLBACK NAKED&CONFUSED
 var FALLBACK_ARMOR: EquipableItem = load("res://Resources/Items/Equipment/Armor/naked_armor.tres")
 var FALLBACK_WEAPON: EquipableItem = load("res://Resources/Items/Equipment/Weapons/unarmed_weapon.tres")
@@ -36,11 +47,16 @@ func _ready():
 	var debug_armor: EquipableItem = load("res://Resources/Items/Equipment/Armor/debugger_armor.tres")
 	var debug_weapon: EquipableItem = load("res://Resources/Items/Equipment/Weapons/debugger_weapon.tres")
 	var debug_trinket: EquipableItem = load("res://Resources/Items/Equipment/Trinkets/debugger_trinket.tres")
+	var debug_longstick: EquipableItem = load("res://Resources/Items/Equipment/Weapons/long_stick_weapon.tres")
 	add_item(debug_armor)
 	add_item(debug_weapon)
+	add_item(debug_longstick)
 	add_item(debug_trinket)
 	
 	check_and_equip_fallback()
+
+
+
 
 
 # ─────────────────────────────────────────────────────────────
@@ -118,26 +134,53 @@ var equipped_armor: EquipableItem = null
 var equipped_trinkets: Array[EquipableItem] = []
 
 func equip_weapon(item: EquipableItem) -> void:
-	print("🧪 Equipped weapon:", GameState.equipped_weapon)
 	if item.item_type != "weapon":
 		push_error("Trying to equip non-weapon as weapon.")
 		return
+	
+	# Unequip current weapon if there is one
+	if equipped_weapon and equipped_weapon != item:
+		print("🗡️ Unequipping previous weapon:", equipped_weapon.name)
+		# You can emit a signal here if you want
+	
 	equipped_weapon = item
-	fallback_equipped.emit() #FALLBACK WEAPON AKA UNARMED
+	print("🧪 Equipped weapon:", item.name)
+	fallback_equipped.emit()  # Update UI
 
 func equip_armor(item: EquipableItem) -> void:
 	if item.item_type != "armor":
 		push_error("Trying to equip non-armor as armor.")
 		return
+	
+	# Unequip current armor if there is one
+	if equipped_armor and equipped_armor != item:
+		print("🛡️ Unequipping previous armor:", equipped_armor.name)
+	
 	equipped_armor = item
-	fallback_equipped.emit() #FALLBACK ARMOR AKA NAKED
+	print("🥷 Equipped armor:", item.name)
+	fallback_equipped.emit()
 
 func equip_trinket(item: EquipableItem) -> void:
 	if item.item_type != "trinket":
 		push_error("Trying to equip non-trinket as trinket.")
 		return
-	if not equipped_trinkets.has(item):
-		equipped_trinkets.append(item)
+	
+	# No duplicates allowed
+	if equipped_trinkets.has(item):
+		print("⚠️ Trinket already equipped:", item.name)
+		return
+	
+	equipped_trinkets.append(item)
+	print("🔮 Equipped trinket:", item.name)
+	fallback_equipped.emit()
+
+func unequip_weapon() -> void:
+	equipped_weapon = null
+	check_and_equip_fallback()
+
+func unequip_armor() -> void:
+	equipped_armor = null
+	check_and_equip_fallback()
 
 func unequip_trinket(item: EquipableItem) -> void:
 	equipped_trinkets.erase(item)
