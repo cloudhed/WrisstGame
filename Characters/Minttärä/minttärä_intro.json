@@ -187,7 +187,7 @@
 				"next": "furrow_service_massage_check"
 			},
 			{
-				"text": "> How about a quick one? [debug][NSFW]",
+				"text": "> [debug_check]",
 				"next": "furrow_service_debug_massage"
 			},
 			{

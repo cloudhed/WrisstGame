@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbpihauqeos3w"]
+
+[ext_resource type="Script" uid="uid://b6xorel3ha0j5" path="res://Narrative/zone_container.gd" id="1_pmjjc"]
+
+[node name="ZoneContainer" type="Node2D"]
+script = ExtResource("1_pmjjc")

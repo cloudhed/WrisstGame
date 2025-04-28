@@ -1,7 +1,9 @@
 class_name DialogSceneResource
 extends Resource
 
-@export var background_texture: Texture2D
+@export var background_texture: Texture2D #good fallback
+@export var zone_scene: PackedScene
+
 @export var music: AudioStream
 @export var ambience: AudioStream
 @export var sfx_library: Dictionary = {}

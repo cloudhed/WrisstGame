@@ -31,7 +31,7 @@ func _process(delta):
 	var minutes = floor(fmod(current_minutes, 60))
 	
 	# Only update the display if the minute has changed to a new 10-minute interval
-	var displayed_minute = floor(minutes / 10.0) * 10
+	var displayed_minute = floor(minutes / 30.0) * 30
 	if displayed_minute != last_displayed_minute:
 		last_displayed_minute = displayed_minute
 		var time_string = "%02d:%02d" % [hours, displayed_minute]
@@ -52,7 +52,7 @@ func set_current_time(hours: int, minutes: int) -> void:
 # New function to determine the current time period
 func get_time_period() -> String:
 	var hours = get_current_time().hours
-	if hours >= 5 and hours < 19:
+	if hours >= 6 and hours < 18:
 		return "Day"
 	else:
 		return "Night"

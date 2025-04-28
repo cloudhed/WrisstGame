@@ -10,9 +10,16 @@ extends Node
 @onready var parser := DialogParser.new()
 @onready var line_spawner: DialogLineSpawner = $CanvasLayer/DialogLineSpawner
 @onready var choice_box: ChoiceBox = $CanvasLayer/ChoiceBox
+
 @onready var background: TextureRect = $Background
-@onready var char_portrait: TextureRect = $CharacterPortraitMain
-@onready var char_extra: TextureRect = $CharacterPortraitExtra
+
+@onready var zone_container: Node2D = $ZoneContainer
+@onready var mist_container: Node2D = $MistContainer
+@onready var character_container: Node2D = $CharacterContainer
+
+@onready var char_portrait: TextureRect = $CharacterContainer/CharacterPortraitMain
+@onready var char_extra: TextureRect = $CharacterContainer/CharacterPortraitExtra
+
 @onready var slideshow_image: TextureRect = $SlideshowImage
 @onready var slide_container: Node2D = $CanvasLayer/SlideContainer
 
@@ -53,28 +60,46 @@ func start_dialog(data: DialogSceneResource) -> void:
 
 
 func apply_scene_resource(data: DialogSceneResource) -> void:
-	background.texture = data.background_texture
+	# 🗑️ Clear previous Zone scene if needed
+	for child in zone_container.get_children():
+		child.queue_free()
+	
+	# 🗑️ Clear previous Mist if needed
+	for child in mist_container.get_children():
+		child.queue_free()
 
+	# 🏙️ Load Zone Scene if available
+	if data.zone_scene:
+		var zone_instance: Node = data.zone_scene.instantiate()
+		zone_container.add_child(zone_instance)
+	else:
+		background.texture = data.background_texture
+
+	# 🎵 Play music
 	if data.music:
 		MusicPlayer.play(data.music, true)
 
+	# 🎶 Play ambience
 	if data.ambience:
 		$AmbiencePlayer.stream = data.ambience
 		$AmbiencePlayer.play()
 
+	# 🏷️ Set flags at scene start
 	for flag_name in data.flags_set_on_start.keys():
 		flags[flag_name] = data.flags_set_on_start[flag_name]
 
-	# ✅ Assign slide_deck from the resource
+	# 🎞️ Set slide deck
 	slide_deck = data.slide_deck
 	if not slide_deck:
 		print("⚠️ WARNING: No SlideDeck assigned in DialogSceneResource.")
 
+	# 👥 Load character resources
 	character_map.clear()
 	for entry in data.characters:
 		if entry is CharacterEntry:
 			character_map[entry.id] = entry.character_resource
 
+	# 📖 Load dialogue
 	load_dialogue(data.dialogue_path)
 
 

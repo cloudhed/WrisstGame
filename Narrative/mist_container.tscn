@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsauxo1g05656"]
+
+[ext_resource type="Script" uid="uid://b4vh43ab2yqn6" path="res://Narrative/mist_container.gd" id="1_kbmj4"]
+
+[node name="MistContainer" type="Node2D"]
+script = ExtResource("1_kbmj4")
