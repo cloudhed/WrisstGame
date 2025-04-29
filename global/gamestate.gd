@@ -108,22 +108,53 @@ func remove_drots(amount: int) -> bool:
 
 # ─────────────────────────────────────────────────────────────
 # Inventory management
-func add_item(item) -> void:
-	player_inventory.append(item)
-	print("📦 Added item:", item)
+func add_item(item: InventoryItem, amount: int = 1) -> void:
+	if item.is_stackable:
+		for slot in player_inventory:
+			if slot.item == item:
+				slot.amount += amount
+				print("➕ Stacked item:", item.name, "New amount:", slot.amount)
+				emit_signal("inventory_changed", "add", item)
+				return
+		# No existing stack, create new
+		player_inventory.append({
+			"item": item,
+			"amount": amount
+		})
+		print("📦 New stack created:", item.name, "x", amount)
+	else:
+		# Non-stackable items
+		for i in range(amount):
+			player_inventory.append({
+				"item": item,
+				"amount": 1
+			})
+		print("📦 Added non-stackable item:", item.name, "x", amount)
+
 	emit_signal("inventory_changed", "add", item)
 
-func remove_item(item) -> bool:
-	if player_inventory.has(item):
-		player_inventory.erase(item)
-		print("🗑️ Removed item:", item)
-		emit_signal("inventory_changed", "remove", item)
-		return true
-	print("❌ Tried to remove item not in inventory:", item)
+func remove_item(item: InventoryItem, amount: int = 1) -> bool:
+	for slot in player_inventory:
+		if slot.item == item:
+			if slot.amount > amount:
+				slot.amount -= amount
+				print("➖ Reduced stack of", item.name, "to", slot.amount)
+			elif slot.amount == amount:
+				player_inventory.erase(slot)
+				print("🗑️ Removed entire stack of", item.name)
+			else:
+				print("❌ Tried to remove more than available!")
+				return false
+			emit_signal("inventory_changed", "remove", item)
+			return true
+	print("❌ Tried to remove item not found:", item.name)
 	return false
 
-func has_item(item) -> bool:
-	return player_inventory.has(item)
+func has_item(item: InventoryItem) -> bool:
+	for slot in player_inventory:
+		if slot.item == item and slot.amount > 0:
+			return true
+	return false
 
 
 # ─────────────────────────────────────────────────────────────
@@ -134,7 +165,7 @@ var equipped_armor: EquipableItem = null
 var equipped_trinkets: Array[EquipableItem] = []
 
 func equip_weapon(item: EquipableItem) -> void:
-	if item.item_type != "weapon":
+	if item.equip_type != "weapon":
 		push_error("Trying to equip non-weapon as weapon.")
 		return
 	
@@ -148,7 +179,7 @@ func equip_weapon(item: EquipableItem) -> void:
 	fallback_equipped.emit()  # Update UI
 
 func equip_armor(item: EquipableItem) -> void:
-	if item.item_type != "armor":
+	if item.equip_type != "armor":
 		push_error("Trying to equip non-armor as armor.")
 		return
 	
@@ -161,7 +192,7 @@ func equip_armor(item: EquipableItem) -> void:
 	fallback_equipped.emit()
 
 func equip_trinket(item: EquipableItem) -> void:
-	if item.item_type != "trinket":
+	if item.equip_type != "trinket":
 		push_error("Trying to equip non-trinket as trinket.")
 		return
 	

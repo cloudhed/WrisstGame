@@ -10,6 +10,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 850.0
 offset_bottom = 90.0
+mouse_filter = 2
 theme = ExtResource("1_b6tns")
 script = ExtResource("1_mp87l")
 padding = 14.0
@@ -18,16 +19,19 @@ padding = 14.0
 layout_mode = 1
 offset_right = 45.825
 offset_bottom = 48.645
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="BoxWrapper"]
 custom_minimum_size = Vector2(27.825, 20.645)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Text" type="RichTextLabel" parent="BoxWrapper/Panel"]
 clip_contents = false
 layout_mode = 0
 offset_right = 1.0
 offset_bottom = 29.41
+mouse_filter = 2
 theme = ExtResource("3_o380u")
 bbcode_enabled = true
 fit_content = true

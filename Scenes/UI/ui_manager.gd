@@ -65,7 +65,9 @@ func _on_item_clicked(index: int, at_position: Vector2, mouse_button_index: int)
 	if index < 0 or index >= GameState.player_inventory.size():
 		return
 
-	var item = GameState.player_inventory[index]
+	var slot = GameState.player_inventory[index]
+	var item = slot.item
+
 	if not item or not item is EquipableItem:
 		return
 
@@ -99,13 +101,21 @@ func _toggle_inventory():
 func _refresh_inventory():
 	item_list.clear()
 
-	for item in GameState.player_inventory:
-		if item is EquipableItem and item.hidden_from_inventory:
-			continue  # Skip invisible items like "Naked" and "Unarmed"
+	for slot in GameState.player_inventory:
+		var item = slot.item
+		var amount = slot.amount
 
-		item_list.add_item(item.name, item.icon)  # ← no "true" here
+		if item is EquipableItem and item.hidden_from_inventory:
+			continue
+
+		var display_name = item.name
+		if item.is_stackable and amount > 1:
+			display_name += " x%d" % amount  # Show quantity if stackable
+
+		item_list.add_item(display_name, item.icon)
+		
 		var index := item_list.item_count - 1
-		if item == GameState.equipped_weapon or item == GameState.equipped_armor or GameState.equipped_trinkets.has(item):
+		if item == GameState.equipped_weapon or item == GameState.equipped_armor or item in GameState.equipped_trinkets:
 			item_list.select(index)
 
 
@@ -124,18 +134,20 @@ func _on_inventory_changed(action: String, item):
 		_refresh_inventory()
 	# Also pop up a notification:
 	if action == "add":
-		notify("Got “%s”!" % item)
+		notify("Got “%s”!" % item.name)
 	else:
-		notify("Lost “%s”!" % item)
+		notify("Lost “%s”!" % item.name)
 
 # ──────────────────────────────────────────────────
 # ITEM AND EQUIPMENT #
 func _on_item_toggled(index: int, checked: bool) -> void:
-	var item = GameState.player_inventory[index]
+	var slot = GameState.player_inventory[index]
+	var item = slot.item
+
 	if not item or not item is EquipableItem:
 		return
 	
-	match item.item_type:
+	match item.equip_type:
 		"weapon":
 			if checked:
 				# Unequip old weapon and uncheck its checkbox
@@ -165,7 +177,8 @@ func _on_item_toggled(index: int, checked: bool) -> void:
 
 func _uncheck_item(item: EquipableItem) -> void:
 	for i in GameState.player_inventory.size():
-		if GameState.player_inventory[i] == item:
+		var slot = GameState.player_inventory[i]
+		if slot.item == item:
 			item_list.deselect(i)
 			break
 

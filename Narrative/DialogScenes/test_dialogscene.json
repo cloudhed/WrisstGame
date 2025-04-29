@@ -1,0 +1,61 @@
+[
+    {
+        "id": "pactest_intro",
+        "type": "narration",
+        "text": "You stand in front of a green door.[nb]What do you do?",
+        "next": "pactest_intro_choice_hub"
+    },
+    {
+        "id": "pactest_intro_choice_hub",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> [Open door]",
+                "next": "pactest_opendoor_locked"
+            },
+            {
+                "text": "> [Inspect door]",
+                "next": "pactest_inspectdoor_locked"
+            },
+            {
+                "text": "> [Use the key on the door]",
+                "next": "pactest_inspectdoor_unlocked"
+            }
+        ]
+    },
+    {
+        "id": "pactest_opendoor_locked",
+        "type": "narration",
+        "text": "You try and open the door.[p]It doesn't budge.",
+		"clear": true,
+        "next": "pactest_intro_choice_hub"
+    },
+    {
+        "id": "pactest_opendoor_unlocked",
+        "type": "narration",
+        "text": "You try and open the door with the Rusty key.[p]It clicks and swings open.",
+		"clear": true,
+        "next": "pactest_intro_choice_hub"
+    },
+    {
+        "id": "pactest_barrel",
+        "type": "narration",
+        "text": "The barrel holds a key.",
+		"clear": true,
+        "next": "pactest_intro_choice_hub"
+    },
+    {
+        "id": "pactest_barrel_empty",
+        "type": "narration",
+        "text": "The barrel that held the key is now empty.",
+		"clear": true,
+        "next": "pactest_intro_choice_hub"
+    },
+    {
+        "id": "pactest_inspectdoor_locked",
+        "type": "narration",
+        "text": "The door is about as tall as doors usually are. It is made of a uneven collection of old wooden planks, and someone has painted it green.",
+		"clear": true,
+        "next": "pactest_intro_choice_hub"
+    }
+]

@@ -14,11 +14,12 @@ metadata/_custom_type_script = "uid://c814t8855evro"
 
 [resource]
 script = ExtResource("1_1gw54")
+equip_type = "weapon"
+hand_slot = "2-handed"
+tile_bundle = SubResource("Resource_iqfoy")
 name = "Long stick"
 icon = ExtResource("1_iqfoy")
 description = "It's a long stick. What more is there to say?"
-item_type = "weapon"
-hand_slot = "2-handed"
-tile_bundle = SubResource("Resource_iqfoy")
+item_type = "equipable"
 hidden_from_inventory = false
 metadata/_custom_type_script = "uid://bvo3h06fcka4k"

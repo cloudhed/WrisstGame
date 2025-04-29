@@ -13,11 +13,12 @@ metadata/_custom_type_script = "uid://c814t8855evro"
 
 [resource]
 script = ExtResource("2_xrl6t")
+equip_type = "trinket"
+hand_slot = "none"
+tile_bundle = SubResource("Resource_u2w45")
 name = "Necklace of Begud"
 icon = ExtResource("1_0jsor")
 description = "The necklace told by the legends as lost forever. The Skull of Begud has found its home at last."
-item_type = "trinket"
-hand_slot = "none"
-tile_bundle = SubResource("Resource_u2w45")
+item_type = "equipable"
 hidden_from_inventory = false
 metadata/_custom_type_script = "uid://bvo3h06fcka4k"

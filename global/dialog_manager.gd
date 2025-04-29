@@ -70,8 +70,14 @@ func apply_scene_resource(data: DialogSceneResource) -> void:
 
 	# 🏙️ Load Zone Scene if available
 	if data.zone_scene:
-		var zone_instance: Node = data.zone_scene.instantiate()
+		var zone_instance: Node2D = data.zone_scene.instantiate() as Node2D
 		zone_container.add_child(zone_instance)
+		zone_instance.position = Vector2.ZERO # 🔥 Reset position to (0,0)
+		
+				# 🔥 CONNECT HOTSPOTS HERE
+		for hotspot in zone_instance.get_children():
+			if hotspot is Hotspot:
+				hotspot.hotspot_triggered.connect(_on_hotspot_triggered)
 	else:
 		background.texture = data.background_texture
 
@@ -104,14 +110,15 @@ func apply_scene_resource(data: DialogSceneResource) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	#print("📥 _input() received:", event)
-	
-	#if GameUI.is_ui_open():
-	#	print("❌ UI is open, blocking input")
-	#	return
+	if not waiting_for_input or choice_box.visible:
+		return
 
-	if event.is_action_pressed("ui_accept") and not choice_box.visible and waiting_for_input:
+	if event is InputEventKey and event.is_action_pressed("ui_accept"):
 		print("✅ Advancing dialogue with ui_accept")
+		waiting_for_input = false
+		show_next_line()
+	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		print("✅ Advancing dialogue with mouse click")
 		waiting_for_input = false
 		show_next_line()
 
@@ -148,6 +155,23 @@ func show_next_line() -> void:
 		return
 
 	process_entry_type(entry)
+
+
+func jump_to_dialog(dialog_id: String) -> void:
+	for i in range(dialogue.size()):
+		var entry: Dictionary = dialogue[i]
+		if entry.has("id") and entry["id"] == dialog_id:
+			print("🔄 Jumping to dialog ID:", dialog_id)
+			current_index = i
+			show_next_line()
+			return
+	
+	print("❌ Dialog ID not found:", dialog_id)
+
+
+func _on_hotspot_triggered(target_id: String) -> void:
+	print("🚪 Hotspot triggered! Target Dialog ID:", target_id)
+	jump_to_dialog(target_id)
 
 
 func check_dialog_end() -> bool:

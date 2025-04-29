@@ -13,6 +13,7 @@ offset_left = -750.0
 offset_bottom = 92.425
 grow_horizontal = 0
 size_flags_horizontal = 6
+mouse_filter = 2
 theme = ExtResource("1_guhem")
 script = ExtResource("2_r5lct")
 padding = 0.0
@@ -27,10 +28,12 @@ offset_top = -34.27
 offset_right = 45.755
 offset_bottom = 5.73
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_constants/margin_bottom = 16
 
 [node name="Panel" type="Panel" parent="BubbleWrapper"]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("1_guhem")
 
 [node name="BubbleText" type="RichTextLabel" parent="BubbleWrapper/Panel"]
@@ -38,6 +41,7 @@ clip_contents = false
 layout_mode = 0
 offset_right = 1.0
 offset_bottom = 63.0
+mouse_filter = 2
 theme = ExtResource("1_guhem")
 bbcode_enabled = true
 text = "!!!"

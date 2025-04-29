@@ -13,10 +13,12 @@ metadata/_custom_type_script = "uid://c814t8855evro"
 
 [resource]
 script = ExtResource("2_yqyl2")
+equip_type = "weapon"
+hand_slot = "1-handed"
+tile_bundle = SubResource("Resource_cupn3")
 name = "Debug of Clubs"
 icon = ExtResource("1_o77jj")
 description = "A weapon told by the legends as lost forever.[p]The double helix allows its wielder to bug every de."
-item_type = "weapon"
-hand_slot = "1-handed"
-tile_bundle = SubResource("Resource_cupn3")
+item_type = "equipable"
+hidden_from_inventory = false
 metadata/_custom_type_script = "uid://bvo3h06fcka4k"

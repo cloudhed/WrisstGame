@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("2_7ey2w")
-name = "Naked"
-description = "Nothing but your bare skin."
-item_type = "armor"
+equip_type = "armor"
 hand_slot = "none"
 tile_bundle = ExtResource("2_jmeip")
+name = "Naked"
+description = "Nothing but your bare skin."
+item_type = "equipable"
 hidden_from_inventory = true
 metadata/_custom_type_script = "uid://bvo3h06fcka4k"

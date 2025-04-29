@@ -13,10 +13,12 @@ metadata/_custom_type_script = "uid://c814t8855evro"
 
 [resource]
 script = ExtResource("2_jvjkg")
+equip_type = "armor"
+hand_slot = "none"
+tile_bundle = SubResource("Resource_twip5")
 name = "Armor of the Debugger"
 icon = ExtResource("1_2uaqa")
 description = "A piece of armor told by the legends as lost forever.[p]Well, it's here now, in [b]your[/b] possession. Poisson."
-item_type = "armor"
-hand_slot = "none"
-tile_bundle = SubResource("Resource_twip5")
+item_type = "equipable"
+hidden_from_inventory = false
 metadata/_custom_type_script = "uid://bvo3h06fcka4k"
