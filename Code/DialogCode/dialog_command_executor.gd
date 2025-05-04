@@ -33,6 +33,8 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_show_named_slide(context)
 		"HIDE_SCENE":
 			_hide_scene(context)
+		"SHOW_ZONE":
+			_show_zone(context)
 		"START_COMBAT":
 			_start_combat(context)
 		_:
@@ -279,6 +281,67 @@ func _start_combat(context: Dictionary) -> void:
 	
 	print("🎬 START_COMBAT called from dialog. Ending dialog...")
 	dialog_manager.end_dialog()
+
+
+# === SHOW_ZONE ===
+func _show_zone(context: Dictionary) -> void:
+	var cmd: String = context.get("raw_command", "")
+	var parts: PackedStringArray = cmd.split(" ")
+	if parts.size() < 2:
+		print("❌ Missing zone scene path for SHOW_ZONE:", cmd)
+		return
+
+	var zone_path_sub := parts[1]  # Example: "Klyftet/KlyftetExtInnDay"
+	var full_path: String = "res://Narrative/DialogScenes/Locations/%s.tscn" % zone_path_sub
+
+	var zone_scene: Resource = load(full_path)
+
+	if not zone_scene or not zone_scene is PackedScene:
+		print("❌ Could not load zone scene as PackedScene:", full_path)
+		return
+
+	var dialog_manager: DialogManager = context.get("dialog_manager") as DialogManager
+	if dialog_manager == null:
+		print("❌ No dialog_manager in context!")
+		return
+
+	# 🧼 Clear current zone
+	for child in dialog_manager.zone_container.get_children():
+		child.queue_free()
+
+	var new_zone: Node2D = (zone_scene as PackedScene).instantiate() as Node2D
+	dialog_manager.zone_container.add_child(new_zone)
+	new_zone.position = Vector2.ZERO
+
+	# 🔌 Assign dialog_manager if the new zone is a ZoneScene
+	if new_zone is ZoneScene:
+		(new_zone as ZoneScene).dialog_manager = dialog_manager
+	
+	# 🕓 Wait for zone to be ready before connecting hotspots
+	await new_zone.ready
+
+	# 🔌 Reconnect hotspot signals
+	for hotspot in new_zone.get_children():
+		if hotspot is Hotspot:
+			hotspot.hotspot_triggered.connect(dialog_manager._on_hotspot_triggered)
+
+
+# === LOAD DIALOG ===
+func _load_dialog_file(context: Dictionary) -> void:
+	var cmd: String = context.get("raw_command", "")
+	var parts: Array = cmd.split(" ")
+	if parts.size() < 2:
+		print("❌ Missing path in LOAD_DIALOG")
+		return
+
+	var dialog_path: String = parts[1]
+
+	var dialog_manager: DialogManager = context.get("dialog_manager")
+	if dialog_manager == null:
+		print("❌ No dialog_manager in context!")
+		return
+
+	dialog_manager.load_additional_dialog(dialog_path)
 
 
 # === SOUND EFFECTS ===

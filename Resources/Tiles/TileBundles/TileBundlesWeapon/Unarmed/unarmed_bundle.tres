@@ -8,5 +8,5 @@
 
 [resource]
 script = ExtResource("1_x1pjf")
-tiles = Array[ExtResource("2_bhmkp")]([ExtResource("3_s2wdj"), ExtResource("3_s2wdj"), ExtResource("3_s2wdj"), ExtResource("4_h7817"), ExtResource("5_1w3lp"), ExtResource("5_1w3lp")])
+tiles = Array[ExtResource("2_bhmkp")]([ExtResource("3_s2wdj"), ExtResource("3_s2wdj"), ExtResource("3_s2wdj"), ExtResource("4_h7817"), ExtResource("5_1w3lp"), ExtResource("5_1w3lp"), ExtResource("5_1w3lp")])
 metadata/_custom_type_script = "uid://c814t8855evro"

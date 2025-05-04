@@ -1,0 +1,103 @@
+[
+    {
+		"id": "enter_first_time",
+		"type": "logic",
+		"check_flags": {
+			"flags": [
+				"hasEntered"
+			],
+			"on_success": "south_entrance",
+			"on_fail": "intro"
+		}
+	},
+    {
+        "id": "intro",
+        "type": "narration",
+        "text": "You step into Klyftet for the first time.",
+		"clear": true,
+        "next": "intro_choice_hub"
+    },
+	{
+		"id": "intro_choice_hub",
+		"type": "choice",
+		"clear": false,
+		"options": [
+			{
+				"text": "> [go to Market]",
+				"next": "market_intro"
+			},
+			{
+				"text": "> [go to Inn]",
+				"next": "switch_inn_exterior_intro"
+			},
+			{
+				"text": "> [Look at Sign]",
+				"next": "look_sign"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "leave_nocontact"
+			}
+		]
+	},
+    {
+        "id": "look_sign",
+        "type": "narration",
+        "text": "The crude stone sign is painted with a rust-red color: [i]KLYFTET[/i], probably the name of the town.",
+		"clear": false,
+        "next": "intro_choice_hub"
+    },
+    {
+        "id": "look_lanterna",
+        "type": "narration",
+        "text": "The strange lamp post is glowing with a green light, and seems to be emitting some sort of green fog.",
+		"clear": true,
+        "next": "intro_choice_hub"
+    },
+    {
+        "id": "market_intro",
+        "type": "narration",
+        "text": "The bustling market full of different kinds of Monsterfolk makes you nervous. Better to stay away for now until you've found your footing in this strange world.",
+		"clear": true,
+        "next": "intro_choice_hub"
+    },
+    {
+        "id": "switch_inn_exterior_intro",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtInnDay",
+		"clear": true,
+        "next": "inn_exterior_intro"
+    },
+    {
+        "id": "switch_southentrance_intro",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtSouthDay",
+		"clear": true,
+        "next": "intro_choice_hub"
+    },
+    {
+        "id": "inn_exterior_intro",
+        "type": "narration",
+        "text": "You're standing in front of a large inn.",
+		"clear": false,
+        "next": "intro_inn_choice_hub"
+    },
+	{
+		"id": "intro_inn_choice_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [go inside]",
+				"next": "enter_inn_first"
+			},
+			{
+				"text": "> [look at alley]",
+				"next": "look_inn_alley_intro"
+			},
+			{
+				"text": "> [go back to South Entrance]",
+				"next": "switch_southentrance_intro"
+			}
+		]
+	}
+]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=4 format=3 uid="uid://btfu2serojbk5"]
+
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_djecm"]
+[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="2_xe5p3"]
+[ext_resource type="PackedScene" uid="uid://clwyogetlajb1" path="res://Narrative/DialogScenes/Locations/Klyftet/KlyftetExtSouthDay.tscn" id="3_ncgq4"]
+
+[resource]
+script = ExtResource("2_xe5p3")
+zone_scene = ExtResource("3_ncgq4")
+sfx_library = {}
+dialogue_path = ""
+characters = Array[ExtResource("1_djecm")]([])
+flags_required = Array[String]([])
+flags_set_on_start = {}
+metadata/_custom_type_script = "uid://5m151tkuttgt"

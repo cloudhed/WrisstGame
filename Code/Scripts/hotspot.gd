@@ -17,6 +17,7 @@ func _ready() -> void:
 	print("✅ Hotspot ready!")
 	connect("input_event", Callable(self, "_on_input_event"))
 
+
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("🖱️ Hotspot clicked!")
