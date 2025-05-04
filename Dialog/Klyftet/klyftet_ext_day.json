@@ -47,11 +47,29 @@
 		"clear": false,
         "next": "intro_choice_hub"
     },
+	{
+		"id": "look_lanterna_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_lanterna_json"],
+			"on_success": "look_lanterna",
+			"on_fail": "look_lanterna_unknown"
+		}
+	},
     {
         "id": "look_lanterna",
         "type": "narration",
+        "text": "The familiar lanterna greets you with its green glow.",
+		"clear": true,
+        "next": "intro_choice_hub"
+    },
+    {
+        "id": "look_lanterna_unknown",
+        "type": "narration",
         "text": "The strange lamp post is glowing with a green light, and seems to be emitting some sort of green fog.",
 		"clear": true,
+		"set_flag": "knows_lanterna_json",
+		"flag_type": "dialog",
         "next": "intro_choice_hub"
     },
     {
@@ -91,13 +109,79 @@
 				"next": "enter_inn_first"
 			},
 			{
-				"text": "> [look at alley]",
-				"next": "look_inn_alley_intro"
+				"text": "> [Go to alley]",
+				"next": "switch_inn_alley_intro"
 			},
 			{
 				"text": "> [go back to South Entrance]",
 				"next": "switch_southentrance_intro"
 			}
 		]
-	}
+	},
+    {
+        "id": "whereto_debug",
+        "type": "narration",
+        "text": "Where should we go?",
+		"clear": false,
+		"next": "whereto_debug_choice"
+    },
+	{
+		"id": "whereto_debug_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [?]",
+				"next": "whereto_debug"
+			}
+		]
+	},
+    {
+        "id": "switch_market_intro",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtMarketDay",
+		"clear": true,
+        "next": "whereto_debug"
+    },
+    {
+        "id": "switch_inn_alley_intro",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtInnAlleyDay",
+		"clear": true,
+        "next": "whereto_debug"
+    },
+    {
+        "id": "switch_lakeside_intro",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtLakesideDay",
+		"clear": true,
+        "next": "whereto_debug"
+    },
+    {
+        "id": "switch_north_intro",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtNorthDay",
+		"clear": true,
+        "next": "whereto_debug"
+    },
+    {
+        "id": "switch_hotbaths_ext_intro",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtHotbathsDay",
+		"clear": true,
+        "next": "whereto_debug"
+    },
+    {
+        "id": "switch_oldmine_intro",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtOldmineDay",
+		"clear": true,
+        "next": "whereto_debug"
+    },
+    {
+        "id": "switch_market_intro",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtMarketDay",
+		"clear": true,
+        "next": "whereto_debug"
+    }
 ]

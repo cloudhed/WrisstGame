@@ -3,6 +3,7 @@ class_name Hotspot
 
 @export var unlocked_dialog_id: String = ""
 @export var locked_dialog_id: String = ""
+@export_enum("move", "look", "talk", "enter", "pick") var action_type: String = "move"
 @export var required_flag: String = ""
 @export var required_item: InventoryItem
 @export var give_item: InventoryItem
@@ -13,14 +14,30 @@ class_name Hotspot
 
 signal hotspot_triggered
 
+var cursor_textures: Dictionary = {}
+
 func _ready() -> void:
 	print("✅ Hotspot ready!")
 	connect("input_event", Callable(self, "_on_input_event"))
+	connect("mouse_entered", Callable(self, "_on_mouse_entered"))
+	connect("mouse_exited", Callable(self, "_on_mouse_exited"))
 
+		# 📁 Load your cursor textures here!
+	cursor_textures = {
+		"move": preload("res://Assets/UI/cursor/cursor_move.png"),
+		"look": preload("res://Assets/UI/cursor/cursor_look.png"),
+		"talk": preload("res://Assets/UI/cursor/cursor_talk.png"),
+		"enter": preload("res://Assets/UI/cursor/cursor_enter.png"),
+		"pick": preload("res://Assets/UI/cursor/cursor_pick.png")
+	}
 
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("🖱️ Hotspot clicked!")
+
+		# 🧼 Clear cursor *immediately* on click
+		Input.set_custom_mouse_cursor(null)
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 		var flag_dict := get_flag_dict()
 
@@ -70,3 +87,15 @@ func get_flag_dict() -> Dictionary:
 			return GameState.event_flags
 		_:
 			return GameState.quest_flags
+
+
+# 💡 Cursor logic
+func _on_mouse_entered() -> void:
+	if cursor_textures.has(action_type):
+		Input.set_custom_mouse_cursor(cursor_textures[action_type], Input.CURSOR_ARROW, Vector2(0, 0))
+	else:
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+func _on_mouse_exited() -> void:
+	Input.set_custom_mouse_cursor(null)
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

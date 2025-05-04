@@ -1,35 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://xfwfxsygbtfv"]
+[gd_scene load_steps=15 format=3 uid="uid://xfwfxsygbtfv"]
 
 [ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_x388o"]
-[ext_resource type="Texture2D" uid="uid://qy373l6ka0h7" path="res://Narrative/Zones/env_klyftet_ext_bg.png" id="2_o380r"]
-[ext_resource type="Texture2D" uid="uid://b5pxonfhe6qvy" path="res://Narrative/Zones/env_klyftet_ext_mg.png" id="3_k81tl"]
+[ext_resource type="Texture2D" uid="uid://ctyan483vqd8a" path="res://Assets/Backgrounds/EnvExt/klyftet/oldmine/env_klyftet_oldmine_ext.png" id="2_uvvy2"]
 [ext_resource type="Texture2D" uid="uid://bnnrv5do1k4ix" path="res://Assets/Sprites/Particles/pine_needle.png" id="4_w2oyk"]
-[ext_resource type="Texture2D" uid="uid://cxpbkswtnnse8" path="res://Narrative/Zones/env_klyftet_ext_fg.png" id="5_gvo1n"]
 [ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="6_sfmko"]
 [ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="7_xd6f7"]
 [ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="8_ipo8h"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wbfoa"]
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, 1, 0)
-emission_shape = 3
-emission_box_extents = Vector3(1, 94.2, 1)
-angle_min = -295.8
-angle_max = 424.2
-direction = Vector3(-500, 0, 0)
-spread = 0.0
-initial_velocity_min = 62.01
-initial_velocity_max = 62.01
-gravity = Vector3(0, 1, 0)
-scale_min = 0.5
-turbulence_noise_strength = 20.0
-turbulence_noise_scale = 10.0
-turbulence_noise_speed = Vector3(63.29, 17.705, 3.835)
-turbulence_noise_speed_random = 0.99
-turbulence_influence_min = 0.841
-turbulence_influence_max = 0.859
-turbulence_initial_displacement_min = 10.5
-turbulence_initial_displacement_max = 60.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wbfoa"]
 blend_mode = 1
@@ -53,54 +29,48 @@ scale_min = 0.5
 scale_max = 1.5
 color_ramp = SubResource("GradientTexture1D_wbfoa")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wwps"]
-size = Vector2(8.6326, 71.3398)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_deguv"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 94.2, 1)
+angle_min = -295.8
+angle_max = 424.2
+inherit_velocity_ratio = 1.0
+direction = Vector3(-500, 0, 0)
+spread = 0.0
+initial_velocity_min = 202.07
+initial_velocity_max = 260.71
+gravity = Vector3(0, 1, 0)
+scale_min = 0.5
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 10.0
+turbulence_noise_speed = Vector3(63.29, 17.705, 3.835)
+turbulence_noise_speed_random = 0.99
+turbulence_influence_min = 0.841
+turbulence_influence_max = 0.859
+turbulence_initial_displacement_min = 10.5
+turbulence_initial_displacement_max = 60.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkw4q"]
-size = Vector2(36.326, 16.7127)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbfoa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deguv"]
 size = Vector2(25.2763, 29.9724)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_trdyt"]
-size = Vector2(24.5856, 12.9834)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x388o"]
+size = Vector2(24.5856, 22.7901)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tphh"]
-size = Vector2(34.3232, 18.7845)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwxah"]
-size = Vector2(34.8757, 25.6215)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkbgm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvvy2"]
 size = Vector2(5.21411, 5.21407)
 
-[node name="KlyftetExtDay" type="Node2D"]
+[node name="KlyftetExtOldmineDay" type="Node2D"]
 script = ExtResource("1_x388o")
 
 [node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("2_o380r")
-centered = false
-
-[node name="Middleground" type="Sprite2D" parent="."]
-texture = ExtResource("3_k81tl")
-centered = false
-
-[node name="ParticlesNeedles" type="GPUParticles2D" parent="."]
-position = Vector2(1997, 498)
-scale = Vector2(1, 6.84)
-texture = ExtResource("4_w2oyk")
-lifetime = 35.0
-preprocess = 24.0
-visibility_rect = Rect2(-79.54, -100.215, 200, 125.285)
-process_material = SubResource("ParticleProcessMaterial_wbfoa")
-
-[node name="Foreground" type="Sprite2D" parent="."]
-texture = ExtResource("5_gvo1n")
+texture = ExtResource("2_uvvy2")
 centered = false
 
 [node name="ParticlesLight" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_wbfoa")
-position = Vector2(1764, 223)
+position = Vector2(856, 428)
 scale = Vector2(0.36, 0.68)
 amount = 4
 texture = ExtResource("6_sfmko")
@@ -108,62 +78,42 @@ lifetime = 2.0
 preprocess = 1.0
 process_material = SubResource("ParticleProcessMaterial_8tphh")
 
+[node name="ParticlesNeedles" type="GPUParticles2D" parent="."]
+position = Vector2(1997, 498)
+scale = Vector2(1, 6.84)
+amount = 16
+texture = ExtResource("4_w2oyk")
+lifetime = 35.0
+preprocess = 24.0
+visibility_rect = Rect2(-79.54, -100.215, 200, 125.285)
+process_material = SubResource("ParticleProcessMaterial_deguv")
+
 [node name="Hotspots" type="Node2D" parent="."]
-
-[node name="Hotspot_LookLight" type="Area2D" parent="Hotspots" groups=["hotspots"]]
-script = ExtResource("7_xd6f7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_LookLight"]
-position = Vector2(1763.5, 567.5)
-scale = Vector2(14.48, 14.48)
-shape = SubResource("RectangleShape2D_7wwps")
-debug_color = Color(0.368178, 0.615864, 0, 0.42)
-
-[node name="Hotspot_LookSign" type="Area2D" parent="Hotspots" groups=["hotspots"]]
-script = ExtResource("7_xd6f7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_LookSign"]
-position = Vector2(1374, 809)
-scale = Vector2(14.48, 14.48)
-shape = SubResource("RectangleShape2D_jkw4q")
-debug_color = Color(0.368178, 0.615864, 0, 0.42)
 
 [node name="Hotspot_MoveNorth" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_xd6f7")
+unlocked_dialog_id = "switch_north_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_MoveNorth"]
-position = Vector2(183, 311)
+position = Vector2(1742, 754)
 scale = Vector2(14.48, 14.48)
-shape = SubResource("RectangleShape2D_wbfoa")
+shape = SubResource("RectangleShape2D_deguv")
 debug_color = Color(0.775963, 0.440196, 0.0144619, 0.42)
 
-[node name="Hotspot_MoveLake" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+[node name="Hotspot_EnterMine" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_xd6f7")
+action_type = "enter"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_MoveLake"]
-position = Vector2(693, 471)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_EnterMine"]
+position = Vector2(693, 626)
 scale = Vector2(14.48, 14.48)
-shape = SubResource("RectangleShape2D_trdyt")
-debug_color = Color(0.775963, 0.440196, 0.0144619, 0.42)
-
-[node name="Hotspot_FocusMarket" type="Area2D" parent="Hotspots" groups=["hotspots"]]
-script = ExtResource("7_xd6f7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_FocusMarket"]
-position = Vector2(246.5, 696)
-scale = Vector2(14.48, 14.48)
-shape = SubResource("RectangleShape2D_8tphh")
-
-[node name="Hotspot_FocusInn" type="Area2D" parent="Hotspots" groups=["hotspots"]]
-script = ExtResource("7_xd6f7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_FocusInn"]
-position = Vector2(1265.5, 401.5)
-scale = Vector2(14.48, 14.48)
-shape = SubResource("RectangleShape2D_uwxah")
+shape = SubResource("RectangleShape2D_x388o")
+debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
 
 [node name="Hotspot_Return" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+position = Vector2(1844, 0)
 script = ExtResource("7_xd6f7")
+unlocked_dialog_id = "switch_north_intro"
 
 [node name="BackArrow" type="Sprite2D" parent="Hotspots/Hotspot_Return"]
 position = Vector2(37, 37)
@@ -172,5 +122,5 @@ texture = ExtResource("8_ipo8h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Return"]
 position = Vector2(38.2498, 38.2501)
 scale = Vector2(14.48, 14.48)
-shape = SubResource("RectangleShape2D_pkbgm")
+shape = SubResource("RectangleShape2D_uvvy2")
 debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)

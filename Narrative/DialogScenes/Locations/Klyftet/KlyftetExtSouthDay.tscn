@@ -112,7 +112,9 @@ process_material = SubResource("ParticleProcessMaterial_8tphh")
 
 [node name="Hotspot_LookLight" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_irn2s")
-unlocked_dialog_id = "look_lanterna"
+unlocked_dialog_id = "look_lanterna_CHECK"
+action_type = "look"
+flag_type = "dialog"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_LookLight"]
 position = Vector2(1763.5, 567.5)
@@ -123,6 +125,7 @@ debug_color = Color(0.368178, 0.615864, 0, 0.42)
 [node name="Hotspot_LookSign" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_irn2s")
 unlocked_dialog_id = "look_sign"
+action_type = "look"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_LookSign"]
 position = Vector2(1374, 809)
@@ -132,6 +135,7 @@ debug_color = Color(0.368178, 0.615864, 0, 0.42)
 
 [node name="Hotspot_MoveNorth" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_irn2s")
+unlocked_dialog_id = "switch_north_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_MoveNorth"]
 position = Vector2(183, 311)
@@ -141,6 +145,7 @@ debug_color = Color(0.775963, 0.440196, 0.0144619, 0.42)
 
 [node name="Hotspot_MoveLake" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_irn2s")
+unlocked_dialog_id = "switch_lakeside_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_MoveLake"]
 position = Vector2(693, 471)
@@ -150,7 +155,7 @@ debug_color = Color(0.775963, 0.440196, 0.0144619, 0.42)
 
 [node name="Hotspot_FocusMarket" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_irn2s")
-unlocked_dialog_id = "market_intro"
+unlocked_dialog_id = "switch_market_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_FocusMarket"]
 position = Vector2(246.5, 696)
@@ -160,7 +165,6 @@ shape = SubResource("RectangleShape2D_8tphh")
 [node name="Hotspot_FocusInn" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_irn2s")
 unlocked_dialog_id = "switch_inn_exterior_intro"
-locked_dialog_id = "switch_inn_exterior_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_FocusInn"]
 position = Vector2(1265.5, 401.5)
@@ -168,7 +172,7 @@ scale = Vector2(14.48, 14.48)
 shape = SubResource("RectangleShape2D_uwxah")
 
 [node name="Hotspot_Return" type="Area2D" parent="Hotspots" groups=["hotspots"]]
-position = Vector2(1842, 0)
+position = Vector2(1844, 0)
 script = ExtResource("7_irn2s")
 
 [node name="BackArrow" type="Sprite2D" parent="Hotspots/Hotspot_Return"]

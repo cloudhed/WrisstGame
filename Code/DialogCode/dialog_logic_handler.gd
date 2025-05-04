@@ -4,16 +4,17 @@ extends Node
 # Reference to GameState for condition checks
 var game_state: Node
 
-func _init(_game_state: Node):
-	game_state = _game_state
+func _init():
+	game_state = GameState  # Assume GameState is autoloaded
 
 # 🧠 Check flags and return the next dialog ID (as String)
-func check_flags(entry: Dictionary, flags: Dictionary) -> String:
+func check_flags(entry: Dictionary, _unused_flag_dict: Dictionary) -> String:
 	if not entry.has("check_flags"):
 		push_error("❌ Logic entry missing 'check_flags'")
 		return ""
 
 	var logic: Dictionary = entry["check_flags"]
+	print("🔍 Checking flags:", logic)
 
 	var flags_to_check: Array[String] = []
 	for flag in logic.get("flags", []):
@@ -22,11 +23,18 @@ func check_flags(entry: Dictionary, flags: Dictionary) -> String:
 
 	var all_flags_set := true
 	for flag_name in flags_to_check:
-		if not flags.get(flag_name, false):
+		var is_set: bool = (
+			GameState.quest_flags.get(flag_name, false)
+			or GameState.dialog_flags.get(flag_name, false)
+			or GameState.event_flags.get(flag_name, false)
+		)
+		print("🔸 Flag '%s' set? %s" % [flag_name, is_set])
+		if not is_set:
 			all_flags_set = false
 			break
 
 	var target_id: String = str(logic.get("on_success", "")) if all_flags_set else str(logic.get("on_fail", ""))
+	print("➡️ Next target ID:", target_id)
 	return target_id
 
 

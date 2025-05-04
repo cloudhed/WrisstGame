@@ -132,7 +132,15 @@ func show_next_chunk(entry: Dictionary) -> bool:
 
 		if entry.has("set_flag"):
 			var flag_name: String = entry["set_flag"]
-			flags[flag_name] = true
+			var flag_type: String = entry.get("flag_type", "quest")  # Default to "quest"
+
+			match flag_type:
+				"dialog":
+					GameState.set_flag(GameState.dialog_flags, flag_name)
+				"event":
+					GameState.set_flag(GameState.event_flags, flag_name)
+				_:
+					GameState.set_flag(GameState.quest_flags, flag_name)
 
 		if entry.has("next"):
 			var next_id: String = entry["next"]

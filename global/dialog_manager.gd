@@ -4,7 +4,7 @@ extends Node
 @export var dialog_scene_data: DialogSceneResource
 
 @onready var command_executor := DialogCommandExecutor.new(GameState)
-@onready var logic_handler := DialogLogicHandler.new(GameState)
+@onready var logic_handler := DialogLogicHandler.new()
 @onready var scene_loader := DialogSceneLoader.new()
 @onready var flow_manager := DialogFlowManager.new()
 
