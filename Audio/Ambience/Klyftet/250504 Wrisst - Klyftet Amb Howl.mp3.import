@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6uhwt7gxa467"
+path="res://.godot/imported/250504 Wrisst - Klyftet Amb Howl.mp3-a25c7246d1aefe581fb8bae6138c1ff1.mp3str"
+
+[deps]
+
+source_file="res://Audio/Ambience/Klyftet/250504 Wrisst - Klyftet Amb Howl.mp3"
+dest_files=["res://.godot/imported/250504 Wrisst - Klyftet Amb Howl.mp3-a25c7246d1aefe581fb8bae6138c1ff1.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=96.0
+beat_count=0
+bar_beats=4

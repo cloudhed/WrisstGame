@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Wrisst_test"
-run/main_scene="uid://bsk688e4ksiee"
+run/main_scene="uid://xyxvn2yghvwa"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ Events="*res://global/events.gd"
 DebugPanel="*res://global/debug_panel.tscn"
 Shaker="*res://global/shaker.gd"
 GameState="*res://global/gamestate.gd"
+DialogSceneSelector="*res://global/dialog_scene_selector.gd"
 PileManager="*res://global/pile_manager.gd"
 GameUI="*res://Scenes/UI/GameUI.tscn"
 MusicPlayer="*res://Assets/Sprites/Particles/music_player.tscn"

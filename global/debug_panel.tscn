@@ -30,9 +30,9 @@ theme_override_font_sizes/normal_font_size = 231
 text = "DEBUG"
 
 [node name="DebugText" type="Label" parent="DebugUI"]
-offset_top = 897.0
+offset_top = 862.0
 offset_right = 40.0
-offset_bottom = 920.0
+offset_bottom = 885.0
 
 [node name="FlagsText" type="Label" parent="DebugUI"]
 anchors_preset = 1

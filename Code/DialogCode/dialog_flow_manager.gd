@@ -91,15 +91,43 @@ func handle_special_entry(entry: Dictionary) -> bool:
 		clear_dialog()
 		return true
 
+	#if entry.get("type", "") == "command":
+		#var cmd: String = entry.get("command", entry.get("text", ""))
+		#if cmd is String and not cmd.is_empty():
+			#handle_command(cmd)
+#
+		#await get_tree().process_frame
+#
+		#current_index = _find_entry_index_by_id(entry.get("next", "")) if entry.has("next") else current_index + 1
+		#show_next_line()
+		#return true
+		
 	if entry.get("type", "") == "command":
 		var cmd: String = entry.get("command", entry.get("text", ""))
 		if cmd is String and not cmd.is_empty():
 			handle_command(cmd)
 
 		await get_tree().process_frame
+		
+		apply_flags(entry)
 
-		current_index = _find_entry_index_by_id(entry.get("next", "")) if entry.has("next") else current_index + 1
-		show_next_line()
+		# Process flags
+		show_next_chunk(entry)
+
+		# If the entry had no chunks and didn't continue itself, move to next
+		if chunk_list.is_empty():
+			if entry.has("next"):
+				var next_id: String = entry["next"]
+				var next_index: int = _find_entry_index_by_id(next_id)
+				if next_index != -1:
+					current_index = next_index
+					show_next_line()
+					return true
+			else:
+				current_index += 1
+				show_next_line()
+				return true
+
 		return true
 
 	return false
@@ -130,17 +158,7 @@ func show_next_chunk(entry: Dictionary) -> bool:
 		chunk_list.clear()
 		chunk_index = 0
 
-		if entry.has("set_flag"):
-			var flag_name: String = entry["set_flag"]
-			var flag_type: String = entry.get("flag_type", "quest")  # Default to "quest"
-
-			match flag_type:
-				"dialog":
-					GameState.set_flag(GameState.dialog_flags, flag_name)
-				"event":
-					GameState.set_flag(GameState.event_flags, flag_name)
-				_:
-					GameState.set_flag(GameState.quest_flags, flag_name)
+		apply_flags(entry)
 
 		if entry.has("next"):
 			var next_id: String = entry["next"]
@@ -213,22 +231,71 @@ func handle_condition_check(entry: Dictionary) -> void:
 		push_error("❌ Could not find target ID after condition check.")
 
 func handle_command(cmd: String) -> void:
-	if not cmd.begins_with("@"):
-		print("⚠️ Skipping non-command tag:", cmd)
-		return
+	# Support multiple commands split by semicolon
+	for raw_cmd in cmd.split(";"):
+		raw_cmd = raw_cmd.strip_edges()
 
-	var command_context := context.duplicate()
-	command_context["raw_command"] = cmd
-	command_context["name"] = dialogue[current_index].get("name", "")
-	command_context["dialog_manager"] = context.get("dialog_manager", null)
-	command_context["character_map"] = character_map
-	command_context["slide_deck"] = slide_deck
-	command_context["slide_container"] = context.get("slide_container", null)
-	command_context["portrait_node"] = context.get("portrait_node", null)
-	command_context["portrait2_node"] = context.get("portrait2_node", null)
-	command_context["slideshow_node"] = context.get("slideshow_node", null)
+		if not raw_cmd.begins_with("@"):
+			print("⚠️ Skipping non-command:", raw_cmd)
+			continue
 
-	command_executor.execute(cmd.trim_prefix("@"), command_context)
+		var command_context := context.duplicate()
+		command_context["raw_command"] = raw_cmd
+		command_context["name"] = dialogue[current_index].get("name", "")
+		command_context["dialog_manager"] = context.get("dialog_manager", null)
+		command_context["character_map"] = character_map
+		command_context["slide_deck"] = slide_deck
+		command_context["slide_container"] = context.get("slide_container", null)
+		command_context["portrait_node"] = context.get("portrait_node", null)
+		command_context["portrait2_node"] = context.get("portrait2_node", null)
+		command_context["slideshow_node"] = context.get("slideshow_node", null)
+
+		command_executor.execute(raw_cmd.trim_prefix("@"), command_context)
+
+
+func apply_flags(entry: Dictionary) -> void:
+	# Set flags
+	if entry.has("set_flag"):
+		var raw = entry["set_flag"]
+		var flag_type: String = entry.get("flag_type", "quest")
+		var flags_to_set: Array = []
+
+		if typeof(raw) == TYPE_STRING:
+			flags_to_set.append(raw)
+		elif typeof(raw) == TYPE_ARRAY:
+			flags_to_set = raw.duplicate()
+		else:
+			push_warning("⚠️ set_flag entry has invalid type.")
+
+		for flag_name in flags_to_set:
+			match flag_type:
+				"dialog":
+					GameState.set_flag(GameState.dialog_flags, flag_name)
+				"event":
+					GameState.set_flag(GameState.event_flags, flag_name)
+				"temp":
+					GameState.set_flag(GameState.temp_flags, flag_name)
+				_:
+					GameState.set_flag(GameState.quest_flags, flag_name)
+
+	# Clear flags
+	if entry.has("clear_flag"):
+		var raw = entry["clear_flag"]
+		var flags_to_clear: Array = []
+
+		if typeof(raw) == TYPE_STRING:
+			flags_to_clear.append(raw)
+		elif typeof(raw) == TYPE_ARRAY:
+			flags_to_clear = raw.duplicate()
+		else:
+			push_warning("⚠️ clear_flag entry has invalid type.")
+
+		for flag_name in flags_to_clear:
+			GameState.clear_flag(GameState.quest_flags, flag_name)
+			GameState.clear_flag(GameState.dialog_flags, flag_name)
+			GameState.clear_flag(GameState.temp_flags, flag_name)
+			GameState.clear_flag(GameState.event_flags, flag_name)
+
 
 func choose(index: int) -> void:
 	if current_choice_entry.is_empty():

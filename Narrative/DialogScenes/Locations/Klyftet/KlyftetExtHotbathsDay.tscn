@@ -56,7 +56,10 @@ process_material = SubResource("ParticleProcessMaterial_mxccy")
 
 [node name="Hotspot_EnterBathhouse" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_tkie2")
+unlocked_dialog_id = "fade_audio"
 action_type = "enter"
+triggers_scene_change = true
+scene_selector_key = "hotbaths"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_EnterBathhouse"]
 position = Vector2(1033, 556.5)

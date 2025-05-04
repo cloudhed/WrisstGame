@@ -4,6 +4,10 @@ class_name Hotspot
 @export var unlocked_dialog_id: String = ""
 @export var locked_dialog_id: String = ""
 @export_enum("move", "look", "talk", "enter", "pick") var action_type: String = "move"
+
+@export var triggers_scene_change: bool = false
+@export var scene_selector_key: String = ""  # e.g. "hotbaths"
+
 @export var required_flag: String = ""
 @export var required_item: InventoryItem
 @export var give_item: InventoryItem
@@ -13,10 +17,15 @@ class_name Hotspot
 @export var always_give_item: bool = false
 
 signal hotspot_triggered
+signal dialog_scene_change_requested(area_key: String)
 
 var cursor_textures: Dictionary = {}
 
 func _ready() -> void:
+	# 🧼 Clear cursor *immediately*
+	Input.set_custom_mouse_cursor(null)
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	
 	print("✅ Hotspot ready!")
 	connect("input_event", Callable(self, "_on_input_event"))
 	connect("mouse_entered", Callable(self, "_on_mouse_entered"))
@@ -34,6 +43,14 @@ func _ready() -> void:
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("🖱️ Hotspot clicked!")
+
+		### DOING THE DIALOG SCENE RESOURCE SWITCHING ###
+		if triggers_scene_change and scene_selector_key != "":
+			print("🌍 Requesting new scene load via DialogSceneSelector:", scene_selector_key)
+			print("📡 Emitting dialog_scene_change_requested:", scene_selector_key)
+			Events.dialog_scene_change_requested.emit(scene_selector_key)
+			return
+		### ^^^ DOING THE DIALOG SCENE RESOURCE SWITCHING ^^^ ###
 
 		# 🧼 Clear cursor *immediately* on click
 		Input.set_custom_mouse_cursor(null)
@@ -77,6 +94,7 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> v
 		else:
 			print("➡️ No dialog configured after unlocking.")
 
+
 func get_flag_dict() -> Dictionary:
 	match flag_type:
 		"quest":
@@ -85,6 +103,8 @@ func get_flag_dict() -> Dictionary:
 			return GameState.dialog_flags
 		"event":
 			return GameState.event_flags
+		"temp":
+			return GameState.temp_flags
 		_:
 			return GameState.quest_flags
 

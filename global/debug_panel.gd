@@ -59,5 +59,10 @@ func _update_debug_info():
 	for key in GameState.event_flags.keys():
 		if GameState.event_flags[key]:
 			flag_text += "🎯 %s\n" % key
+	
+	flag_text += "\n[Temp Flags]\n"
+	for key in GameState.temp_flags.keys():
+		if GameState.temp_flags[key]:
+			flag_text += "⏱️ %s\n" % key
 
 	debug_ui.get_node("FlagsText").text = flag_text

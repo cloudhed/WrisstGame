@@ -36,22 +36,41 @@ func _ready() -> void:
 		start_dialog(dialog_scene_data)
 	else:
 		push_warning("⚠️ No DialogSceneResource assigned to DialogManager.")
+	
+		# Connect global dialog scene change signal
+	if not Events.dialog_scene_change_requested.is_connected(_on_dialog_scene_change_requested):
+		Events.dialog_scene_change_requested.connect(_on_dialog_scene_change_requested)
 
 
 func start_dialog(data: DialogSceneResource) -> void:
+	print("📲 Starting dialog with scene:", data)
 	dialog_scene_data = data
 
+		# 🧼 Clean up old scene_loader and flow_manager if they exist
+	if scene_loader:
+		scene_loader.queue_free()
+	scene_loader = DialogSceneLoader.new()
 	add_child(scene_loader)
 	scene_loader.hotspot_triggered.connect(_on_hotspot_triggered)
+	
+		# Same for flow_manager
+	if flow_manager:
+		flow_manager.queue_free()
+	flow_manager = DialogFlowManager.new()
+	
+	clear_visuals()
 
 	scene_loader.load_scene(
 		self, data,
 		zone_container, mist_container,
-		background, $AmbiencePlayer,
+		background,
 		character_map,
 		func(sd): slide_deck = sd,
 		func(): return flags
 	)
+	
+	## Defer signal connection until children are added
+	#call_deferred("_connect_hotspot_scene_switch_signals")
 
 	if load_dialogue(data.dialogue_path):
 		add_child(flow_manager)
@@ -79,6 +98,16 @@ func start_dialog(data: DialogSceneResource) -> void:
 
 		await get_tree().process_frame
 		flow_manager.show_next_line()
+
+
+func _on_dialog_scene_change_requested(area_key: String) -> void:
+	print("🎯 Scene change requested for area key:", area_key)
+	var new_data := DialogSceneSelector.get_scene(area_key)
+	print("📦 Got scene data:", new_data)
+	if new_data:
+		start_dialog(new_data)
+	else:
+		push_error("❌ Could not load dialog scene for key: " + area_key)
 
 
 func _on_dialog_ended() -> void:
@@ -165,3 +194,47 @@ func hide_character_extra() -> void:
 		tween.tween_property(char_extra, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		await tween.finished
 		char_extra.hide()
+
+
+func clear_visuals() -> void:
+	# 🎵 Fade out music
+	MusicPlayer.fade_out()
+
+	# 🌬️ Stop all ambient layers with fade
+	AmbiencePlayer.stop_all(true)
+	
+	# 🧹 Clear character portraits
+	char_portrait.texture = null
+	char_portrait.hide()
+
+	char_extra.texture = null
+	char_extra.hide()
+
+	# 🧹 Clear slideshow image
+	slideshow_image.texture = null
+	slideshow_image.hide()
+
+	# 🧹 Clear background
+	background.texture = null
+
+	# 🧹 Clear slide container (just in case it has leftovers)
+	for child in slide_container.get_children():
+		child.queue_free()
+
+	# 🧹 Optionally clear any mist/zone effects
+	for child in mist_container.get_children():
+		child.queue_free()
+
+	# 🧹 Clear any leftover characters
+	for child in character_container.get_children():
+		if child != char_portrait and child != char_extra:
+			child.queue_free()
+
+	print("🧼 Visuals cleared for new dialog scene.")
+
+#func _connect_hotspot_scene_switch_signals() -> void:
+	#for hotspot in get_tree().get_nodes_in_group("hotspots"):
+		#if hotspot is Hotspot:
+			#if not hotspot.dialog_scene_change_requested.is_connected(_on_dialog_scene_change_requested):
+				#hotspot.dialog_scene_change_requested.connect(_on_dialog_scene_change_requested)
+	#print("🔗 Connected all hotspot scene-switch signals via group.")

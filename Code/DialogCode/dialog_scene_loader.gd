@@ -3,12 +3,17 @@ class_name DialogSceneLoader
 
 signal hotspot_triggered(target_id: String)
 
-# Call this to load everything from a DialogSceneResource
-func load_scene(dialog_manager: Node, data: DialogSceneResource, 
-				zone_container: Node2D, mist_container: Node2D, 
-				background: TextureRect, ambience_player: AudioStreamPlayer,
-				character_map: Dictionary, out_slide_deck: Callable, 
-				out_flags: Callable) -> void:
+# Add a reference to DialogManager to allow direct signal connection
+func load_scene(
+	dialog_manager: DialogManager,
+	data: DialogSceneResource,
+	zone_container: Node2D,
+	mist_container: Node2D,
+	background: TextureRect,
+	character_map: Dictionary,
+	out_slide_deck: Callable,
+	out_flags: Callable
+) -> void:
 
 	clear_container(zone_container)
 	clear_container(mist_container)
@@ -18,15 +23,21 @@ func load_scene(dialog_manager: Node, data: DialogSceneResource,
 		zone_container.add_child(zone_instance)
 		zone_instance.position = Vector2.ZERO
 
-		# ✅ IMPORTANT: Assign dialog_manager if this is a ZoneScene
+		# ✅ Assign DialogManager reference if applicable
 		if zone_instance is ZoneScene:
-			(zone_instance as ZoneScene).dialog_manager = dialog_manager
+			var zone_scene: ZoneScene = zone_instance as ZoneScene
+			zone_scene.dialog_manager = dialog_manager
 
-		# 🔌 Reconnect hotspot signals directly here
-		for hotspot in zone_instance.get_children():
-			if hotspot is Hotspot:
+		# 🔌 Connect hotspot signals directly (no group needed)
+		for child in zone_instance.get_children():
+			if child is Hotspot:
+				var hotspot: Hotspot = child
 				hotspot.hotspot_triggered.connect(
-					func(target_id): emit_signal("hotspot_triggered", target_id)
+					func(target_id: String) -> void:
+						emit_signal("hotspot_triggered", target_id)
+				)
+				hotspot.dialog_scene_change_requested.connect(
+					dialog_manager._on_dialog_scene_change_requested
 				)
 				print("✅ Connected hotspot:", hotspot.name)
 	else:
@@ -36,8 +47,7 @@ func load_scene(dialog_manager: Node, data: DialogSceneResource,
 		MusicPlayer.play(data.music, true)
 
 	if data.ambience:
-		ambience_player.stream = data.ambience
-		ambience_player.play()
+		AmbiencePlayer.play(data.ambience, true)  # use `true` to stop any currently playing sounds
 
 	for flag_name in data.flags_set_on_start:
 		out_flags.call()[flag_name] = data.flags_set_on_start[flag_name]

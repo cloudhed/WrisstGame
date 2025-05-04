@@ -35,3 +35,6 @@ signal tooltip_hide_requested
 	
 	#Post combat
 signal combat_over_screen_requested(text: String, type: )
+
+#Dialog Scene Changes
+signal dialog_scene_change_requested(area_key: String)

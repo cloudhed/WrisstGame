@@ -35,6 +35,18 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_hide_scene(context)
 		"SHOW_ZONE":
 			_show_zone(context)
+		"PLAY_MUSIC":
+			_play_music(context)
+		"STOP_MUSIC":
+			_stop_music()
+		"FADE_MUSIC_OUT":
+			_fade_out_music()
+		"PLAY_AMBIENCE":
+			_play_layered_ambience(context)
+		"STOP_AMBIENCE":
+			_stop_layered_ambience(context)
+		"STOP_ALL_AMBIENCE":
+			_stop_all_ambience()
 		"START_COMBAT":
 			_start_combat(context)
 		_:
@@ -345,6 +357,63 @@ func _load_dialog_file(context: Dictionary) -> void:
 
 
 # === SOUND EFFECTS ===
+func _play_music(context: Dictionary) -> void:
+	var raw_cmd: String = context.get("raw_command", "")
+	var parts: PackedStringArray = raw_cmd.split(" ", false)
+	if parts.size() < 2:
+		print("❌ PLAY_MUSIC needs path to audio stream.")
+		return
+
+	var path: String = parts[1]
+	var stream: AudioStream = load(path) as AudioStream
+	if stream:
+		MusicPlayer.play(stream)
+	else:
+		print("❌ Failed to load music at:", path)
+
+
+func _stop_music() -> void:
+	MusicPlayer.stop()
+
+
+func _fade_out_music() -> void:
+	# Optional smoother fade-out version
+	for player in MusicPlayer.get_children():
+		if player is AudioStreamPlayer and player.playing:
+			var tween: Tween = player.create_tween()
+			tween.tween_property(player, "volume_db", -60.0, 2.0)
+			tween.tween_callback(func(): player.stop())
+
+
+func _play_layered_ambience(context: Dictionary) -> void:
+	var raw_cmd: String = context.get("raw_command", "")
+	var parts: PackedStringArray = raw_cmd.split(" ", false)
+	if parts.size() < 3:
+		print("❌ PLAY_AMBIENCE expects: @PLAY_AMBIENCE <tag> <path>")
+		return
+
+	var tag: String = parts[1]
+	var path: String = parts[2]
+	var stream: AudioStream = load(path) as AudioStream
+	if stream:
+		AmbiencePlayer.play_layer(tag, stream)
+	else:
+		print("❌ Could not load ambience stream:", path)
+
+
+func _stop_layered_ambience(context: Dictionary) -> void:
+	var raw_cmd: String = context.get("raw_command", "")
+	var parts: PackedStringArray = raw_cmd.split(" ", false)
+	if parts.size() < 2:
+		print("❌ STOP_AMBIENCE expects: @STOP_AMBIENCE <tag>")
+		return
+
+	var tag: String = parts[1]
+	AmbiencePlayer.stop_layer(tag)
+
+
+func _stop_all_ambience() -> void:
+	AmbiencePlayer.stop_all(true)  # true = fade out
 
 
 # === UTILITY ===

@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhkyf2fpl1iqp"]
+
+[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_1cysu"]
+[ext_resource type="Texture2D" uid="uid://c421eli328k23" path="res://Assets/Backgrounds/EnvInt/env_int_furrow.png" id="2_4l0f5"]
+[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="2_lpb27"]
+[ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="3_5w3cd"]
+[ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="3_aty61"]
+[ext_resource type="Material" uid="uid://bxntkmfcekw4v" path="res://Assets/Sprites/Particles/minttärä_furrow_debug_01_particleProcessMaterial.tres" id="4_g7mmg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kkqon"]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l0f5"]
+size = Vector2(35.4822, 47.0607)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i4s"]
+size = Vector2(5.21411, 5.21407)
+
+[node name="KlyftetExtDay" type="Node2D"]
+script = ExtResource("1_1cysu")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_4l0f5")
+centered = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_kkqon")
+position = Vector2(635.43, 359.455)
+scale = Vector2(6.89, 4.075)
+amount = 30
+texture = ExtResource("3_aty61")
+lifetime = 6.0
+preprocess = 6.0
+randomness = 0.5
+process_material = ExtResource("4_g7mmg")
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Hotspot_Leave" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+script = ExtResource("2_lpb27")
+action_type = "enter"
+triggers_scene_change = true
+scene_selector_key = "klyftet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Leave"]
+position = Vector2(135, 512.919)
+scale = Vector2(6.53849, 17.8102)
+shape = SubResource("RectangleShape2D_4l0f5")
+debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
+
+[node name="Hotspot_Return" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+position = Vector2(1844, 0)
+script = ExtResource("2_lpb27")
+action_type = "enter"
+triggers_scene_change = true
+scene_selector_key = "klyftet"
+
+[node name="BackArrow" type="Sprite2D" parent="Hotspots/Hotspot_Return"]
+position = Vector2(37, 37)
+texture = ExtResource("3_5w3cd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Return"]
+position = Vector2(38.2498, 38.2501)
+scale = Vector2(14.48, 14.48)
+shape = SubResource("RectangleShape2D_j0i4s")
+debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
+
+[connection signal="mouse_entered" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_exited"]

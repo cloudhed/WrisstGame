@@ -1,11 +1,25 @@
 [
     {
+        "id": "start_audio",
+        "type": "command",
+        "command": "@PLAY_MUSIC res://Audio/Music/Klyftet/music_klyftet_exterior.mp3 ; @PLAY_AMBIENCE wind res://Audio/Ambience/Klyftet/klyftet_wind.mp3",
+		"clear": false,
+        "next": "enter_from_hotbaths"
+    },
+    {
+		"id": "enter_from_hotbaths",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["visiting_hotbaths"],
+			"on_success": "switch_north_intro",
+			"on_fail": "enter_first_time"
+		}
+	},
+    {
 		"id": "enter_first_time",
 		"type": "logic",
 		"check_flags": {
-			"flags": [
-				"hasEntered"
-			],
+			"flags": ["hasEntered"],
 			"on_success": "south_entrance",
 			"on_fail": "intro"
 		}
@@ -89,7 +103,7 @@
     {
         "id": "switch_southentrance_intro",
         "type": "command",
-        "command": "@SHOW_ZONE Klyftet/KlyftetExtSouthDay",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtSouthDay ; @STOP_AMBIENCE lake",
 		"clear": true,
         "next": "intro_choice_hub"
     },
@@ -152,7 +166,7 @@
     {
         "id": "switch_lakeside_intro",
         "type": "command",
-        "command": "@SHOW_ZONE Klyftet/KlyftetExtLakesideDay",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtLakesideDay ; @PLAY_AMBIENCE lake res://Audio/Ambience/Klyftet/lake_waves.mp3",
 		"clear": true,
         "next": "whereto_debug"
     },
@@ -160,6 +174,7 @@
         "id": "switch_north_intro",
         "type": "command",
         "command": "@SHOW_ZONE Klyftet/KlyftetExtNorthDay",
+		"clear_flag": ["visiting_hotbaths"],
 		"clear": true,
         "next": "whereto_debug"
     },
@@ -181,6 +196,13 @@
         "id": "switch_market_intro",
         "type": "command",
         "command": "@SHOW_ZONE Klyftet/KlyftetExtMarketDay",
+		"clear": true,
+        "next": "whereto_debug"
+    },
+    {
+        "id": "fade_audio",
+        "type": "command",
+        "command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
 		"clear": true,
         "next": "whereto_debug"
     }
