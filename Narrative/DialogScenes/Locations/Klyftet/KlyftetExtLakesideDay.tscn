@@ -1,32 +1,89 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4bfxde1vevnn"]
+[gd_scene load_steps=23 format=3 uid="uid://c4bfxde1vevnn"]
 
 [ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_ev3ig"]
 [ext_resource type="Texture2D" uid="uid://bgy26sddxbt3g" path="res://Assets/Backgrounds/EnvExt/klyftet/lakeside/env_klyftet_lakeside_ext_temp.png" id="2_rwpw5"]
-[ext_resource type="Texture2D" uid="uid://bnnrv5do1k4ix" path="res://Assets/Sprites/Particles/pine_needle.png" id="4_yj06i"]
+[ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="3_qdb5l"]
+[ext_resource type="Texture2D" uid="uid://r2jy08s834b5" path="res://Assets/Sprites/Particles/particle_windline_fade.png" id="4_qdb5l"]
+[ext_resource type="Texture2D" uid="uid://bnnrv5do1k4ix" path="res://Assets/Sprites/Particles/pine_needle.png" id="4_w1tuq"]
+[ext_resource type="Material" uid="uid://die37jjm28itx" path="res://Resources/Materials/KlyftetExtWind.tres" id="6_ev3ig"]
 [ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="7_og20c"]
 [ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="8_w2pvq"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wbfoa"]
+[sub_resource type="Gradient" id="Gradient_qdb5l"]
+offsets = PackedFloat32Array(0, 0.526749, 1)
+colors = PackedColorArray(0.82, 0.738, 0.761233, 0, 0.9, 0.819, 0.8433, 1, 0.83, 0.7553, 0.77771, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w1tuq"]
+gradient = SubResource("Gradient_qdb5l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w1tuq"]
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, 1, 0)
+emission_shape_scale = Vector3(69.885, 82.39, 77.29)
 emission_shape = 3
-emission_box_extents = Vector3(1, 94.2, 1)
-angle_min = -295.8
-angle_max = 424.2
-direction = Vector3(-500, 0, 0)
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.6
+color_ramp = SubResource("GradientTexture1D_w1tuq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ev3ig"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(69.885, 35.09, 77.29)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_w1tuq")
+
+[sub_resource type="Curve" id="Curve_ev3ig"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.412639, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w1tuq"]
+curve = SubResource("Curve_ev3ig")
+
+[sub_resource type="Gradient" id="Gradient_kfv6p"]
+offsets = PackedFloat32Array(0, 0.506173, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ev3ig"]
+gradient = SubResource("Gradient_kfv6p")
+
+[sub_resource type="Curve" id="Curve_jyx8c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_og20c"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249071, 1), 0.0, 0.0, 0, 0, Vector2(0.501859, -1), 0.0, 0.0, 0, 0, Vector2(0.754647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_iod0n"]
+curve_x = SubResource("Curve_jyx8c")
+curve_y = SubResource("Curve_og20c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_up81v"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(930.82, -256, 0)
+emission_shape = 3
+emission_box_extents = Vector3(600, 380, 512)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(-10, 0, 0)
 spread = 0.0
-initial_velocity_min = 62.01
-initial_velocity_max = 62.01
-gravity = Vector3(0, 1, 0)
-scale_min = 0.5
-turbulence_noise_strength = 20.0
-turbulence_noise_scale = 10.0
-turbulence_noise_speed = Vector3(63.29, 17.705, 3.835)
-turbulence_noise_speed_random = 0.99
-turbulence_influence_min = 0.841
-turbulence_influence_max = 0.859
-turbulence_initial_displacement_min = 10.5
-turbulence_initial_displacement_max = 60.0
+initial_velocity_min = 275.9
+initial_velocity_max = 375.9
+angular_velocity_min = 75.05
+angular_velocity_max = 75.05
+directional_velocity_min = 50.0
+directional_velocity_max = 100.0
+directional_velocity_curve = SubResource("CurveXYZTexture_iod0n")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_ev3ig")
+alpha_curve = SubResource("CurveTexture_w1tuq")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwpw5"]
 size = Vector2(19.8895, 49.5856)
@@ -41,14 +98,43 @@ script = ExtResource("1_ev3ig")
 texture = ExtResource("2_rwpw5")
 centered = false
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(945, 487)
+scale = Vector2(4.08, 1.36)
+texture = ExtResource("3_qdb5l")
+lifetime = 0.41
+process_material = SubResource("ParticleProcessMaterial_w1tuq")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(939, 419)
+scale = Vector2(4.08, 1.36)
+amount = 32
+texture = ExtResource("3_qdb5l")
+lifetime = 0.41
+process_material = SubResource("ParticleProcessMaterial_ev3ig")
+
 [node name="ParticlesNeedles" type="GPUParticles2D" parent="."]
-position = Vector2(1997, 498)
-scale = Vector2(1, 6.84)
-texture = ExtResource("4_yj06i")
-lifetime = 35.0
-preprocess = 24.0
-visibility_rect = Rect2(-79.54, -100.215, 200, 125.285)
-process_material = SubResource("ParticleProcessMaterial_wbfoa")
+position = Vector2(1148, 523)
+amount = 12
+texture = ExtResource("4_w1tuq")
+lifetime = 7.0
+preprocess = 4.0
+fixed_fps = 60
+trail_lifetime = 4.12
+trail_section_subdivisions = 32
+process_material = SubResource("ParticleProcessMaterial_up81v")
+
+[node name="ParticlesWind" type="GPUParticles2D" parent="."]
+position = Vector2(1148, 523)
+amount = 4
+texture = ExtResource("4_qdb5l")
+lifetime = 5.0
+preprocess = 2.5
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 2.0
+trail_section_subdivisions = 32
+process_material = ExtResource("6_ev3ig")
 
 [node name="Hotspots" type="Node2D" parent="."]
 

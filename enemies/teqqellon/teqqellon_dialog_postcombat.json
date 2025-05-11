@@ -38,8 +38,8 @@
   },
   {
     "id": "teqqellon_end",
-    "type": "narration",
-    "text": "END SCENE",
+    "type": "command",
+    "text": "@LEAVE_ENCOUNTER",
 	"end": true
   }
 ]

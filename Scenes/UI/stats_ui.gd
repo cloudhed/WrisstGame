@@ -1,7 +1,7 @@
 class_name StatsUI
 extends VBoxContainer
 
-@onready var block: HBoxContainer = $Block
+@onready var block: HBoxContainer = $Health/Block
 @onready var block_label: Label = %BlockLabel
 @onready var health: HBoxContainer = $Health
 @onready var health_label: Label = %HealthLabel

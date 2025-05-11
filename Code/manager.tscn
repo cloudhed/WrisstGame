@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://nan2mnob5ovu"]
 
-[ext_resource type="Script" uid="uid://dvt261b3ogdh6" path="res://Code/encounterManager.gd" id="1_ty6ug"]
+[ext_resource type="Script" uid="uid://dvt261b3ogdh6" path="res://Code/encounter_manager.gd" id="1_ty6ug"]
 [ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="2_qalwd"]
 [ext_resource type="PackedScene" uid="uid://d2pnx4ne5hfgc" path="res://Scenes/combat.tscn" id="2_tbk4x"]
 [ext_resource type="Texture2D" uid="uid://wl136llg6fmh" path="res://Assets/Backgrounds/CombatBGDesert.png" id="3_tbk4x"]

@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_7jwsv"]
 script = ExtResource("4_x7x38")
-number = "2"
+number = "3"
 icon = ExtResource("6_lert7")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
@@ -33,7 +33,7 @@ metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_0cdi0"]
 script = ExtResource("4_x7x38")
-number = ""
+number = "16"
 icon = ExtResource("9_pe2td")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
@@ -50,6 +50,7 @@ message_template = "[b]{source_name}[/b] strikes [b]{target_name}[/b] for [b][co
 
 [node name="BlockAction" type="Node" parent="."]
 script = ExtResource("3_vcmfx")
+block = 3
 intent = SubResource("Resource_7jwsv")
 sound = ExtResource("8_6yoig")
 type = 1
@@ -66,6 +67,7 @@ chance_weight = 0.3
 
 [node name="MegaBlockAction" type="Node" parent="."]
 script = ExtResource("5_ewsoj")
+hp_threshold = 4
 intent = SubResource("Resource_0cdi0")
 sound = ExtResource("8_6yoig")
 message_template = "[b]{source_name}[/b] in its paniced state turns all of its debris attached to its back into a shield. It will block for [b][color=blue]{amount}[/color][/b] damage!"

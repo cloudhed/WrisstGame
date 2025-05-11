@@ -7,18 +7,16 @@
 		"set_flag": "visiting_hotbaths",
 		"flag_type": "temp",
 		"clear": true,
-		"next": "CHECK_FLAGS"
+		"next": "add_rep"
 	},
 	{
-		"id": "FLAG_VISITING",
+		"id": "add_rep",
 		"type": "command",
-		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
-		"set_flag": "visiting_hotbaths",
-		"flag_type": "event",
-		"next": "CHECK_FLAGS"
+		"command": "@ADD_REPUTATION minttärä 10 ; @ADD_ORE 64",
+		"next": "check_flags"
 	},
 	{
-		"id": "CHECK_FLAGS",
+		"id": "check_flags",
 		"type": "logic",
 		"check_flags": {
 			"flags": ["hotbaths_entered_once", "minttärä_has_met"],
@@ -379,7 +377,7 @@
 		"options": [
 			{
 				"text": "> [Finish]",
-				"next": "hotbaths_FEMALE_debug_massage_finish"
+				"next": "hotbaths_FEMALE_debug_show_massage_finish"
 			},
 			{
 				"text": "> I want to feel your mouth.",

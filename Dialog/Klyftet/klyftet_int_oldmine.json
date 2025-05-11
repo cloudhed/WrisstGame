@@ -1,0 +1,99 @@
+[
+	{
+		"id": "00_oldmine_FLAGCHECK",
+		"type": "logic",
+		"set_flag": "visiting_oldmine",
+		"flag_type": "temp",
+		"check_flags": {
+			"flags": ["oldmine_cleared"],
+			"on_success": "oldmine_entrance_cleared",
+			"on_fail": "00_oldmine_flagcheck_2"
+		}
+	},
+	{
+		"id": "00_oldmine_FLAGCHECK_2",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["oldmine_entered_once"],
+			"on_success": "01_oldmine_entrance",
+			"on_fail": "00_oldmine_intro"
+		}
+	},
+	{
+		"id": "00_oldmine_intro",
+		"type": "narration",
+		"text": "You haven't been here before. Neither has anyone else, judging by the dust covering the broken equipment.",
+		"next": "01_oldmines_entrance"
+	},
+	{
+		"id": "01_oldmine_entrance",
+		"type": "narration",
+		"text": "A low thumping rhythm rumbles through the tunnels.",
+		"next": "01_oldmine_entrance_CHOICE"
+	},
+	{
+		"id": "01_oldmine_entrance_CHOICE",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Go forward]",
+				"next": "02_oldmine_SHOW"
+			},
+			{
+				"text": "> [Inspect the entrance]",
+				"next": "01_oldmine_INSPECT"
+			},
+			{
+				"text": "> [Leave the mines]",
+				"next": "oldmine_LEAVE"
+			}
+		]
+	},
+    {
+        "id": "02_oldmine_SHOW",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/Oldmine/Oldmine02",
+		"clear": true,
+        "next": "02_oldmine_debugcombat"
+    },
+	{
+		"id": "02_oldmine_debugcombat",
+		"type": "narration",
+		"text": "[Debug] A creature is blocking your way.",
+		"next": "02_oldmine_debugcombat_CHOICE"
+	},
+	{
+		"id": "02_oldmine_debugcombat_CHOICE",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Attack]",
+				"next": "02_oldmine_ATTACK"
+			},
+			{
+				"text": "> [Inspect]",
+				"next": "02_oldmine_INSPECT"
+			},
+			{
+				"text": "> [Attempt to sneak past]",
+				"next": "02_oldmine_SNEAKPAST"
+			},
+			{
+				"text": "> [Leave the mines]",
+				"next": "oldmine_LEAVE"
+			}
+		]
+	},
+	{
+		"id": "02_oldmine_ATTACK",
+		"type": "narration",
+		"text": "[Debug] You attack the creature.",
+		"next": "02_oldmine_debugcombat_STARTCOMBAT"
+	},
+	{
+		"id": "02_oldmine_STARTCOMBAT",
+		"type": "command",
+		"command": "@START_COMBAT",
+		"next": "02_oldmine_debugcombat_STARTCOMBAT"
+	},
+

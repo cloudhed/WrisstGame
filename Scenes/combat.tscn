@@ -1,8 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://d2pnx4ne5hfgc"]
+[gd_scene load_steps=29 format=3 uid="uid://d2pnx4ne5hfgc"]
 
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scenes/Combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Code/CombatCode/combat_visual.gd" id="1_yt1oa"]
-[ext_resource type="AudioStream" uid="uid://bi40x2y8sqyu4" path="res://Audio/Music/MusicCombat/140713 ShadowsOfSaturn.mp3" id="3_2n3pb"]
 [ext_resource type="Texture2D" uid="uid://dh50otyhtmjfi" path="res://Assets/Backgrounds/CombatBGForest.png" id="3_avwh6"]
 [ext_resource type="Script" uid="uid://cf244xen40ftr" path="res://Code/CombatCode/combat_button_run.gd" id="3_ubpar"]
 [ext_resource type="Texture2D" uid="uid://cscyo4o42qif" path="res://Assets/Backgrounds/CombatBGFields_placeholder2.jpg" id="4_5g3cp"]
@@ -35,7 +34,6 @@ size = Vector2(1409.48, 905.14)
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_2n3pb")
 char_stats = ExtResource("14_5kjvk")
-music = ExtResource("3_2n3pb")
 
 [node name="CombatVisual" type="Node2D" parent="."]
 script = ExtResource("1_yt1oa")
@@ -62,9 +60,9 @@ shape = SubResource("RectangleShape2D_f8ge6")
 debug_color = Color(0, 0.595, 0.7, 0.117647)
 
 [node name="IntentUI" parent="." instance=ExtResource("12_r5ubg")]
-offset_left = 921.0
+offset_left = 1351.0
 offset_top = 403.0
-offset_right = 1067.0
+offset_right = 1497.0
 offset_bottom = 595.0
 
 [node name="EnemyHandler" type="Node2D" parent="."]
@@ -80,6 +78,7 @@ hand = NodePath("../CombatUI/Hand")
 [node name="CombatPlayer" parent="PlayerHandler" instance=ExtResource("13_tmuf1")]
 position = Vector2(267, 460.94)
 stats = ExtResource("14_5kjvk")
+auto_end_turn_on_zero_stamina = false
 
 [node name="TileTargetSelector" parent="." instance=ExtResource("11_nar6d")]
 
@@ -133,6 +132,7 @@ size_flags_stretch_ratio = 0.0
 theme = ExtResource("16_ceo1n")
 
 [node name="StatsUIPlayer" parent="CombatUI/StatsUIManager/PlayerVBoxContainer/Panel" instance=ExtResource("22_5g3cp")]
+unique_name_in_owner = true
 layout_mode = 1
 offset_left = -133.5
 offset_top = 2.0
@@ -140,6 +140,7 @@ offset_right = 97.5
 offset_bottom = 97.0
 
 [node name="CombatTextUI" type="PanelContainer" parent="CombatUI/StatsUIManager"]
+visible = false
 custom_minimum_size = Vector2(0, 71.01)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -177,6 +178,7 @@ layout_mode = 2
 theme = ExtResource("16_ceo1n")
 
 [node name="StatsUIEnemy" parent="CombatUI/StatsUIManager/EnemyVBoxContainer/Panel" instance=ExtResource("22_5g3cp")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
 anchor_left = 0.0
@@ -204,25 +206,23 @@ script = ExtResource("15_50454")
 offset_bottom = 100.0
 
 [node name="StaminaUI" parent="CombatUI" instance=ExtResource("22_3cqtn")]
-visible = false
 offset_left = 32.0
-offset_top = 32.0
+offset_top = 857.0
 offset_right = 72.0
-offset_bottom = 72.0
+offset_bottom = 897.0
 char_stats = ExtResource("14_5kjvk")
 
 [node name="EndTurnButton" type="Button" parent="CombatUI"]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -177.0
-offset_right = -33.0
-offset_bottom = -144.0
+offset_left = -1685.0
+offset_top = -219.0
+offset_right = -1618.0
+offset_bottom = -186.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8

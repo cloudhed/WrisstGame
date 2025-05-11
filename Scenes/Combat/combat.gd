@@ -14,20 +14,21 @@ extends Node2D
 
 var created_stats: CharacterStats
 var combat_over: bool = false
+var combat_aborted: bool = false
 
 
 func _ready() -> void:
-	combat_ui.visible = false  # 🔻 Hide at first
+	combat_ui.visible = false
 	$IntentUI.visible = false
-	
+
 	# Only create stats ONCE
 	created_stats = char_stats.create_instance()
 	combat_ui.char_stats = created_stats
 
 	# UI setup
 	player_handler.combat_player = $PlayerHandler/CombatPlayer
-	player_handler.stats_ui = $CombatUI/StatsUIManager/PlayerVBoxContainer/Panel/StatsUIPlayer
-	enemy_handler.enemy_ui = $CombatUI/StatsUIManager/EnemyVBoxContainer/Panel/StatsUIEnemy
+	player_handler.stats_ui = %StatsUIPlayer
+	enemy_handler.enemy_ui = %StatsUIEnemy
 
 	# Signal hooks
 	Events.player_ready.connect(_on_player_ready)
@@ -38,18 +39,31 @@ func _ready() -> void:
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
 	Events.player_died.connect(_on_player_died)
 
-	# Get the enemy
+	# ✅ These were missing or redundant
+	if not Events.leave_encounter_requested.is_connected(_on_leave_encounter_requested):
+		Events.leave_encounter_requested.connect(_on_leave_encounter_requested)
+
+	# You can keep this extra safety net if you want
+	if not Events.leave_encounter_requested.is_connected(_on_dialog_leave_requested):
+		Events.leave_encounter_requested.connect(_on_dialog_leave_requested)
+
 	_setup_enemy_and_dialog()
-#	var enemy := enemy_handler.get_child(0) as Enemy
-#	if enemy and enemy.stats and enemy.stats.dialog_scene_data:
-#		print("🗨️ Starting enemy dialog before combat...")
-#		dialog_scene.dialog_ended.connect(_on_dialog_finished)
-#		dialog_scene.visible = true
-#		dialog_scene.show()
-#		dialog_scene.start_dialog(enemy.stats.dialog_scene_data)
-#	else:
-#		print("⚔️ No dialog found. Starting combat directly.")
-#		start_combat(created_stats)
+
+
+func _on_dialog_leave_requested() -> void:
+	if combat_aborted:
+		print("⚠️ Already aborted. Skipping second leave request.")
+		return
+
+	print("❌ Encounter left via dialog before combat. Setting combat_aborted = true.")
+	abort_combat()
+
+	# ✅ Only emit ONCE
+	Events.leave_encounter_requested.emit()
+
+	if dialog_scene.visible:
+		dialog_scene.dialog_ended.disconnect(_on_dialog_finished)
+		dialog_scene.hide()
 
 
 func _setup_enemy_and_dialog() -> void:
@@ -57,15 +71,19 @@ func _setup_enemy_and_dialog() -> void:
 	for i in enemy_handler.get_child_count():
 		var child = enemy_handler.get_child(i)
 		print("  👁️ Child [", i, "] is a:", child.get_class(), " named: ", child.name)
-	
+
 	var enemy := enemy_handler.get_child(0) as Enemy
 	if not enemy:
 		print("❌ No enemy found in enemy_handler.")
 		return
-	
+
 	print("✅ Enemy found: ", enemy.name)
 
-	enemy.intent_ui = $IntentUI  # 👈 Now it’s in a clean place
+	enemy.intent_ui = $IntentUI
+
+	# ✅ Connect leave encounter signal EARLY
+	if not Events.leave_encounter_requested.is_connected(_on_dialog_leave_requested):
+		Events.leave_encounter_requested.connect(_on_dialog_leave_requested)
 
 	if enemy.stats and enemy.stats.dialog_scene_data:
 		print("🗨️ Starting enemy dialog before combat...")
@@ -78,12 +96,18 @@ func _setup_enemy_and_dialog() -> void:
 		start_combat(created_stats)
 
 
+
 func _on_dialog_finished() -> void:
-	print("💬 Dialog finished, starting combat.")
+	print("💬 Dialog finished. Checking combat_aborted =", combat_aborted)
+
 	dialog_scene.dialog_ended.disconnect(_on_dialog_finished)
 	dialog_scene.hide()
-	
-	combat_ui.visible = true  # 👈 Show UI after dialog ends
+
+	if combat_aborted:
+		print("✅ combat_aborted is TRUE. Returning early. No combat will start.")
+		return
+
+	combat_ui.visible = true
 	$IntentUI.visible = true
 	start_combat(created_stats)
 
@@ -155,7 +179,17 @@ func _on_post_combat_dialog_finished() -> void:
 	for enemy in enemy_handler.get_children():
 		if enemy is Enemy and enemy.is_defeated:
 			enemy.queue_free()
-	#_go_to_world()
+	Events.leave_encounter_requested.emit()
+	
+	
+func _on_leave_encounter_requested() -> void:
+	if GameState.return_to_scene != null:
+		print("🔙 Returning to previous scene after combat.")
+		Events.change_scene_requested.emit(GameState.return_to_scene)
+		GameState.return_to_scene = null  # ✅ Reset for safety
+	else:
+		print("🌍 No return scene set. Going to world map.")
+		Events.change_scene_requested.emit(preload("res://overworldNav.tscn"))
 
 
 #func _go_to_world():
@@ -165,3 +199,11 @@ func _on_post_combat_dialog_finished() -> void:
 
 func _on_player_died() -> void:
 	print("Game over!")
+
+
+func abort_combat() -> void:
+	if combat_aborted:
+		return
+
+	print("⚠️ abort_combat() CALLED. Setting combat_aborted = true.")
+	combat_aborted = true

@@ -13,11 +13,12 @@ type = 1
 target = 0
 cost = 1
 effect_amount = 1
+secondary_effect_amount = 0
 background = ExtResource("1_fbqqi")
 icon = ExtResource("2_gnkm3")
 tooltip_icon = ExtResource("4_gnkm3")
 tooltip_source_label = "Unarmed"
-tooltip_text = "[center]Gain [b][color=blue]1[/color][/b] block.[/center]"
+tooltip_text = "[center]Gain [b][color=blue]{amount}[/color][/b] block.[/center]"
 message_template = "[b]{source_name}[/b] raises their arms in front of their face and prepares to block for [b][color=blue]{amount}[/color][/b] damage."
 sound = ExtResource("4_3oado")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

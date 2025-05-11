@@ -31,6 +31,9 @@ signal tile_tooltip_requested(icon: Texture, text: String, source: String, globa
 signal tooltip_hide_requested
 
 #Combat-related events
+signal leave_encounter_requested
+signal change_scene_requested(scene: PackedScene)
+
 	#Pre combat
 	
 	#Post combat

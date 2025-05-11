@@ -49,41 +49,66 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_stop_all_ambience()
 		"START_COMBAT":
 			_start_combat(context)
+		"LEAVE_ENCOUNTER":
+			_leave_encounter(context)
 		_:
-			_handle_money_command(cmd)
+			_handle_game_state_command(cmd, context)
 
 # === MONEY COMMANDS ===
 
-func _handle_money_command(cmd: String) -> void:
+func _handle_game_state_command(cmd: String, context: Dictionary = {}) -> void:
 	var parts: Array = cmd.split(" ")
-	if parts.size() != 2:
-		print("❌ Invalid money command format:", cmd)
+	if parts.size() < 2:
+		print("❌ Invalid game state command format:", cmd)
 		return
 
-	var amount: int = 0
 	var action: String = parts[0].to_lower()
-	
-	if parts[1].is_valid_int():
-		amount = parts[1].to_int()
-	else:
-		print("❌ Invalid number in command:", parts[1])
-		return
+	var value: String = parts[1]
+	var quantity: int = 1
+
+	if parts.size() >= 3 and parts[2].is_valid_int():
+		quantity = parts[2].to_int()
 
 	match action:
+		# === Currency ===
 		"add_ore":
-			game_state.add_ore(amount)
+			game_state.add_ore(value.to_int())
 		"remove_ore":
-			game_state.remove_ore(amount)
+			game_state.remove_ore(value.to_int())
 		"add_crowns":
-			game_state.add_crowns(amount)
+			game_state.add_crowns(value.to_int())
 		"remove_crowns":
-			game_state.remove_crowns(amount)
+			game_state.remove_crowns(value.to_int())
 		"add_drots":
-			game_state.add_drots(amount)
+			game_state.add_drots(value.to_int())
 		"remove_drots":
-			game_state.remove_drots(amount)
+			game_state.remove_drots(value.to_int())
+
+		# === Items ===
+		"add_item":
+			var item := load("res://Resources/Items/%s.tres" % value) as InventoryItem
+			if item:
+				game_state.add_item(item, quantity)
+			else:
+				print("❌ Could not load InventoryItem:", value)
+
+		"remove_item":
+			var item := load("res://Resources/Items/%s.tres" % value) as InventoryItem
+			if item:
+				game_state.remove_item(item, quantity)
+			else:
+				print("❌ Could not load InventoryItem:", value)
+		
+		# === Reputation ===
+		"add_reputation":
+			game_state.add_reputation(value, quantity)
+
+		"remove_reputation":
+			game_state.remove_reputation(value, quantity)
+
 		_:
-			print("❌ Unknown money command:", cmd)
+			print("❌ Unknown game state command:", cmd)
+
 
 
 # === PORTRAITS ===
@@ -290,9 +315,31 @@ func _start_combat(context: Dictionary) -> void:
 	if dialog_manager == null:
 		print("❌ dialog_manager not passed to START_COMBAT context.")
 		return
+
+# ⭐ Store current dialog scene for return
+	GameState.return_to_scene = get_tree().current_scene.packed_scene
 	
 	print("🎬 START_COMBAT called from dialog. Ending dialog...")
 	dialog_manager.end_dialog()
+
+
+func _leave_encounter(context: Dictionary) -> void:
+	print("🚨 _leave_encounter CALLED. Emitting leave_encounter_requested.")
+	var dialog_manager = context.get("dialog_manager")
+	if dialog_manager:
+		# ✅ SAFELY walk up to Combat scene
+		var combat_scene = dialog_manager
+		while combat_scene != null and not combat_scene.has_method("abort_combat"):
+			combat_scene = combat_scene.get_parent()
+
+		if combat_scene:
+			print("🛑 Found combat scene. Calling abort_combat() directly.")
+			combat_scene.abort_combat()
+		else:
+			print("❌ Could not find combat scene with abort_combat().")
+
+	Events.leave_encounter_requested.emit()
+
 
 
 # === SHOW_ZONE ===

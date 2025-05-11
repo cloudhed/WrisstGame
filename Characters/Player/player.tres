@@ -9,5 +9,5 @@ starting_deck = ExtResource("2_3nh1y")
 tiles_per_turn = 3
 max_stamina = 1
 max_health = 25
-player_name = "MilkshakeMan"
+player_name = ""
 metadata/_custom_type_script = "uid://do8l63rpnsjld"

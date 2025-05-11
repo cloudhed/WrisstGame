@@ -1,35 +1,64 @@
-[gd_scene load_steps=21 format=3 uid="uid://clwyogetlajb1"]
+[gd_scene load_steps=30 format=3 uid="uid://clwyogetlajb1"]
 
 [ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_d0kdg"]
 [ext_resource type="Texture2D" uid="uid://qy373l6ka0h7" path="res://Narrative/Zones/env_klyftet_ext_bg.png" id="2_52h5m"]
 [ext_resource type="Texture2D" uid="uid://b5pxonfhe6qvy" path="res://Narrative/Zones/env_klyftet_ext_mg.png" id="3_sjwi4"]
 [ext_resource type="Texture2D" uid="uid://bnnrv5do1k4ix" path="res://Assets/Sprites/Particles/pine_needle.png" id="4_2temt"]
+[ext_resource type="Texture2D" uid="uid://r2jy08s834b5" path="res://Assets/Sprites/Particles/particle_windline_fade.png" id="4_52h5m"]
 [ext_resource type="Texture2D" uid="uid://cxpbkswtnnse8" path="res://Narrative/Zones/env_klyftet_ext_fg.png" id="5_32nlj"]
+[ext_resource type="Material" uid="uid://die37jjm28itx" path="res://Resources/Materials/KlyftetExtWind.tres" id="5_sjwi4"]
 [ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="6_c6gox"]
 [ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="7_irn2s"]
 [ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="8_8itc0"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wbfoa"]
+[sub_resource type="Curve" id="Curve_52h5m"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.412639, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2temt"]
+curve = SubResource("Curve_52h5m")
+
+[sub_resource type="Gradient" id="Gradient_sjwi4"]
+offsets = PackedFloat32Array(0, 0.506173, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c6gox"]
+gradient = SubResource("Gradient_sjwi4")
+
+[sub_resource type="Curve" id="Curve_2temt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_32nlj"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249071, 1), 0.0, 0.0, 0, 0, Vector2(0.501859, -1), 0.0, 0.0, 0, 0, Vector2(0.754647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_2cngx"]
+curve_x = SubResource("Curve_2temt")
+curve_y = SubResource("Curve_32nlj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c6gox"]
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, 1, 0)
+emission_shape_offset = Vector3(930.82, -256, 0)
 emission_shape = 3
-emission_box_extents = Vector3(1, 94.2, 1)
-angle_min = -295.8
-angle_max = 424.2
-direction = Vector3(-500, 0, 0)
+emission_box_extents = Vector3(600, 380, 512)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(-10, 0, 0)
 spread = 0.0
-initial_velocity_min = 62.01
-initial_velocity_max = 62.01
-gravity = Vector3(0, 1, 0)
-scale_min = 0.5
-turbulence_noise_strength = 20.0
-turbulence_noise_scale = 10.0
-turbulence_noise_speed = Vector3(63.29, 17.705, 3.835)
-turbulence_noise_speed_random = 0.99
-turbulence_influence_min = 0.841
-turbulence_influence_max = 0.859
-turbulence_initial_displacement_min = 10.5
-turbulence_initial_displacement_max = 60.0
+initial_velocity_min = 275.9
+initial_velocity_max = 375.9
+angular_velocity_min = 75.05
+angular_velocity_max = 75.05
+directional_velocity_min = 50.0
+directional_velocity_max = 100.0
+directional_velocity_curve = SubResource("CurveXYZTexture_2cngx")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_c6gox")
+alpha_curve = SubResource("CurveTexture_2temt")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wbfoa"]
 blend_mode = 1
@@ -85,14 +114,27 @@ centered = false
 texture = ExtResource("3_sjwi4")
 centered = false
 
+[node name="ParticlesWind" type="GPUParticles2D" parent="."]
+position = Vector2(1148, 523)
+amount = 4
+texture = ExtResource("4_52h5m")
+lifetime = 5.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 2.0
+trail_section_subdivisions = 32
+process_material = ExtResource("5_sjwi4")
+
 [node name="ParticlesNeedles" type="GPUParticles2D" parent="."]
-position = Vector2(1997, 498)
-scale = Vector2(1, 6.84)
+position = Vector2(1148, 523)
+amount = 30
 texture = ExtResource("4_2temt")
-lifetime = 35.0
-preprocess = 24.0
-visibility_rect = Rect2(-79.54, -100.215, 200, 125.285)
-process_material = SubResource("ParticleProcessMaterial_wbfoa")
+lifetime = 7.0
+preprocess = 4.0
+fixed_fps = 60
+trail_lifetime = 4.12
+trail_section_subdivisions = 32
+process_material = SubResource("ParticleProcessMaterial_c6gox")
 
 [node name="Foreground" type="Sprite2D" parent="."]
 texture = ExtResource("5_32nlj")

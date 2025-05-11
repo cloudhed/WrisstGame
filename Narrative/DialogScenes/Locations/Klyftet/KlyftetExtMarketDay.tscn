@@ -1,10 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://s7oih8ts7ch5"]
+[gd_scene load_steps=12 format=3 uid="uid://s7oih8ts7ch5"]
 
 [ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_2yrso"]
 [ext_resource type="Texture2D" uid="uid://c0f1cy12wojqh" path="res://Assets/Backgrounds/EnvExt/klyftet/market/env_klyftet_market_ext.png" id="2_3edy3"]
+[ext_resource type="Texture2D" uid="uid://r2jy08s834b5" path="res://Assets/Sprites/Particles/particle_windline_fade.png" id="4_6yhwo"]
 [ext_resource type="Texture2D" uid="uid://bnnrv5do1k4ix" path="res://Assets/Sprites/Particles/pine_needle.png" id="4_d8j5l"]
+[ext_resource type="Material" uid="uid://die37jjm28itx" path="res://Resources/Materials/KlyftetExtWind.tres" id="5_tbrrg"]
 [ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="7_hnuu4"]
 [ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="8_veh4m"]
+
+[sub_resource type="Curve" id="Curve_3edy3"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.200743, 14.4737), 0.0, 0.0, 0, 0, Vector2(0.371747, 0.0541794), 0.0, 0.0, 0, 0, Vector2(0.513011, 17.4923), 0.0, 0.0, 0, 0, Vector2(0.643123, 0.0743034), 0.0, 0.0, 0, 0, Vector2(0.810409, 16.4861), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_6yhwo"]
+curve = SubResource("Curve_3edy3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wbfoa"]
 particle_flag_disable_z = true
@@ -18,6 +28,9 @@ spread = 0.0
 initial_velocity_min = 62.01
 initial_velocity_max = 62.01
 gravity = Vector3(0, 1, 0)
+tangential_accel_min = -4.73
+tangential_accel_max = 1.33
+tangential_accel_curve = SubResource("CurveTexture_6yhwo")
 scale_min = 0.5
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 10.0
@@ -41,11 +54,23 @@ centered = false
 [node name="ParticlesNeedles" type="GPUParticles2D" parent="."]
 position = Vector2(1997, 498)
 scale = Vector2(1, 6.84)
+amount = 32
 texture = ExtResource("4_d8j5l")
 lifetime = 35.0
 preprocess = 24.0
 visibility_rect = Rect2(-79.54, -100.215, 200, 125.285)
 process_material = SubResource("ParticleProcessMaterial_wbfoa")
+
+[node name="ParticlesWind" type="GPUParticles2D" parent="."]
+position = Vector2(1148, 523)
+amount = 4
+texture = ExtResource("4_6yhwo")
+lifetime = 5.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 2.0
+trail_section_subdivisions = 32
+process_material = ExtResource("5_tbrrg")
 
 [node name="Hotspots" type="Node2D" parent="."]
 

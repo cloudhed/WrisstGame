@@ -39,8 +39,14 @@
   },
   {
     "id": "teqqellon_end",
+    "type": "command",
+    "command": "@LEAVE_ENCOUNTER",
+	"next": "teqqellon_end_shouldtshowup"
+  },
+  {
+    "id": "teqqellon_end_shouldtshowup",
     "type": "narration",
-    "text": "END SCENE",
+    "text": "You slowly start to back away before it notices you, and leave the Teqqellon to its' business.",
 	"end": true
-  }
+  },
 ]

@@ -208,15 +208,55 @@ func handle_flag_check(entry: Dictionary) -> void:
 		push_error("❌ Could not find target ID after flag check.")
 
 func handle_condition_check(entry: Dictionary) -> void:
-	var condition_dict: Dictionary = entry.get("condition", {})
+	var condition: Variant = entry.get("condition", "")
 	var target_id: String = ""
 
-	if condition_dict.has("currency"):
-		target_id = logic_handler.check_condition(entry)
-	elif condition_dict.has("stat"):
-		target_id = logic_handler.check_stat_condition(entry)
+	if typeof(condition) == TYPE_STRING:
+		var parts: PackedStringArray = condition.split(" ")
+		if parts.is_empty():
+			push_error("❌ Condition string is empty.")
+			return
+
+		var check: String = parts[0]
+
+		match check:
+			"HAS_ITEM":
+				if parts.size() < 2:
+					push_error("❌ HAS_ITEM missing item path.")
+					return
+
+				var item_path: String = parts[1]
+				var item: InventoryItem = load("res://Resources/Items/%s.tres" % item_path) as InventoryItem
+				var result: bool = item != null and GameState.has_item(item)
+				target_id = entry.get("if_true", "") if result else entry.get("if_false", "")
+
+			"HAS_REPUTATION":
+				if parts.size() < 3:
+					push_error("❌ HAS_REPUTATION missing parameters.")
+					return
+
+				var npc_id: String = parts[1]
+				var required: int = parts[2].to_int()
+				var current: int = GameState.get_reputation(npc_id)
+				var result: bool = current >= required
+				target_id = entry.get("if_true", "") if result else entry.get("if_false", "")
+
+			_:
+				push_error("❌ Unknown condition keyword: %s" % check)
+				target_id = entry.get("if_false", "")
+
+	elif typeof(condition) == TYPE_DICTIONARY:
+		var condition_dict: Dictionary = condition
+		if condition_dict.has("currency"):
+			target_id = logic_handler.check_condition(entry)
+		elif condition_dict.has("stat"):
+			target_id = logic_handler.check_stat_condition(entry)
+		else:
+			push_error("❌ Unknown dictionary-style condition.")
+			return
+
 	else:
-		push_error("❌ Unknown condition type in logic entry.")
+		push_error("❌ Invalid condition type: %s" % typeof(condition))
 		return
 
 	if target_id.is_empty():
@@ -229,6 +269,7 @@ func handle_condition_check(entry: Dictionary) -> void:
 		show_next_line()
 	else:
 		push_error("❌ Could not find target ID after condition check.")
+
 
 func handle_command(cmd: String) -> void:
 	# Support multiple commands split by semicolon

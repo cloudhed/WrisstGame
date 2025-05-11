@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dot6fkkrthtyc"]
+[gd_scene load_steps=5 format=3 uid="uid://dot6fkkrthtyc"]
 
 [ext_resource type="Script" uid="uid://pkjoj30f3tlc" path="res://Scenes/UI/choice_box.gd" id="1_26261"]
 [ext_resource type="Theme" uid="uid://by10iex6r6prc" path="res://Themes/narrative_choice_theme.tres" id="1_fxevm"]
+
+[sub_resource type="Gradient" id="Gradient_fxevm"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0.588235, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y8e4k"]
+gradient = SubResource("Gradient_fxevm")
+fill = 1
+fill_from = Vector2(0.19, 0.45)
+fill_to = Vector2(0, 1.315)
 
 [node name="ChoiceBox" type="Control"]
 custom_minimum_size = Vector2(1920, 0)
@@ -14,11 +24,25 @@ size_flags_vertical = 3
 theme = ExtResource("1_fxevm")
 script = ExtResource("1_26261")
 
-[node name="ColorPanel" type="Panel" parent="."]
+[node name="ColorPanel2" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 611.0
+offset_right = -609.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_y8e4k")
+
+[node name="ColorPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 611.0
+offset_right = -609.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -38,7 +62,7 @@ size_flags_horizontal = 3
 [node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
+size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 4
 
 [node name="Button" type="Button" parent="MarginContainer/CenterContainer/ButtonContainer"]

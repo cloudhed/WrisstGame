@@ -4,10 +4,13 @@ extends Node2D
 const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres")
 
 @export var stats: CharacterStats : set = set_character_stats
+@export var auto_end_turn_on_zero_stamina: bool = true
 
 @onready var sprite_2d: Sprite2D = $Sprite2D # For player sprite white flash
 #@onready var stats_ui: StatsUI = $CanvasLayer/Panel/StatsUI as StatsUI
 @onready var end_turn_timer: Timer = $EndTurnTimer
+@onready var game_state = GameState
+@onready var display_name: String = GameState.player_name
 var has_scheduled_end_turn: bool = false
 
 var stats_ui: StatsUI = null
@@ -15,6 +18,11 @@ var stats_ui: StatsUI = null
 
 func _ready() -> void:
 	Events.player_ready.emit(self)
+	
+	#getplayername
+	if display_name.is_empty():
+		display_name = GameState.player_name
+	
 	if not end_turn_timer.timeout.is_connected(_on_end_turn_timer_timeout):
 		end_turn_timer.timeout.connect(_on_end_turn_timer_timeout)
 
@@ -50,7 +58,7 @@ func update_stats() -> void:
 	print("[DEBUG] update_stats called — Stamina:", stats.stamina, " | has_scheduled_end_turn:", has_scheduled_end_turn)
 
 	# Start the end-turn countdown ONLY ONCE when stamina hits 0
-	if stats.stamina <= 0 and not has_scheduled_end_turn:
+	if auto_end_turn_on_zero_stamina and stats.stamina <= 0 and not has_scheduled_end_turn:
 		print("[DEBUG] Stamina is 0 — scheduling end turn.")
 		has_scheduled_end_turn = true
 		end_turn_timer.start()
