@@ -1,69 +1,12 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=13 format=3 uid="uid://cqg2t3bu607tf"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://cqg2t3bu607tf"]
 
 [ext_resource type="PackedScene" uid="uid://lwwyf3857u6g" path="res://enemies/teqqellon/teqqellon_enemy_ai.tscn" id="1_j7ut2"]
 [ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="2_5k5u0"]
 [ext_resource type="Texture2D" uid="uid://ygjj6hs1qdcs" path="res://enemies/teqqellon/teqqellon_base.png" id="2_s147t"]
-[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="3_l4yid"]
-[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="4_0ds7n"]
-[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="4_y1acn"]
-
-[sub_resource type="Resource" id="Resource_y1acn"]
-script = ExtResource("4_0ds7n")
-name = &"Teqqellon"
-display_name = "Teqqellon"
-color = Color(1, 1, 1, 1)
-speech_bubble_color = null
-speech_bubble_font_size = 18
-stats = {}
-default_flags = {}
-metadata/_custom_type_script = "uid://dqihe2ny7afn"
-
-[sub_resource type="Resource" id="Resource_6a2vu"]
-script = ExtResource("3_l4yid")
-id = &"Teqqellon"
-character_resource = SubResource("Resource_y1acn")
-metadata/_custom_type_script = "uid://cgc7i24b66gt8"
-
-[sub_resource type="Resource" id="Resource_l12y5"]
-script = ExtResource("4_y1acn")
-sfx_library = {}
-dialogue_path = "res://enemies/teqqellon/teqqellon_dialog_precombat.json"
-characters = Array[ExtResource("3_l4yid")]([SubResource("Resource_6a2vu")])
-flags_required = Array[String]([])
-flags_set_on_start = {}
-metadata/_custom_type_script = "uid://5m151tkuttgt"
-
-[sub_resource type="Resource" id="Resource_2ebul"]
-script = ExtResource("4_0ds7n")
-name = &"Teqqellon"
-display_name = "Teqqellon"
-color = Color(1, 1, 1, 1)
-speech_bubble_color = null
-speech_bubble_font_size = 18
-stats = {}
-default_flags = {}
-metadata/_custom_type_script = "uid://dqihe2ny7afn"
-
-[sub_resource type="Resource" id="Resource_gtpf1"]
-script = ExtResource("3_l4yid")
-id = &"Teqqellon"
-character_resource = SubResource("Resource_2ebul")
-metadata/_custom_type_script = "uid://cgc7i24b66gt8"
-
-[sub_resource type="Resource" id="Resource_0ds7n"]
-script = ExtResource("4_y1acn")
-sfx_library = {}
-dialogue_path = "res://enemies/teqqellon/teqqellon_dialog_postcombat.json"
-characters = Array[ExtResource("3_l4yid")]([SubResource("Resource_gtpf1")])
-flags_required = Array[String]([])
-flags_set_on_start = {}
-metadata/_custom_type_script = "uid://5m151tkuttgt"
 
 [resource]
 script = ExtResource("2_5k5u0")
 ai = ExtResource("1_j7ut2")
-dialog_scene_data = SubResource("Resource_l12y5")
-post_combat_dialog = SubResource("Resource_0ds7n")
 max_health = 16
 art = ExtResource("2_s147t")
 player_name = "Teqqellon"

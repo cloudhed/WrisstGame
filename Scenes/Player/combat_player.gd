@@ -33,12 +33,17 @@ func assign_stats_ui(ui: StatsUI) -> void:
 
 
 func set_character_stats(value: CharacterStats) -> void:
+	if value == null:
+		push_warning("⚠️ set_character_stats() received null value. Ignored.")
+		return
+
 	stats = value
 	
 	if not stats.stats_changed.is_connected(update_stats):
 		stats.stats_changed.connect(update_stats)
-		
+
 	update_player()
+
 
 
 func update_player() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsi1trks5wwmi"]
+[gd_scene load_steps=13 format=3 uid="uid://bsi1trks5wwmi"]
 
 [ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_5kmrs"]
 [ext_resource type="Texture2D" uid="uid://cc2hulim0m6n6" path="res://Assets/Backgrounds/EnvExt/klyftet/oldmine/env_klyftet_oldmine01.png" id="2_kdbit"]
@@ -7,13 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="6_pwwqm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kkqon"]
-blend_mode = 1
 
 [sub_resource type="Curve" id="Curve_qsbrg"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.501805, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.510345, 0.550776), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_2hxa2"]
+[sub_resource type="CurveTexture" id="CurveTexture_kdbit"]
 curve = SubResource("Curve_qsbrg")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g5yee"]
@@ -25,10 +24,12 @@ angle_max = 720.0
 gravity = Vector3(-100, -10, -20)
 tangential_accel_min = -15.24
 tangential_accel_max = -0.630002
-scale_min = 5.0
+scale_min = 0.0
 scale_max = 10.0
-color = Color(0.542621, 0.385964, 0.159616, 1)
-alpha_curve = SubResource("CurveTexture_2hxa2")
+color = Color(0.83, 0.661095, 0.5229, 1)
+alpha_curve = SubResource("CurveTexture_kdbit")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.07
 turbulence_enabled = true
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 5.786
@@ -38,6 +39,9 @@ turbulence_initial_displacement_max = 11.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4l0f5"]
 size = Vector2(35.4822, 47.0607)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbit"]
+size = Vector2(56.1292, 55.1502)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i4s"]
 size = Vector2(5.21411, 5.21407)
@@ -53,7 +57,7 @@ centered = false
 material = SubResource("CanvasItemMaterial_kkqon")
 position = Vector2(974, 430)
 scale = Vector2(6.89, 4.075)
-amount = 25
+amount = 16
 texture = ExtResource("4_5ftnp")
 lifetime = 6.0
 preprocess = 6.0
@@ -63,7 +67,6 @@ process_material = SubResource("ParticleProcessMaterial_g5yee")
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="Hotspot_Leave" type="Area2D" parent="Hotspots" groups=["hotspots"]]
-visible = false
 script = ExtResource("5_qoia2")
 action_type = "enter"
 triggers_scene_change = true
@@ -74,6 +77,16 @@ position = Vector2(135, 512.919)
 scale = Vector2(6.53849, 17.8102)
 shape = SubResource("RectangleShape2D_4l0f5")
 debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
+
+[node name="Hotspot_Center" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+position = Vector2(848, 0)
+script = ExtResource("5_qoia2")
+unlocked_dialog_id = "02_oldmine_SHOW"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Center"]
+position = Vector2(202.5, 433.5)
+scale = Vector2(6.53849, 8.2502)
+shape = SubResource("RectangleShape2D_kdbit")
 
 [node name="Hotspot_Return" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 position = Vector2(1844, 0)
@@ -94,3 +107,5 @@ debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
 
 [connection signal="mouse_entered" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Hotspots/Hotspot_Center" to="Hotspots/Hotspot_Center" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hotspots/Hotspot_Center" to="Hotspots/Hotspot_Center" method="_on_mouse_exited"]

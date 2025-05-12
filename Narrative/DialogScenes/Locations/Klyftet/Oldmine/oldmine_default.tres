@@ -1,8 +1,41 @@
-[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=5 format=3 uid="uid://yqlobynkfhgb"]
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=13 format=3 uid="uid://yqlobynkfhgb"]
 
 [ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_g2l61"]
+[ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Characters/portrait_entry.gd" id="2_seodj"]
+[ext_resource type="Texture2D" uid="uid://ygjj6hs1qdcs" path="res://enemies/teqqellon/teqqellon_base.png" id="3_seodj"]
 [ext_resource type="PackedScene" uid="uid://bsi1trks5wwmi" path="res://Narrative/DialogScenes/Locations/Klyftet/Oldmine/Oldmine01Entrance.tscn" id="3_vtq72"]
+[ext_resource type="Script" uid="uid://dh0gvf3ssl3yi" path="res://Characters/portrait_deck.gd" id="4_c4bq1"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="5_mbp8q"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="6_q073q"]
+
+[sub_resource type="Resource" id="Resource_rv2ka"]
+script = ExtResource("2_seodj")
+id = &"base"
+portrait = ExtResource("3_seodj")
+metadata/_custom_type_script = "uid://bbcjegrw16og0"
+
+[sub_resource type="Resource" id="Resource_4veoa"]
+script = ExtResource("4_c4bq1")
+portraits = Array[ExtResource("2_seodj")]([SubResource("Resource_rv2ka")])
+metadata/_custom_type_script = "uid://dh0gvf3ssl3yi"
+
+[sub_resource type="Resource" id="Resource_b7c53"]
+script = ExtResource("5_mbp8q")
+name = &"creature"
+display_name = "Creature"
+portrait = SubResource("Resource_4veoa")
+color = Color(1, 1, 1, 1)
+speech_bubble_color = null
+speech_bubble_font_size = 18
+stats = {}
+default_flags = {}
+metadata/_custom_type_script = "uid://dqihe2ny7afn"
+
+[sub_resource type="Resource" id="Resource_66qpk"]
+script = ExtResource("1_g2l61")
+id = &"creature"
+character_resource = SubResource("Resource_b7c53")
+metadata/_custom_type_script = "uid://cgc7i24b66gt8"
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_mg2vs"]
 
@@ -11,8 +44,8 @@ script = ExtResource("6_q073q")
 zone_scene = ExtResource("3_vtq72")
 music = SubResource("AudioStreamInteractive_mg2vs")
 sfx_library = {}
-dialogue_path = ""
-characters = Array[ExtResource("1_g2l61")]([])
+dialogue_path = "res://Dialog/Klyftet/klyftet_int_oldmine.json"
+characters = Array[ExtResource("1_g2l61")]([SubResource("Resource_66qpk")])
 flags_required = Array[String]([])
 flags_set_on_start = {}
 metadata/_custom_type_script = "uid://5m151tkuttgt"

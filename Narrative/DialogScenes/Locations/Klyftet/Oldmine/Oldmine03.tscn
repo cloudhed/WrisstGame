@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4eh43jsubaf7"]
+[gd_scene load_steps=13 format=3 uid="uid://80g5o6hnrcrp"]
 
-[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_sufx4"]
-[ext_resource type="Texture2D" uid="uid://duldx7vha054" path="res://Assets/Backgrounds/EnvExt/klyftet/oldmine/env_klyftet_oldmine02.png" id="2_s8h5e"]
-[ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="4_67kpe"]
-[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="5_phagk"]
-[ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="6_1sswb"]
+[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_8u4qa"]
+[ext_resource type="Texture2D" uid="uid://d0q040nk7xo3o" path="res://Assets/Backgrounds/EnvExt/klyftet/oldmine/env_klyftet_oldmine03.png" id="2_8u4qa"]
+[ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="3_87xfk"]
+[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="4_ndk8v"]
+[ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="5_xdxkl"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s8h5e"]
 
@@ -37,20 +37,20 @@ turbulence_influence_max = 0.116
 turbulence_initial_displacement_min = -17.1
 turbulence_initial_displacement_max = 11.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u4qa"]
+size = Vector2(37.0116, 62.3015)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4l0f5"]
 size = Vector2(15.9058, 47.0607)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i4s"]
 size = Vector2(5.21411, 5.21407)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8h5e"]
-size = Vector2(45.1174, 62.3015)
-
 [node name="Oldmine01Entrance" type="Node2D"]
-script = ExtResource("1_sufx4")
+script = ExtResource("1_8u4qa")
 
 [node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("2_s8h5e")
+texture = ExtResource("2_8u4qa")
 centered = false
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -58,7 +58,7 @@ material = SubResource("CanvasItemMaterial_s8h5e")
 position = Vector2(974, 430)
 scale = Vector2(6.89, 4.075)
 amount = 16
-texture = ExtResource("4_67kpe")
+texture = ExtResource("3_87xfk")
 lifetime = 6.0
 preprocess = 6.0
 randomness = 0.5
@@ -66,8 +66,18 @@ process_material = SubResource("ParticleProcessMaterial_6komj")
 
 [node name="Hotspots" type="Node2D" parent="."]
 
+[node name="Hotspot_Correct" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+position = Vector2(848, 0)
+script = ExtResource("4_ndk8v")
+unlocked_dialog_id = "04_oldmine_SHOW"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Correct"]
+position = Vector2(807, 463)
+scale = Vector2(6.53849, 8.2502)
+shape = SubResource("RectangleShape2D_8u4qa")
+
 [node name="Hotspot_Leave" type="Area2D" parent="Hotspots" groups=["hotspots"]]
-script = ExtResource("5_phagk")
+script = ExtResource("4_ndk8v")
 action_type = "enter"
 triggers_scene_change = true
 scene_selector_key = "klyftet"
@@ -80,14 +90,14 @@ debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
 
 [node name="Hotspot_Return" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 position = Vector2(1844, 0)
-script = ExtResource("5_phagk")
+script = ExtResource("4_ndk8v")
 action_type = "enter"
 triggers_scene_change = true
 scene_selector_key = "klyftet"
 
 [node name="BackArrow" type="Sprite2D" parent="Hotspots/Hotspot_Return"]
 position = Vector2(37, 37)
-texture = ExtResource("6_1sswb")
+texture = ExtResource("5_xdxkl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Return"]
 position = Vector2(38.2498, 38.2501)
@@ -95,17 +105,7 @@ scale = Vector2(14.48, 14.48)
 shape = SubResource("RectangleShape2D_j0i4s")
 debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
 
-[node name="Hotspot_Correct" type="Area2D" parent="Hotspots" groups=["hotspots"]]
-position = Vector2(848, 0)
-script = ExtResource("5_phagk")
-unlocked_dialog_id = "03_oldmine_SHOW"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Correct"]
-position = Vector2(-422.5, 463)
-scale = Vector2(6.53849, 8.2502)
-shape = SubResource("RectangleShape2D_s8h5e")
-
-[connection signal="mouse_entered" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Hotspots/Hotspot_Correct" to="Hotspots/Hotspot_Correct" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Hotspots/Hotspot_Correct" to="Hotspots/Hotspot_Correct" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_exited"]

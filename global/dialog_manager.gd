@@ -21,6 +21,8 @@ extends Node
 @onready var char_portrait: TextureRect = $CharacterContainer/CharacterPortraitMain
 @onready var char_extra: TextureRect = $CharacterContainer/CharacterPortraitExtra
 
+@onready var dialog_ui_layer: CanvasLayer = $CanvasLayer
+
 @onready var slideshow_image: TextureRect = $SlideshowImage
 @onready var slide_container: Node2D = $CanvasLayer/SlideContainer
 
@@ -30,6 +32,8 @@ var dialogue: Array = []
 var character_map: Dictionary[StringName, CharacterResource] = {}
 var slide_deck: SlideDeck
 var flags: Dictionary = {}
+
+var is_dialog_active := true
 
 func _ready() -> void:
 	if dialog_scene_data:
@@ -133,6 +137,9 @@ func load_dialogue(path: String) -> bool:
 
 
 func _input(event: InputEvent) -> void:
+	if not is_dialog_active:
+		return
+		
 	if flow_manager == null or choice_box.visible:
 		return
 
@@ -194,6 +201,31 @@ func hide_character_extra() -> void:
 		tween.tween_property(char_extra, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		await tween.finished
 		char_extra.hide()
+
+
+func _set_hotspots_enabled(enabled: bool) -> void:
+	for hotspot in get_tree().get_nodes_in_group("hotspots"):
+		if hotspot is Area2D:
+			hotspot.input_pickable = enabled
+	print("✅ _set_hotspots_enabled():", get_tree().get_nodes_in_group("hotspots").size(), "hotspots set to input_pickable =", enabled)
+
+
+func disable_dialog_ui():
+	dialog_ui_layer.visible = false
+	is_dialog_active = false
+	_set_hotspots_enabled(false)
+	zone_container.set_process_input(false)
+	char_portrait.hide()
+	char_extra.hide()
+	
+
+func enable_dialog_ui():
+	dialog_ui_layer.visible = true
+	is_dialog_active = true
+	_set_hotspots_enabled(true)
+	zone_container.set_process_input(true)
+	char_portrait.show()
+	char_extra.show()
 
 
 func clear_visuals() -> void:

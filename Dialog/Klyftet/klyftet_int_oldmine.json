@@ -1,13 +1,18 @@
 [
+    {
+        "id": "play_audio",
+        "type": "command",
+        "command": "@PLAY_AMBIENCE mine res://Audio/Ambience/Klyftet/mine_ambience.mp3 ; @PLAY_AMBIENCE heart res://Audio/Ambience/Klyftet/mine_heart_center.mp3",
+		"clear": true,
+        "next": "00_oldmine_FLAGCHECK"
+    },
 	{
 		"id": "00_oldmine_FLAGCHECK",
 		"type": "logic",
-		"set_flag": "visiting_oldmine",
-		"flag_type": "temp",
 		"check_flags": {
 			"flags": ["oldmine_cleared"],
 			"on_success": "oldmine_entrance_cleared",
-			"on_fail": "00_oldmine_flagcheck_2"
+			"on_fail": "00_oldmine_FLAGCHECK_2"
 		}
 	},
 	{
@@ -23,12 +28,14 @@
 		"id": "00_oldmine_intro",
 		"type": "narration",
 		"text": "You haven't been here before. Neither has anyone else, judging by the dust covering the broken equipment.",
-		"next": "01_oldmines_entrance"
+		"next": "01_oldmine_entrance"
 	},
 	{
 		"id": "01_oldmine_entrance",
 		"type": "narration",
 		"text": "A low thumping rhythm rumbles through the tunnels.",
+		"set_flag": "visiting_oldmine",
+		"flag_type": "temp",
 		"next": "01_oldmine_entrance_CHOICE"
 	},
 	{
@@ -52,7 +59,15 @@
     {
         "id": "02_oldmine_SHOW",
         "type": "command",
-        "command": "@SHOW_ZONE Klyftet/Oldmine/Oldmine02",
+        "command": "@SHOW_ZONE Klyftet/Oldmine/Oldmine02 ; @PLAY_AMBIENCE heart res://Audio/Ambience/Klyftet/mine_heart_left.mp3",
+		"clear": true,
+        "next": "02_oldmine_SHOWCREATURE"
+    },
+    {
+        "id": "02_oldmine_SHOWCREATURE",
+        "type": "command",
+		"name": "creature",
+        "command": "@SHOW_PORTRAIT base",
 		"clear": true,
         "next": "02_oldmine_debugcombat"
     },
@@ -93,7 +108,48 @@
 	{
 		"id": "02_oldmine_STARTCOMBAT",
 		"type": "command",
-		"command": "@START_COMBAT",
-		"next": "02_oldmine_debugcombat_STARTCOMBAT"
+		"command": "@START_COMBAT res://enemies/teqqellon/teqqellon_enemy.tres",
+		"clear": true,
+		"next": "02_oldmine_debugcombat_VICTORY"
 	},
-
+	{
+		"id": "02_oldmine_debugcombat_VICTORY",
+		"type": "narration",
+		"text": "The creature scurries back into the darkness.",
+		"next": "02_oldmine_debugcombat_VICTORY2"
+	},
+	{
+		"id": "02_oldmine_debugcombat_VICTORY2",
+		"type": "command",
+		"command": "@HIDE_PORTRAIT",
+		"next": "02_oldmine_debugcombat_VICTORY3"
+	},
+	{
+		"id": "02_oldmine_debugcombat_VICTORY3",
+		"type": "narration",
+		"text": "You're now alone again, except for the faint thumping from the tunnels before you.",
+		"next": "02_oldmine_CHOICE"
+	},
+	{
+		"id": "02_oldmine_CHOICE",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Pick the left tunnel]",
+				"next": "02_oldmine_LEFT"
+			},
+			{
+				"text": "> [Pick the right tunnel]",
+				"next": "02_oldmine_RIGHT"
+			},
+			{
+				"text": "> [Inspect]",
+				"next": "02_oldmine_INSPECT"
+			},
+			{
+				"text": "> [Leave the mines]",
+				"next": "oldmine_LEAVE"
+			}
+		]
+	},
+]

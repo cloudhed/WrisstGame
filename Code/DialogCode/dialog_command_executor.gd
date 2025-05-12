@@ -311,16 +311,38 @@ func _hide_scene(context: Dictionary) -> void:
 
 # === START COMBAT ===
 func _start_combat(context: Dictionary) -> void:
-	var dialog_manager = context.get("dialog_manager")
-	if dialog_manager == null:
-		print("❌ dialog_manager not passed to START_COMBAT context.")
+	var cmd: String = context.get("raw_command", "")
+	var parts: Array = cmd.split(" ")
+
+	if parts.size() < 2:
+		push_error("❌ START_COMBAT needs enemy resource path.")
 		return
 
-# ⭐ Store current dialog scene for return
-	GameState.return_to_scene = get_tree().current_scene.packed_scene
+	var enemy_path: String = parts[1]
+	var enemy_resource: Resource = load(enemy_path)
+
+	if not enemy_resource:
+		push_error("❌ Could not load enemy resource: " + enemy_path)
+		return
+
+	var dialog_manager = context.get("dialog_manager")
+	if dialog_manager == null:
+		push_error("❌ dialog_manager not passed to START_COMBAT context.")
+		return
+
+	var current_scene = dialog_manager.get_tree().current_scene
+	if current_scene == null:
+		push_error("❌ START_COMBAT: current_scene is null.")
+		return
 	
-	print("🎬 START_COMBAT called from dialog. Ending dialog...")
-	dialog_manager.end_dialog()
+	dialog_manager.disable_dialog_ui()
+	var combat = SceneManager.start_combat(enemy_resource, dialog_manager)
+
+	# ✅ Connect combat_ended signal
+	if combat and combat.has_signal("combat_ended"):
+		combat.combat_ended.connect(dialog_manager.enable_dialog_ui)
+	#SceneManager.start_combat(enemy_resource, current_scene.packed_scene)
+
 
 
 func _leave_encounter(context: Dictionary) -> void:

@@ -12,6 +12,24 @@
 		"check_flags": {
 			"flags": ["visiting_hotbaths"],
 			"on_success": "switch_north_intro",
+			"on_fail": "enter_from_oldmine"
+		}
+	},
+    {
+		"id": "enter_from_oldmine",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["visiting_oldmine"],
+			"on_success": "switch_oldmine_intro",
+			"on_fail": "enter_first_time"
+		}
+	},
+    {
+		"id": "enter_from_inn",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["visiting_inn"],
+			"on_success": "switch_inn_exterior_intro",
 			"on_fail": "enter_first_time"
 		}
 	},
@@ -174,7 +192,7 @@
         "id": "switch_north_intro",
         "type": "command",
         "command": "@SHOW_ZONE Klyftet/KlyftetExtNorthDay",
-		"clear_flag": ["visiting_hotbaths"],
+		"clear_flag": ["visiting_hotbaths", "visiting_oldmine"],
 		"clear": true,
         "next": "whereto_debug"
     },
@@ -182,6 +200,7 @@
         "id": "switch_hotbaths_ext_intro",
         "type": "command",
         "command": "@SHOW_ZONE Klyftet/KlyftetExtHotbathsDay",
+		"clear_flag": ["visiting_hotbaths"],
 		"clear": true,
         "next": "whereto_debug"
     },
@@ -189,6 +208,7 @@
         "id": "switch_oldmine_intro",
         "type": "command",
         "command": "@SHOW_ZONE Klyftet/KlyftetExtOldmineDay",
+		"clear_flag": ["visiting_oldmine"],
 		"clear": true,
         "next": "whereto_debug"
     },

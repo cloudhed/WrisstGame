@@ -48,6 +48,14 @@ var return_to_scene: PackedScene = null
 # ─────────────────────────────────────────────────────────────
 # Debugging in the ready() func!
 func _ready():
+	
+	if player_stats == null:
+		player_stats = load("res://Characters/Player/player.tres") as CharacterStats
+		if player_stats == null:
+			push_error("❌ Failed to load fallback player_stats from player.tres!")
+		else:
+			print("✅ player_stats loaded from player.tres")
+	
 	var debug_armor: EquipableItem = load("res://Resources/Items/Equipment/Armor/debugger_armor.tres")
 	var debug_weapon: EquipableItem = load("res://Resources/Items/Equipment/Weapons/debugger_weapon.tres")
 	var debug_trinket: EquipableItem = load("res://Resources/Items/Equipment/Trinkets/debugger_trinket.tres")
@@ -58,9 +66,6 @@ func _ready():
 	add_item(debug_trinket)
 	
 	check_and_equip_fallback()
-
-
-
 
 
 # ─────────────────────────────────────────────────────────────

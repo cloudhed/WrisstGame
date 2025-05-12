@@ -97,7 +97,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 24
-alignment = 1
 
 [node name="SpeechStack" type="VBoxContainer" parent="CanvasLayer/DialogLineSpawner/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -108,5 +107,5 @@ alignment = 2
 
 [node name="ChoiceBox" parent="CanvasLayer" instance=ExtResource("10_7201p")]
 custom_minimum_size = Vector2(0, 0)
-offset_top = 864.0
-offset_bottom = 1080.0
+offset_top = 894.0
+offset_bottom = 1084.0

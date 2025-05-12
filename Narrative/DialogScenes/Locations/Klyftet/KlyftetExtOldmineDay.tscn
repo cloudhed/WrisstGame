@@ -144,6 +144,8 @@ debug_color = Color(0.775963, 0.440196, 0.0144619, 0.42)
 [node name="Hotspot_EnterMine" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_xd6f7")
 action_type = "enter"
+triggers_scene_change = true
+scene_selector_key = "oldmine"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_EnterMine"]
 position = Vector2(693, 626)
@@ -154,7 +156,7 @@ debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
 [node name="Hotspot_Return" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 position = Vector2(1844, 0)
 script = ExtResource("7_xd6f7")
-unlocked_dialog_id = "switch_north_intro"
+unlocked_dialog_id = "switch_oldmine_intro"
 
 [node name="BackArrow" type="Sprite2D" parent="Hotspots/Hotspot_Return"]
 position = Vector2(37, 37)

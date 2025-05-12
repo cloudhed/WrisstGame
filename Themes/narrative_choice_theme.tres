@@ -29,7 +29,7 @@ expand_margin_left = 6.0
 bg_color = Color(0.421141, 0.212102, 0.507426, 1)
 
 [resource]
-default_font_size = 18
+default_font_size = 20
 Button/colors/font_focus_color = Color(0.620317, 0.026731, 0.0258182, 1)
 Button/colors/font_hover_color = Color(0.351131, 0.00124986, 0.810978, 1)
 Button/colors/font_hover_pressed_color = Color(0.480299, 0.273354, 0.132355, 1)

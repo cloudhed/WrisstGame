@@ -4,13 +4,13 @@
 [ext_resource type="Theme" uid="uid://by10iex6r6prc" path="res://Themes/narrative_choice_theme.tres" id="1_fxevm"]
 
 [sub_resource type="Gradient" id="Gradient_fxevm"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0.588235, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.5, 0.863636, 1)
+colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0.588235, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y8e4k"]
 gradient = SubResource("Gradient_fxevm")
 fill = 1
-fill_from = Vector2(0.19, 0.45)
+fill_from = Vector2(0.119658, 0.448718)
 fill_to = Vector2(0, 1.315)
 
 [node name="ChoiceBox" type="Control"]
@@ -33,6 +33,7 @@ offset_left = 611.0
 offset_right = -609.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.08)
 texture = SubResource("GradientTexture2D_y8e4k")
 
 [node name="ColorPanel" type="Panel" parent="."]
