@@ -13,6 +13,9 @@ func start_combat(enemy_res: Resource, parent_node: Node) -> Combat:
 	var combat_instance = combat_scene.instantiate()
 	if combat_instance is Combat:
 		combat_instance.char_stats = GameState.player_stats
+
+		# 🪄 ✅ THIS IS THE MISSING LINE
+		combat_instance.setup_with_enemy(enemy_res)
 	else:
 		push_error("❌ SceneManager: combat_scene is not a Combat scene.")
 		return null  # ✅ Early exit returns null
@@ -25,10 +28,8 @@ func start_combat(enemy_res: Resource, parent_node: Node) -> Combat:
 		get_tree().root.add_child(combat_instance)
 		print("⚠️ No parent given, combat added to root.")
 
-	return combat_instance  # ✅ Add this line!
+	return combat_instance
 
-	
-	
 
 func return_to_previous_scene() -> void:
 	# We can remove this logic OR keep as fallback

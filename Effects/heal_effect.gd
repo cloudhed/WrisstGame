@@ -11,6 +11,7 @@ func execute(targets: Array[Node]) -> void:
 		if target is Enemy or target is CombatPlayer: 
 			if "health" in target.stats and "max_health" in target.stats:
 				target.stats.health = min(target.stats.health + amount, target.stats.max_health)
+				Events.damage_popup_requested.emit(target.get_damage_popup_position(), amount, "heal")
 				SFXPlayer.play(sound)
 #			target.stats.health += amount
 func get_preview_amount() -> int:

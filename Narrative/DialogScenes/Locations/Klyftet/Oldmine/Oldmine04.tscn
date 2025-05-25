@@ -46,7 +46,7 @@ size = Vector2(5.21411, 5.21407)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of82d"]
 size = Vector2(39.7645, 56.4835)
 
-[node name="Oldmine01Entrance" type="Node2D"]
+[node name="Oldmine04" type="Node2D"]
 script = ExtResource("1_of82d")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -68,6 +68,7 @@ process_material = SubResource("ParticleProcessMaterial_6komj")
 
 [node name="Hotspot_Leave" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("4_egdpg")
+unlocked_dialog_id = "switch_oldmine_intro"
 action_type = "enter"
 triggers_scene_change = true
 scene_selector_key = "klyftet"

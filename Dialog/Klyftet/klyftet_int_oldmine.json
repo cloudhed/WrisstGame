@@ -1,5 +1,13 @@
 [
     {
+        "id": "set_visit_flag",
+        "type": "command",
+		"set_flag": "visiting_oldmine",
+		"flag_type": "temp",
+		"clear": true,
+        "next": "play_audio"
+    },
+    {
         "id": "play_audio",
         "type": "command",
         "command": "@PLAY_AMBIENCE mine res://Audio/Ambience/Klyftet/mine_ambience.mp3 ; @PLAY_AMBIENCE heart res://Audio/Ambience/Klyftet/mine_heart_center.mp3",
@@ -34,8 +42,6 @@
 		"id": "01_oldmine_entrance",
 		"type": "narration",
 		"text": "A low thumping rhythm rumbles through the tunnels.",
-		"set_flag": "visiting_oldmine",
-		"flag_type": "temp",
 		"next": "01_oldmine_entrance_CHOICE"
 	},
 	{
@@ -108,7 +114,7 @@
 	{
 		"id": "02_oldmine_STARTCOMBAT",
 		"type": "command",
-		"command": "@START_COMBAT res://enemies/teqqellon/teqqellon_enemy.tres",
+		"command": "@START_COMBAT res://enemies/murisk_n/murisk_n_enemy.tres",
 		"clear": true,
 		"next": "02_oldmine_debugcombat_VICTORY"
 	},
@@ -136,15 +142,73 @@
 		"options": [
 			{
 				"text": "> [Pick the left tunnel]",
-				"next": "02_oldmine_LEFT"
+				"next": "03_oldmine_SHOW"
 			},
 			{
 				"text": "> [Pick the right tunnel]",
-				"next": "02_oldmine_RIGHT"
+				"next": "03_oldmine_RIGHT"
 			},
 			{
 				"text": "> [Inspect]",
-				"next": "02_oldmine_INSPECT"
+				"next": "03_oldmine_INSPECT"
+			},
+			{
+				"text": "> [Leave the mines]",
+				"next": "oldmine_LEAVE"
+			}
+		]
+	},
+    {
+        "id": "03_oldmine_SHOW",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/Oldmine/Oldmine03 ; @PLAY_AMBIENCE heart res://Audio/Ambience/Klyftet/mine_heart_center.mp3",
+		"clear": true,
+        "next": "03_oldmine_CHOICE"
+    },
+	{
+		"id": "03_oldmine_CHOICE",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Pick the left tunnel]",
+				"next": "04_oldmine_SHOW"
+			},
+			{
+				"text": "> [Pick the right tunnel]",
+				"next": "04_oldmine_RIGHT"
+			},
+			{
+				"text": "> [Inspect]",
+				"next": "03_oldmine_INSPECT"
+			},
+			{
+				"text": "> [Leave the mines]",
+				"next": "oldmine_LEAVE"
+			}
+		]
+	},
+    {
+        "id": "04_oldmine_SHOW",
+        "type": "command",
+        "command": "@SHOW_ZONE Klyftet/Oldmine/Oldmine04 ; @PLAY_AMBIENCE heart res://Audio/Ambience/Klyftet/mine_heart_center.mp3",
+		"clear": true,
+        "next": "04_oldmine_CHOICE"
+    },
+	{
+		"id": "04_oldmine_CHOICE",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Pick the left tunnel]",
+				"next": "04_oldmine_SHOW"
+			},
+			{
+				"text": "> [Pick the right tunnel]",
+				"next": "04_oldmine_RIGHT"
+			},
+			{
+				"text": "> [Inspect]",
+				"next": "04_oldmine_INSPECT"
 			},
 			{
 				"text": "> [Leave the mines]",

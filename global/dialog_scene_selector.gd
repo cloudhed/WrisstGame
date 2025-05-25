@@ -11,6 +11,8 @@ func get_scene(area: String) -> DialogSceneResource:
 			return _get_inn_scene()
 		"oldmine":
 			return _get_oldmine_scene()
+		"market":
+			return _get_market_scene()
 		_:
 			push_warning("❌ Unknown area passed to DialogSceneSelector: " + area)
 			return null
@@ -39,3 +41,8 @@ func _get_inn_scene() -> DialogSceneResource:
 
 func _get_oldmine_scene() -> DialogSceneResource:
 	return preload("res://Narrative/DialogScenes/Locations/Klyftet/Oldmine/oldmine_default.tres")
+
+
+func _get_market_scene() -> DialogSceneResource:
+	print("get_market_scene")
+	return

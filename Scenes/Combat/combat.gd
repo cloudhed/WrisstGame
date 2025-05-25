@@ -5,6 +5,7 @@ extends Node2D
 @export var char_stats: CharacterStats
 @export var music: AudioStream
 
+
 @onready var combat_ui: CombatUI = $CombatUI as CombatUI
 @onready var player_handler: PlayerHandler = $PlayerHandler as PlayerHandler
 @onready var enemy_handler: EnemyHandler = $EnemyHandler as EnemyHandler
@@ -14,7 +15,15 @@ var created_stats: CharacterStats
 var combat_over: bool = false
 var combat_aborted: bool = false
 
+#enemy_loading_through_JSON
+var override_enemy_resource: Resource = null
+
 signal combat_ended
+
+
+func setup_with_enemy(enemy_res: Resource) -> void:
+	override_enemy_resource = enemy_res
+
 
 func _ready() -> void:
 	combat_ui.visible = false
@@ -44,15 +53,36 @@ func _ready() -> void:
 
 	_setup_enemy()
 
-func _setup_enemy() -> void:
-	var enemy: Enemy = enemy_handler.get_child(0) as Enemy
-	if not enemy:
-		print("❌ No enemy found in enemy_handler.")
-		return
+# res://Scenes/Enemy/enemy.tscn
 
-	print("✅ Enemy found: ", enemy.name)
+func _setup_enemy() -> void:
+	var enemy: Enemy  # ✅ declare outside, for strict typing
+
+	# 💣 CLEAR all existing enemies first
+	#for child in enemy_handler.get_children():
+		#child.queue_free()
+
+	if override_enemy_resource:
+				# 💣 CLEAR all existing enemies first
+		for child in enemy_handler.get_children():
+			child.queue_free()
+		# 🪄 Create fresh enemy scene + set resource
+		var enemy_scene: PackedScene = preload("res://Scenes/Enemy/enemy.tscn")  # your actual path
+		enemy = enemy_scene.instantiate() as Enemy
+		enemy_handler.add_child(enemy)
+		enemy.stats = override_enemy_resource
+		print("✅ Enemy spawned from dialog override:", enemy.name)
+	else:
+		# 🧑‍💻 Fallback for debug / editor mode
+		enemy = enemy_handler.get_child(0) as Enemy
+		if not enemy:
+			print("❌ No enemy found in enemy_handler or override.")
+			return
+		print("✅ Enemy found from editor:", enemy.name)
+
 	enemy.intent_ui = $IntentUI
 	start_combat(created_stats)
+
 
 func _on_player_ready(p: CombatPlayer) -> void:
 	var new_stats: CharacterStats = char_stats.create_instance()

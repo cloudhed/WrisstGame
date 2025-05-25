@@ -100,6 +100,12 @@ func update_enemy() -> void:
 #	print("Arrow global position after update:", arrow.global_position)
 
 
+func get_damage_popup_position() -> Vector2:
+	if has_node("DamagePopupAnchor"):
+		return get_node("DamagePopupAnchor").global_position
+	return global_position  # fallback
+
+
 func do_turn() -> void:
 	if is_defeated:
 		print("🚫 Enemy is defeated — skipping turn.")

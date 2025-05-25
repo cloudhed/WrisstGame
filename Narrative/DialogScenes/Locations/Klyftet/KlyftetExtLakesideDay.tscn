@@ -98,14 +98,14 @@ script = ExtResource("1_ev3ig")
 texture = ExtResource("2_rwpw5")
 centered = false
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="ParticlesGlitter1" type="GPUParticles2D" parent="."]
 position = Vector2(945, 487)
 scale = Vector2(4.08, 1.36)
 texture = ExtResource("3_qdb5l")
 lifetime = 0.41
 process_material = SubResource("ParticleProcessMaterial_w1tuq")
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+[node name="ParticlesGlitter2" type="GPUParticles2D" parent="."]
 position = Vector2(939, 419)
 scale = Vector2(4.08, 1.36)
 amount = 32

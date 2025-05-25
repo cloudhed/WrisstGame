@@ -25,6 +25,9 @@ signal enemy_defeated
 
 #Combat Text Log
 signal combat_text_emitted(message: String)
+# Floating Damage/Block/Heal Numbers
+signal damage_popup_requested(world_position: Vector2, amount: int, effect_type: String)
+
 
 #Tooltip
 signal tile_tooltip_requested(icon: Texture, text: String, source: String, global_position: Vector2, tile_size: Vector2)

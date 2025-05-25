@@ -11,6 +11,7 @@ extends CanvasLayer
 func _ready() -> void:
 	Events.player_hand_drawn.connect(_on_player_hand_drawn)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
+	Events.damage_popup_requested.connect(spawn_damage_popup)
 #	Events.connect("combat_text_emitted", Callable(self, "_on_combat_text_emitted"))
 
 
@@ -28,6 +29,22 @@ func _on_player_hand_drawn() -> void:
 func _on_end_turn_button_pressed() -> void:
 	end_turn_button.disabled = true
 	Events.player_turn_ended.emit()
+
+
+func spawn_damage_popup(world_position: Vector2, amount: int, effect_type: String) -> void:
+	var popup := preload("res://Scenes/UI/DamagePopup.tscn").instantiate()
+	print("popup instansiated")
+	get_tree().current_scene.add_child(popup)
+
+	popup.global_position = world_position
+	var color: Color = Color.WHITE
+	match effect_type:
+		"damage": color = Color.DARK_RED
+		"heal": color = Color.WEB_GREEN
+		"block": color = Color.ROYAL_BLUE
+
+	popup.setup(amount, color)
+
 
 
 #func _on_combat_text_emitted(message: String) -> void:

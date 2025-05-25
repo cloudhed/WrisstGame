@@ -137,13 +137,16 @@ func load_dialogue(path: String) -> bool:
 
 
 func _input(event: InputEvent) -> void:
+	if GameUI and GameUI.is_ui_open():
+		return
+	
 	if not is_dialog_active:
 		return
 		
 	if flow_manager == null or choice_box.visible:
 		return
 
-	if event is InputEventKey and event.is_action_pressed("ui_accept"):
+	if event is InputEventKey and event.is_action_pressed("confirm"):
 		flow_manager.waiting_for_input = false
 		flow_manager.show_next_line()
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

@@ -51,6 +51,10 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_start_combat(context)
 		"LEAVE_ENCOUNTER":
 			_leave_encounter(context)
+		"SET_SCENE_FROM":
+			if parts.size() >= 2:
+				GameState.last_scene_id = parts[1]
+				print("✅ Scene from manually set to:", GameState.last_scene_id)
 		_:
 			_handle_game_state_command(cmd, context)
 

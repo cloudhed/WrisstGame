@@ -37,14 +37,14 @@ turbulence_influence_max = 0.116
 turbulence_initial_displacement_min = -17.1
 turbulence_initial_displacement_max = 11.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l0f5"]
-size = Vector2(35.4822, 47.0607)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbit"]
 size = Vector2(56.1292, 55.1502)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i4s"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kmrs"]
 size = Vector2(5.21411, 5.21407)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l0f5"]
+size = Vector2(21.7176, 47.0607)
 
 [node name="Oldmine01Entrance" type="Node2D"]
 script = ExtResource("1_5kmrs")
@@ -65,18 +65,6 @@ randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_g5yee")
 
 [node name="Hotspots" type="Node2D" parent="."]
-
-[node name="Hotspot_Leave" type="Area2D" parent="Hotspots" groups=["hotspots"]]
-script = ExtResource("5_qoia2")
-action_type = "enter"
-triggers_scene_change = true
-scene_selector_key = "klyftet"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Leave"]
-position = Vector2(135, 512.919)
-scale = Vector2(6.53849, 17.8102)
-shape = SubResource("RectangleShape2D_4l0f5")
-debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
 
 [node name="Hotspot_Center" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 position = Vector2(848, 0)
@@ -102,10 +90,24 @@ texture = ExtResource("6_pwwqm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Return"]
 position = Vector2(38.2498, 38.2501)
 scale = Vector2(14.48, 14.48)
-shape = SubResource("RectangleShape2D_j0i4s")
+shape = SubResource("RectangleShape2D_5kmrs")
 debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
 
-[connection signal="mouse_entered" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_exited"]
+[node name="Hotspot_Leave" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+script = ExtResource("5_qoia2")
+action_type = "enter"
+triggers_scene_change = true
+scene_selector_key = "klyftet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Leave"]
+position = Vector2(77, 512.919)
+scale = Vector2(6.53849, 17.8102)
+shape = SubResource("RectangleShape2D_4l0f5")
+debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
+
 [connection signal="mouse_entered" from="Hotspots/Hotspot_Center" to="Hotspots/Hotspot_Center" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Hotspots/Hotspot_Center" to="Hotspots/Hotspot_Center" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Hotspots/Hotspot_Return" to="Hotspots/Hotspot_Return" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hotspots/Hotspot_Return" to="Hotspots/Hotspot_Return" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hotspots/Hotspot_Leave" to="Hotspots/Hotspot_Leave" method="_on_mouse_exited"]

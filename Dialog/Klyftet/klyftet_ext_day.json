@@ -6,6 +6,17 @@
 		"clear": false,
         "next": "enter_from_hotbaths"
     },
+	{
+		"id": "entering_check",
+		"type": "logic",
+		"logic_type": "check_temp_flags_multi",
+		"check_temp_flags": {
+			"visiting_hotbaths": "switch_north_intro",
+			"visiting_oldmine": "switch_oldmine_intro",
+			"visiting_inn": "switch_inn_exterior_intro",
+			"default": "enter_first_time"
+		}
+	},
     {
 		"id": "enter_from_hotbaths",
 		"type": "logic",

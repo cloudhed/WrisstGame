@@ -10,6 +10,7 @@ func execute(targets: Array[Node]) -> void:
 			continue
 		if target is Enemy or target is CombatPlayer:
 			target.take_damage(amount)
+			Events.damage_popup_requested.emit(target.get_damage_popup_position(), amount, "damage")
 			SFXPlayer.play(sound)
 
 #added for showing amount on tile

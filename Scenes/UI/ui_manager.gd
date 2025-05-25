@@ -77,13 +77,13 @@ func _on_item_clicked(index: int, at_position: Vector2, mouse_button_index: int)
 
 func _unhandled_input(ev):
 	# Toggle inventory on “I” press (make sure you set ui_inventory in InputMap)
-	if ev.is_action_pressed("ui_inventory"):
+	if ev.is_action_pressed("inventory"):
 		_toggle_inventory()
 
 
 # ← Put this **directly after** your _unhandled_input (or anywhere in the class body):
 func _gui_input(event: InputEvent) -> void:
-	if inv_screen.visible and (event is InputEventMouseButton or event.is_action_pressed("ui_accept")):
+	if inv_screen.visible and (event is InputEventMouseButton or event.is_action_pressed("confirm")):
 		event.accept()
 
 
@@ -96,7 +96,9 @@ func _toggle_inventory():
 	inv_screen.visible = not inv_screen.visible
 	if inv_screen.visible:
 		_refresh_inventory()
-
+		_disable_hotspots()  # ✅ block clicks behind
+	else:
+		_enable_hotspots() 
 
 func _refresh_inventory():
 	item_list.clear()
@@ -255,6 +257,17 @@ func _calculate_deck_power(tiles: Array[Tile]) -> float:
 	var average_value := total_value / tiles.size()
 	var final_score := average_value * 10.0
 	return round(final_score * 10) / 10.0  # Round to 1 decimal
+
+
+func _disable_hotspots():
+	for node in get_tree().get_nodes_in_group("hotspots"):
+		if node is Area2D:
+			node.input_pickable = false
+
+func _enable_hotspots():
+	for node in get_tree().get_nodes_in_group("hotspots"):
+		if node is Area2D:
+			node.input_pickable = true
 
 
 # ──────────────────────────────────────────────────

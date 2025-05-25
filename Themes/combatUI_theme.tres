@@ -22,15 +22,16 @@ border_width_bottom = 2
 
 [resource]
 default_font = ExtResource("1_v7tbr")
-default_font_size = 16
+default_font_size = 20
 Button/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
-Button/fonts/font = ExtResource("1_v7tbr")
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("3_g01mi")
 Button/styles/hover = SubResource("StyleBoxFlat_g01mi")
 Button/styles/normal = SubResource("StyleBoxFlat_2il07")
 Label/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.196078)
-Label/font_sizes/font_size = 19
-LineEdit/font_sizes/font_size = 16
+Label/font_sizes/font_size = 18
+LineEdit/font_sizes/font_size = 18
 Panel/styles/panel = SubResource("StyleBoxFlat_qa8ib")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_1n2vt")
 RichTextLabel/colors/default_color = Color(0.0980392, 0.0980392, 0.0980392, 1)

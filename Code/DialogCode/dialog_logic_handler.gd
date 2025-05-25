@@ -104,3 +104,33 @@ func check_condition(entry: Dictionary) -> String:
 				game_state.remove_drots(amount)
 
 	return on_success if has_enough else on_fail
+
+
+func check_temp_flags_multi(entry: Dictionary) -> String:
+	if not entry.has("check_temp_flags"):
+		push_error("❌ Logic entry missing 'check_temp_flags'")
+		return ""
+
+	var flag_map: Dictionary = entry["check_temp_flags"]
+
+	for flag in flag_map.keys():
+		if flag == "default":
+			continue
+		if GameState.temp_flags.has(flag):
+			return flag_map[flag]
+
+	return flag_map.get("default", "")
+
+
+func check_scene_from_multi(entry: Dictionary) -> String:
+	if not entry.has("check_scene_from"):
+		push_error("❌ Logic entry missing 'check_scene_from'")
+		return ""
+
+	var scene_map: Dictionary = entry["check_scene_from"]
+	var current_scene: String = GameState.last_scene_id
+
+	if scene_map.has(current_scene):
+		return scene_map[current_scene]
+
+	return scene_map.get("default", "")

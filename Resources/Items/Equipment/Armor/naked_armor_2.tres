@@ -11,5 +11,7 @@ tile_bundle = ExtResource("2_f86gk")
 name = "Naked"
 description = "You're not even wearing underwear!"
 item_type = "equipable"
+is_stackable = false
+max_stack = 99
 hidden_from_inventory = true
 metadata/_custom_type_script = "uid://bvo3h06fcka4k"

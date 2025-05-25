@@ -27,9 +27,14 @@ func _ready() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	
 	print("✅ Hotspot ready!")
-	connect("input_event", Callable(self, "_on_input_event"))
-	connect("mouse_entered", Callable(self, "_on_mouse_entered"))
-	connect("mouse_exited", Callable(self, "_on_mouse_exited"))
+	if not is_connected("input_event", Callable(self, "_on_input_event")):
+		connect("input_event", Callable(self, "_on_input_event"))
+
+	if not is_connected("mouse_entered", Callable(self, "_on_mouse_entered")):
+		connect("mouse_entered", Callable(self, "_on_mouse_entered"))
+
+	if not is_connected("mouse_exited", Callable(self, "_on_mouse_exited")):
+		connect("mouse_exited", Callable(self, "_on_mouse_exited"))
 
 		# 📁 Load your cursor textures here!
 	cursor_textures = {
@@ -48,6 +53,7 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> v
 		if triggers_scene_change and scene_selector_key != "":
 			print("🌍 Requesting new scene load via DialogSceneSelector:", scene_selector_key)
 			print("📡 Emitting dialog_scene_change_requested:", scene_selector_key)
+			#GameState.last_scene_id = GameState.current_scene_id
 			Events.dialog_scene_change_requested.emit(scene_selector_key)
 			return
 		### ^^^ DOING THE DIALOG SCENE RESOURCE SWITCHING ^^^ ###
@@ -119,3 +125,10 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	Input.set_custom_mouse_cursor(null)
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _exit_tree() -> void:
+	# 🧼 Disconnect all signals on scene unload
+	disconnect("input_event", Callable(self, "_on_input_event"))
+	disconnect("mouse_entered", Callable(self, "_on_mouse_entered"))
+	disconnect("mouse_exited", Callable(self, "_on_mouse_exited"))

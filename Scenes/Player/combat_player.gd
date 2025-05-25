@@ -32,6 +32,7 @@ func assign_stats_ui(ui: StatsUI) -> void:
 	stats_ui.update_stats(stats)
 
 
+
 func set_character_stats(value: CharacterStats) -> void:
 	if value == null:
 		push_warning("⚠️ set_character_stats() received null value. Ignored.")
@@ -80,6 +81,12 @@ func spend_stamina(amount: int) -> void:
 	var new_value: int = max(0, stats.stamina - amount)
 	stats.stamina = new_value
 	update_stats()
+
+
+func get_damage_popup_position() -> Vector2:
+	if has_node("DamagePopupAnchor"):
+		return get_node("DamagePopupAnchor").global_position
+	return global_position  # fallback
 
 
 func take_damage(damage: int) -> void:

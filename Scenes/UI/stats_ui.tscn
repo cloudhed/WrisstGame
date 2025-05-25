@@ -29,6 +29,7 @@ size_flags_stretch_ratio = 0.0
 [node name="NameLabel" type="Label" parent="Name"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "playerName"
 
 [node name="Health" type="HBoxContainer" parent="."]
@@ -51,6 +52,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.22, 0, 0.0293333, 1)
 theme_override_fonts/font = ExtResource("4_05r6v")
+theme_override_font_sizes/font_size = 30
 text = "20/20"
 
 [node name="Block" type="HBoxContainer" parent="Health"]
@@ -75,4 +77,5 @@ theme_override_colors/font_color = Color(0.0447512, 0.206104, 0.332106, 1)
 theme_override_colors/font_outline_color = Color(0.69226, 0.963547, 1, 0.501961)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("4_05r6v")
+theme_override_font_sizes/font_size = 30
 text = "2"

@@ -10,4 +10,5 @@ func execute(targets: Array[Node]) -> void:
 			continue
 		if target is Enemy or target is CombatPlayer:
 			target.stats.block += amount
+			Events.damage_popup_requested.emit(target.get_damage_popup_position(), amount, "block")
 			SFXPlayer.play(sound)

@@ -106,7 +106,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -170.0
+offset_top = -177.0
 offset_right = 1886.0
 offset_bottom = -29.0
 grow_vertical = 0
@@ -123,26 +123,32 @@ theme_override_constants/separation = 14
 
 [node name="PlayerMenuUI" type="HBoxContainer" parent="CombatUI/StatsUIManager/PlayerVBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="CombatButtonTILES" type="Button" parent="CombatUI/StatsUIManager/PlayerVBoxContainer/PlayerMenuUI"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("16_ceo1n")
+theme_override_font_sizes/font_size = 26
 text = "TILES"
+icon_alignment = 1
 
 [node name="CombatButtonBAG" type="Button" parent="CombatUI/StatsUIManager/PlayerVBoxContainer/PlayerMenuUI"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
 text = "BAG"
 
 [node name="CombatButtonRUN" type="Button" parent="CombatUI/StatsUIManager/PlayerVBoxContainer/PlayerMenuUI"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
 text = "RUN"
 script = ExtResource("3_ubpar")
 world = ExtResource("4_ut0kg")
 
 [node name="Panel" type="Panel" parent="CombatUI/StatsUIManager/PlayerVBoxContainer"]
-custom_minimum_size = Vector2(0, 95)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme = ExtResource("16_ceo1n")
@@ -189,7 +195,7 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.03
 
 [node name="Panel" type="Panel" parent="CombatUI/StatsUIManager/EnemyVBoxContainer"]
-custom_minimum_size = Vector2(0, 95)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 theme = ExtResource("16_ceo1n")
 
@@ -223,9 +229,9 @@ offset_bottom = 100.0
 
 [node name="StaminaUI" parent="CombatUI" instance=ExtResource("22_3cqtn")]
 offset_left = 32.0
-offset_top = 857.0
+offset_top = 813.0
 offset_right = 72.0
-offset_bottom = 897.0
+offset_bottom = 853.0
 char_stats = ExtResource("14_5kjvk")
 
 [node name="EndTurnButton" type="Button" parent="CombatUI"]
@@ -235,10 +241,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1685.0
-offset_top = -219.0
+offset_left = -1708.0
+offset_top = -263.0
 offset_right = -1618.0
-offset_bottom = -186.0
+offset_bottom = -230.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8

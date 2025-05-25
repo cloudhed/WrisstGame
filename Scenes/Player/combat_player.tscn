@@ -16,4 +16,8 @@ texture = ExtResource("2_b84tv")
 wait_time = 2.0
 one_shot = true
 
+[node name="DamagePopupAnchor" type="Marker2D" parent="."]
+position = Vector2(106, 0)
+gizmo_extents = 100.0
+
 [connection signal="timeout" from="EndTurnTimer" to="." method="_on_end_turn_timer_timeout"]

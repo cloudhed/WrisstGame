@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dk4mquk7rtogq" path="res://Scenes/UI/ui_manager.gd" id="2_71wt1"]
 [ext_resource type="Theme" uid="uid://wii45adw77en" path="res://Themes/GameUI_itemlist_theme.tres" id="2_xkiwj"]
-[ext_resource type="Script" uid="uid://beo3ovo3gdwdo" path="res://Scenes/TileUI/tile_grid_card.gd" id="3_4284l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71wt1"]
 bg_color = Color(0.1421, 0.27028, 0.29, 1)
@@ -33,6 +32,13 @@ corner_radius_bottom_left = 8
 corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tog36"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tog36"]
+bg_color = Color(0.1519, 0.286285, 0.31, 0.458824)
+border_width_left = 12
+border_width_bottom = 5
+border_blend = true
+expand_margin_right = 11.0
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -217,7 +223,6 @@ size_flags_stretch_ratio = 0.0
 theme_override_constants/h_separation = 34
 theme_override_constants/v_separation = 29
 columns = 4
-script = ExtResource("3_4284l")
 
 [node name="CurrentTilesList" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/TilePilePanel"]
 visible = false
@@ -274,6 +279,7 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 7
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_tog36")
 text = "50 öre removed"
 horizontal_alignment = 2
 vertical_alignment = 1

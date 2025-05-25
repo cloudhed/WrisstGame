@@ -41,7 +41,8 @@ var temp_flags: Dictionary = {}
 # NPC relationship points
 var npc_reputation: Dictionary = {}
 
-# Returning to stuff from combat
+# Returning to stuff
+var last_scene_id: String = ""
 var return_to_scene: PackedScene = null
 
 

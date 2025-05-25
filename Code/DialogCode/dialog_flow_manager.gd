@@ -193,6 +193,19 @@ func process_entry_type(entry: Dictionary) -> void:
 					handle_condition_check(entry)
 				_:
 					push_error("❌ Unknown logic_type in entry: " + entry.get("logic_type", ""))
+		"check_temp_flags_multi":
+			var next_id: String = logic_handler.check_temp_flags_multi(entry)
+			var next_index: int = _find_entry_index_by_id(next_id)
+			if next_index != -1:
+				current_index = next_index
+				show_next_line()
+		#"check_scene_from_multi":
+			#var next_id: String = logic_handler.check_scene_from_multi(entry)
+			#var next_index: int = _find_entry_index_by_id(next_id)
+			#print(next_id, next_index)
+			#if next_index != -1:
+				#current_index = next_index
+				#show_next_line()
 
 func handle_flag_check(entry: Dictionary) -> void:
 	var target_id: String = logic_handler.check_flags(entry, flags)

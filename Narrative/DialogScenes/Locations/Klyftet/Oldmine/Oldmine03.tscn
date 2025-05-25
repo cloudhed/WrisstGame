@@ -46,7 +46,7 @@ size = Vector2(15.9058, 47.0607)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i4s"]
 size = Vector2(5.21411, 5.21407)
 
-[node name="Oldmine01Entrance" type="Node2D"]
+[node name="Oldmine03" type="Node2D"]
 script = ExtResource("1_8u4qa")
 
 [node name="Background" type="Sprite2D" parent="."]
