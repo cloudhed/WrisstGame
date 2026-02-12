@@ -9,5 +9,5 @@ script = ExtResource("2_5k5u0")
 ai = ExtResource("1_j7ut2")
 max_health = 16
 art = ExtResource("2_s147t")
-player_name = "Teqqellonian"
+player_name = "Lurtz"
 metadata/_custom_type_script = "uid://dlksefa8n68ng"

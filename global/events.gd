@@ -40,7 +40,7 @@ signal change_scene_requested(scene: PackedScene)
 	#Pre combat
 	
 	#Post combat
-signal combat_over_screen_requested(text: String, type: )
+signal combat_over_screen_requested(text: String, type: String)
 
 #Dialog Scene Changes
 signal dialog_scene_change_requested(area_key: String)

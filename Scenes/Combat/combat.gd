@@ -119,6 +119,7 @@ func _on_enemies_child_order_changed() -> void:
 		$IntentUI.visible = false
 
 		emit_signal("combat_ended")
+		Events.leave_encounter_requested.emit()
 		queue_free()   # ✅ also remove Combat overlay scene
 		#Events.leave_encounter_requested.emit()
 

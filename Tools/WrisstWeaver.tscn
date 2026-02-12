@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://46bht57cn4x1"]
+
+[ext_resource type="Script" uid="uid://cqy47mrf2ywps" path="res://Tools/wrisst_weaver.gd" id="1_v2sfs"]
+
+[node name="WrisstWeaver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v2sfs")
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_offset = Vector2(-40, -40)
+right_disconnects = true
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -59.0
+offset_right = 71.0
+offset_bottom = -28.0
+grow_vertical = 0
+text = "EXPORT JSON"
+
+[node name="LoadButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -800.62
+offset_top = -59.0
+offset_right = -705.62
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "LOAD JSON"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0

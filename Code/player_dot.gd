@@ -6,6 +6,7 @@ class_name PlayerDot
 @export var step_size := 3
 
 @onready var distance_label = get_tree().get_root().get_node("overworld_node/CanvasLayer/DistanceLabel")
+@onready var coord_label = get_tree().get_root().get_node("overworld_node/CanvasLayer/CoordLabel")
 @onready var debug_gui = get_tree().get_root().get_node("overworld_node/CanvasLayer")
 
 var current_biomes: Array = []
@@ -53,6 +54,9 @@ func _physics_process(_delta: float) -> void:
 	velocity = input_vector.normalized() * move_speed * speed_modifier
 	move_and_slide()
 	distance_in_pixel += position.distance_to(initial_position)
+	
+	# coordinates
+	coord_label.text = "Pos: %d, %d" % [round(position.x), round(position.y)]
 
 
 # Biome Management

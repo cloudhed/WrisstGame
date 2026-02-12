@@ -40,7 +40,7 @@ func _update_debug_info():
 
 
 	core_info += "🎒 Inventory size: %d\n" % GameState.player_inventory.size()
-	core_info += "🧑 Reputation entries: %d\n" % GameState.npc_reputation.size()
+	core_info += "🤍 iReputation entries: %d\n" % GameState.npc_reputation.size()
 
 	debug_ui.get_node("DebugText").text = core_info
 

@@ -3,6 +3,7 @@ extends Node2D
 signal biome_updated(new_biome: String)
 
 @export var combat_scene: PackedScene
+@export var overworld_scene: PackedScene = preload("res://overworldNav.tscn") #24/11 new
 @onready var whiteout_anim: AnimationPlayer = $AnimationPlayer
 
 var combat_biome: String = "Default"
@@ -20,10 +21,11 @@ var next_scene: PackedScene = null
 
 func _ready() -> void:
 	seed(randi())
-	encounter_number = randi_range(10000, 30000)
+	encounter_number = randi_range(50, 100)
 
 	# Connect to global scene change signal
 	Events.change_scene_requested.connect(_on_change_scene_requested)
+	Events.leave_encounter_requested.connect(_on_leave_encounter_requested) #24/11 new
 
 func save_player_data(player: PlayerDot) -> void:
 	var biome_obj = player.get_highest_priority_biome()
@@ -49,6 +51,13 @@ func _on_change_scene_requested(scene: PackedScene) -> void:
 		whiteout_anim.play("fade_out")
 	else:
 		push_error("❌ Tried to change to an invalid scene.")
+
+func _on_leave_encounter_requested() -> void:
+	if overworld_scene:
+		next_scene = overworld_scene
+		whiteout_anim.play("fade_out")
+	else:
+		push_error("❌ No overworld scene assigned for returning after encounters.")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
