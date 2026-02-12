@@ -1,5 +1,0 @@
-1.
-Markera platsadressen, skriv "powershell".
-
-2.
-join-ai join . -p "*.gd" -p "*.json" -p "*.tres" -o "$(Get-Date -Format 'yyMMdd')_allcode_ithink.txt"
