@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://cgc7i24b66gt8"
 [resource]
 script = ExtResource("2_ud7ci")
 sfx_library = {}
-dialogue_path = "res://enemies/teqqellon/teqqellon_dialog.json"
+dialogue_path = "res://enemies/teqqellon/teqqellon_dialog_postcombat.json"
 characters = Array[ExtResource("1_35hgx")]([SubResource("Resource_35hgx")])
 flags_required = Array[String]([])
 flags_set_on_start = {}

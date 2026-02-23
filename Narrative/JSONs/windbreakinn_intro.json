@@ -1,0 +1,317 @@
+[
+	{
+		"id": "visiting_inn",
+		"type": "command",
+<<<<<<< HEAD
+		"command": "@PLAY_MUSIC res://Audio/Music/Klyftet/dronk_daluda.mp3 ; @PLAY_AMBIENCE tavern_crowd res://Audio/Ambience/Klyftet/tavern_interior_busy.mp3",
+=======
+		"command": "@PLAY_MUSIC res://Audio/Music/Klyftet/dronk_daluda.wav ; @PLAY_AMBIENCE tavern_crowd res://Audio/Ambience/Klyftet/tavern_interior_busy.mp3",
+>>>>>>> 753772e (Worked a bit on navigation, added Windbreak interior and some nav dialog, some placeholders. Added more command functions to Wrisst Weaver.)
+		"set_flag": "visiting_inn",
+		"flag_type": "temp",
+		"clear": true,
+		"next": "enter_windbreak_logic"
+	},
+	{
+		"id": "enter_windbreak_logic",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["windbreak_entered_once"],
+			"on_success": "windbreak_enter_repeat",
+			"on_fail": "windbreak_enter_first"
+		}
+	},
+	{
+		"id": "windbreak_enter_first",
+		"type": "command",
+		"command": "@PLAY_MUSIC res://Audio/Music/Klyftet/dronk_daluda.wav ; @PLAY_AMBIENCE tavern_crowd res://Audio/Ambience/Klyftet/tavern_interior_busy.mp3",
+		"set_flag": "windbreak_entered_once",
+		"flag_type": "event",
+		"next": "windbreak_desc_first"
+	},
+	{
+		"id": "windbreak_enter_repeat",
+		"type": "command",
+		"command": "@PLAY_MUSIC res://Audio/Music/Klyftet/dronk_daluda.wav ; @PLAY_AMBIENCE tavern_crowd res://Audio/Ambience/Klyftet/tavern_interior_busy.mp3",
+		"next": "windbreak_desc_repeat"
+	},
+	{
+		"id": "windbreak_desc_first",
+		"type": "narration",
+		"text": "You push open the heavy oak door. It fights you for a moment against the mountain draft before slamming shut behind you, cutting off the howling wind instantly.[p]The silence is immediately replaced by a wall of sound: the clatter of clay cups, the low roar of conversation, and the hiss of a hearth fire. The air is thick, smelling of roasted root-stew, drying mud, and woodsmoke.",
+		"next": "windbreak_scan_room"
+	},
+	{
+		"id": "windbreak_desc_repeat",
+		"type": "narration",
+		"text": "You step back into the Windbreak. The warmth hits you like a physical weight, thawing the chill from your bones. The inn is bustling as usual, a sanctuary against the split-howl outside.",
+		"set_flag": "visiting_inn",
+		"flag_type": "temp",
+		"next": "windbreak_hub_door"
+	},
+	{
+		"id": "windbreak_scan_room",
+		"type": "narration",
+		"text": "The main room is crowded with sturdy wooden tables. Most are occupied by miners and travelers, Monsterfolk of all shapes huddled over bowls of steam. The lighting is warm and orange, cast by oil lamps hanging from low beams reinforced with iron bands and the small hearth at the back of the inn.",
+		"next": "windbreak_kitchen_yell"
+	},
+	{
+		"id": "windbreak_kitchen_yell",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "A rough, barking voice erupts from behind the far counter, shouting over the noise of the crowd:[p]\"If that broth boils over again, Kekk, I’m using your face to wipe the floor! Watch the heat!\"",
+		"next": "windbreak_hub_door"
+	},
+	{
+		"id": "windbreak_hub_door",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Approach the Bar Counter]",
+				"next": "windbreak_move_to_bar"
+			},
+			{
+				"text": "> [Look around]",
+				"next": "windbreak_look_around_check"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "windbreak_leave"
+			}
+		]
+	},
+	{
+		"id": "windbreak_look_around_check",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["kraaal_met"],
+			"on_success": "windbreak_look_around",
+			"on_fail": "windbreak_look_around_kraaal_unknown"
+		}
+	},
+	{
+		"id": "windbreak_look_around",
+		"type": "narration",
+		"text": "It’s a rough place, but built to last. The stone walls are thick, and the windows are small narrow slits, likely to keep the heat in and the wind out. A few Monsterfolk are piled together on a bench near the fire, sipping from clay cups. In a dark corner, a Kraaal is quietly negotiating with a miner over a stack of coins.",
+		"next": "windbreak_hub_door"
+	},
+	{
+		"id": "windbreak_look_around_kraaal_unknown",
+		"type": "narration",
+		"text": "It’s a rough place, but built to last. The stone walls are thick, and the windows are small narrow slits, likely to keep the heat in and the wind out. A few Monsterfolk are piled together on a bench near the fire, sipping from clay cups. In a dark corner, a toothy Monsterfolk is quietly negotiating with a miner over a stack of coins.",
+		"next": "windbreak_hub_door"
+	},
+	{
+		"id": "windbreak_move_to_bar",
+		"type": "command",
+		"command": "@SHOW_ZONE Klyftet/WindbreakInn/KlyftetIntInnBarDay",
+		"next": "windbreak_at_counter_logic"
+	},
+	{
+		"id": "windbreak_at_counter_logic",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["tavo_met"],
+			"on_success": "windbreak_hub_counter_met",
+			"on_fail": "windbreak_hub_counter_first"
+		}
+	},
+	{
+		"id": "windbreak_hub_counter_first",
+		"type": "narration",
+		"text": "You stand before the main counter. It's a high, slab-wood affair, stained dark by years of spilled ale and elbow grease. Behind it, the entrance to the kitchen radiates heat and the sound of clattering pans.[nb]No one is currently tending the bar, but a heavy, dented iron bell sits near a stack of clean mugs.",
+		"next": "windbreak_counter_choice_first"
+	},
+	{
+		"id": "windbreak_counter_choice_first",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Ring the bell]",
+				"next": "windbreak_ring_bell"
+			},
+			{
+				"text": "> [Wait quietly]",
+				"next": "windbreak_wait_quietly"
+			},
+			{
+				"text": "> [Go back to door]",
+				"next": "windbreak_return_door"
+			}
+		]
+	},
+	{
+		"id": "windbreak_ring_bell",
+		"type": "narration",
+		"text": "You slam your palm down on the iron bell. It lets out a sharp, dull [b]*CLANK*[/b] rather than a ring, a sound that cuts through the ambient noise.",
+		"next": "tavo_enter_intro"
+	},
+	{
+		"id": "windbreak_wait_quietly",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "You lean against the wood and wait. A few minutes pass. A small furry arm reaches out from the kitchen doorway to grab a stack of bowls, then disappears again. Finally, the barking voice grumbles something about \"useless skräp\" and footsteps approach.",
+		"next": "tavo_enter_intro"
+	},
+	{
+		"id": "tavo_enter_intro",
+		"type": "narration",
+		"name": "Tavo-Pavo",
+		"text": "A small mammal stomps out from the kitchen, wiping wet hands on a leather apron that looks like it’s seen better decades. He’s short but ragged, a few scars scattered across his body, a piece of his right ear missing.",
+		"next": "tavo_show_portrait_intro"
+	},
+	{
+		"id": "tavo_show_portrait_intro",
+		"type": "command",
+		"name": "Tavo-Pavo",
+		"command": "@SHOW_PORTRAIT bar_annoyed",
+		"clear": true,
+		"next": "tavo_speak_first"
+	},
+	{
+		"id": "tavo_speak_first",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "His oversized ears twitch independently, one of them folded awkwardly at the tip. He doesn't look up immediately, aggressively reorganizing a tray of dried herbs on the counter.[p]\"Stew's not ready. Drink's watered down if you're cheap, strong if you're not. And if you make a joke about the name 'Windbreak', you can eat outside with the street creechs.\"",
+		"next": "tavo_speak_first_02"
+	},
+	{
+		"id": "tavo_speak_first_02",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "He finally lifts his head, his wide-set eyes narrowing as they land on you. He pauses, his nose twitching once, twice.[p]\"...Huh. You're a tall one. And not much fur on you, is there?\"",
+		"next": "tavo_show_intro_choice"
+	},
+	{
+		"id": "tavo_show_intro_choice",
+		"type": "command",
+		"name": "Tavo-Pavo",
+		"command": "@SHOW_PORTRAIT bar_base",
+		"next": "tavo_intro_choice"
+	},
+	{
+		"id": "tavo_intro_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Are you the owner?",
+				"next": "tavo_reply_owner"
+			},
+			{
+				"text": "> I'm just looking for a drink",
+				"next": "tavo_reply_drink"
+			},
+			{
+				"text": "> I'm new in town.",
+				"next": "tavo_reply_new"
+			}
+		]
+	},
+	{
+		"id": "tavo_reply_drink",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "\"Ain't we all.\" He grabs a rag and starts polishing a spot on the counter that looks permanently stained. \"Crowns or Öre. Tavo-Pavo don't take promises, and I definitely don't take 'I'll pay you next week'.\"",
+		"set_flag": "tavo_met",
+		"flag_type": "dialog",
+		"next": "tavo_main_hub_intro"
+	},
+	{
+		"id": "tavo_reply_owner",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "\"Owner, cook, cleaner, bouncer, and accountant.\" He scratches his floppy ear with his tail. \"Name's Tavo-Pavo. Most folks just say Tavo unless they're angry at me.\"",
+		"set_flag": "tavo_met",
+		"flag_type": "dialog",
+		"next": "tavo_main_hub_intro"
+	},
+	{
+		"id": "tavo_reply_new",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "\"Obviously. Locals don't stare at the bell like it's a puzzle.\" He gives a short, chuffing snort. \"Well, try not to die in a ditch this week. It's bad for tourism.\" The mammal quickly wipes the counter with one of his rags. \"The name's Tavo-Pavo, owner of this fine establishment called the Windbreak Inn.\"",
+		"set_flag": "tavo_met",
+		"flag_type": "dialog",
+		"next": "tavo_main_hub_intro"
+	},
+	{
+		"id": "tavo_main_hub_intro",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "Tavo leans back, crossing his surprisingly muscular, furry arms over his chest. \"So? What can the Windbreak do for you, [b]bolk[/b]?\"",
+		"next": "tavo_hub_options"
+	},
+	{
+		"id": "tavo_hub_options",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Buy Food/Drink]",
+				"next": "tavo_shop_menu"
+			},
+			{
+				"text": "> [Ask about Klyftet]",
+				"next": "tavo_gossip_menu"
+			},
+			{
+				"text": "> I'll come back later.",
+				"next": "windbreak_leave_counter"
+			}
+		]
+	},
+	{
+		"id": "windbreak_leave_counter",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "Tavo gives a grunt and scurries back to the kitchen immediately. \"Kekk! If you burned that vitlök I swear to the Howl...\"",
+		"command": "@HIDE_PORTRAIT",
+		"next": "windbreak_return_door"
+	},
+	{
+		"id": "windbreak_return_door",
+		"type": "command",
+		"command": "@SHOW_ZONE Klyftet/WindbreakInn/KlyftetIntInnDay",
+		"clear": true,
+		"next": "windbreak_hub_door"
+	},
+	{
+		"id": "windbreak_leave",
+		"type": "command",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LOCATION_CHANGE klyftet",
+		"next": "inn_exterior_intro"
+	},
+
+	{
+		"id": "windbreak_hub_counter_met",
+		"type": "command",
+		"command": "@SHOW_PORTRAIT bar_base",
+		"next": "windbreak_hub_counter_met02"
+	},
+	{
+		"id": "windbreak_hub_counter_met02",
+		"type": "narration",
+		"text": "You return to the counter. Tavo is there, currently counting a small pile of slag-glass öre coins.",
+		"next": "tavo_greet_repeat"
+	},
+	{
+		"id": "tavo_greet_repeat",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "\"Back again?\" He doesn't look up from his counting. \"Thirsty or hungry?\"",
+		"command": "@SHOW_PORTRAIT bar_base",
+		"next": "tavo_hub_options"
+	},
+
+    {
+        "id": "tavo_shop_menu",
+        "type": "narration",
+        "text": "(Shop menu placeholder)",
+        "next": "tavo_hub_options"
+    },
+    {
+        "id": "tavo_gossip_menu",
+        "type": "narration",
+        "text": "(Gossip menu placeholder)",
+        "next": "tavo_hub_options"
+    }
+]

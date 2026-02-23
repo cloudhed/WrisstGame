@@ -2,6 +2,9 @@ extends Control
 
 # --- CONFIGURATION ---
 const SAVE_DIR = "res://Narrative/"
+const MUSIC_DIR = "res://Audio/Music/"
+const AMBIENCE_DIR = "res://Audio/Ambience/"
+const AUDIO_EXTENSIONS = ["ogg", "mp3", "wav", "flac"]
 
 # Map your command logic here for auto-complete/UI generation
 const COMMAND_TEMPLATES = {
@@ -25,7 +28,8 @@ const COMMAND_TEMPLATES = {
 	"Add Item": "@ADD_ITEM item_id",
 	"Remove Item": "@REMOVE_ITEM item_id",
 	"Add Reputation": "@ADD_REPUTATION minttärä 10",
-	"Set Scene From": "@SET_SCENE_FROM"
+	"Set Scene From": "@SET_SCENE_FROM",
+	"Location Change": "@LOCATION_CHANGE area_key"
 }
 
 @onready var graph_edit = $GraphEdit
@@ -34,6 +38,100 @@ const COMMAND_TEMPLATES = {
 # Context menu vars
 var context_menu: PopupMenu
 var context_menu_position: Vector2 = Vector2.ZERO
+
+func _collect_audio_paths_recursive(base_dir: String) -> Array[String]:
+	var results: Array[String] = []
+	var dir := DirAccess.open(base_dir)
+	if dir == null:
+		return results
+
+	dir.list_dir_begin()
+	var item_name := dir.get_next()
+	while item_name != "":
+		if item_name.begins_with("."):
+			item_name = dir.get_next()
+			continue
+
+		var full_path := base_dir.path_join(item_name)
+		if dir.current_is_dir():
+			results.append_array(_collect_audio_paths_recursive(full_path))
+		else:
+			var ext := item_name.get_extension().to_lower()
+			if AUDIO_EXTENSIONS.has(ext):
+				results.append(full_path)
+
+		item_name = dir.get_next()
+
+	dir.list_dir_end()
+	results.sort()
+	return results
+
+
+func _populate_audio_picker(picker: OptionButton, base_dir: String) -> void:
+	picker.clear()
+	var paths := _collect_audio_paths_recursive(base_dir)
+	if paths.is_empty():
+		picker.add_item("<No audio files found>")
+		picker.set_item_disabled(0, true)
+		return
+
+	for path in paths:
+		var display := path.trim_prefix(base_dir)
+		picker.add_item(display)
+		picker.set_item_metadata(picker.item_count - 1, path)
+
+
+func _get_picker_audio_path(picker: OptionButton) -> String:
+	if picker.item_count == 0:
+		return ""
+	var selected := picker.selected
+	if selected < 0:
+		selected = 0
+	if picker.get_item_metadata(selected) != null:
+		return str(picker.get_item_metadata(selected))
+	return picker.get_item_text(selected)
+
+
+func _select_audio_path_in_picker(picker: OptionButton, path: String) -> void:
+	if path == "":
+		return
+	for i in range(picker.item_count):
+		if str(picker.get_item_metadata(i)) == path or picker.get_item_text(i) == path:
+			picker.select(i)
+			return
+
+	# Keep compatibility with existing commands that point outside normal folders.
+	picker.add_item("[Custom] " + path)
+	picker.set_item_metadata(picker.item_count - 1, path)
+	picker.select(picker.item_count - 1)
+
+
+func _build_play_music_command(path: String) -> String:
+	return "@PLAY_MUSIC %s" % path
+
+
+func _build_play_ambience_command(tag: String, path: String) -> String:
+	var clean_tag := tag.strip_edges()
+	if clean_tag == "":
+		clean_tag = "wind"
+	return "@PLAY_AMBIENCE %s %s" % [clean_tag, path]
+
+
+func _extract_play_music_path(command_text: String) -> String:
+	var parts: PackedStringArray = command_text.split(" ", false)
+	if parts.size() < 2:
+		return ""
+	return parts[1]
+
+
+func _extract_play_ambience_parts(command_text: String) -> Dictionary:
+	var parts: PackedStringArray = command_text.split(" ", false)
+	if parts.size() < 3:
+		return {"tag": "wind", "path": ""}
+	return {
+		"tag": parts[1],
+		"path": parts[2]
+	}
 
 func _ready():
 	# UI Connections
@@ -185,6 +283,8 @@ func create_node(type_id: int, position_offset: Vector2, data: Dictionary = {}):
 			cmd_list.name = "Cmd_Selector"
 			for key in COMMAND_TEMPLATES.keys():
 				cmd_list.add_item(key)
+			if cmd_list.item_count > 0:
+				cmd_list.select(0)
 			node.add_child(cmd_list)
 			
 			var cmd_edit = LineEdit.new() # Child 2
@@ -192,11 +292,6 @@ func create_node(type_id: int, position_offset: Vector2, data: Dictionary = {}):
 			cmd_edit.custom_minimum_size.x = 250
 			cmd_edit.text = data.get("command", "")
 			node.add_child(cmd_edit)
-			
-			cmd_list.item_selected.connect(func(idx):
-				var key = cmd_list.get_item_text(idx)
-				cmd_edit.text = COMMAND_TEMPLATES[key]
-			)
 			
 			# Clear Flags Logic
 			var clear_edit = LineEdit.new() # Child 3
@@ -209,6 +304,86 @@ func create_node(type_id: int, position_offset: Vector2, data: Dictionary = {}):
 			
 			# Output on ClearFlag (Child 3)
 			node.set_slot(3, false, 0, Color.WHITE, true, 0, Color.WHITE)
+
+			var music_picker = OptionButton.new() # Child 4
+			music_picker.name = "MusicPicker"
+			node.add_child(music_picker)
+			_populate_audio_picker(music_picker, MUSIC_DIR)
+
+			var ambience_picker = OptionButton.new() # Child 5
+			ambience_picker.name = "AmbiencePicker"
+			node.add_child(ambience_picker)
+			_populate_audio_picker(ambience_picker, AMBIENCE_DIR)
+
+			var ambience_tag_edit = LineEdit.new() # Child 6
+			ambience_tag_edit.name = "AmbienceTag_Edit"
+			ambience_tag_edit.placeholder_text = "Ambience tag (e.g. wind)"
+			ambience_tag_edit.text = "wind"
+			node.add_child(ambience_tag_edit)
+
+			var update_command_ui = func():
+				var selected_key = cmd_list.get_item_text(cmd_list.selected)
+				var is_music = selected_key == "Play Music"
+				var is_ambience = selected_key == "Play Ambience"
+				music_picker.visible = is_music
+				ambience_picker.visible = is_ambience
+				ambience_tag_edit.visible = is_ambience
+
+			var update_command_text_from_inputs = func():
+				var selected_key = cmd_list.get_item_text(cmd_list.selected)
+				if selected_key == "Play Music":
+					var music_path = _get_picker_audio_path(music_picker)
+					if music_path != "":
+						cmd_edit.text = _build_play_music_command(music_path)
+				elif selected_key == "Play Ambience":
+					var ambience_path = _get_picker_audio_path(ambience_picker)
+					if ambience_path != "":
+						cmd_edit.text = _build_play_ambience_command(ambience_tag_edit.text, ambience_path)
+
+			cmd_list.item_selected.connect(func(idx):
+				var key = cmd_list.get_item_text(idx)
+				if key == "Play Music" or key == "Play Ambience":
+					update_command_text_from_inputs.call()
+				else:
+					cmd_edit.text = COMMAND_TEMPLATES[key]
+				update_command_ui.call()
+			)
+
+			music_picker.item_selected.connect(func(_idx):
+				update_command_text_from_inputs.call()
+			)
+
+			ambience_picker.item_selected.connect(func(_idx):
+				update_command_text_from_inputs.call()
+			)
+
+			ambience_tag_edit.text_changed.connect(func(_new_text):
+				update_command_text_from_inputs.call()
+			)
+
+			# If loading an existing command, restore picker state.
+			if cmd_edit.text.begins_with("@PLAY_MUSIC "):
+				for i in range(cmd_list.item_count):
+					if cmd_list.get_item_text(i) == "Play Music":
+						cmd_list.select(i)
+						break
+				_select_audio_path_in_picker(music_picker, _extract_play_music_path(cmd_edit.text))
+			elif cmd_edit.text.begins_with("@PLAY_AMBIENCE "):
+				for i in range(cmd_list.item_count):
+					if cmd_list.get_item_text(i) == "Play Ambience":
+						cmd_list.select(i)
+						break
+				var ambience_parts = _extract_play_ambience_parts(cmd_edit.text)
+				ambience_tag_edit.text = ambience_parts.get("tag", "wind")
+				_select_audio_path_in_picker(ambience_picker, ambience_parts.get("path", ""))
+
+			update_command_ui.call()
+			if cmd_edit.text == "":
+				var selected_idx: int = cmd_list.selected
+				if selected_idx < 0 and cmd_list.item_count > 0:
+					selected_idx = 0
+				if selected_idx >= 0:
+					cmd_edit.text = COMMAND_TEMPLATES[cmd_list.get_item_text(selected_idx)]
 			
 		3: # LOGIC (BOOLEAN)
 			node.title = "Check Flag (Boolean)"
@@ -503,16 +678,17 @@ func load_from_json(path):
 			var opts = entry.get("options", [])
 			for i in range(opts.size()):
 				connect_to.call(opts[i]["next"], i)
-				
-		if entry.get("logic_type") == "check_flags":
+
+		# Logic reconnects (support both explicit logic_type and legacy shape-only JSON)
+		if entry.get("logic_type") == "check_flags" or entry.has("check_flags"):
 			connect_to.call(entry.check_flags.get("on_success"), 0)
 			connect_to.call(entry.check_flags.get("on_fail"), 1)
 
-		if entry.get("logic_type") == "condition":
+		if entry.get("logic_type") == "condition" or entry.has("condition"):
 			connect_to.call(entry.condition.get("on_success"), 0)
 			connect_to.call(entry.condition.get("on_fail"), 1)
 			
-		if entry.get("logic_type") == "check_temp_flags_multi":
+		if entry.get("logic_type") == "check_temp_flags_multi" or entry.has("check_temp_flags"):
 			var flags = entry.get("check_temp_flags", {})
 			connect_to.call(flags.get("default"), 0)
 			var idx = 1

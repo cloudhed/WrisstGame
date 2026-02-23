@@ -18,7 +18,7 @@ var player_gender: String = "female" # or "male",
 
 # DEFAULT FALLBACK NAKED&CONFUSED
 var FALLBACK_ARMOR: EquipableItem = load("res://Resources/Items/Equipment/Armor/naked_armor.tres")
-var FALLBACK_WEAPON: EquipableItem = load("res://Resources/Items/Equipment/Weapons/unarmed_weapon.tres")
+var FALLBACK_WEAPON: EquipableItem = load("res://Resources/Items/Equipment/Weapons/debugger_weapon.tres") #default is unarmed_weapon.tres
 # FAILS FOR SOME REASON, CONST BEING PISSY ABOUT MY ARMOR RESOURCE NOT BEING A EQUIPABLEITEM EVEN THOUGH IT IS const FALLBACK_ARMOR := preload("res://Resources/Items/Equipment/Armor/fallback_naked_armor.res")
 # const FALLBACK_WEAPON := preload("res://Resources/Items/Equipment/Weapons/fallback_unarmed_weapon.res")
 

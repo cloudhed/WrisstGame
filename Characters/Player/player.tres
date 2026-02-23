@@ -6,8 +6,15 @@
 [resource]
 script = ExtResource("1_60o6r")
 starting_deck = ExtResource("2_3nh1y")
-tiles_per_turn = 3
-max_stamina = 1
+<<<<<<< HEAD
+tiles_per_turn = 4
+max_stamina = 3
 max_health = 25
-player_name = "Miiilkshakeman"
+player_name = ""
+=======
+tiles_per_turn = 5
+max_stamina = 3
+max_health = 25
+player_name = "Milkshakeman"
+>>>>>>> 753772e (Worked a bit on navigation, added Windbreak interior and some nav dialog, some placeholders. Added more command functions to Wrisst Weaver.)
 metadata/_custom_type_script = "uid://do8l63rpnsjld"

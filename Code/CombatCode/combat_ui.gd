@@ -32,7 +32,7 @@ func _on_end_turn_button_pressed() -> void:
 
 
 func spawn_damage_popup(world_position: Vector2, amount: int, effect_type: String) -> void:
-	var popup := preload("res://Scenes/UI/DamagePopup.tscn").instantiate()
+	var popup := preload("uid://b333pim2vobex").instantiate()
 	print("popup instansiated")
 	get_tree().current_scene.add_child(popup)
 

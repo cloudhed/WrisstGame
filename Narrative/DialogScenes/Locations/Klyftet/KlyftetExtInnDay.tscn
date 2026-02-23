@@ -96,7 +96,10 @@ debug_color = Color(0.368178, 0.615864, 0, 0.42)
 
 [node name="Hotspot_EnterInn" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_j8g12")
+unlocked_dialog_id = "fade_audio"
 action_type = "enter"
+triggers_scene_change = true
+scene_selector_key = "inn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_EnterInn"]
 position = Vector2(697.75, 607.25)

@@ -17,7 +17,6 @@ class_name Hotspot
 @export var always_give_item: bool = false
 
 signal hotspot_triggered
-signal dialog_scene_change_requested(area_key: String)
 
 var cursor_textures: Dictionary = {}
 

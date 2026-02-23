@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dobuepwhglsx7" path="res://Assets/Backgrounds/Forest/bitalgut_fire.png" id="1_mg2vs"]
 [ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="3_mg2vs"]
 [ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="4_3etik"]
-[ext_resource type="Resource" uid="uid://dbi8cn6fh0e4o" path="res://Characters/Bitalgut/bitalgut_resource.tres" id="4_bt8vm"]
+[ext_resource type="Resource" uid="uid://bbkelqtijglk7" path="res://Characters/Bitalgut/bitalgut_resource.tres" id="4_bt8vm"]
 [ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Characters/portrait_entry.gd" id="4_ew8ep"]
 [ext_resource type="AudioStream" uid="uid://eysphlhhq5tn" path="res://Audio/Music/250413 Wrisst - Bitalgut.mp3" id="4_mg2vs"]
 [ext_resource type="Texture2D" uid="uid://ctlbbo2eamynl" path="res://Characters/Bitalgut/Bitalgut_portraits/bitalgut_fire_bag.png" id="5_vc164"]

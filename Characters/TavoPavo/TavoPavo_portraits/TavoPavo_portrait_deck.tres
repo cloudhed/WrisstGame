@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="PortraitDeck" load_steps=7 format=3 uid="uid://c4opll6urhds7"]
+
+[ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Characters/portrait_entry.gd" id="1_ka8ib"]
+[ext_resource type="Script" uid="uid://dh0gvf3ssl3yi" path="res://Characters/portrait_deck.gd" id="2_du6fm"]
+[ext_resource type="Texture2D" uid="uid://ds5v10oogcdiw" path="res://Characters/TavoPavo/TavoPavo_portraits/bar_base.png" id="2_gxwcg"]
+[ext_resource type="Texture2D" uid="uid://dq7mc2fooa1ao" path="res://Characters/TavoPavo/TavoPavo_portraits/bar_annoyed.png" id="3_ib78q"]
+
+[sub_resource type="Resource" id="Resource_ka8ib"]
+script = ExtResource("1_ka8ib")
+id = &"bar_base"
+portrait = ExtResource("2_gxwcg")
+metadata/_custom_type_script = "uid://bbcjegrw16og0"
+
+[sub_resource type="Resource" id="Resource_du6fm"]
+script = ExtResource("1_ka8ib")
+id = &"bar_annoyed"
+portrait = ExtResource("3_ib78q")
+metadata/_custom_type_script = "uid://bbcjegrw16og0"
+
+[resource]
+script = ExtResource("2_du6fm")
+portraits = Array[ExtResource("1_ka8ib")]([SubResource("Resource_ka8ib"), SubResource("Resource_du6fm")])
+metadata/_custom_type_script = "uid://dh0gvf3ssl3yi"

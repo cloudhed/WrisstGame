@@ -1,28 +1,28 @@
 [
   {
-    "id": "teqqellon_postcombat",
-    "type": "narration",
-    "text": "As the fight subsides, the Teqqellon is laying quivering on the ground before you.",
+	"id": "teqqellon_postcombat",
+	"type": "narration",
+	"text": "As the fight subsides, the Teqqellon is laying quivering on the ground before you.",
 	"next": "teqqellon_postcombat_choice"
   },
   {
-    "id": "teqqellon_postcombat_choice",
-    "type": "choice",
-    "options": [
-      {
-        "text": "> Examine Teqqellon",
-        "next": "teqqellon_choice_examine"
-      },
-      {
-        "text": "> Leave",
-        "next": "teqqellon_choice_leave"
-      }
-    ]
+	"id": "teqqellon_postcombat_choice",
+	"type": "choice",
+	"options": [
+	  {
+		"text": "> Examine Teqqellon",
+		"next": "teqqellon_choice_examine"
+	  },
+	  {
+		"text": "> Leave",
+		"next": "teqqellon_choice_leave"
+	  }
+	]
   },
   {
-    "id": "teqqellon_choice_examine",
-    "type": "narration",
-    "text": "You examine the Teqqellon. It sit fizzy to the touch.",
+	"id": "teqqellon_choice_examine",
+	"type": "narration",
+	"text": "You examine the Teqqellon. It sit fizzy to the touch.",
 	"next": "teqqellon_startcombat_lmfao"
   },
   {
@@ -31,15 +31,15 @@
 	"command": "@START_COMBAT"
   },
   {
-    "id": "teqqellon_choice_leave",
-    "type": "narration",
-    "text": "You leave the quivering Teqqellon.",
+	"id": "teqqellon_choice_leave",
+	"type": "narration",
+	"text": "You leave the quivering Teqqellon.",
 	"next": "teqqellon_end"
   },
   {
-    "id": "teqqellon_end",
-    "type": "command",
-    "text": "@LEAVE_ENCOUNTER",
+	"id": "teqqellon_end",
+	"type": "command",
+	"text": "@LEAVE_ENCOUNTER",
 	"end": true
   }
 ]

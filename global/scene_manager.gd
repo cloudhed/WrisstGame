@@ -3,7 +3,7 @@ extends Node
 
 var _previous_scene: PackedScene = null
 var enemy_resource: Resource = null
-const combat_scene = preload("res://Scenes/combat.tscn")
+const combat_scene = preload("uid://d2pnx4ne5hfgc") #res://Scenes/combat.tscn"
 #@export var combat_scene: PackedScene  # 👈 set this in editor!
 
 
@@ -36,7 +36,7 @@ func return_to_previous_scene() -> void:
 	if _previous_scene:
 		get_tree().change_scene_to_packed(_previous_scene)
 	else:
-		get_tree().change_scene_to_file("res://overworldNav.tscn")
+		get_tree().change_scene_to_file("uid://bsk688e4ksiee") #res://overworldNav.tscn
 
 
 #func start_combat(enemy_res: Resource, return_scene: PackedScene) -> void:

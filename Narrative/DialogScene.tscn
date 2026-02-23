@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://xyxvn2yghvwa"]
 
 [ext_resource type="Script" uid="uid://bjf6b1p05ub8o" path="res://global/dialog_manager.gd" id="1_a8n6i"]
-[ext_resource type="Resource" uid="uid://yqlobynkfhgb" path="res://Narrative/DialogScenes/Locations/Klyftet/Oldmine/oldmine_default.tres" id="2_uo8fh"]
+[ext_resource type="Resource" uid="uid://d1srjtrbbu8q2" path="res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres" id="2_uo8fh"]
 [ext_resource type="PackedScene" uid="uid://cbpihauqeos3w" path="res://Narrative/zone_container.tscn" id="3_6br8l"]
 [ext_resource type="PackedScene" uid="uid://bsauxo1g05656" path="res://Narrative/mist_container.tscn" id="5_sdxh1"]
 [ext_resource type="Texture2D" uid="uid://dq7yfdfo43jqc" path="res://Assets/Sprites/Characters/minttärä_portrait_base.png" id="5_svokt"]
@@ -79,6 +79,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 270.0
+offset_right = -270.0
 offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2

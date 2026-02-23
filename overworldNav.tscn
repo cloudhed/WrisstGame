@@ -1,10 +1,9 @@
-[gd_scene load_steps=45 format=4 uid="uid://bsk688e4ksiee"]
+[gd_scene load_steps=44 format=4 uid="uid://bsk688e4ksiee"]
 
 [ext_resource type="AudioStream" uid="uid://faqrtb1uggnb" path="res://Audio/sound_ambience_overworld_day.ogg" id="1_0bjjx"]
 [ext_resource type="Texture2D" uid="uid://bbrswebkl4jjt" path="res://Assets/Sprites/Map/mapmarkerFlag.png" id="1_7obsb"]
 [ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="1_68n6a"]
 [ext_resource type="Script" uid="uid://nto65f0jy0qu" path="res://Code/time_of_day.gd" id="1_be0m3"]
-[ext_resource type="Texture2D" uid="uid://caaf5ux7pxo74" path="res://Assets/Backgrounds/mapIsland.jpg" id="1_cbwp5"]
 [ext_resource type="Script" uid="uid://15m4ao5uotgl" path="res://Code/daynightCyclecolors.gd" id="1_l47sy"]
 [ext_resource type="Script" uid="uid://dpihe8ldbonef" path="res://Code/debug_label.gd" id="1_ltgev"]
 [ext_resource type="Script" uid="uid://0yaek5xq2gc7" path="res://Code/world_audio_manager.gd" id="1_ohuvh"]
@@ -695,12 +694,6 @@ script = ExtResource("13_r3enb")
 [node name="DayNightCycleColors" type="CanvasModulate" parent="."]
 script = ExtResource("1_l47sy")
 gradient = ExtResource("15_r3enb")
-
-[node name="mapIsland" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(942, 544)
-scale = Vector2(1.44, 1.44)
-texture = ExtResource("1_cbwp5")
 
 [node name="Map" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

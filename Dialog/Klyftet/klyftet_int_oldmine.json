@@ -62,6 +62,12 @@
 			}
 		]
 	},
+	{
+		"id": "oldmine_LEAVE",
+		"type": "command",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LOCATION_CHANGE klyftet",
+		"end": true
+	},
     {
         "id": "02_oldmine_SHOW",
         "type": "command",

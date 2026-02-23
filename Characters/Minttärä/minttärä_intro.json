@@ -148,7 +148,7 @@
 		"id": "hotbaths_minttärä_meet_03",
 		"type": "npc",
 		"name": "Minttärä",
-		"text": "\"You look like you've been walking for days. Or running from something?\"",
+		"text": "\"You look like you've been through some stuff.\"",
 		"next": "hotbaths_minttärä_choice_intro"
 	},
 	{
@@ -445,6 +445,14 @@
 		"id": "hotbaths_leave_end",
 		"type": "narration",
 		"text": "As the scented curtain swings closed behind you, you find yourself standing in the street outside again.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "hotbaths_leave_end_02"
+	},
+	{
+		"id": "hotbaths_leave_end_02",
+		"type": "command",
+		"command": "@LOCATION_CHANGE klyftet",
+		"clear": true,
 		"end": true
 	}
 ]

@@ -9,10 +9,11 @@ func _init(_game_state: Node):
 func execute(cmd: String, context: Dictionary = {}) -> void:
 	var parts := cmd.split(" ")
 	var command: String = parts[0]
+	var normalized_command: String = command.to_upper()
 	context["raw_command"] = cmd  # preserve full original command
-	
-	match command:
-		"clear_all":
+
+	match normalized_command:
+		"CLEAR_ALL":
 			if context.has("line_spawner") and context["line_spawner"]:
 				context["line_spawner"].clear_lines()
 			if context.has("choice_box") and context["choice_box"]:
@@ -55,8 +56,24 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			if parts.size() >= 2:
 				GameState.last_scene_id = parts[1]
 				print("✅ Scene from manually set to:", GameState.last_scene_id)
+		"CHANGE_LOCATION", "LOCATION_CHANGE":
+			_change_location(parts)
 		_:
 			_handle_game_state_command(cmd, context)
+
+
+func _change_location(parts: PackedStringArray) -> void:
+	if parts.size() < 2:
+		print("❌ CHANGE_LOCATION/LOCATION_CHANGE missing area key.")
+		return
+
+	var area_key: String = parts[1].strip_edges().to_lower()
+	if area_key.is_empty():
+		print("❌ CHANGE_LOCATION/LOCATION_CHANGE got empty area key.")
+		return
+
+	print("🌍 Dialog command requested location change:", area_key)
+	Events.dialog_scene_change_requested.emit(area_key)
 
 # === MONEY COMMANDS ===
 

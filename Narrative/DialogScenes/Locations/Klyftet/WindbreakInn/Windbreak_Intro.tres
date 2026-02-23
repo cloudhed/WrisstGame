@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=7 format=3 uid="uid://drj0awvu0pg0c"]
+
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_2n5ny"]
+[ext_resource type="Resource" uid="uid://cretjy44h7lus" path="res://Characters/TavoPavo/TavoPavo_resource.tres" id="2_ni5k5"]
+[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="6_urx1w"]
+[ext_resource type="PackedScene" uid="uid://byfme0nwoes3l" path="res://Narrative/DialogScenes/Locations/Klyftet/WindbreakInn/KlyftetIntInnDay.tscn" id="7_p0vmw"]
+
+[sub_resource type="Resource" id="Resource_66qpk"]
+script = ExtResource("1_2n5ny")
+id = &"Tavo-Pavo"
+character_resource = ExtResource("2_ni5k5")
+metadata/_custom_type_script = "uid://cgc7i24b66gt8"
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_mg2vs"]
+
+[resource]
+script = ExtResource("6_urx1w")
+zone_scene = ExtResource("7_p0vmw")
+music = SubResource("AudioStreamInteractive_mg2vs")
+sfx_library = {}
+dialogue_path = "res://Narrative/JSONs/windbreakinn_intro.json"
+characters = Array[ExtResource("1_2n5ny")]([SubResource("Resource_66qpk"), null, null])
+flags_required = Array[String]([])
+flags_set_on_start = {}
+metadata/_custom_type_script = "uid://5m151tkuttgt"

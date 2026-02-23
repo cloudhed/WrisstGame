@@ -36,7 +36,7 @@ func _get_hotbaths_scene() -> DialogSceneResource:
 
 func _get_inn_scene() -> DialogSceneResource:
 	# Example for another area, not needed now
-	return preload("res://Narrative/DialogScenes/Locations/Klyftet/Hotbaths/hotbaths_default.tres")
+	return preload("res://Narrative/DialogScenes/Locations/Klyftet/WindbreakInn/Windbreak_Intro.tres")
 
 
 func _get_oldmine_scene() -> DialogSceneResource:

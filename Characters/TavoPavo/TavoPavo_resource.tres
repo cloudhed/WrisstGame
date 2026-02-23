@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://cretjy44h7lus"]
+
+[ext_resource type="Resource" uid="uid://c4opll6urhds7" path="res://Characters/TavoPavo/TavoPavo_portraits/TavoPavo_portrait_deck.tres" id="1_s0m1s"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="2_7qxta"]
+
+[resource]
+script = ExtResource("2_7qxta")
+name = &"Tavo-Pavo"
+display_name = "Tavo-Pavo"
+portrait = ExtResource("1_s0m1s")
+color = Color(0.85769, 0.666969, 0.653731, 1)
+speech_bubble_color = Color(0.17385, 0.0297931, 0.00428865, 0.784314)
+speech_bubble_font_size = 20
+stats = {}
+default_flags = {}
+metadata/_custom_type_script = "uid://dqihe2ny7afn"

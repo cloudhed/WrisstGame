@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://dbi8cn6fh0e4o"]
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://bbkelqtijglk7"]
 
 [ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="1_m2yjv"]
 [ext_resource type="Resource" uid="uid://ra13uc86ane5" path="res://Characters/Bitalgut/Bitalgut_portraits/bitalgut_portrait_deck.tres" id="1_qwycp"]

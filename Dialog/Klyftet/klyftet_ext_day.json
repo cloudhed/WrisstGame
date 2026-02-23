@@ -32,7 +32,7 @@
 		"check_flags": {
 			"flags": ["visiting_oldmine"],
 			"on_success": "switch_oldmine_intro",
-			"on_fail": "enter_first_time"
+			"on_fail": "enter_from_inn"
 		}
 	},
     {
@@ -66,11 +66,11 @@
 		"clear": false,
 		"options": [
 			{
-				"text": "> [go to Market]",
+				"text": "> [Go to Market]",
 				"next": "market_intro"
 			},
 			{
-				"text": "> [go to Inn]",
+				"text": "> [Go to Inn]",
 				"next": "switch_inn_exterior_intro"
 			},
 			{
@@ -86,7 +86,7 @@
     {
         "id": "look_sign",
         "type": "narration",
-        "text": "The crude stone sign is painted with a rust-red color: [i]KLYFTET[/i], probably the name of the town.",
+        "text": "The crude stone sign is painted with a rust-red color: [b]KLYFTET[/b], probably the name of the town.",
 		"clear": false,
         "next": "intro_choice_hub"
     },
@@ -140,6 +140,7 @@
         "id": "inn_exterior_intro",
         "type": "narration",
         "text": "You're standing in front of a large inn.",
+		"clear_flag": ["visiting_hotbaths", "visiting_oldmine", "visiting_inn"],
 		"clear": false,
         "next": "intro_inn_choice_hub"
     },
@@ -148,19 +149,26 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> [go inside]",
-				"next": "enter_inn_first"
+				"text": "> [Go inside]",
+				"next": "enter_inn"
 			},
 			{
-				"text": "> [Go to alley]",
+				"text": "> [Go to Alley]",
 				"next": "switch_inn_alley_intro"
 			},
 			{
-				"text": "> [go back to South Entrance]",
+				"text": "> [Go back to South Entrance]",
 				"next": "switch_southentrance_intro"
 			}
 		]
 	},
+    {
+        "id": "enter_inn",
+        "type": "command",
+        "command": "@LOCATION_CHANGE inn ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear": true,
+        "next": "intro_choice_hub"
+    },
     {
         "id": "whereto_debug",
         "type": "narration",
@@ -227,6 +235,7 @@
         "id": "switch_market_intro",
         "type": "command",
         "command": "@SHOW_ZONE Klyftet/KlyftetExtMarketDay",
+		"clear_flag": ["visiting_hotbaths", "visiting_oldmine"],
 		"clear": true,
         "next": "whereto_debug"
     },

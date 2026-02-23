@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://wii45adw77en" path="res://Themes/GameUI_itemlist_theme.tres" id="2_xkiwj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71wt1"]
-bg_color = Color(0.1421, 0.27028, 0.29, 1)
+bg_color = Color(0.29, 0.17168, 0.1421, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -18,7 +18,7 @@ corner_radius_bottom_left = 8
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkiwj"]
-bg_color = Color(0.152973, 0.287768, 0.308511, 1)
+bg_color = Color(0.225782, 0.201731, 0.20798, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
