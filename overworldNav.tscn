@@ -682,6 +682,7 @@ script = ExtResource("3_ohuvh")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="WorldAudioManager"]
 stream = SubResource("AudioStreamInteractive_j4r2r")
+autoplay = true
 bus = &"music"
 script = ExtResource("10_7vspy")
 

@@ -3,12 +3,25 @@ extends Node
 
 var _previous_scene: PackedScene = null
 var enemy_resource: Resource = null
-const combat_scene = preload("uid://d2pnx4ne5hfgc") #res://Scenes/combat.tscn"
+const COMBAT_SCENE_PATH := "uid://d2pnx4ne5hfgc" #res://Scenes/combat.tscn
+var _combat_scene: PackedScene = null
 #@export var combat_scene: PackedScene  # 👈 set this in editor!
+
+
+func _get_combat_scene() -> PackedScene:
+	if _combat_scene == null:
+		_combat_scene = load(COMBAT_SCENE_PATH) as PackedScene
+		if _combat_scene == null:
+			push_error("❌ SceneManager: failed to load combat scene: " + COMBAT_SCENE_PATH)
+	return _combat_scene
 
 
 func start_combat(enemy_res: Resource, parent_node: Node) -> Combat:
 	enemy_resource = enemy_res
+
+	var combat_scene := _get_combat_scene()
+	if combat_scene == null:
+		return null
 
 	var combat_instance = combat_scene.instantiate()
 	if combat_instance is Combat:

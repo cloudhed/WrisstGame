@@ -54,6 +54,7 @@ metadata/_edit_lock_ = true
 [node name="CanvasModulate" type="CanvasModulate" parent="CombatVisual"]
 
 [node name="CombatBGSprite" type="Sprite2D" parent="CombatVisual"]
+visible = false
 texture = ExtResource("4_5g3cp")
 centered = false
 
@@ -161,6 +162,7 @@ offset_right = 97.5
 offset_bottom = 97.0
 
 [node name="CombatTextUI" type="PanelContainer" parent="CombatUI/StatsUIManager"]
+visible = false
 custom_minimum_size = Vector2(0, 71.01)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -214,15 +216,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 104.0
-<<<<<<< HEAD
 offset_top = -414.0
 offset_right = 232.0
 offset_bottom = 226.0
-=======
-offset_top = -390.0
-offset_right = 232.0
-offset_bottom = 250.0
->>>>>>> 753772e (Worked a bit on navigation, added Windbreak interior and some nav dialog, some placeholders. Added more command functions to Wrisst Weaver.)
 grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1

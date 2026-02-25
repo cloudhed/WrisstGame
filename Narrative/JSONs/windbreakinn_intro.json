@@ -2,11 +2,7 @@
 	{
 		"id": "visiting_inn",
 		"type": "command",
-<<<<<<< HEAD
 		"command": "@PLAY_MUSIC res://Audio/Music/Klyftet/dronk_daluda.mp3 ; @PLAY_AMBIENCE tavern_crowd res://Audio/Ambience/Klyftet/tavern_interior_busy.mp3",
-=======
-		"command": "@PLAY_MUSIC res://Audio/Music/Klyftet/dronk_daluda.wav ; @PLAY_AMBIENCE tavern_crowd res://Audio/Ambience/Klyftet/tavern_interior_busy.mp3",
->>>>>>> 753772e (Worked a bit on navigation, added Windbreak interior and some nav dialog, some placeholders. Added more command functions to Wrisst Weaver.)
 		"set_flag": "visiting_inn",
 		"flag_type": "temp",
 		"clear": true,

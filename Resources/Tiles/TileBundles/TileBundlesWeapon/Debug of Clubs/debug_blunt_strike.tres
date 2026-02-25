@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_itnl8"]
 [ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="2_a6v58"]
 [ext_resource type="Script" uid="uid://tuady4krjvg4" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Debug of Clubs/debug_blunt_strike.gd" id="3_k7kix"]
-[ext_resource type="AudioStream" uid="uid://cx2wcws563kk4" path="res://Audio/SFX/sfx_hit_low.wav" id="4_hdov3"]
+[ext_resource type="AudioStream" uid="uid://b2lcgove03ygd" path="res://Audio/SFX/tile_sfx/wood_hit.ogg" id="4_a6v58"]
 
 [resource]
 script = ExtResource("3_k7kix")
@@ -18,5 +18,5 @@ icon = ExtResource("2_a6v58")
 tooltip_source_label = "Club of Debug"
 tooltip_text = "[center]Do [i]Thing[/i] for [b][color=red]{amount} or {effect_amount}[/color][/b] points.[/center]"
 message_template = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] points!"
-sound = ExtResource("4_hdov3")
+sound = ExtResource("4_a6v58")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

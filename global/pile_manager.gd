@@ -1,5 +1,16 @@
 extends Node
 
+const STARTER_DECK_PATH := "res://Characters/Player/tiles/player_starting_deck.tres"
+var _starter_deck_cache: TilePile = null
+
+
+func _get_starter_deck() -> TilePile:
+	if _starter_deck_cache == null:
+		_starter_deck_cache = load(STARTER_DECK_PATH) as TilePile
+		if _starter_deck_cache == null:
+			push_error("❌ Failed to load starter deck: " + STARTER_DECK_PATH)
+	return _starter_deck_cache
+
 func get_logical_deck() -> TilePile:
 	var combined_deck := TilePile.new()
 	
@@ -35,7 +46,9 @@ func get_logical_deck() -> TilePile:
 
 	if not added_any:
 		# No equipment? Use fallback starter deck
-		var starter_deck: TilePile = preload("res://Characters/Player/tiles/player_starting_deck.tres")
+		var starter_deck: TilePile = _get_starter_deck()
+		if starter_deck == null:
+			return combined_deck
 		for tile in starter_deck.tiles:
 			combined_deck.add_tile(tile)
 

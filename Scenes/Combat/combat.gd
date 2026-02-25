@@ -104,12 +104,20 @@ func start_combat(stats: CharacterStats) -> void:
 		print("🧟 Enemy:", enemy.name)
 
 func _all_enemies_defeated() -> bool:
+	var enemy_count := 0
 	for child in enemy_handler.get_children():
-		if child is Enemy and not child.is_defeated:
-			return false
-	return true
+		if child is Enemy:
+			enemy_count += 1
+			if not child.is_defeated:
+				return false
+
+	# Empty handler during teardown is not a victory condition.
+	return enemy_count > 0
 
 func _on_enemies_child_order_changed() -> void:
+	if combat_over or combat_aborted:
+		return
+
 	print("Checking enemies_child_order_changed.")
 
 	if _all_enemies_defeated():
@@ -139,3 +147,4 @@ func abort_combat() -> void:
 
 	print("⚠️ abort_combat() CALLED.")
 	combat_aborted = true
+	combat_over = true

@@ -2,8 +2,11 @@ extends CharacterBody2D
 
 class_name PlayerDot
 
+static var _active_player_dot_id: int = 0
+
 @export var move_speed := 32.0
 @export var step_size := 3
+@export var debug_encounter_restore: bool = true
 
 @onready var distance_label = get_tree().get_root().get_node("overworld_node/CanvasLayer/DistanceLabel")
 @onready var coord_label = get_tree().get_root().get_node("overworld_node/CanvasLayer/CoordLabel")
@@ -26,20 +29,78 @@ func get_stats() -> CharacterStats:
 
 
 func _trigger_encounter():
+	if debug_encounter_restore:
+		print("⚔️ Trigger encounter from pos=", global_position)
 	Manager.save_player_data(self)
 	Manager.change_scene()
 
 var can_move := true
 var stats: CharacterStats = null
+var _restore_freeze_frames: int = 0
+var _is_primary_player_dot: bool = true
+
+
+func _is_canonical_overworld_player_dot() -> bool:
+	return name == "PlayerDot" and get_parent() != null and get_parent().name == "overworld_node"
+
+
+func _disable_duplicate_player_dot(reason: String = "") -> void:
+	_is_primary_player_dot = false
+	set_physics_process(false)
+	set_process(false)
+	process_mode = Node.PROCESS_MODE_DISABLED
+	visible = false
+	if debug_encounter_restore:
+		print("⚠️ Duplicate PlayerDot disabled:", get_path(), " reason=", reason)
 
 
 func _ready() -> void:
+	add_to_group("player_dot_instances")
+
+	if not _is_canonical_overworld_player_dot():
+		_disable_duplicate_player_dot("non-canonical path")
+		return
+
+	for node in get_tree().get_nodes_in_group("player_dot_instances"):
+		if node != self and node is PlayerDot:
+			(node as PlayerDot)._disable_duplicate_player_dot("canonical PlayerDot takes ownership")
+
+	_active_player_dot_id = get_instance_id()
+	_is_primary_player_dot = true
+
 	$PlayerDetectionArea.area_entered.connect(_on_detection_area_entered)
 	$PlayerDetectionArea.area_exited.connect(_on_detection_area_exited)
-	position = Manager.player_last_position
+	global_position = Manager.player_last_position
+	velocity = Vector2.ZERO
+	distance_in_pixel = 0.0
+
+	if debug_encounter_restore:
+		print("📍 PlayerDot _ready restore pos=", global_position, " path=", get_path())
+
+	if Manager.has_method("consume_return_from_encounter") and Manager.consume_return_from_encounter():
+		_restore_freeze_frames = 1
+		can_move = false
+		if debug_encounter_restore:
+			print("🧊 Return-from-encounter movement freeze armed (1 physics frame)")
+	else:
+		can_move = true
+
+
+func _exit_tree() -> void:
+	if _is_primary_player_dot and _active_player_dot_id == get_instance_id():
+		_active_player_dot_id = 0
 
 
 func _physics_process(_delta: float) -> void:
+	if _restore_freeze_frames > 0:
+		_restore_freeze_frames -= 1
+		velocity = Vector2.ZERO
+		if _restore_freeze_frames == 0:
+			can_move = true
+			if debug_encounter_restore:
+				print("✅ Return-from-encounter movement freeze released at pos=", global_position)
+		return
+
 	if not can_move:
 		velocity = Vector2.ZERO
 		return

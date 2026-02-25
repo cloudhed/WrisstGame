@@ -5,6 +5,8 @@ signal reputation_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
 signal fallback_equipped
 
+@export var grant_debug_starting_items: bool = false
+
 # ─────────────────────────────────────────────────────────────
 # Player identity
 var player_name: String = "MilkshakeGirl"
@@ -17,8 +19,11 @@ var player_gender: String = "female" # or "male",
 #}
 
 # DEFAULT FALLBACK NAKED&CONFUSED
-var FALLBACK_ARMOR: EquipableItem = load("res://Resources/Items/Equipment/Armor/naked_armor.tres")
-var FALLBACK_WEAPON: EquipableItem = load("res://Resources/Items/Equipment/Weapons/debugger_weapon.tres") #default is unarmed_weapon.tres
+const FALLBACK_ARMOR_PATH := "res://Resources/Items/Equipment/Armor/naked_armor.tres"
+const FALLBACK_WEAPON_PATH := "res://Resources/Items/Equipment/Weapons/debugger_weapon.tres" #default is unarmed_weapon.tres
+
+var FALLBACK_ARMOR: EquipableItem = null
+var FALLBACK_WEAPON: EquipableItem = null
 # FAILS FOR SOME REASON, CONST BEING PISSY ABOUT MY ARMOR RESOURCE NOT BEING A EQUIPABLEITEM EVEN THOUGH IT IS const FALLBACK_ARMOR := preload("res://Resources/Items/Equipment/Armor/fallback_naked_armor.res")
 # const FALLBACK_WEAPON := preload("res://Resources/Items/Equipment/Weapons/fallback_unarmed_weapon.res")
 
@@ -49,6 +54,7 @@ var return_to_scene: PackedScene = null
 # ─────────────────────────────────────────────────────────────
 # Debugging in the ready() func!
 func _ready():
+	_ensure_fallback_items_loaded()
 	
 	if player_stats == null:
 		player_stats = load("res://Characters/Player/player.tres") as CharacterStats
@@ -56,17 +62,30 @@ func _ready():
 			push_error("❌ Failed to load fallback player_stats from player.tres!")
 		else:
 			print("✅ player_stats loaded from player.tres")
-	
-	var debug_armor: EquipableItem = load("res://Resources/Items/Equipment/Armor/debugger_armor.tres")
-	var debug_weapon: EquipableItem = load("res://Resources/Items/Equipment/Weapons/debugger_weapon.tres")
-	var debug_trinket: EquipableItem = load("res://Resources/Items/Equipment/Trinkets/debugger_trinket.tres")
-	var debug_longstick: EquipableItem = load("res://Resources/Items/Equipment/Weapons/long_stick_weapon.tres")
-	add_item(debug_armor)
-	add_item(debug_weapon)
-	add_item(debug_longstick)
-	add_item(debug_trinket)
+
+	if grant_debug_starting_items:
+		var debug_armor: EquipableItem = load("res://Resources/Items/Equipment/Armor/debugger_armor.tres")
+		var debug_weapon: EquipableItem = load("res://Resources/Items/Equipment/Weapons/debugger_weapon.tres")
+		var debug_trinket: EquipableItem = load("res://Resources/Items/Equipment/Trinkets/debugger_trinket.tres")
+		var debug_longstick: EquipableItem = load("res://Resources/Items/Equipment/Weapons/long_stick_weapon.tres")
+		add_item(debug_armor)
+		add_item(debug_weapon)
+		add_item(debug_longstick)
+		add_item(debug_trinket)
 	
 	check_and_equip_fallback()
+
+
+func _ensure_fallback_items_loaded() -> void:
+	if FALLBACK_ARMOR == null:
+		FALLBACK_ARMOR = load(FALLBACK_ARMOR_PATH) as EquipableItem
+		if FALLBACK_ARMOR == null:
+			push_error("❌ Failed to load fallback armor: " + FALLBACK_ARMOR_PATH)
+
+	if FALLBACK_WEAPON == null:
+		FALLBACK_WEAPON = load(FALLBACK_WEAPON_PATH) as EquipableItem
+		if FALLBACK_WEAPON == null:
+			push_error("❌ Failed to load fallback weapon: " + FALLBACK_WEAPON_PATH)
 
 
 # ─────────────────────────────────────────────────────────────
@@ -228,6 +247,8 @@ func unequip_trinket(item: EquipableItem) -> void:
 
 
 func check_and_equip_fallback() -> void:
+	_ensure_fallback_items_loaded()
+
 	if equipped_weapon == null:
 		equipped_weapon = FALLBACK_WEAPON
 		print("⚠️ No weapon equipped. Falling back to UNARMED.")

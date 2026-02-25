@@ -1,6 +1,26 @@
 # dialog_scene_selector.gd
 extends Node
 
+var _scene_cache: Dictionary = {}
+
+const KLYFTET_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres"
+const HOTBATHS_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Hotbaths/hotbaths_default.tres"
+const INN_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/WindbreakInn/Windbreak_Intro.tres"
+const OLDMINE_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Oldmine/oldmine_default.tres"
+
+
+func _load_scene_cached(path: String) -> DialogSceneResource:
+	if _scene_cache.has(path):
+		return _scene_cache[path] as DialogSceneResource
+
+	var resource := load(path) as DialogSceneResource
+	if resource == null:
+		push_error("❌ Failed to load DialogSceneResource: " + path)
+		return null
+
+	_scene_cache[path] = resource
+	return resource
+
 func get_scene(area: String) -> DialogSceneResource:
 	match area:
 		"klyftet":
@@ -20,7 +40,7 @@ func get_scene(area: String) -> DialogSceneResource:
 
 func _get_klyftet_scene() -> DialogSceneResource:
 	# Example for another area, not needed now
-	return preload("res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres")
+	return _load_scene_cached(KLYFTET_SCENE_PATH)
 
 
 func _get_hotbaths_scene() -> DialogSceneResource:
@@ -29,18 +49,18 @@ func _get_hotbaths_scene() -> DialogSceneResource:
 
 	if first_time:
 		GameState.set_flag(GameState.event_flags, "hotbaths_entered_once")
-		return preload("res://Narrative/DialogScenes/Locations/Klyftet/Hotbaths/hotbaths_default.tres")
+		return _load_scene_cached(HOTBATHS_SCENE_PATH)
 	else:
-		return preload("res://Narrative/DialogScenes/Locations/Klyftet/Hotbaths/hotbaths_default.tres")
+		return _load_scene_cached(HOTBATHS_SCENE_PATH)
 
 
 func _get_inn_scene() -> DialogSceneResource:
 	# Example for another area, not needed now
-	return preload("res://Narrative/DialogScenes/Locations/Klyftet/WindbreakInn/Windbreak_Intro.tres")
+	return _load_scene_cached(INN_SCENE_PATH)
 
 
 func _get_oldmine_scene() -> DialogSceneResource:
-	return preload("res://Narrative/DialogScenes/Locations/Klyftet/Oldmine/oldmine_default.tres")
+	return _load_scene_cached(OLDMINE_SCENE_PATH)
 
 
 func _get_market_scene() -> DialogSceneResource:

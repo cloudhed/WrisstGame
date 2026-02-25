@@ -30,6 +30,17 @@ extends Control
 @onready var popup_label: Label = %NotificationLabel
 @onready var hide_timer: Timer = %NotificationHideTimer
 
+const TILE_GRID_CARD_SCENE_PATH := "res://Scenes/TileUI/tile_grid_card.tscn"
+var _tile_grid_card_scene: PackedScene = null
+
+
+func _get_tile_grid_card_scene() -> PackedScene:
+	if _tile_grid_card_scene == null:
+		_tile_grid_card_scene = load(TILE_GRID_CARD_SCENE_PATH) as PackedScene
+		if _tile_grid_card_scene == null:
+			push_error("❌ Failed to load tile grid card scene: " + TILE_GRID_CARD_SCENE_PATH)
+	return _tile_grid_card_scene
+
 
 func _ready():
 	inv_screen.visible = false
@@ -227,8 +238,12 @@ func _update_tile_grid():
 	)
 
 	# Add to grid
+	var card_scene := _get_tile_grid_card_scene()
+	if card_scene == null:
+		return
+
 	for tile in tile_pile:
-		var card = preload("res://Scenes/TileUI/tile_grid_card.tscn").instantiate()
+		var card = card_scene.instantiate()
 		card.tile = tile
 		tile_grid.add_child(card)
 		

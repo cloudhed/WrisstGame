@@ -9,6 +9,13 @@ extends PanelContainer
 
 var tween: Tween
 var is_visible := false
+var hide_request_id: int = 0
+
+
+func _kill_active_tween() -> void:
+	if tween and tween.is_valid():
+		tween.kill()
+	tween = null
 
 func _ready() -> void:
 	show()
@@ -22,8 +29,8 @@ func _ready() -> void:
 func show_tooltip(icon: Texture, text: String, source: String, tile_global_position: Vector2, tile_size: Vector2) -> void:
 	#print("🖥️ ACTUAL screen size reported:", get_viewport().get_window().size)
 	is_visible = true
-	if tween:
-		tween.kill()
+	hide_request_id += 1
+	_kill_active_tween()
 
 	tooltip_icon.texture = icon
 	tooltip_text_label.text = text
@@ -62,16 +69,23 @@ func show_tooltip(icon: Texture, text: String, source: String, tile_global_posit
 
 func hide_tooltip() -> void:
 	is_visible = false
-	if tween:
-		tween.kill()
+	hide_request_id += 1
+	var request_id := hide_request_id
+	_kill_active_tween()
 		
-	get_tree().create_timer(fade_seconds, false).timeout.connect(hide_animation)
+	get_tree().create_timer(fade_seconds, false).timeout.connect(func(): hide_animation(request_id))
 	
 	
-func hide_animation() -> void:
-	if not is_visible:
-		tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(self, "modulate", Color.TRANSPARENT, fade_seconds)
+func hide_animation(request_id: int = -1) -> void:
+	if request_id != -1 and request_id != hide_request_id:
+		return
+
+	if is_visible:
+		return
+
+	_kill_active_tween()
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "modulate", Color.TRANSPARENT, fade_seconds)
 	tween.tween_callback(hide)
 # NEW CHATGPT HIDING THINGS
 #	if tween:

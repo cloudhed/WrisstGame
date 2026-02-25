@@ -14,7 +14,7 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var secondary_effect_amount: int = 0
 
 @export_group("Tile Visuals")
-@export var background: Texture = preload("res://Assets/UI/tile_base.png")
+@export var background: Texture
 @export var icon: Texture
 @export var tooltip_icon: Texture
 @export var tooltip_source_label: String = "Unknown source"
@@ -22,10 +22,20 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export_multiline var message_template: String = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=green]{amount}[/color][/b] points!"
 @export var message_pool_resource: RandomMessagePool
 @export_group("Tile SFX")
-@export var sound: AudioStream = preload("res://Audio/SFX/tile_sfx/tile_release1.wav")
+@export var sound: AudioStream
 #@export var ui_sound: AudioStream
 
 var source_stats: CharacterStats
+
+const DEFAULT_TILE_BACKGROUND_PATH := "res://Assets/UI/tile_base.png"
+const DEFAULT_TILE_SOUND_PATH := "res://Audio/SFX/tile_sfx/tile_release1.wav"
+
+
+func _init() -> void:
+	if background == null:
+		background = load(DEFAULT_TILE_BACKGROUND_PATH)
+	if sound == null:
+		sound = load(DEFAULT_TILE_SOUND_PATH)
 
 
 func get_random_message_template() -> String:
