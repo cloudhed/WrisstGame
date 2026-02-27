@@ -80,6 +80,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 170.0
+offset_top = 117.0
 offset_right = -170.0
 offset_bottom = -215.0
 grow_horizontal = 2
@@ -105,9 +106,9 @@ layout_mode = 2
 [node name="SpeechStack" type="VBoxContainer" parent="CanvasLayer/DialogLineSpawner/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = -8
+theme_override_constants/separation = -12
 
 [node name="ChoiceBox" parent="CanvasLayer" instance=ExtResource("10_7201p")]
 custom_minimum_size = Vector2(0, 0)
-offset_top = 864.0
+offset_top = 824.0
 offset_bottom = 1080.0

@@ -34,9 +34,11 @@ corner_detail = 1
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tog36"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tog36"]
-bg_color = Color(0.1519, 0.286285, 0.31, 0.458824)
-border_width_left = 12
-border_width_bottom = 5
+bg_color = Color(0.0899, 0.276985, 0.31, 0.682353)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
 border_blend = true
 expand_margin_right = 11.0
 
@@ -100,12 +102,18 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="Panel" type="Panel" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer"]
+[node name="TabContainer" type="TabContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+current_tab = 0
+
+[node name="Panel" type="Panel" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xkiwj")
+metadata/_tab_index = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,7 +122,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ItemListContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer"]
+[node name="ItemListContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -124,14 +132,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/ItemListContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 
-[node name="ItemList" type="ItemList" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer/MarginContainer"]
+[node name="ItemList" type="ItemList" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/ItemListContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -144,7 +152,7 @@ max_columns = 2
 same_column_width = true
 fixed_column_width = 495
 
-[node name="InventoryContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer"]
+[node name="InventoryContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 8
@@ -152,64 +160,67 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="InventoryList" type="VBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer"]
+[node name="InventoryList" type="VBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CurrencyHbox" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="CurrencyHbox" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 layout_mode = 2
 theme_override_constants/separation = 120
 
-[node name="CurrentOreLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
+[node name="CurrentOreLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Öre: "
 
-[node name="CurrentCrownsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
+[node name="CurrentCrownsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Crowns: "
 
-[node name="CurrentDrotsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
+[node name="CurrentDrotsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Drots: "
 
-[node name="EquippedArmorLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="EquippedArmorLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Equipped Armor:"
 
-[node name="EquippedWeaponLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="EquippedWeaponLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Equipped Weapon:"
 
-[node name="EquippedTrinketsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="EquippedTrinketsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Equipped Trinket(s):"
 
-[node name="TileLabelHbox" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="TileLabelHbox" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 layout_mode = 2
 
-[node name="CurrentTilesLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/TileLabelHbox"]
+[node name="CurrentTilesLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/TileLabelHbox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Tiles in Deck: "
 
-[node name="PilePowerLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/TileLabelHbox"]
+[node name="PilePowerLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/TileLabelHbox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Pile Power:"
 
-[node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TilePilePanel" type="Panel" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer"]
+[node name="TilePilePanel" type="Panel" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer"]
 layout_mode = 2
 
-[node name="TileGrid" type="GridContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/TilePilePanel"]
+[node name="TileGrid" type="GridContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/TilePilePanel"]
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 8.575
@@ -224,7 +235,7 @@ theme_override_constants/h_separation = 34
 theme_override_constants/v_separation = 29
 columns = 4
 
-[node name="CurrentTilesList" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/TilePilePanel"]
+[node name="CurrentTilesList" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/TilePilePanel"]
 visible = false
 layout_mode = 2
 offset_right = 502.0
@@ -278,7 +289,7 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 7
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_tog36")
 text = "50 öre removed"
 horizontal_alignment = 2

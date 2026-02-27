@@ -86,6 +86,7 @@ func _setup_enemy() -> void:
 
 	enemy.intent_ui = $IntentUI
 	active_enemy_stats = enemy.stats as EnemyStats
+	combat_ui.set_run_enabled(active_enemy_stats == null or active_enemy_stats.is_runnable)
 	_start_precombat_or_combat()
 
 

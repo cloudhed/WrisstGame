@@ -64,7 +64,7 @@ func update_box_size(panel: Panel, label: RichTextLabel) -> void:
 		wrapper.queue_sort()
 		wrapper.queue_redraw()
 	
-	#animate_floaty_drift(panel)
+	animate_floaty_drift(panel)
 
 
 func animate_floaty_drift(panel: Panel) -> void:

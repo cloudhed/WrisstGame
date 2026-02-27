@@ -15,6 +15,9 @@ theme = ExtResource("1_guhem")
 script = ExtResource("2_r5lct")
 max_width = 760.0
 padding = 14.0
+gust_range_x = 16.0
+gust_range_y = 1.0
+drift_range_y = 1.0
 
 [node name="BubbleWrapper" type="MarginContainer" parent="."]
 layout_mode = 0

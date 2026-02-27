@@ -7,6 +7,9 @@
 [resource]
 script = ExtResource("3_sp5wi")
 ai = ExtResource("1_fk830")
+pre_combat_dialog_path = ""
+post_combat_dialog_path = ""
+is_runnable = false
 max_health = 22
 art = ExtResource("2_f1v4f")
 player_name = "Murisk"

@@ -3,14 +3,14 @@ extends Control
 # Cache node paths for easier access:
 @onready var inv_screen: Panel = $UIContainer/InventoryScreen
 #LEFT STIDE
-@onready var item_list: ItemList = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/ItemListContainer/MarginContainer/ItemList
+@onready var item_list: ItemList = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/ItemListContainer/MarginContainer/ItemList
 #RIGHT STIDE
-@onready var inventory_list: VBoxContainer = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList
+@onready var inventory_list: VBoxContainer = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList
 
 #-CURRENCY-#
-@onready var current_ore_label: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox/CurrentOreLabel
-@onready var current_crowns: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox/CurrentCrownsLabel
-@onready var current_drots: Label = $UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox/CurrentDrotsLabel
+@onready var current_ore_label: Label = %CurrentOreLabel
+@onready var current_crowns: Label = %CurrentCrownsLabel
+@onready var current_drots: Label = %CurrentDrotsLabel
 
 #-WEAPON, ARMOR, TRINKETS-#
 @onready var current_weapon_label: Label = %EquippedWeaponLabel

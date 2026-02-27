@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var hand: Hand = $Hand as Hand
 @onready var stamina_ui: StaminaUI = $StaminaUI as StaminaUI
 @onready var end_turn_button: Button = %EndTurnButton
+@onready var run_button: Button = $StatsUIManager/PlayerVBoxContainer/PlayerMenuUI/CombatButtonRUN
 #@onready var combat_text = $StatsUIManager/CombatTextUI/MarginContainer/CombatText as RichTextLabel
 
 func _ready() -> void:
@@ -29,6 +30,13 @@ func _on_player_hand_drawn() -> void:
 func _on_end_turn_button_pressed() -> void:
 	end_turn_button.disabled = true
 	Events.player_turn_ended.emit()
+
+
+func set_run_enabled(can_run: bool) -> void:
+	if run_button:
+		run_button.disabled = not can_run
+	else:
+		push_warning("⚠️ CombatUI: Run button not found, could not apply run enabled state.")
 
 
 func spawn_damage_popup(world_position: Vector2, amount: int, effect_type: String) -> void:

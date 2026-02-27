@@ -20,6 +20,7 @@ var chunk_list: Array = []
 var chunk_index: int = 0
 var last_command_index: int = -1
 var waiting_for_input: bool = false
+var waiting_for_combat_end: bool = false
 var current_choice_entry: Dictionary = {}
 
 var context: Dictionary = {}
@@ -58,6 +59,9 @@ func initialize(
 
 
 func show_next_line() -> void:
+	if waiting_for_combat_end:
+		return
+
 	if check_dialog_end():
 		return
 
@@ -104,6 +108,7 @@ func handle_special_entry(entry: Dictionary) -> bool:
 		
 	if entry.get("type", "") == "command":
 		var cmd: String = entry.get("command", entry.get("text", ""))
+		var is_start_combat_entry: bool = _is_start_combat_command(cmd)
 		if cmd is String and not cmd.is_empty():
 			handle_command(cmd)
 
@@ -116,6 +121,9 @@ func handle_special_entry(entry: Dictionary) -> bool:
 
 		# If the entry had no chunks and didn't continue itself, move to next
 		if chunk_list.is_empty():
+			if is_start_combat_entry and _connect_combat_end_to_dialog_resume(entry):
+				return true
+
 			if entry.has("next"):
 				var next_id: String = entry["next"]
 				var next_index: int = _find_entry_index_by_id(next_id)
@@ -131,6 +139,60 @@ func handle_special_entry(entry: Dictionary) -> bool:
 		return true
 
 	return false
+
+
+func _is_start_combat_command(cmd: String) -> bool:
+	if cmd.is_empty():
+		return false
+
+	for raw_cmd in cmd.split(";"):
+		var trimmed := raw_cmd.strip_edges()
+		if trimmed.trim_prefix("@").to_upper().begins_with("START_COMBAT"):
+			return true
+
+	return false
+
+
+func _connect_combat_end_to_dialog_resume(entry: Dictionary) -> bool:
+	var combat_node := _find_active_combat_node()
+	if combat_node == null or not combat_node.has_signal("combat_ended"):
+		return false
+
+	var next_id: String = entry.get("next", "")
+	combat_node.combat_ended.connect(
+		Callable(self, "_on_blocking_combat_ended").bind(next_id),
+		CONNECT_ONE_SHOT
+	)
+	waiting_for_combat_end = true
+	waiting_for_input = false
+	return true
+
+
+func _find_active_combat_node() -> Node:
+	var dialog_manager: Node = context.get("dialog_manager", null)
+	if dialog_manager == null:
+		return null
+
+	for i in range(dialog_manager.get_child_count() - 1, -1, -1):
+		var child: Node = dialog_manager.get_child(i)
+		if child and child.has_signal("combat_ended"):
+			return child
+
+	return null
+
+
+func _on_blocking_combat_ended(next_id: String) -> void:
+	waiting_for_combat_end = false
+
+	if not next_id.is_empty():
+		var next_index: int = _find_entry_index_by_id(next_id)
+		if next_index != -1:
+			current_index = next_index
+			show_next_line()
+			return
+
+	current_index += 1
+	show_next_line()
 
 func handle_entry_command(entry: Dictionary) -> void:
 	if entry.has("command") and typeof(entry["command"]) == TYPE_STRING and not entry["command"].is_empty():

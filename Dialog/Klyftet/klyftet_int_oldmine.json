@@ -118,7 +118,7 @@
 		"next": "02_oldmine_debugcombat_STARTCOMBAT"
 	},
 	{
-		"id": "02_oldmine_STARTCOMBAT",
+		"id": "02_oldmine_debugcombat_STARTCOMBAT",
 		"type": "command",
 		"command": "@START_COMBAT res://enemies/murisk_n/murisk_n_enemy.tres",
 		"clear": true,

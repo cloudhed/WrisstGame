@@ -48,3 +48,4 @@ ItemList/styles/hovered_selected = SubResource("StyleBoxFlat_qelvv")
 ItemList/styles/hovered_selected_focus = SubResource("StyleBoxFlat_b2woh")
 ItemList/styles/selected = SubResource("StyleBoxFlat_ujvtk")
 ItemList/styles/selected_focus = SubResource("StyleBoxFlat_ujvtk")
+TabContainer/font_sizes/font_size = 26
