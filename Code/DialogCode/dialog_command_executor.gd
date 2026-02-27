@@ -335,18 +335,29 @@ func _start_combat(context: Dictionary) -> void:
 	var cmd: String = context.get("raw_command", "")
 	var parts: Array = cmd.split(" ")
 
-	if parts.size() < 2:
-		push_error("❌ START_COMBAT needs enemy resource path.")
-		return
+	var dialog_manager = context.get("dialog_manager")
+	if dialog_manager:
+		var combat_scene = dialog_manager
+		while combat_scene != null and not combat_scene.has_method("begin_combat_from_overlay"):
+			combat_scene = combat_scene.get_parent()
 
-	var enemy_path: String = parts[1]
-	var enemy_resource: Resource = load(enemy_path)
+		if combat_scene:
+			combat_scene.begin_combat_from_overlay()
+			return
+
+	var enemy_resource: Resource = null
+
+	if parts.size() >= 2:
+		var enemy_path: String = parts[1]
+		enemy_resource = load(enemy_path)
+	else:
+		push_error("❌ START_COMBAT needs enemy resource path outside combat overlay flow.")
+		return
 
 	if not enemy_resource:
-		push_error("❌ Could not load enemy resource: " + enemy_path)
+		push_error("❌ Could not load enemy resource: " + parts[1])
 		return
 
-	var dialog_manager = context.get("dialog_manager")
 	if dialog_manager == null:
 		push_error("❌ dialog_manager not passed to START_COMBAT context.")
 		return

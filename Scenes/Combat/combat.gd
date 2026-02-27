@@ -4,6 +4,8 @@ extends Node2D
 
 @export var char_stats: CharacterStats
 @export var music: AudioStream
+@export var auto_leave_on_victory: bool = true
+const DIALOG_SCENE_PATH := "res://Narrative/DialogScene.tscn"
 
 
 @onready var combat_ui: CombatUI = $CombatUI as CombatUI
@@ -14,6 +16,8 @@ extends Node2D
 var created_stats: CharacterStats
 var combat_over: bool = false
 var combat_aborted: bool = false
+var dialog_overlay: DialogManager = null
+var active_enemy_stats: EnemyStats = null
 
 #enemy_loading_through_JSON
 var override_enemy_resource: Resource = null
@@ -81,6 +85,57 @@ func _setup_enemy() -> void:
 		print("✅ Enemy found from editor:", enemy.name)
 
 	enemy.intent_ui = $IntentUI
+	active_enemy_stats = enemy.stats as EnemyStats
+	_start_precombat_or_combat()
+
+
+func _start_precombat_or_combat() -> void:
+	if active_enemy_stats and not active_enemy_stats.pre_combat_dialog_path.is_empty():
+		_show_dialog_overlay(active_enemy_stats.pre_combat_dialog_path, active_enemy_stats.slide_deck)
+	else:
+		start_combat(created_stats)
+
+
+func _build_overlay_dialog_scene_data(dialog_path: String, deck: SlideDeck = null) -> DialogSceneResource:
+	var data := DialogSceneResource.new()
+	data.dialogue_path = dialog_path
+	data.characters = []
+	data.slide_deck = deck
+	data.flags_required = []
+	data.flags_set_on_start = {}
+	return data
+
+
+func _show_dialog_overlay(dialog_path: String, deck: SlideDeck = null) -> void:
+	if dialog_path.is_empty():
+		return
+
+	if dialog_overlay:
+		dialog_overlay.queue_free()
+		dialog_overlay = null
+
+	combat_ui.visible = false
+	$IntentUI.visible = false
+
+	var dialog_scene: PackedScene = load(DIALOG_SCENE_PATH) as PackedScene
+	if dialog_scene == null:
+		push_error("❌ Combat: failed to load dialog scene overlay: " + DIALOG_SCENE_PATH)
+		return
+
+	var overlay := dialog_scene.instantiate() as DialogManager
+	if overlay == null:
+		push_error("❌ Combat: dialog overlay scene is not DialogManager.")
+		return
+
+	overlay.dialog_scene_data = _build_overlay_dialog_scene_data(dialog_path, deck)
+	add_child(overlay)
+	dialog_overlay = overlay
+
+
+func begin_combat_from_overlay() -> void:
+	if dialog_overlay:
+		dialog_overlay.queue_free()
+		dialog_overlay = null
 	start_combat(created_stats)
 
 
@@ -125,9 +180,13 @@ func _on_enemies_child_order_changed() -> void:
 		combat_over = true
 #		combat_ui.visible = false
 		$IntentUI.visible = false
+		if active_enemy_stats and not active_enemy_stats.post_combat_dialog_path.is_empty() and not combat_aborted:
+			_show_dialog_overlay(active_enemy_stats.post_combat_dialog_path, active_enemy_stats.slide_deck)
+			return
 
 		emit_signal("combat_ended")
-		Events.leave_encounter_requested.emit()
+		if auto_leave_on_victory:
+			Events.leave_encounter_requested.emit()
 		queue_free()   # ✅ also remove Combat overlay scene
 		#Events.leave_encounter_requested.emit()
 
@@ -148,3 +207,6 @@ func abort_combat() -> void:
 	print("⚠️ abort_combat() CALLED.")
 	combat_aborted = true
 	combat_over = true
+	if dialog_overlay:
+		dialog_overlay.queue_free()
+		dialog_overlay = null

@@ -54,7 +54,6 @@ metadata/_edit_lock_ = true
 [node name="CanvasModulate" type="CanvasModulate" parent="CombatVisual"]
 
 [node name="CombatBGSprite" type="Sprite2D" parent="CombatVisual"]
-visible = false
 texture = ExtResource("4_5g3cp")
 centered = false
 

@@ -16,7 +16,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfhyy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfhyy"]
-bg_color = Color(0, 0, 0, 0.588235)
+bg_color = Color(0, 0, 0, 0.784314)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -27,7 +27,6 @@ corner_radius_bottom_left = 4
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skkow"]
 bg_color = Color(0, 0, 0, 0.247059)
 draw_center = false
-expand_margin_left = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itvog"]
 bg_color = Color(0.421141, 0.212102, 0.507426, 1)

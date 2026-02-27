@@ -28,8 +28,7 @@
 	{
 		"id": "teqqellon_startcombat",
 		"type": "command",
-		"command": "@START_COMBAT",
-		"end": true
+		"command": "@START_COMBAT"
 	},
 	{
 		"id": "teqqellon_choice_leave",

@@ -1,0 +1,433 @@
+WRISST STORY PLANNING DOCUMENT – KLYFTET ARC (Foundational Draft)
+Date: 2026-02-26
+
+Purpose:
+Create a full narrative scaffold from opening to ending, with multiple levels of granularity,
+so main quests, side quests, random encounters, and exploration hooks can be written consistently.
+
+________________________________________________________________________________
+
+NON-NEGOTIABLE STARTING TRUTHS (CANON INPUT)
+* The game starts with the PC waking up by a fire with Bitalgut.
+* Klyftet becomes the player’s home base.
+
+DESIGN GOAL FOR THIS DOCUMENT
+* Provide one top-down story framework first.
+* Then provide quest architecture (main, side, random encounters, exploration reasons).
+* Then provide more granular quest/encounter sheets and writing hooks.
+* Keep ending satisfying locally (tied knot) while leaving the wider world open.
+
+________________________________________________________________________________
+
+STORY NORTH STAR (LEVEL 0 – ONE-PAGE OVERVIEW)
+
+Core Premise:
+You wake by a low fire with Bitalgut watching you. You do not remember how you entered Wrisst.
+You are physically present, socially suspect, and culturally displaced.
+
+Core Dramatic Question:
+Can you build a place for yourself in a world that does not revolve around you,
+without becoming the thing that breaks it?
+
+Core Engine:
+Return-and-depart loop.
+* You leave Klyftet because survival, favors, rumors, and pressure demand it.
+* You return because relationships, consequences, and unfinished obligations pull you back.
+
+Klyftet’s Story Function:
+* Social anchor (who knows you, who distrusts you, who needs you)
+* Mechanical anchor (rest, trade, progression, rumors, contracts)
+* Moral anchor (your reputation is measured here)
+
+End-State Promise:
+* Tied Knot: Klyftet’s immediate crisis is decisively resolved.
+* Open Horizon: the larger mystery (your arrival + deeper Wrisst currents) remains unresolved,
+  but clearly pointed toward next arc.
+
+________________________________________________________________________________
+
+MACRO ARC (LEVEL 1 – CAMPAIGN PHASES)
+
+PHASE I: EMBERS (Arrival / Orientation)
+Summary:
+You wake at the fire. Bitalgut gives you practical help, partial truths, and a direction: Klyftet.
+
+Player Experience Goals:
+* Immediate vulnerability
+* First trust test
+* First movement through hostile/unknown terrain
+
+What Changes:
+* You gain a name in circulation (outsider/human rumor starts)
+* Bitalgut becomes an anchor but not a complete guide
+
+Exit Condition:
+You physically enter Klyftet and are acknowledged by at least one local power-center.
+
+
+PHASE II: SPLIT ROAD (Onboarding / First Obligations)
+Summary:
+Klyftet accepts you functionally, not emotionally. You must earn your place through labor,
+small debts, and low-stakes service.
+
+Player Experience Goals:
+* Learn settlement logic through action
+* Meet core NPC web
+* Understand that contribution matters more than identity
+
+What Changes:
+* Basic routines open (inn, baths, market, shoreline contracts)
+* Reputation track starts influencing prices/dialogue/quest access
+
+Exit Condition:
+You complete your first “communal contribution cycle” and unlock free-roam contracts.
+
+
+PHASE III: FRICTION SEASON (Pressure / Contradictions)
+Summary:
+Conflicting rumors and material pressures force repeated departures from Klyftet:
+mine disturbances, route failures, lake anomalies, and supply tension.
+
+Player Experience Goals:
+* Push-pull between local loyalty and personal curiosity
+* Fail-forward progression (setbacks create new paths, not hard dead ends)
+* Side quests begin changing future options
+
+What Changes:
+* Factions become visible (trade pragmatists, safety conservatives, opportunists)
+* NPCs ask for mutually incompatible help
+
+Exit Condition:
+You identify the true local nexus driving Klyftet’s instability.
+
+
+PHASE IV: OPEN VEIN (Crisis / Alignment)
+Summary:
+The local nexus ruptures into a public crisis. You must choose priorities under pressure:
+protect people, secure routes/resources, or exploit the power vacuum.
+
+Player Experience Goals:
+* High-stakes consequence
+* Relationship payoffs from earlier choices
+* Encounter systems reflect instability
+
+What Changes:
+* Settlement state shifts (night tension, shortages, patrols, altered encounter pools)
+* Some side quests lock while others emerge as emergency variants
+
+Exit Condition:
+You trigger the final Klyftet stabilization sequence.
+
+
+PHASE V: KNOT & HORIZON (Resolution / Expansion)
+Summary:
+You resolve Klyftet’s immediate crisis with clear local consequences.
+Then a final reveal reframes your role in a wider Wrisst pattern.
+
+Tied Knot:
+* Klyftet survives in a changed form.
+* One major local fear is addressed materially (not just emotionally).
+
+Open Ending:
+* Bitalgut (or a linked source) reveals a lead pointing beyond Klyftet.
+* The answer to “what are you?” remains incomplete but actionable.
+
+________________________________________________________________________________
+
+MAIN QUESTLINE OVERVIEW (LEVEL 1.5 – CRITICAL PATH)
+
+MQ-00 Ashwake
+Goal: Survive first scene, orient with Bitalgut, secure initial direction.
+Reveal: Bitalgut knows more than they say.
+Consequence: You move toward Klyftet with a provisional purpose.
+
+MQ-01 Road to the Split
+Goal: Reach Klyftet through first risk corridor.
+Reveal: The world reacts to your strangeness, but practical need outweighs panic.
+Consequence: You enter Klyftet under scrutiny.
+
+MQ-02 Borrowed Roof
+Goal: Earn temporary standing (food, place to sleep, first task).
+Reveal: Klyftet runs on contribution, memory, and rumor.
+Consequence: Home-base systems unlock.
+
+MQ-03 Ledger of Favors
+Goal: Complete three starter obligations across different town nodes.
+Reveal: Every “small favor” maps to local power.
+Consequence: You become socially visible and usable.
+
+MQ-04 Wind in the Stone
+Goal: Investigate split-howl disturbances + route irregularities.
+Reveal: Multiple causes are being conflated; someone benefits from confusion.
+Consequence: You must choose an investigation lead (mine/lake/market route).
+
+MQ-05 The Old Mouth
+Goal: Enter contested old mine sectors and retrieve proof.
+Reveal: Instability is engineered/redirected, not purely natural.
+Consequence: Town politics intensify.
+
+MQ-06 Silv Debt
+Goal: Resolve a critical lake-linked shortage or hazard.
+Reveal: Klyftet’s survival depends on balancing extraction and restraint.
+Consequence: Reputation branches (protector, hard pragmatist, opportunist).
+
+MQ-07 Breakpoint at Klyftet
+Goal: During open crisis, choose stabilization strategy with allied NPC support.
+Reveal: Bitalgut’s original “guidance” was steering you toward this decision point.
+Consequence: Town state permanently changes.
+
+MQ-08 The Tied Knot
+Goal: Execute final local fix (infrastructure + social settlement + enforcement).
+Reveal: Local closure is possible, universal closure is not.
+Consequence: Klyftet stabilized in your chosen tone.
+
+MQ-09 Horizon Thread (Epilogue Trigger)
+Goal: Follow final lead beyond Klyftet (preparation, not full departure sequence).
+Reveal: Your arrival links to a broader pattern in Wrisst.
+Consequence: Credits-style open continuation hook.
+
+________________________________________________________________________________
+
+SIDE QUEST ARCHITECTURE (LEVEL 2 – FAMILIES + EXAMPLES)
+
+Family A: Klyftet Civic Side Quests (Settlement Texture)
+Purpose:
+Ground the player in everyday systems that make Klyftet feel alive.
+
+Examples:
+SQ-A1 “Windbreak Ledger” (Tavo-Pavo)
+* Recover unpaid tabs through persuasion, labor, or leverage.
+* Payoff: better inn access, rumor quality increases.
+
+SQ-A2 “Steam Rotation” (Bwavrek / Minttärä)
+* Resolve hotbath staffing/sabotage tension.
+* Payoff: recovery bonus + trust channel with baths.
+
+SQ-A3 “Threaded Crowns” (Rupaaa & Baaaku)
+* Help settle a trade dispute without collapsing market confidence.
+* Payoff: dynamic shop stock and discount branch.
+
+SQ-A4 “Deep Quiet” (Selenna)
+* Assist in controlled shoreline dives and retrievals.
+* Payoff: access to lake-only materials and night dialogue scenes.
+
+
+Family B: Character Arcs (Relationship + Choice)
+Purpose:
+Give each core NPC a personal contradiction that can resolve, harden, or break.
+
+Arc End States:
+* Reconciled (trust and utility)
+* Functional Distance (mutual respect, limited intimacy)
+* Fractured (still present in town, but altered interactions)
+
+
+Family C: Frontier Contracts (Short, Repeatable, Meaningful)
+Format:
+2–3 step jobs with rotating complications.
+
+Contract Types:
+* Route scouting
+* Material retrieval
+* Escort / witness presence
+* Hazard marking
+
+Persistent Value:
+* Funds + materials
+* Local standing
+* Encounter table unlocks
+
+________________________________________________________________________________
+
+RANDOM ENCOUNTER DESIGN (LEVEL 2 – UNRELATED BUT FULFILLING)
+
+Encounter Principles:
+1) Short
+2) Reactive to time/region/reputation
+3) Leaves a trace (item, rumor, mood shift, map note)
+
+Encounter Pool Tags:
+* Region: field / shore / mine-trail / high pass
+* Tone: eerie / tender / absurd / predatory / mercantile
+* Risk: low / medium / high
+* Reward: practical / narrative / relational
+
+Micro-Resolution Rule:
+Each encounter ends with one concrete payoff, even if tiny:
+* You learn a route warning.
+* You receive a useful oddity.
+* You unlock one future dialogue line.
+* You gain/lose a small reputation flag.
+
+Example Encounter Seeds:
+RE-01 “Broken Winch Song” (mine-trail, eerie)
+RE-02 “Two Crowns, One Rope” (market road, absurd/mercantile)
+RE-03 “Silv Surface Lights” (shoreline night, eerie/curiosity)
+RE-04 “Storm Shelter Argument” (high pass, social pressure)
+RE-05 “Offerings in the Crack” (Klyftet edge, superstition)
+
+________________________________________________________________________________
+
+REASONS TO EXPLORE MATRIX (LEVEL 2 – MOTIVATION GRID)
+
+Practical Reasons:
+* Better gear resources
+* Route shortcuts
+* Contract payouts
+* Ingredient/tool access
+
+Social Reasons:
+* Reputation gains/losses
+* Favor economy
+* NPC trust thresholds
+* Invitations to restricted spaces
+
+Curiosity Reasons:
+* Anomalous environmental cues
+* Contradictory rumors
+* Old remnants fragments (carefully rationed)
+* Log-style discoverables
+
+Personal Reasons:
+* Fragmented memory prompts
+* Repeated symbols/phrases tied to your arrival
+* Bitalgut breadcrumbs
+
+Return-to-Klyftet Triggers:
+* New town state event
+* NPC summons
+* Market/baths/inn threshold unlock
+* Crisis escalation timers
+
+________________________________________________________________________________
+
+GRANULAR QUEST TEMPLATE (LEVEL 3 – WRITING/IMPLEMENTATION SHEET)
+
+Quest ID + Name:
+Quest Type: Main / Side / Contract / Encounter
+Recommended Phase:
+
+Hook:
+What starts it, where, and by whom.
+
+Stakes:
+What happens if ignored, delayed, or failed.
+
+Steps (3–7):
+1)
+2)
+3)
+
+Branch Points:
+* Branch A (protective)
+* Branch B (pragmatic)
+* Branch C (opportunistic)
+
+Fail-Forward Conditions:
+How story continues even on setbacks.
+
+Re-entry Logic:
+How player can return if they drop it.
+
+Consequences:
+* Local state
+* Relationship state
+* Resource/economy state
+
+Dependencies / Unlock Flags:
+
+Writer Notes:
+POV/tense/tone reminders + taboo/boundary handling rules.
+
+________________________________________________________________________________
+
+GRANULAR EXAMPLES (LEVEL 3 APPLIED)
+
+MAIN QUEST EXAMPLE – MQ-02 Borrowed Roof
+Hook:
+You arrive at Klyftet with Bitalgut’s name as weak introduction capital.
+
+Stakes:
+No guaranteed shelter, no free protection, no neutral standing.
+
+Steps:
+1) Secure temporary sleeping right (inn floor / bath annex / labor bunk).
+2) Perform one immediate contribution task.
+3) Choose first local contact to endorse you publicly.
+
+Branching:
+* Tavo-Pavo endorsement: practical safety, rough social onboarding.
+* Market endorsement (brothers): economic access, social suspicion increases.
+* Bath endorsement (Bwavrek/Minttärä): recovery utility, work obligations rise.
+
+Fail-Forward:
+If rejected by one contact, another offers conditional acceptance at a steeper cost.
+
+Outcome:
+Home base unlocked + first reputation modifier assigned.
+
+
+SIDE QUEST EXAMPLE – SQ-A3 Threaded Crowns
+Hook:
+Rupaaa and Baaaku accuse a carrier line of clipping shipments.
+
+Stakes:
+Market trust drops; shortage risk increases.
+
+Steps:
+1) Audit route physically.
+2) Interview three conflicting witnesses.
+3) Decide public ruling method (quiet correction / public exposure / profitable compromise).
+
+Outcome Variants:
+* Quiet correction: market calm, low drama, modest reward.
+* Public exposure: high drama, faction tension, larger reward.
+* Compromise: short-term abundance, long-term trust corrosion.
+
+
+RANDOM ENCOUNTER EXAMPLE – RE-03 Silv Surface Lights
+Hook:
+Night shoreline, low wind, repeating light under water.
+
+Player Choices:
+* Observe and log
+* Enter water zone
+* Bring Selenna later
+
+Micro-Resolution:
+* Solo observe: map marker + rumor line unlocked.
+* Enter alone: risk encounter + rare material chance.
+* Return with Selenna: safer retrieval + relationship progression.
+
+________________________________________________________________________________
+
+ENDING DESIGN (TIED KNOT + OPEN HORIZON)
+
+The Knot (Local Closure):
+Klyftet’s immediate crisis is solved through one chosen stabilization doctrine:
+1) Communal Shield (people-first, slower growth, high trust)
+2) Hard Trade (resource-first, stability through leverage)
+3) Narrow Order (security-first, harsh but effective)
+
+No doctrine is “perfect.” Each visibly changes NPC routines and settlement tone.
+
+The Horizon (Open Thread):
+After resolution, a final discovery ties your arrival to a broader network/pattern beyond Klyftet.
+You gain direction, not explanation.
+The world opens wider instead of closing completely.
+
+Final Scene Tone Target:
+You stand in a place that now recognizes you.
+You are still not from here.
+You leave (or prepare to leave) with purpose instead of confusion.
+
+________________________________________________________________________________
+
+PRODUCTION CHECKLIST FOR NEXT WRITING PASS
+1) Expand each MQ into full Level-3 sheets.
+2) Write 10–15 side quests across Families A/B/C.
+3) Build 25+ encounter seeds with pool tags and micro-resolutions.
+4) Draft reputation thresholds and town-state transitions.
+5) Draft dialogue stubs for Bitalgut + core Klyftet NPCs per phase.
+
+END OF DOCUMENT

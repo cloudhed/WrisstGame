@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://cqg2t3bu607tf"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3 uid="uid://cqg2t3bu607tf"]
 
 [ext_resource type="PackedScene" uid="uid://lwwyf3857u6g" path="res://enemies/teqqellon/teqqellon_enemy_ai.tscn" id="1_j7ut2"]
 [ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="2_5k5u0"]
 [ext_resource type="Texture2D" uid="uid://ygjj6hs1qdcs" path="res://enemies/teqqellon/teqqellon_base.png" id="2_s147t"]
+[ext_resource type="Resource" uid="uid://d3ceiemiy8lig" path="res://enemies/teqqellon/teqqellon_slidedeck.tres" id="4_0tk0l"]
 
 [resource]
 script = ExtResource("2_5k5u0")
 ai = ExtResource("1_j7ut2")
+pre_combat_dialog_path = "res://enemies/teqqellon/teqqellon_dialog_precombat.json"
+post_combat_dialog_path = "res://enemies/teqqellon/teqqellon_dialog_postcombat.json"
+slide_deck = ExtResource("4_0tk0l")
 max_health = 16
 art = ExtResource("2_s147t")
 player_name = "Teqqellon"

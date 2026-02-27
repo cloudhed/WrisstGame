@@ -10,7 +10,7 @@ signal fallback_equipped
 # ─────────────────────────────────────────────────────────────
 # Player identity
 var player_name: String = "MilkshakeGirl"
-var player_gender: String = "female" # or "male",
+var player_gender: String = "male" # or "male",
 #var player_body_type: String = "curvy" # or "flat", "androgynous", etc.
 #var player_pronouns: Dictionary = {
 #	"they": "she",

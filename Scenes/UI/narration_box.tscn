@@ -5,24 +5,27 @@
 [ext_resource type="Theme" uid="uid://by10iex6r6prc" path="res://Themes/narrative_choice_theme.tres" id="3_o380u"]
 
 [node name="NarrationBox" type="Control"]
-custom_minimum_size = Vector2(850, 90)
+custom_minimum_size = Vector2(800, 90)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 850.0
+offset_right = 800.0
 offset_bottom = 90.0
+size_flags_horizontal = 10
 mouse_filter = 2
 theme = ExtResource("1_b6tns")
 script = ExtResource("1_mp87l")
-padding = 14.0
+max_width = 760.0
+gust_range_x = 30.0
+drift_range_x = 12.0
 
 [node name="BoxWrapper" type="MarginContainer" parent="."]
-layout_mode = 1
-offset_right = 45.825
-offset_bottom = 48.645
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 28.0
 mouse_filter = 2
+theme_override_constants/margin_right = 8
 
 [node name="Panel" type="Panel" parent="BoxWrapper"]
-custom_minimum_size = Vector2(27.825, 20.645)
 layout_mode = 2
 mouse_filter = 2
 
@@ -30,9 +33,10 @@ mouse_filter = 2
 clip_contents = false
 layout_mode = 0
 offset_right = 1.0
-offset_bottom = 29.41
+offset_bottom = 203.0
 mouse_filter = 2
 theme = ExtResource("3_o380u")
 bbcode_enabled = true
+text = "You’ve "
 fit_content = true
 scroll_active = false

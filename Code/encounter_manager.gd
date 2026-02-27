@@ -79,7 +79,7 @@ func change_scene() -> void:
 		print("🎬 change_scene -> fade_in (to combat)")
 
 	whiteout_anim.play("fade_in")
-	encounter_number = randi_range(200, 500)
+	encounter_number = randi_range(50, 100)
 
 # ⭐ NEW: handle scene change requests with fade out
 func _on_change_scene_requested(scene: PackedScene) -> void:

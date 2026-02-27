@@ -1,0 +1,135 @@
+[
+  {
+	"id": "teqqellon_postcombat",
+	"type": "narration",
+	"text": "The fight settles into surf-noise and ragged breath. The Teqqellon lies collapsed in the wet sand, its mass trembling in slow pulses. Shell shards and pearl bits along its back catch moonlight as the core inside it throbs in a tired lilac rhythm.",
+	"next": "teqqellon_postcombat_choice"
+  },
+  {
+	"id": "teqqellon_postcombat_choice",
+	"type": "choice",
+	"options": [
+	  {
+		"text": "> Crouch and study it",
+		"next": "teqqellon_study_01"
+	  },
+	  {
+		"text": "> Step back and leave it",
+		"next": "teqqellon_leave_01"
+	  }
+	]
+  },
+  {
+	"id": "teqqellon_study_01",
+	"type": "narration",
+	"text": "You lower yourself beside it and keep your hands still. The Teqqellon doesn't strike. Its outer membrane flexes under a skin-tight sheen, and the floating core inside gives a stronger pulse when your shadow crosses it.",
+	"next": "teqqellon_study_02"
+  },
+  {
+	"id": "teqqellon_study_02",
+	"type": "narration",
+    "text": "You trace one finger along the edge of its shell-ridge. The surface fizzes faintly against your skin, then calms when you slow down. Fast pressure makes it tense. Slow pressure makes it part. [instruction for Gemini: Intent: add explicit exploratory body-contact beat here. Keep POV second-person present. Focus on tactile detail, hesitation-to-curiosity progression, and Teqqellon pressure-language responses.]",
+	"next": "teqqellon_study_choice"
+  },
+  {
+	"id": "teqqellon_study_choice",
+	"type": "choice",
+	"options": [
+	  {
+		"text": "> Keep observing the core movement",
+		"next": "teqqellon_study_core"
+	  },
+	  {
+		"text": "> Keep one hand on it and test a deeper response",
+		"next": "teqqellon_touch_01"
+	  },
+	  {
+		"text": "> Back off and leave",
+		"next": "teqqellon_leave_01"
+	  }
+	]
+  },
+  {
+	"id": "teqqellon_study_core",
+	"type": "narration",
+    "text": "You watch the inner lobes tighten and release in a repeating pattern, like breath translated into liquid muscle. The Teqqellon stores your heat, your scent, and your pace. It is less a beast and more a listening organ spread across the shore. [instruction for Gemini: Intent: insert explicit observation-to-arousal transition while preserving agency and pacing. Keep language direct, procedural, and creature-focused per Wrisst style.]",
+	"next": "teqqellon_study_end_choice"
+  },
+  {
+	"id": "teqqellon_study_end_choice",
+	"type": "choice",
+	"options": [
+	  {
+		"text": "> Leave it in the tide",
+		"next": "teqqellon_leave_01"
+	  },
+	  {
+		"text": "> Move from watching to full contact",
+		"next": "teqqellon_touch_01"
+	  }
+	]
+  },
+  {
+	"id": "teqqellon_touch_01",
+	"type": "narration",
+    "text": "You press your palm into its side. The membrane yields in slow layers and rises around your wrist in a cool, deliberate wrap. It does not force you down. It waits for your next movement and answers in matching pulses. [instruction for Gemini: Intent: explicit escalation from hand contact to full-body sexual contact. Keep Teqqellon behavior as receptive/attuning, not sudden aggression. Emphasize rhythm, heat, and controlled progression.]",
+	"next": "teqqellon_touch_02"
+  },
+  {
+	"id": "teqqellon_touch_02",
+	"type": "narration",
+    "text": "When you keep contact, the Teqqellon tightens just enough to hold you in place. Fine ripples move through its body, collecting around where you touch it most. A faint numb-tingle blooms across your skin, then fades once you ease back. [instruction for Gemini: Intent: explicit penetration sequence (slow entry, adjustment, pressure feedback, escalating sensation). Keep second-person present tense and step-by-step physical clarity.]",
+	"next": "teqqellon_touch_choice"
+  },
+  {
+	"id": "teqqellon_touch_choice",
+	"type": "choice",
+	"options": [
+	  {
+		"text": "> Let it hold you a little longer",
+		"next": "teqqellon_touch_deeper"
+	  },
+	  {
+		"text": "> Pull free now",
+		"next": "teqqellon_touch_release"
+	  }
+	]
+  },
+  {
+	"id": "teqqellon_touch_deeper",
+	"type": "narration",
+    "text": "You stay still. The Teqqellon climbs a little higher along your forearm and chest, then settles there, weighty and calm. The core flares brighter for a few beats before dimming again, as if it has taken what it came for. [instruction for Gemini: Intent: explicit climax/milking aftermath beat. Maintain creature logic (core-lobe pulse, chemical response, pressure-language), then taper into release.]",
+	"next": "teqqellon_touch_release"
+  },
+  {
+	"id": "teqqellon_touch_release",
+	"type": "narration",
+    "text": "You shift your weight and the grip loosens. The membrane peels away from your skin with a wet hiss and slides back into itself. The Teqqellon remains where it is, quivering but no longer pushing for contact. [instruction for Gemini: Intent: explicit cooldown details (residue, body response, breathing, brief creature follow-through) while transitioning cleanly into post-scene choice.]",
+	"next": "teqqellon_touch_end_choice"
+  },
+  {
+	"id": "teqqellon_touch_end_choice",
+	"type": "choice",
+	"options": [
+	  {
+		"text": "> Watch it recover",
+		"next": "teqqellon_study_core"
+	  },
+	  {
+		"text": "> Leave while it stays down",
+		"next": "teqqellon_leave_01"
+	  }
+	]
+  },
+  {
+	"id": "teqqellon_leave_01",
+	"type": "narration",
+	"text": "You step away from the quivering mass and wipe brine and residue from your skin. Behind you, the Teqqellon drags itself toward the dark wash of the tide, quiet as ever.",
+	"next": "teqqellon_end"
+  },
+  {
+	"id": "teqqellon_end",
+	"type": "command",
+	"command": "@LEAVE_ENCOUNTER"
+  }
+]
