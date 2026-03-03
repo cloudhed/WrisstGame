@@ -7,6 +7,9 @@
 [resource]
 script = ExtResource("1_351ve")
 ai = ExtResource("1_sn2da")
+pre_combat_dialog_path = "res://enemies/meehp_f/meehp_f_dialog_precombat.json"
+post_combat_dialog_path = "res://enemies/meehp_f/meehp_f_dialog_postcombat.json"
+is_runnable = true
 max_health = 14
 art = ExtResource("2_sn2da")
 player_name = "Meehp"

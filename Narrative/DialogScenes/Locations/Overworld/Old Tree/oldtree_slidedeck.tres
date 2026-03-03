@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SlideDeck" load_steps=7 format=3 uid="uid://b4ukom1ncm7vs"]
+
+[ext_resource type="Script" uid="uid://la225ydmy37u" path="res://Narrative/slide_deck.gd" id="1_gewer"]
+[ext_resource type="Script" uid="uid://b7o0w4hub0eja" path="res://Narrative/slide_entry.gd" id="2_n100c"]
+[ext_resource type="PackedScene" uid="uid://d14k3htudrix" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_slides/sd_oldtree_pickfruit.tscn" id="3_ui5yj"]
+[ext_resource type="PackedScene" uid="uid://b42bkqfkcykpb" path="res://enemies/teqqellon/teqqellon_slides/sd_teqqellon_init_pen.tscn" id="3_ybyfj"]
+
+[sub_resource type="Resource" id="Resource_chtmb"]
+script = ExtResource("2_n100c")
+id = &"pick_fruit"
+scene = ExtResource("3_ui5yj")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_vxw4k"]
+script = ExtResource("2_n100c")
+id = &"teq_initial_pen"
+scene = ExtResource("3_ybyfj")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[resource]
+script = ExtResource("1_gewer")
+slides = Array[ExtResource("2_n100c")]([SubResource("Resource_chtmb"), SubResource("Resource_vxw4k")])
+metadata/_custom_type_script = "uid://la225ydmy37u"

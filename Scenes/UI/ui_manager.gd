@@ -32,6 +32,7 @@ extends Control
 
 const TILE_GRID_CARD_SCENE_PATH := "res://Scenes/TileUI/tile_grid_card.tscn"
 var _tile_grid_card_scene: PackedScene = null
+var _visible_inventory_slots: Array = []
 
 
 func _get_tile_grid_card_scene() -> PackedScene:
@@ -73,10 +74,10 @@ func _ready():
 
 func _on_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
 	print("🖱️ Item clicked at index:", index)
-	if index < 0 or index >= GameState.player_inventory.size():
+	if index < 0 or index >= _visible_inventory_slots.size():
 		return
 
-	var slot = GameState.player_inventory[index]
+	var slot = _visible_inventory_slots[index]
 	var item = slot.item
 
 	if not item or not item is EquipableItem:
@@ -113,6 +114,7 @@ func _toggle_inventory():
 
 func _refresh_inventory():
 	item_list.clear()
+	_visible_inventory_slots.clear()
 
 	for slot in GameState.player_inventory:
 		var item = slot.item
@@ -120,6 +122,8 @@ func _refresh_inventory():
 
 		if item is EquipableItem and item.hidden_from_inventory:
 			continue
+		
+		_visible_inventory_slots.append(slot)
 
 		var display_name = item.name
 		if item.is_stackable and amount > 1:
@@ -128,8 +132,10 @@ func _refresh_inventory():
 		item_list.add_item(display_name, item.icon)
 		
 		var index := item_list.item_count - 1
-		if item == GameState.equipped_weapon or item == GameState.equipped_armor or item in GameState.equipped_trinkets:
-			item_list.select(index)
+		if item is EquipableItem:
+			var equip_item := item as EquipableItem
+			if equip_item == GameState.equipped_weapon or equip_item == GameState.equipped_armor or equip_item in GameState.equipped_trinkets:
+				item_list.select(index)
 
 
 	# Update currency labels
@@ -147,14 +153,17 @@ func _on_inventory_changed(action: String, item):
 		_refresh_inventory()
 	# Also pop up a notification:
 	if action == "add":
-		notify("Got “%s”!" % item.name)
+		notify("“%s” added" % item.name)
 	else:
-		notify("Lost “%s”!" % item.name)
+		notify("“%s” removed" % item.name)
 
 # ──────────────────────────────────────────────────
 # ITEM AND EQUIPMENT #
 func _on_item_toggled(index: int, checked: bool) -> void:
-	var slot = GameState.player_inventory[index]
+	if index < 0 or index >= _visible_inventory_slots.size():
+		return
+
+	var slot = _visible_inventory_slots[index]
 	var item = slot.item
 
 	if not item or not item is EquipableItem:
@@ -189,8 +198,8 @@ func _on_item_toggled(index: int, checked: bool) -> void:
 
 
 func _uncheck_item(item: EquipableItem) -> void:
-	for i in GameState.player_inventory.size():
-		var slot = GameState.player_inventory[i]
+	for i in _visible_inventory_slots.size():
+		var slot = _visible_inventory_slots[i]
 		if slot.item == item:
 			item_list.deselect(i)
 			break

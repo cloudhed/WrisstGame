@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://dske7bq2q07gr"]
+
+[ext_resource type="Script" uid="uid://b8pjpxowjf87j" path="res://Resources/Items/inventory_item.gd" id="1_8wpaq"]
+
+[resource]
+script = ExtResource("1_8wpaq")
+name = "Strange Fruit"
+description = "A pine cone-like fruit, the size of a large pear. It gives off a scent mixture reminding you of citrus, fir needles, and a hint of fermentation."
+item_type = "consumable"
+is_stackable = true
+max_stack = 99
+hidden_from_inventory = false
+sell_price_ore = 22
+metadata/_custom_type_script = "uid://b8pjpxowjf87j"

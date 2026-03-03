@@ -1,0 +1,133 @@
+[
+  {
+    "id": "meehp_f_postcombat_intro",
+    "type": "narration",
+    "text": "The female Meehp stands over flattened grass, breathing hard through her circular maw. Her frills open and close in short bursts while her hind claws flex into the dirt. She is winded, but still tracking you with all four eyes. [Intent: HintForGemini - Dominant but winded opener]",
+    "next": "meehp_f_postcombat_choice"
+  },
+  {
+    "id": "meehp_f_postcombat_choice",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> Loot the body",
+        "next": "meehp_f_loot_01"
+      },
+      {
+        "text": "> Step into her ring and hold your ground",
+        "next": "meehp_f_approach_01"
+      },
+      {
+        "text": "> Circle wide and test her reaction",
+        "next": "meehp_f_test_branch_01"
+      },
+      {
+        "text": "> Leave the clearing",
+        "next": "meehp_f_leave_01"
+      }
+    ]
+  },
+  {
+    "id": "meehp_f_approach_01",
+    "type": "narration",
+    "text": "You step into the flattened circle and stop within arm's reach. She lowers her neck, inhales along your chest and groin, and braces one claw beside your foot without striking.",
+    "next": "meehp_f_approach_choice"
+  },
+  {
+    "id": "meehp_f_approach_choice",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> [SURRENDER] Hold still and let her mount the pace",
+        "next": "meehp_f_path_surrender_01"
+      },
+      {
+        "text": "> [CONTROL] Grip her posture and force your own rhythm",
+        "next": "meehp_f_path_control_01"
+      }
+    ]
+  },
+  {
+    "id": "meehp_f_path_surrender_01",
+    "type": "narration",
+    "text": "You keep your stance open and wait for her timing. She answers with slow pressure through thigh and hips, testing whether you can remain steady under her weight. [Intent: HintForGemini - BJ starts here]",
+    "next": "meehp_f_aftermath"
+  },
+  {
+    "id": "meehp_f_path_control_01",
+    "type": "narration",
+    "text": "You catch her movement at the shoulder-line and redirect her angle. She resists with a sharp clack of teeth, then counters by pressing harder through her hind legs to reclaim dominance. [Intent: HintForGemini - Leverage against a rock and pin down]",
+    "next": "meehp_f_aftermath"
+  },
+  {
+    "id": "meehp_f_test_branch_01",
+    "type": "narration",
+    "text": "You move along the edge of the ring. She tracks each step and mirrors your arc, frills fluttering faster whenever you cross downwind. [Intent: HintForGemini - Movement-based consent tension]",
+    "next": "meehp_f_test_choice"
+  },
+  {
+    "id": "meehp_f_test_choice",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> Cut across the center and invite contact",
+        "next": "meehp_f_test_contact_01"
+      },
+      {
+        "text": "> Keep distance and disengage",
+        "next": "meehp_f_test_disengage_01"
+      }
+    ]
+  },
+  {
+    "id": "meehp_f_test_contact_01",
+    "type": "narration",
+    "text": "You break the circle and step straight through the centerline. Her posture shifts from pursuit to claim, and she closes the gap immediately. [Intent: HintForGemini - Use secondary hole]",
+    "next": "meehp_f_aftermath"
+  },
+  {
+    "id": "meehp_f_test_disengage_01",
+    "type": "narration",
+    "text": "You keep your pace measured and peel away from the ring. She watches, frills easing down as your scent trail thins in the wind.",
+    "next": "meehp_f_aftermath"
+  },
+  {
+    "id": "meehp_f_aftermath",
+    "type": "narration",
+    "text": "The grass remains flattened in a near-perfect circle. The female Meehp settles into a low stance, still alert but no longer pressing forward. [Intent: HintForGemini - Short branch-specific cooldown]",
+    "next": "meehp_f_end"
+  },
+  {
+    "id": "meehp_f_loot_01",
+    "type": "narration",
+    "text": "You cut a single coarse fur tuft free from her flank while she stays low and watchful.",
+    "next": "meehp_f_loot_give"
+  },
+  {
+    "id": "meehp_f_loot_give",
+    "type": "command",
+    "command": "@add_item Misc/coarse_fur_tuft 1",
+    "next": "meehp_f_loot_leave_choice"
+  },
+  {
+    "id": "meehp_f_loot_leave_choice",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> Leave",
+        "next": "meehp_f_end"
+      }
+    ]
+  },
+  {
+    "id": "meehp_f_leave_01",
+    "type": "narration",
+    "text": "You back out of the clearing and let the wind erase your track.",
+    "next": "meehp_f_end"
+  },
+  {
+    "id": "meehp_f_end",
+    "type": "command",
+    "command": "@LEAVE_ENCOUNTER"
+  }
+]

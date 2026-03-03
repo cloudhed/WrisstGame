@@ -1,0 +1,27 @@
+[gd_resource type="AudioStreamInteractive" load_steps=3 format=3 uid="uid://rrf8rois8qur"]
+
+[ext_resource type="AudioStream" uid="uid://ivgoo1a8tti6" path="res://Audio/Music/MusicMapDay.ogg" id="1_4rl22"]
+[ext_resource type="AudioStream" uid="uid://brob0yk6am7qd" path="res://Audio/Music/MusicMapNight.ogg" id="2_mduub"]
+
+[resource]
+clip_count = 2
+clip_0/name = &"MusicMapDay"
+clip_0/stream = ExtResource("1_4rl22")
+clip_0/auto_advance = 0
+clip_1/name = &"MusicMapNight"
+clip_1/stream = ExtResource("2_mduub")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 11.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(1, 0): {
+"fade_beats": 11.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 0
+}
+}

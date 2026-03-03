@@ -1,0 +1,44 @@
+[
+	{
+		"id": "meehp_f_precombat_intro",
+		"type": "narration",
+		"text": "Tall grass bends in a clean circle around you. A female Meehp rises from the flattened center, larger than expected, frills opening under her jaw as she samples your scent. Her four eyes blink out of sync, then lock on you.",
+		"next": "meehp_f_precombat_choice"
+	},
+	{
+		"id": "meehp_f_precombat_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Attack",
+				"next": "meehp_f_choice_attack"
+			},
+			{
+				"text": "> Leave",
+				"next": "meehp_f_choice_leave"
+			}
+		]
+	},
+	{
+		"id": "meehp_f_choice_attack",
+		"type": "narration",
+		"text": "You plant your feet in the grass and charge before she can complete the circling posture.",
+		"next": "meehp_f_startcombat"
+	},
+	{
+		"id": "meehp_f_startcombat",
+		"type": "command",
+		"command": "@START_COMBAT"
+	},
+	{
+		"id": "meehp_f_choice_leave",
+		"type": "narration",
+		"text": "You keep your body turned sideways and back out of the ring without breaking eye contact.",
+		"next": "meehp_f_end"
+	},
+	{
+		"id": "meehp_f_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER"
+	}
+]

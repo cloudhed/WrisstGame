@@ -1,0 +1,133 @@
+[
+  {
+    "id": "murisk_postcombat_intro",
+    "type": "narration",
+	"text": "The Murisk lies half-uncoiled on wet ground, internal glow pulsing in uneven waves. It answers your breathing with a delayed, hollow mimic. It is beaten, but still listening. [Intent: HintForGemini - Post-fight stillness and echo tension]",
+    "next": "murisk_postcombat_choice"
+  },
+  {
+    "id": "murisk_postcombat_choice",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> Loot the body",
+        "next": "murisk_loot_01"
+      },
+      {
+        "text": "> Get closer and inspect the feeding seam",
+        "next": "murisk_approach_01"
+      },
+      {
+        "text": "> Test its echo response from a safe distance",
+        "next": "murisk_echo_branch_01"
+      },
+      {
+        "text": "> Leave it where it fell",
+        "next": "murisk_leave_01"
+      }
+    ]
+  },
+  {
+    "id": "murisk_approach_01",
+    "type": "narration",
+    "text": "You crouch near the thickest coil and study the seam that flexes along its underside. Condensation runs over the translucent rings. Each pulse tightens the opening, then releases it.",
+    "next": "murisk_approach_choice"
+  },
+  {
+    "id": "murisk_approach_choice",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> [SURRENDER] Stay still and let it set the rhythm",
+        "next": "murisk_path_surrender_01"
+      },
+      {
+        "text": "> [CONTROL] Pin the coil and force your pace",
+        "next": "murisk_path_control_01"
+      }
+    ]
+  },
+  {
+    "id": "murisk_path_surrender_01",
+    "type": "narration",
+	"text": "You hold position and let the Murisk align to your movement. The chamber closes in stages, precise and repetitive, as if replaying a pattern it already learned from you. [Intent: HintForGemini - Surrender branch starts here]",
+    "next": "murisk_aftermath"
+  },
+  {
+    "id": "murisk_path_control_01",
+    "type": "narration",
+	"text": "You press your weight onto the upper coil and dictate the tempo. The Murisk bucks once, then answers with heavier contractions that keep trying to pull timing back to its own cycle. [Intent: HintForGemini - Control branch and resistance]",
+    "next": "murisk_aftermath"
+  },
+  {
+    "id": "murisk_echo_branch_01",
+    "type": "narration",
+	"text": "You tap stone with your boot and listen. The Murisk answers by copying the beat through its mouth, distorted and wet, then matching your breath in short intervals. [Intent: HintForGemini - Echo-test branch starts here]",
+    "next": "murisk_echo_choice"
+  },
+  {
+    "id": "murisk_echo_choice",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> Close in when it syncs to your breathing",
+        "next": "murisk_echo_close_01"
+      },
+      {
+        "text": "> Break the rhythm and step away",
+        "next": "murisk_echo_break_01"
+      }
+    ]
+  },
+  {
+    "id": "murisk_echo_close_01",
+    "type": "narration",
+	"text": "When the echo aligns perfectly, you move into its reach. The seam opens wider, as if your sound itself unlocked the next response. [Intent: HintForGemini - Escalation after synced echo]",
+    "next": "murisk_aftermath"
+  },
+  {
+    "id": "murisk_echo_break_01",
+    "type": "narration",
+    "text": "You snap the pattern with a hard scrape of your heel and back off. The Murisk falters, loses the copied cadence, and settles into a dimmer, slower pulse.",
+    "next": "murisk_aftermath"
+  },
+  {
+    "id": "murisk_aftermath",
+    "type": "narration",
+	"text": "Water drips nearby in slow intervals. The Murisk recoils into itself, luminous segments dimming as it enters a passive digesting state. [Intent: HintForGemini - Branch-specific cooldown text]",
+    "next": "murisk_end"
+  },
+  {
+    "id": "murisk_loot_01",
+    "type": "narration",
+    "text": "You keep your distance and cut a single rigid whisker-needle free from one cooling segment.",
+    "next": "murisk_loot_give"
+  },
+  {
+    "id": "murisk_loot_give",
+    "type": "command",
+    "command": "@add_item Misc/whisker_needle 1",
+    "next": "murisk_loot_leave_choice"
+  },
+  {
+    "id": "murisk_loot_leave_choice",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> Leave",
+        "next": "murisk_end"
+      }
+    ]
+  },
+  {
+    "id": "murisk_leave_01",
+    "type": "narration",
+	"text": "You leave it where it fell and put distance between you.",
+    "next": "murisk_end"
+  },
+  {
+    "id": "murisk_end",
+    "type": "command",
+    "command": "@LEAVE_ENCOUNTER"
+  }
+]

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=6 format=3 uid="uid://bvv38ga5puwh2"]
+
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_egwhb"]
+[ext_resource type="Resource" uid="uid://b4ukom1ncm7vs" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_slidedeck.tres" id="3_dwlxe"]
+[ext_resource type="PackedScene" uid="uid://cdbav6g4qvmbp" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/OldTree_day.tscn" id="4_e1dv0"]
+[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="6_cktrt"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_mg2vs"]
+
+[resource]
+script = ExtResource("6_cktrt")
+zone_scene = ExtResource("4_e1dv0")
+music = SubResource("AudioStreamInteractive_mg2vs")
+sfx_library = {}
+dialogue_path = "res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day.json"
+characters = Array[ExtResource("1_egwhb")]([])
+slide_deck = ExtResource("3_dwlxe")
+flags_required = Array[String]([])
+flags_set_on_start = {}
+metadata/_custom_type_script = "uid://5m151tkuttgt"

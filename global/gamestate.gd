@@ -5,11 +5,11 @@ signal reputation_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
 signal fallback_equipped
 
-@export var grant_debug_starting_items: bool = false
+@export var grant_debug_starting_items: bool = true
 
 # ─────────────────────────────────────────────────────────────
 # Player identity
-var player_name: String = "MilkshakeGirl"
+var player_name: String = "MilkshakeMan"
 var player_gender: String = "male" # or "male",
 #var player_body_type: String = "curvy" # or "flat", "androgynous", etc.
 #var player_pronouns: Dictionary = {
@@ -20,7 +20,7 @@ var player_gender: String = "male" # or "male",
 
 # DEFAULT FALLBACK NAKED&CONFUSED
 const FALLBACK_ARMOR_PATH := "res://Resources/Items/Equipment/Armor/naked_armor.tres"
-const FALLBACK_WEAPON_PATH := "res://Resources/Items/Equipment/Weapons/debugger_weapon.tres" #default is unarmed_weapon.tres
+const FALLBACK_WEAPON_PATH := "res://Resources/Items/Equipment/Weapons/long_stick_weapon.tres" #default is unarmed_weapon.tres
 
 var FALLBACK_ARMOR: EquipableItem = null
 var FALLBACK_WEAPON: EquipableItem = null
@@ -49,6 +49,7 @@ var npc_reputation: Dictionary = {}
 # Returning to stuff
 var last_scene_id: String = ""
 var return_to_scene: PackedScene = null
+var pending_dialog_scene_data: DialogSceneResource = null
 
 
 # ─────────────────────────────────────────────────────────────

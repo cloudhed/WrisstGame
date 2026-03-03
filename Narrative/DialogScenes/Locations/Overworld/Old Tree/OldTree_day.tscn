@@ -1,0 +1,200 @@
+[gd_scene load_steps=28 format=3 uid="uid://cdbav6g4qvmbp"]
+
+[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_tmgjl"]
+[ext_resource type="Texture2D" uid="uid://m3cfkx4w7e7j" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day.jpg" id="2_yt8t1"]
+[ext_resource type="Texture2D" uid="uid://r2jy08s834b5" path="res://Assets/Sprites/Particles/particle_windline_fade.png" id="3_1iolv"]
+[ext_resource type="Texture2D" uid="uid://bnnrv5do1k4ix" path="res://Assets/Sprites/Particles/pine_needle.png" id="3_73x3j"]
+[ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="3_dxc7g"]
+[ext_resource type="Texture2D" uid="uid://c3oytgu2o50s4" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day_mask_color.png" id="4_0q6qt"]
+[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="4_s4w6w"]
+[ext_resource type="Material" uid="uid://die37jjm28itx" path="res://Resources/Materials/KlyftetExtWind.tres" id="4_yt8t1"]
+[ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="5_x1oo5"]
+[ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="8_utsgp"]
+[ext_resource type="Material" uid="uid://bxntkmfcekw4v" path="res://Assets/Sprites/Particles/minttärä_furrow_debug_01_particleProcessMaterial.tres" id="9_qwula"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_csgiu"]
+
+[sub_resource type="Curve" id="Curve_qwula"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.510345, 0.550776), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kdbit"]
+curve = SubResource("Curve_qwula")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ihk3t"]
+emission_shape_scale = Vector3(2.25, 0.585, 1)
+emission_shape = 3
+emission_box_extents = Vector3(74.57, 164.68, 0)
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(-100, -10, -20)
+tangential_accel_min = -15.24
+tangential_accel_max = -0.630002
+scale_min = 0.0
+scale_max = 10.0
+color = Color(0.660352, 0.921566, 0.965295, 1)
+alpha_curve = SubResource("CurveTexture_kdbit")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 5.786
+turbulence_influence_max = 0.116
+turbulence_initial_displacement_min = -17.1
+turbulence_initial_displacement_max = 11.0
+
+[sub_resource type="Curve" id="Curve_dxc7g"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.412639, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wy0i4"]
+curve = SubResource("Curve_dxc7g")
+
+[sub_resource type="Gradient" id="Gradient_0q6qt"]
+offsets = PackedFloat32Array(0, 0.506173, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_868fb"]
+gradient = SubResource("Gradient_0q6qt")
+
+[sub_resource type="Curve" id="Curve_csgiu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_utsgp"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249071, 1), 0.0, 0.0, 0, 0, Vector2(0.501859, -1), 0.0, 0.0, 0, 0, Vector2(0.754647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_2mcet"]
+curve_x = SubResource("Curve_csgiu")
+curve_y = SubResource("Curve_utsgp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qwula"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(930.82, -256, 0)
+emission_shape = 3
+emission_box_extents = Vector3(600, 380, 512)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(-10, 0, 0)
+spread = 0.0
+initial_velocity_min = 275.9
+initial_velocity_max = 375.9
+angular_velocity_min = 75.05
+angular_velocity_max = 75.05
+directional_velocity_min = 50.0
+directional_velocity_max = 100.0
+directional_velocity_curve = SubResource("CurveXYZTexture_2mcet")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_868fb")
+alpha_curve = SubResource("CurveTexture_wy0i4")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ihk3t"]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qlo6"]
+size = Vector2(29.6961, 54.9724)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmgi8"]
+size = Vector2(25.1727, 39.7445)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkbgm"]
+size = Vector2(5.21411, 5.21407)
+
+[node name="OldTreeDay" type="Node2D"]
+script = ExtResource("1_tmgjl")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_yt8t1")
+centered = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_csgiu")
+position = Vector2(1221, 514)
+scale = Vector2(6.89, 4.075)
+amount = 16
+texture = ExtResource("3_dxc7g")
+lifetime = 6.0
+preprocess = 6.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_ihk3t")
+
+[node name="Background2" type="Sprite2D" parent="."]
+texture = ExtResource("4_0q6qt")
+centered = false
+
+[node name="ParticlesNeedles" type="GPUParticles2D" parent="."]
+position = Vector2(1148, 523)
+amount = 30
+texture = ExtResource("3_73x3j")
+lifetime = 7.0
+preprocess = 4.0
+fixed_fps = 60
+trail_lifetime = 4.12
+trail_section_subdivisions = 32
+process_material = SubResource("ParticleProcessMaterial_qwula")
+
+[node name="ParticlesWind" type="GPUParticles2D" parent="."]
+position = Vector2(1148, 523)
+amount = 4
+texture = ExtResource("3_1iolv")
+lifetime = 5.0
+preprocess = 2.5
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 2.0
+trail_section_subdivisions = 32
+process_material = ExtResource("4_yt8t1")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ihk3t")
+position = Vector2(635.43, 359.455)
+scale = Vector2(6.89, 4.075)
+amount = 30
+texture = ExtResource("8_utsgp")
+lifetime = 6.0
+preprocess = 6.0
+randomness = 0.5
+process_material = ExtResource("9_qwula")
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Hotspot_LookAlley" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+script = ExtResource("4_s4w6w")
+unlocked_dialog_id = "switch_inn_alley_intro"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_LookAlley"]
+position = Vector2(2537, 501)
+scale = Vector2(14.48, 14.48)
+shape = SubResource("RectangleShape2D_2qlo6")
+debug_color = Color(0.368178, 0.615864, 0, 0.42)
+
+[node name="Hotspot_EnterInn" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+script = ExtResource("4_s4w6w")
+unlocked_dialog_id = "fade_audio"
+action_type = "enter"
+triggers_scene_change = true
+scene_selector_key = "inn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_EnterInn"]
+position = Vector2(-743, 607)
+scale = Vector2(14.48, 14.48)
+shape = SubResource("RectangleShape2D_vmgi8")
+
+[node name="Hotspot_Return" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+position = Vector2(1844, 0)
+script = ExtResource("4_s4w6w")
+unlocked_dialog_id = "leave_pre"
+
+[node name="BackArrow" type="Sprite2D" parent="Hotspots/Hotspot_Return"]
+position = Vector2(37, 37)
+texture = ExtResource("5_x1oo5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Return"]
+position = Vector2(38.2498, 38.2501)
+scale = Vector2(14.48, 14.48)
+shape = SubResource("RectangleShape2D_pkbgm")
+debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)

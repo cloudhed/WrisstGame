@@ -18,8 +18,9 @@ var distance_in_pixel: float = 0.0:
 	set(value):
 		distance_in_pixel = value
 		var steps = int(distance_in_pixel / step_size)
-		distance_label.text = "Steps since last event: %d" % steps
-		if steps >= Manager.encounter_number:
+		distance_label.text = Manager.format_distance_label(steps) if Manager.has_method("format_distance_label") else "Steps since last event: %d" % steps
+		var next_goal: int = Manager.get_next_encounter_step_goal() if Manager.has_method("get_next_encounter_step_goal") else Manager.encounter_number
+		if steps >= next_goal:
 			can_move = false
 			call_deferred("_trigger_encounter")
 

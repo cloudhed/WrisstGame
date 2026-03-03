@@ -33,6 +33,11 @@ func _ready() -> void:
 	combat_ui.visible = false
 	$IntentUI.visible = false
 
+	if override_enemy_resource == null and Manager.has_method("consume_selected_enemy_resource"):
+		var encounter_enemy: EnemyStats = Manager.consume_selected_enemy_resource()
+		if encounter_enemy != null:
+			override_enemy_resource = encounter_enemy
+
 	if char_stats == null:
 		print("⚠️ char_stats is null in _ready(). Using fallback GameState.player_stats.")
 		char_stats = GameState.player_stats
@@ -75,7 +80,7 @@ func _setup_enemy() -> void:
 		enemy = enemy_scene.instantiate() as Enemy
 		enemy_handler.add_child(enemy)
 		enemy.stats = override_enemy_resource
-		print("✅ Enemy spawned from dialog override:", enemy.name)
+		print("✅ Enemy spawned from override resource:", enemy.name)
 	else:
 		# 🧑‍💻 Fallback for debug / editor mode
 		enemy = enemy_handler.get_child(0) as Enemy

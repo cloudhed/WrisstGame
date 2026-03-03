@@ -216,6 +216,7 @@ shape = SubResource("RectangleShape2D_uwxah")
 [node name="Hotspot_Return" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 position = Vector2(1844, 0)
 script = ExtResource("7_irn2s")
+unlocked_dialog_id = "leave_nocontact_01"
 
 [node name="BackArrow" type="Sprite2D" parent="Hotspots/Hotspot_Return"]
 position = Vector2(37, 37)

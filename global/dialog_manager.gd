@@ -36,6 +36,10 @@ var flags: Dictionary = {}
 var is_dialog_active := true
 
 func _ready() -> void:
+	if GameState.pending_dialog_scene_data != null:
+		dialog_scene_data = GameState.pending_dialog_scene_data
+		GameState.pending_dialog_scene_data = null
+
 	if dialog_scene_data:
 		start_dialog(dialog_scene_data)
 	else:

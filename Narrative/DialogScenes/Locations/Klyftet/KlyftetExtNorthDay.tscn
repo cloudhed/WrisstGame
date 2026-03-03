@@ -19,7 +19,7 @@ curve = SubResource("Curve_3ay0n")
 offsets = PackedFloat32Array(0, 0.506173, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_868fb"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yh1em"]
 gradient = SubResource("Gradient_yh1em")
 
 [sub_resource type="Curve" id="Curve_y7wql"]
@@ -31,7 +31,7 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249071, 1), 0.0, 0.0, 0, 0, Vector2(0.501859, -1), 0.0, 0.0, 0, 0, Vector2(0.754647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_2mcet"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_868fb"]
 curve_x = SubResource("Curve_y7wql")
 curve_y = SubResource("Curve_rb42k")
 
@@ -50,11 +50,11 @@ angular_velocity_min = 75.05
 angular_velocity_max = 75.05
 directional_velocity_min = 50.0
 directional_velocity_max = 100.0
-directional_velocity_curve = SubResource("CurveXYZTexture_2mcet")
+directional_velocity_curve = SubResource("CurveXYZTexture_868fb")
 gravity = Vector3(0, 0, 0)
 scale_min = 0.2
 scale_max = 1.2
-color_ramp = SubResource("GradientTexture1D_868fb")
+color_ramp = SubResource("GradientTexture1D_yh1em")
 alpha_curve = SubResource("CurveTexture_wy0i4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwq1e"]

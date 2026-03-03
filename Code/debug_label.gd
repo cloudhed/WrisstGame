@@ -1,9 +1,28 @@
 extends CanvasLayer
 
 @onready var debug_label = $DebugLabel
+@onready var interact_prompt_label: Label = $InteractPromptLabel
+
+
+func _ready() -> void:
+	if not Events.overworld_interact_prompt_requested.is_connected(_on_overworld_interact_prompt_requested):
+		Events.overworld_interact_prompt_requested.connect(_on_overworld_interact_prompt_requested)
+	if not Events.overworld_interact_prompt_hidden.is_connected(_on_overworld_interact_prompt_hidden):
+		Events.overworld_interact_prompt_hidden.connect(_on_overworld_interact_prompt_hidden)
+
+	_on_overworld_interact_prompt_hidden()
 
 func set_biome(biome_name: String) -> void:
 	debug_label.text = biome_name
+
+
+func _on_overworld_interact_prompt_requested(text: String) -> void:
+	interact_prompt_label.text = "[%s] %s" % ["Interact", text]
+	interact_prompt_label.visible = true
+
+
+func _on_overworld_interact_prompt_hidden() -> void:
+	interact_prompt_label.visible = false
 	
 #func _ready():
 #	set_biome("Highest Biome: Shores\nAll Overlapping Biomes: (none)")

@@ -120,7 +120,7 @@
 	{
 		"id": "02_oldmine_debugcombat_STARTCOMBAT",
 		"type": "command",
-		"command": "@START_COMBAT res://enemies/murisk_n/murisk_n_enemy.tres",
+		"command": "@START_COMBAT res://enemies/murisk_n/murisk_n_quest_enemy.tres",
 		"clear": true,
 		"next": "02_oldmine_debugcombat_VICTORY"
 	},

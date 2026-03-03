@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://d14k3htudrix"]
+
+[ext_resource type="Texture2D" uid="uid://ji83wvldcykg" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_slides/slide_pickfruit.jpg" id="1_w6np5"]
+[ext_resource type="Texture2D" uid="uid://bmfiwpdaxwj5a" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_slides/slide_pickfruit.png" id="2_ck7nq"]
+[ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="3_p5o4x"]
+[ext_resource type="Material" uid="uid://bxntkmfcekw4v" path="res://Assets/Sprites/Particles/minttärä_furrow_debug_01_particleProcessMaterial.tres" id="4_jaxmu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2hxa2"]
+blend_mode = 1
+
+[node name="sd_oldtree_pickfruit" type="Node2D"]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_w6np5")
+centered = false
+
+[node name="ForegroundSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ck7nq")
+centered = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_2hxa2")
+position = Vector2(635.43, 359.455)
+scale = Vector2(6.89, 4.075)
+amount = 30
+texture = ExtResource("3_p5o4x")
+lifetime = 6.0
+preprocess = 6.0
+randomness = 0.5
+process_material = ExtResource("4_jaxmu")

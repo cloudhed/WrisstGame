@@ -44,3 +44,7 @@ signal combat_over_screen_requested(text: String, type: String)
 
 #Dialog Scene Changes
 signal dialog_scene_change_requested(area_key: String)
+
+# Overworld interaction prompts
+signal overworld_interact_prompt_requested(text: String)
+signal overworld_interact_prompt_hidden

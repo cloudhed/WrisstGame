@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=7 format=3 uid="uid://cyrdq8aj8yy3o"]
+
+[ext_resource type="Texture2D" uid="uid://c5ft7qjyeul53" path="res://Assets/Sprites/Items/items_armor_debugger_icon.png" id="1_jckf7"]
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="2_qarvq"]
+[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="3_dakgv"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="4_ubmrj"]
+[ext_resource type="Resource" uid="uid://c67x5vrj8db67" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Armor of the Debugger/debug_armor_block.tres" id="5_ar58d"]
+
+[sub_resource type="Resource" id="Resource_twip5"]
+script = ExtResource("3_dakgv")
+tiles = Array[ExtResource("4_ubmrj")]([ExtResource("5_ar58d"), ExtResource("5_ar58d"), ExtResource("5_ar58d"), ExtResource("5_ar58d"), ExtResource("5_ar58d"), ExtResource("5_ar58d")])
+metadata/_custom_type_script = "uid://c814t8855evro"
+
+[resource]
+script = ExtResource("2_qarvq")
+equip_type = "armor"
+hand_slot = "none"
+tile_bundle = SubResource("Resource_twip5")
+name = "Scrappy fabrics"
+icon = ExtResource("1_jckf7")
+description = "A mess of fabrics, hardened materials, and straps."
+item_type = "equipable"
+is_stackable = false
+max_stack = 99
+hidden_from_inventory = false
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

@@ -48,7 +48,7 @@
 		"id": "enter_first_time",
 		"type": "logic",
 		"check_flags": {
-			"flags": ["hasEntered"],
+			"flags": ["Entered_Klyftet"],
 			"on_success": "south_entrance",
 			"on_fail": "intro"
 		}
@@ -84,7 +84,7 @@
         "id": "debug_bubbles_04",
         "type": "narration",
         "text": "But we'll see, I guess.",
-        "next": "intro_choice_hub"
+        "next": "south_entrance_setflag"
     },
 	{
 		"id": "intro_choice_hub",
@@ -105,7 +105,7 @@
 			},
 			{
 				"text": "> [Leave]",
-				"next": "leave_nocontact"
+				"next": "leave_nocontact_01"
 			},
 			{
 				"text": "> [Look at Sign 2], Let's see if this stacks in the correct spot.",
@@ -116,6 +116,56 @@
 				"next": "look_sign"
 			}
 		]
+	},
+	{
+		"id": "south_entrance_setflag",
+		"type": "command",
+		"set_flag": "Entered_Klyftet",
+		"flag_type": "event",
+        "next": "intro_choice_hub"
+	},
+	{
+		"id": "south_entrance",
+		"type": "choice",
+		"clear": true,
+		"options": [
+			{
+				"text": "> [Go to Market]",
+				"next": "market_intro"
+			},
+			{
+				"text": "> [Go to Inn]",
+				"next": "switch_inn_exterior_intro"
+			},
+			{
+				"text": "> [Look at Sign]",
+				"next": "look_sign"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "leave_nocontact_01"
+			}
+		]
+	},
+    {
+        "id": "leave_nocontact_01",
+        "type": "narration",
+        "text": "You once again step out in the wilderness.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear": true,
+        "next": "leave_nocontact_end"
+    },
+	{
+		"id": "leave_nocontact_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+        "next": "klyftet_end"
+	},
+	{
+		"id": "klyftet_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"end": true
 	},
     {
         "id": "look_sign",

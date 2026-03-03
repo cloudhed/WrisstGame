@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://b0fnwp776xevx"]
+
+[ext_resource type="PackedScene" uid="uid://dc1oajmuh1rh6" path="res://enemies/murisk_n/murisk_n_enemy_ai.tscn" id="1_wgih2"]
+[ext_resource type="Texture2D" uid="uid://bnrjf4ra0uq0d" path="res://enemies/murisk_n/murisk_n_base.png" id="2_r3pl0"]
+[ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="3_id80c"]
+
+[resource]
+script = ExtResource("3_id80c")
+ai = ExtResource("1_wgih2")
+pre_combat_dialog_path = ""
+post_combat_dialog_path = ""
+is_runnable = false
+max_health = 22
+art = ExtResource("2_r3pl0")
+player_name = "Murisk"
+metadata/_custom_type_script = "uid://dlksefa8n68ng"

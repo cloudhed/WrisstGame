@@ -1,0 +1,173 @@
+[
+    {
+        "id": "00_play_audio",
+        "type": "command",
+        "command": "@PLAY_AMBIENCE wind res://Audio/Ambience/Klyftet/klyftet_wind.mp3",
+		"clear": true,
+        "next": "00_FLAGCHECK"
+    },
+	{
+		"id": "00_FLAGCHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["Entered_Oldtree"],
+			"on_success": "oldtree_day_returning",
+			"on_fail": "oldtree_day_firsttime"
+		}
+	},
+	{
+		"id": "oldtree_day_firsttime",
+		"type": "narration",
+		"text": "In a clearing in the forest you find an old tree, its bark gnarled and twisted with age. The air is thick with the scent of moss and earth, and the sound of creatures fills the air, slightly louder here than otherwise.",
+		"next": "choice_firsttime"
+	},
+	{
+		"id": "oldtree_day_returning",
+		"type": "narration",
+		"text": "You return to the old tree, its familiar presence grounding you. The air is thick with the scent of moss and earth, and the sound of creatures fills the air, slightly louder here than otherwise.",
+		"next": "choice_returning"
+	},
+	{
+		"id": "choice_firsttime",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Inspect the tree]",
+				"next": "firsttime_INSPECT"
+			},
+			{
+				"text": "> [Look around]",
+				"next": "firsttime_LOOKAROUND"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "leave_pre"
+			}
+		]
+	},
+	{
+		"id": "firsttime_INSPECT",
+		"type": "narration",
+		"text": "The tree's bark is rough and weathered, with deep grooves and knots that tell the story of its long life. It's pine needles are an unusual pale hue, almost gray. [nb]As you run your fingers over the surface, you notice strange fruit-like growths hanging from the branches. [p]They are somewhat pear-shaped, but with the shell of a pine cone, with a glossy sheen that catches the light. The scent of the fruit is tangy, and not terribly pleasant, reminding you of a mix of citrus, fir needles, and decay.",
+		"clear": true,
+		"next": "choice_pickfruit"
+	},
+	{
+		"id": "firsttime_LOOKAROUND",
+		"type": "narration",
+		"text": "You look around the clearing. The tree is surrounded by moss-covered stones and small shrubs. A few creatures chirp in the branches above, and the wind rustles through the leaves. A slight smell of something sour lingers in the air.",
+		"clear": true,
+		"next": "choice_firsttime"
+	},
+	{
+		"id": "choice_pickfruit",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Reach up and pick one of the fruit]",
+				"next": "pickfruit_CHECK"
+			},
+			{
+				"text": "> [Leave the fruit alone]",
+				"next": "pickfruit_nope"
+			}
+		]
+	},
+	{
+		"id": "pickfruit_CHECK",
+		"type": "logic",
+		"logic_type": "condition",
+		"condition": "HAS_ITEM Consumables/oldtree_fruit",
+		"if_true": "pickfruit_onemore",
+		"if_false": "pickfruit_SHOW"
+	},
+	{
+		"id": "pickfruit_onemore",
+		"type": "narration",
+		"text": "You grab another fruit from the tree.",
+		"next": "pickfruit_GIVE"
+	},
+	{
+		"id": "pickfruit_GIVE",
+		"type": "command",
+		"command": "@add_item Consumables/oldtree_fruit 1",
+		"clear": true,
+		"next": "pickfruit_leave_choice"
+	},
+	{
+		"id": "pickfruit_SHOW",
+		"type": "command",
+		"command": "@SHOW_SCENE pick_fruit",
+		"clear": true,
+		"next": "pickfruit_yesplease"
+	},
+	{
+		"id": "pickfruit_yesplease",
+		"type": "narration",
+		"text": "You reach up and pluck one of the strange fruits from the tree. It's surprisingly heavy in your hand, and the glossy yet rough pine cone surface feels sticky to the touch. The scent is even stronger up close, the potent mix of citrus and a strong fermented smell that makes your nose wrinkle. You wonder what it would be like to taste it.",
+		"next": "pickfruit_GIVE"
+	},
+	{
+		"id": "pickfruit_leave_choice",
+		"type": "command",
+		"command": "@HIDE_SCENE",
+		"clear": true,
+		"next": "choice_returning"
+	},
+	{
+		"id": "choice_returning",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Inspect the tree]",
+				"next": "returning_INSPECT"
+			},
+			{
+				"text": "> [Reach up and pick one of the fruit]",
+				"next": "pickfruit_CHECK"
+			},
+			{
+				"text": "> [Look around]",
+				"next": "returning_LOOKAROUND"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "leave_pre"
+			}
+		]
+	},
+	{
+		"id": "returning_INSPECT",
+		"type": "narration",
+		"text": "The tree looks much the same as you remember it. The silvery needles rustle gently in the breeze, weighed down by the fruits.",
+		"clear": true,
+		"next": "choice_returning"
+	},
+	{
+		"id": "returning_LOOKAROUND",
+		"type": "narration",
+		"text": "The tree is surrounded by a small clearing, with thick undergrowth and scattered rocks. The air is crisp and carries the scent of pine and earth.",
+		"clear": true,
+		"next": "choice_returning"
+	},
+    {
+        "id": "leave_pre",
+        "type": "narration",
+        "text": "You once again step out in the wilderness.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear": true,
+        "next": "leave_end"
+    },
+	{
+		"id": "leave_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+        "next": "oldtree_end"
+	},
+	{
+		"id": "oldtree_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"end": true
+	}
+]

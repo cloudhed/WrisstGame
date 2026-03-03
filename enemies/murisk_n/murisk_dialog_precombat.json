@@ -1,0 +1,44 @@
+[
+	{
+		"id": "murisk_precombat_intro",
+		"type": "narration",
+		"text": "A heavy, coiled Murisk lies ahead, its pale internal glow showing through wet translucent rings. It repeats a warped version of your last footstep, then goes still.",
+		"next": "murisk_precombat_choice"
+	},
+	{
+		"id": "murisk_precombat_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Attack",
+				"next": "murisk_choice_attack"
+			},
+			{
+				"text": "> Leave",
+				"next": "murisk_choice_leave"
+			}
+		]
+	},
+	{
+		"id": "murisk_choice_attack",
+		"type": "narration",
+		"text": "You brace your footing and rush the Murisk before it can coil around your legs.",
+		"next": "murisk_startcombat"
+	},
+	{
+		"id": "murisk_startcombat",
+		"type": "command",
+		"command": "@START_COMBAT"
+	},
+	{
+		"id": "murisk_choice_leave",
+		"type": "narration",
+		"text": "You step back one pace at a time and retreat before the echo-worm commits to the chase.",
+		"next": "murisk_end"
+	},
+	{
+		"id": "murisk_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER"
+	}
+]
