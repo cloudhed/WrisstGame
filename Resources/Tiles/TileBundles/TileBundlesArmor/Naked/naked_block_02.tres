@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_neddp"]
 [ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_cfj6p"]
 [ext_resource type="Script" uid="uid://bo8sicd1jp3et" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_block_02.gd" id="3_neddp"]
-[ext_resource type="AudioStream" uid="uid://nsn44qwidaih" path="res://Audio/SFX/sfx_attack_block.wav" id="4_43vri"]
+[ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="4_neddp"]
 [ext_resource type="Texture2D" uid="uid://4blmsmmfytuf" path="res://Assets/UI/icons/icon_defend_mini.png" id="5_4tdwp"]
 
 [resource]
@@ -20,5 +20,5 @@ tooltip_icon = ExtResource("5_4tdwp")
 tooltip_source_label = "Naked"
 tooltip_text = "[center]Gain [b][color=blue]{effect_amount}[/color][/b] block.[/center]"
 message_template = "[b]{source_name}[/b] raises their arms in front of their face and prepares to block for [b][color=blue]{amount}[/color][/b] damage."
-sound = ExtResource("4_43vri")
+sound = ExtResource("4_neddp")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

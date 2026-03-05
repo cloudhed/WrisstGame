@@ -266,7 +266,7 @@ alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="UIContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 10.35
+size_flags_stretch_ratio = 8.6
 
 [node name="NotificationPopup" type="Panel" parent="UIContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true

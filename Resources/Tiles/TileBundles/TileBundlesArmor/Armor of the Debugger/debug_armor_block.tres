@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_y0ww7"]
 [ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_y0ww7"]
 [ext_resource type="Script" uid="uid://ctoqb62kvcn2i" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Armor of the Debugger/debug_armor_block.gd" id="3_tbhfl"]
-[ext_resource type="AudioStream" uid="uid://cx2wcws563kk4" path="res://Audio/SFX/sfx_hit_low.wav" id="4_4dp6h"]
+[ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="4_y0ww7"]
 [ext_resource type="Texture2D" uid="uid://4blmsmmfytuf" path="res://Assets/UI/icons/icon_defend_mini.png" id="5_yjvph"]
 
 [resource]
@@ -20,5 +20,5 @@ tooltip_icon = ExtResource("5_yjvph")
 tooltip_source_label = "Armor of the Debugger"
 tooltip_text = "[center]Do [i]Thing[/i] for [b][color=red]{amount} or {effect_amount}[/color][/b] points.[/center]"
 message_template = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] points!"
-sound = ExtResource("4_4dp6h")
+sound = ExtResource("4_y0ww7")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

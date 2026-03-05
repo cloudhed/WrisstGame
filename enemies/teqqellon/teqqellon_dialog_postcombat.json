@@ -1,144 +1,144 @@
 [
-  {
-	"id": "teqqellon_postcombat",
-	"type": "narration",
-	"text": "The Teqqellon lies defeated on the ground, its teal mass quivering as the tide pulls at its edges. The segmented lilac core inside its translucent body throbs with a stressed, rapid rhythm, each lobe pulsing in sequence.",
-	"next": "teqqellon_postcombat_choice"
-  },
-  {
-	"id": "teqqellon_postcombat_choice",
-	"type": "choice",
-	"options": [
-	  {
-		"text": "> Look for anything useful",
-		"next": "teqqellon_loot_01"
-	  },
-	  {
-		"text": "> Inspect the creature more closely",
-		"next": "teqqellon_approach_01"
-	  },
-	  {
-		"text": "> Leave it",
+	{
+		"id": "teqqellon_postcombat",
+		"type": "narration",
+		"text": "The Teqqellon lies defeated on the ground, its teal mass quivering as the tide pulls at its edges. The segmented lilac core inside its translucent body throbs with a stressed, rapid rhythm, each lobe pulsing in sequence.",
+		"next": "teqqellon_postcombat_choice"
+	},
+	{
+		"id": "teqqellon_postcombat_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Look for anything useful",
+				"next": "teqqellon_loot_01"
+			},
+			{
+				"text": "> Inspect the creature more closely",
+				"next": "teqqellon_approach_01"
+			},
+			{
+				"text": "> Leave it",
+				"next": "teqqellon_leave_01"
+			}
+		]
+	},
+	{
+		"id": "teqqellon_approach_01",
+		"type": "narration",
+		"text": "You kneel in the wet sand. The creature’s surface membrane creates soft ripples as you press your thumb against it. The membrane yields as your finger enters its gelatinous body, the ripples now localized around your finger, almost like its massaging your digit. The quad-lobe core shivers and seem to sense your intrusion as it floats through the slime closer to your point of entry, but doesn't fight back.",
+		"next": "teqqellon_penetrate_choice"
+	},
+	{
+		"id": "teqqellon_penetrate_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Fuck the slime",
+				"next": "teqqellon_entry_01_SHOW"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "teqqellon_"
+			}
+		]
+	},
+	{
+		"id": "teqqellon_entry_01_SHOW",
+		"type": "command",
+		"text": "@SHOW_SCENE teq_initial_pen",
+		"clear": true,
+		"next": "teqqellon_entry_01"
+	},
+	{
+		"id": "teqqellon_entry_01",
+		"type": "narration",
+		"text": "You shed your clothes and line up your cock against the membrane. With surprising ease you slide inside. Large ripples immediately pulse out from the point of your penetration, and you feel the warm slime squeeze around your cock, gripping your shaft with a sequence of slow, pulsating waves. As you begin to fuck it, each thrust sends a pulse through the slime. Every time you pull out it creates a deep, wet noise as the slime flows back to the space you just left. The sound of sloshing slime and the slapping of your slamming hips against the surface fills the air. Feeling the climax build in your balls, you steady its' large slime body with one hand on each side as you push deeper inside.[p]The multi-lobed core seems to notice the rapid increase of your eagerness and drifts closer to your cock through the waves of your relentless thrusts. It lines up the spot where the lobes intersect agains the tip of your glans and starts to gently open up and accept your cock inside.[p]As the lobe envelops your glans and teases it with gentle pulses, you feel a twitch deep inside the mass. Something slick and thin carefully presses directly against your tip, prodding and lapping at your slit, pushing you closer to orgasm.",
+		"next": "teqqellon_control_choice"
+	},
+	{
+		"id": "teqqellon_control_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Reposition and finish inside the slime",
+				"next": "teqqellon_path_control_01"
+			},
+			{
+				"text": "> Let the probe explore",
+				"next": "teqqellon_path_surrender_01"
+			}
+		]
+	},
+	{
+		"id": "teqqellon_path_surrender_01",
+		"type": "narration",
+		"text": "You go still and let the creature take what it wants. The thin tendril slides into your urethra with unnatural ease, moving deeper into your shaft. You gasp as it reaches into your pelvis, curling around your internals with a firm, rhythmic squeeze. It is a clinical milking; the Teqqellon begins to pump your core, drawing your seed out in long, agonizingly slow pulses.",
+		"next": "teqqellon_climax_surrender"
+	},
+	{
+		"id": "teqqellon_path_control_01",
+		"type": "narration",
+		"text": "You pin the shifting teal mass into the ground, using your weight to crush its internal rhythm. When the tendril tries to find your tip, you thrust past it and instead rub against the opening of the internal core. The creature’s lobes slowly stretch and yield to your cock. The Teqqellon thrashes beneath you, its lilac core fluttering its lobes as it tries to keep up with your aggressive friction.",
+		"next": "teqqellon_path_control_02"
+	},
+	{
+		"id": "teqqellon_path_control_02",
+		"type": "narration",
+		"text": "The more you dominate the movement, the tighter the creature becomes. You drive yourself deep into the teal meat.",
+		"next": "teqqellon_climax_control"
+	},
+	{
+		"id": "teqqellon_climax_surrender",
+		"type": "narration",
+		"text": "You feel a sharp pinch as the internal tendril sucks every surge of semen directly from your testicles, its rhythm unwavering even as your body spasms. The Teqqellon glows with a satisfied, steady light as it drains your testicles dry straight from the source. When it finally withdraws, you are left feeling surprisingly empty.",
+		"next": "teqqellon_aftermath"
+	},
+	{
+		"id": "teqqellon_climax_control",
+		"type": "narration",
+		"text": "You hit your peak with a jagged groan, surging into the creature's center. The first load of seed floods the internal chamber. You hold yourself deep inside it, feeling the walls flutter in a slowing rhythm as the creature is forced to absorb your release all at once.",
+		"next": "teqqellon_aftermath"
+	},
+	{
+		"id": "teqqellon_aftermath",
+		"type": "narration",
+		"text": "The grip finally loosens. The teal membrane peels away from your skin with a wet noise, sliding back into a protective heap. A thick, opalescent residue clings to your thighs, cooling in the air. The Teqqellon remains still, its core still spasming with the occasional flutter.
 		"next": "teqqellon_leave_01"
-	  }
-	]
-  },
-  {
-	"id": "teqqellon_approach_01",
-	"type": "narration",
-	"text": "You kneel in the wet sand. The creature’s surface membrane creates soft ripples as you press your thumb against it. The membrane yields as your finger enters its gelatinous body, the ripples now localized around your finger, almost like its massaging your digit. The quad-lobe core shivers and seem to sense your intrusion as it floats through the slime closer to your point of entry, but doesn't fight back.",
-	"next": "teqqellon_penetrate_choice"
-  },
-  {
-	"id": "teqqellon_penetrate_choice",
-	"type": "choice",
-	"options": [
-	  {
-		"text": "> Fuck the slime",
-		"next": "teqqellon_entry_01_SHOW"
-	  },
-	  {
-		"text": "> [Leave]",
-		"next": "teqqellon_"
-	  }
-	]
-  },
-  {
-	"id": "teqqellon_entry_01_SHOW",
-	"type": "command",
-	"text": "@SHOW_SCENE teq_initial_pen",
-	"clear": true,
-	"next": "teqqellon_entry_01"
-  },
-  {
-	"id": "teqqellon_entry_01",
-	"type": "narration",
-	"text": "You shed your clothes and line up your cock against the membrane. With surprising ease you slide inside. Large ripples immediately pulse out from the point of your penetration, and you feel the warm slime squeeze around your cock, gripping your shaft with a sequence of slow, pulsating waves. As you begin to fuck it, each thrust sends a pulse through the slime. Every time you pull out it creates a deep, wet noise as the slime flows back to the space you just left. The sound of sloshing slime and the slapping of your slamming hips against the surface fills the air. Feeling the climax build in your balls, you steady its' large slime body with one hand on each side as you push deeper inside.[p]The multi-lobed core seems to notice the rapid increase of your eagerness and drifts closer to your cock through the waves of your relentless thrusts. It lines up the spot where the lobes intersect agains the tip of your glans and starts to gently open up and accept your cock inside.[p]As the lobe envelops your glans and teases it with gentle pulses, you feel a twitch deep inside the mass. Something slick and thin carefully presses directly against your tip, prodding and lapping at your slit, pushing you closer to orgasm",
-	"next": "teqqellon_control_choice"
-  },
-  {
-	"id": "teqqellon_control_choice",
-	"type": "choice",
-	"options": [
-	  {
-		"text": "> Reposition and finish inside the slime",
-		"next": "teqqellon_path_control_01"
-	  },
-	  {
-		"text": "> Let the probe explore",
-		"next": "teqqellon_path_surrender_01"
-	  }
-	]
-  },
-  {
-	"id": "teqqellon_path_surrender_01",
-	"type": "narration",
-	"text": "You go still and let the creature take what it wants. The thin tendril slides into your urethra with unnatural ease, moving deeper into your shaft. You gasp as it reaches into your pelvis, curling around your internals with a firm, rhythmic squeeze. It is a clinical milking; the Teqqellon begins to pump your core, drawing your seed out in long, agonizingly slow pulses.",
-	"next": "teqqellon_climax_surrender"
-  },
-  {
-	"id": "teqqellon_path_control_01",
-	"type": "narration",
-	"text": "You refuse the invasion. You pin the shifting teal mass into the sand, using your weight to crush its internal rhythm. When the tendril tries to find your tip, you thrust past it, forcing the creature’s lobes to stretch and yield to your pace. The Teqqellon thrashes beneath you, its lilac core flaring a violent purple as it tries to keep up with your aggressive friction.",
-	"next": "teqqellon_path_control_02"
-  },
-  {
-	"id": "teqqellon_path_control_02",
-	"type": "narration",
-	"text": "The more you dominate the movement, the tighter the creature becomes. It isn't 'milking' you anymore; it is reacting in a series of wet, desperate spasms. You drive yourself deep into the teal meat, ignoring the numbing fizz of the slime. You are the one invading it, forcing your heat into its cooling core until the entire mass shakes with the force of your impact.",
-	"next": "teqqellon_climax_control"
-  },
-  {
-	"id": "teqqellon_climax_surrender",
-	"type": "narration",
-	"text": "Your climax is a total harvest. The internal tendril sucks every surge of semen directly from your depths, its rhythm unwavering even as your body spasms. The Teqqellon glows with a satisfied, steady light as it drains you hollow. When it finally withdraws, you are left trembling, your tip leaking and your insides feeling strange and empty.",
-	"next": "teqqellon_aftermath"
-  },
-  {
-	"id": "teqqellon_climax_control",
-	"type": "narration",
-	"text": "You hit your peak with a jagged groan, surging into the creature's center. Your seed floods the internal chamber, and for a moment, the Teqqellon’s pressure becomes absolute as it tries to contain the heat. You hold yourself deep inside it, feeling the walls flutter in a dying rhythm as the creature is forced to absorb your release all at once. You have taken its peace and replaced it with your own fire.",
-	"next": "teqqellon_aftermath"
-  },
-  {
-	"id": "teqqellon_aftermath",
-	"type": "narration",
-	"text": "The grip finally loosens. The teal membrane peels away from your skin with a wet hiss, sliding back into a protective heap. A thick, opalescent residue clings to your thighs, cooling in the salt air. The Teqqellon remains still, its core dimming to a faint, exhausted lilac. It has taken what it needed—or what you gave it.",
-	"next": "teqqellon_end"
-  },
-  {
-	"id": "teqqellon_loot_01",
-	"type": "narration",
-	"text": "You scrape two dense slime globs into a scrap pouch before the membrane cools any further.",
-	"next": "teqqellon_loot_give"
-  },
-  {
-	"id": "teqqellon_loot_give",
-	"type": "command",
-	"command": "@add_item Misc/slime_glob 2",
-	"next": "teqqellon_loot_leave_choice"
-  },
-  {
-	"id": "teqqellon_loot_leave_choice",
-	"type": "choice",
-	"options": [
-	  {
-		"text": "> Leave",
+	},
+	{
+		"id": "teqqellon_loot_01",
+		"type": "narration",
+		"text": "You scrape two dense slime globs into a scrap pouch before the membrane cools any further.",
+		"next": "teqqellon_loot_give"
+	},
+	{
+		"id": "teqqellon_loot_give",
+		"type": "command",
+		"command": "@add_item Misc/slime_glob 2",
+		"next": "teqqellon_loot_leave_choice"
+	},
+	{
+		"id": "teqqellon_loot_leave_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Leave",
+				"next": "teqqellon_end"
+			}
+		]
+	},
+	{
+		"id": "teqqellon_leave_01",
+		"type": "narration",
+		"text": "You leave the creature to recover in its own foam, its core dimming as it sinks back into the protective sand.",
+		"command": "@HIDE_SCENE",
+		"clear": true,
 		"next": "teqqellon_end"
-	  }
-	]
-  },
-  {
-	"id": "teqqellon_leave_01",
-	"type": "narration",
-	"text": "You leave the creature to recover in the foam, its core dimming as it sinks back into the protective sand.",
-	"command": "@HIDE_SCENE",
-	"clear": true,
-	"next": "teqqellon_end"
-  },
-  {
-	"id": "teqqellon_end",
-	"type": "command",
-	"command": "@LEAVE_ENCOUNTER"
-  }
+	},
+	{
+		"id": "teqqellon_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER"
+	}
 ]

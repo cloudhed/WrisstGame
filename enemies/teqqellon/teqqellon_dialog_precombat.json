@@ -1,5 +1,12 @@
 [
 	{
+		"id": "INIT_play_audio",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg", 
+		"clear": true,
+		"next": "teqqellon_precombat"
+	},
+	{
 		"id": "teqqellon_precombat",
 		"type": "narration",
 		"text": "You see a Teqqellon rummaging around on the ground. It doesn't look like it has noticed you just yet.",
@@ -23,17 +30,19 @@
 		"id": "teqqellon_choice_attack",
 		"type": "narration",
 		"text": "You lunge at the Teqqellon.",
+		"command": "@STOP_ALL_AMBIENCE",
 		"next": "teqqellon_startcombat"
 	},
 	{
 		"id": "teqqellon_startcombat",
 		"type": "command",
-		"command": "@START_COMBAT"
+		"command": "@STOP_ALL_AMBIENCE ; @START_COMBAT"
 	},
 	{
 		"id": "teqqellon_choice_leave",
 		"type": "narration",
 		"text": "You slowly start to back away before it notices you, and leave the Teqqellon to its' business.",
+		"command": "@STOP_ALL_AMBIENCE",
 		"next": "teqqellon_end"
 	},
 	{

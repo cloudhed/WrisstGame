@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_fbqqi"]
 [ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_gnkm3"]
 [ext_resource type="Script" uid="uid://btuq1wykar8co" path="res://Characters/Player/tiles/unarmed_block_01.gd" id="3_gnkm3"]
-[ext_resource type="AudioStream" uid="uid://nsn44qwidaih" path="res://Audio/SFX/sfx_attack_block.wav" id="4_3oado"]
+[ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="4_3oado"]
 [ext_resource type="Texture2D" uid="uid://4blmsmmfytuf" path="res://Assets/UI/icons/icon_defend_mini.png" id="4_gnkm3"]
 
 [resource]

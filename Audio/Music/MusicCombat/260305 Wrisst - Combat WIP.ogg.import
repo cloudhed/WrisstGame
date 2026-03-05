@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cefjiq6gmopxb"
+path="res://.godot/imported/260305 Wrisst - Combat WIP.ogg-4de948f419478762f78c048bccda712c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/MusicCombat/260305 Wrisst - Combat WIP.ogg"
+dest_files=["res://.godot/imported/260305 Wrisst - Combat WIP.ogg-4de948f419478762f78c048bccda712c.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=2.181
+bpm=110.0
+beat_count=164
+bar_beats=4

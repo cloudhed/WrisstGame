@@ -74,18 +74,18 @@ WRITING STYLE GUIDELINES FOR NARRATIVE
 3. Sentence Structure and Flow:
    * Favor short to medium-length sentences that advance the scene step by step.
    * Present each key action or reaction clearly (e.g., “You slide your foot between its legs,” “It huffs and shifts away”).
-   * Limit long, winding sentences—brevity helps maintain a sense of immediacy and directness.
+   * Limit long, winding sentences: brevity helps maintain a sense of immediacy and directness.
 4. Level of Detail:
-   * Be explicit in describing physical actions, reactions, and sensations—particularly the tactile, visual, and auditory cues.
+   * Be explicit in describing physical actions, reactions, and sensations, particularly the tactile, visual, and auditory cues.
    * Provide detail on texture, warmth, motion, and body language (e.g., “Its skin feels rubbery under your palms,” “It thrashes in weak protest”).
-   * Avoid heavy metaphor or flowery language. Keep descriptions focused on what’s concretely happening.
+   * Avoid heavy metaphor or flowery language. Keep descriptions focused on what’s concretely happening like: “Your cock floods its’ insides with your warm cum as its’ hole clenches down on your lenght.”
 5. Pacing and Paragraphs:
    * Follow a linear, sequential narrative. Each paragraph or short sequence should depict a single continuous action or group of closely related actions.
    * Move quickly from one action to the next (e.g., noticing a creature, moving closer, touching it, reacting).
    * Reserve a new paragraph whenever the focus shifts—such as a change in who’s acting or a change in location on the creature’s body.
 6. Emphasis on Physical Interaction Over Internal Monologue:
    * Provide minimal introspection. If the character feels curiosity, excitement, or hesitation, state it briefly and then move on to the action.
-   * The style is action-first—the “why” can be hinted at, but the “what/how” is front and center.
+   * The style is action-first: the “why” can be hinted at, but the “what/how” is front and center.
 7. Example of Effective Language:
    * “You grip its flank, feeling the firm muscles twitch against your palm as the creature tries to writhe free.”
    * “It lets out a low growl, pressing its head against the sand, still too exhausted to resist.”
@@ -125,7 +125,43 @@ No sudden death. Signpost danger when the player might pick a dialogue option th
 
 Failure will be a hundred times more painful if the PC is not dead. So if you’re looking to write tragedy, try to keep the poor sap alive.
 THESE ARE EXAMPLES ONLY; DO NOT REPEAT SENTENCES FROM HERE.
+
+
+The Standard Feral Encounter Structure
+1. [Sighting Content]
+* Narrative: The initial description of the creature in its environment.
+* Mechanic: This text often checks if the player has encountered it before (knowledgeable flags). If known, it names the creature; if unknown, it describes the shape, sounds, and oddities.
+2. [Initial Approach Choice]
+* Choices: [Observe carefully], [Move closer], [Attack (Triggers Combat)], [Leave]
+* Wrisst Context: This is the first gate. Attacking throws them into the combat loop, and will lead to either loot or sex. Observing or moving closer pushes them toward the erotic loop.
+3. [Creature Reaction Content]
+* Narrative: The feral creature's instinctual reaction to your presence. It might hiss, bare its fangs, ignore you, or present itself (most likely only if you’ve had your way with a few and know “how they tick” by that point).
+4. [The Escalation / Bypass Choice]
+* Choices: [Wrestle/Grapple it to the ground (Item check)], [Soothe/Coax it (Item/Knowledge check)], [Submit / Expose yourself], [Attack]
+* Wrisst Context: Here, the player uses items (rope, a net, food, other items) or previous knowledge to force an erotic encounter, successfully bypassing combat altogether.
+5. [Pre-Sex / Positioning Content]
+* Narrative: The physical struggle or the instinctual yielding. You describe pinning the feral, the texture of its skin/fur/slime, and the exposure of its orifices. It’s highly tactile.
+6. [Sex Act Choice]
+* Choices: [Penetrate vaginally], [Penetrate anally], [Coax it to mount you], [Back away (Stop)]
+7. [Action Content: The Act]
+* Narrative: The primal, explicit, and textural description of the intercourse. This is where you use Wrisst's direct terminology (e.g., “You push the tip of your cock against the winking pink ring and push. The creature yanks against your grip and groans anxiously.”)
+8. [Pacing / Climax Choice]
+* Choices: [Keep pounding (Stat check to hold it down)], [Finish inside], [Pull out and finish]
+* Wrisst Context: Giving the player a choice on how they climax adds immense roleplay value for erotica.
+9. [Climax Content]
+* Narrative: The intense, sensory breakdown of the climax. Fluids, muscle spasms, and the feral creature's biological reaction (e.g., clamping down, going limp, or milking the player).
+10. [Aftermath Choice]
+* Choices: [Catch your breath and pull out], [Get dressed], [Clean up]
+11. [Resolution Content]
+* Narrative: The post-coital state of the creature. Their reaction is instinctual: running away, licking the player affectionately, or returning to grazing as if nothing happened.
+* Mechanic: Flags are set (e.g., pc_sexed_meehp), and if the player chose to battle and NOT sex, the player will receive loot/items here safely since they subdued the creature.
+12. [End Encounter]
+* Choice: [Leave] -> Returns to the main zone.
+
+
 ________________
+
+
 Document of Truth about the world of Wrisst. If using lore, this is where to find it. There’s also a section for Log Entries about the different types of sapient Monsters (not to be confused with the not very sapient “Creatures”, the ones written about in the Bestiary).
 * There are no humans, have never existed humans, and never will. Except for the human male Player Character (PC) who turned up somehow through a gateway. He himself does not remember this happening.
 * The (sapient) Monsters (Monsterfolk) of this world will react differently to the PC, but most are curious (and/or suspicious) since they’re used to having lots of different looking Monsters around.

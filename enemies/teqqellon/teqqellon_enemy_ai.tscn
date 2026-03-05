@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://g7lt5qykb82e" path="res://enemies/teqqellon/teqqellon_mega_block_action.gd" id="5_ewsoj"]
 [ext_resource type="AudioStream" uid="uid://cx2wcws563kk4" path="res://Audio/SFX/sfx_hit_low.wav" id="5_pe2td"]
 [ext_resource type="Texture2D" uid="uid://bj44iwbjx87nc" path="res://Assets/UI/intent/intent_block.png" id="6_lert7"]
-[ext_resource type="AudioStream" uid="uid://nsn44qwidaih" path="res://Audio/SFX/sfx_attack_block.wav" id="8_6yoig"]
+[ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="8_pe2td"]
 [ext_resource type="Texture2D" uid="uid://dhmkraw3jt45h" path="res://Assets/UI/intent/intent_special.png" id="9_pe2td"]
 [ext_resource type="AudioStream" uid="uid://c1w2fsjabnkt3" path="res://Audio/SFX/sfx_defeat.wav" id="10_7jwsv"]
 
@@ -52,7 +52,7 @@ message_template = "[b]{source_name}[/b] strikes [b]{target_name}[/b] for [b][co
 script = ExtResource("3_vcmfx")
 block = 3
 intent = SubResource("Resource_7jwsv")
-sound = ExtResource("8_6yoig")
+sound = ExtResource("8_pe2td")
 type = 1
 chance_weight = 1.0
 message_template = "[b]{source_name}[/b] hardens its gelatinous body and prepares to block for [b][color=blue]{amount}[/color][/b] damage!"
@@ -69,5 +69,5 @@ chance_weight = 0.3
 script = ExtResource("5_ewsoj")
 hp_threshold = 4
 intent = SubResource("Resource_0cdi0")
-sound = ExtResource("8_6yoig")
+sound = ExtResource("8_pe2td")
 message_template = "[b]{source_name}[/b] in its paniced state turns all of its debris attached to its back into a shield. It will block for [b][color=blue]{amount}[/color][/b] damage!"
