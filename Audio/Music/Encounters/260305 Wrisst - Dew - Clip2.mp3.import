@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxpuce626iier"
+path="res://.godot/imported/260305 Wrisst - Dew - Clip2.mp3-10c11bf957d82f9a1d3fd53d2adae168.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/Encounters/260305 Wrisst - Dew - Clip2.mp3"
+dest_files=["res://.godot/imported/260305 Wrisst - Dew - Clip2.mp3-10c11bf957d82f9a1d3fd53d2adae168.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=110.0
+beat_count=32
+bar_beats=4

@@ -1,16 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://d2pnx4ne5hfgc"]
+[gd_scene load_steps=27 format=3 uid="uid://d2pnx4ne5hfgc"]
 
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scenes/Combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Code/CombatCode/combat_visual.gd" id="1_yt1oa"]
-[ext_resource type="Texture2D" uid="uid://dh50otyhtmjfi" path="res://Assets/Backgrounds/CombatBGForest.png" id="3_avwh6"]
 [ext_resource type="AudioStream" uid="uid://cefjiq6gmopxb" path="res://Audio/Music/MusicCombat/260305 Wrisst - Combat WIP.ogg" id="3_r5ubg"]
 [ext_resource type="Script" uid="uid://cf244xen40ftr" path="res://Code/CombatCode/combat_button_run.gd" id="3_ubpar"]
-[ext_resource type="Texture2D" uid="uid://dgwaqwpusa57w" path="res://Assets/Backgrounds/CombatBGDesert.jpg" id="4_2n3pb"]
-[ext_resource type="Texture2D" uid="uid://cscyo4o42qif" path="res://Assets/Backgrounds/CombatBGFields_placeholder2.jpg" id="4_5g3cp"]
-[ext_resource type="Texture2D" uid="uid://csm7crxa56lxf" path="res://Assets/Backgrounds/CombatBGPlains.png" id="4_twsak"]
 [ext_resource type="PackedScene" uid="uid://bsk688e4ksiee" path="res://overworldNav.tscn" id="4_ut0kg"]
-[ext_resource type="Texture2D" uid="uid://dgifx3c7w4b5s" path="res://Assets/Backgrounds/CombatBGMountains.png" id="5_w6tjk"]
-[ext_resource type="Texture2D" uid="uid://c56heifv18ir" path="res://Assets/Backgrounds/CombatBGShores.png" id="6_xisnc"]
+[ext_resource type="Texture2D" uid="uid://b0er7kk7lowx1" path="res://Assets/Backgrounds/CombatBGDefault_placeholder.jpg" id="5_umvpd"]
 [ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="7_f8ge6"]
 [ext_resource type="PackedScene" uid="uid://ckpnn4op5ijoc" path="res://Scenes/Enemy/enemy.tscn" id="9_tmuf1"]
 [ext_resource type="PackedScene" uid="uid://f536kff4iqbq" path="res://Scenes/TileTargetSelector/tile_target_selector.tscn" id="11_nar6d"]
@@ -21,7 +16,7 @@
 [ext_resource type="Resource" uid="uid://cnwrtxw8tktmj" path="res://Characters/Player/player.tres" id="14_5kjvk"]
 [ext_resource type="Script" uid="uid://bvman73aw84wc" path="res://Scenes/Player/player_handler.gd" id="14_r5ubg"]
 [ext_resource type="Script" uid="uid://bku5mw8nd76qj" path="res://Scenes/UI/hand.gd" id="15_50454"]
-[ext_resource type="Resource" uid="uid://6snc8lofjfxy" path="res://enemies/meehp_f/meehp_f_enemy.tres" id="15_r5ubg"]
+[ext_resource type="Resource" uid="uid://cqg2t3bu607tf" path="res://enemies/teqqellon/teqqellon_enemy.tres" id="15_r5ubg"]
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="16_ceo1n"]
 [ext_resource type="PackedScene" uid="uid://coqflun3u7db" path="res://Scenes/UI/stamina_ui.tscn" id="22_3cqtn"]
 [ext_resource type="PackedScene" uid="uid://qvnuroju8vc0" path="res://Scenes/UI/stats_ui.tscn" id="22_5g3cp"]
@@ -46,11 +41,11 @@ auto_leave_on_victory = false
 
 [node name="CombatVisual" type="Node2D" parent="."]
 script = ExtResource("1_yt1oa")
-default_bg = ExtResource("4_2n3pb")
-forest_bg = ExtResource("3_avwh6")
-plains_bg = ExtResource("4_twsak")
-mountains_bg = ExtResource("5_w6tjk")
-shores_bg = ExtResource("6_xisnc")
+default_bg = ExtResource("5_umvpd")
+forest_bg = ExtResource("5_umvpd")
+plains_bg = ExtResource("5_umvpd")
+mountains_bg = ExtResource("5_umvpd")
+shores_bg = ExtResource("5_umvpd")
 gradient = ExtResource("7_f8ge6")
 metadata/_edit_lock_ = true
 
@@ -58,7 +53,7 @@ metadata/_edit_lock_ = true
 
 [node name="CombatBGSprite" type="Sprite2D" parent="CombatVisual"]
 z_index = -1
-texture = ExtResource("4_5g3cp")
+texture = ExtResource("5_umvpd")
 centered = false
 
 [node name="TextureRect" type="TextureRect" parent="."]

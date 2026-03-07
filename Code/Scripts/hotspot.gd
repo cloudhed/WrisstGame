@@ -13,7 +13,7 @@ class_name Hotspot
 @export var give_item: InventoryItem
 @export var set_flag_on_click: String = ""
 @export var disable_after_flag_set: bool = false
-@export_enum("quest", "dialog", "event") var flag_type: String = "quest"
+@export_enum("quest", "dialog", "event", "knowledge", "sex", "temp") var flag_type: String = "quest"
 @export var always_give_item: bool = false
 
 signal hotspot_triggered
@@ -108,6 +108,10 @@ func get_flag_dict() -> Dictionary:
 			return GameState.dialog_flags
 		"event":
 			return GameState.event_flags
+		"knowledge":
+			return GameState.knowledge_flags
+		"sex":
+			return GameState.sex_flags
 		"temp":
 			return GameState.temp_flags
 		_:

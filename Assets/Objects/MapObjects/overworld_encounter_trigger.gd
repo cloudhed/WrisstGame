@@ -178,6 +178,8 @@ func _build_context() -> Dictionary:
 		"quest_flags": GameState.quest_flags,
 		"dialog_flags": GameState.dialog_flags,
 		"event_flags": GameState.event_flags,
+		"knowledge_flags": GameState.knowledge_flags,
+		"sex_flags": GameState.sex_flags,
 		"temp_flags": GameState.temp_flags,
 	}
 
@@ -235,11 +237,15 @@ func _has_any_flag(flag_name: String, context: Dictionary) -> bool:
 	var q: Dictionary = context.get("quest_flags", {})
 	var d: Dictionary = context.get("dialog_flags", {})
 	var e: Dictionary = context.get("event_flags", {})
+	var k: Dictionary = context.get("knowledge_flags", {})
+	var s: Dictionary = context.get("sex_flags", {})
 	var t: Dictionary = context.get("temp_flags", {})
 
 	return bool(
 		q.get(flag_name, false)
 		or d.get(flag_name, false)
 		or e.get(flag_name, false)
+		or k.get(flag_name, false)
+		or s.get(flag_name, false)
 		or t.get(flag_name, false)
 	)

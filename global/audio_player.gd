@@ -5,6 +5,7 @@ const MIN_DB: float = -60.0
 const MAX_DB: float = 0.0
 
 var _layer_players: Dictionary = {}
+var _last_music_player: AudioStreamPlayer = null
 
 func play_layer(tag: String, stream: AudioStream, fade_in: bool = true) -> void:
 	if not stream or tag.is_empty():
@@ -85,9 +86,11 @@ func play(stream: AudioStream, single: bool = true) -> void:
 		player.stream = stream
 		player.volume_db = MAX_DB
 		player.play()
+		_last_music_player = player
 
 
 func stop() -> void:
+	_last_music_player = null
 	stop_all(true)
 
 
@@ -97,3 +100,27 @@ func fade_out(duration: float = 2.0) -> void:
 			var tween: Tween = player.create_tween()
 			tween.tween_property(player, "volume_db", -60.0, duration)
 			tween.tween_callback(func(): player.stop())
+
+
+func set_music_clip(clip: Variant) -> bool:
+	if _last_music_player == null or not is_instance_valid(_last_music_player):
+		print("⚠️ MUSIC_CLIP ignored: no active music player.")
+		return false
+
+	if not _last_music_player.playing:
+		print("⚠️ MUSIC_CLIP ignored: active music player is not playing.")
+		return false
+
+	if not (_last_music_player.stream is AudioStreamInteractive):
+		print("⚠️ MUSIC_CLIP ignored: current stream is not AudioStreamInteractive.")
+		return false
+
+	# Godot AudioStreamPlayer supports indexed property switching for interactive streams.
+	# Accept both integer and string clip selectors.
+	if typeof(clip) == TYPE_STRING and (clip as String).is_valid_int():
+		_last_music_player["parameters/switch_to_clip"] = (clip as String).to_int()
+	else:
+		_last_music_player["parameters/switch_to_clip"] = clip
+
+	print("🎵 MUSIC_CLIP switched to:", clip)
+	return true

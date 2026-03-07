@@ -243,8 +243,24 @@ func process_entry_type(entry: Dictionary) -> void:
 			chunk_index = 0
 			begin_entry_chunks()
 		"choice":
-			current_choice_entry = entry
-			choice_box.show_choices(entry.options)
+			var filtered_options: Array = _filter_choice_options(entry.get("options", []))
+			current_choice_entry = entry.duplicate(true)
+			current_choice_entry["options"] = filtered_options
+
+			if filtered_options.is_empty():
+				push_warning("⚠️ Choice entry has no visible options after show/hide filtering.")
+				if entry.has("next"):
+					var next_id: String = entry["next"]
+					var next_index: int = _find_entry_index_by_id(next_id)
+					if next_index != -1:
+						current_index = next_index
+						show_next_line()
+						return
+				current_index += 1
+				show_next_line()
+				return
+
+			choice_box.show_choices(filtered_options)
 			choice_box.show()
 			waiting_for_input = false
 		"logic":
@@ -389,6 +405,10 @@ func apply_flags(entry: Dictionary) -> void:
 					GameState.set_flag(GameState.dialog_flags, flag_name)
 				"event":
 					GameState.set_flag(GameState.event_flags, flag_name)
+				"knowledge":
+					GameState.set_flag(GameState.knowledge_flags, flag_name)
+				"sex":
+					GameState.set_flag(GameState.sex_flags, flag_name)
 				"temp":
 					GameState.set_flag(GameState.temp_flags, flag_name)
 				_:
@@ -411,6 +431,173 @@ func apply_flags(entry: Dictionary) -> void:
 			GameState.clear_flag(GameState.dialog_flags, flag_name)
 			GameState.clear_flag(GameState.temp_flags, flag_name)
 			GameState.clear_flag(GameState.event_flags, flag_name)
+			GameState.clear_flag(GameState.knowledge_flags, flag_name)
+			GameState.clear_flag(GameState.sex_flags, flag_name)
+
+
+func _filter_choice_options(options: Array) -> Array:
+	var visible: Array = []
+	for option in options:
+		if typeof(option) != TYPE_DICTIONARY:
+			continue
+
+		var opt: Dictionary = option
+		var is_visible: bool = true
+
+		if opt.has("show_if"):
+			is_visible = is_visible and _evaluate_option_condition(opt["show_if"])
+
+		if opt.has("hide_if"):
+			is_visible = is_visible and not _evaluate_option_condition(opt["hide_if"])
+
+		if is_visible:
+			visible.append(opt)
+
+	return visible
+
+
+func _evaluate_option_condition(condition: Variant) -> bool:
+	if typeof(condition) == TYPE_STRING:
+		return _evaluate_condition_atom(condition)
+
+	if typeof(condition) != TYPE_DICTIONARY:
+		return false
+
+	var dict: Dictionary = condition
+
+	# all_of: every nested condition must pass
+	if dict.has("all_of") and typeof(dict["all_of"]) == TYPE_ARRAY:
+		for nested in dict["all_of"]:
+			if not _evaluate_option_condition(nested):
+				return false
+
+	# any_of: at least one nested condition must pass
+	if dict.has("any_of") and typeof(dict["any_of"]) == TYPE_ARRAY:
+		var any_match := false
+		for nested in dict["any_of"]:
+			if _evaluate_option_condition(nested):
+				any_match = true
+				break
+		if not any_match:
+			return false
+
+	for key in dict.keys():
+		if key == "all_of" or key == "any_of":
+			continue
+		if not _evaluate_condition_key_value(str(key), dict[key]):
+			return false
+
+	return true
+
+
+func _evaluate_condition_key_value(key: String, value: Variant) -> bool:
+	match key:
+		"player_gender":
+			return str(GameState.player_gender).to_lower() == str(value).to_lower()
+		"has_flag":
+			return _all_flags_set(_to_string_array(value))
+		"has_any_flag":
+			return _any_flag_set(_to_string_array(value))
+		"has_item":
+			return _has_all_items(_to_string_array(value))
+		"has_any_item":
+			return _has_any_item(_to_string_array(value))
+		_:
+			push_warning("⚠️ Unknown choice condition key: %s" % key)
+			return false
+
+
+func _evaluate_condition_atom(atom: String) -> bool:
+	# Optional shorthand support, examples:
+	# "show_if.has_item Misc/rope"
+	# "has_flag no_beast_sex"
+	# "player_gender male"
+	var normalized: String = atom.strip_edges()
+	if normalized.begins_with("show_if."):
+		normalized = normalized.trim_prefix("show_if.")
+	if normalized.begins_with("hide_if."):
+		normalized = normalized.trim_prefix("hide_if.")
+
+	var parts: PackedStringArray = normalized.split(" ", false)
+	if parts.size() < 2:
+		return false
+
+	var key: String = parts[0]
+	var raw_value: String = " ".join(parts.slice(1))
+	return _evaluate_condition_key_value(key, raw_value)
+
+
+func _to_string_array(value: Variant) -> Array[String]:
+	var out: Array[String] = []
+	if typeof(value) == TYPE_STRING:
+		out.append(value)
+	elif typeof(value) == TYPE_ARRAY:
+		for v in value:
+			if typeof(v) == TYPE_STRING:
+				out.append(v)
+	return out
+
+
+func _all_flags_set(flags_to_check: Array[String]) -> bool:
+	if flags_to_check.is_empty():
+		return false
+
+	for flag_name in flags_to_check:
+		if not (
+			GameState.quest_flags.get(flag_name, false)
+			or GameState.dialog_flags.get(flag_name, false)
+			or GameState.event_flags.get(flag_name, false)
+			or GameState.knowledge_flags.get(flag_name, false)
+			or GameState.sex_flags.get(flag_name, false)
+			or GameState.temp_flags.get(flag_name, false)
+		):
+			return false
+	return true
+
+
+func _any_flag_set(flags_to_check: Array[String]) -> bool:
+	for flag_name in flags_to_check:
+		if (
+			GameState.quest_flags.get(flag_name, false)
+			or GameState.dialog_flags.get(flag_name, false)
+			or GameState.event_flags.get(flag_name, false)
+			or GameState.knowledge_flags.get(flag_name, false)
+			or GameState.sex_flags.get(flag_name, false)
+			or GameState.temp_flags.get(flag_name, false)
+		):
+			return true
+	return false
+
+
+func _has_all_items(item_paths: Array[String]) -> bool:
+	if item_paths.is_empty():
+		return false
+
+	for item_path in item_paths:
+		if not _has_item_by_key(item_path):
+			return false
+	return true
+
+
+func _has_any_item(item_paths: Array[String]) -> bool:
+	for item_path in item_paths:
+		if _has_item_by_key(item_path):
+			return true
+	return false
+
+
+func _has_item_by_key(item_key: String) -> bool:
+	var item: InventoryItem = null
+	if item_key.begins_with("res://"):
+		item = load(item_key) as InventoryItem
+	else:
+		item = load("res://Resources/Items/%s.tres" % item_key) as InventoryItem
+
+	if item == null:
+		push_warning("⚠️ Could not load InventoryItem for choice condition: %s" % item_key)
+		return false
+
+	return GameState.has_item(item)
 
 
 func choose(index: int) -> void:

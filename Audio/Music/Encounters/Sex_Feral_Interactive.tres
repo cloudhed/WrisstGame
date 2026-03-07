@@ -1,0 +1,53 @@
+[gd_resource type="AudioStreamInteractive" load_steps=5 format=3 uid="uid://usnd0kkepdv3"]
+
+[ext_resource type="AudioStream" uid="uid://7upuby0fil1g" path="res://Audio/Music/Encounters/260305 Wrisst - Dew - Clip1.mp3" id="1_ql7vy"]
+[ext_resource type="AudioStream" uid="uid://bxpuce626iier" path="res://Audio/Music/Encounters/260305 Wrisst - Dew - Clip2.mp3" id="2_2s8fc"]
+[ext_resource type="AudioStream" uid="uid://ct5nnnrcg0jim" path="res://Audio/Music/Encounters/260305 Wrisst - Dew - Clip3.mp3" id="3_311u0"]
+[ext_resource type="AudioStream" uid="uid://b1p8ar8hw7vlu" path="res://Audio/Music/Encounters/260305 Wrisst - Dew - Clip4.mp3" id="4_xe2lh"]
+
+[resource]
+clip_count = 4
+clip_0/name = &"clip01"
+clip_0/stream = ExtResource("1_ql7vy")
+clip_0/auto_advance = 0
+clip_1/name = &"clip02"
+clip_1/stream = ExtResource("2_2s8fc")
+clip_1/auto_advance = 0
+clip_2/name = &"clip03"
+clip_2/stream = ExtResource("3_311u0")
+clip_2/auto_advance = 0
+clip_3/name = &"clip04"
+clip_3/stream = ExtResource("4_xe2lh")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(0, 3): {
+"fade_beats": 0.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 2): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(1, 3): {
+"fade_beats": 0.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(2, 3): {
+"fade_beats": 0.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 1
+}
+}

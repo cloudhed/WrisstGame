@@ -1,0 +1,230 @@
+[
+  {
+    "_comment": "Reference demo for Wrisst dialog system. Uses teqqellon flavor text and shows every currently supported command/use-case from DialogCommandExecutor + dialog flow features."
+  },
+
+  {
+    "_comment": "Init: clear UI, start music/ambience, show portrait and static slideshow. Multiple commands can be chained with ';'.",
+    "id": "ref_init",
+    "type": "command",
+    "clear": true,
+    "set_flag": ["teq_ref_started"],
+    "flag_type": "temp",
+    "command": "@CLEAR_ALL ; @PLAY_MUSIC res://Audio/Music/Klyftet/music_klyftet_exterior.mp3 ; @PLAY_AMBIENCE shore res://Audio/sound_ambience_overworld_day.ogg ; @SHOW_PORTRAIT neutral ; @SHOW_SLIDESHOW res://Assets/Backgrounds/debug_bg.png",
+    "next": "ref_intro"
+  },
+
+  {
+    "_comment": "Inline command example: parser supports [@COMMAND] inside text.",
+    "id": "ref_intro",
+    "type": "narration",
+    "text": "A Teqqellon shifts in the tidepool. [@SHOW_EXTRA alert] This file is the command reference.",
+    "next": "ref_portrait_cleanup"
+  },
+
+  {
+    "_comment": "Hide portrait/extra and static slideshow.",
+    "id": "ref_portrait_cleanup",
+    "type": "command",
+    "command": "@HIDE_EXTRA ; @HIDE_PORTRAIT ; @HIDE_SLIDESHOW",
+    "next": "ref_scene_slides"
+  },
+
+  {
+    "_comment": "Dynamic scene-slide commands (requires slide_deck entries in context).",
+    "id": "ref_scene_slides",
+    "type": "command",
+    "command": "@SHOW_SCENE teqqellon_shore ; @HIDE_SCENE",
+    "next": "ref_music_interactive"
+  },
+
+  {
+    "_comment": "AudioStreamInteractive flow: PLAY_MUSIC can load .tres interactive stream, MUSIC_CLIP switches clip index/name.",
+    "id": "ref_music_interactive",
+    "type": "command",
+    "command": "@PLAY_MUSIC res://Audio/Music/Teqqellon/teqqellon_interactive.tres ; @MUSIC_CLIP 1",
+    "next": "ref_music_controls"
+  },
+
+  {
+    "_comment": "Music/ambience stop/fade controls.",
+    "id": "ref_music_controls",
+    "type": "command",
+    "command": "@FADE_MUSIC_OUT ; @STOP_MUSIC ; @STOP_AMBIENCE shore ; @STOP_ALL_AMBIENCE",
+    "next": "ref_currency_and_items"
+  },
+
+  {
+    "_comment": "GameState money/item/reputation commands handled by _handle_game_state_command.",
+    "id": "ref_currency_and_items",
+    "type": "command",
+    "command": "@add_ore 8 ; @remove_ore 1 ; @add_crowns 2 ; @remove_crowns 1 ; @add_drots 1 ; @remove_drots 1 ; @add_item Misc/slime_glob 2 ; @remove_item Misc/slime_glob 1 ; @add_reputation bitalgut 3 ; @remove_reputation bitalgut 1",
+    "next": "ref_set_scene_and_location"
+  },
+
+  {
+    "_comment": "Scene/location helpers. CHANGE_LOCATION and LOCATION_CHANGE are aliases.",
+    "id": "ref_set_scene_and_location",
+    "type": "command",
+    "command": "@SET_SCENE_FROM teqqellon_reference_scene ; @CHANGE_LOCATION overworld ; @LOCATION_CHANGE klyftet",
+    "next": "ref_show_zone"
+  },
+
+  {
+    "_comment": "SHOW_ZONE loads from: res://Narrative/DialogScenes/Locations/<path>.tscn",
+    "id": "ref_show_zone",
+    "type": "command",
+    "command": "@SHOW_ZONE Klyftet/KlyftetExtInnDay",
+    "next": "ref_logic_flags"
+  },
+
+  {
+    "_comment": "Logic type check_flags: branches by combined flag state.",
+    "id": "ref_logic_flags",
+    "type": "logic",
+    "logic_type": "check_flags",
+    "check_flags": {
+      "flags": ["teq_ref_started"],
+      "on_success": "ref_choice_filters",
+      "on_fail": "ref_flag_fail"
+    }
+  },
+
+  {
+    "_comment": "If check_flags fails.",
+    "id": "ref_flag_fail",
+    "type": "narration",
+    "text": "Reference flag check failed.",
+    "end": true
+  },
+
+  {
+    "_comment": "Choice option filters: show_if/hide_if for gender/flags/items, including all_of/any_of.",
+    "id": "ref_choice_filters",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> Male-only option",
+        "next": "ref_choice_result",
+        "show_if": { "player_gender": "male" }
+      },
+      {
+        "text": "> Female-only option",
+        "next": "ref_choice_result",
+        "show_if": { "player_gender": "female" }
+      },
+      {
+        "text": "> Needs flag + item",
+        "next": "ref_choice_result",
+        "show_if": {
+          "all_of": [
+            { "has_flag": "teq_ref_started" },
+            { "has_item": "Misc/slime_glob" }
+          ]
+        },
+        "hide_if": { "has_flag": "no_beast_sex" }
+      },
+      {
+        "text": "> Any-flag gate",
+        "next": "ref_choice_result",
+        "show_if": { "has_any_flag": ["teq_ref_started", "teq_ref_other"] }
+      },
+      {
+        "text": "> Any-item gate",
+        "next": "ref_choice_result",
+        "show_if": { "has_any_item": ["Misc/slime_glob", "Consumables/oldtree_fruit"] }
+      },
+      {
+        "text": "> Shorthand string condition",
+        "next": "ref_choice_result",
+        "show_if": "show_if.has_flag teq_ref_started"
+      },
+      {
+        "text": "> Leave",
+        "next": "ref_condition_stat"
+      }
+    ]
+  },
+
+  {
+    "_comment": "Choice result branch.",
+    "id": "ref_choice_result",
+    "type": "narration",
+    "text": "You picked a filtered option.",
+    "next": "ref_condition_stat"
+  },
+
+  {
+    "_comment": "Logic type condition (dictionary stat check).",
+    "id": "ref_condition_stat",
+    "type": "logic",
+    "logic_type": "condition",
+    "condition": {
+      "stat": "player_gender",
+      "is": "male",
+      "on_success": "ref_condition_currency",
+      "on_fail": "ref_condition_currency"
+    }
+  },
+
+  {
+    "_comment": "Logic type condition (dictionary currency check, optional deduct).",
+    "id": "ref_condition_currency",
+    "type": "logic",
+    "logic_type": "condition",
+    "condition": {
+      "currency": "ore",
+      "amount": 1,
+      "deduct": false,
+      "on_success": "ref_condition_string_has_item",
+      "on_fail": "ref_condition_string_has_item"
+    }
+  },
+
+  {
+    "_comment": "Logic type condition (string HAS_ITEM).",
+    "id": "ref_condition_string_has_item",
+    "type": "logic",
+    "logic_type": "condition",
+    "condition": "HAS_ITEM Misc/slime_glob",
+    "if_true": "ref_condition_string_rep",
+    "if_false": "ref_condition_string_rep"
+  },
+
+  {
+    "_comment": "Logic type condition (string HAS_REPUTATION).",
+    "id": "ref_condition_string_rep",
+    "type": "logic",
+    "logic_type": "condition",
+    "condition": "HAS_REPUTATION bitalgut 1",
+    "if_true": "ref_check_temp_flags",
+    "if_false": "ref_check_temp_flags"
+  },
+
+  {
+    "_comment": "check_temp_flags_multi entry type.",
+    "id": "ref_check_temp_flags",
+    "type": "check_temp_flags_multi",
+    "check_temp_flags": {
+      "teq_ref_started": "ref_combat_and_exit",
+      "default": "ref_combat_and_exit"
+    }
+  },
+
+  {
+    "_comment": "Combat/exit commands. START_COMBAT commonly used without explicit path in overlay flow.",
+    "id": "ref_combat_and_exit",
+    "type": "command",
+    "command": "@START_COMBAT ; @LEAVE_ENCOUNTER",
+    "clear_flag": ["teq_ref_started"],
+    "next": "ref_end"
+  },
+
+  {
+    "_comment": "End marker.",
+    "id": "ref_end",
+    "type": "narration",
+    "text": "End of command reference.",
+    "end": true
+  }
+]

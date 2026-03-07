@@ -2,9 +2,21 @@
 	{
 		"id": "INIT_play_audio",
 		"type": "command",
-		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg", 
+		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg",
+		"set_flag": "knows_teqqellon",
+		"flag_type": "knowledge",		
 		"clear": true,
 		"next": "teqqellon_precombat"
+	},
+
+	{
+		"id": "INIT_knowledge_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_teqqellon"],
+			"on_success": "teqqellon_precombat",
+			"on_fail": "teqqellon_precombat_unknown"
+		}
 	},
 	{
 		"id": "teqqellon_precombat",
@@ -17,17 +29,30 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Attack",
-				"next": "teqqellon_choice_attack"
+				"text": "> Observe",
+				"next": "teqqellon_observe",
 			},
 			{
-				"text": "> Leave",
-				"next": "teqqellon_choice_leave"
+				"text": "> Attack",
+				"next": "teqqellon_attack"
+			},
+			{
+				"text": "> Approach slowly",
+				"next": "teqqellon_smoothie",
+			},
+			{
+				"text": "> Give strange fruit",
+				"next": "teqqellon_choice_smoothie",
+				"show_if": { "has_item": "Consumables/oldtree_fruit" }
+			},
+			{
+				"text": "> Back away",
+				"next": "teqqellon_leave"
 			}
 		]
 	},
 	{
-		"id": "teqqellon_choice_attack",
+		"id": "teqqellon_attack",
 		"type": "narration",
 		"text": "You lunge at the Teqqellon.",
 		"command": "@STOP_ALL_AMBIENCE",
@@ -39,7 +64,7 @@
 		"command": "@STOP_ALL_AMBIENCE ; @START_COMBAT"
 	},
 	{
-		"id": "teqqellon_choice_leave",
+		"id": "teqqellon_leave",
 		"type": "narration",
 		"text": "You slowly start to back away before it notices you, and leave the Teqqellon to its' business.",
 		"command": "@STOP_ALL_AMBIENCE",
@@ -50,11 +75,5 @@
 		"type": "command",
 		"command": "@LEAVE_ENCOUNTER",
 		"next": "teqqellon_end_shouldtshowup"
-	},
-	{
-		"id": "teqqellon_end_shouldtshowup",
-		"type": "narration",
-		"text": "You slowly start to back away before it notices you, and leave the Teqqellon to its' business.",
-		"end": true
 	}
 ]

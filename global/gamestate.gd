@@ -41,6 +41,8 @@ var player_inventory: Array = []
 var quest_flags: Dictionary = {}
 var dialog_flags: Dictionary = {}
 var event_flags: Dictionary = {}
+var knowledge_flags: Dictionary = {}
+var sex_flags: Dictionary = {}
 var temp_flags: Dictionary = {}
 
 # NPC relationship points

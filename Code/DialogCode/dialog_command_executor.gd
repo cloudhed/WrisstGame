@@ -38,6 +38,8 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_show_zone(context)
 		"PLAY_MUSIC":
 			_play_music(context)
+		"MUSIC_CLIP":
+			_set_music_clip(context)
 		"STOP_MUSIC":
 			_stop_music()
 		"FADE_MUSIC_OUT":
@@ -471,6 +473,21 @@ func _play_music(context: Dictionary) -> void:
 		MusicPlayer.play(stream)
 	else:
 		print("❌ Failed to load music at:", path)
+
+
+func _set_music_clip(context: Dictionary) -> void:
+	var raw_cmd: String = context.get("raw_command", "")
+	var parts: PackedStringArray = raw_cmd.split(" ", false)
+	if parts.size() < 2:
+		print("❌ MUSIC_CLIP expects: @MUSIC_CLIP <clip_index_or_name>")
+		return
+
+	var clip_selector: Variant = parts[1]
+	if (clip_selector as String).is_valid_int():
+		clip_selector = (clip_selector as String).to_int()
+
+	if not MusicPlayer.set_music_clip(clip_selector):
+		print("⚠️ MUSIC_CLIP could not be applied:", clip_selector)
 
 
 func _stop_music() -> void:

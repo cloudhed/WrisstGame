@@ -27,6 +27,8 @@ func check_flags(entry: Dictionary, _unused_flag_dict: Dictionary) -> String:
 			GameState.quest_flags.get(flag_name, false)
 			or GameState.dialog_flags.get(flag_name, false)
 			or GameState.event_flags.get(flag_name, false)
+			or GameState.knowledge_flags.get(flag_name, false)
+			or GameState.sex_flags.get(flag_name, false)
 			or GameState.temp_flags.get(flag_name, false)
 		)
 		print("🔸 Flag '%s' set? %s" % [flag_name, is_set])
