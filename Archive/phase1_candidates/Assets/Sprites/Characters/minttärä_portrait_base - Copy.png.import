@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn6lwkw3a6wip"
-path="res://.godot/imported/meehp_f_base - Copy.png-6bcd8bc906e84841235be605ab31ded4.ctex"
+uid="uid://bb24al7lilq47"
+path="res://.godot/imported/minttärä_portrait_base - Copy.png-6d5cd7a81c76cf1646032b7adad9d51a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/meehp_f/meehp_f_base - Copy.png"
-dest_files=["res://.godot/imported/meehp_f_base - Copy.png-6bcd8bc906e84841235be605ab31ded4.ctex"]
+source_file="res://Archive/phase1_candidates/Assets/Sprites/Characters/minttärä_portrait_base - Copy.png"
+dest_files=["res://.godot/imported/minttärä_portrait_base - Copy.png-6d5cd7a81c76cf1646032b7adad9d51a.ctex"]
 
 [params]
 

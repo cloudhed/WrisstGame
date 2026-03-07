@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb24al7lilq47"
-path="res://.godot/imported/minttärä_portrait_base - Copy.png-96e4184bf846d498baaaebe23147554a.ctex"
+uid="uid://n2fledcfaosq"
+path="res://.godot/imported/windbreak_inn_bar_wip - Copy.png-9268bfcdc00b0da30d1bdca67d85c7c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/minttärä_portrait_base - Copy.png"
-dest_files=["res://.godot/imported/minttärä_portrait_base - Copy.png-96e4184bf846d498baaaebe23147554a.ctex"]
+source_file="res://Archive/phase1_candidates/Assets/Backgrounds/EnvInt/env_int_windbreak/windbreak_inn_bar_wip - Copy.png"
+dest_files=["res://.godot/imported/windbreak_inn_bar_wip - Copy.png-9268bfcdc00b0da30d1bdca67d85c7c1.ctex"]
 
 [params]
 

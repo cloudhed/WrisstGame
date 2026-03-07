@@ -1,0 +1,18 @@
+autoload:Code/manager.tscn => True
+autoload:Scripts/autoload/events.gd => True
+autoload:global/debug_panel.tscn => True
+autoload:Scripts/autoload/shaker.gd => True
+autoload:Scripts/autoload/gamestate.gd => True
+autoload:Scripts/autoload/scene_manager.gd => True
+autoload:Scripts/autoload/dialog_scene_selector.gd => True
+autoload:Scripts/autoload/pile_manager.gd => True
+autoload:Scenes/UI/GameUI.tscn => True
+autoload:Assets/Sprites/Particles/music_player.tscn => True
+autoload:global/sfx_player.tscn => True
+autoload:global/ambience_player.tscn => True
+scene_manager:COMBAT_SCENE_PATH=uid://d2pnx4ne5hfgc => True
+scene_manager:legacy_path_exists(global/scene_manager.gd) => False
+gamestate:legacy_path_exists(global/gamestate.gd) => False
+broken_ref_scan_file => broken_refs=0
+archive_count=37
+remaining_suspicious=0

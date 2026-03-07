@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://ci2xrpl6w5yqe"]
 
-[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_yh1em"]
+[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Scripts/dialog/zone_scene.gd" id="1_yh1em"]
 [ext_resource type="Texture2D" uid="uid://hiij5fkc55ti" path="res://Assets/Backgrounds/EnvExt/klyftet/north/env_klyftet_north_ext.png" id="2_mwq1e"]
 [ext_resource type="Texture2D" uid="uid://r2jy08s834b5" path="res://Assets/Sprites/Particles/particle_windline_fade.png" id="4_3ay0n"]
 [ext_resource type="Texture2D" uid="uid://bnnrv5do1k4ix" path="res://Assets/Sprites/Particles/pine_needle.png" id="4_rb42k"]
 [ext_resource type="Material" uid="uid://die37jjm28itx" path="res://Resources/Materials/KlyftetExtWind.tres" id="5_wy0i4"]
-[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="7_vk8kx"]
+[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Scripts/dialog/hotspot.gd" id="7_vk8kx"]
 [ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="8_k70s5"]
 
 [sub_resource type="Curve" id="Curve_3ay0n"]

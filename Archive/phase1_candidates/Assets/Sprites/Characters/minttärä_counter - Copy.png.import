@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7d7l5manpoin"
-path="res://.godot/imported/windbreak_inn_entrance_placeholder - Copy.png-29e1f6ab864b9f4d12cbcbe8e45fcf30.ctex"
+uid="uid://chh75xgjjgc2t"
+path="res://.godot/imported/minttärä_counter - Copy.png-390a6ad4b408d34659a104bd01293046.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Backgrounds/EnvInt/env_int_windbreak/windbreak_inn_entrance_placeholder - Copy.png"
-dest_files=["res://.godot/imported/windbreak_inn_entrance_placeholder - Copy.png-29e1f6ab864b9f4d12cbcbe8e45fcf30.ctex"]
+source_file="res://Archive/phase1_candidates/Assets/Sprites/Characters/minttärä_counter - Copy.png"
+dest_files=["res://.godot/imported/minttärä_counter - Copy.png-390a6ad4b408d34659a104bd01293046.ctex"]
 
 [params]
 

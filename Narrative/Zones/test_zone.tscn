@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bj4i2q6fwdh1t"]
 
 [ext_resource type="Texture2D" uid="uid://d3oro66sajjr4" path="res://Assets/Backgrounds/EnvExt/env_pac_test.png" id="1_q0irc"]
-[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_u2io2"]
-[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="3_7bma3"]
+[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Scripts/dialog/zone_scene.gd" id="1_u2io2"]
+[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Scripts/dialog/hotspot.gd" id="3_7bma3"]
 [ext_resource type="Resource" uid="uid://bb6hyr02t7qn5" path="res://Resources/Items/Misc/rusty_key.tres" id="4_0r5g0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2io2"]

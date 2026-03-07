@@ -7,6 +7,7 @@
 [sub_resource type="Resource" id="Resource_chtmb"]
 script = ExtResource("2_vxw4k")
 id = &"teq_touch"
+scene = ExtResource("3_vxw4k")
 metadata/_custom_type_script = "uid://b7o0w4hub0eja"
 
 [sub_resource type="Resource" id="Resource_vxw4k"]

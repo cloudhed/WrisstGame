@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cbpihauqeos3w" path="res://Narrative/zone_container.tscn" id="3_6br8l"]
 [ext_resource type="PackedScene" uid="uid://bsauxo1g05656" path="res://Narrative/mist_container.tscn" id="5_sdxh1"]
 [ext_resource type="Texture2D" uid="uid://dq7yfdfo43jqc" path="res://Assets/Sprites/Characters/minttärä_portrait_base.png" id="5_svokt"]
-[ext_resource type="Script" uid="uid://bii1koy5ss3sq" path="res://Code/DialogCode/dialog_line_spawner.gd" id="6_l6df8"]
+[ext_resource type="Script" uid="uid://bii1koy5ss3sq" path="res://Scripts/dialog/dialog_line_spawner.gd" id="6_l6df8"]
 [ext_resource type="PackedScene" uid="uid://dot6fkkrthtyc" path="res://Scenes/UI/choice_box.tscn" id="10_7201p"]
 
 [node name="DialogScene" type="Control"]

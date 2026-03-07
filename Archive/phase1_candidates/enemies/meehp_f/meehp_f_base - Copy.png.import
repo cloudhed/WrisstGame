@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr40uaqoqjqvu"
-path="res://.godot/imported/tile_base_old.png-a8e7dc8fa8471f24af83dbf6e019fdf5.ctex"
+uid="uid://dn6lwkw3a6wip"
+path="res://.godot/imported/meehp_f_base - Copy.png-81c5cee9ebb2548ff55fcb3ee873be4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/tile_base_old.png"
-dest_files=["res://.godot/imported/tile_base_old.png-a8e7dc8fa8471f24af83dbf6e019fdf5.ctex"]
+source_file="res://Archive/phase1_candidates/enemies/meehp_f/meehp_f_base - Copy.png"
+dest_files=["res://.godot/imported/meehp_f_base - Copy.png-81c5cee9ebb2548ff55fcb3ee873be4c.ctex"]
 
 [params]
 

@@ -6,7 +6,7 @@ extends Control
 
 
 func _ready():
-	debug_ui.visible = false
+	debug_ui.visible = true
 
 
 func _process(delta):
@@ -15,7 +15,11 @@ func _process(delta):
 
 
 func _unhandled_input(ev):
-	# Toggle inventory on “I” press (make sure you set ui_inventory in InputMap)
+	if ev.is_action_pressed("escape") and not ev.is_echo():
+		get_tree().quit()
+		return
+
+	# Toggle debug panel on debug_input action
 	if ev.is_action_pressed("debug_input"):
 		_toggle_debug_panel()
 

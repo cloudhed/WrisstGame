@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n2fledcfaosq"
-path="res://.godot/imported/windbreak_inn_bar_wip - Copy.png-1437a5406f7654f46f1e416a9e8e0a7b.ctex"
+uid="uid://cr40uaqoqjqvu"
+path="res://.godot/imported/tile_base_old.png-b33c0da4e424084aec6c5fec30868594.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Backgrounds/EnvInt/env_int_windbreak/windbreak_inn_bar_wip - Copy.png"
-dest_files=["res://.godot/imported/windbreak_inn_bar_wip - Copy.png-1437a5406f7654f46f1e416a9e8e0a7b.ctex"]
+source_file="res://Archive/phase1_candidates/Assets/UI/tile_base_old.png"
+dest_files=["res://.godot/imported/tile_base_old.png-b33c0da4e424084aec6c5fec30868594.ctex"]
 
 [params]
 

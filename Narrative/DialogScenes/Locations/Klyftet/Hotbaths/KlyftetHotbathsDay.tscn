@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dhkyf2fpl1iqp"]
 
-[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_1cysu"]
+[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Scripts/dialog/zone_scene.gd" id="1_1cysu"]
 [ext_resource type="Texture2D" uid="uid://c421eli328k23" path="res://Assets/Backgrounds/EnvInt/env_int_furrow.png" id="2_4l0f5"]
-[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="2_lpb27"]
+[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Scripts/dialog/hotspot.gd" id="2_lpb27"]
 [ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="3_5w3cd"]
 [ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="3_aty61"]
 [ext_resource type="Material" uid="uid://bxntkmfcekw4v" path="res://Assets/Sprites/Particles/minttärä_furrow_debug_01_particleProcessMaterial.tres" id="4_g7mmg"]

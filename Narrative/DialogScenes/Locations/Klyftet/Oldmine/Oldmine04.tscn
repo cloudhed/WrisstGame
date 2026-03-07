@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://d3p37w54t0fnx"]
 
-[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_of82d"]
+[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Scripts/dialog/zone_scene.gd" id="1_of82d"]
 [ext_resource type="Texture2D" uid="uid://w7ytvihewvkt" path="res://Assets/Backgrounds/EnvExt/klyftet/oldmine/env_klyftet_oldmine04.png" id="2_of82d"]
 [ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="3_yphu6"]
-[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="4_egdpg"]
+[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Scripts/dialog/hotspot.gd" id="4_egdpg"]
 [ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="5_ji1k6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s8h5e"]

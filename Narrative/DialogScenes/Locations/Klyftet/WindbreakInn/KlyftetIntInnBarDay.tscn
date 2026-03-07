@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bkg8i0on1dvok"]
 
-[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Code/Scripts/zone_scene.gd" id="1_shrg8"]
+[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Scripts/dialog/zone_scene.gd" id="1_shrg8"]
 [ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="2_gkcfq"]
-[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Code/Scripts/hotspot.gd" id="2_hovex"]
+[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Scripts/dialog/hotspot.gd" id="2_hovex"]
 [ext_resource type="Texture2D" uid="uid://bjjc1ghalmpuf" path="res://Assets/Backgrounds/EnvInt/env_int_windbreak/windbreak_inn_bar_wip.png" id="2_tipb0"]
 [ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="3_gkcfq"]
 [ext_resource type="Material" uid="uid://bxntkmfcekw4v" path="res://Assets/Sprites/Particles/minttärä_furrow_debug_01_particleProcessMaterial.tres" id="3_tipb0"]
