@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://coqflun3u7db"]
 
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="1_2u27o"]
-[ext_resource type="Script" uid="uid://bn0ckvai2l4gk" path="res://Scenes/UI/stamina_ui.gd" id="2_twc0d"]
+[ext_resource type="Script" uid="uid://bn0ckvai2l4gk" path="res://Scripts/ui/combat/stamina_ui.gd" id="2_twc0d"]
 
 [node name="StaminaUI" type="Panel"]
 offset_right = 40.0

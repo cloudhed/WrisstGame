@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dc1oajmuh1rh6"]
 
-[ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scenes/Enemy/enemy_action_picker.gd" id="1_nd4a0"]
-[ext_resource type="Script" uid="uid://cxmm5meop6ieo" path="res://enemies/murisk_n/murisk_n_attack_action.gd" id="2_fetc3"]
+[ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_nd4a0"]
+[ext_resource type="Script" uid="uid://cxmm5meop6ieo" path="res://Scripts/entities/enemies/murisk_n/actions/murisk_n_attack_action.gd" id="2_fetc3"]
 [ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_mjmlq"]
 [ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="4_oxjxu"]
-[ext_resource type="Script" uid="uid://b7psfmpxtb6xh" path="res://enemies/murisk_n/murisk_n_attack_bodyslam.gd" id="5_bnl1c"]
+[ext_resource type="Script" uid="uid://b7psfmpxtb6xh" path="res://Scripts/entities/enemies/murisk_n/actions/murisk_n_attack_bodyslam.gd" id="5_bnl1c"]
 
 [sub_resource type="Resource" id="Resource_xcpeo"]
 script = ExtResource("4_oxjxu")

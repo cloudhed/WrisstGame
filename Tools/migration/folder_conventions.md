@@ -27,3 +27,17 @@
 2. Every move must be logged in `move_map_phase1.json`.
 3. Every suspicious candidate must be logged in `orphan_audit_phase1.json`.
 4. Batch validation must pass before next batch.
+
+## Mandatory Reference Rewrite Rule
+When any file is moved, every reference to its old `res://` path must be updated in the same migration batch.
+
+Required scan targets:
+- `.tscn`
+- `.tres`
+- `.gd`
+- `.json`
+- `project.godot`
+- migration manifests/reports under `Tools/migration/`
+
+Completion gate:
+- A migration batch is **not complete** until stale old-path references are verified as **zero** (`stale refs = 0`).

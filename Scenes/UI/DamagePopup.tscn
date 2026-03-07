@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b333pim2vobex"]
 
-[ext_resource type="Script" uid="uid://cysfbek55vafi" path="res://Scenes/UI/damage_popup.gd" id="1_8xje2"]
+[ext_resource type="Script" uid="uid://cysfbek55vafi" path="res://Scripts/ui/combat/damage_popup.gd" id="1_8xje2"]
 [ext_resource type="FontFile" uid="uid://q7ie3cje7c1y" path="res://Assets/Fonts/HyperlegibleNext-ExtraBold.ttf" id="2_hqkma"]
 
 [node name="DamagePopup" type="Control"]

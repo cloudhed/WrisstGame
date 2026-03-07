@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://d1fflihljj6jx"]
 
-[ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scenes/Enemy/enemy_action_picker.gd" id="1_yogwc"]
-[ext_resource type="Script" uid="uid://d2xdkx584wnj6" path="res://enemies/rill_m/rill_m_attack_tackle.gd" id="2_tix8w"]
+[ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_yogwc"]
+[ext_resource type="Script" uid="uid://d2xdkx584wnj6" path="res://Scripts/entities/enemies/rill_m/actions/rill_m_attack_tackle.gd" id="2_tix8w"]
 [ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_tihdl"]
 [ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="4_clwid"]
 [ext_resource type="AudioStream" uid="uid://cx2wcws563kk4" path="res://Audio/SFX/sfx_hit_low.wav" id="5_i5stk"]
-[ext_resource type="Script" uid="uid://s2k0mbg0aoey" path="res://enemies/rill_m/rill_m_attack_shield_lunge.gd" id="6_sjp0k"]
+[ext_resource type="Script" uid="uid://s2k0mbg0aoey" path="res://Scripts/entities/enemies/rill_m/actions/rill_m_attack_shield_lunge.gd" id="6_sjp0k"]
 [ext_resource type="AudioStream" uid="uid://b4fhfk4meo55" path="res://Audio/SFX/sfx_hit_block.wav" id="7_cxps1"]
-[ext_resource type="Script" uid="uid://bthnbeovpl3hs" path="res://enemies/rill_m/rill_m_attack_poison.gd" id="8_8tjrc"]
+[ext_resource type="Script" uid="uid://bthnbeovpl3hs" path="res://Scripts/entities/enemies/rill_m/actions/rill_m_attack_poison.gd" id="8_8tjrc"]
 [ext_resource type="Texture2D" uid="uid://dhmkraw3jt45h" path="res://Assets/UI/intent/intent_special.png" id="9_t40vx"]
 [ext_resource type="AudioStream" uid="uid://c1w2fsjabnkt3" path="res://Audio/SFX/sfx_defeat.wav" id="10_tutyb"]
 
@@ -55,3 +55,4 @@ sound = ExtResource("10_tutyb")
 type = 1
 chance_weight = 0.3
 message_template = "The Rill spits and it splashes onto your face. You're Poisoned."
+

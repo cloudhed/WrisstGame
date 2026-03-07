@@ -58,7 +58,7 @@
         "type": "narration",
         "text": "You step into Klyftet for the first time.",
 		"clear": true,
-        "next": "debug_bubbles_01"
+        "next": "intro_choice_hub"
     },
     {
         "id": "debug_bubbles_01",

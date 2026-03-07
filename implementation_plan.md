@@ -46,6 +46,7 @@ Validation rules:
 - `source_path` must exist before migration.
 - `decision` for orphan files must be explicit before deletion.
 - No direct delete operation is allowed in phase 1 without being listed in orphan audit.
+- Every moved file with `requires_reference_rewrite = true` must have all old-path references rewritten in the same batch.
 
 [Files]
 Reorganize scripts, scenes, data, and assets into feature-focused roots with staged migration maps and compatibility safeguards.
@@ -207,6 +208,8 @@ Test requirements:
 1. Static reference checks:
    - Scan `.tscn`, `.tres`, `.gd`, `.json` for stale `res://` paths.
    - Ensure no missing `[ext_resource]` links after each migration batch.
+   - Mandatory rewrite scope for every moved file: `.tscn`, `.tres`, `.gd`, `.json`, `project.godot`, and migration manifests/reports under `Tools/migration/`.
+   - Batch completion gate: stale references to moved old paths must be exactly zero (`stale refs = 0`) before the next batch.
 
 2. Boot/autoload checks:
    - Project starts without autoload errors.
@@ -247,3 +250,4 @@ Implement in small, validated batches: define conventions, map moves, migrate on
 8. Run full reference validation and boot/smoke test pass.
 9. Archive approved suspicious files (`*.tmp`, `*_OLD`, `* - Copy*`, duplicates) into `Archive/phase1_candidates/`.
 10. Produce final migration report and rollback map snapshot.
+11. Enforce migration gate for every subsequent batch: no batch may be considered complete until all references to moved old paths are updated and verified as `stale refs = 0`.

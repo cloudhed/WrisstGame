@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c70f5rm6i5pcd"]
 
-[ext_resource type="Script" uid="uid://ctvc2hfejumqo" path="res://Scenes/UI/intent_ui.gd" id="1_g08mb"]
+[ext_resource type="Script" uid="uid://ctvc2hfejumqo" path="res://Scripts/ui/combat/intent_ui.gd" id="1_g08mb"]
 [ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="1_iuk88"]
 [ext_resource type="Theme" uid="uid://c1p0164at7n2g" path="res://Themes/tile_theme.tres" id="2_g08mb"]
 

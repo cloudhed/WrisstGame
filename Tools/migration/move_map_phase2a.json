@@ -1,0 +1,219 @@
+[
+  {
+    "source_path": "res://Scenes/Combat/combat.gd",
+    "target_path": "res://Scripts/combat/combat.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Code/CombatCode/combat_ui.gd",
+    "target_path": "res://Scripts/combat/ui/combat_ui.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Code/CombatCode/combat_button_run.gd",
+    "target_path": "res://Scripts/combat/ui/combat_button_run.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Code/CombatCode/combat_visual.gd",
+    "target_path": "res://Scripts/combat/ui/combat_visual.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/Enemy/enemy.gd",
+    "target_path": "res://Scripts/entities/enemies/runtime/enemy.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/Enemy/enemy_action.gd",
+    "target_path": "res://Scripts/entities/enemies/runtime/enemy_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/Enemy/enemy_action_picker.gd",
+    "target_path": "res://Scripts/entities/enemies/runtime/enemy_action_picker.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/Enemy/enemy_handler.gd",
+    "target_path": "res://Scripts/entities/enemies/runtime/enemy_handler.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/teqqellon/teqqellon_attack_action.gd",
+    "target_path": "res://Scripts/entities/enemies/teqqellon/actions/teqqellon_attack_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/teqqellon/teqqellon_block_action.gd",
+    "target_path": "res://Scripts/entities/enemies/teqqellon/actions/teqqellon_block_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/teqqellon/teqqellon_leech_action.gd",
+    "target_path": "res://Scripts/entities/enemies/teqqellon/actions/teqqellon_leech_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/teqqellon/teqqellon_mega_block_action.gd",
+    "target_path": "res://Scripts/entities/enemies/teqqellon/actions/teqqellon_mega_block_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/murisk_n/murisk_n_attack_action.gd",
+    "target_path": "res://Scripts/entities/enemies/murisk_n/actions/murisk_n_attack_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/murisk_n/murisk_n_attack_bodyslam.gd",
+    "target_path": "res://Scripts/entities/enemies/murisk_n/actions/murisk_n_attack_bodyslam.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/meehp_f/meehp_f_attack_action.gd",
+    "target_path": "res://Scripts/entities/enemies/meehp_f/actions/meehp_f_attack_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/meehp_f/meehp_f_clawattack_action.gd",
+    "target_path": "res://Scripts/entities/enemies/meehp_f/actions/meehp_f_clawattack_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/meehp_f/meehp_f_final_attack_action.gd",
+    "target_path": "res://Scripts/entities/enemies/meehp_f/actions/meehp_f_final_attack_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/meehp_f/meehp_f_rage_action.gd",
+    "target_path": "res://Scripts/entities/enemies/meehp_f/actions/meehp_f_rage_action.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/rill_m/rill_m_attack_poison.gd",
+    "target_path": "res://Scripts/entities/enemies/rill_m/actions/rill_m_attack_poison.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/rill_m/rill_m_attack_shield_lunge.gd",
+    "target_path": "res://Scripts/entities/enemies/rill_m/actions/rill_m_attack_shield_lunge.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://enemies/rill_m/rill_m_attack_tackle.gd",
+    "target_path": "res://Scripts/entities/enemies/rill_m/actions/rill_m_attack_tackle.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Effects/damage_effect.gd",
+    "target_path": "res://Scripts/combat/effects/damage_effect.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Effects/heal_effect.gd",
+    "target_path": "res://Scripts/combat/effects/heal_effect.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Effects/block_effect.gd",
+    "target_path": "res://Scripts/combat/effects/block_effect.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Effects/fail_effect.gd",
+    "target_path": "res://Scripts/combat/effects/fail_effect.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/UI/intent_ui.gd",
+    "target_path": "res://Scripts/ui/combat/intent_ui.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/UI/stamina_ui.gd",
+    "target_path": "res://Scripts/ui/combat/stamina_ui.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/UI/stats_ui.gd",
+    "target_path": "res://Scripts/ui/combat/stats_ui.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/UI/damage_popup.gd",
+    "target_path": "res://Scripts/ui/combat/damage_popup.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/UI/combat_text.gd",
+    "target_path": "res://Scripts/ui/combat/combat_text.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  },
+  {
+    "source_path": "res://Scenes/UI/red_flash.gd",
+    "target_path": "res://Scripts/ui/combat/red_flash.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "moved"
+  }
+]

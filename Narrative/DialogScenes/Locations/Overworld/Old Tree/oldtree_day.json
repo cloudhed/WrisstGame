@@ -2,7 +2,7 @@
     {
         "id": "00_play_audio",
         "type": "command",
-        "command": "@PLAY_AMBIENCE wind res://Audio/Ambience/Klyftet/klyftet_wind.mp3",
+        "command": "@PLAY_AMBIENCE wind res://Audio/Ambience/Klyftet/klyftet_wind.mp3", "res://Audio/sound_ambience_overworld_day.ogg"
 		"clear": true,
         "next": "00_FLAGCHECK"
     },

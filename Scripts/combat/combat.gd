@@ -213,6 +213,7 @@ func abort_combat() -> void:
 	print("⚠️ abort_combat() CALLED.")
 	combat_aborted = true
 	combat_over = true
+	MusicPlayer.fade_out(0.6)
 	if dialog_overlay:
 		dialog_overlay.queue_free()
 		dialog_overlay = null
