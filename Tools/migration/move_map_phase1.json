@@ -1,0 +1,72 @@
+[
+  {
+    "source_path": "res://global/events.gd",
+    "target_path": "res://Scripts/autoload/events.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  },
+  {
+    "source_path": "res://global/gamestate.gd",
+    "target_path": "res://Scripts/autoload/gamestate.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  },
+  {
+    "source_path": "res://global/scene_manager.gd",
+    "target_path": "res://Scripts/autoload/scene_manager.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  },
+  {
+    "source_path": "res://global/dialog_scene_selector.gd",
+    "target_path": "res://Scripts/autoload/dialog_scene_selector.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  },
+  {
+    "source_path": "res://Code/DialogCode/dialog_scene_loader.gd",
+    "target_path": "res://Scripts/dialog/dialog_scene_loader.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  },
+  {
+    "source_path": "res://Code/DialogCode/dialog_parser.gd",
+    "target_path": "res://Scripts/dialog/dialog_parser.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  },
+  {
+    "source_path": "res://Code/DialogCode/dialog_logic_handler.gd",
+    "target_path": "res://Scripts/dialog/dialog_logic_handler.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  },
+  {
+    "source_path": "res://Code/DialogCode/dialog_flow_manager.gd",
+    "target_path": "res://Scripts/dialog/dialog_flow_manager.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  },
+  {
+    "source_path": "res://Code/DialogCode/dialog_command_executor.gd",
+    "target_path": "res://Scripts/dialog/dialog_command_executor.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  },
+  {
+    "source_path": "res://Code/DialogCode/dialog_line_spawner.gd",
+    "target_path": "res://Scripts/dialog/dialog_line_spawner.gd",
+    "asset_type": "script",
+    "requires_reference_rewrite": true,
+    "status": "planned"
+  }
+]

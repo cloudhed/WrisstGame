@@ -1,0 +1,14 @@
+{
+  "timestamp": "<ISO-8601>",
+  "checked_files": 0,
+  "broken_res_paths": [],
+  "broken_uid_paths": [],
+  "autoload_validation": {
+    "status": "pending",
+    "details": []
+  },
+  "scene_load_validation": {
+    "status": "pending",
+    "details": []
+  }
+}

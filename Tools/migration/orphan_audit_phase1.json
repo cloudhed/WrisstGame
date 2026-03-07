@@ -1,0 +1,51 @@
+[
+  {
+    "path": "res://Scenes/UI/narration_box_OLD.tscn",
+    "reason": "legacy_old",
+    "detected_by": "pattern_scan",
+    "decision": "archive",
+    "decision_notes": "OLD duplicate candidate; archive-first."
+  },
+  {
+    "path": "res://Scenes/UI/speech_bubble_OLD.tscn",
+    "reason": "legacy_old",
+    "detected_by": "pattern_scan",
+    "decision": "archive",
+    "decision_notes": "OLD duplicate candidate; archive-first."
+  },
+  {
+    "path": "res://Characters/Bitalgut/dialogue/bitalgut_intro_old.json",
+    "reason": "legacy_old",
+    "detected_by": "pattern_scan",
+    "decision": "archive",
+    "decision_notes": "Keep active intro json untouched; archive legacy variant."
+  },
+  {
+    "path": "res://Dialog/Klyftet/klyftet_ext_day_copy.json",
+    "reason": "duplicate_copy",
+    "detected_by": "pattern_scan",
+    "decision": "archive",
+    "decision_notes": "Likely duplicate; archive only after reference scan."
+  },
+  {
+    "path": "res://enemies/meehp_f/meehp_f_dialog_postcombat - chatgptversion.json",
+    "reason": "experimental",
+    "detected_by": "pattern_scan",
+    "decision": "archive",
+    "decision_notes": "ChatGPT variant; preserve via archive-first."
+  },
+  {
+    "path": "res://enemies/murisk_n/murisk_dialog_postcombat - chatgptversion.json",
+    "reason": "experimental",
+    "detected_by": "pattern_scan",
+    "decision": "archive",
+    "decision_notes": "ChatGPT variant; preserve via archive-first."
+  },
+  {
+    "path": "res://enemies/teqqellon/teqqellon_dialog_postcombat - Copy.json",
+    "reason": "duplicate_copy",
+    "detected_by": "pattern_scan",
+    "decision": "archive",
+    "decision_notes": "Duplicate naming pattern; archive-first."
+  }
+]
