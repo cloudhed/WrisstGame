@@ -969,7 +969,7 @@ offset_right = -108.0
 offset_bottom = -67.0
 script = ExtResource("1_be0m3")
 day_length_seconds = 60.0
-start_time_hours = 6
+start_time_hours = 17
 
 [connection signal="body_entered" from="IslandBoundary/IslandBiome_Fields" to="IslandBoundary/IslandBiome_Fields" method="_on_body_entered"]
 [connection signal="body_exited" from="IslandBoundary/IslandBiome_Fields" to="IslandBoundary/IslandBiome_Fields" method="_on_body_exited"]

@@ -16,6 +16,7 @@ const DIALOG_SCENE_PATH := "res://Narrative/DialogScene.tscn"
 var created_stats: CharacterStats
 var combat_over: bool = false
 var combat_aborted: bool = false
+var combat_result_recorded: bool = false
 var dialog_overlay: DialogManager = null
 var active_enemy_stats: EnemyStats = null
 
@@ -183,6 +184,7 @@ func _on_enemies_child_order_changed() -> void:
 
 	if _all_enemies_defeated():
 		print("🏆 Victory!")
+		_record_combat_result(true)
 		combat_over = true
 #		combat_ui.visible = false
 		$IntentUI.visible = false
@@ -203,6 +205,7 @@ func _on_enemy_turn_ended() -> void:
 
 func _on_player_died() -> void:
 	print("☠️ Game over!")
+	_record_combat_result(false)
 	# You can optionally also emit leave_encounter_requested here if you want
 
 
@@ -217,3 +220,20 @@ func abort_combat() -> void:
 	if dialog_overlay:
 		dialog_overlay.queue_free()
 		dialog_overlay = null
+
+
+func _record_combat_result(won: bool) -> void:
+	if combat_result_recorded:
+		return
+
+	if active_enemy_stats == null or GameState.player_statistics == null:
+		combat_result_recorded = true
+		return
+
+	var species_id := active_enemy_stats.get_species_id() if active_enemy_stats.has_method("get_species_id") else StringName("unknown")
+	if won:
+		GameState.player_statistics.record_win(species_id)
+	else:
+		GameState.player_statistics.record_loss(species_id)
+
+	combat_result_recorded = true

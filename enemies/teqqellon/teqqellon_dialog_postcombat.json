@@ -62,7 +62,7 @@
 	{
 		"id": "teqqellon_entry_01_SHOW",
 		"type": "command",
-		"text": "@SHOW_SCENE teq_initial_pen ; @MUSIC_CLIP clip02",
+		"text": "@SHOW_SCENE teq_initial_pen ; @MUSIC_CLIP 2",
 		"clear": true,
 		"next": "teqqellon_entry_01"
 	},
@@ -91,7 +91,7 @@
 		"id": "teqqellon_path_surrender_01",
 		"type": "narration",
 		"text": "You go still and let the creature take what it wants. The thin tendril slides into your urethra with unnatural ease, moving deeper into your shaft. You gasp as it reaches into your pelvis, curling around your internals with a firm, rhythmic squeeze. The Teqqellon begins to coax and tickle your testicles from the inside, steadily building your climax in long, agonizingly slow pulses.",
-		"command": "@MUSIC_CLIP clip03",
+		"command": "@MUSIC_CLIP 3",
 		"clear": true,
 		"next": "teqqellon_climax_surrender"
 	},
@@ -99,7 +99,7 @@
 		"id": "teqqellon_path_control_01",
 		"type": "narration",
 		"text": "You pin the shifting teal mass into the ground, using your weight to crush its internal rhythm. When the tendril tries to find your tip, you thrust past it and instead rub against the opening of the internal core. The creature’s lobes slowly stretch and yield to your cock. The Teqqellon thrashes beneath you, its lilac core fluttering its lobes as it tries to keep up with your aggressive friction.",
-		"command": "@MUSIC_CLIP clip03",
+		"command": "@MUSIC_CLIP 3",
 		"clear": true,
 		"next": "teqqellon_path_control_02"
 	},
@@ -113,7 +113,7 @@
 		"id": "teqqellon_climax_surrender",
 		"type": "narration",
 		"text": "You feel a sharp pinch as the internal tendril sucks every surge of semen directly from your testicles, its rhythm unwavering even as your body spasms. The Teqqellon glows with a satisfied, steady light as it drains your balls dry straight from the source. When it finally withdraws, you are left feeling surprisingly empty.",
-		"command": "@MUSIC_CLIP clip04",
+		"command": "@MUSIC_CLIP 4",
 		"clear": true,
 		"next": "teqqellon_aftermath"
 	},
@@ -121,7 +121,7 @@
 		"id": "teqqellon_climax_control",
 		"type": "narration",
 		"text": "With a body-shaking groan, you pump your cum into the eager slime, surging into the creature's center. The first load of seed floods the internal chamber. You hold yourself deep inside it, feeling the walls flutter in a slowing rhythm as the creature is forced to absorb your semen cum all at once.",
-		"command": "@MUSIC_CLIP clip04",
+		"command": "@MUSIC_CLIP 4",
 		"clear": true,
 		"next": "teqqellon_aftermath"
 	},
@@ -132,6 +132,7 @@
 		"clear": true,
 		"set_flag": "sexed_teqqellon",
 		"flag_type": "knowledge",
+		"command": "@RECORD_SPECIES_SEX teqqellon",
 		"next": "teqqellon_leave_01"
 	},
 	{

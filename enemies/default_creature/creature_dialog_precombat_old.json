@@ -1,0 +1,345 @@
+[
+	{
+		"id": "INIT_play_audio",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg",
+		"set_flag": "knows_creature",
+		"flag_type": "knowledge",		
+		"clear": true,
+		"next": "INIT_knowledge_CHECK"
+	},
+
+	{
+		"id": "INIT_knowledge_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_creature"],
+			"on_success": "creature_precombat",
+			"on_fail": "creature_precombat_unknown"
+		}
+	},
+	{
+		"id": "creature_precombat",
+		"type": "narration",
+		"text": "A <Creature> is <pacing around by itself>. <Known description of the creatures' appearance and behaviour>.",
+		"next": "creature_precombat_choice"
+	},
+	{
+		"id": "creature_precombat_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Observe the <Creature>",
+				"next": "creature_observe",
+				"hide_if": { "has_flag": "creature_observed" }
+			},
+			{
+				"text": "> Attack the <Creature>",
+				"next": "creature_attack"
+			},
+			{
+				"text": "> Approach the <Creature> slowly",
+				"next": "creature_approach"
+			},
+			{
+				"text": "> Try and lure the <Creature> with food",
+				"next": "creature_lure",
+				"show_if": { "has_item": "Consumables/oldtree_fruit" }
+			},
+			{
+				"text": "> Try and sneak up and capture the <Creature> with <item>",
+				"next": "creature_capture",
+				"show_if": { "has_item": "Consumables/sturdy_rope" }
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_leave"
+			}
+		]
+	},
+
+	{
+		"id": "creature_observe",
+		"type": "narration",
+		"text": "<Player actions to observe, describing further what the Creature looks like, its appearance, behaviour, special details, example:> You stay in place and watch the <Creature>. Its' silver skin reflects spots along the ground as the sun hits it just right when it moves its slender body. It seems to be very focused on some amber-colored berries growing around the bushes in this area,  In this state it would be easy to assume it's a docile creature, but it's pretty hard to tell from this distance.",
+		"set_flag": "observed_creature",
+		"flag_type": "temp",
+		"next": "creature_precombat_choice"
+	},
+	
+	{
+		"id": "creature_approach",
+		"type": "narration",
+		"text": "<Player actions to approach, either successfully if docile creature or might be attacked, or Creature might flee, example:> As soon as your foot crunches on a dry branch, the <Creature>'s head snaps up. Its nostrils flare, catching your scent. Before you can even raise a hand in peace, it lets out a sharp huff and bolts away, its footsteps fading quickly into the distance.",
+		"next": "creature_fled_leave"
+	},
+
+	{
+		"id": "creature_lure",
+		"type": "narration",
+		"text": "<Player actions to lure, describing further what the player uses to lure, and its response. Example:> You reach into your belonings and fish out a fruit. As soon as the peculiar smell of the ripe fruit hits your nostrils, you see the <Creature> react. Its' head swivels around, seemingly in order to find the source of the fruity aroma. As its eyes lands on you and the food in your hand, it freezes. For a few moments, you both stand completely still, until the <Creature> slowly and carefully starts to move in your direction, its eyes fixed on the fruit in your hand.",
+		"next": "creature_lure_02"
+	},
+	{
+		"id": "creature_lure_02",
+		"type": "narration",
+		"text": "<Continuation on player actions to lure, describing further what the Creature looks like close up, and does in response. Example:> The <Creature> gives off a noise as it closes in on the fruit, and you assume its a happy noise. Up close, you can see <details>. As it reaches your hand holding the fruit, it tries to nudge and bump the fruit out of your hand, still giving off the occasional noise. It does not seem to be afraid of you.",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP 5 ; @SHOW_SCENE lure",
+		"next": "creature_lure_choice"
+	},
+	{
+		"id": "creature_lure_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Give the fruit to the <Creature>",
+				"next": "creature_lure_givefruit",
+			},
+			{
+				"text": "> Attack the <Creature>",
+				"next": "creature_attack"
+			},
+			{
+				"text": "> Bind the <Creature> with <item>",
+				"next": "creature_choice_lurecapture",
+				"show_if": { "has_item": "Consumables/sturdy_rope" }
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_lure_givefruit",
+		"type": "narration",
+		"text": "<Continuation on player giving the lure-item, describing further what the Creature looks like close up, and does in response. Example:> You yield to its eager nudging, and bend down to give the fruit directly to the <Creature>. The moment you let go, the <Creature> squeaks a, what can only be decribed as a happy gurle, as it quickly and messily starts to chomp down on the fleshy fruit. Its focus is now entirely on the food before it.",
+		"command": "@remove_item Consumables/oldtree_fruit 1",
+		"next": "creature_lure_choice_02"
+	},
+	{
+		"id": "creature_lure_choice02",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Inspect the creature closer",
+				"next": "creature_inspect",
+			},
+			{
+				"text": "> Attack the <Creature>",
+				"next": "creature_attack"
+			},
+			{
+				"text": "> Bind the <Creature> with <item>",
+				"next": "creature_choice_lurecapture",
+				"show_if": { "has_item": "Consumables/sturdy_rope" }
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_lure_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_lure_leave",
+		"type": "narration",
+		"text": "<Player actions to leave after feeding the creature, example:> As the <Creature> is fully and completely occupied with absolutely devouring <lure>, you back away. The <Creature> and the wet noises of its chewing disssapear behind you.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_creature"],
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_inspect",
+		"type": "narration",
+		"text": "<Further Player actions to inspect, describing the body, smell and noises of the <Creature>, Example:> With the <Creature>s attention turned to the fruit, you feel safe looking over the creature a bit closer without it protesting. <Describe its appearance>. You let the palm of your hand follow the back of the <Creature>, feeling the muscles beneath its silver skin twitch from your touch. As your fingers reach the end of its back, you notice a small tight hole just underneath the tail, winking in slow pulses. <Descriptions of tactile feel, smell, reactions from Creature>. Between its two hind-legs you find a small puffy slit.[nb]A meek gurlging groan escapes the eating <Creature> as it senses the pressure of your hands around its' apparent genitals. It huffs quietly as you notice the hint of something purple and glistening start to emerge from the slit.",
+		"command": "@SHOW_SCENE inspect",
+		"clear": true,
+		"next": "creature_inspect_choice"
+	},
+	{
+		"id": "creature_inspect_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Touch the erection",
+				"next": "creature_inspect_02",
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_inspect_02",
+		"type": "narration",
+		"text": "<Further describing the body, smell and noises of the <Creature>, Example:> A slender purple cock emerges, already slick with a thick viscuous liquid. From the tapered tip down to the middle of the erection there are what looks like pink bulbous shapes scattered around the lenght. As you touch one of the bulbs the beast shudders, and you notice that you can shift the bulbs around, almost like they're air bubbles just beneath the surface. As the bulbs move, the <Creature> gives off a clearly approving gurgling groan. It has stopped eating, and is now panting gently, eyes half-closed. At the same time, its' sphincter increases its winking rhythm, and beads of a transluscent wetness start to pool in the middle of the tight ring.",
+		"command": "@MUSIC_CLIP 1 ; @SHOW_SCENE inspect_genitals",
+		"clear": true,
+		"next": "creature_sex_choice"
+	},
+	{
+		"id": "creature_sex_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> <PLACEHOLDER>",
+				"next": "creature_sex_?",
+			},
+			{
+				"text": "> <PLACEHOLDER>",
+				"next": "creature_sex_?",
+			},
+			{
+				"text": "> <PLACEHOLDER>",
+				"next": "creature_sex_?",
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+
+	{
+		"id": "creature_capture",
+		"type": "narration",
+		"text": "<Player actions to try and capture, describing further what the Creature does in response. Example:> As carefully as possible you unveil the rope from your belongings and steady it in your hands as you try and tie a knot that will hold the creature in place. When your fingers are done, you have created yourself a surprisingly good lasso. With a deep breath and a swift toss, your rope lands around the unsuspecting <Creature>'s neck. With a gurgling yelp the <Creature> twitches to attention as it notices the strange feeling of your rope on its body. The rope tugs taught as it tries to run, and you dig your heels in and pull.",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP 1 ; @SHOW_SCENE capture ; @remove_item Consumables/sturdy_rope 1",
+		"next": "creature_capture_02"
+	},
+	{
+		"id": "creature_capture_02",
+		"type": "narration",
+		"text": "<Further Player actions to try and capture, describing further what the Creature does in response. Example:> You struggle against each others strenght and leverage in a wild tug-of-war. The <Creature> yelps in panic as it senses its' muscles give out, and it manages to tangle itself in the rest of your rope as it tries to get free.[nb]With a thud, its body hits the ground, the <Creature> seemingly fully out of fighting spirit.",
+		"next": "creature_capture_02"
+	},
+	{
+		"id": "creature_capture_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Inspect the tied-up creature closer",
+				"next": "creature_capture_inspect",
+			},
+			{
+				"text": "> <Loot the creature>",
+				"next": "creature_capture_loot",
+				"hide_if": { "has_flag": "creature_looted" }
+			},
+			{
+				"text": "> Turn the <Creature> free again",
+				"next": "creature_capture_free",
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_loot",
+		"type": "narration",
+		"text": "<Get loot from the creature. Example:> As the <Creature> lies there helpless, you bend down and <aquire> <loot>.",
+		"clear": true,
+		"next": "creature_loot_give"
+	},
+	{
+		"id": "creature_loot_give",
+		"type": "command",
+		"command": "@add_item Misc/creature_loot 1 ",
+		"set_flag": "creature_looted",
+		"flag_type": "temp",
+		"next": "creature_capture_choice"
+	},
+	{
+		"id": "creature_capture_inspect",
+		"type": "narration",
+		"text": "<Further Player actions to inspect, describing the body, smell and noises of the <Creature> similar to the normal Inspect but with the creature tired and tied up. Example:> As the <Creature> now lies at your feet helpless and tied-up, you're free to inspect it without it fighting back. You turn the <Creature> on its back and run the palm of your hand against its' belly. <Descriptions of tactile feel, smell, reactions from Creature>. Your fingers trace their way down to a small puffy slit in-between its hindlegs, and right below the slit, just underneath its tail, you see a tight orifice winking slowly.[nb]A meek gurlging groan escapes the bound <Creature> as it senses the pressure of your hands around its' apparent genitals, and you see the hint of something purple and glistening start to emerge from the slit.",
+		"command": "@SHOW_SCENE capture_inspect",
+		"clear": true,
+		"next": "creature_capture_sex_choice"
+	},
+	{
+		"id": "creature_capture_sex_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> <Placeholder: Fuck its anus>",
+				"next": "creature_capture_sex_male_anal",
+		        "show_if": { "player_gender": "male" }
+			},
+				{
+				"text": "> <Placeholder: Ride the dick>",
+				"next": "creature_capture_sex_female_ride",
+		        "show_if": { "player_gender": "female" }
+			},
+			{
+				"text": "> <Placeholder: Fuck its mouth>",
+				"next": "creature_capture_sex_top_oral",
+		        "show_if": { "player_gender": "male" }
+			},
+			
+			{
+				"text": "> <Placeholder: Suck its dick>",
+				"next": "creature_capture_sex_receive_oral",
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_leave",
+		"type": "narration",
+		"text": "<Player actions to leave after capturing the creature without doing anything, example:> You leave the tied-up <Creature> on the ground. The <Creature>'s pleading noises disssapear behind you.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_end"
+	},
+
+	{
+		"id": "creature_attack",
+		"type": "narration",
+		"text": "<Player actions to attack, example:> You lunge at the <Creature>.",
+		"command": "@STOP_ALL_AMBIENCE",
+		"next": "creature_startcombat"
+	},
+	{
+		"id": "creature_startcombat",
+		"type": "command",
+		"command": "@STOP_ALL_AMBIENCE ; @START_COMBAT",
+		"clear_flag": ["observed_creature"],
+		"end": true
+	},
+	
+	
+	{
+		"id": "creature_inspect_leave",
+		"type": "narration",
+		"text": "Player actions to leave before going to far with the Creature, example:> You get up and walk away, leaving the <Creature> to its' food.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_fled_leave",
+		"type": "narration",
+		"text": "<The Creature's actions to flee, example:> The <Creature>s bleats slowly dissapear in the distance.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_leave",
+		"type": "narration",
+		"text": "<Player actions to leave, example:> You slowly start to back away before it notices you, and leave the <Creature> to its' business.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_creature"],
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"end": true
+	}
+]

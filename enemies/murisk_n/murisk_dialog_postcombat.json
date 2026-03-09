@@ -95,7 +95,8 @@
     "id": "murisk_aftermath",
     "type": "narration",
     "text": "The surrounding air is thick with the musk of your encounter. The Murisk slowly unspools from the tension, its slick body coated in sweat and its own fluids. It recoils slightly into itself, the luminous segments along its hide dimming from a harsh glare to a soft, pulsing throb as it enters a passive, satiated state. Its seam closes tight, retaining what you left behind.",
-    "next": "murisk_end"
+	"command": "@RECORD_SPECIES_SEX murisk",
+    "next": "murisk_loot_leave_choice"
   },
   {
     "id": "murisk_loot_01",
@@ -115,7 +116,7 @@
     "options": [
       {
         "text": "> Leave",
-        "next": "murisk_end"
+        "next": "murisk_leave_01"
       }
     ]
   },

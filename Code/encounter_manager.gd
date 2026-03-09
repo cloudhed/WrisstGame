@@ -230,6 +230,8 @@ func _prepare_next_encounter_payload() -> void:
 
 	if selected_enemy_resource != null:
 		_last_enemy_resource = selected_enemy_resource
+		if GameState.player_statistics and selected_enemy_resource.has_method("get_species_id"):
+			GameState.player_statistics.record_encounter(selected_enemy_resource.get_species_id())
 		if debug_encounter_flow:
 			print("🎲 Encounter enemy selected:", selected_enemy_resource.player_name)
 	else:

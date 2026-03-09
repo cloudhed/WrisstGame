@@ -1,0 +1,1300 @@
+[
+	{
+		"id": "INIT_play_audio",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg",
+		"set_flag": "knows_creature",
+		"flag_type": "knowledge",		
+		"clear": true,
+		"next": "INIT_knowledge_CHECK"
+	},
+
+	{
+		"id": "INIT_knowledge_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_creature"],
+			"on_success": "creature_debug_pickfruit",
+			"on_fail": "creature_precombat_unknown"
+		}
+	},
+	
+	{
+		"id": "creature_debug_pickfruit",
+		"type": "command",
+		"command": "@add_item Consumables/oldtree_fruit 1",
+		"clear": true,
+		"next": "creature_precombat"
+	},
+
+	{
+		"id": "debug_music_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Start with Clip 0 (intro)",
+				"next": "debug_music_start_yesclip"
+			},
+			{
+				"text": "> Play clip 1 (choices)",
+				"next": "debug_music_clip1"
+			},
+			{
+				"text": "> Play clip 2 (love)",
+				"next": "debug_music_clip2"
+			},
+			{
+				"text": "> Play clip 3 (climax)",
+				"next": "debug_music_clip3"
+			},
+			{
+				"text": "> Play clip 4 (breath)",
+				"next": "debug_music_clip4"
+			}
+		]
+	},
+	{
+		"id": "debug_music_start_yesclip",
+		"type": "narration",
+		"text": "Playing music with yes clip",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
+		"next": "debug_music_choice"
+	},
+	{
+		"id": "debug_music_clip1",
+		"type": "narration",
+		"text": "Playing Clip 1",
+		"command": "@MUSIC_CLIP choices",
+		"next": "debug_music_choice"
+	},
+	{
+		"id": "debug_music_clip2",
+		"type": "narration",
+		"text": "Playing Clip 2",
+		"command": "@MUSIC_CLIP love",
+		"next": "debug_music_choice"
+	},
+	{
+		"id": "debug_music_clip3",
+		"type": "narration",
+		"text": "Playing Clip 3",
+		"command": "@MUSIC_CLIP climax",
+		"next": "debug_music_choice"
+	},
+	{
+		"id": "debug_music_clip4",
+		"type": "narration",
+		"text": "Playing Clip 4",
+		"command": "@MUSIC_CLIP breath",
+		"next": "debug_music_choice"
+	},
+	
+	
+	{
+		"id": "creature_precombat",
+		"type": "narration",
+		"text": "A <Creature> is <pacing around by itself>. <Known description of the creatures' appearance and behaviour>.",
+		"next": "creature_precombat_choice"
+	},
+	{
+		"id": "creature_precombat_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Observe the <Creature>",
+				"next": "creature_observe",
+				"hide_if": { "has_flag": "observed_creature" }
+			},
+			{
+				"text": "> Attack the <Creature>",
+				"next": "creature_attack"
+			},
+			{
+				"text": "> Approach the <Creature> slowly",
+				"next": "creature_approach"
+			},
+			{
+				"text": "> Try and lure the <Creature> with food",
+				"next": "creature_lure",
+				"show_if": { "has_item": "Consumables/oldtree_fruit" }
+			},
+			{
+				"text": "> Try and sneak up and capture the <Creature> with <item>",
+				"next": "creature_capture",
+				"show_if": { "has_item": "Consumables/sturdy_rope" }
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_leave"
+			}
+		]
+	},
+
+	{
+		"id": "creature_observe",
+		"type": "narration",
+		"text": "<Player actions to observe, describing further what the Creature looks like, its appearance, behaviour, special details, example:> You stay in place and watch the <Creature>. Its silver skin reflects spots along the ground as the sun hits it just right when it moves its slender body. It seems to be very focused on some amber-colored berries growing around the bushes in this area. In this state it would be easy to assume it's a docile creature, but it's pretty hard to tell from this distance.",
+		"set_flag": "observed_creature",
+		"flag_type": "temp",
+		"next": "creature_precombat_choice"
+	},
+	
+	{
+		"id": "creature_approach",
+		"type": "narration",
+		"text": "<Player actions to approach, either successfully if docile creature or might be attacked, or Creature might flee, example:> As soon as your foot crunches on a dry branch, the <Creature>'s head snaps up. Its nostrils flare, catching your scent. Before you can even raise a hand in peace, it lets out a sharp huff and bolts away, its footsteps fading quickly into the distance.",
+		"next": "creature_fled_leave"
+	},
+
+	{
+		"id": "creature_lure",
+		"type": "narration",
+		"text": "<Player actions to lure, describing further what the player uses to lure, and its response. Example:> You reach into your belongings and fish out a fruit. As soon as the peculiar smell of the ripe fruit hits your nostrils, you see the <Creature> react. Its head swivels around, seemingly in order to find the source of the fruity aroma. As its eyes lands on you and the food in your hand, it freezes. For a few moments, you both stand completely still, until the <Creature> slowly and carefully starts to move in your direction, its eyes fixed on the fruit in your hand.",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
+		"clear": true,
+		"next": "creature_lure_02"
+	},
+	{
+		"id": "creature_lure_02",
+		"type": "narration",
+		"text": "<Continuation on player actions to lure, describing further what the Creature looks like close up, and does in response. Example:> The <Creature> gives off a noise as it closes in on the fruit, and you assume its a happy noise. Up close, you can see <details>. As it reaches your hand holding the fruit, it tries to nudge and bump the fruit out of your hand, still giving off the occasional noise. It does not seem to be afraid of you.",
+		"command": "@SHOW_SCENE lure",
+		"next": "creature_lure_choice"
+	},
+	{
+		"id": "creature_lure_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Give the fruit to the <Creature>",
+				"next": "creature_lure_givefruit"
+			},
+			{
+				"text": "> Attack the <Creature>",
+				"next": "creature_attack"
+			},
+			{
+				"text": "> Bind the <Creature> with <item>",
+				"next": "creature_capture",
+				"show_if": { "has_item": "Consumables/sturdy_rope" }
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_lure_givefruit",
+		"type": "narration",
+		"text": "<Continuation on player giving the lure-item, describing further what the Creature looks like close up, and does in response. Example:> You yield to its eager nudging, and bend down to give the fruit directly to the <Creature>. The moment you let go, the <Creature> squeaks a, what can only be decribed as a happy gurgle, as it quickly and messily starts to chomp down on the juicy fruit. Its focus is now entirely on the food before it.",
+		"command": "@remove_item Consumables/oldtree_fruit 1",
+		"next": "creature_lure_choice02"
+	},
+	{
+		"id": "creature_lure_choice02",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Inspect the creature closer/<Determine sex>",
+				"next": "creature_inspect"
+			},
+			{
+				"text": "> Attack the <Creature>",
+				"next": "creature_attack"
+			},
+			{
+				"text": "> Bind the <Creature> with <item>",
+				"next": "creature_capture",
+				"show_if": { "has_item": "Consumables/sturdy_rope" }
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_lure_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_lure_leave",
+		"type": "narration",
+		"text": "<Player actions to leave after feeding the creature, example:> As the <Creature> is fully and completely occupied with absolutely devouring <lure>, you back away. The <Creature> and the wet noises of its chewing disappear behind you.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_creature"],
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_inspect",
+		"type": "narration",
+		"text": "<Further Player actions to inspect, describing the body, smell and noises of the <Creature>, Example:> With the <Creature>s attention turned to the fruit, you feel safe looking over the creature a bit closer without it protesting. <Describe its appearance>. You let the palm of your hand follow the back of the <Creature>, feeling the muscles beneath its silver skin twitch from your touch.",
+		"clear": false,
+		"next": "creature_inspect_determinesex_choice"
+	},
+	{
+		"id": "creature_inspect_determinesex_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Determine the <Creature>'s sex",
+				"next": "creature_inspect_determinesex"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	
+	{
+		"id": "creature_inspect_determinesex",
+		"type": "narration",
+		"text": "<Further Player actions to inspect and determine the <Creature>'s sex, describing the body, genitals, smell, reactions and noises of the <Creature>, Example:> As your fingers reach the end of its back, you notice a small tight hole just underneath the tail, winking in slow pulses. <Descriptions of tactile feel, smell, reactions from Creature>. Between its two hind-legs you find a small puffy slit.[p]A meek gurgling groan escapes the eating <Creature> as it senses the pressure of your hands around its genitals. It huffs quietly as you notice the hint of a tapered purple lenght start to emerge from the glistening slit.",
+		"command": "@MUSIC_CLIP choices ; @SHOW_SCENE inspect",
+		"clear": false,
+		"next": "creature_inspect_choice"
+	},
+	{
+		"id": "creature_inspect_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Touch the erection",
+				"next": "creature_inspect_02"
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_inspect_02",
+		"type": "narration",
+		"text": "<Further describing the body, smell and noises of the <Creature>, Example:> A slender purple cock emerges, already slick with a thick viscous liquid. From the tapered tip down to the middle of the erection there are what looks like pink bulbous shapes scattered around the length. As you touch one of the bulbs the beast shudders, and you notice that you can shift the bulbs around, almost like they're air bubbles just beneath the surface. As the bulbs move, the <Creature> gives off a clearly approving gurgling groan. It has stopped eating, and is now panting gently, eyes half-closed. At the same time, its sphincter increases its winking rhythm, and beads of a translucent wetness start to pool in the middle of the tight ring.",
+		"command": "@SHOW_SCENE inspect_genitals",
+		"clear": false,
+		"next": "creature_sex_choice_init"
+	},
+	{
+		"id": "creature_sex_choice_init",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Have sex with the creature",
+				"next": "creature_sex_init"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_init",
+		"type": "narration",
+		"text": "<Player character undressing and getting fully ready for sex. Describe body, reactions and noises of the <Creature>, Example:> You remove your clothes as you rub the <Creature> gently. As you're undressing, the clear liquid from its winking hole has begun to run down along its taint and is dripping along the length of its shaft. The musky scent of its secretions reminds you slightly of coconut oil.",
+		"clear": false,
+		"next": "creature_sex_choice"
+	},
+	{
+		"id": "creature_sex_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Fuck the winking hole",
+				"next": "creature_sex_male_top_start",
+				"show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Nudge your cock towards its mouth",
+				"next": "creature_sex_male_oral_start",
+				"show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Mount its purple erection",
+				"next": "creature_sex_female_ride_start",
+				"show_if": { "player_gender": "female" }
+			},
+			{
+				"text": "> Present your pussy to its mouth",
+				"next": "creature_sex_female_receive_oral_start",
+				"show_if": { "player_gender": "female" }
+			},
+			{
+				"text": "> Present your ass",
+				"next": "creature_sex_bottom_start",
+				"show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+
+	
+	{
+		"id": "creature_sex_male_top_start",
+		"type": "narration",
+		"text": "You grab your erection and line yourself up with the winking hole beneath its tail. The <Creature>'s muscles twitch as it senses your tip, the thick, musky coconut scent wafting up from its ass. You press your glans against the tight ring of muscle and rub it in the slick secretions.",
+		"command": "@SHOW_SCENE male_top_start",
+		"next": "creature_sex_male_top_start_choice"
+	},
+	{
+		"id": "creature_sex_male_top_start_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Push inside its ass",
+				"next": "creature_sex_male_top_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_top_ongoing",
+		"type": "narration",
+		"text": "You push your hips forward, sinking your length into the tight, gripping heat of its hole. The <Creature> lets out a startled, primal yelp that quickly melts into a deep, vibrating gurgle. Its inner walls clench and flutter around you instinctively, the winking almost creating a vacuum that pulls your cock deeper. The natural lubricant allows you to establish a steady, wet rhythm, your hips slapping against its silver cheeks as its own purple cock bounces with every thrust, squirting clear liquid all over the ground.",
+		"command": "@MUSIC_CLIP love ; @SHOW_SCENE male_top_ongoing",
+		"next": "creature_sex_male_top_ongoing_choice"
+	},
+	{
+		"id": "creature_sex_male_top_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust deeper into its ass",
+				"next": "creature_sex_male_top_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_top_pre_climax",
+		"type": "narration",
+		"text": "You grab the hips of the <Creature> firmly and leverage yourself to reach deeper into its guts. Deep, short gurgles rumble from the throat of the beast in time with the slaps of your hips crashing into its rear together with the slap-back echo of its own cock bouncing up and hitting its belly from below. The <Creature> is actively pushing back against your hips now, a desperate, greedy friction that milks your cock with every thrust. A long, drawn-out groaning and squelching from a rapid increase in winking from its hole tells you it's not far from climax. Its hot milking ring tightening around your shaft in pulses every time your glans returns to it makes it impossible to hold off your own impending orgasm.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_sex_male_top_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_top_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Finish inside the <Creature>",
+				"next": "creature_sex_male_top_climax_inside"
+			},
+			{
+				"text": "> Pull out and finish on the <Creature>",
+				"next": "creature_sex_male_top_climax_outside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_top_climax_inside",
+		"type": "narration",
+		"text": "With a final, desperate shove, you forcefully bury yourself to the hilt as you pull yourself as close and deep as you can and let go. Your animalistic greed pushes the <Creature> over the edge, and with loud gurgling moan and an audible wet squelch, a heavy load of the beasts' release hits the ground underneath you both, splashing up against your ankles. Thick ropes of your own seed pump deep into the <Creature>'s tight, pulsating guts. It shudders violently around you, taking every drop with a series of hard, involuntary clenches, whining loudly as your warmth floods its insides.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE male_top_climax_inside",
+		"next": "creature_sex_male_top_aftermath"
+	},
+	{
+		"id": "creature_sex_male_top_climax_outside",
+		"type": "narration",
+		"text": "You pull out at the very last second. Your cock erupts, spraying thick strands of white across the <Creature>'s silver skin and the pulsing rim of its hole. The sudden void left by your length's retreat shocks the <Creature> over the edge, and with loud gurgling moan and an audible wet squelch, a heavy load of the beasts' release hits the ground underneath you both, splashing up against your ankles. The creature whines softly, its empty hole twitching and winking in the cool air as you empty yourself over its glistening hindquarters.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE male_top_climax_outside",
+		"next": "creature_sex_male_top_aftermath"
+	},
+	{
+		"id": "creature_sex_male_top_aftermath",
+		"type": "narration",
+		"text": "Your breathing slowly levels out as the adrenaline fades. The beast gives a final, contented gurgle, a thick dollop of fluids slowly dripping from its rear and cock, before it returns its attention entirely to the half-eaten fruit on the ground, seemingly completely unfazed.",
+		"command": "@SHOW_SCENE male_top_aftermath ; @RECORD_SPECIES_SEX creature",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"next": "creature_sex_male_top_aftermath_choice"
+	},
+	{
+		"id": "creature_sex_male_top_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Rest against its body and pet its head",
+				"next": "creature_sex_male_top_affection"
+			},
+			{
+				"text": "> Get dressed and leave",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_top_affection",
+		"type": "narration",
+		"text": "Still panting slightly, you lean forward, resting your chest against the <Creature>'s warm, silver back. You plant a soft kiss on its smooth head, your fingers gently petting along its neck. It doesn't stop chewing its fruit, but a low, vibrating growl rumbles through its body, leaning into your touch for just a moment before you finally pull away.",
+		"clear": true,
+		"next": "creature_inspect_leave"
+	},
+
+	
+	{
+		"id": "creature_sex_male_oral_start",
+		"type": "narration",
+		"text": "You guide the creature's head towards your groin. It sniffs your erection curiously, its warm breath ghosting over your skin before its jaw opens, revealing a slick, purple, ribbed tongue and a cavernous, drooling mouth.",
+		"command": "@SHOW_SCENE male_top_oral_start",
+		"next": "creature_sex_male_oral_start_choice"
+	},
+	{
+		"id": "creature_sex_male_oral_start_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Push your tip against its tongue",
+				"next": "creature_sex_male_oral_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_oral_ongoing",
+		"type": "narration",
+		"text": "You push your hips forward and rub your glans against the ribbed tongue. By pure reflex, the wet, textured mouth of the <Creature> pulls your length inside with a wet noise. Instinct drives it to suckle and pull, a powerful, sloppy vacuum forming around your cock. The creature gurgles gently around you with a rumble, its throat swallowing greedily as you thrust into the hot, slick tunnel of its maw, the tongue ribs hitting the underside of your cock every time you move.",
+		"command": "@MUSIC_CLIP love ; @SHOW_SCENE male_top_oral_ongoing",
+		"next": "creature_sex_male_oral_ongoing_choice"
+	},
+	{
+		"id": "creature_sex_male_oral_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust deeper into its mouth",
+				"next": "creature_sex_male_oral_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_oral_pre_climax",
+		"type": "narration",
+		"text": "The frantic suction and the constant ripple from its tongue bumping along your glans makes your knees weaken, but you need more. With effort you grab hold of the top of the smooth head of the <Creature> to try and push your hips closer to its face in order to reach deeper into its gurgling throat. As if sensing your desperation, the beast's clawed paws slide up along your thighs, gripping your ass tightly, anchoring you as it takes you deep into its throat. The wet heat is overwhelming, and the pressure in your groin signals there is no going back.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_sex_male_oral_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_oral_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Blow your load down its throat",
+				"next": "creature_sex_male_oral_climax_inside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_oral_climax_inside",
+		"type": "narration",
+		"text": "Your orgasm makes your knees buckle and give out. In a daze you quickly grab the back of the <Creature>'s neck and pump your hips forward, firing your climax straight down its throat. The beast chokes out a muffled gurgle, instinctively swallowing the heavy load, letting your hot seed coat the back of its mouth and throat.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE male_top_oral_climax_inside",
+		"next": "creature_sex_male_oral_aftermath"
+	},
+	{
+		"id": "creature_sex_male_oral_aftermath",
+		"type": "narration",
+		"text": "You slowly slide out of its slick mouth, strands of saliva and cum connecting you for a brief moment. You pack yourself away and get dressed while the <Creature> licks itself clean, giving a satisfied rumble before turning back to its fruit left on the ground.",
+		"command": "@SHOW_SCENE male_top_aftermath ; @RECORD_SPECIES_SEX creature",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"next": "creature_sex_male_oral_aftermath_choice"
+	},
+	{
+		"id": "creature_sex_male_oral_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Get dressed and leave",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+
+
+	{
+		"id": "creature_sex_female_ride_start",
+		"type": "narration",
+		"text": "You straddle the <Creature>'s hindquarters, aligning your wet core with its leaking, bulbous purple erection. The thick scent of coconut musk is overpowering this close. As your pussy lips brush against its slick tip, the beast stops chewing for a second, a low, inquisitive rumble vibrating up through its back.",
+		"next": "creature_sex_female_ride_start_choice"
+	},
+	{
+		"id": "creature_sex_female_ride_start_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Sink down onto its cock",
+				"next": "creature_sex_female_ride_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_female_ride_ongoing",
+		"type": "narration",
+		"text": "With a heavy squelch, you lower yourself, taking the thick, viscous-coated length inside you. As you hit the first of the pink bulbous shapes, the <Creature> lets out a loud, gargling purr. You establish a bouncing rhythm as the cock stretches your pussy, and the sensation is mind-blowing. The air-bubble-like bulbs shift and drag against your inner walls with every rise and fall, milking wet, slapping sounds from the juncture between your bodies.",
+		"command": "@MUSIC_CLIP love",
+		"next": "creature_sex_female_ride_ongoing_choice"
+	},
+	{
+		"id": "creature_sex_female_ride_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Grind down against it",
+				"next": "creature_sex_female_ride_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_female_ride_pre_climax",
+		"type": "narration",
+		"text": "You pick up the pace, grinding your clit fiercely against the base of its purple shaft. The <Creature> bucks its hips up into you instinctively to meet your bounces. The rapid shifting of those internal bulbs rubbing your deepest spots makes your vision blur, and the slap-back sound of wet flesh echoing in the air signals you're both right on the edge.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_sex_female_ride_climax_choice"
+	},
+	{
+		"id": "creature_sex_female_ride_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Take its load deep inside",
+				"next": "creature_sex_female_ride_climax_inside"
+			},
+			{
+				"text": "> Pull off and let it finish on you",
+				"next": "creature_sex_female_ride_climax_outside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_female_ride_climax_outside",
+		"type": "narration",
+		"text": "You lift your hips at the last moment, pulling off the thick, bulbous shaft with a loud squelch. The sudden loss of pressure forces the <Creature> over the edge. It lets out a guttural, happy roar, bucking upward as it shoots thick, heavy jets of its musky, clear fluid across your, breasts, stomach and thighs. The warm coconut scent hangs heavy in the air as the fluid pools on your skin.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_sex_female_ride_aftermath"
+	},
+	{
+		"id": "creature_sex_female_ride_climax_inside",
+		"type": "narration",
+		"text": "You slam down as hard as you can just as your climax hits, your vaginal walls spasming violently around the bulbous cock. The <Creature> lets out a guttural, happy roar. You feel an intense, hot pressure as it erupts deep inside you, flooding your womb with thick pulses of clear, musky fluid that quickly begins to spill out down your thighs.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_sex_female_ride_aftermath"
+	},
+	{
+		"id": "creature_sex_female_ride_aftermath",
+		"type": "narration",
+		"text": "You slump forward against the <Creature>'s back, catching your breath as the last few twitches of its erection slowly deflate inside you. It returns to nibbling its fruit, a puddle of its clear fluid pooling on the ground beneath you.",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"command": "@RECORD_SPECIES_SEX creature",
+		"next": "creature_sex_female_ride_aftermath_choice"
+	},
+	{
+		"id": "creature_sex_female_ride_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Get dressed and leave",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+
+
+	{
+		"id": "creature_sex_bottom_start",
+		"type": "narration",
+		"text": "You get down on your hands and knees, presenting your exposed hole to the <Creature>. Distracted from its fruit, it shuffles around behind you, sniffing loudly at your rear. The warm, coconut-scented breath hits your skin just before the heavy, slick tip of its purple erection presses insistently against your entrance.",
+		"next": "creature_sex_bottom_start_choice"
+	},
+	{
+		"id": "creature_sex_bottom_start_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Let it push inside",
+				"next": "creature_sex_bottom_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_bottom_ongoing",
+		"type": "narration",
+		"text": "The <Creature> steps forward, driving its thick length inside you. You gasp as the pink, bulbous nodes along its shaft stretch your ring, sliding in with a loud squelch. The beast grabs your hips with its clawed paws, settling into a heavy, animalistic rhythm. Each thrust drags those bizarre bulbs against your insides, eliciting a deep, gurgling purr of satisfaction from the creature.",
+		"command": "@MUSIC_CLIP love",
+		"next": "creature_sex_bottom_ongoing_choice"
+	},
+	{
+		"id": "creature_sex_bottom_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Grind your ass against its thrusts",
+				"next": "creature_sex_bottom_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_bottom_pre_climax",
+		"type": "narration",
+		"text": "You push back against the beast as the pace turns frantic. The heavy slap-back of its silver hips hitting your ass echoes loudly. The <Creature> is panting and grunting, its grip on your hips almost bruising as it buries itself to the hilt. The shifting bulbs inside you stimulate you relentlessly, and you can feel the beast's cock swelling thicker as it prepares to blow.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_sex_bottom_climax_choice"
+	},
+	{
+		"id": "creature_sex_bottom_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Take its load inside you",
+				"next": "creature_sex_bottom_climax_inside"
+			},
+			{
+				"text": "> Pull away and let it finish on your ass",
+				"next": "creature_sex_bottom_climax_outside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_bottom_climax_outside",
+		"type": "narration",
+		"text": "You scramble forward just as the beast reaches its breaking point. Its slick length slides out of your hole with a wet pop. The <Creature> throws its head back with a warbling cry and erupts, spraying hot, thick ropes of clear seed across your cheeks and down your thighs. The musky liquid drips heavily from your skin onto the dirt below.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_sex_bottom_aftermath"
+	},
+	{
+		"id": "creature_sex_bottom_climax_inside",
+		"type": "narration",
+		"text": "The beast throws its head back with a loud, warbling cry, bottoming out inside you. You scream your own release as hot, thick jets of its clear, musky seed pump violently into your guts. The <Creature> humps you a few more shallow times, milking every last drop into your twitching hole.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_sex_bottom_aftermath"
+	},
+	{
+		"id": "creature_sex_bottom_aftermath",
+		"type": "narration",
+		"text": "The <Creature> finally pulls its slick, softening length out of you with a wet pop. A steady stream of its coconut-scented fluid leaks from your hole, dripping down your legs. The beast gives your ass a final sniff before happily wandering back to the remains of its fruit.",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"command": "@RECORD_SPECIES_SEX creature",
+		"next": "creature_sex_bottom_aftermath_choice"
+	},
+	{
+		"id": "creature_sex_bottom_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Get dressed and leave",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_female_receive_oral_start",
+		"type": "narration",
+		"text": "<Placeholder: Route for Female receiving oral.>",
+		"next": "creature_inspect_leave"
+	},
+
+
+	{
+		"id": "creature_capture",
+		"type": "narration",
+		"text": "<Player actions to try and capture, describing further what the Creature does in response. Example:> As carefully as possible you unveil the rope from your belongings and steady it in your hands as you try and tie a knot that will hold the creature in place. When your fingers are done, you have created yourself a surprisingly good lasso. With a deep breath and a swift toss, your rope lands around the unsuspecting <Creature>'s neck. With a gurgling yelp the <Creature> twitches to attention as it notices the strange feeling of your rope on its body. The rope tugs taught as it tries to run, and you dig your heels in and pull.",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP choices ; @SHOW_SCENE capture ; @remove_item Consumables/sturdy_rope 1",
+		"next": "creature_capture_02"
+	},
+	{
+		"id": "creature_capture_02",
+		"type": "narration",
+		"text": "<Further Player actions to try and capture, describing further what the Creature does in response. Example:> You struggle against each others strength and leverage in a wild tug-of-war. The <Creature> yelps in panic as it senses its muscles give out, and it manages to tangle itself in the rest of your rope as it tries to get free.[nb]With a thud, its body hits the ground, the <Creature> seemingly fully out of fighting spirit.",
+		"next": "creature_capture_choice"
+	},
+	{
+		"id": "creature_capture_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Inspect the tied-up creature closer",
+				"next": "creature_capture_inspect"
+			},
+			{
+				"text": "> <Loot the creature>",
+				"next": "creature_capture_loot",
+				"hide_if": { "has_flag": "creature_looted" }
+			},
+			{
+				"text": "> Turn the <Creature> free again",
+				"next": "creature_capture_free"
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_loot",
+		"type": "narration",
+		"text": "<Get loot from the creature. Example:> As the <Creature> lies there helpless, you bend down and <aquire> <loot>.",
+		"clear": true,
+		"next": "creature_loot_give"
+	},
+	{
+		"id": "creature_loot_give",
+		"type": "command",
+		"command": "@add_item Misc/creature_loot 1 ",
+		"set_flag": "creature_looted",
+		"flag_type": "temp",
+		"next": "creature_capture_choice"
+	},
+	{
+		"id": "creature_capture_free",
+		"type": "narration",
+		"text": "Deciding it isn't worth the hassle, you kneel down and quickly loosen the knot holding the <Creature>. You pull the rope free. The beast immediately scrambles to its feet, shaking off the tension before darting away into the brush.",
+		"command": "@add_item Consumables/sturdy_rope 1 ; @HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_capture_inspect",
+		"type": "narration",
+		"text": "<Further Player actions to inspect, describing the body, smell and noises of the <Creature> similar to the normal Inspect but with the creature tired and tied up. Example:> As the <Creature> now lies at your feet helpless and tied-up, you're free to inspect it without it fighting back. You turn the <Creature> on its back and run the palm of your hand against its belly. <Descriptions of tactile feel, smell, reactions from Creature>. Your fingers trace their way down to a small puffy slit in-between its hindlegs, and right below the slit, just underneath its tail, you see a tight orifice winking slowly.[nb]A meek gurgling groan escapes the bound <Creature> as it senses the pressure of your hands around its apparent genitals, and you see the hint of something purple and glistening start to emerge from the slit.",
+		"command": "@SHOW_SCENE capture_inspect",
+		"clear": true,
+		"next": "creature_capture_sex_choice_init"
+	},
+	{
+		"id": "creature_capture_sex_choice_init",
+		"type": "choice",
+		"options": [
+			{
+				"text": "Have your way with the tied-up creature",
+				"next": "creature_capture_sex_init"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_init",
+		"type": "narration",
+		"text": "You decide to take advantage of the helpless beast. You unfasten your clothes, letting them drop to the dirt. The <Creature> whimpers quietly, its winking hole already pooling with clear, coconut-scented secretions that drip down onto the ropes binding it.",
+		"clear": true,
+		"next": "creature_capture_sex_choice"
+	},
+	{
+		"id": "creature_capture_sex_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Fuck its tied-up ass",
+				"next": "creature_capture_sex_male_anal_start",
+		        "show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Ride the tied-up dick",
+				"next": "creature_capture_sex_female_ride_start",
+		        "show_if": { "player_gender": "female" }
+			},
+			{
+				"text": "> Force your cock into its mouth",
+				"next": "creature_capture_sex_top_oral_start",
+		        "show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Suck its dick while it's bound",
+				"next": "creature_capture_sex_receive_oral_start"
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+
+	
+	{
+		"id": "creature_capture_sex_male_anal_start",
+		"type": "narration",
+		"text": "You pull the bound <Creature> onto its stomach, exposing its twitching rear. The scent of its clear secretions hangs heavy in the air. You line up your hard tip with the winking muscle, grabbing its bound hips tightly.",
+		"next": "creature_capture_sex_male_anal_start_choice"
+	},
+	{
+		"id": "creature_capture_sex_male_anal_start_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Force yourself inside",
+				"next": "creature_capture_sex_male_anal_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_male_anal_ongoing",
+		"type": "narration",
+		"text": "You thrust forward, burying yourself in its tight, unyielding guts. The <Creature> lets out a muffled, struggling bleat, but the friction of your cock dragging against its inner walls forces its body to react. Its hole rapidly begins to slick up, milking you with wet, squelching noises as you establish a harsh, slapping rhythm against its silver hide.",
+		"command": "@MUSIC_CLIP love",
+		"next": "creature_capture_sex_male_anal_ongoing_choice"
+	},
+	{
+		"id": "creature_capture_sex_male_anal_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust deeper",
+				"next": "creature_capture_sex_male_anal_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_male_anal_pre_climax",
+		"type": "narration",
+		"text": "The struggling has completely ceased, replaced by deep, guttural gurgles of involuntary pleasure from the beast. Its sphincter is frantically winking around your shaft, actively sucking you deeper. The slap-back echo of your hips hitting its bound ass is deafening, and the pressure in your balls is demanding release.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_capture_sex_male_anal_climax_choice"
+	},
+	{
+		"id": "creature_capture_sex_male_anal_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Breed the tied-up beast",
+				"next": "creature_capture_sex_male_anal_climax_inside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_male_anal_climax_inside",
+		"type": "narration",
+		"text": "You drive your cock to the hilt and let go, grunting loudly. Thick ropes of your seed pump deep into the helpless <Creature>. At the exact same moment, the beast gives a loud, garbled moan, its own purple cock squirting a heavy load of clear, coconut-scented fluid over the ropes binding its legs.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_capture_sex_male_anal_aftermath"
+	},
+	{
+		"id": "creature_capture_sex_male_anal_aftermath",
+		"type": "narration",
+		"text": "You slowly slide out of the messy, winking hole. The <Creature> lies completely still, panting heavily into the dirt, an oozing mix of fluids leaking from its rear.",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"command": "@RECORD_SPECIES_SEX creature",
+		"clear": true,
+		"next": "creature_capture_sex_male_anal_aftermath_choice"
+	},
+	{
+		"id": "creature_capture_sex_male_anal_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Get dressed and leave it tied up",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+
+	
+	{
+		"id": "creature_capture_sex_female_ride_start",
+		"type": "narration",
+		"text": "You straddle the bound <Creature>, grabbing the ropes around its chest for leverage. Its purple, bulbous erection twitches helplessly between its tied legs, leaking thick, clear fluid onto its belly. You align your slick pussy over the tip.",
+		"next": "creature_capture_sex_female_ride_start_choice"
+	},
+	{
+		"id": "creature_capture_sex_female_ride_start_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Sink down",
+				"next": "creature_capture_sex_female_ride_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_female_ride_ongoing",
+		"type": "narration",
+		"text": "You drop your weight, forcing the squelching, bulbous length deep inside you. The <Creature> whimpers, unable to move its hips as you establish a bouncing rhythm. The internal shifting of those air-bubble-like bulbs dragging against your sensitive walls is maddening, milking loud, wet slaps from between your bodies.",
+		"command": "@MUSIC_CLIP love",
+		"next": "creature_capture_sex_female_ride_ongoing_choice"
+	},
+	{
+		"id": "creature_capture_sex_female_ride_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Ride harder",
+				"next": "creature_capture_sex_female_ride_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_female_ride_pre_climax",
+		"type": "narration",
+		"text": "You ride the helpless beast mercilessly, grinding your clit into its silver hide. The <Creature> is gurgling loudly now, completely overwhelmed by the stimulation. You feel its hot, throbbing cock expanding inside you, signaling it's about to burst.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_capture_sex_female_ride_climax_choice"
+	},
+	{
+		"id": "creature_capture_sex_female_ride_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Milk its load out inside you",
+				"next": "creature_capture_sex_female_ride_climax_inside"
+			},
+			{
+				"text": "> Pull off and milk it over your body",
+				"next": "creature_capture_sex_female_ride_climax_outside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_female_ride_climax_outside",
+		"type": "narration",
+		"text": "You lift yourself off the bound creature right before it bursts. You grab its throbbing, bulbous shaft and stroke it rapidly, squeezing the internal nodes. The beast gurgles in helpless overwhelm, shooting thick jets of clear, musky fluid across your belly and chest, soaking your skin with its sticky secretions.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_capture_sex_female_ride_aftermath"
+	},
+	{
+		"id": "creature_capture_sex_female_ride_climax_inside",
+		"type": "narration",
+		"text": "You slam down one final time, crying out as your own orgasm ripples through your core. The sheer pressure forces the <Creature> over the edge, and it shoots thick, heavy jets of its musky, clear fluid deep into your womb, flooding you completely.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_capture_sex_female_ride_aftermath"
+	},
+	{
+		"id": "creature_capture_sex_female_ride_aftermath",
+		"type": "narration",
+		"text": "You sit on the tied-up beast for a moment, letting the last few spasms of its cock milk out inside you before peeling yourself off with a wet squelch.",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"command": "@RECORD_SPECIES_SEX creature",
+		"next": "creature_capture_sex_female_ride_aftermath_choice"
+	},
+	{
+		"id": "creature_capture_sex_female_ride_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Get dressed and leave it tied up",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+
+	
+	{
+		"id": "creature_capture_sex_top_oral_start",
+		"type": "narration",
+		"text": "You grab the bound <Creature> by the top of its smooth head, hauling its face toward your groin. It gurgles in confusion as you press your hard tip against its drooling, cavernous lips, forcing its jaws to part.",
+		"next": "creature_capture_sex_top_oral_start_choice"
+	},
+	{
+		"id": "creature_capture_sex_top_oral_start_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Force your cock inside",
+				"next": "creature_capture_sex_top_oral_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_top_oral_ongoing",
+		"type": "narration",
+		"text": "You shove your hips forward, violating the beast's mouth. Its thick, purple ribbed tongue instinctively wraps around your shaft. You establish a ruthless pace, face-fucking the helpless creature as its saliva creates wet, sloppy noises with every thrust.",
+		"command": "@MUSIC_CLIP love",
+		"next": "creature_capture_sex_top_oral_ongoing_choice"
+	},
+	{
+		"id": "creature_capture_sex_top_oral_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Throat-fuck the beast",
+				"next": "creature_capture_sex_top_oral_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_top_oral_pre_climax",
+		"type": "narration",
+		"text": "The <Creature> is gagging and gurgling around your length, drool spilling out over the ropes binding it. You use its head for leverage, burying yourself deep into the wet, hot cavern of its throat until your balls are slapping heavily against its chin.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_capture_sex_top_oral_climax_choice"
+	},
+	{
+		"id": "creature_capture_sex_top_oral_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Fill its throat",
+				"next": "creature_capture_sex_top_oral_climax_inside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_top_oral_climax_inside",
+		"type": "narration",
+		"text": "With a sharp grunt, you bottom out against the back of its throat and fire. Thick ropes of hot seed pump relentlessly into the <Creature>'s maw, forcing it to gulp loudly around your cock to swallow the heavy load.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_capture_sex_top_oral_aftermath"
+	},
+	{
+		"id": "creature_capture_sex_top_oral_aftermath",
+		"type": "narration",
+		"text": "You slide your softening cock out of its mouth, a messy trail of saliva and cum bridging the gap. The bound <Creature> coughs softly, licking itsself in a daze.",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"command": "@RECORD_SPECIES_SEX creature",
+		"next": "creature_capture_sex_top_oral_aftermath_choice"
+	},
+	{
+		"id": "creature_capture_sex_top_oral_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Get dressed and leave it tied up",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+
+	
+	{
+		"id": "creature_capture_sex_receive_oral_start",
+		"type": "narration",
+		"text": "You kneel between the tied legs of the struggling beast. Its purple erection is throbbing and oozing clear, coconut-scented fluid. You lean in, letting your tongue run over the slick, bulbous tip.",
+		"next": "creature_capture_sex_receive_oral_start_choice"
+	},
+	{
+		"id": "creature_capture_sex_receive_oral_start_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Take it into your mouth",
+				"next": "creature_capture_sex_receive_oral_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_receive_oral_ongoing",
+		"type": "narration",
+		"text": "You engulf the thick, alien cock. The taste of musky coconut fills your senses as you suckle and bob your head. The pink bulbs beneath the surface shift and pop against your tongue with a strange, satisfying texture. The bound <Creature> gives a loud, startled gurgle as you establish a wet, sloppy rhythm.",
+		"command": "@MUSIC_CLIP love",
+		"next": "creature_capture_sex_receive_oral_ongoing_choice"
+	},
+	{
+		"id": "creature_capture_sex_receive_oral_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Suck it harder",
+				"next": "creature_capture_sex_receive_oral_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_receive_oral_pre_climax",
+		"type": "narration",
+		"text": "You draw hard on the dripping shaft, burying your nose in its silver fur. The <Creature> is bucking its tied hips up into your face as best it can, letting out garbled, high-pitched moans. You feel the bizarre bulbs racing up toward the tip, signaling the beast is at its limit.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_capture_sex_receive_oral_climax_choice"
+	},
+	{
+		"id": "creature_capture_sex_receive_oral_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Drain its load and swallow",
+				"next": "creature_capture_sex_receive_oral_climax_inside"
+			},
+			{
+				"text": "> Finish on your body",
+				"next": "creature_capture_sex_receive_oral_climax_outside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_sex_receive_oral_climax_outside",
+		"type": "narration",
+		"text": "You pull your mouth away at the final second, grasping the base of its throbbing purple shaft. You squeeze the shifting bulbs firmly, and the bound <Creature> gives a loud, wet squelching roar. A massive, heavy load of warm, thick fluid erupts from the tip, splashing heavily against your chin and running in thick streams down your chest. The strong scent of coconut musk surrounds you.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_capture_sex_receive_oral_aftermath"
+	},
+	{
+		"id": "creature_capture_sex_receive_oral_climax_inside",
+		"type": "narration",
+		"text": "The <Creature> gives a loud, wet squelching roar as it erupts. A massive, heavy load of warm, thick fluid shoots down your throat. You swallow greedily, milking the tied-up beast until the last drops of its musky seed coat your tongue and lips.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "creature_capture_sex_receive_oral_aftermath"
+	},
+	{
+		"id": "creature_capture_sex_receive_oral_aftermath",
+		"type": "narration",
+		"text": "You pull back, wiping your chin as the <Creature>'s deflating purple cock flops weakly against its bound legs. The beast pants softly, totally spent.",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"command": "@RECORD_SPECIES_SEX creature",
+		"next": "creature_capture_sex_receive_oral_aftermath_choice"
+	},
+	{
+		"id": "creature_capture_sex_receive_oral_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Get dressed and leave it tied up",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+
+
+	{
+		"id": "creature_capture_leave",
+		"type": "narration",
+		"text": "<Player actions to leave after capturing the creature without doing anything, example:> You adjust your clothes and leave the tied-up <Creature> on the ground. The <Creature>'s pleading noises disappear behind you.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_end"
+	},
+
+	{
+		"id": "creature_attack",
+		"type": "narration",
+		"text": "<Player actions to attack, example:> You lunge at the <Creature>.",
+		"command": "@STOP_ALL_AMBIENCE",
+		"next": "creature_startcombat"
+	},
+	{
+		"id": "creature_startcombat",
+		"type": "command",
+		"command": "@STOP_ALL_AMBIENCE ; @START_COMBAT",
+		"clear_flag": ["observed_creature"],
+		"end": true
+	},
+	
+	
+	{
+		"id": "creature_inspect_leave",
+		"type": "narration",
+		"text": "<Player actions to leave before going too far with the Creature, example:> You adjust your clothing, get up, and walk away, leaving the <Creature> to its juicy fruit.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_fled_leave",
+		"type": "narration",
+		"text": "<The Creature's actions to flee, example:> The <Creature>s bleats slowly disappear in the distance.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_leave",
+		"type": "narration",
+		"text": "<Player actions to leave, example:> You slowly start to back away before it notices you, and leave the <Creature> to its business.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_creature"],
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"next": "teqqellon_end_shouldtshowup"
+	}
+]

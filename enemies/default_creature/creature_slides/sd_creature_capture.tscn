@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3gcr27mplyak"]
+
+[ext_resource type="Texture2D" uid="uid://b3ag14dw36x6x" path="res://Assets/Backgrounds/slide_default_background.jpg" id="1_4pnw5"]
+[ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="2_a2x6r"]
+[ext_resource type="Material" uid="uid://bxntkmfcekw4v" path="res://Assets/Sprites/Particles/minttärä_furrow_debug_01_particleProcessMaterial.tres" id="3_yp053"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2hxa2"]
+blend_mode = 1
+
+[node name="sd_teqqellon_init_pen" type="Node2D"]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_4pnw5")
+centered = false
+
+[node name="ForegroundSprite" type="Sprite2D" parent="."]
+centered = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_2hxa2")
+position = Vector2(635.43, 359.455)
+scale = Vector2(6.89, 4.075)
+amount = 30
+texture = ExtResource("2_a2x6r")
+lifetime = 6.0
+preprocess = 6.0
+randomness = 0.5
+process_material = ExtResource("3_yp053")

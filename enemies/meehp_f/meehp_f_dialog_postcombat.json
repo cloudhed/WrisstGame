@@ -102,6 +102,7 @@
     "id": "meehp_f_aftermath",
     "type": "narration",
     "text": "The grass remains flattened in a near-perfect circle. The female Meehp settles into a low stance, still alert but no longer pressing forward. Fluid drips slowly from your body to the ground. She watches you carefully, her four eyes blinking in sequence. The aggressive energy is gone from her posture. She straightens her long neck and begins to preen her frills.",
+	"command": "@RECORD_SPECIES_SEX meehp",
     "next": "meehp_f_leave_01"
   },
   {

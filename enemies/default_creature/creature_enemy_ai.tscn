@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://b36kourb32ynb"]
+
+[ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_yx13p"]
+[ext_resource type="Script" uid="uid://cdisbx1otllk3" path="res://Scripts/entities/enemies/default_creature/actions/creature_attack_action.gd" id="2_oq1at"]
+[ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_73cyc"]
+[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="4_wpov7"]
+[ext_resource type="AudioStream" uid="uid://b2lcgove03ygd" path="res://Audio/SFX/tile_sfx/wood_hit.ogg" id="5_rtupg"]
+[ext_resource type="Script" uid="uid://dkwxasjb4cbqf" path="res://Scripts/entities/enemies/default_creature/actions/creature_block_action.gd" id="6_tva0c"]
+[ext_resource type="Texture2D" uid="uid://bj44iwbjx87nc" path="res://Assets/UI/intent/intent_block.png" id="7_2b7on"]
+[ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="8_sp5c4"]
+
+[sub_resource type="Resource" id="Resource_3t067"]
+script = ExtResource("4_wpov7")
+number = "4-6"
+icon = ExtResource("3_73cyc")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_qx16i"]
+script = ExtResource("4_wpov7")
+number = "4"
+icon = ExtResource("7_2b7on")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[node name="CreatureEnemyAi" type="Node"]
+script = ExtResource("1_yx13p")
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_oq1at")
+min_damage = 4
+max_damage = 6
+intent = SubResource("Resource_3t067")
+sound = ExtResource("5_rtupg")
+type = 1
+chance_weight = 1.0
+message_template = "[b]{source_name}[/b] strikes [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] damage!"
+
+[node name="BlockAction" type="Node" parent="."]
+script = ExtResource("6_tva0c")
+block = 4
+intent = SubResource("Resource_qx16i")
+sound = ExtResource("8_sp5c4")
+type = 1
+chance_weight = 1.0
+message_template = "[b]{source_name}[/b] prepares to block for [b][color=blue]{amount}[/color][/b] damage!"

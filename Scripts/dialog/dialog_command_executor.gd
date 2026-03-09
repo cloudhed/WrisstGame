@@ -60,6 +60,8 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 				print("✅ Scene from manually set to:", GameState.last_scene_id)
 		"CHANGE_LOCATION", "LOCATION_CHANGE":
 			_change_location(parts)
+		"RECORD_SPECIES_SEX":
+			_record_species_sex(parts, context)
 		_:
 			_handle_game_state_command(cmd, context)
 
@@ -76,6 +78,31 @@ func _change_location(parts: PackedStringArray) -> void:
 
 	print("🌍 Dialog command requested location change:", area_key)
 	Events.dialog_scene_change_requested.emit(area_key)
+
+
+func _record_species_sex(parts: PackedStringArray, context: Dictionary) -> void:
+	if GameState.player_statistics == null:
+		return
+
+	var species_id := StringName("")
+	if parts.size() >= 2 and not parts[1].strip_edges().is_empty():
+		species_id = StringName(parts[1].strip_edges().to_lower())
+	else:
+		var dialog_manager = context.get("dialog_manager")
+		if dialog_manager:
+			var combat_scene = dialog_manager
+			while combat_scene != null and not combat_scene.has_method("abort_combat"):
+				combat_scene = combat_scene.get_parent()
+
+			if combat_scene:
+				var active_enemy = combat_scene.get("active_enemy_stats")
+				if active_enemy and active_enemy.has_method("get_species_id"):
+					species_id = active_enemy.get_species_id()
+
+	if String(species_id).is_empty():
+		species_id = StringName("unknown")
+
+	GameState.player_statistics.record_sex(species_id)
 
 # === MONEY COMMANDS ===
 

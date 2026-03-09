@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("3_sp5wi")
+species_id = &"murisk"
 ai = ExtResource("1_fk830")
 pre_combat_dialog_path = "res://enemies/murisk_n/murisk_dialog_precombat.json"
 post_combat_dialog_path = "res://enemies/murisk_n/murisk_dialog_postcombat.json"

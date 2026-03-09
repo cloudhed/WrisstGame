@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c70f5rm6i5pcd"]
+[gd_scene load_steps=7 format=3 uid="uid://c70f5rm6i5pcd"]
 
 [ext_resource type="Script" uid="uid://ctvc2hfejumqo" path="res://Scripts/ui/combat/intent_ui.gd" id="1_g08mb"]
 [ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="1_iuk88"]
 [ext_resource type="Theme" uid="uid://c1p0164at7n2g" path="res://Themes/tile_theme.tres" id="2_g08mb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g08mb"]
+light_mode = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g08mb"]
 bg_color = Color(0.0482395, 0.0766752, 0.175879, 0.635294)
@@ -15,6 +18,7 @@ corner_radius_bottom_left = 8
 HBoxContainer/styles/background = SubResource("StyleBoxFlat_g08mb")
 
 [node name="IntentUI" type="HBoxContainer"]
+material = SubResource("CanvasItemMaterial_g08mb")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

@@ -4,6 +4,10 @@
 
 [resource]
 script = ExtResource("1_klunu")
+species_id = &"ejapel"
+pre_combat_dialog_path = ""
+post_combat_dialog_path = ""
+is_runnable = true
 max_health = 26
 player_name = ""
 metadata/_custom_type_script = "uid://dlksefa8n68ng"

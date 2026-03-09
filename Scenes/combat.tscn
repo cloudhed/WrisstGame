@@ -1,13 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://d2pnx4ne5hfgc"]
+[gd_scene load_steps=28 format=3 uid="uid://d2pnx4ne5hfgc"]
 
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scripts/combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Scripts/combat/ui/combat_visual.gd" id="1_yt1oa"]
 [ext_resource type="AudioStream" uid="uid://cefjiq6gmopxb" path="res://Audio/Music/MusicCombat/260305 Wrisst - Combat WIP.ogg" id="3_r5ubg"]
 [ext_resource type="Script" uid="uid://cf244xen40ftr" path="res://Scripts/combat/ui/combat_button_run.gd" id="3_ubpar"]
 [ext_resource type="PackedScene" uid="uid://bsk688e4ksiee" path="res://overworldNav.tscn" id="4_ut0kg"]
-[ext_resource type="Texture2D" uid="uid://b0er7kk7lowx1" path="res://Assets/Backgrounds/CombatBGDefault_placeholder.jpg" id="5_umvpd"]
+[ext_resource type="Texture2D" uid="uid://bjc705ynlew4b" path="res://Assets/Backgrounds/background_template.jpg" id="5_umvpd"]
+[ext_resource type="Texture2D" uid="uid://dqs8v1l8mixra" path="res://Assets/Backgrounds/combat_bg_forest_lowres.jpg" id="6_umvpd"]
 [ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="7_f8ge6"]
 [ext_resource type="PackedScene" uid="uid://ckpnn4op5ijoc" path="res://Scenes/Enemy/enemy.tscn" id="9_tmuf1"]
+[ext_resource type="Resource" uid="uid://byj1i1vmn5flc" path="res://enemies/default_creature/creature_enemy.tres" id="10_umvpd"]
 [ext_resource type="PackedScene" uid="uid://f536kff4iqbq" path="res://Scenes/TileTargetSelector/tile_target_selector.tscn" id="11_nar6d"]
 [ext_resource type="Script" uid="uid://dj5k02ip2tecw" path="res://Scripts/entities/enemies/runtime/enemy_handler.gd" id="12_e8ln5"]
 [ext_resource type="PackedScene" uid="uid://c70f5rm6i5pcd" path="res://Scenes/UI/intent_ui.tscn" id="12_r5ubg"]
@@ -16,7 +18,6 @@
 [ext_resource type="Resource" uid="uid://cnwrtxw8tktmj" path="res://Characters/Player/player.tres" id="14_5kjvk"]
 [ext_resource type="Script" uid="uid://bvman73aw84wc" path="res://Scenes/Player/player_handler.gd" id="14_r5ubg"]
 [ext_resource type="Script" uid="uid://bku5mw8nd76qj" path="res://Scenes/UI/hand.gd" id="15_50454"]
-[ext_resource type="Resource" uid="uid://cqg2t3bu607tf" path="res://enemies/teqqellon/teqqellon_enemy.tres" id="15_r5ubg"]
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="16_ceo1n"]
 [ext_resource type="PackedScene" uid="uid://coqflun3u7db" path="res://Scenes/UI/stamina_ui.tscn" id="22_3cqtn"]
 [ext_resource type="PackedScene" uid="uid://qvnuroju8vc0" path="res://Scenes/UI/stats_ui.tscn" id="22_5g3cp"]
@@ -42,7 +43,7 @@ auto_leave_on_victory = false
 [node name="CombatVisual" type="Node2D" parent="."]
 script = ExtResource("1_yt1oa")
 default_bg = ExtResource("5_umvpd")
-forest_bg = ExtResource("5_umvpd")
+forest_bg = ExtResource("6_umvpd")
 plains_bg = ExtResource("5_umvpd")
 mountains_bg = ExtResource("5_umvpd")
 shores_bg = ExtResource("5_umvpd")
@@ -73,17 +74,11 @@ position = Vector2(1216, 452.02)
 shape = SubResource("RectangleShape2D_f8ge6")
 debug_color = Color(0, 0.595, 0.7, 0.117647)
 
-[node name="IntentUI" parent="." instance=ExtResource("12_r5ubg")]
-offset_left = 1351.0
-offset_top = 403.0
-offset_right = 1497.0
-offset_bottom = 595.0
-
 [node name="EnemyHandler" type="Node2D" parent="."]
 script = ExtResource("12_e8ln5")
 
 [node name="Enemy" parent="EnemyHandler" instance=ExtResource("9_tmuf1")]
-stats = ExtResource("15_r5ubg")
+stats = ExtResource("10_umvpd")
 
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("14_r5ubg")
@@ -95,6 +90,12 @@ stats = ExtResource("14_5kjvk")
 auto_end_turn_on_zero_stamina = false
 
 [node name="TileTargetSelector" parent="." instance=ExtResource("11_nar6d")]
+
+[node name="IntentUI" parent="." instance=ExtResource("12_r5ubg")]
+offset_left = 1416.0
+offset_top = 385.0
+offset_right = 1623.0
+offset_bottom = 577.0
 
 [node name="CombatUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("12_umvpd")

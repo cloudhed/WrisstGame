@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=3 format=3 uid="uid://cmk3mnqoivu2g"]
+
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_4shuw"]
+[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="2_xe26f"]
+
+[resource]
+script = ExtResource("2_xe26f")
+sfx_library = {}
+dialogue_path = "res://enemies/default_creature/creature_dialog_postcombat.json"
+characters = Array[ExtResource("1_4shuw")]([])
+flags_required = Array[String]([])
+flags_set_on_start = {}
+metadata/_custom_type_script = "uid://5m151tkuttgt"

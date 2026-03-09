@@ -1,5 +1,7 @@
 extends Node
 
+const PLAYER_STATISTICS_SCRIPT := preload("res://Scripts/autoload/player_statistics.gd")
+
 signal money_changed(currency: String, new_amount: int)
 signal reputation_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
@@ -30,6 +32,7 @@ var FALLBACK_WEAPON: EquipableItem = null
 
 # Player stats and resources
 var player_stats: CharacterStats = null
+var player_statistics: Resource = null
 var player_ore: int = 0
 var player_crowns: int = 0
 var player_drots: int = 0
@@ -58,6 +61,9 @@ var pending_dialog_scene_data: DialogSceneResource = null
 # Debugging in the ready() func!
 func _ready():
 	_ensure_fallback_items_loaded()
+
+	if player_statistics == null:
+		player_statistics = PLAYER_STATISTICS_SCRIPT.new()
 	
 	if player_stats == null:
 		player_stats = load("res://Characters/Player/player.tres") as CharacterStats

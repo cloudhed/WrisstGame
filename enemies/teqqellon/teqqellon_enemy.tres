@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("2_5k5u0")
+species_id = &"teqqellon"
 ai = ExtResource("1_j7ut2")
 pre_combat_dialog_path = "res://enemies/teqqellon/teqqellon_dialog_precombat.json"
 post_combat_dialog_path = "res://enemies/teqqellon/teqqellon_dialog_postcombat.json"

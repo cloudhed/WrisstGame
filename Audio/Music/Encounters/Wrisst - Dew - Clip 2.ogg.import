@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dnmot7q57ygb6"
+path="res://.godot/imported/Wrisst - Dew - Clip 2.ogg-4cae6ac7722d929f047119dd69c9ee56.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Encounters/Wrisst - Dew - Clip 2.ogg"
+dest_files=["res://.godot/imported/Wrisst - Dew - Clip 2.ogg-4cae6ac7722d929f047119dd69c9ee56.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=110.0
+beat_count=32
+bar_beats=4

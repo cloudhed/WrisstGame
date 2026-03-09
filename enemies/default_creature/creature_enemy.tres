@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3 uid="uid://byj1i1vmn5flc"]
+
+[ext_resource type="PackedScene" uid="uid://b36kourb32ynb" path="res://enemies/default_creature/creature_enemy_ai.tscn" id="1_g5x3i"]
+[ext_resource type="Texture2D" uid="uid://dotaxbtsqof2f" path="res://enemies/default_creature/creature_base.png" id="2_6jnbi"]
+[ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="2_b6bcu"]
+[ext_resource type="Resource" uid="uid://chbckx0ad03am" path="res://enemies/default_creature/creature_slidedeck.tres" id="3_6jnbi"]
+
+[resource]
+script = ExtResource("2_b6bcu")
+species_id = &"creature"
+ai = ExtResource("1_g5x3i")
+pre_combat_dialog_path = "res://enemies/default_creature/creature_dialog_precombat.json"
+post_combat_dialog_path = "res://enemies/default_creature/creature_dialog_postcombat.json"
+slide_deck = ExtResource("3_6jnbi")
+is_runnable = true
+max_health = 20
+art = ExtResource("2_6jnbi")
+player_name = "Creature"
+metadata/_custom_type_script = "uid://dlksefa8n68ng"
