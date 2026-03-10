@@ -240,7 +240,7 @@
 		"id": "creature_inspect_determinesex",
 		"type": "narration",
 		"text": "<Further Player actions to inspect and determine the <Creature>'s sex, describing the body, genitals, smell, reactions and noises of the <Creature>, Example:> As your fingers reach the end of its back, you notice a small tight hole just underneath the tail, winking in slow pulses. <Descriptions of tactile feel, smell, reactions from Creature>. Between its two hind-legs you find a small puffy slit.[p]A meek gurgling groan escapes the eating <Creature> as it senses the pressure of your hands around its genitals. It huffs quietly as you notice the hint of a tapered purple lenght start to emerge from the glistening slit.",
-		"command": "@MUSIC_CLIP choices ; @SHOW_SCENE inspect",
+		"command": "@MUSIC_CLIP choices ; @SHOW_SCENE inspect_genitals",
 		"clear": false,
 		"next": "creature_inspect_choice"
 	},
@@ -262,7 +262,7 @@
 		"id": "creature_inspect_02",
 		"type": "narration",
 		"text": "<Further describing the body, smell and noises of the <Creature>, Example:> A slender purple cock emerges, already slick with a thick viscous liquid. From the tapered tip down to the middle of the erection there are what looks like pink bulbous shapes scattered around the length. As you touch one of the bulbs the beast shudders, and you notice that you can shift the bulbs around, almost like they're air bubbles just beneath the surface. As the bulbs move, the <Creature> gives off a clearly approving gurgling groan. It has stopped eating, and is now panting gently, eyes half-closed. At the same time, its sphincter increases its winking rhythm, and beads of a translucent wetness start to pool in the middle of the tight ring.",
-		"command": "@SHOW_SCENE inspect_genitals",
+		"command": "@SHOW_SCENE touch_genitals",
 		"clear": false,
 		"next": "creature_sex_choice_init"
 	},

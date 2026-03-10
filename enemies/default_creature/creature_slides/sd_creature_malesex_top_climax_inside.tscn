@@ -1,6 +1,6 @@
-﻿[gd_scene load_steps=5 format=3 uid="uid://yhbxcls6k0iu"]
+[gd_scene load_steps=5 format=3 uid="uid://b1nbyr5pylfia"]
 
-[ext_resource type="Texture2D" uid="uid://b3ag14dw36x6x" path="res://Assets/Backgrounds/slide_default_background.jpg" id="1_hmxig"]
+[ext_resource type="Texture2D" uid="uid://bguncwyma5g0n" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_top_climax_inside.jpg" id="1_8s8l6"]
 [ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="3_pguw8"]
 [ext_resource type="Material" uid="uid://bxntkmfcekw4v" path="res://Assets/Sprites/Particles/minttärä_furrow_debug_01_particleProcessMaterial.tres" id="4_kopg4"]
 
@@ -10,7 +10,7 @@ blend_mode = 1
 [node name="sd_creature_malesex_top_climax_inside" type="Node2D"]
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_hmxig")
+texture = ExtResource("1_8s8l6")
 centered = false
 
 [node name="ForegroundSprite" type="Sprite2D" parent="."]

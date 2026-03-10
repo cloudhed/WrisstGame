@@ -1,4 +1,4 @@
-﻿[gd_scene load_steps=5 format=3 uid="uid://dmjvu6a1t2qls"]
+[gd_scene load_steps=5 format=3 uid="uid://dmjvu6a1t2qls"]
 
 [ext_resource type="Texture2D" uid="uid://b3ag14dw36x6x" path="res://Assets/Backgrounds/slide_default_background.jpg" id="1_pl7bl"]
 [ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="2_25pp0"]

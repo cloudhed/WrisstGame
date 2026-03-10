@@ -34,6 +34,11 @@ func set_current_action(value: EnemyAction) -> void:
 
 
 func set_enemy_stats(value: EnemyStats) -> void:
+	if value == null:
+		push_error("Enemy stats resource is missing on %s. Check the assigned enemy .tres and any nested slide/resource references." % name)
+		stats = null
+		return
+
 	stats = value.create_instance()
 	
 	if not stats.stats_changed.is_connected(update_stats):
