@@ -5,6 +5,7 @@
 .godot/
 .export/
 .mono/
+.clinerules/
 *.csproj
 *.sln
 *.tmp
