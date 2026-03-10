@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d34tyy2i510v6"]
+﻿[gd_scene load_steps=5 format=3 uid="uid://d34tyy2i510v6"]
 
 [ext_resource type="Texture2D" uid="uid://b3ag14dw36x6x" path="res://Assets/Backgrounds/slide_default_background.jpg" id="1_u26no"]
 [ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="2_2c2sw"]
@@ -7,7 +7,7 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2hxa2"]
 blend_mode = 1
 
-[node name="sd_teqqellon_init_pen" type="Node2D"]
+[node name="sd_creature_lure" type="Node2D"]
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_u26no")

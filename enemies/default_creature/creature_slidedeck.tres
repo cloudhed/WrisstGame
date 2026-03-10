@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SlideDeck" load_steps=29 format=3 uid="uid://chbckx0ad03am"]
+[gd_resource type="Resource" script_class="SlideDeck" load_steps=62 format=3 uid="uid://chbckx0ad03am"]
 
 [ext_resource type="Script" uid="uid://la225ydmy37u" path="res://Narrative/slide_deck.gd" id="1_hdusk"]
 [ext_resource type="Script" uid="uid://b7o0w4hub0eja" path="res://Narrative/slide_entry.gd" id="2_t0nux"]
@@ -6,15 +6,31 @@
 [ext_resource type="PackedScene" uid="uid://dtxxki6p62htq" path="res://enemies/default_creature/creature_slides/sd_creature_inspect.tscn" id="4_05dnq"]
 [ext_resource type="PackedScene" uid="uid://d34tyy2i510v6" path="res://enemies/default_creature/creature_slides/sd_creature_lure.tscn" id="5_wd0ku"]
 [ext_resource type="PackedScene" uid="uid://d3gcr27mplyak" path="res://enemies/default_creature/creature_slides/sd_creature_capture.tscn" id="6_kixil"]
-[ext_resource type="PackedScene" uid="uid://dhslfusjfgh4o" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_start.tscn" id="7_xx6r4"]
-[ext_resource type="PackedScene" uid="uid://psyld8ejcfaa" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_ongoing.tscn" id="8_qn6ox"]
-[ext_resource type="PackedScene" uid="uid://yhbxcls6k0iu" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_climax_inside.tscn" id="9_e6md5"]
-[ext_resource type="PackedScene" uid="uid://vhpd1tvn1csl" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_climax_outside.tscn" id="10_ygnbb"]
-[ext_resource type="PackedScene" uid="uid://bt6qda2wa77tv" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_aftermath.tscn" id="11_cchwa"]
-[ext_resource type="PackedScene" uid="uid://c40n1l7tu1isd" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_oral_start.tscn" id="12_u5c1y"]
-[ext_resource type="PackedScene" uid="uid://dmjvu6a1t2qls" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_oral_ongoing.tscn" id="13_hhtaq"]
-[ext_resource type="PackedScene" uid="uid://c4mu4x0lh2lcf" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_oral_climax_inside.tscn" id="14_x7i6m"]
-[ext_resource type="PackedScene" uid="uid://c0c5gd7uh05ui" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_oral_aftermath.tscn" id="15_l3tds"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_start.tscn" id="7_xx6r4"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_ongoing.tscn" id="8_qn6ox"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_climax_inside.tscn" id="9_e6md5"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_climax_outside.tscn" id="10_ygnbb"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_aftermath.tscn" id="11_cchwa"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_oral_start.tscn" id="12_u5c1y"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_oral_ongoing.tscn" id="13_hhtaq"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_oral_climax_inside.tscn" id="14_x7i6m"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_male_top_oral_aftermath.tscn" id="15_l3tds"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_inspect_genitals.tscn" id="16_ig"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_femalesex_ride_start.tscn" id="17_frs"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_femalesex_ride_ongoing.tscn" id="18_fro"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_femalesex_ride_climax_inside.tscn" id="19_frci"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_femalesex_ride_climax_outside.tscn" id="20_frco"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_femalesex_ride_aftermath.tscn" id="21_fra"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_bottom_start.tscn" id="22_mbs"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_bottom_ongoing.tscn" id="23_mbo"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_bottom_climax_inside.tscn" id="24_mbci"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_bottom_climax_outside.tscn" id="25_mbco"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_bottom_aftermath.tscn" id="26_mba"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_give_oral_start.tscn" id="27_sgos"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_give_oral_ongoing.tscn" id="28_sgoo"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_give_oral_climax_inside.tscn" id="29_sgoci"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_give_oral_climax_outside.tscn" id="30_sgoco"]
+[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_sex_give_oral_aftermath.tscn" id="31_sgoa"]
 
 [sub_resource type="Resource" id="Resource_ub8nl"]
 script = ExtResource("2_t0nux")
@@ -38,6 +54,17 @@ metadata/_custom_type_script = "uid://b7o0w4hub0eja"
 script = ExtResource("2_t0nux")
 id = &"capture"
 scene = ExtResource("6_kixil")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_ig0a1"]
+script = ExtResource("2_t0nux")
+id = &"inspect_genitals"
+scene = ExtResource("16_ig")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mp3iq"]
+script = ExtResource("2_t0nux")
+id = &"sd_creature_touch_genitals"
 metadata/_custom_type_script = "uid://b7o0w4hub0eja"
 
 [sub_resource type="Resource" id="Resource_l5hpf"]
@@ -94,7 +121,97 @@ id = &"malesex_top_oral_aftermath"
 scene = ExtResource("15_l3tds")
 metadata/_custom_type_script = "uid://b7o0w4hub0eja"
 
+[sub_resource type="Resource" id="Resource_frs02"]
+script = ExtResource("2_t0nux")
+id = &"femalesex_ride_start"
+scene = ExtResource("17_frs")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_fro03"]
+script = ExtResource("2_t0nux")
+id = &"femalesex_ride_ongoing"
+scene = ExtResource("18_fro")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_frci4"]
+script = ExtResource("2_t0nux")
+id = &"femalesex_ride_climax_inside"
+scene = ExtResource("19_frci")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_frco5"]
+script = ExtResource("2_t0nux")
+id = &"femalesex_ride_climax_outside"
+scene = ExtResource("20_frco")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_fra06"]
+script = ExtResource("2_t0nux")
+id = &"femalesex_ride_aftermath"
+scene = ExtResource("21_fra")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mbs07"]
+script = ExtResource("2_t0nux")
+id = &"malesex_bottom_start"
+scene = ExtResource("22_mbs")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mbo08"]
+script = ExtResource("2_t0nux")
+id = &"malesex_bottom_ongoing"
+scene = ExtResource("23_mbo")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mbci9"]
+script = ExtResource("2_t0nux")
+id = &"malesex_bottom_climax_inside"
+scene = ExtResource("24_mbci")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mbco0"]
+script = ExtResource("2_t0nux")
+id = &"malesex_bottom_climax_outside"
+scene = ExtResource("25_mbco")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mba11"]
+script = ExtResource("2_t0nux")
+id = &"malesex_bottom_aftermath"
+scene = ExtResource("26_mba")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_sgos2"]
+script = ExtResource("2_t0nux")
+id = &"sex_give_oral_start"
+scene = ExtResource("27_sgos")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_sgoo3"]
+script = ExtResource("2_t0nux")
+id = &"sex_give_oral_ongoing"
+scene = ExtResource("28_sgoo")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_sgoc4"]
+script = ExtResource("2_t0nux")
+id = &"sex_give_oral_climax_inside"
+scene = ExtResource("29_sgoci")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_sgoc5"]
+script = ExtResource("2_t0nux")
+id = &"sex_give_oral_climax_outside"
+scene = ExtResource("30_sgoco")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_sgoa6"]
+script = ExtResource("2_t0nux")
+id = &"sex_give_oral_aftermath"
+scene = ExtResource("31_sgoa")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
 [resource]
 script = ExtResource("1_hdusk")
-slides = Array[ExtResource("2_t0nux")]([SubResource("Resource_ub8nl"), SubResource("Resource_1sfc8"), SubResource("Resource_dgtrx"), SubResource("Resource_mx35u"), SubResource("Resource_l5hpf"), SubResource("Resource_1kep2"), SubResource("Resource_akead"), SubResource("Resource_t4fa1"), SubResource("Resource_4fef0"), SubResource("Resource_cq6sn"), SubResource("Resource_3klqj"), SubResource("Resource_lftv0"), SubResource("Resource_hmhes")])
+slides = Array[ExtResource("2_t0nux")]([SubResource("Resource_ub8nl"), SubResource("Resource_1sfc8"), SubResource("Resource_dgtrx"), SubResource("Resource_mx35u"), SubResource("Resource_ig0a1"), SubResource("Resource_mp3iq"), SubResource("Resource_l5hpf"), SubResource("Resource_1kep2"), SubResource("Resource_akead"), SubResource("Resource_t4fa1"), SubResource("Resource_4fef0"), SubResource("Resource_cq6sn"), SubResource("Resource_3klqj"), SubResource("Resource_lftv0"), SubResource("Resource_hmhes"), SubResource("Resource_frs02"), SubResource("Resource_fro03"), SubResource("Resource_frci4"), SubResource("Resource_frco5"), SubResource("Resource_fra06"), SubResource("Resource_mbs07"), SubResource("Resource_mbo08"), SubResource("Resource_mbci9"), SubResource("Resource_mbco0"), SubResource("Resource_mba11"), SubResource("Resource_sgos2"), SubResource("Resource_sgoo3"), SubResource("Resource_sgoc4"), SubResource("Resource_sgoc5"), SubResource("Resource_sgoa6")])
 metadata/_custom_type_script = "uid://la225ydmy37u"
