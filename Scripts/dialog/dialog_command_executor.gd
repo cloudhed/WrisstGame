@@ -344,13 +344,19 @@ func _show_named_slide(context: Dictionary) -> void:
 		if entry.id == slide_name:
 			queue_free_children(container)
 			var slide_scene: PackedScene = entry.scene
+			if slide_scene == null:
+				print("❌ Slide exists in deck but has no scene assigned:", slide_name)
+				return
 			var slide_instance: Node = slide_scene.instantiate()
 			container.add_child(slide_instance)
 			found = true
 			break
 
 	if not found:
-		print("❌ Slide not found in deck:", slide_name)
+		var available_ids: Array[String] = []
+		for entry in deck.slides:
+			available_ids.append(String(entry.id))
+		print("❌ Slide not found in deck:", slide_name, " Available IDs:", available_ids)
 
 
 func _hide_scene(context: Dictionary) -> void:

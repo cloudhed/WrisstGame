@@ -8,16 +8,28 @@ enum ActivationMode {
 
 const DIALOG_SCENE_PATH := "res://Narrative/DialogScene.tscn"
 
+@export_group("Activation")
 @export var activation_mode: ActivationMode = ActivationMode.ACTIVE
-
 @export var prompt_active: String = "Enter"
 @export var prompt_after_discovery: String = "Visit"
 @export var discovery_flag: String = ""
 
+@export_group("Dialog Encounter")
 @export var variants: Array[Resource] = []
 @export var fallback_dialog_scene: DialogSceneResource
+@export_file("*.tres") var fallback_dialog_scene_path: String = ""
 @export var fallback_scene_selector_key: String = ""
 
+@export_group("Availability Rules")
+@export var allowed_time_periods: PackedStringArray = PackedStringArray()
+@export_range(-1, 23, 1) var min_hour: int = -1
+@export_range(-1, 23, 1) var max_hour: int = -1
+@export var required_flags: PackedStringArray = PackedStringArray()
+@export var blocked_flags: PackedStringArray = PackedStringArray()
+@export var required_items: Array[InventoryItem] = []
+@export var blocked_items: Array[InventoryItem] = []
+
+@export_group("Debug")
 @export var debug_logging: bool = false
 
 var _is_interactor_inside: bool = false
@@ -84,11 +96,11 @@ func _trigger_encounter(interactor: Node2D) -> void:
 	var selector_key := ""
 
 	if variant != null:
-		scene_to_open = variant.dialog_scene
+		scene_to_open = variant.get_dialog_scene_resource()
 		selector_key = variant.dialog_scene_selector_key
 
 	if scene_to_open == null:
-		scene_to_open = fallback_dialog_scene
+		scene_to_open = get_fallback_dialog_scene_resource()
 	if selector_key.is_empty():
 		selector_key = fallback_scene_selector_key
 
@@ -126,6 +138,9 @@ func _trigger_encounter(interactor: Node2D) -> void:
 
 func _can_activate() -> bool:
 	var context := _build_context()
+	if not _matches_trigger_context(context):
+		return false
+
 	for variant in variants:
 		if variant == null:
 			continue
@@ -134,8 +149,60 @@ func _can_activate() -> bool:
 
 	if fallback_dialog_scene != null or not fallback_scene_selector_key.is_empty():
 		return true
+	if not fallback_dialog_scene_path.is_empty():
+		return true
 
 	return false
+
+
+func _matches_trigger_context(context: Dictionary) -> bool:
+	var period := String(context.get("time_period", "Day"))
+	var hours := int(context.get("hours", 12))
+
+	if not allowed_time_periods.is_empty() and not allowed_time_periods.has(period):
+		return false
+
+	if not _hour_window_matches_self(hours):
+		return false
+
+	for req_flag in required_flags:
+		if not _has_any_flag(req_flag, context):
+			return false
+
+	for blocked_flag in blocked_flags:
+		if _has_any_flag(blocked_flag, context):
+			return false
+
+	for item in required_items:
+		if item != null and not GameState.has_item(item):
+			return false
+
+	for item in blocked_items:
+		if item != null and GameState.has_item(item):
+			return false
+
+	return true
+
+
+func get_fallback_dialog_scene_path() -> String:
+	if not fallback_dialog_scene_path.is_empty():
+		return fallback_dialog_scene_path
+
+	if fallback_dialog_scene != null:
+		return fallback_dialog_scene.resource_path
+
+	return ""
+
+
+func get_fallback_dialog_scene_resource() -> DialogSceneResource:
+	if fallback_dialog_scene != null:
+		return fallback_dialog_scene
+
+	var path := get_fallback_dialog_scene_path()
+	if path.is_empty():
+		return null
+
+	return load(path) as DialogSceneResource
 
 
 func _should_auto_trigger_on_enter() -> bool:
@@ -231,6 +298,16 @@ func _hour_window_matches(variant, hour: int) -> bool:
 		return hour >= variant.min_hour and hour <= variant.max_hour
 
 	return hour >= variant.min_hour or hour <= variant.max_hour
+
+
+func _hour_window_matches_self(hour: int) -> bool:
+	if min_hour < 0 or max_hour < 0:
+		return true
+
+	if min_hour <= max_hour:
+		return hour >= min_hour and hour <= max_hour
+
+	return hour >= min_hour or hour <= max_hour
 
 
 func _has_any_flag(flag_name: String, context: Dictionary) -> bool:

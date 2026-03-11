@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SlideDeck" load_steps=62 format=3 uid="uid://chbckx0ad03am"]
+[gd_resource type="Resource" script_class="SlideDeck" load_steps=63 format=3 uid="uid://chbckx0ad03am"]
 
 [ext_resource type="Script" uid="uid://la225ydmy37u" path="res://Narrative/slide_deck.gd" id="1_hdusk"]
 [ext_resource type="Script" uid="uid://b7o0w4hub0eja" path="res://Narrative/slide_entry.gd" id="2_t0nux"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dtxxki6p62htq" path="res://enemies/default_creature/creature_slides/sd_creature_inspect.tscn" id="4_05dnq"]
 [ext_resource type="PackedScene" uid="uid://d34tyy2i510v6" path="res://enemies/default_creature/creature_slides/sd_creature_lure.tscn" id="5_wd0ku"]
 [ext_resource type="PackedScene" uid="uid://d3gcr27mplyak" path="res://enemies/default_creature/creature_slides/sd_creature_capture.tscn" id="6_kixil"]
-[ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_top_start.tscn" id="7_xx6r4"]
+[ext_resource type="PackedScene" uid="uid://biv5flrptu0oe" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_top_start.tscn" id="7_xx6r4"]
 [ext_resource type="PackedScene" uid="uid://bo7kdudh8wil4" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_top_ongoing.tscn" id="8_qn6ox"]
 [ext_resource type="PackedScene" uid="uid://b1nbyr5pylfia" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_top_climax_inside.tscn" id="9_e6md5"]
 [ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_top_climax_outside.tscn" id="10_ygnbb"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_top_oral_aftermath.tscn" id="15_l3tds"]
 [ext_resource type="PackedScene" uid="uid://bblq4qhy6xwrf" path="res://enemies/default_creature/creature_slides/sd_creature_inspect_genitals.tscn" id="16_ig"]
 [ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_femalesex_ride_start.tscn" id="17_frs"]
+[ext_resource type="PackedScene" uid="uid://y1j00etxtkgk" path="res://enemies/default_creature/creature_slides/sd_creature_touch_genitals.tscn" id="17_tg"]
 [ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_femalesex_ride_ongoing.tscn" id="18_fro"]
 [ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_femalesex_ride_climax_inside.tscn" id="19_frci"]
 [ext_resource type="PackedScene" path="res://enemies/default_creature/creature_slides/sd_creature_femalesex_ride_climax_outside.tscn" id="20_frco"]
@@ -64,7 +65,8 @@ metadata/_custom_type_script = "uid://b7o0w4hub0eja"
 
 [sub_resource type="Resource" id="Resource_mp3iq"]
 script = ExtResource("2_t0nux")
-id = &"sd_creature_touch_genitals"
+id = &"touch_genitals"
+scene = ExtResource("17_tg")
 metadata/_custom_type_script = "uid://b7o0w4hub0eja"
 
 [sub_resource type="Resource" id="Resource_l5hpf"]

@@ -108,6 +108,29 @@ func consume_selected_enemy_resource() -> EnemyStats:
 	selected_enemy_resource = null
 	return out
 
+
+func start_static_enemy_encounter(enemy_res: EnemyStats, player: PlayerDot = null) -> void:
+	if enemy_res == null:
+		push_warning("⚠️ EncounterManager.start_static_enemy_encounter called with null enemy.")
+		return
+
+	if player != null:
+		save_player_data(player)
+
+	selected_enemy_resource = enemy_res
+	_last_enemy_resource = enemy_res
+
+	if GameState.player_statistics and enemy_res.has_method("get_species_id"):
+		GameState.player_statistics.record_encounter(enemy_res.get_species_id())
+
+	_roll_next_encounter_goal(_get_active_table(), _build_encounter_context())
+
+	var scene := _get_combat_scene()
+	if scene == null:
+		return
+
+	_begin_scene_transition(scene, false, "to static combat")
+
 func change_scene() -> void:
 	var scene := _get_combat_scene()
 	if scene == null:

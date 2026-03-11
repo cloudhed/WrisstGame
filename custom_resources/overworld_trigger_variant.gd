@@ -16,4 +16,26 @@ extends Resource
 @export var blocked_items: Array[InventoryItem] = []
 
 @export var dialog_scene: DialogSceneResource
+@export_file("*.tres") var dialog_scene_path: String = ""
 @export var dialog_scene_selector_key: String = ""
+
+
+func get_dialog_scene_path() -> String:
+	if not dialog_scene_path.is_empty():
+		return dialog_scene_path
+
+	if dialog_scene != null:
+		return dialog_scene.resource_path
+
+	return ""
+
+
+func get_dialog_scene_resource() -> DialogSceneResource:
+	if dialog_scene != null:
+		return dialog_scene
+
+	var path := get_dialog_scene_path()
+	if path.is_empty():
+		return null
+
+	return load(path) as DialogSceneResource

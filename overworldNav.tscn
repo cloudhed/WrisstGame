@@ -1,7 +1,6 @@
-[gd_scene load_steps=45 format=4 uid="uid://bsk688e4ksiee"]
+[gd_scene load_steps=40 format=4 uid="uid://bsk688e4ksiee"]
 
 [ext_resource type="AudioStream" uid="uid://faqrtb1uggnb" path="res://Audio/sound_ambience_overworld_day.ogg" id="1_0bjjx"]
-[ext_resource type="Texture2D" uid="uid://bbrswebkl4jjt" path="res://Assets/Sprites/Map/mapmarkerFlag.png" id="1_7obsb"]
 [ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="1_68n6a"]
 [ext_resource type="Script" uid="uid://nto65f0jy0qu" path="res://Code/time_of_day.gd" id="1_be0m3"]
 [ext_resource type="Script" uid="uid://15m4ao5uotgl" path="res://Code/daynightCyclecolors.gd" id="1_l47sy"]
@@ -9,17 +8,13 @@
 [ext_resource type="Script" uid="uid://0yaek5xq2gc7" path="res://Code/world_audio_manager.gd" id="1_ohuvh"]
 [ext_resource type="AudioStream" uid="uid://p1f5mpu6o6ws" path="res://Audio/sound_ambience_overworld_night.ogg" id="2_1o44n"]
 [ext_resource type="Script" uid="uid://gewf0begkw6p" path="res://Code/player_dot.gd" id="2_5xsid"]
-[ext_resource type="Texture2D" uid="uid://15kvna3dq6tw" path="res://Assets/Sprites/Map/mapmarkerSkull.png" id="2_rtp31"]
-[ext_resource type="Texture2D" uid="uid://bcxqw7oko3a5d" path="res://Assets/Sprites/Map/mapmarkerUnknown.png" id="3_embca"]
+[ext_resource type="PackedScene" path="res://Assets/Objects/MapObjects/overworld_combat_trigger.tscn" id="2_w08pr"]
 [ext_resource type="Script" uid="uid://1titwtotlxt2" path="res://Code/audio_stream_player.gd" id="3_ohuvh"]
-[ext_resource type="PackedScene" uid="uid://bjc6eaise28y8" path="res://Assets/Objects/MapObjects/map_flag.tscn" id="4_bfnb6"]
 [ext_resource type="PackedScene" uid="uid://brcco7ktdnu0f" path="res://Assets/Objects/MapObjects/overworld_encounter_trigger.tscn" id="5_5arl6"]
 [ext_resource type="Script" uid="uid://0qnc5lrimymu" path="res://Code/islandbiome_mountain.gd" id="5_14vbl"]
 [ext_resource type="Script" uid="uid://drxlt2argte2" path="res://Code/islandbiome_shores.gd" id="5_xh3bp"]
-[ext_resource type="Resource" uid="uid://d1srjtrbbu8q2" path="res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres" id="6_w7s2p"]
 [ext_resource type="Script" uid="uid://gs5pjca5gun7" path="res://Code/islandbiome_forests.gd" id="6_xh3bp"]
 [ext_resource type="Script" uid="uid://ctfaj2d5vhtp3" path="res://Code/islandbiome_fields.gd" id="7_s8mij"]
-[ext_resource type="Resource" uid="uid://bvv38ga5puwh2" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day.tres" id="7_w7s2p"]
 [ext_resource type="Script" uid="uid://clq6t52fwieia" path="res://Code/PlayerCameraFollow.gd" id="9_s8mij"]
 [ext_resource type="Script" uid="uid://bx6tjiqqmfg3r" path="res://music_player.gd" id="10_7vspy"]
 [ext_resource type="Script" uid="uid://bmm0gshj54yld" path="res://Code/worldenvironment_controller.gd" id="10_c7vby"]
@@ -617,41 +612,12 @@ light_mask = 2
 z_index = 1
 position = Vector2(-148, -107)
 
-[node name="mapFlag" type="Sprite2D" parent="mapLocations"]
-visible = false
-light_mask = 0
-position = Vector2(1211, 423)
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("1_7obsb")
-
-[node name="MapFlag" parent="mapLocations" instance=ExtResource("4_bfnb6")]
-visible = false
-z_index = 1
-position = Vector2(1211, 423)
-
-[node name="mapSkull" type="Sprite2D" parent="mapLocations"]
-visible = false
-light_mask = 0
-z_index = 1
-position = Vector2(791, 236)
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_rtp31")
-
-[node name="mapKeep" type="Sprite2D" parent="mapLocations"]
-visible = false
-light_mask = 0
-z_index = 1
-position = Vector2(467, 347)
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("3_embca")
-
 [node name="OverworldEncounterTrigger_Klyftet" parent="mapLocations" instance=ExtResource("5_5arl6")]
 position = Vector2(479, 686)
 prompt_active = "Enter settlement"
 prompt_after_discovery = "Visit Klyftet"
 discovery_flag = "Found_Klyftet"
-variants = Array[Resource]([null])
-fallback_dialog_scene = ExtResource("6_w7s2p")
+fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres"
 fallback_scene_selector_key = "start_audio"
 debug_logging = true
 
@@ -661,9 +627,16 @@ activation_mode = 1
 prompt_active = "Visit old tree"
 prompt_after_discovery = "Visit old tree"
 discovery_flag = "Found_Tree"
-fallback_dialog_scene = ExtResource("7_w7s2p")
+fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day.tres"
 fallback_scene_selector_key = "start_audio"
 debug_logging = true
+
+[node name="OverworldCombatTrigger" parent="mapLocations" instance=ExtResource("2_w08pr")]
+position = Vector2(289, 575)
+prompt_active = "Encounter Creature"
+prompt_after_discovery = "Encounter Creature again"
+discovery_flag = "found_creature"
+enemy_stats_path = "uid://byj1i1vmn5flc"
 
 [node name="WorldAudioManager" type="Node" parent="." node_paths=PackedStringArray("amb_audio_player", "music_player", "sfx_player")]
 script = ExtResource("1_ohuvh")

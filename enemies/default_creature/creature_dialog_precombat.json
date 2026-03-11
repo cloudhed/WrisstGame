@@ -136,7 +136,7 @@
 		"id": "creature_approach",
 		"type": "narration",
 		"text": "<Player actions to approach, either successfully if docile creature or might be attacked, or Creature might flee, example:> As soon as your foot crunches on a dry branch, the <Creature>'s head snaps up. Its nostrils flare, catching your scent. Before you can even raise a hand in peace, it lets out a sharp huff and bolts away, its footsteps fading quickly into the distance.",
-		"command": "@SHOW_SCENE approach",
+		"command": "@HIDE_PORTRAIT",
 		"next": "creature_fled_leave"
 	},
 	{
@@ -151,7 +151,6 @@
 		"id": "creature_lure_02",
 		"type": "narration",
 		"text": "<Continuation on player actions to lure, describing further what the Creature looks like close up, and does in response. Example:> The <Creature> gives off a noise as it closes in on the fruit, and you assume its a happy noise. Up close, you can see <details>. As it reaches your hand holding the fruit, it tries to nudge and bump the fruit out of your hand, still giving off the occasional noise. It does not seem to be afraid of you.",
-		"command": "@SHOW_SCENE lure",
 		"next": "creature_lure_choice"
 	},
 	{
