@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo7kdudh8wil4"]
+[gd_scene load_steps=6 format=3 uid="uid://bo7kdudh8wil4"]
 
-[ext_resource type="Texture2D" uid="uid://cor8lnpg2ngow" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_top_ongoing.jpg" id="1_a261n"]
+[ext_resource type="Texture2D" uid="uid://b3ag14dw36x6x" path="res://Assets/Backgrounds/slide_default_background.jpg" id="1_6j4ae"]
+[ext_resource type="Texture2D" uid="uid://bf1ugcqfsvb6c" path="res://enemies/default_creature/creature_slides/sd_creature_malesex_top_ongoing.png" id="2_kh0bu"]
 [ext_resource type="Texture2D" uid="uid://bisbv7htipaob" path="res://Assets/Sprites/Particles/particle_round_large_2.png" id="3_sdqfb"]
 [ext_resource type="Material" uid="uid://bxntkmfcekw4v" path="res://Assets/Sprites/Particles/minttärä_furrow_debug_01_particleProcessMaterial.tres" id="4_pa1eb"]
 
@@ -10,10 +11,12 @@ blend_mode = 1
 [node name="sd_creature_malesex_top_ongoing" type="Node2D"]
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_a261n")
+texture = ExtResource("1_6j4ae")
 centered = false
 
 [node name="ForegroundSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kh0bu")
 centered = false
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
