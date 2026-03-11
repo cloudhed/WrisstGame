@@ -63,14 +63,17 @@ func _ready() -> void:
 
 
 func _ensure_default_encounter_content() -> void:
-	if default_enemy == null:
-		default_enemy = load(DEFAULT_ENEMY_PATH) as EnemyStats
-
 	if default_encounter_table == null:
 		default_encounter_table = load(DEFAULT_ENCOUNTER_TABLE_PATH) as EncounterTable
 
 	if encounter_tables.is_empty() and default_encounter_table != null:
 		encounter_tables = [default_encounter_table]
+
+
+func _get_default_enemy() -> EnemyStats:
+	if default_enemy == null:
+		default_enemy = load(DEFAULT_ENEMY_PATH) as EnemyStats
+	return default_enemy
 
 func save_player_data(player: PlayerDot) -> void:
 	var biome_obj = player.get_highest_priority_biome()
@@ -224,9 +227,9 @@ func _prepare_next_encounter_payload() -> void:
 	selected_enemy_resource = _roll_enemy_from_table(table, context)
 
 	if selected_enemy_resource == null:
-		selected_enemy_resource = table.fallback_enemy if table != null else null
+		selected_enemy_resource = table.get_fallback_enemy() if table != null else null
 	if selected_enemy_resource == null:
-		selected_enemy_resource = default_enemy
+		selected_enemy_resource = _get_default_enemy()
 
 	if selected_enemy_resource != null:
 		_last_enemy_resource = selected_enemy_resource
@@ -293,15 +296,18 @@ func _roll_enemy_from_table(table: EncounterTable, context: Dictionary) -> Enemy
 		var entry := entry_res as EncounterEntry
 		if entry == null:
 			continue
-		if entry.enemy_stats == null or entry.weight <= 0.0:
+		if entry.weight <= 0.0:
+			continue
+		if entry.get_enemy_stats_path().is_empty() and entry.get_enemy_stats() == null:
 			continue
 		if _entry_matches_context(entry, context):
 			candidates.append(entry)
 
 	if table.avoid_repeat_last_enemy and candidates.size() > 1 and _last_enemy_resource != null:
 		var filtered: Array[EncounterEntry] = []
+		var last_enemy_path := String(_last_enemy_resource.resource_path)
 		for c in candidates:
-			if c.enemy_stats != _last_enemy_resource:
+			if c.get_enemy_stats_path() != last_enemy_path:
 				filtered.append(c)
 		if not filtered.is_empty():
 			candidates = filtered
@@ -314,15 +320,15 @@ func _roll_enemy_from_table(table: EncounterTable, context: Dictionary) -> Enemy
 		total_weight += c.weight
 
 	if total_weight <= 0.0:
-		return candidates[0].enemy_stats
+		return candidates[0].get_enemy_stats()
 
 	var roll := randf() * total_weight
 	for c in candidates:
 		roll -= c.weight
 		if roll <= 0.0:
-			return c.enemy_stats
+			return c.get_enemy_stats()
 
-	return candidates.back().enemy_stats
+	return candidates.back().get_enemy_stats()
 
 
 func _entry_matches_context(entry: EncounterEntry, context: Dictionary) -> bool:

@@ -1,10 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://d2pnx4ne5hfgc"]
+[gd_scene load_steps=27 format=3 uid="uid://d2pnx4ne5hfgc"]
 
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scripts/combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Scripts/combat/ui/combat_visual.gd" id="1_yt1oa"]
 [ext_resource type="AudioStream" uid="uid://cefjiq6gmopxb" path="res://Audio/Music/MusicCombat/260305 Wrisst - Combat WIP.ogg" id="3_r5ubg"]
 [ext_resource type="Script" uid="uid://cf244xen40ftr" path="res://Scripts/combat/ui/combat_button_run.gd" id="3_ubpar"]
-[ext_resource type="PackedScene" uid="uid://bsk688e4ksiee" path="res://overworldNav.tscn" id="4_ut0kg"]
 [ext_resource type="Texture2D" uid="uid://bjc705ynlew4b" path="res://Assets/Backgrounds/background_template.jpg" id="5_umvpd"]
 [ext_resource type="Texture2D" uid="uid://dqs8v1l8mixra" path="res://Assets/Backgrounds/combat_bg_forest_lowres.jpg" id="6_umvpd"]
 [ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="7_f8ge6"]
@@ -144,7 +143,6 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 26
 text = "RUN"
 script = ExtResource("3_ubpar")
-world = ExtResource("4_ut0kg")
 
 [node name="Panel" type="Panel" parent="CombatUI/StatsUIManager/PlayerVBoxContainer"]
 custom_minimum_size = Vector2(0, 120)

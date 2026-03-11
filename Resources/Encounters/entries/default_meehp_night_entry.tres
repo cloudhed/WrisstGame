@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="EncounterEntry" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="EncounterEntry" load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://custom_resources/encounter_entry.gd" id="1_entry_script"]
-[ext_resource type="Resource" path="res://enemies/meehp_f/meehp_f_enemy.tres" id="2_enemy"]
 
 [resource]
 script = ExtResource("1_entry_script")
-enemy_stats = ExtResource("2_enemy")
+enemy_stats_path = "res://enemies/meehp_f/meehp_f_enemy.tres"
 weight = 0.8
 allowed_biomes = PackedStringArray("Forest", "Mountains")
 allowed_time_periods = PackedStringArray("Night")

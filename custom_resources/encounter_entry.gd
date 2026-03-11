@@ -2,6 +2,7 @@ class_name EncounterEntry
 extends Resource
 
 @export var enemy_stats: EnemyStats
+@export_file("*.tres") var enemy_stats_path: String = ""
 @export_range(0.0, 9999.0, 0.1) var weight: float = 1.0
 
 # Optional fine-grained filters. Empty means "no restriction".
@@ -19,3 +20,24 @@ extends Resource
 
 @export var required_items: Array[InventoryItem] = []
 @export var blocked_items: Array[InventoryItem] = []
+
+
+func get_enemy_stats_path() -> String:
+	if not enemy_stats_path.is_empty():
+		return enemy_stats_path
+
+	if enemy_stats != null:
+		return enemy_stats.resource_path
+
+	return ""
+
+
+func get_enemy_stats() -> EnemyStats:
+	if enemy_stats != null:
+		return enemy_stats
+
+	var path := get_enemy_stats_path()
+	if path.is_empty():
+		return null
+
+	return load(path) as EnemyStats

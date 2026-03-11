@@ -10,4 +10,26 @@ extends Resource
 
 @export var avoid_repeat_last_enemy: bool = true
 @export var fallback_enemy: EnemyStats
+@export_file("*.tres") var fallback_enemy_path: String = ""
 @export var entries: Array[Resource] = []
+
+
+func get_fallback_enemy_path() -> String:
+	if not fallback_enemy_path.is_empty():
+		return fallback_enemy_path
+
+	if fallback_enemy != null:
+		return fallback_enemy.resource_path
+
+	return ""
+
+
+func get_fallback_enemy() -> EnemyStats:
+	if fallback_enemy != null:
+		return fallback_enemy
+
+	var path := get_fallback_enemy_path()
+	if path.is_empty():
+		return null
+
+	return load(path) as EnemyStats

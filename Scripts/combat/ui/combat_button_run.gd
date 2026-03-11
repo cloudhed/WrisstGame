@@ -1,8 +1,6 @@
 class_name RunButton
 extends Button
 
-@export var world : PackedScene
-
 func _on_pressed() -> void:
 	var combat_node := get_parent()
 	while combat_node != null and not combat_node.has_method("abort_combat"):
@@ -12,4 +10,3 @@ func _on_pressed() -> void:
 		combat_node.abort_combat()
 
 	Events.leave_encounter_requested.emit()
-#	get_tree().change_scene_to_packed(world)
