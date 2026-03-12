@@ -3,10 +3,14 @@ extends Control
 @onready var debug_ui: CanvasLayer = $DebugUI
 @onready var debug_text: Label = $DebugUI/DebugText
 @onready var flags_text: Label = $DebugUI/FlagsText
+@onready var reshuffle_toggle_button: Button = $DebugUI/ReshuffleToggleButton
 
 
 func _ready():
 	debug_ui.visible = true
+	if GameState.has_signal("combat_debug_settings_changed") and not GameState.combat_debug_settings_changed.is_connected(_refresh_debug_controls):
+		GameState.combat_debug_settings_changed.connect(_refresh_debug_controls)
+	_refresh_debug_controls()
 
 
 func _process(delta):
@@ -27,9 +31,16 @@ func _unhandled_input(ev):
 func _toggle_debug_panel():
 	debug_ui.visible = not debug_ui.visible
 	if debug_ui.visible:
+		_refresh_debug_controls()
 		_update_debug_info()
 #		_refresh_inventory()
 		pass
+
+
+func _refresh_debug_controls() -> void:
+	if not is_instance_valid(reshuffle_toggle_button):
+		return
+	reshuffle_toggle_button.text = "Deck reshuffle: %s" % GameState.get_debug_reshuffle_mode_label()
 
 
 func _update_debug_info():
@@ -41,10 +52,15 @@ func _update_debug_info():
 
 	core_info += "🗡️ Weapon: %s\n" % (GameState.equipped_weapon.resource_path if GameState.equipped_weapon else "None")
 	core_info += "🛡️ Armor: %s\n" % (GameState.equipped_armor.resource_path if GameState.equipped_armor else "None")
+	core_info += "🃏 Deck reshuffle: %s\n" % GameState.get_debug_reshuffle_mode_label()
 
 
 	core_info += "🎒 Inventory size: %d\n" % GameState.player_inventory.size()
 	core_info += "🤍 iReputation entries: %d\n" % GameState.npc_reputation.size()
+
+	var combat := get_tree().get_current_scene() as Combat
+	if combat and combat.player and combat.player.stats and combat.player.stats.has_method("get_debug_status_summary"):
+		core_info += "☠️ Combat statuses: %s\n" % combat.player.stats.get_debug_status_summary()
 
 	debug_ui.get_node("DebugText").text = core_info
 
@@ -80,3 +96,9 @@ func _update_debug_info():
 			flag_text += "⏱️ %s\n" % key
 
 	debug_ui.get_node("FlagsText").text = flag_text
+
+
+func _on_reshuffle_toggle_button_pressed() -> void:
+	GameState.toggle_debug_immediate_discard_reshuffle()
+	_refresh_debug_controls()
+	_update_debug_info()

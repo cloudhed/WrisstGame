@@ -6,8 +6,10 @@ signal money_changed(currency: String, new_amount: int)
 signal reputation_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
 signal fallback_equipped
+signal combat_debug_settings_changed
 
 @export var grant_debug_starting_items: bool = true
+@export var debug_immediate_discard_reshuffle: bool = true
 
 # ─────────────────────────────────────────────────────────────
 # Player identity
@@ -302,3 +304,12 @@ func clear_flag(flag_dict: Dictionary, key: String) -> void:
 
 func has_flag(flag_dict: Dictionary, key: String) -> bool:
 	return flag_dict.has(key) and flag_dict[key] == true
+
+
+func toggle_debug_immediate_discard_reshuffle() -> void:
+	debug_immediate_discard_reshuffle = not debug_immediate_discard_reshuffle
+	combat_debug_settings_changed.emit()
+
+
+func get_debug_reshuffle_mode_label() -> String:
+	return "Immediate discard reshuffle" if debug_immediate_discard_reshuffle else "Cycle deck before reshuffle"

@@ -20,6 +20,7 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 var enemy_action_picker: EnemyActionPicker
 var current_action: EnemyAction : set = set_current_action
 var is_defeated: bool = false
+var combat_modifiers: Dictionary = {}
 
 
 func get_stats():
@@ -124,6 +125,24 @@ func do_turn() -> void:
 	
 	print("Enemy performing action:", current_action)
 	current_action.perform_action()
+
+
+func set_combat_modifier(modifier_id: StringName, value) -> void:
+	combat_modifiers[modifier_id] = value
+
+
+func get_combat_modifier(modifier_id: StringName, default_value = null):
+	return combat_modifiers.get(modifier_id, default_value)
+
+
+func has_combat_modifier(modifier_id: StringName) -> bool:
+	return combat_modifiers.has(modifier_id)
+
+
+func consume_damage_multiplier() -> float:
+	var multiplier := float(combat_modifiers.get(&"next_attack_multiplier", 1.0))
+	combat_modifiers.erase(&"next_attack_multiplier")
+	return multiplier
 
 
 func take_damage(damage: int) -> void:

@@ -35,15 +35,27 @@ func get_first_conditional_action() -> EnemyAction:
 
 
 func get_chance_based_action() -> EnemyAction:
-	var action: EnemyAction
-	var roll := randf_range(0.0, total_weight)
+	var available_actions: Array[EnemyAction] = []
+	var available_total_weight := 0.0
 
 	for child in get_children():
-		action = child as EnemyAction
+		var action := child as EnemyAction
 		if not action or action.type != EnemyAction.Type.CHANCE_BASED:
 			continue
-		
-		if action.accumulated_weight > roll:
+		if not action.is_performable():
+			continue
+
+		available_actions.append(action)
+		available_total_weight += action.chance_weight
+
+	if available_actions.is_empty():
+		return null
+
+	var roll := randf_range(0.0, available_total_weight)
+	var running_weight := 0.0
+	for action in available_actions:
+		running_weight += action.chance_weight
+		if running_weight >= roll:
 			return action
 	
 	return null

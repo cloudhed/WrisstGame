@@ -41,9 +41,15 @@ func start_turn() -> void:
 		return
 
 	print("Starting player turn.")
+	character.apply_start_of_turn_effects(combat_player)
+	if character.health <= 0:
+		return
+
 	character.block = 0
 	character.reset_stamina()
-	draw_tiles(character.tiles_per_turn)
+	var tiles_to_draw := character.get_tiles_to_draw_this_turn()
+	draw_tiles(tiles_to_draw)
+	character.consume_turn_draw_modifiers()
 
 
 func end_turn() -> void:
@@ -53,9 +59,11 @@ func end_turn() -> void:
 
 
 func draw_tile() -> void:
-	reshuffle_deck_from_discard()
+	_prepare_draw_pile_for_draw()
+	if character.draw_pile.empty():
+		print("[DEBUG] No more tiles available to draw.")
+		return
 	hand.add_tile(character.draw_pile.draw_tile())
-	reshuffle_deck_from_discard()
 
 
 func draw_tiles(amount: int) -> void:
@@ -84,17 +92,23 @@ func discard_tiles() -> void:
 	)
 
 
-#func reshuffle_deck_from_discard() -> void:
-#	if not character.draw_pile.empty(): # I think I wanna remove this for real game
-#		return # mostly because draw pile will be the same odds every turn
+func _prepare_draw_pile_for_draw() -> void:
+	var immediate_reshuffle := GameState.debug_immediate_discard_reshuffle
+	if immediate_reshuffle:
+		_reshuffle_deck_from_discard()
+		return
 
-func reshuffle_deck_from_discard() -> void:
-	while not character.discard.empty():
-		character.draw_pile.add_tile(character.discard.draw_tile())
+	if character.draw_pile.empty():
+		_reshuffle_deck_from_discard()
 
-	character.draw_pile.shuffle()
 
-	
+func _reshuffle_deck_from_discard() -> void:
+	if character == null or character.discard == null or character.draw_pile == null:
+		return
+
+	if character.discard.empty():
+		return
+
 	while not character.discard.empty():
 		character.draw_pile.add_tile(character.discard.draw_tile())
 

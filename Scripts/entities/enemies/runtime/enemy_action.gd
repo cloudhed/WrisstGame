@@ -17,11 +17,22 @@ var target: Node2D
 
 
 func is_performable() -> bool:
-	return false
+	return true
 
 
 func perform_action() -> void:
 	pass
+
+
+func get_modified_damage(base_damage: int) -> int:
+	if not enemy:
+		return base_damage
+
+	var multiplier := 1.0
+	if enemy.has_method("consume_damage_multiplier"):
+		multiplier = enemy.consume_damage_multiplier()
+
+	return maxi(1, int(round(base_damage * multiplier))) if base_damage > 0 else 0
 
 
 func get_display_name(entity: Node) -> String:

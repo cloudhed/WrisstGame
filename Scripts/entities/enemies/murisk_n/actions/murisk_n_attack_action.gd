@@ -10,7 +10,7 @@ func perform_action() -> void:
 #		print("Enemy or target is missing!")
 		return
 	
-	var damage := randi_range(min_damage, max_damage)
+	var damage := get_modified_damage(randi_range(min_damage, max_damage))
 	var start_pos := enemy.global_position
 	var attack_offset := Vector2.LEFT * 12  # Adjust direction based on side!
 	var attack_pos := start_pos + attack_offset
