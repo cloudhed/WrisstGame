@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b36kourb32ynb"]
+[gd_scene load_steps=25 format=3 uid="uid://b36kourb32ynb"]
 
 [ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_yx13p"]
 [ext_resource type="Script" uid="uid://cdisbx1otllk3" path="res://Scripts/entities/enemies/default_creature/actions/creature_attack_action.gd" id="2_oq1at"]
@@ -8,6 +8,14 @@
 [ext_resource type="Script" uid="uid://dkwxasjb4cbqf" path="res://Scripts/entities/enemies/default_creature/actions/creature_block_action.gd" id="6_tva0c"]
 [ext_resource type="Texture2D" uid="uid://bj44iwbjx87nc" path="res://Assets/UI/intent/intent_block.png" id="7_2b7on"]
 [ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="8_sp5c4"]
+[ext_resource type="Script" uid="uid://ckufpdyo1uynq" path="res://Scripts/entities/enemies/runtime/actions/apply_player_status_action.gd" id="9_status"]
+[ext_resource type="Script" uid="uid://4dnis58rkgt4" path="res://Scripts/entities/enemies/runtime/actions/set_player_stamina_action.gd" id="10_stamina"]
+[ext_resource type="Script" uid="uid://b7fvqoersgk0w" path="res://Scripts/entities/enemies/runtime/actions/add_player_dud_tiles_action.gd" id="11_duds"]
+[ext_resource type="Script" uid="uid://dy20wfjpx2q5y" path="res://Scripts/entities/enemies/runtime/actions/set_enemy_next_attack_multiplier_action.gd" id="12_buff"]
+[ext_resource type="Script" uid="uid://bbv63ohgs0hdk" path="res://Scripts/entities/enemies/runtime/actions/attack_when_buffed_action.gd" id="13_buffatk"]
+[ext_resource type="Texture2D" uid="uid://dhmkraw3jt45h" path="res://Assets/UI/intent/intent_special.png" id="14_special_icon"]
+[ext_resource type="Resource" uid="uid://c0uw11luyek43" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_fail.tres" id="15_dud_tile"]
+[ext_resource type="AudioStream" uid="uid://c1w2fsjabnkt3" path="res://Audio/SFX/sfx_defeat.wav" id="16_special_sfx"]
 
 [sub_resource type="Resource" id="Resource_3t067"]
 script = ExtResource("4_3i4tc")
@@ -19,6 +27,42 @@ metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 script = ExtResource("4_3i4tc")
 number = "4"
 icon = ExtResource("7_2b7on")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_buffed_attack_intent"]
+script = ExtResource("4_3i4tc")
+number = "6-9"
+icon = ExtResource("3_73cyc")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_poison_intent"]
+script = ExtResource("4_3i4tc")
+number = "1x4"
+icon = ExtResource("14_special_icon")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_rattled_intent"]
+script = ExtResource("4_3i4tc")
+number = "2"
+icon = ExtResource("14_special_icon")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_stamina_intent"]
+script = ExtResource("4_3i4tc")
+number = "0"
+icon = ExtResource("14_special_icon")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_dud_intent"]
+script = ExtResource("4_3i4tc")
+number = "+2"
+icon = ExtResource("14_special_icon")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_buff_intent"]
+script = ExtResource("4_3i4tc")
+number = "x1.5"
+icon = ExtResource("14_special_icon")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [node name="CreatureEnemyAi" type="Node"]
@@ -42,3 +86,57 @@ sound = ExtResource("8_sp5c4")
 type = 1
 chance_weight = 1.0
 message_template = "[b]{source_name}[/b] prepares to block for [b][color=blue]{amount}[/color][/b] damage!"
+
+[node name="BuffedAttackAction" type="Node" parent="."]
+script = ExtResource("13_buffatk")
+min_damage = 4
+max_damage = 6
+intent = SubResource("Resource_buffed_attack_intent")
+sound = ExtResource("5_rtupg")
+message_template = "[b]{source_name}[/b] follows up with an empowered strike for [b][color=red]{amount}[/color][/b] damage!"
+
+[node name="PoisonAction" type="Node" parent="."]
+script = ExtResource("9_status")
+status_turns = 4
+intent = SubResource("Resource_poison_intent")
+sound = ExtResource("16_special_sfx")
+type = 1
+chance_weight = 0.5
+message_template = "[b]{source_name}[/b] spits venom onto [b]{target_name}[/b], poisoning them for [b][color=green]{amount}[/color][/b] damage each turn!"
+
+[node name="RattledAction" type="Node" parent="."]
+script = ExtResource("9_status")
+status_id = &"rattled"
+status_value = 2
+use_draw_amount_field = true
+intent = SubResource("Resource_rattled_intent")
+sound = ExtResource("16_special_sfx")
+type = 1
+chance_weight = 0.45
+message_template = "[b]{source_name}[/b] rattles [b]{target_name}[/b], leaving them with only [b][color=yellow]{amount}[/color][/b] tiles next turn!"
+
+[node name="DrainStaminaAction" type="Node" parent="."]
+script = ExtResource("10_stamina")
+intent = SubResource("Resource_stamina_intent")
+sound = ExtResource("16_special_sfx")
+type = 1
+chance_weight = 0.35
+message_template = "[b]{source_name}[/b] crushes [b]{target_name}[/b]'s footing, dropping their stamina to [b][color=yellow]{amount}[/color][/b]!"
+
+[node name="DudTilesAction" type="Node" parent="."]
+script = ExtResource("11_duds")
+dud_tile = ExtResource("15_dud_tile")
+dud_count = 2
+intent = SubResource("Resource_dud_intent")
+sound = ExtResource("16_special_sfx")
+type = 1
+chance_weight = 0.4
+message_template = "[b]{source_name}[/b] clutters [b]{target_name}[/b]'s pile with [b][color=gray]{amount}[/color][/b] dud tiles!"
+
+[node name="BuffNextAttackAction" type="Node" parent="."]
+script = ExtResource("12_buff")
+intent = SubResource("Resource_buff_intent")
+sound = ExtResource("16_special_sfx")
+type = 1
+chance_weight = 0.35
+message_template = "[b]{source_name}[/b] tenses up, empowering its next strike to [b][color=red]{amount}[/color][/b]% strength!"
