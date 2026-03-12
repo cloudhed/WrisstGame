@@ -1,0 +1,748 @@
+[
+	{
+		"id": "INIT_play_audio",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg",
+		"set_flag": "knows_creature",
+		"flag_type": "knowledge",		
+		"clear": true,
+		"next": "INIT_knowledge_CHECK"
+	},
+	{
+		"id": "INIT_knowledge_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_creature"],
+			"on_success": "creature_precombat",
+			"on_fail": "creature_precombat_unknown"
+		}
+	},
+	{
+		"id": "creature_precombat",
+		"type": "narration",
+		"text": "A <Creature> is resting in the dirt, idly foraging. <Known description of the creatures' appearance and behaviour>.",
+		"next": "creature_precombat_choice"
+	},
+	{
+		"id": "creature_precombat_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Observe the <Creature>",
+				"next": "creature_observe",
+				"hide_if": { "has_flag": "observed_creature" }
+			},
+			{
+				"text": "> Attack the <Creature>",
+				"next": "creature_attack"
+			},
+			{
+				"text": "> Approach the <Creature> slowly",
+				"next": "creature_approach"
+			},
+			{
+				"text": "> Try to coax the <Creature> closer",
+				"next": "creature_coax"
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_observe",
+		"type": "narration",
+		"text": "You stay perfectly still, observing the <Creature> from a safe distance. Its smooth, silver skin catches the sunlight, reflecting bright, metallic spots across the dirt as its slender, muscular body shifts. Beneath its silver flanks, you can clearly make out four small, firm nodes lining its underbelly, hinting at its biology. In this passive state, digging lazily through the soil, it would be easy to assume the beast is entirely docile, but the coiled tension in its hind legs suggests a feral power waiting to be unleashed. It is impossible to tell its true temperament from this far away.",
+		"set_flag": "observed_creature",
+		"flag_type": "temp",
+		"next": "creature_precombat_choice"
+	},
+	{
+		"id": "creature_approach",
+		"type": "narration",
+		"text": "As soon as your foot crunches on a dry branch, the <Creature>'s head snaps up. Its nostrils flare, catching your scent. Before you can even raise a hand in peace, it lets out a sharp huff and bolts away, its heavy footsteps fading quickly into the distance.",
+		"command": "@HIDE_PORTRAIT",
+		"next": "creature_fled_leave"
+	},
+	{
+		"id": "creature_coax",
+		"type": "narration",
+		"text": "You slowly extend your hand and click your tongue softly, making sure your movements are entirely non-threatening. The <Creature> reacts immediately, swiveling its heavy head to face you. It freezes for a moment, analyzing your scent and posture. Slowly, it lowers its guard, taking a few cautious, heavy-footed steps in your direction.",
+		"command": "@STOP_ALL_AMBIENCE ; @PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
+		"clear": true,
+		"next": "creature_coax_02"
+	},
+	{
+		"id": "creature_coax_02",
+		"type": "narration",
+		"text": "The <Creature> gives off a low, vibrating purring noise as it closes the distance. Up close, you can see the fine, muscular details of its silver hide. It nudges its heavy snout gently against your outstretched palm, giving off the occasional gurgle of approval. Driven by curiosity rather than fear, it does not seem threatened by you in the slightest.",
+		"next": "creature_coax_choice"
+	},
+	{
+		"id": "creature_coax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Pet the <Creature>",
+				"next": "creature_coax_pet"
+			},
+			{
+				"text": "> Attack the <Creature>",
+				"next": "creature_attack"
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_coax_pet",
+		"type": "narration",
+		"text": "You yield to its eager nudging, bringing both hands down to scratch behind its ears and along the thick muscles of its smooth neck. The moment you do, the <Creature> squeaks out what can only be described as a feral gurgle of submission, slumping lazily onto the ground to fully absorb your physical attention.",
+		"next": "creature_coax_choice02"
+	},
+	{
+		"id": "creature_coax_choice02",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Inspect the creature closer",
+				"next": "creature_inspect"
+			},
+			{
+				"text": "> Attack the <Creature>",
+				"next": "creature_attack"
+			},
+			{
+				"text": "> Back away",
+				"next": "creature_coax_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_coax_leave",
+		"type": "narration",
+		"text": "As the <Creature> rests heavily in the dirt, you decide to back away. You leave the docile beast behind you in peace.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_creature"],
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_inspect",
+		"type": "narration",
+		"text": "With the <Creature>'s guard completely lowered, you feel safe looking over its powerful body closer. You let the palm of your hand follow the rigid back of the <Creature>, feeling the dense muscles beneath its silver skin twitch reactively from your touch. You kneel behind the silver beast as its slender tail swishes lazily across the soil.",
+		"clear": false,
+		"next": "creature_inspect_determinesex_choice"
+	},
+	{
+		"id": "creature_inspect_determinesex_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Determine the <Creature>'s sex",
+				"next": "creature_inspect_determinesex"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_inspect_determinesex",
+		"type": "narration",
+		"text": "A dark, winking pucker sits high on its rear, and just beneath it rests a heavy, swollen slit. The slick, textured folds twitch and expand rhythmically in the open air, silently broadcasting the feral creature's intense heat. A steady drip of thick, translucent fluid escapes the swollen lips, pooling heavily in the dirt. Beneath the silver flanks, those four small, firm nodes lining the underbelly are more pronounced up close, surrounded by a flush of dark, engorged blood vessels. The beast releases a low, vibrating purr as you inspect its biology.",
+		"command": "@MUSIC_CLIP choices ; @SHOW_SCENE inspect_genitals",
+		"clear": false,
+		"next": "creature_sex_choice_init"
+	},
+	{
+		"id": "creature_sex_choice_init",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Mount the creature",
+				"next": "creature_sex_init"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_init",
+		"type": "narration",
+		"text": "You strip away your clothes, the cool air hitting your skin in stark contrast to the heavy, radiating heat bleeding off the feral beast. As you rub its silver hide, the creature emits a deep, chest-rattling hum. Its heavy, swollen slit weeps a thick, viscous lubricant that carries a potent, intoxicating scent of sweet coconut, slicking its inner thighs. The beast shifts its weight, instinctively presenting its dripping rear and winking pucker in response to your rising arousal, completely driven by its biological need to mate.",
+		"clear": false,
+		"next": "creature_sex_choice"
+	},
+	{
+		"id": "creature_sex_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Penetrate its winking rear hole",
+				"next": "creature_sex_male_rear_hole_start",
+				"show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Penetrate its swollen slit",
+				"next": "creature_sex_male_rear_slit_start",
+				"show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Massage the nodes on its belly",
+				"next": "creature_sex_male_action_massage_nodes",
+				"show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_rear_hole_start",
+		"type": "narration",
+		"text": "Grasping your erection, you guide the head toward the dark, winking pucker sitting tight above its swollen slit. You push your hips forward, sinking deep into the tight, gripping canal. The creature lets out a sharp, startled bleat, its silver claws digging into the dirt. The dry, searing heat of its internal musculature clenches firmly around your shaft, the thick, unyielding sphincter crushing against you with a raw, animalistic pressure that demands a forceful rhythm.",
+		"command": "@MUSIC_CLIP love ; @SHOW_SCENE malesex_rear_hole_start",
+		"next": "creature_sex_male_rear_hole_ongoing_choice"
+	},
+	{
+		"id": "creature_sex_male_rear_hole_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Establish a rhythm",
+				"next": "creature_sex_male_rear_hole_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_rear_hole_ongoing",
+		"type": "narration",
+		"text": "Because you bypassed its belly entirely, the four nodes beneath the beast remain small and firm, rubbing slightly against the loose dirt as you establish a heavy, pulling rhythm against its silver flanks. The intense, unyielding friction inside its tight rear passage draws harsh, breathy grunts from your lips, matching the primal bleats echoing from the creature. Each forceful thrust is met with a powerful, instinctual pushback from its heavy hips, grinding the base of your shaft against its slick, dripping slit below.",
+		"command": "@SHOW_SCENE malesex_rear_hole_ongoing",
+		"next": "creature_sex_male_rear_hole_pre_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_rear_hole_pre_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust deeper",
+				"next": "creature_sex_male_rear_hole_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_rear_hole_pre_climax",
+		"type": "narration",
+		"text": "The crushing friction of its tight upper ring quickly pushes you right to the edge. Your heavy balls slap wetly against the creature's swollen, unused slit below as you pound relentlessly into its rigid passage. With every powerful thrust, you drive the silver beast further forward into the dirt, its bleats dissolving into a continuous, desperate whine of feral submission as its internal muscles relentlessly milk your aching length.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_sex_male_rear_hole_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_rear_hole_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Finish inside its rear",
+				"next": "creature_sex_male_rear_hole_climax_inside"
+			},
+			{
+				"text": "> Pull out and finish on it",
+				"next": "creature_sex_male_rear_hole_climax_outside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_rear_hole_climax_inside",
+		"type": "narration",
+		"text": "With a final, desperate thrust, you bury yourself to the absolute hilt and let go entirely. The creature throws its heavy head back with a loud, warbling cry as thick, pulsing ropes of your seed pump deep into its tight passage. It takes every single drop, its rigid canal violently spasming and clenching around your shaft to milk out the last of your climax. The beast's silver body shudders heavily against the dirt, entirely consumed by the overwhelming flood of your hot release.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_rear_climax_inside",
+		"next": "creature_sex_male_rear_aftermath"
+	},
+	{
+		"id": "creature_sex_male_rear_hole_climax_outside",
+		"type": "narration",
+		"text": "You pull your hips back at the last possible second, slipping out of its tight passage with a loud pop. You erupt instantly, spraying thick, hot ropes of white across its silver hindquarters, heavily coating its winking upper pucker. The sudden, shocking emptiness jolts its feral nervous system; the creature shudders violently, blindly bucking its hips backward into the empty air, desperate for the crushing friction to return.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_rear_climax_outside",
+		"next": "creature_sex_male_rear_aftermath"
+	},
+	{
+		"id": "creature_sex_male_rear_slit_start",
+		"type": "narration",
+		"text": "You guide your erection down toward the slick, winking slit hidden just beneath its dark upper pucker. Pushing your hips forward, you easily breach the swollen, dripping folds. The creature lets out a sudden, startled bleat that melts almost instantly into a deep, chest-rattling purr. You sink entirely into its boiling hot canal, instantly engulfed by thick, coconut-scented lubricant and the intense, gripping sensation of its ribbed internal walls locking around your shaft.",
+		"command": "@MUSIC_CLIP love ; @SHOW_SCENE malesex_rear_slit_start",
+		"next": "creature_sex_male_rear_slit_ongoing_choice"
+	},
+	{
+		"id": "creature_sex_male_rear_slit_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Establish a rhythm",
+				"next": "creature_sex_male_rear_slit_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_rear_slit_ongoing",
+		"type": "narration",
+		"text": "Thick, textured internal ridges ripple and clench frantically around your trapped length. You establish a wet, heavy, slapping rhythm against its silver flanks, driving deep into its feral heat. The four firm nodes beneath its belly drag through the dirt as the creature instinctively rocks back to meet your forceful thrusts. Its loud, vibrating purrs travel straight through your groin, the immense natural lubrication and heavy suction drawing you completely into the beast's animalistic mating cycle.",
+		"command": "@SHOW_SCENE malesex_rear_slit_ongoing",
+		"next": "creature_sex_male_rear_slit_pre_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_rear_slit_pre_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust deeper",
+				"next": "creature_sex_male_rear_slit_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_rear_slit_pre_climax",
+		"type": "narration",
+		"text": "The overwhelming combination of its desperate, rhythmic clenching and the squelching, flooded heat of its canal pushes you completely to the brink. The silver beast angles its heavy hips backward with greedy, instinctual hunger, absorbing your most brutal thrusts. Its textured internal walls spasm uncontrollably, milking your hyper-sensitive length with a frantic, feverish heat that makes it impossible to hold back any longer.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_sex_male_rear_slit_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_rear_slit_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Finish inside its slit",
+				"next": "creature_sex_male_rear_slit_climax_inside"
+			},
+			{
+				"text": "> Pull out and finish on it",
+				"next": "creature_sex_male_rear_slit_climax_outside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_rear_slit_climax_inside",
+		"type": "narration",
+		"text": "With a final, desperate thrust, you bury yourself to the absolute hilt and let go entirely. The creature throws its heavy head back with a loud, warbling cry as thick, pulsing ropes of your seed pump deep into its feral womb. It takes every single drop, its ribbed canal violently spasming and clenching around your shaft to milk out the last of your climax. The beast's silver body shudders heavily against the dirt, entirely consumed by the overwhelming flood of your hot release filling its belly.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_rear_climax_inside",
+		"next": "creature_sex_male_rear_slit_cleaning_init"
+	},
+	{
+		"id": "creature_sex_male_rear_slit_climax_outside",
+		"type": "narration",
+		"text": "You pull your hips back at the last possible second, slipping out of its squelching canal with a loud, wet pop. You erupt instantly, spraying thick, hot ropes of white across its silver hindquarters, heavily coating the swollen, dripping lips of its slit. The sudden, shocking emptiness jolts its feral nervous system; the creature shudders violently, blindly bucking its hips backward into the empty air, desperate for the friction to return.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_rear_climax_outside",
+		"next": "creature_sex_male_rear_slit_cleaning_init"
+	},
+	{
+		"id": "creature_sex_male_rear_slit_cleaning_init",
+		"type": "narration",
+		"text": "As your breathing slows and your climax subsides, the creature recovers from its mating daze. It turns its silver head, catching the heavy scent of its own coconut-laced fluids mixed with your lingering seed on your highly sensitive, glistening length. Driven by raw, instinctual heat-behavior, it shifts its weight and crawls closer, its long, textured tongue flicking out, eager to clean the mess.",
+		"next": "creature_sex_male_rear_slit_cleaning_choice"
+	},
+	{
+		"id": "creature_sex_male_rear_slit_cleaning_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Pull away",
+				"next": "creature_sex_male_rear_aftermath"
+			},
+			{
+				"text": "> Let it clean you",
+				"next": "creature_sex_male_rear_slit_cleaning_ongoing"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_rear_slit_cleaning_ongoing",
+		"type": "narration",
+		"text": "You stay perfectly still, allowing the beast to work. Its rough, textured tongue drags wetly across your highly sensitive skin, licking away the slick mixture of fluids. What begins as a practical, feral cleaning instinct quickly shifts. The creature's deep purr returns as it takes your heavy length fully into its warm, wet mouth. The action is slow, soft, and surprisingly gentle. The nursing rhythm triggered by its biological drive seems to be dragging you right back toward a helpless, secondary climax.",
+		"next": "creature_sex_male_rear_slit_cleaning_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_rear_slit_cleaning_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Finish in its throat",
+				"next": "creature_sex_male_rear_slit_cleaning_climax_throat"
+			},
+			{
+				"text": "> Finish on its face",
+				"next": "creature_sex_male_rear_slit_cleaning_climax_face"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_rear_slit_cleaning_climax_throat",
+		"type": "narration",
+		"text": "Unable to withstand the incredibly sensitive, nursing suction, you grab the beast's silver head and thrust forward. You dump a secondary, forceful load of seed directly down its warm throat. The creature swallows instinctively, its throat working around the thick fluid with soft, muffled gurgles, accepting your dominant finish without a single protest before gently releasing you.",
+		"next": "creature_sex_male_rear_aftermath"
+	},
+	{
+		"id": "creature_sex_male_rear_slit_cleaning_climax_face",
+		"type": "narration",
+		"text": "You pull free from its soft, nursing suction just as you hit the point of no return. You paint the creature's silver face with a fresh, hot spray of your seed. The beast blinks slowly, completely unfazed as the thick white fluid drips from its snout and tongue, letting out a final, contented purr as it tastes the heavy mess.",
+		"next": "creature_sex_male_rear_aftermath"
+	},
+	{
+		"id": "creature_sex_male_rear_aftermath",
+		"type": "narration",
+		"text": "You step back, your heavy breathing slowly leveling out in the quiet air. The creature gives a final, contented hum, thick, mixed fluids slowly dripping from its rear and pooling in the dirt. Completely unfazed by the intense feral mating, the beast simply turns away from you. Driven by pure animal simplicity, it lazily returns its attention to foraging in the soil as if nothing just happened.",
+		"command": "@SHOW_SCENE malesex_rear_aftermath ; @RECORD_SPECIES_SEX creature",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"next": "creature_sex_male_aftermath_choice"
+	},
+	{
+		"id": "creature_sex_male_action_massage_nodes",
+		"type": "narration",
+		"text": "Instead of mounting it from behind, you reach under its silver flanks and firmly massage the small nodes along its abdomen. The creature lets out a startled bleat, but the instinctual response is immediate and absolute. Yielding to the physical stimulation like a beast desperate for a belly rub, its legs give out entirely, flopping heavily onto its back in the dirt. It pants rapidly, its long, textured tongue lolling out the side of its maw. It lies completely exposed, its soft underside and rapidly changing biology inviting you closer.",
+		"command": "@SHOW_SCENE malesex_massage_nodes",
+		"next": "creature_sex_male_breasts_stimulate"
+	},
+	{
+		"id": "creature_sex_male_breasts_stimulate",
+		"type": "narration",
+		"text": "With the silver beast pinned comfortably on its back, you focus both hands on the four nodes. Under your warm, kneading palms, they rapidly begin to swell. You can feel the intense internal heat and pressure building until the nodes expand violently into four massive, heavy breasts, completely transforming its chest. Now thoroughly overstimulated by your touch, thick, sweet cream begins to bead heavily at the dark tips, filling the air with a cloying, intoxicating coconut scent.",
+		"next": "creature_sex_male_supine_choice"
+	},
+	{
+		"id": "creature_sex_male_supine_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust into its mouth",
+				"next": "creature_sex_male_supine_oral_start"
+			},
+			{
+				"text": "> Thrust into its slit (Missionary)",
+				"next": "creature_sex_male_missionary_start"
+			},
+			{
+				"text": "> Thrust between its heavy breasts",
+				"next": "creature_sex_male_breasts_start"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_supine_oral_start",
+		"type": "narration",
+		"text": "Taking advantage of the beast's lolling tongue and panting breath, you kneel by its heavy head and press your hard tip past its silver lips. The creature’s eyes roll back lazily as its maw instinctively takes you in. Its thick, rough tongue immediately curls tightly around your shaft, dragging you into the boiling, wet heat of its throat.",
+		"command": "@MUSIC_CLIP love ; @SHOW_SCENE malesex_supine_oral_start",
+		"next": "creature_sex_male_supine_oral_ongoing_choice"
+	},
+	{
+		"id": "creature_sex_male_supine_oral_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Establish a rhythm",
+				"next": "creature_sex_male_supine_oral_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_supine_oral_ongoing",
+		"type": "narration",
+		"text": "The creature naturally creates a wet, sloppy vacuum, its deep throat gurgling and clicking rhythmically as you thrust forcefully into its warm maw. With every powerful plunge of your hips, the four heavy, milk-swollen breasts sway and jiggle heavily across its exposed chest, weeping thick droplets of sweet cream into the dirt as it eagerly takes your length.",
+		"command": "@SHOW_SCENE malesex_supine_oral_ongoing",
+		"next": "creature_sex_male_supine_oral_pre_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_supine_oral_pre_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust deeper",
+				"next": "creature_sex_male_supine_oral_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_supine_oral_pre_climax",
+		"type": "narration",
+		"text": "The frantic, desperate suction and the wet, clinging heat of the beast's throat pull you incredibly close to the edge. The creature's clawed paws slide up to loosely grip your thighs, anchoring you in place as it swallows you entirely, taking your aching length as deep into its gullet as physically possible.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_sex_male_supine_oral_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_supine_oral_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Finish down its throat",
+				"next": "creature_sex_male_supine_oral_climax_inside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_supine_oral_climax_inside",
+		"type": "narration",
+		"text": "The relentless suction of its feral mouth completely breaks your control. You grip the sides of its silver head and thrust ruthlessly deep, firing a heavy, pulsing load straight down its throat. The creature chokes out a muffled, wet gurgle, instinctively swallowing the thick ropes of your seed as they pump relentlessly into its gullet, letting your immense warmth thoroughly coat the back of its throat.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_supine_oral_climax",
+		"next": "creature_sex_male_supine_aftermath"
+	},
+	{
+		"id": "creature_sex_male_missionary_start",
+		"type": "narration",
+		"text": "You settle your weight between its spread, silver thighs, guiding your cock down and sinking it completely into the beast's winking, swollen slit. The creature whines loudly, the thick, textured internal ridges instantly clamping down hard around your shaft, welcoming the brutal intrusion with a flood of hot, coconut-scented lubrication.",
+		"command": "@MUSIC_CLIP love ; @SHOW_SCENE malesex_missionary_start",
+		"next": "creature_sex_male_missionary_ongoing_choice"
+	},
+	{
+		"id": "creature_sex_male_missionary_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Establish a rhythm",
+				"next": "creature_sex_male_missionary_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_missionary_ongoing",
+		"type": "narration",
+		"text": "Setting a wet, heavy, slapping pace against the beast's hips, you lean your entire weight forward and bury your face directly into its heavy, milk-slicked chest. You ruthlessly motorboat the four engorged breasts, the incredibly soft, heavy flesh entirely muffling your harsh breathing. The creature purrs with deafening volume, its slender, silver tail wrapping tightly and affectionately around your driving thigh.",
+		"command": "@SHOW_SCENE malesex_missionary_ongoing",
+		"next": "creature_sex_male_missionary_pre_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_missionary_pre_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust deeper",
+				"next": "creature_sex_male_missionary_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_missionary_pre_climax",
+		"type": "narration",
+		"text": "The overwhelming combination of its desperately gripping, flooded slit and the smothering, milky softness of its four heavy breasts pushes you rapidly to the brink. The silver beast whines, thrashing its head in the dirt as its internal muscles milk you closer to a ruinous finish.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_sex_male_missionary_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_missionary_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Finish inside",
+				"next": "creature_sex_male_missionary_climax_inside"
+			},
+			{
+				"text": "> Pull out and finish on its breasts",
+				"next": "creature_sex_male_missionary_climax_outside"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_missionary_climax_inside",
+		"type": "narration",
+		"text": "With a final, desperate thrust, you bury yourself to the absolute hilt and let go entirely. The creature throws its head back with a loud, warbling cry as thick, pulsing ropes of your seed pump deep into its feral womb. It takes every single drop with hard, involuntary internal clenches. Meanwhile, its four swollen breasts weep thick, heavy streams of sweet cream that pool thickly across its silver chest, mixing with the sweat of your shared exertion.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_missionary_climax_inside",
+		"next": "creature_sex_male_supine_aftermath"
+	},
+	{
+		"id": "creature_sex_male_missionary_climax_outside",
+		"type": "narration",
+		"text": "You pull your hips back with brutal suddenness, slipping out of its gripping, squelching slit with a loud pop. You erupt instantly, spraying thick, hot strands of white directly across its four heavy breasts, the fluid splattering down its silver stomach. The creature shudders violently from the sudden loss, its breasts weeping thick cream as it blindly, desperately humps the empty air, chasing the friction you denied it.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_missionary_climax_outside",
+		"next": "creature_sex_male_supine_aftermath"
+	},
+	{
+		"id": "creature_sex_male_breasts_start",
+		"type": "narration",
+		"text": "Bypassing its dripping lower lips entirely, you slide your body upward and guide your aching cock directly into the deep, milky cleavage created by its four heavy, engorged breasts. The creature gurgles happily, its silver body shuddering in the dirt as you manually squeeze the incredibly soft, swollen flesh tightly around your trapped shaft.",
+		"command": "@MUSIC_CLIP love ; @SHOW_SCENE malesex_breasts_start",
+		"next": "creature_sex_male_breasts_ongoing_choice"
+	},
+	{
+		"id": "creature_sex_male_breasts_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Establish a rhythm",
+				"next": "creature_sex_male_breasts_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_breasts_ongoing",
+		"type": "narration",
+		"text": "You establish a slick, frictionless rhythm, thrusting your hips heavily against the beast's silver chest. Thick, copious beads of sweet cream weep constantly from its dark nipples, acting as a perfect, natural lubricant. The heavy, coconut-scented milk slicks your shaft, creating loud, wet slapping sounds with every downward plunge.",
+		"command": "@SHOW_SCENE malesex_breasts_ongoing",
+		"next": "creature_sex_male_breasts_pre_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_breasts_pre_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust deeper",
+				"next": "creature_sex_male_breasts_pre_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_breasts_pre_climax",
+		"type": "narration",
+		"text": "The slick, boiling heat of its four engorged nodes sliding relentlessly against your length is far too much to withstand. The creature whines softly, pressing its heavy chest upward to meet your thrusts, pushing you inevitably and rapidly toward an overwhelming release.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "creature_sex_male_breasts_climax_choice"
+	},
+	{
+		"id": "creature_sex_male_breasts_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Finish on its breasts",
+				"next": "creature_sex_male_breasts_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_sex_male_breasts_climax",
+		"type": "narration",
+		"text": "With a heavy, guttural groan, you thrust deep into the crushing softness of its chest and let go. Your climax erupts in thick, hot strands of white that splatter aggressively across its silver skin, painting its milky cleavage and lower neck. The creature whines, shivering helplessly beneath you as its four heavy breasts involuntarily weep fresh, thick cream, thoroughly mixing with the sticky mess of seed you've just painted over it.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_breasts_climax",
+		"next": "creature_sex_male_supine_aftermath"
+	},
+	{
+		"id": "creature_sex_male_supine_aftermath",
+		"type": "narration",
+		"text": "You collapse heavily against the beast's silver chest, struggling to catch your breath. The creature gives a final, deep, contented hum. Beneath your weight, its four heavy breasts slowly begin to soften and deflate as its immediate feral arousal fades. The thick, sweet scent of piña colada lingers heavily in the air and on your sticky skin. The beast lazily licks at your cheek with its rough tongue, entirely satisfied.",
+		"command": "@SHOW_SCENE malesex_supine_aftermath ; @RECORD_SPECIES_SEX creature",
+		"set_flag": "sexed_creature",
+		"flag_type": "knowledge",
+		"next": "creature_sex_male_aftermath_choice"
+	},
+	{
+		"id": "creature_sex_male_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Get dressed and leave",
+				"next": "creature_inspect_leave"
+			}
+		]
+	},
+	
+	{
+		"id": "creature_attack",
+		"type": "narration",
+		"text": "You lunge at the <Creature>.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_startcombat"
+	},
+	{
+		"id": "creature_startcombat",
+		"type": "command",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @START_COMBAT",
+		"clear_flag": ["observed_creature"],
+		"end": false
+	},
+	{
+		"id": "creature_inspect_leave",
+		"type": "narration",
+		"text": "You adjust your clothing, get up, and walk away, leaving the <Creature> to forage in the dirt.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_fled_leave",
+		"type": "narration",
+		"text": "The <Creature>'s bleats slowly disappear into the distance.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_leave",
+		"type": "narration",
+		"text": "You slowly start to back away before it notices you, leaving the <Creature> to its business.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_creature"],
+		"next": "creature_end"
+	},
+	{
+		"id": "creature_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"next": "creature_end_shouldtshowup"
+	}
+]

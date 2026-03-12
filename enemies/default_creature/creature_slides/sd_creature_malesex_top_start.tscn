@@ -15,7 +15,6 @@ texture = ExtResource("1_k2q0k")
 centered = false
 
 [node name="ForegroundSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_b4hqb")
 centered = false
 

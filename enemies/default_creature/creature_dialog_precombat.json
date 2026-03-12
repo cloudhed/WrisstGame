@@ -143,7 +143,7 @@
 		"id": "creature_lure",
 		"type": "narration",
 		"text": "<Player actions to lure, describing further what the player uses to lure, and its response. Example:> You reach into your belongings and fish out a fruit. As soon as the peculiar smell of the ripe fruit hits your nostrils, you see the <Creature> react. Its head swivels around, seemingly in order to find the source of the fruity aroma. As its eyes lands on you and the food in your hand, it freezes. For a few moments, you both stand completely still, until the <Creature> slowly and carefully starts to move in your direction, its eyes fixed on the fruit in your hand.",
-		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
+		"command": "@STOP_ALL_AMBIENCE ; @PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
 		"clear": true,
 		"next": "creature_lure_02"
 	},
@@ -325,7 +325,7 @@
 		"id": "creature_sex_male_top_start",
 		"type": "narration",
 		"text": "You grab your erection and line yourself up with the winking hole beneath its tail. The <Creature>'s muscles twitch as it senses your tip, the thick, musky coconut scent wafting up from its ass. You press your glans against the tight ring of muscle and rub it in the slick secretions.",
-		"command": "@SHOW_SCENE malesex_top_start",
+		"command": "@MUSIC_CLIP love ; @SHOW_SCENE malesex_top_start",
 		"next": "creature_sex_male_top_start_choice"
 	},
 	{
@@ -345,8 +345,8 @@
 	{
 		"id": "creature_sex_male_top_ongoing",
 		"type": "narration",
-		"text": "You push your hips forward, sinking your length into the tight, gripping heat of its hole. The <Creature> lets out a startled, primal yelp that quickly melts into a deep, vibrating gurgle. Its inner walls clench and flutter around you instinctively, the winking almost creating a vacuum that pulls your cock deeper. The natural lubricant allows you to establish a steady, wet rhythm, your hips slapping against its silver cheeks as its own purple cock bounces with every thrust, squirting clear liquid all over the ground.",
-		"command": "@MUSIC_CLIP love ; @SHOW_SCENE malesex_top_ongoing",
+		"text": "You push your hips forward, sinking your length into the tight, gripping heat of its hole. The <Creature> lets out a startled, primal yelp that quickly melts into a deep, vibrating gurgle. Its inner walls clench and flutter around you instinctively, the winking almost creating a vacuum that pulls your cock deeper. The natural lubricant allows you to establish a steady, wet rhythm, your hips slapping against its silver cheeks as its own purple length bounces with every thrust, squirting clear liquid all over the ground.",
+		"command": "@SHOW_SCENE malesex_top_ongoing",
 		"next": "creature_sex_male_top_ongoing_choice"
 	},
 	{
@@ -1223,15 +1223,15 @@
 		"id": "creature_attack",
 		"type": "narration",
 		"text": "<Player actions to attack, example:> You lunge at the <Creature>.",
-		"command": "@STOP_ALL_AMBIENCE",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
 		"next": "creature_startcombat"
 	},
 	{
 		"id": "creature_startcombat",
 		"type": "command",
-		"command": "@STOP_ALL_AMBIENCE ; @START_COMBAT",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @START_COMBAT",
 		"clear_flag": ["observed_creature"],
-		"end": true
+		"end": false
 	},
 	{
 		"id": "creature_inspect_leave",
@@ -1259,6 +1259,6 @@
 		"id": "creature_end",
 		"type": "command",
 		"command": "@LEAVE_ENCOUNTER",
-		"next": "teqqellon_end_shouldtshowup"
+		"next": "creature_end_shouldtshowup"
 	}
 ]

@@ -631,7 +631,7 @@ fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Overworld/O
 fallback_scene_selector_key = "start_audio"
 debug_logging = true
 
-[node name="OverworldCombatTrigger" parent="mapLocations" instance=ExtResource("2_w08pr")]
+[node name="OverworldCombatTrigger_Creature" parent="mapLocations" instance=ExtResource("2_w08pr")]
 position = Vector2(289, 575)
 prompt_active = "Encounter Creature"
 prompt_after_discovery = "Encounter Creature again"
