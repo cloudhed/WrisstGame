@@ -55,4 +55,3 @@ sound = ExtResource("10_tutyb")
 type = 1
 chance_weight = 0.3
 message_template = "The Rill spits and it splashes onto your face. You're Poisoned."
-

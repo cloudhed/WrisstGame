@@ -36,6 +36,10 @@ func get_modified_damage(base_damage: int) -> int:
 
 
 func get_display_name(entity: Node) -> String:
+	if entity.has_method("get_display_name"):
+		var resolved_name = entity.get_display_name()
+		if resolved_name != null and not String(resolved_name).is_empty():
+			return String(resolved_name)
 	if "stats" in entity and entity.stats:
 		return entity.stats.player_name
 	return entity.name

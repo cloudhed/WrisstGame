@@ -8,6 +8,16 @@ extends Node2D
 var enemy_ui: StatsUI
 var turn_sequence_id := 0
 
+
+func _describe_enemy(enemy: Enemy) -> String:
+	if enemy == null:
+		return "<null>"
+	if enemy.has_method("get_display_name"):
+		var display_name = enemy.get_display_name()
+		if display_name != null and not String(display_name).is_empty():
+			return String(display_name)
+	return enemy.name
+
 func _ready() -> void:
 	print("📦 EnemyHandler ready")
 	Events.enemy_action_completed.connect(_on_enemy_action_completed)
@@ -16,7 +26,7 @@ func reset_enemy_actions() -> void:
 	print("♻️ Resetting enemy actions...")
 	for i in get_child_count():
 		var enemy: Enemy = get_child(i) as Enemy
-		print("🔄 Resetting:", enemy.name)
+		print("🔄 Resetting:", _describe_enemy(enemy))
 		enemy.assign_stats_ui(enemy_ui)
 		enemy.current_action = null
 		enemy.update_action()
@@ -51,13 +61,13 @@ func start_turn() -> void:
 		Events.enemy_turn_ended.emit()
 		return
 
-	print("🎯 First enemy:", first_enemy.name)
+	print("🎯 First enemy:", _describe_enemy(first_enemy))
 	first_enemy.do_turn()
 
 func _on_enemy_action_completed(enemy: Enemy) -> void:
 	turn_sequence_id += 1
 	var sequence_id := turn_sequence_id
-	print("✅ Enemy action completed:", enemy.name)
+	print("✅ Enemy action completed:", _describe_enemy(enemy))
 	await _delay_if_current(post_action_delay, sequence_id)
 	if sequence_id != turn_sequence_id:
 		return
@@ -74,7 +84,7 @@ func _on_enemy_action_completed(enemy: Enemy) -> void:
 	await _delay_if_current(pre_action_delay, sequence_id)
 	if sequence_id != turn_sequence_id:
 		return
-	print("➡️ Next enemy turn:", next_enemy.name)
+	print("➡️ Next enemy turn:", _describe_enemy(next_enemy))
 	next_enemy.do_turn()
 
 

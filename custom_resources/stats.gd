@@ -11,6 +11,17 @@ var health: int : set = set_health
 var block: int : set = set_block
 var entity: Node = null
 
+
+func resolve_damage(damage: int) -> Dictionary:
+	var attempted: int = maxi(damage, 0)
+	var blocked: int = mini(block, attempted)
+	var dealt: int = maxi(attempted - blocked, 0)
+	return {
+		"attempted": attempted,
+		"blocked": blocked,
+		"dealt": dealt,
+	}
+
 func set_health(value : int) -> void:
 	health = clampi(value, 0, max_health)
 	stats_changed.emit()
@@ -21,14 +32,14 @@ func set_block(value : int) -> void:
 	stats_changed.emit()
 
 
-func take_damage(damage: int) -> void:
-	if damage <= 0:
-		return
+func take_damage(damage: int) -> Dictionary:
+	var result := resolve_damage(damage)
+	if int(result["attempted"]) <= 0:
+		return result
 
-	var initial_damage: = damage
-	damage = clampi(damage - block, 0, damage)
-	self.block = clampi(block - initial_damage, 0, block)
-	self.health -= damage
+	self.block = clampi(block - int(result["attempted"]), 0, block)
+	self.health -= int(result["dealt"])
+	return result
 
 
 func take_true_damage(damage: int) -> void:

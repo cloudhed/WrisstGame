@@ -31,11 +31,12 @@ func reset_stamina() -> void:
 	self.stamina = max_stamina
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int) -> Dictionary:
 	var initial_health := health
-	super.take_damage(damage)
+	var result: Dictionary = super.take_damage(damage)
 	if initial_health > health:
 		Events.player_hit.emit()
+	return result
 
 
 func take_true_damage(damage: int) -> void:

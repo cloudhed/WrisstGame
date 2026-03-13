@@ -6,9 +6,11 @@
 
 [resource]
 script = ExtResource("3_id80c")
+species_id = &""
 ai = ExtResource("1_wgih2")
 pre_combat_dialog_path = ""
 post_combat_dialog_path = ""
+loss_combat_dialog_path = ""
 is_runnable = false
 max_health = 22
 art = ExtResource("2_r3pl0")

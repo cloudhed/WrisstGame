@@ -48,6 +48,7 @@ func spawn_damage_popup(world_position: Vector2, amount: int, effect_type: Strin
 	var color: Color = Color.WHITE
 	match effect_type:
 		"damage": color = Color.DARK_RED
+		"damage_blocked": color = Color.GRAY
 		"heal": color = Color.WEB_GREEN
 		"block": color = Color.ROYAL_BLUE
 

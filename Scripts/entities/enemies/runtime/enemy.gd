@@ -26,6 +26,12 @@ var combat_modifiers: Dictionary = {}
 func get_stats():
 	return stats
 
+
+func get_display_name() -> String:
+	if stats and not stats.player_name.is_empty():
+		return stats.player_name
+	return name
+
 var intent_ui: IntentUI = null
 
 func set_current_action(value: EnemyAction) -> void:
@@ -145,9 +151,11 @@ func consume_damage_multiplier() -> float:
 	return multiplier
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int) -> Dictionary:
 	if stats.health <= 0:
-		return
+		return stats.resolve_damage(0)
+
+	var damage_result := stats.resolve_damage(damage)
 	
 	sprite_2d.material = WHITE_SPRITE_MATERIAL
 	
@@ -167,6 +175,8 @@ func take_damage(damage: int) -> void:
 				Events.enemy_defeated.emit()
 				#queue_free()
 	)
+
+	return damage_result
 
 
 func _on_area_entered(_area: Area2D) -> void:

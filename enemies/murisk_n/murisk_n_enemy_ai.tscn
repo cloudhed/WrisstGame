@@ -1,38 +1,38 @@
 [gd_scene load_steps=8 format=3 uid="uid://dc1oajmuh1rh6"]
 
-[ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_nd4a0"]
-[ext_resource type="Script" uid="uid://cxmm5meop6ieo" path="res://Scripts/entities/enemies/murisk_n/actions/murisk_n_attack_action.gd" id="2_fetc3"]
-[ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_mjmlq"]
-[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="4_bco2l"]
-[ext_resource type="Script" uid="uid://b7psfmpxtb6xh" path="res://Scripts/entities/enemies/murisk_n/actions/murisk_n_attack_bodyslam.gd" id="5_bnl1c"]
+[ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_fhjeh"]
+[ext_resource type="Script" uid="uid://cxmm5meop6ieo" path="res://Scripts/entities/enemies/murisk_n/actions/murisk_n_attack_action.gd" id="2_d3wjv"]
+[ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_g36cg"]
+[ext_resource type="Script" uid="uid://b7psfmpxtb6xh" path="res://Scripts/entities/enemies/murisk_n/actions/murisk_n_attack_bodyslam.gd" id="4_kgkl6"]
+[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="5_a0gia"]
 
-[sub_resource type="Resource" id="Resource_xcpeo"]
-script = ExtResource("4_bco2l")
+[sub_resource type="Resource" id="Resource_guf8m"]
+script = ExtResource("5_a0gia")
 number = "5"
-icon = ExtResource("3_mjmlq")
+icon = ExtResource("3_g36cg")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
-[sub_resource type="Resource" id="Resource_78eh4"]
-script = ExtResource("4_bco2l")
+[sub_resource type="Resource" id="Resource_f8705"]
+script = ExtResource("5_a0gia")
 number = "8"
-icon = ExtResource("3_mjmlq")
+icon = ExtResource("3_g36cg")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [node name="MuriskNEnemyAi" type="Node"]
-script = ExtResource("1_nd4a0")
+script = ExtResource("1_fhjeh")
 
 [node name="AttackAction" type="Node" parent="."]
-script = ExtResource("2_fetc3")
+script = ExtResource("2_d3wjv")
 min_damage = 5
 max_damage = 5
-intent = SubResource("Resource_xcpeo")
+intent = SubResource("Resource_guf8m")
 type = 1
 chance_weight = 2.0
 
 [node name="BodySlamAction" type="Node" parent="."]
-script = ExtResource("5_bnl1c")
+script = ExtResource("4_kgkl6")
 min_damage = 8
 max_damage = 8
-intent = SubResource("Resource_78eh4")
+intent = SubResource("Resource_f8705")
 type = 1
 chance_weight = 0.6

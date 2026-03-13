@@ -9,12 +9,12 @@ signal fallback_equipped
 signal combat_debug_settings_changed
 
 @export var grant_debug_starting_items: bool = true
-@export var debug_immediate_discard_reshuffle: bool = true
+@export var debug_immediate_discard_reshuffle: bool = false
 
 # ─────────────────────────────────────────────────────────────
 # Player identity
 var player_name: String = "MilkshakeMan"
-var player_gender: String = "male" # or "male",
+var player_gender: String = "male" # "female" or "male",
 #var player_body_type: String = "curvy" # or "flat", "androgynous", etc.
 #var player_pronouns: Dictionary = {
 #	"they": "she",

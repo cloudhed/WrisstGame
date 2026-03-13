@@ -3,32 +3,32 @@
 [ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_lrdxd"]
 [ext_resource type="Script" uid="uid://cn0jp8734f31q" path="res://Scripts/entities/enemies/meehp_f/actions/meehp_f_attack_action.gd" id="2_tkr82"]
 [ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_ch0wi"]
-[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="4_ibfek"]
+[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="4_intent"]
 [ext_resource type="Script" uid="uid://dr1as1h20an04" path="res://Scripts/entities/enemies/meehp_f/actions/meehp_f_clawattack_action.gd" id="5_ef0kp"]
 [ext_resource type="Script" uid="uid://c1wf5yx8vcy48" path="res://Scripts/entities/enemies/meehp_f/actions/meehp_f_rage_action.gd" id="6_emfcc"]
 [ext_resource type="Texture2D" uid="uid://dhmkraw3jt45h" path="res://Assets/UI/intent/intent_special.png" id="7_88v6k"]
 [ext_resource type="Script" uid="uid://lxcbveynt2i" path="res://Scripts/entities/enemies/meehp_f/actions/meehp_f_final_attack_action.gd" id="8_an75i"]
 
 [sub_resource type="Resource" id="Resource_3oku1"]
-script = ExtResource("4_ibfek")
+script = ExtResource("4_intent")
 number = "1-3"
 icon = ExtResource("3_ch0wi")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_13eaw"]
-script = ExtResource("4_ibfek")
+script = ExtResource("4_intent")
 number = "5"
 icon = ExtResource("3_ch0wi")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_7oljo"]
-script = ExtResource("4_ibfek")
+script = ExtResource("4_intent")
 number = ""
 icon = ExtResource("7_88v6k")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_wsidw"]
-script = ExtResource("4_ibfek")
+script = ExtResource("4_intent")
 number = "8"
 icon = ExtResource("3_ch0wi")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
@@ -66,4 +66,3 @@ damage = 8
 hp_threshold = 2
 intent = SubResource("Resource_wsidw")
 message_template = "The [b]Meeph[/b] unleashes her last energy into a furious swipe of her sharp hinleg claws. She slashes you for [b][color=red]{amount}[/color][/b]  damage."
-

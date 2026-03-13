@@ -56,6 +56,7 @@ func start_turn() -> void:
 	character.block = 0
 	character.stamina = character.get_stamina_for_new_turn()
 	var tiles_to_draw := character.get_tiles_to_draw_this_turn()
+	print("[DEBUG] Turn start resolved — Stamina:", character.stamina, " | Draw:", tiles_to_draw)
 	draw_tiles(tiles_to_draw)
 	character.consume_player_turn_start_modifiers()
 

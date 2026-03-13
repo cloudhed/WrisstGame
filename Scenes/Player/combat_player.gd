@@ -12,6 +12,8 @@ const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres
 @onready var game_state = GameState
 @onready var display_name: String = GameState.player_name
 var has_scheduled_end_turn: bool = false
+var _last_logged_stamina: int = -999999
+var _last_logged_end_turn_flag: bool = false
 
 var stats_ui: StatsUI = null
 
@@ -29,7 +31,7 @@ func _ready() -> void:
 
 func assign_stats_ui(ui: StatsUI) -> void:
 	stats_ui = ui
-	stats_ui.update_stats(stats)
+	_refresh_stats_ui()
 
 
 
@@ -58,20 +60,37 @@ func update_player() -> void:
 
 
 func update_stats() -> void:
+	_refresh_stats_ui()
+	_evaluate_end_turn_state()
+
+
+func _refresh_stats_ui() -> void:
 	if stats_ui:
 		stats_ui.update_stats(stats)
 
-	print("[DEBUG] update_stats called — Stamina:", stats.stamina, " | has_scheduled_end_turn:", has_scheduled_end_turn)
+
+func _evaluate_end_turn_state() -> void:
+	if stats == null:
+		return
+
+	var stamina_changed := stats.stamina != _last_logged_stamina
+	var flag_changed := has_scheduled_end_turn != _last_logged_end_turn_flag
+	if stamina_changed or flag_changed:
+		print("[DEBUG] Player stats sync — Stamina:", stats.stamina, " | has_scheduled_end_turn:", has_scheduled_end_turn)
+		_last_logged_stamina = stats.stamina
+		_last_logged_end_turn_flag = has_scheduled_end_turn
 
 	# Start the end-turn countdown ONLY ONCE when stamina hits 0
 	if auto_end_turn_on_zero_stamina and stats.stamina <= 0 and not has_scheduled_end_turn:
 		print("[DEBUG] Stamina is 0 — scheduling end turn.")
 		has_scheduled_end_turn = true
 		end_turn_timer.start()
+		_last_logged_end_turn_flag = has_scheduled_end_turn
 	elif stats.stamina > 0 and has_scheduled_end_turn:
 		print("[DEBUG] Stamina restored — canceling timer and reset flag.")
 		has_scheduled_end_turn = false
 		end_turn_timer.stop()
+		_last_logged_end_turn_flag = has_scheduled_end_turn
 
 
 func spend_stamina(amount: int) -> void:
@@ -80,7 +99,18 @@ func spend_stamina(amount: int) -> void:
 	
 	var new_value: int = max(0, stats.stamina - amount)
 	stats.stamina = new_value
-	update_stats()
+
+
+func get_stats() -> CharacterStats:
+	return stats
+
+
+func get_display_name() -> String:
+	if stats and not stats.player_name.is_empty():
+		return stats.player_name
+	if not display_name.is_empty():
+		return display_name
+	return name
 
 
 func get_damage_popup_position() -> Vector2:
@@ -89,9 +119,11 @@ func get_damage_popup_position() -> Vector2:
 	return global_position  # fallback
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int) -> Dictionary:
 	if stats.health <= 0:
-		return
+		return stats.resolve_damage(0)
+
+	var damage_result := stats.resolve_damage(damage)
 		
 	sprite_2d.material = WHITE_SPRITE_MATERIAL # For player sprite white flash
 	
@@ -108,6 +140,7 @@ func take_damage(damage: int) -> void:
 				Events.player_died.emit()
 				queue_free()
 	)
+	return damage_result
 #	stats.take_damage(damage)
 	
 #	if stats.health <= 0:

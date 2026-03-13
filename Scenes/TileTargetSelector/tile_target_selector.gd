@@ -7,6 +7,16 @@ var current_tile: TileUI
 var targeting := false
 
 
+func _describe_target(area: Area2D) -> String:
+	if area == null:
+		return "<null>"
+	if area.has_method("get_display_name"):
+		var display_name = area.get_display_name()
+		if display_name != null and not String(display_name).is_empty():
+			return String(display_name)
+	return area.name
+
+
 func _ready() -> void:
 	Events.tile_aim_started.connect(_on_tile_aim_started)
 	Events.tile_aim_ended.connect(_on_tile_aim_ended)
@@ -43,7 +53,7 @@ func _on_tile_aim_ended(_tile: TileUI) -> void:
 	
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("Selector hit:", area)
+	print("Selector hit:", _describe_target(area))
 	if not current_tile or not targeting:
 		return
 		

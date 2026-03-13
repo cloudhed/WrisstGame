@@ -51,10 +51,6 @@ func play() -> void:
 	
 	tile.play(targets, char_stats)
 
-	# 🔧 Force update stats manually in case the signal doesn't emit fast enough
-	if player_node is CombatPlayer:
-		player_node.update_stats()
-
 	queue_free()
 	
 	

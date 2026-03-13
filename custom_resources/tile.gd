@@ -104,6 +104,12 @@ func get_display_name(entity: Node) -> String:
 	
 	print(">>> get_display_name: ", entity)
 	print(">>> Has 'stats'? ", "stats" in entity)
+
+	if entity.has_method("get_display_name"):
+		var resolved_name = entity.get_display_name()
+		if resolved_name != null and not String(resolved_name).is_empty():
+			print(">>> get_display_name() returned: ", resolved_name)
+			return String(resolved_name)
 	
 	if entity.has_method("get_stats"):
 		var stats = entity.get_stats()

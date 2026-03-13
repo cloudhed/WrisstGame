@@ -9,8 +9,10 @@ func execute(targets: Array[Node]) -> void:
 		if not target:
 			continue
 		if target is Enemy or target is CombatPlayer:
-			target.take_damage(amount)
-			Events.damage_popup_requested.emit(target.get_damage_popup_position(), amount, "damage")
+			var damage_result: Dictionary = target.take_damage(amount)
+			var popup_amount := int(damage_result.get("dealt", 0))
+			var popup_type := "damage_blocked" if int(damage_result.get("blocked", 0)) > 0 else "damage"
+			Events.damage_popup_requested.emit(target.get_damage_popup_position(), popup_amount, popup_type)
 			SFXPlayer.play(sound)
 
 #added for showing amount on tile

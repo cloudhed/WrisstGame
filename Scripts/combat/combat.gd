@@ -28,6 +28,16 @@ var override_enemy_resource: Resource = null
 signal combat_ended
 
 
+func _describe_combatant(entity: Node) -> String:
+	if entity == null:
+		return "<null>"
+	if entity.has_method("get_display_name"):
+		var display_name = entity.get_display_name()
+		if display_name != null and not String(display_name).is_empty():
+			return String(display_name)
+	return entity.name
+
+
 func setup_with_enemy(enemy_res: Resource) -> void:
 	override_enemy_resource = enemy_res
 
@@ -83,14 +93,14 @@ func _setup_enemy() -> void:
 		enemy = enemy_scene.instantiate() as Enemy
 		enemy_handler.add_child(enemy)
 		enemy.stats = override_enemy_resource
-		print("✅ Enemy spawned from override resource:", enemy.name)
+		print("✅ Enemy spawned from override resource:", _describe_combatant(enemy))
 	else:
 		# 🧑‍💻 Fallback for debug / editor mode
 		enemy = enemy_handler.get_child(0) as Enemy
 		if not enemy:
 			print("❌ No enemy found in enemy_handler or override.")
 			return
-		print("✅ Enemy found from editor:", enemy.name)
+		print("✅ Enemy found from editor:", _describe_combatant(enemy))
 
 	enemy.intent_ui = $IntentUI
 	active_enemy_stats = enemy.stats as EnemyStats
@@ -167,7 +177,7 @@ func start_combat(stats: CharacterStats) -> void:
 	player_handler.start_combat(stats)
 
 	for enemy in enemy_handler.get_children():
-		print("🧟 Enemy:", enemy.name)
+		print("🧟 Enemy:", _describe_combatant(enemy))
 
 
 func _bind_status_debug_to_stats(stats: CharacterStats) -> void:
@@ -242,6 +252,9 @@ func _on_player_died() -> void:
 	enemy_handler.cancel_turn_sequence()
 	$IntentUI.visible = false
 	_record_combat_result(false)
+	if active_enemy_stats and not active_enemy_stats.loss_combat_dialog_path.is_empty() and not combat_aborted:
+		_show_dialog_overlay(active_enemy_stats.loss_combat_dialog_path, active_enemy_stats.slide_deck)
+		return
 	# You can optionally also emit leave_encounter_requested here if you want
 
 
