@@ -12,6 +12,7 @@ const DIALOG_SCENE_PATH := "res://Narrative/DialogScene.tscn"
 @onready var player_handler: PlayerHandler = $PlayerHandler as PlayerHandler
 @onready var enemy_handler: EnemyHandler = $EnemyHandler as EnemyHandler
 @onready var player: CombatPlayer = $PlayerHandler/CombatPlayer as CombatPlayer
+@onready var status_debug_label: Label = $CombatUI/StatusDebugLabel as Label
 
 var created_stats: CharacterStats
 var combat_over: bool = false
@@ -19,6 +20,7 @@ var combat_aborted: bool = false
 var combat_result_recorded: bool = false
 var dialog_overlay: DialogManager = null
 var active_enemy_stats: EnemyStats = null
+var _status_debug_stats: CharacterStats = null
 
 #enemy_loading_through_JSON
 var override_enemy_resource: Resource = null
@@ -152,11 +154,13 @@ func _on_player_ready(p: CombatPlayer) -> void:
 
 	p.stats = new_stats
 	player = p
+	_bind_status_debug_to_stats(new_stats)
 
 func start_combat(stats: CharacterStats) -> void:
 	print("⚔️ Combat has started!")
 	combat_ui.visible = true
 	$IntentUI.visible = true
+	_bind_status_debug_to_stats(stats)
 
 	MusicPlayer.play(music, true)
 	enemy_handler.reset_enemy_actions()
@@ -164,6 +168,28 @@ func start_combat(stats: CharacterStats) -> void:
 
 	for enemy in enemy_handler.get_children():
 		print("🧟 Enemy:", enemy.name)
+
+
+func _bind_status_debug_to_stats(stats: CharacterStats) -> void:
+	if _status_debug_stats and _status_debug_stats.stats_changed.is_connected(_refresh_status_debug_label):
+		_status_debug_stats.stats_changed.disconnect(_refresh_status_debug_label)
+
+	_status_debug_stats = stats
+	if _status_debug_stats and not _status_debug_stats.stats_changed.is_connected(_refresh_status_debug_label):
+		_status_debug_stats.stats_changed.connect(_refresh_status_debug_label)
+
+	_refresh_status_debug_label()
+
+
+func _refresh_status_debug_label() -> void:
+	if status_debug_label == null:
+		return
+
+	if _status_debug_stats == null or not _status_debug_stats.has_method("get_debug_status_summary"):
+		status_debug_label.text = "Statuses: None"
+		return
+
+	status_debug_label.text = "Statuses: %s" % _status_debug_stats.get_debug_status_summary()
 
 func _all_enemies_defeated() -> bool:
 	var enemy_count := 0

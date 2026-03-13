@@ -38,6 +38,13 @@ func take_damage(damage: int) -> void:
 		Events.player_hit.emit()
 
 
+func take_true_damage(damage: int) -> void:
+	var initial_health := health
+	super.take_true_damage(damage)
+	if initial_health > health:
+		Events.player_hit.emit()
+
+
 func can_play_tile(tile: Tile) -> bool:
 	return stamina >= tile.cost
 
@@ -88,7 +95,7 @@ func apply_player_turn_start_effects() -> Dictionary:
 
 		if poison_damage > 0:
 			result["damage_taken"] = poison_damage
-			take_damage(poison_damage)
+			take_true_damage(poison_damage)
 			result["died"] = health <= 0
 
 		remaining_turns -= 1
