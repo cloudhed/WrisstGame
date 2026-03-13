@@ -199,12 +199,22 @@ func _on_enemies_child_order_changed() -> void:
 		#Events.leave_encounter_requested.emit()
 
 func _on_enemy_turn_ended() -> void:
+	if combat_over or combat_aborted:
+		return
+
 	player_handler.turn_blocked = false
 	player_handler.start_turn()
 	enemy_handler.reset_enemy_actions()
 
 func _on_player_died() -> void:
 	print("☠️ Game over!")
+	if combat_over:
+		return
+
+	combat_over = true
+	player_handler.turn_blocked = true
+	enemy_handler.cancel_turn_sequence()
+	$IntentUI.visible = false
 	_record_combat_result(false)
 	# You can optionally also emit leave_encounter_requested here if you want
 

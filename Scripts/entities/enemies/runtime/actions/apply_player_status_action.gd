@@ -42,7 +42,7 @@ func _build_status_data() -> Dictionary:
 			data["damage"] = status_value
 		"rattled":
 			data["draw_amount"] = status_value if use_draw_amount_field else 2
-			data["remaining_turns"] = 1
+			data["remaining_turns"] = max(status_turns, 2)
 		_:
 			data["value"] = status_value
 

@@ -16,6 +16,8 @@ func perform_action() -> void:
 	var target_stats = target.stats
 	if target_stats and target_stats.has_method("add_temporary_tiles_to_pile"):
 		target_stats.add_temporary_tiles_to_pile(StringName(target_pile), dud_tile, dud_count)
+		if target_stats.has_method("add_dud_status"):
+			target_stats.add_dud_status(dud_count)
 
 	emit_combat_message(enemy, target, message_template, dud_count)
 	if sound:

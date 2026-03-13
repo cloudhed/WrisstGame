@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://dy20wfjpx2q5y" path="res://Scripts/entities/enemies/runtime/actions/set_enemy_next_attack_multiplier_action.gd" id="12_buff"]
 [ext_resource type="Texture2D" uid="uid://byoypck63ftc7" path="res://Assets/UI/intent/intent_rattle.png" id="13_8al4f"]
 [ext_resource type="Script" uid="uid://bbv63ohgs0hdk" path="res://Scripts/entities/enemies/runtime/actions/attack_when_buffed_action.gd" id="13_buffatk"]
-[ext_resource type="Resource" uid="uid://c0uw11luyek43" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_fail.tres" id="15_dud_tile"]
+[ext_resource type="Resource" uid="uid://cucn0ef2pmi0n" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/dud_naked_fail.tres" id="16_mvd5u"]
 [ext_resource type="AudioStream" uid="uid://c1w2fsjabnkt3" path="res://Audio/SFX/sfx_defeat.wav" id="16_special_sfx"]
 [ext_resource type="Texture2D" uid="uid://crajgrif2lrsa" path="res://Assets/UI/intent/intent_dud.png" id="17_u32sd"]
 [ext_resource type="Texture2D" uid="uid://dr7efplcp8x82" path="res://Assets/UI/intent/intent_rage.png" id="19_xn6dr"]
@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_poison_intent"]
 script = ExtResource("4_3i4tc")
-number = "1x4"
+number = "2x8"
 icon = ExtResource("11_mvd5u")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
@@ -100,7 +100,8 @@ message_template = "[b]{source_name}[/b] follows up with an empowered strike for
 
 [node name="PoisonAction" type="Node" parent="."]
 script = ExtResource("9_status")
-status_turns = 4
+status_turns = 8
+status_value = 2
 intent = SubResource("Resource_poison_intent")
 sound = ExtResource("16_special_sfx")
 type = 1
@@ -128,8 +129,9 @@ message_template = "[b]{source_name}[/b] crushes [b]{target_name}[/b]'s footing,
 
 [node name="DudTilesAction" type="Node" parent="."]
 script = ExtResource("11_duds")
-dud_tile = ExtResource("15_dud_tile")
+dud_tile = ExtResource("16_mvd5u")
 dud_count = 2
+target_pile = "draw_pile"
 intent = SubResource("Resource_dud_intent")
 sound = ExtResource("16_special_sfx")
 type = 1

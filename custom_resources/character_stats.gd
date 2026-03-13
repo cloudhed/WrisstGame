@@ -11,6 +11,11 @@ var discard: TilePile
 var draw_pile: TilePile
 var combat_statuses: Dictionary = {}
 
+const STATUS_POISON := &"poison"
+const STATUS_RATTLED := &"rattled"
+const STATUS_DRAINED_STAMINA := &"drained_stamina"
+const STATUS_SLIMED := &"slimed"
+
 
 func set_stamina(value: int) -> void:
 	if stamina == value:
@@ -49,8 +54,15 @@ func get_status(status_id: StringName) -> Dictionary:
 
 func add_status(status_id: StringName, status_data: Dictionary) -> void:
 	var merged := get_status(status_id)
-	for key in status_data.keys():
-		merged[key] = status_data[key]
+
+	match status_id:
+		STATUS_SLIMED:
+			merged["stacks"] = int(merged.get("stacks", 0)) + int(status_data.get("stacks", 1))
+			merged["dud_tiles_added"] = int(merged.get("dud_tiles_added", 0)) + int(status_data.get("dud_tiles_added", 0))
+		_:
+			for key in status_data.keys():
+				merged[key] = status_data[key]
+
 	combat_statuses[status_id] = merged
 	stats_changed.emit()
 
@@ -62,36 +74,82 @@ func remove_status(status_id: StringName) -> void:
 	stats_changed.emit()
 
 
-func apply_start_of_turn_effects(player_node: CombatPlayer) -> void:
-	if has_status(&"poison"):
-		var poison := get_status(&"poison")
+
+func apply_player_turn_start_effects() -> Dictionary:
+	var result := {
+		"damage_taken": 0,
+		"died": false,
+	}
+
+	if has_status(STATUS_POISON):
+		var poison := get_status(STATUS_POISON)
 		var poison_damage := int(poison.get("damage", 1))
 		var remaining_turns := int(poison.get("remaining_turns", 1))
 
-		if player_node != null and poison_damage > 0:
-			player_node.take_damage(poison_damage)
+		if poison_damage > 0:
+			result["damage_taken"] = poison_damage
+			take_damage(poison_damage)
+			result["died"] = health <= 0
 
 		remaining_turns -= 1
 		if remaining_turns > 0:
 			poison["remaining_turns"] = remaining_turns
-			combat_statuses[&"poison"] = poison
+			combat_statuses[STATUS_POISON] = poison
 		else:
-			combat_statuses.erase(&"poison")
+			combat_statuses.erase(STATUS_POISON)
 
 		stats_changed.emit()
+
+	return result
+
+
+func get_stamina_for_new_turn() -> int:
+	var turn_stamina := max_stamina
+
+	if has_status(STATUS_DRAINED_STAMINA):
+		var drained_stamina := get_status(STATUS_DRAINED_STAMINA)
+		turn_stamina = min(turn_stamina, int(drained_stamina.get("stamina_amount", turn_stamina)))
+
+	return max(turn_stamina, 0)
 
 
 func get_tiles_to_draw_this_turn() -> int:
 	var draw_amount := tiles_per_turn
-	if has_status(&"rattled"):
-		var rattled := get_status(&"rattled")
+	if has_status(STATUS_RATTLED):
+		var rattled := get_status(STATUS_RATTLED)
 		draw_amount = min(draw_amount, int(rattled.get("draw_amount", 2)))
 	return max(draw_amount, 0)
 
 
-func consume_turn_draw_modifiers() -> void:
-	if has_status(&"rattled"):
-		remove_status(&"rattled")
+func consume_player_turn_start_modifiers() -> void:
+	var changed := false
+
+	if has_status(STATUS_RATTLED):
+		changed = _decrement_turn_status(STATUS_RATTLED) or changed
+
+	if has_status(STATUS_DRAINED_STAMINA):
+		changed = _decrement_turn_status(STATUS_DRAINED_STAMINA) or changed
+
+	if changed:
+		stats_changed.emit()
+
+
+func _decrement_turn_status(status_id: StringName) -> bool:
+	if not has_status(status_id):
+		return false
+
+	var status_data := get_status(status_id)
+	if not status_data.has("remaining_turns"):
+		return false
+
+	var remaining_turns := int(status_data.get("remaining_turns", 0)) - 1
+	if remaining_turns > 0:
+		status_data["remaining_turns"] = remaining_turns
+		combat_statuses[status_id] = status_data
+	else:
+		combat_statuses.erase(status_id)
+
+	return true
 
 
 func add_temporary_tiles_to_pile(target_pile: StringName, tile: Tile, copies: int) -> void:
@@ -114,6 +172,13 @@ func add_temporary_tiles_to_pile(target_pile: StringName, tile: Tile, copies: in
 		pile.add_tile(tile.duplicate(true))
 
 
+func add_dud_status(copies_added: int, stack_amount: int = 1) -> void:
+	add_status(STATUS_SLIMED, {
+		"stacks": max(stack_amount, 1),
+		"dud_tiles_added": max(copies_added, 0)
+	})
+
+
 func get_debug_status_summary() -> String:
 	if combat_statuses.is_empty():
 		return "None"
@@ -121,12 +186,27 @@ func get_debug_status_summary() -> String:
 	var summaries: PackedStringArray = []
 	for status_id in combat_statuses.keys():
 		var status_data: Dictionary = combat_statuses[status_id]
-		var bits: PackedStringArray = [String(status_id)]
-		for key in status_data.keys():
-			bits.append("%s=%s" % [String(key), str(status_data[key])])
-		summaries.append("%s" % ", ".join(bits))
+		summaries.append(_format_status_summary(status_id, status_data))
 
 	return " | ".join(summaries)
+
+
+func _format_status_summary(status_id: StringName, status_data: Dictionary) -> String:
+	match status_id:
+		STATUS_POISON:
+			return "poison %st dmg=%s" % [status_data.get("remaining_turns", "?"), status_data.get("damage", 1)]
+		STATUS_RATTLED:
+			return "rattled %st draw=%s" % [status_data.get("remaining_turns", "?"), status_data.get("draw_amount", 2)]
+		STATUS_DRAINED_STAMINA:
+			return "drained stamina %st -> %s" % [status_data.get("remaining_turns", "?"), status_data.get("stamina_amount", 0)]
+		STATUS_SLIMED:
+			var stacks := int(status_data.get("stacks", 1))
+			return "slimed" if stacks <= 1 else "slimed x%s" % stacks
+		_:
+			var bits: PackedStringArray = [String(status_id)]
+			for key in status_data.keys():
+				bits.append("%s=%s" % [String(key), str(status_data[key])])
+			return ", ".join(bits)
 
 
 func create_instance() -> Resource:

@@ -21,6 +21,10 @@ func reset_enemy_actions() -> void:
 		enemy.current_action = null
 		enemy.update_action()
 
+
+func cancel_turn_sequence() -> void:
+	turn_sequence_id += 1
+
 func start_turn() -> void:
 	turn_sequence_id += 1
 	var sequence_id := turn_sequence_id
@@ -31,7 +35,6 @@ func start_turn() -> void:
 	var combat = get_tree().get_current_scene() as Combat
 	if combat and combat.combat_over:
 		print("⛔ Combat is over — skipping enemy start_turn.")
-		Events.enemy_turn_ended.emit()
 		return
 
 	print("⚔️ Enemy turn starts")

@@ -35,21 +35,29 @@ func start_turn() -> void:
 	if combat and combat.combat_over:
 		print("⛔ Combat is over — skipping player start_turn.")
 		return
+
+	if character == null:
+		print("⛔ Player character stats missing — skipping player start_turn.")
+		return
 	
 	if turn_blocked:
 		print("[DEBUG] Turn is currently blocked, not starting turn.")
 		return
 
 	print("Starting player turn.")
-	character.apply_start_of_turn_effects(combat_player)
+	var turn_effects := character.apply_player_turn_start_effects()
+	if bool(turn_effects.get("died", false)):
+		Events.player_died.emit()
+		return
+
 	if character.health <= 0:
 		return
 
 	character.block = 0
-	character.reset_stamina()
+	character.stamina = character.get_stamina_for_new_turn()
 	var tiles_to_draw := character.get_tiles_to_draw_this_turn()
 	draw_tiles(tiles_to_draw)
-	character.consume_turn_draw_modifiers()
+	character.consume_player_turn_start_modifiers()
 
 
 func end_turn() -> void:
