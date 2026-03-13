@@ -79,6 +79,11 @@ func draw_tiles(amount: int) -> void:
 
 func discard_tiles() -> void:
 	print("Starting to discard_tiles.")
+	if hand.get_child_count() == 0:
+		print("Hand already empty — emitting player_hand_discarded immediately.")
+		Events.player_hand_discarded.emit()
+		return
+
 	var tween := create_tween()
 	for tile_ui in hand.get_children():
 		tween.tween_callback(character.discard.add_tile.bind(tile_ui.tile))

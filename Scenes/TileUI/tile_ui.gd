@@ -13,6 +13,7 @@ signal reparent_requested(which_tile_ui: TileUI)
 
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var tile_state_machine: TileStateMachine = $TileStateMachine as TileStateMachine
+@onready var motion_presenter = $TileMotionPresenter
 @onready var targets: Array[Node] = []
 
 var original_index := 0
@@ -25,7 +26,12 @@ func _ready() -> void:
 	Events.tile_drag_started.connect(_on_tile_drag_or_aiming_started)
 	Events.tile_drag_ended.connect(_on_tile_drag_or_aiming_ended)
 	Events.tile_aim_ended.connect(_on_tile_drag_or_aiming_ended)
+	motion_presenter.setup(self)
 	tile_state_machine.init(self)
+
+
+func _process(delta: float) -> void:
+	motion_presenter.process_motion(delta)
 	
 func _input(event: InputEvent) -> void:
 	tile_state_machine.on_input(event)
@@ -60,6 +66,26 @@ func _on_mouse_entered() -> void:
 	
 func _on_mouse_exited() -> void:
 	tile_state_machine.on_mouse_exited(null)
+
+
+func set_hover_motion(active: bool, mouse_global_pos := Vector2.ZERO) -> void:
+	motion_presenter.set_hover_motion(active, mouse_global_pos)
+
+
+func set_motion_suspended(active: bool) -> void:
+	motion_presenter.set_motion_suspended(active)
+
+
+func update_hover_motion_mouse(mouse_global_pos: Vector2) -> void:
+	motion_presenter.update_hover_motion_mouse(mouse_global_pos)
+
+
+func preserve_global_position_on_reparent(new_parent: Node) -> void:
+	motion_presenter.preserve_global_position_on_reparent(new_parent)
+
+
+func is_hover_motion_active() -> bool:
+	return motion_presenter.is_hover_active()
 
 func _set_tile(value: Tile) -> void:
 	if not is_node_ready():
@@ -117,6 +143,7 @@ func _on_drop_point_detector_area_exited(area: Area2D) -> void:
 
 func _on_tile_drag_or_aiming_started(used_tile: TileUI) -> void:
 	if used_tile == self:
+		set_motion_suspended(true)
 		return
 		
 	disabled = true
@@ -125,6 +152,7 @@ func _on_tile_drag_or_aiming_started(used_tile: TileUI) -> void:
 func _on_tile_drag_or_aiming_ended(_tile: TileUI) -> void:
 	disabled = false
 	self.playable = char_stats.can_play_tile(tile)
+	set_motion_suspended(false)
 
 
 func _on_char_stats_changed() -> void:

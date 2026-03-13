@@ -4,14 +4,16 @@ extends TileState
 
 func enter() -> void:
 	print("AIMING")
+	tile_ui.set_motion_suspended(true)
 	var ui_layer := get_tree().get_first_node_in_group("ui_layer")
 	if ui_layer:
-		tile_ui.reparent(ui_layer) # Make sure it's in front
+		tile_ui.preserve_global_position_on_reparent(ui_layer) # Make sure it's in front
 	tile_ui.targets.clear()
 	Events.tile_aim_started.emit(tile_ui)
 
 
 func exit() -> void:
+	tile_ui.set_motion_suspended(false)
 	Events.tile_aim_ended.emit(tile_ui)
 
 

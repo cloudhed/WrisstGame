@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b36kourb32ynb"]
+[gd_scene load_steps=28 format=3 uid="uid://b36kourb32ynb"]
 
 [ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_yx13p"]
 [ext_resource type="Script" uid="uid://cdisbx1otllk3" path="res://Scripts/entities/enemies/default_creature/actions/creature_attack_action.gd" id="2_oq1at"]
@@ -11,11 +11,14 @@
 [ext_resource type="Script" uid="uid://ckufpdyo1uynq" path="res://Scripts/entities/enemies/runtime/actions/apply_player_status_action.gd" id="9_status"]
 [ext_resource type="Script" uid="uid://4dnis58rkgt4" path="res://Scripts/entities/enemies/runtime/actions/set_player_stamina_action.gd" id="10_stamina"]
 [ext_resource type="Script" uid="uid://b7fvqoersgk0w" path="res://Scripts/entities/enemies/runtime/actions/add_player_dud_tiles_action.gd" id="11_duds"]
+[ext_resource type="Texture2D" uid="uid://caxww5p70f5bf" path="res://Assets/UI/intent/intent_poison.png" id="11_mvd5u"]
 [ext_resource type="Script" uid="uid://dy20wfjpx2q5y" path="res://Scripts/entities/enemies/runtime/actions/set_enemy_next_attack_multiplier_action.gd" id="12_buff"]
+[ext_resource type="Texture2D" uid="uid://byoypck63ftc7" path="res://Assets/UI/intent/intent_rattle.png" id="13_8al4f"]
 [ext_resource type="Script" uid="uid://bbv63ohgs0hdk" path="res://Scripts/entities/enemies/runtime/actions/attack_when_buffed_action.gd" id="13_buffatk"]
-[ext_resource type="Texture2D" uid="uid://dhmkraw3jt45h" path="res://Assets/UI/intent/intent_special.png" id="14_special_icon"]
 [ext_resource type="Resource" uid="uid://c0uw11luyek43" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_fail.tres" id="15_dud_tile"]
 [ext_resource type="AudioStream" uid="uid://c1w2fsjabnkt3" path="res://Audio/SFX/sfx_defeat.wav" id="16_special_sfx"]
+[ext_resource type="Texture2D" uid="uid://crajgrif2lrsa" path="res://Assets/UI/intent/intent_dud.png" id="17_u32sd"]
+[ext_resource type="Texture2D" uid="uid://dr7efplcp8x82" path="res://Assets/UI/intent/intent_rage.png" id="19_xn6dr"]
 
 [sub_resource type="Resource" id="Resource_3t067"]
 script = ExtResource("4_3i4tc")
@@ -38,31 +41,31 @@ metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 [sub_resource type="Resource" id="Resource_poison_intent"]
 script = ExtResource("4_3i4tc")
 number = "1x4"
-icon = ExtResource("14_special_icon")
+icon = ExtResource("11_mvd5u")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_rattled_intent"]
 script = ExtResource("4_3i4tc")
 number = "2"
-icon = ExtResource("14_special_icon")
+icon = ExtResource("13_8al4f")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_stamina_intent"]
 script = ExtResource("4_3i4tc")
 number = "0"
-icon = ExtResource("14_special_icon")
+icon = ExtResource("13_8al4f")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_dud_intent"]
 script = ExtResource("4_3i4tc")
 number = "+2"
-icon = ExtResource("14_special_icon")
+icon = ExtResource("17_u32sd")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_buff_intent"]
 script = ExtResource("4_3i4tc")
 number = "x1.5"
-icon = ExtResource("14_special_icon")
+icon = ExtResource("19_xn6dr")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [node name="CreatureEnemyAi" type="Node"]

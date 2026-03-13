@@ -75,6 +75,8 @@ debug_color = Color(0, 0.595, 0.7, 0.117647)
 
 [node name="EnemyHandler" type="Node2D" parent="."]
 script = ExtResource("12_e8ln5")
+pre_action_delay = 0.4
+post_action_delay = 0.4
 
 [node name="Enemy" parent="EnemyHandler" instance=ExtResource("9_tmuf1")]
 stats = ExtResource("10_umvpd")
@@ -91,10 +93,10 @@ auto_end_turn_on_zero_stamina = false
 [node name="TileTargetSelector" parent="." instance=ExtResource("11_nar6d")]
 
 [node name="IntentUI" parent="." instance=ExtResource("12_r5ubg")]
-offset_left = 1416.0
-offset_top = 385.0
-offset_right = 1623.0
-offset_bottom = 577.0
+offset_left = 937.0
+offset_top = 255.0
+offset_right = 1144.0
+offset_bottom = 447.0
 
 [node name="CombatUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("12_umvpd")

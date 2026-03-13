@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c70f5rm6i5pcd" path="res://Scenes/UI/intent_ui.tscn" id="9_kiqm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ley77"]
-size = Vector2(22, 20.3209)
+size = Vector2(24.1737, 20.3209)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6j3ko"]
 blend_mode = 1
@@ -120,7 +120,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1210, 452)
+position = Vector2(1270.22, 452)
 scale = Vector2(25.05, 44.497)
 shape = SubResource("RectangleShape2D_ley77")
 debug_color = Color(0.99, 0.8811, 0.396, 0.133333)

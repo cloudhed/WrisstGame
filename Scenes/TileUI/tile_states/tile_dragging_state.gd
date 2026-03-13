@@ -7,12 +7,13 @@ var minimum_drag_time_elapsed := false
 
 func enter() -> void:
 	print("DRAGGING") #debug to check DRAGGING
+	tile_ui.set_motion_suspended(true)
 	
 	set_particles_emitting(false) # Dragging = no selection effect
 	
 	var ui_layer := get_tree().get_first_node_in_group("ui_layer")
 	if ui_layer:
-		tile_ui.reparent(ui_layer)
+		tile_ui.preserve_global_position_on_reparent(ui_layer)
 	
 	Events.tile_drag_started.emit(tile_ui)
 		
@@ -21,6 +22,7 @@ func enter() -> void:
 	threshold_timer.timeout.connect(func(): minimum_drag_time_elapsed = true)
 
 func exit() -> void:
+	tile_ui.set_motion_suspended(false)
 	Events.tile_drag_ended.emit(tile_ui)
 
 func on_input(event: InputEvent) -> void:
