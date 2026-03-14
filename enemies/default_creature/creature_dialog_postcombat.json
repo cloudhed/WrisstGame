@@ -24,7 +24,13 @@
 			},
 			{
 				"text": "> Inspect the defeated creature",
-				"next": "creature_approach_01"
+				"next": "creature_approach_01",
+				"hide_if": {
+					"any_of": [
+						{ "content_disabled": "feral" },
+						{ "content_disabled": "violence" }
+					]
+				}
 			},
 			{
 				"text": "> Leave it",

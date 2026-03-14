@@ -30,7 +30,13 @@
 			},
 			{
 				"text": "> Approach the downed Shenche",
-				"next": "shenche_postcombat_approach"
+				"next": "shenche_postcombat_approach",
+				"hide_if": {
+					"any_of": [
+						{ "content_disabled": "feral" },
+						{ "content_disabled": "violence" }
+					]
+				}
 			},
 			{
 				"text": "> Leave",

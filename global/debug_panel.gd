@@ -4,6 +4,8 @@ extends Control
 @onready var debug_text: Label = $DebugUI/DebugText
 @onready var flags_text: Label = $DebugUI/FlagsText
 @onready var reshuffle_toggle_button: Button = $DebugUI/ReshuffleToggleButton
+@onready var feral_toggle_button: Button = $DebugUI/FeralToggleButton
+@onready var violence_toggle_button: Button = $DebugUI/ViolenceToggleButton
 
 
 func _ready():
@@ -41,6 +43,8 @@ func _refresh_debug_controls() -> void:
 	if not is_instance_valid(reshuffle_toggle_button):
 		return
 	reshuffle_toggle_button.text = "Deck reshuffle: %s" % GameState.get_debug_reshuffle_mode_label()
+	feral_toggle_button.text = "Feral content: %s" % ("OFF" if GameState.content_settings["feral"] else "ON")
+	violence_toggle_button.text = "Violence content: %s" % ("OFF" if GameState.content_settings["violence"] else "ON")
 
 
 func _update_debug_info():
@@ -102,3 +106,13 @@ func _on_reshuffle_toggle_button_pressed() -> void:
 	GameState.toggle_debug_immediate_discard_reshuffle()
 	_refresh_debug_controls()
 	_update_debug_info()
+
+
+func _on_feral_toggle_button_pressed() -> void:
+	GameState.content_settings["feral"] = not GameState.content_settings["feral"]
+	_refresh_debug_controls()
+
+
+func _on_violence_toggle_button_pressed() -> void:
+	GameState.content_settings["violence"] = not GameState.content_settings["violence"]
+	_refresh_debug_controls()

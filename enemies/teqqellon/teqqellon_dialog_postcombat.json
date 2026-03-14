@@ -25,7 +25,8 @@
 			},
 			{
 				"text": "> Inspect the creature more closely",
-				"next": "teqqellon_approach_01"
+				"next": "teqqellon_approach_01",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Leave it",
@@ -44,12 +45,12 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Fuck the slime",
+				"text": "> Have sex with the slime",
 				"next": "teqqellon_entry_01_SHOW",
 				"show_if": { "player_gender": "male" }
 			},
 			{
-				"text": "> Get fucked by the slime",
+				"text": "> Have sex with the slime",
 				"next": "teqqellon_entry_female01_SHOW",
 				"show_if": { "player_gender": "female" }
 			},

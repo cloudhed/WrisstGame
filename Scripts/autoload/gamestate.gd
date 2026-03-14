@@ -14,7 +14,14 @@ signal combat_debug_settings_changed
 # ─────────────────────────────────────────────────────────────
 # Player identity
 var player_name: String = "MilkshakeMan"
-var player_gender: String = "male" # "female" or "male",
+var player_gender: String = "male" # "female" or "male"
+
+# Content settings — toggled in character creation / options menu
+# Default is false (everything shown). Player opts OUT by setting to true.
+var content_settings: Dictionary = {
+	"feral": false,     # true = player opted out of feral/beast erotic content
+	"violence": false,  # true = player opted out of violence (erotic, gore, forced)
+}
 #var player_body_type: String = "curvy" # or "flat", "androgynous", etc.
 #var player_pronouns: Dictionary = {
 #	"they": "she",

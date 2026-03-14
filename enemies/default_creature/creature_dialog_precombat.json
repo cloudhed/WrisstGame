@@ -227,7 +227,8 @@
 		"options": [
 			{
 				"text": "> Determine the <Creature>'s sex",
-				"next": "creature_inspect_determinesex"
+				"next": "creature_inspect_determinesex",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Stop",
@@ -746,7 +747,8 @@
 		"options": [
 			{
 				"text": "> Inspect the tied-up creature closer",
-				"next": "creature_capture_inspect"
+				"next": "creature_capture_inspect",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> <Loot the creature>",

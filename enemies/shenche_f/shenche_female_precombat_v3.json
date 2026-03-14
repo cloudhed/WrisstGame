@@ -113,7 +113,8 @@
 		"options": [
 			{
 				"text": "> Determine the creature's sex",
-				"next": "shenche_inspect_determinesex"
+				"next": "shenche_inspect_determinesex",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Stop",

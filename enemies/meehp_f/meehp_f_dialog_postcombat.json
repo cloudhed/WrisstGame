@@ -22,11 +22,18 @@
       },
       {
         "text": "> Step into her ring and hold your ground",
-        "next": "meehp_f_approach_01"
+        "next": "meehp_f_approach_01",
+        "hide_if": {
+          "any_of": [
+            { "content_disabled": "feral" },
+            { "content_disabled": "violence" }
+          ]
+        }
       },
       {
         "text": "> Circle wide and test her reaction",
-        "next": "meehp_f_test_branch_01"
+        "next": "meehp_f_test_branch_01",
+        "hide_if": { "content_disabled": "feral" }
       },
       {
         "text": "> Leave the clearing",

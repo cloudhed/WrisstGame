@@ -107,7 +107,8 @@
 		"options": [
 			{
 				"text": "> Determine the <Creature>'s sex",
-				"next": "creature_inspect_determinesex"
+				"next": "creature_inspect_determinesex",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Stop",

@@ -502,6 +502,10 @@ func _evaluate_condition_key_value(key: String, value: Variant) -> bool:
 			return _has_all_items(_to_string_array(value))
 		"has_any_item":
 			return _has_any_item(_to_string_array(value))
+		"content_disabled":
+			# True if the player has opted out of this content category.
+			# Usage: "hide_if": { "content_disabled": "feral" }
+			return GameState.content_settings.get(str(value), false)
 		_:
 			push_warning("⚠️ Unknown choice condition key: %s" % key)
 			return false

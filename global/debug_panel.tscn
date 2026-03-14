@@ -45,10 +45,26 @@ grow_horizontal = 0
 horizontal_alignment = 2
 
 [node name="ReshuffleToggleButton" type="Button" parent="DebugUI"]
-offset_left = 17.0
+offset_left = 1602.0
 offset_top = 779.0
-offset_right = 331.0
+offset_right = 1916.0
 offset_bottom = 814.0
 text = "Deck reshuffle"
 
+[node name="FeralToggleButton" type="Button" parent="DebugUI"]
+offset_left = 1602.0
+offset_top = 820.0
+offset_right = 1916.0
+offset_bottom = 855.0
+text = "Feral content"
+
+[node name="ViolenceToggleButton" type="Button" parent="DebugUI"]
+offset_left = 1602.0
+offset_top = 861.0
+offset_right = 1916.0
+offset_bottom = 896.0
+text = "Violence content"
+
 [connection signal="pressed" from="DebugUI/ReshuffleToggleButton" to="." method="_on_reshuffle_toggle_button_pressed"]
+[connection signal="pressed" from="DebugUI/FeralToggleButton" to="." method="_on_feral_toggle_button_pressed"]
+[connection signal="pressed" from="DebugUI/ViolenceToggleButton" to="." method="_on_violence_toggle_button_pressed"]

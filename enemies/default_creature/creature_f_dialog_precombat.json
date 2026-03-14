@@ -112,10 +112,6 @@
 				"next": "creature_inspect"
 			},
 			{
-				"text": "> Attack the <Creature>",
-				"next": "creature_attack"
-			},
-			{
 				"text": "> Back away",
 				"next": "creature_coax_leave"
 			}
@@ -142,7 +138,8 @@
 		"options": [
 			{
 				"text": "> Determine the <Creature>'s sex",
-				"next": "creature_inspect_determinesex"
+				"next": "creature_inspect_determinesex",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Stop",

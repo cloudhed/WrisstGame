@@ -15,11 +15,18 @@
       },
       {
         "text": "> Get closer and inspect the feeding seam",
-        "next": "murisk_approach_01"
+        "next": "murisk_approach_01",
+        "hide_if": {
+          "any_of": [
+            { "content_disabled": "feral" },
+            { "content_disabled": "violence" }
+          ]
+        }
       },
       {
         "text": "> Test its echo response from a safe distance",
-        "next": "murisk_echo_branch_01"
+        "next": "murisk_echo_branch_01",
+        "hide_if": { "content_disabled": "feral" }
       },
       {
         "text": "> Leave it where it fell",
