@@ -114,11 +114,9 @@ offset_bottom = 447.0
 
 [node name="CombatUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("12_umvpd")
-end_turn_pulse_color = Color(0, 0.634421, 0.727523, 1)
-end_turn_pulse_scale = Vector2(2, 2)
-end_turn_pulse_duration = 0.3
-end_turn_glow_max_alpha = 10.0
-end_turn_glow_pulse_scale = Vector2(2, 2)
+end_turn_pulse_color = Color(4.81308e-08, 0.453345, 0.408312, 1)
+end_turn_pulse_scale = Vector2(1, 1)
+end_turn_glow_min_alpha = 0.2
 
 [node name="StatsUIManager" type="HBoxContainer" parent="CombatUI"]
 anchors_preset = 2

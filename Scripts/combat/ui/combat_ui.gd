@@ -101,38 +101,20 @@ func _start_end_turn_pulse() -> void:
 
 	_end_turn_pulse_tween = create_tween()
 	_end_turn_pulse_tween.set_loops()
-	_end_turn_pulse_tween.set_parallel(true)
 	_end_turn_pulse_tween.set_ease(Tween.EASE_IN_OUT)
 	_end_turn_pulse_tween.set_trans(Tween.TRANS_SINE)
+
+	# Phase 1: scale up + glow in (parallel)
 	_end_turn_pulse_tween.tween_property(end_turn_button, "scale", end_turn_pulse_scale, end_turn_pulse_duration)
 	if end_turn_glow:
-		_end_turn_pulse_tween.tween_property(
-			end_turn_glow,
-			"scale",
-			end_turn_glow_pulse_scale,
-			end_turn_pulse_duration
-		)
-		_end_turn_pulse_tween.tween_property(
-			end_turn_glow,
-			"modulate:a",
-			end_turn_glow_max_alpha,
-			end_turn_pulse_duration
-		)
-	_end_turn_pulse_tween.chain().set_parallel(true)
+		_end_turn_pulse_tween.parallel().tween_property(end_turn_glow, "scale", end_turn_glow_pulse_scale, end_turn_pulse_duration)
+		_end_turn_pulse_tween.parallel().tween_property(end_turn_glow, "modulate:a", end_turn_glow_max_alpha, end_turn_pulse_duration)
+
+	# Phase 2: scale down + glow out (runs after phase 1, parallel within)
 	_end_turn_pulse_tween.tween_property(end_turn_button, "scale", _end_turn_base_scale, end_turn_pulse_duration)
 	if end_turn_glow:
-		_end_turn_pulse_tween.tween_property(
-			end_turn_glow,
-			"scale",
-			_end_turn_glow_base_scale,
-			end_turn_pulse_duration
-		)
-		_end_turn_pulse_tween.tween_property(
-			end_turn_glow,
-			"modulate:a",
-			end_turn_glow_min_alpha,
-			end_turn_pulse_duration
-		)
+		_end_turn_pulse_tween.parallel().tween_property(end_turn_glow, "scale", _end_turn_glow_base_scale, end_turn_pulse_duration)
+		_end_turn_pulse_tween.parallel().tween_property(end_turn_glow, "modulate:a", end_turn_glow_min_alpha, end_turn_pulse_duration)
 
 
 func _stop_end_turn_pulse() -> void:
@@ -158,6 +140,7 @@ func _setup_end_turn_glow() -> void:
 
 	_end_turn_glow_base_modulate = Color(end_turn_pulse_color.r, end_turn_pulse_color.g, end_turn_pulse_color.b, 0.0)
 	_end_turn_glow_base_scale = end_turn_glow.scale
+	end_turn_glow.resized.connect(func(): end_turn_glow.pivot_offset = end_turn_glow.size * 0.5)
 	end_turn_glow.pivot_offset = end_turn_glow.size * 0.5
 	end_turn_glow.modulate = _end_turn_glow_base_modulate
 	end_turn_glow.z_index = 1
