@@ -1,0 +1,431 @@
+[
+	{
+		"id": "INIT_play_audio",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg",
+		"set_flag": "knows_shenche",
+		"flag_type": "knowledge",
+		"clear": true,
+		"next": "INIT_knowledge_CHECK"
+	},
+	{
+		"id": "INIT_knowledge_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_shenche"],
+			"on_success": "shenche_precombat",
+			"on_fail": "shenche_precombat_unknown"
+		}
+	},
+	{
+		"id": "shenche_precombat_unknown",
+		"type": "narration",
+		"text": "Something moves between the trees ahead. Four angular legs carry a low shape through the underbrush — deliberate, unhurried, picking between roots and fallen bark. Its head is wide and flat, held forward on a long neck that bends like a branch in wind. A green-mottled abdomen hangs beneath a narrow thorax, dotted with dark clusters. It hasn't noticed you.",
+		"next": "shenche_precombat_choice"
+	},
+	{
+		"id": "shenche_precombat",
+		"type": "narration",
+		"text": "A female Shenche moves through the trees, her four legs stepping over roots in a slow, mechanical gait. She stops near a patch of moss-covered deadfall, her flat head sweeping left and right on its long neck. The mandibles along her jaw open and close absently. The green nodules along her abdomen shift as she breathes.",
+		"next": "shenche_precombat_choice"
+	},
+	{
+		"id": "shenche_precombat_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Observe the creature",
+				"next": "shenche_observe",
+				"hide_if": { "has_flag": "observed_shenche" }
+			},
+			{
+				"text": "> Attack the creature",
+				"next": "shenche_attack"
+			},
+			{
+				"text": "> Approach slowly",
+				"next": "shenche_approach"
+			},
+			{
+				"text": "> Back away",
+				"next": "shenche_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_observe",
+		"type": "narration",
+		"text": "You settle behind a trunk and watch. The creature stands roughly waist-high at the shoulder, though the head rises higher when the neck straightens. That head is the strangest part — flat and wide, almost like a spade, with ridged mandibles that open sideways. They look sharp. Between them, smaller mouthparts work at something scraped from the bark of a dead tree. The neck is long and flat, curving and bending with a slow, boneless flexibility as the head moves. The thorax behind it is narrow, almost skeletal, joining to a softer, rounder abdomen mottled in greens and greys. Dark nodule-clusters are pressed into the belly like embedded stones. The four legs are angular, double-jointed, their inner surfaces a deep reddish-crimson against the grey chitin. She moves carefully, testing each step before shifting her weight.",
+		"set_flag": "observed_shenche",
+		"flag_type": "temp",
+		"next": "shenche_precombat_choice"
+	},
+	{
+		"id": "shenche_approach",
+		"type": "narration",
+		"text": "You step forward slowly. A twig cracks under your boot. The Shenche freezes, two legs planted and two raised mid-step. Her long neck bends sharply toward you, bringing that flat head around fast. The mandibles spread wide. You can see the serrated inner edges clearly now. You stop. Neither of you moves. Then the mandibles close halfway. She lowers her raised legs and sets them down. A low clicking starts somewhere inside her thorax — steady, like something tapping on wood.",
+		"command": "@STOP_ALL_AMBIENCE ; @PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
+		"clear": true,
+		"next": "shenche_approach_02"
+	},
+	{
+		"id": "shenche_approach_02",
+		"type": "narration",
+		"text": "She takes a step closer. Then another. Up close the head is wider than your shoulders, the chitin shell smooth with faint grooves like growth rings cut across its surface. The neck bends in a slow arc as she lowers the head toward your arm. Four small feelers beneath the mandibles extend and taste the air near your skin without touching it. Her abdomen sags low between the rear legs, the nodules there a dull green, shifting faintly with each breath. She smells like wet bark and loam.",
+		"next": "shenche_approach_choice"
+	},
+	{
+		"id": "shenche_approach_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Inspect the creature closer",
+				"next": "shenche_inspect"
+			},
+			{
+				"text": "> Attack the creature",
+				"next": "shenche_attack"
+			},
+			{
+				"text": "> Back away",
+				"next": "shenche_approach_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_approach_leave",
+		"type": "narration",
+		"text": "You step back carefully. The Shenche tracks you with her flat head but doesn't follow. Her mandibles click shut once, and she turns back toward the deadfall, already losing interest.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_shenche"],
+		"next": "shenche_end"
+	},
+	{
+		"id": "shenche_inspect",
+		"type": "narration",
+		"text": "She holds still as you move around her, the clicking in her thorax dropping to a low, even pulse. You run your palm across the top of her head shell. The chitin is hard and dry, sun-warmed even in the shade. At the base of the neck the surface gives way to softer, segmented tissue that flexes under your fingers. Her legs twitch when you brush past them but she doesn't pull away. You crouch beneath her. The underside of the abdomen is softer than the rest — the green nodules there slightly translucent, warm when you press your palm flat against them. Her body hums faintly beneath your hand, a vibration you feel more than hear.",
+		"clear": false,
+		"next": "shenche_inspect_determinesex_choice"
+	},
+	{
+		"id": "shenche_inspect_determinesex_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Determine the creature's sex",
+				"next": "shenche_inspect_determinesex"
+			},
+			{
+				"text": "> Stop",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_inspect_determinesex",
+		"type": "narration",
+		"text": "You look between the rear legs. Near the base of her abdomen, hidden where two chitin plates overlap, there's a vertical seam in the softer tissue. It's sealed tight, the edges slightly darker than the surrounding skin. When your fingers brush along its length, the Shenche's legs stiffen and the clicking stutters — a rapid, uneven staccato. The seam parts under your touch. Inside, the flesh is slick and pale, glistening with a thin, clear fluid that coats your fingertips like warm water. The lips of the opening are ridged and flushed a deep violet, and they contract in slow, rolling waves — pulling inward, then relaxing, pulling inward again. A thick, earthy scent rises from it, mixing with the wet bark smell of her body.",
+		"command": "@MUSIC_CLIP choices ; @SHOW_SCENE inspect_genitals",
+		"clear": false,
+		"next": "shenche_inspect_choice"
+	},
+	{
+		"id": "shenche_inspect_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Touch the opening",
+				"next": "shenche_inspect_02"
+			},
+			{
+				"text": "> Back away",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_inspect_02",
+		"type": "narration",
+		"text": "You press two fingers along the ridged lips and push gently inward. The Shenche's abdomen dips toward your hand. The fluid increases, running slick and thin over your knuckles, dripping from your wrist. Inside, the walls are lined with soft directional ridges — they flatten smooth as your fingers slide in, but when you try to pull back, they catch and grip, angling against the direction of withdrawal. The deeper you press, the tighter the resistance becomes on the way out. Her clicking dissolves into a continuous low drone. Her rear legs shift apart, lowering the abdomen closer to you. She hasn't looked back at you once. Her head is still pointed at the deadfall, mandibles working idly at nothing.",
+		"command": "@SHOW_SCENE touch_genitals",
+		"clear": false,
+		"next": "shenche_sex_choice_init"
+	},
+	{
+		"id": "shenche_sex_choice_init",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Have sex with the creature",
+				"next": "shenche_sex_init"
+			},
+			{
+				"text": "> Stop",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_init",
+		"type": "narration",
+		"text": "You work your fingers free — it takes effort, the ridges gripping and releasing in reluctant stages. When they finally slip out, the opening contracts around empty air in slow, rhythmic pulls. You wipe your hand on your thigh. The fluid is thin and slick, almost like water but with more grip to it. You strip your clothes off and set them on a dry root. The forest air is cool against your body. The Shenche hasn't moved. Her feelers extend lazily toward you once, taste the air near your hip, and retract. That's all the acknowledgment you get.",
+		"clear": false,
+		"next": "shenche_sex_choice"
+	},
+	{
+		"id": "shenche_sex_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Slide inside her",
+				"next": "shenche_sex_male_top_start",
+				"show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Stop",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_male_top_start",
+		"type": "narration",
+		"text": "You step between her rear legs and press your cock against the parted seam. The fluid coating her opening is slick and warm, running freely now — dripping down the inside of her legs and wetting the ground beneath her. You push your glans against the ridged lips. They flatten and part easily, drawing you in. The Shenche's legs stiffen. The clicking in her thorax drops to a deep, resonant hum you can feel through the ground under your feet.",
+		"command": "@MUSIC_CLIP love ; @SHOW_SCENE malesex_top_start",
+		"next": "shenche_sex_male_top_start_choice"
+	},
+	{
+		"id": "shenche_sex_male_top_start_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Push deeper",
+				"next": "shenche_sex_male_top_ongoing"
+			},
+			{
+				"text": "> Stop",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_male_top_ongoing",
+		"type": "narration",
+		"text": "You push your hips forward. The ridges inside her flatten in smooth succession as you slide deeper — easy, almost welcoming. Then you pull back slightly and feel them. Every ridge catches your shaft on the outstroke, angling inward, gripping, resisting. The harder you try to withdraw, the tighter they hold. You push in again and the grip vanishes — smooth, slick, pulling you deeper. Out, and they clamp. In, and they release. Your body figures out the rhythm fast: deep, steady strokes that don't fight the direction of her anatomy.[p]Her fluid coats your entire length now, thin and slippery, running freely down your thighs in warm rivulets. Your cock throbs inside her. Her walls contract in slow, peristaltic waves — muscular bands that squeeze from base to tip in rolling pulses, milking your shaft independent of your own movement. She's not reacting to you. She's processing you. Her head hasn't turned. Her mandibles still work at the bark. The hum in her thorax is the only sign anything is happening at all.",
+		"command": "@SHOW_SCENE malesex_top_ongoing",
+		"next": "shenche_sex_male_top_ongoing_choice"
+	},
+	{
+		"id": "shenche_sex_male_top_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust harder",
+				"next": "shenche_sex_male_top_ongoing_02"
+			},
+			{
+				"text": "> Stop",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_male_top_ongoing_02",
+		"type": "narration",
+		"text": "You pick up the pace, gripping the edges of her chitin plates for leverage. The wet sounds get louder — her fluid splashes faintly with each thrust now, flicking from the point of contact in thin droplets that land on your stomach and thighs. Her peristaltic waves quicken to match you, the muscular bands tightening faster, gripping harder.[p]Then you feel something catch. On a deep stroke, as your glans pushes past the last row of ridges, something at the very back closes briefly around your tip. A ring of muscle you haven't felt before, snug around the crown of your cock, squeezing once — then releasing as you pull back. It happens again on the next stroke. And the next. Each time it grips a little longer, holds a little tighter before letting go. Your gut tells you this is headed somewhere you might not control.",
+		"command": "@SHOW_SCENE malesex_top_ongoing_02",
+		"next": "shenche_sex_male_top_ongoing_02_choice"
+	},
+	{
+		"id": "shenche_sex_male_top_ongoing_02_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Thrust harder",
+				"next": "shenche_sex_male_top_pre_climax"
+			},
+			{
+				"text": "> Stop and slowly pull out",
+				"next": "shenche_sex_male_top_pullout"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_male_top_pullout",
+		"type": "narration",
+		"text": "You stop mid-stroke and hold still. The ring at the back twitches once around your tip, searching, then relaxes. Carefully — very carefully — you pull back. The directional ridges catch and drag against your shaft, but with slow, steady pressure they release one by one. It's like pulling free of a grip that doesn't want to let go but hasn't fully committed yet. Your cock slides out inch by inch, each ridge giving a final reluctant tug before flattening. The last one pops free, and you stumble back a step.[p]You stand there breathing hard, cock slick and throbbing in the open air, the Shenche's watery fluid running down your legs. Her seam contracts slowly around nothing, the violet lips still pulsing in that same blind rhythm. She hasn't moved. Her abdomen hangs low between her rear legs, the soft underside coated in the same slick fluid that covers you. The green nodules along her belly shift gently with her breathing. The soft ridges of her abdomen's underside catch the light, glistening and slightly undulating with each breath.",
+		"next": "shenche_sex_male_top_pullout_choice"
+	},
+	{
+		"id": "shenche_sex_male_top_pullout_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Use her slick belly to finish yourself off",
+				"next": "shenche_sex_male_top_abdomen_start"
+			},
+			{
+				"text": "> Get dressed and leave",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_male_top_abdomen_start",
+		"type": "narration",
+		"text": "You step back between her legs and press your cock against the soft underside of her abdomen. The surface gives easily under you — warm, pliable flesh between the nodules, coated in a thick sheen of her own slippery fluid. You push your hips forward and your shaft slides across the ridged skin in one smooth, wet glide. The friction is barely there. It's all slick heat and soft, giving pressure.[p]You find your angle — cock pressed flat between your stomach and the yielding underbelly, the shallow ridges along her abdomen rolling gently against your shaft with each thrust. Her body shifts slightly with your movement but she doesn't resist or react. You're just using her. The fluid splashes between your bodies now, running down in thin streams that patter onto the leaves beneath you.",
+		"command": "@SHOW_SCENE malesex_top_abdomen",
+		"next": "shenche_sex_male_top_abdomen_choice"
+	},
+	{
+		"id": "shenche_sex_male_top_abdomen_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Keep going",
+				"next": "shenche_sex_male_top_abdomen_climax"
+			},
+			{
+				"text": "> Stop",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_male_top_abdomen_climax",
+		"type": "narration",
+		"text": "You grab the edges of her chitin plates and grind harder against the soft belly. The undulating ridges massage your cock with each stroke — gentle, rhythmic pressure that builds and builds. Her fluid squelches loudly between your bodies, splashing in wet arcs with every hard thrust. Your forehead presses against her warm shell. Your breath comes in short, ragged bursts.[p]The orgasm rolls through you in a long, steady wave. You press yourself flat against her abdomen and cum in thick pulses across her belly, your seed mixing with her slick fluid and running down between the nodules in pale streaks. You keep rutting against her through the last few spasms, the wet friction dragging every last drop from you until your hips finally slow and stop.[p]You pull back, panting. Her underside is a mess — your cum smeared across the soft ridges, thinned by her own fluid, dripping slowly into the dirt. The Shenche doesn't acknowledge any of it.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_top_abdomen_climax",
+		"next": "shenche_sex_male_top_abdomen_aftermath"
+	},
+	{
+		"id": "shenche_sex_male_top_abdomen_aftermath",
+		"type": "narration",
+		"text": "The Shenche shifts her weight and takes a step forward. Your spend drips from her belly and leaves a scattered trail in the dirt. She doesn't clean herself. She doesn't look back. Her long neck bends once to check the ground ahead, and then she walks, same as before — slow, mechanical, already done with whatever just happened.",
+		"command": "@SHOW_SCENE malesex_top_abdomen_aftermath ; @RECORD_SPECIES_SEX shenche",
+		"set_flag": "sexed_shenche",
+		"flag_type": "knowledge",
+		"next": "shenche_sex_male_top_abdomen_aftermath_choice"
+	},
+	{
+		"id": "shenche_sex_male_top_abdomen_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Watch her go",
+				"next": "shenche_sex_male_top_affection"
+			},
+			{
+				"text": "> Get dressed and leave",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_male_top_pre_climax",
+		"type": "narration",
+		"text": "You ignore the warning and drive yourself in hard. The ring at the back catches your glans on the next stroke — and this time it doesn't let go. It closes around the crown of your cock and holds, the puckered muscle sealing tight with a grip that pulls you inward. A deeper chamber, opening. The suction hits you like a fist to the gut — slow, firm, drawing you in from the tip while the directional ridges behind you lock in sequence, each one catching and clamping down until your entire shaft is held rigid.[p]You couldn't pull out now if your life depended on it. Her peristaltic waves have shifted — fast, overlapping pulses that squeeze your cock from every angle at once. Your thighs burn. Your hands grip her plates hard enough to feel the chitin bite into your palms. The clicking has stopped entirely. The only sounds are the wet, squelching rhythm of her insides working your shaft, the splatter of excess fluid hitting the ground below, and the blood pounding in your own ears.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "shenche_sex_male_top_climax_choice"
+	},
+	{
+		"id": "shenche_sex_male_top_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Cum inside the Shenche",
+				"next": "shenche_sex_male_top_climax_inside"
+			},
+			{
+				"text": "> Try to pull out",
+				"next": "shenche_sex_male_top_climax_locked"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_male_top_climax_inside",
+		"type": "narration",
+		"text": "You stop fighting it and let go. Your cock pulses hard, pumping thick ropes of cum into her. The deeper chamber clamps down on your glans the instant you start to release — a tight, rhythmic squeeze that wrings every spurt from you with mechanical precision. The peristaltic waves reverse direction, pulling inward now, dragging your seed deeper into her body. Your legs buckle. You slump forward against her abdomen, face pressed into the warm chitin, gasping. She milks you through every pulse until there's nothing left, and then keeps squeezing for several seconds more, pulling at an empty cock with the same patient rhythm.[p]Then, gradually, the ridges soften. The inner chamber releases your tip with a faint, wet sound. The directional grip loosens in stages, and you slide free. A thick strand of fluid — hers and yours — stretches between your cock and the slowly closing seam before it breaks. A heavy spill runs down the inside of her legs and soaks into the forest floor.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_top_climax_inside",
+		"next": "shenche_sex_male_top_aftermath"
+	},
+	{
+		"id": "shenche_sex_male_top_climax_locked",
+		"type": "narration",
+		"text": "You try to pull free. The directional ridges lock hard, every one of them catching your shaft, gripping tighter the more you resist. Your cock doesn't move. Panic flickers in your gut — but then the deeper chamber clenches around your glans and the orgasm hits whether you want it or not. You cum hard, pinned inside her, your hips jerking helplessly against a body that refuses to release you. The peristaltic waves pull inward, dragging each pulse of your seed deeper. Your vision blurs. Your fingers claw at her chitin plates. She milks you dry with the same steady, indifferent rhythm she's held the entire time.[p]Only when the last spasm passes does the grip begin to loosen. The ridges soften in stages, like fingers uncurling one by one. You pull free with a shudder. A heavy spill of mixed fluids drips from the seam and splashes into the dirt between her legs.",
+		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_top_climax_inside",
+		"next": "shenche_sex_male_top_aftermath"
+	},
+	{
+		"id": "shenche_sex_male_top_aftermath",
+		"type": "narration",
+		"text": "You stand there breathing hard, legs unsteady. The Shenche shifts her weight forward. Her seam seals shut with a faint wet click. She stretches her long neck, bending it in a slow arc to one side, then the other. Then she walks away between the trees, the same unhurried gait, stepping over the same roots. She doesn't look back. She doesn't make a sound.",
+		"command": "@SHOW_SCENE malesex_top_aftermath ; @RECORD_SPECIES_SEX shenche",
+		"set_flag": "sexed_shenche",
+		"flag_type": "knowledge",
+		"next": "shenche_sex_male_top_aftermath_choice"
+	},
+	{
+		"id": "shenche_sex_male_top_aftermath_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Watch her disappear into the trees",
+				"next": "shenche_sex_male_top_affection"
+			},
+			{
+				"text": "> Get dressed and leave",
+				"next": "shenche_inspect_leave"
+			}
+		]
+	},
+	{
+		"id": "shenche_sex_male_top_affection",
+		"type": "narration",
+		"text": "You lean against a tree and watch her angular shape dissolve into the undergrowth. The light through the canopy shifts. A bird calls somewhere above. You look down at yourself. You're still slick from the waist down. You stay there a while longer than you need to before reaching for your clothes.",
+		"clear": true,
+		"next": "shenche_inspect_leave"
+	},
+	{
+		"id": "shenche_attack",
+		"type": "narration",
+		"text": "You charge. The Shenche's neck whips around fast — far faster than anything that size should move. Her mandibles split wide, serrated edges catching the light, and she braces all four legs into the dirt.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "shenche_startcombat"
+	},
+	{
+		"id": "shenche_startcombat",
+		"type": "command",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @START_COMBAT",
+		"clear_flag": ["observed_shenche"],
+		"end": false
+	},
+	{
+		"id": "shenche_inspect_leave",
+		"type": "narration",
+		"text": "You pull your clothes on, brush the dirt from your knees, and walk away. The Shenche is already somewhere deeper in the trees behind you, clicking faintly.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "shenche_end"
+	},
+	{
+		"id": "shenche_fled_leave",
+		"type": "narration",
+		"text": "The Shenche's clicking fades between the trees until the forest swallows it entirely.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "shenche_end"
+	},
+	{
+		"id": "shenche_leave",
+		"type": "narration",
+		"text": "You back away before her neck swings your direction. The clicking grows quieter as you put distance between you. The Shenche doesn't follow.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_shenche"],
+		"next": "shenche_end"
+	},
+	{
+		"id": "shenche_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"next": "shenche_end_shouldntshowup"
+	}
+]

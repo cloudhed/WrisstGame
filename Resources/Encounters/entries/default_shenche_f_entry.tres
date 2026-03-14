@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EncounterEntry" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://custom_resources/encounter_entry.gd" id="1_entry_script"]
+
+[resource]
+script = ExtResource("1_entry_script")
+enemy_stats_path = "res://enemies/shenche_f/shenche_f_enemy.tres"
+weight = 0.7
+allowed_biomes = PackedStringArray("Forest")
+allowed_time_periods = PackedStringArray("Night")
+min_hour = -1
+max_hour = -1
+required_flags = PackedStringArray()
+blocked_flags = PackedStringArray()
+required_items = []
+blocked_items = []

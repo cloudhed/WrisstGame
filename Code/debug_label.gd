@@ -14,6 +14,8 @@ func _ready() -> void:
 
 func set_biome(biome_name: String) -> void:
 	var text := biome_name
+	if not is_inside_tree():
+		return
 	var combat := get_tree().get_current_scene() as Combat
 	if combat and combat.player and combat.player.stats and combat.player.stats.has_method("get_debug_status_summary"):
 		text += "\nCombat statuses: %s" % combat.player.stats.get_debug_status_summary()

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dqs8v1l8mixra" path="res://Assets/Backgrounds/combat_bg_forest_lowres.jpg" id="6_umvpd"]
 [ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="7_f8ge6"]
 [ext_resource type="PackedScene" uid="uid://ckpnn4op5ijoc" path="res://Scenes/Enemy/enemy.tscn" id="9_tmuf1"]
-[ext_resource type="Resource" uid="uid://byj1i1vmn5flc" path="res://enemies/default_creature/creature_enemy.tres" id="10_umvpd"]
+[ext_resource type="Resource" path="res://enemies/shenche_f/shenche_f_enemy.tres" id="10_umvpd"]
 [ext_resource type="PackedScene" uid="uid://f536kff4iqbq" path="res://Scenes/TileTargetSelector/tile_target_selector.tscn" id="11_nar6d"]
 [ext_resource type="Script" uid="uid://dj5k02ip2tecw" path="res://Scripts/entities/enemies/runtime/enemy_handler.gd" id="12_e8ln5"]
 [ext_resource type="PackedScene" uid="uid://c70f5rm6i5pcd" path="res://Scenes/UI/intent_ui.tscn" id="12_r5ubg"]

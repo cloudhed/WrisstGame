@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_enemy_ai.tscn" id="1_ai"]
+[ext_resource type="Texture2D" path="res://enemies/shenche_f/shenche_f_base.png" id="2_art"]
+[ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="3_stats"]
+[ext_resource type="Resource" path="res://enemies/shenche_f/shenche_f_slidedeck.tres" id="4_deck"]
+
+[resource]
+script = ExtResource("3_stats")
+species_id = &"shenche_f"
+ai = ExtResource("1_ai")
+pre_combat_dialog_path = "res://enemies/shenche_f/shenche_female_precombat_v3.json"
+post_combat_dialog_path = "res://enemies/shenche_f/shenche_f_dialog_postcombat.json"
+loss_combat_dialog_path = "res://enemies/shenche_f/shenche_f_dialog_loss.json"
+slide_deck = ExtResource("4_deck")
+is_runnable = true
+max_health = 24
+art = ExtResource("2_art")
+player_name = "Shenche"
+metadata/_custom_type_script = "uid://dlksefa8n68ng"

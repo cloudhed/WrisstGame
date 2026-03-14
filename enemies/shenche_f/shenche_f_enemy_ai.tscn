@@ -1,0 +1,81 @@
+[gd_scene load_steps=16 format=3 uid="uid://shenche_f_ai"]
+
+[ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_ai"]
+[ext_resource type="Script" path="res://Scripts/entities/enemies/shenche_f/actions/shenche_f_attack_action.gd" id="2_atk"]
+[ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_atk_icon"]
+[ext_resource type="AudioStream" uid="uid://bdf24usukcenm" path="res://Audio/SFX/sfx_hit_high.wav" id="4_atk_sfx"]
+[ext_resource type="Script" path="res://Scripts/entities/enemies/shenche_f/actions/shenche_f_block_action.gd" id="5_blk"]
+[ext_resource type="Texture2D" uid="uid://bj44iwbjx87nc" path="res://Assets/UI/intent/intent_block.png" id="6_blk_icon"]
+[ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="7_blk_sfx"]
+[ext_resource type="Script" uid="uid://ckufpdyo1uynq" path="res://Scripts/entities/enemies/runtime/actions/apply_player_status_action.gd" id="8_status"]
+[ext_resource type="Texture2D" uid="uid://byoypck63ftc7" path="res://Assets/UI/intent/intent_rattle.png" id="9_rattle_icon"]
+[ext_resource type="Script" uid="uid://b7fvqoersgk0w" path="res://Scripts/entities/enemies/runtime/actions/add_player_dud_tiles_action.gd" id="10_dud"]
+[ext_resource type="Resource" uid="uid://cucn0ef2pmi0n" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/dud_naked_fail.tres" id="11_dud_tile"]
+[ext_resource type="Texture2D" uid="uid://crajgrif2lrsa" path="res://Assets/UI/intent/intent_dud.png" id="12_dud_icon"]
+[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="13_intent"]
+
+[sub_resource type="Resource" id="Resource_atk_intent"]
+script = ExtResource("13_intent")
+number = "4-6"
+icon = ExtResource("3_atk_icon")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_blk_intent"]
+script = ExtResource("13_intent")
+number = "8"
+icon = ExtResource("6_blk_icon")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_rattle_intent"]
+script = ExtResource("13_intent")
+number = "2"
+icon = ExtResource("9_rattle_icon")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[sub_resource type="Resource" id="Resource_dud_intent"]
+script = ExtResource("13_intent")
+number = "+2"
+icon = ExtResource("12_dud_icon")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
+[node name="ShencheFEnemyAi" type="Node"]
+script = ExtResource("1_ai")
+
+[node name="MandibleSlashAction" type="Node" parent="."]
+script = ExtResource("2_atk")
+min_damage = 4
+max_damage = 6
+intent = SubResource("Resource_atk_intent")
+sound = ExtResource("4_atk_sfx")
+type = 1
+chance_weight = 1.5
+message_template = "The [b]Shenche[/b] snaps her mandibles into you for [b][color=red]{amount}[/color][/b] damage."
+
+[node name="GrapplingLegsAction" type="Node" parent="."]
+script = ExtResource("8_status")
+status_id = &"rattled"
+status_turns = 1
+status_value = 2
+intent = SubResource("Resource_rattle_intent")
+type = 1
+chance_weight = 0.4
+message_template = "The [b]Shenche[/b] clamps her legs around you, leaving you rattled with only [b][color=yellow]{amount}[/color][/b] tiles next turn."
+
+[node name="FluidTilesAction" type="Node" parent="."]
+script = ExtResource("10_dud")
+dud_tile = ExtResource("11_dud_tile")
+dud_count = 2
+target_pile = "draw_pile"
+intent = SubResource("Resource_dud_intent")
+type = 1
+chance_weight = 0.3
+message_template = "Fluid from the [b]Shenche[/b]'s abdomen soaks into your pack, fouling [b][color=gray]{amount}[/color][/b] tiles."
+
+[node name="ChitinBraceAction" type="Node" parent="."]
+script = ExtResource("5_blk")
+block = 8
+hp_threshold = 5
+intent = SubResource("Resource_blk_intent")
+sound = ExtResource("7_blk_sfx")
+type = 0
+message_template = "The [b]Shenche[/b] lowers her head and braces, hardening her chitin shell for [b][color=blue]{amount}[/color][/b] block."

@@ -1,0 +1,121 @@
+[gd_resource type="Resource" script_class="SlideDeck" load_steps=35 format=3 uid="uid://dh72xcc4dohc"]
+
+[ext_resource type="Script" uid="uid://la225ydmy37u" path="res://Narrative/slide_deck.gd" id="1_deck"]
+[ext_resource type="Script" uid="uid://b7o0w4hub0eja" path="res://Narrative/slide_entry.gd" id="2_entry"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_inspect_genitals.tscn" id="3_ig"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_touch_genitals.tscn" id="4_tg"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_malesex_top_start.tscn" id="5_mts"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_malesex_top_ongoing.tscn" id="6_mto"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_malesex_top_ongoing_02.tscn" id="7_mto2"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_malesex_top_abdomen.tscn" id="8_mta"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_malesex_top_abdomen_climax.tscn" id="9_mtac"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_malesex_top_abdomen_aftermath.tscn" id="10_mtaa"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_malesex_top_climax_inside.tscn" id="11_mtci"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_malesex_top_aftermath.tscn" id="12_mtat"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_postcombat_approach.tscn" id="13_pca"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_postcombat_malesex_top_start.tscn" id="14_pcmts"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_postcombat_malesex_top_ongoing.tscn" id="15_pcmto"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_postcombat_malesex_top_climax_inside.tscn" id="16_pcmtci"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_postcombat_malesex_top_climax_outside.tscn" id="17_pcmtco"]
+[ext_resource type="PackedScene" path="res://enemies/shenche_f/shenche_f_slides/sd_shenche_postcombat_malesex_top_aftermath.tscn" id="18_pcmtat"]
+
+[sub_resource type="Resource" id="Resource_ig"]
+script = ExtResource("2_entry")
+id = &"inspect_genitals"
+scene = ExtResource("3_ig")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_tg"]
+script = ExtResource("2_entry")
+id = &"touch_genitals"
+scene = ExtResource("4_tg")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mts"]
+script = ExtResource("2_entry")
+id = &"malesex_top_start"
+scene = ExtResource("5_mts")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mto"]
+script = ExtResource("2_entry")
+id = &"malesex_top_ongoing"
+scene = ExtResource("6_mto")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mto2"]
+script = ExtResource("2_entry")
+id = &"malesex_top_ongoing_02"
+scene = ExtResource("7_mto2")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mta"]
+script = ExtResource("2_entry")
+id = &"malesex_top_abdomen"
+scene = ExtResource("8_mta")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mtac"]
+script = ExtResource("2_entry")
+id = &"malesex_top_abdomen_climax"
+scene = ExtResource("9_mtac")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mtaa"]
+script = ExtResource("2_entry")
+id = &"malesex_top_abdomen_aftermath"
+scene = ExtResource("10_mtaa")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mtci"]
+script = ExtResource("2_entry")
+id = &"malesex_top_climax_inside"
+scene = ExtResource("11_mtci")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_mtat"]
+script = ExtResource("2_entry")
+id = &"malesex_top_aftermath"
+scene = ExtResource("12_mtat")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_pca"]
+script = ExtResource("2_entry")
+id = &"postcombat_approach"
+scene = ExtResource("13_pca")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_pcmts"]
+script = ExtResource("2_entry")
+id = &"postcombat_malesex_top_start"
+scene = ExtResource("14_pcmts")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_pcmto"]
+script = ExtResource("2_entry")
+id = &"postcombat_malesex_top_ongoing"
+scene = ExtResource("15_pcmto")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_pcmtci"]
+script = ExtResource("2_entry")
+id = &"postcombat_malesex_top_climax_inside"
+scene = ExtResource("16_pcmtci")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_pcmtco"]
+script = ExtResource("2_entry")
+id = &"postcombat_malesex_top_climax_outside"
+scene = ExtResource("17_pcmtco")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[sub_resource type="Resource" id="Resource_pcmtat"]
+script = ExtResource("2_entry")
+id = &"postcombat_malesex_top_aftermath"
+scene = ExtResource("18_pcmtat")
+metadata/_custom_type_script = "uid://b7o0w4hub0eja"
+
+[resource]
+script = ExtResource("1_deck")
+slides = Array[ExtResource("2_entry")]([SubResource("Resource_ig"), SubResource("Resource_tg"), SubResource("Resource_mts"), SubResource("Resource_mto"), SubResource("Resource_mto2"), SubResource("Resource_mta"), SubResource("Resource_mtac"), SubResource("Resource_mtaa"), SubResource("Resource_mtci"), SubResource("Resource_mtat"), SubResource("Resource_pca"), SubResource("Resource_pcmts"), SubResource("Resource_pcmto"), SubResource("Resource_pcmtci"), SubResource("Resource_pcmtco"), SubResource("Resource_pcmtat")])
+metadata/_custom_type_script = "uid://la225ydmy37u"

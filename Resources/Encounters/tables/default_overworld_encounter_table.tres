@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EncounterTable" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="EncounterTable" load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://custom_resources/encounter_table.gd" id="1_table_script"]
 [ext_resource type="Resource" path="res://Resources/Encounters/entries/default_teqqellon_entry.tres" id="3_teqq_entry"]
 [ext_resource type="Resource" path="res://Resources/Encounters/entries/default_murisk_entry.tres" id="4_murisk_entry"]
 [ext_resource type="Resource" path="res://Resources/Encounters/entries/default_meehp_night_entry.tres" id="5_meehp_night_entry"]
+[ext_resource type="Resource" path="res://Resources/Encounters/entries/default_shenche_f_entry.tres" id="6_shenche_f_entry"]
 
 [resource]
 script = ExtResource("1_table_script")
@@ -14,4 +15,4 @@ day_steps_multiplier = 1.0
 night_steps_multiplier = 0.85
 avoid_repeat_last_enemy = true
 fallback_enemy_path = "res://enemies/teqqellon/teqqellon_enemy.tres"
-entries = [ExtResource("3_teqq_entry"), ExtResource("4_murisk_entry"), ExtResource("5_meehp_night_entry")]
+entries = [ExtResource("3_teqq_entry"), ExtResource("4_murisk_entry"), ExtResource("5_meehp_night_entry"), ExtResource("6_shenche_f_entry")]

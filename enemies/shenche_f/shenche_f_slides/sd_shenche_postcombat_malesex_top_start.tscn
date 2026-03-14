@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://b3ag14dw36x6x" path="res://Assets/Backgrounds/slide_default_background.jpg" id="1_bg"]
+
+[node name="sd_shenche_postcombat_malesex_top_start" type="Node2D"]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_bg")
+centered = false

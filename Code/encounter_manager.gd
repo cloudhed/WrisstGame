@@ -42,7 +42,7 @@ var next_encounter_step_goal: int = 100
 var selected_enemy_resource: EnemyStats = null
 var _last_enemy_resource: EnemyStats = null
 
-var player_last_position: Vector2 = Vector2(460, 572)
+var player_last_position: Vector2 = Vector2(290, 650)
 var last_time_of_day: Dictionary = {}
 var last_time_period: String = "Day"
 

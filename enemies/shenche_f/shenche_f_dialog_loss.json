@@ -1,0 +1,47 @@
+[
+	{
+		"id": "shenche_loss_intro",
+		"type": "narration",
+		"text": "You're on the ground. The Shenche stands over you, all four legs planted in a wide square around your body. Her mandibles are spread wide, serrated edges catching the filtered light. The clicking from her thorax is loud now — rapid and layered, like multiple things tapping at once. Her flat head hangs low over your chest, neck bent at a sharp angle, examining you from a foot away. You can smell wet bark and the faint chemical edge of her fluid.",
+		"next": "shenche_loss_choice"
+	},
+	{
+		"id": "shenche_loss_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Lie still",
+				"next": "shenche_loss_still"
+			},
+			{
+				"text": "> Try to crawl away",
+				"next": "shenche_loss_crawl"
+			}
+		]
+	},
+	{
+		"id": "shenche_loss_still",
+		"type": "narration",
+		"text": "You go limp and breathe slow. The Shenche's feelers extend from beneath her mandibles, four of them, and brush the air above your face and neck without making contact. She tilts her head — that flat, blade-shaped head — to one side and then the other, the neck bending in its slow boneless arc. She's reading you. Whatever she's reading, she doesn't like the interruption.",
+		"next": "shenche_loss_examine"
+	},
+	{
+		"id": "shenche_loss_crawl",
+		"type": "narration",
+		"text": "You try to push yourself backward. One of the Shenche's forelegs shifts and comes down three inches from your shoulder — not a strike, just repositioning. You freeze. Her flat head drops lower, mandibles spreading wider, clicking accelerating into a sustained rattle. She's not going to let you leave on your own terms.",
+		"next": "shenche_loss_examine"
+	},
+	{
+		"id": "shenche_loss_examine",
+		"type": "narration",
+		"text": "The clicking slows. She lowers her head until the feelers brush your forearm — a brief, light contact, then retraction. She holds there for a long moment, neck coiled, head suspended above you. Then she straightens. Her legs shift one by one as she steps back, deliberate and unhurried, the same careful gait she uses over roots. She doesn't look back. She walks between the trees and the forest closes behind her. The clicking fades over about thirty seconds, then stops entirely. You're alone.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "shenche_loss_end"
+	},
+	{
+		"id": "shenche_loss_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"end": true
+	}
+]
