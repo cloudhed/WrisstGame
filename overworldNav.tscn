@@ -23,10 +23,10 @@
 [ext_resource type="Script" uid="uid://bgacujrf8waoa" path="res://sfx_player.gd" id="13_r3enb"]
 [ext_resource type="Script" uid="uid://bje4bfe0omhkk" path="res://Characters/Player/interaction_area_map.gd" id="15_j4r2r"]
 [ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="15_r3enb"]
+[ext_resource type="PackedScene" uid="uid://ce0lhe1xumbat" path="res://Assets/Objects/MapObjects/world_light.tscn" id="15_w08pr"]
 [ext_resource type="Texture2D" uid="uid://i5s00k7trwm" path="res://Assets/Map/worldmap_verylarge.png" id="17_nt6sv"]
 [ext_resource type="Texture2D" uid="uid://c1o2g2nliwwyj" path="res://Assets/Map/worldmap_shallows_verylarge.png" id="18_gywks"]
 [ext_resource type="Texture2D" uid="uid://biy80tcik77ag" path="res://Assets/Sprites/Map/mapmarkerPlayer_64.png" id="22_nt6sv"]
-[ext_resource type="Texture2D" uid="uid://buhhftasvwbx1" path="res://Assets/Map/map_path.png" id="24_jqfou"]
 [ext_resource type="PackedScene" uid="uid://n2ph37g6j3q7" path="res://Assets/Objects/MapObjects/map_Player.tscn" id="26_53o4l"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3xhtu"]
@@ -571,13 +571,13 @@ tile_size = Vector2i(256, 256)
 sources/2 = SubResource("TileSetAtlasSource_nt6sv")
 sources/3 = SubResource("TileSetAtlasSource_jqfou")
 
-[sub_resource type="Gradient" id="Gradient_w08pr"]
+[sub_resource type="Gradient" id="Gradient_nt6sv"]
 offsets = PackedFloat32Array(0.2, 0.7)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ohuvh"]
-gradient = SubResource("Gradient_w08pr")
+gradient = SubResource("Gradient_nt6sv")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -607,37 +607,6 @@ fog_depth_end = 134.5
 [node name="overworld_node" type="Node2D"]
 y_sort_enabled = true
 
-[node name="mapLocations" type="Node2D" parent="."]
-light_mask = 2
-z_index = 1
-position = Vector2(-148, -107)
-
-[node name="OverworldEncounterTrigger_Klyftet" parent="mapLocations" instance=ExtResource("5_5arl6")]
-position = Vector2(444, 660)
-prompt_active = "Enter settlement"
-prompt_after_discovery = "Visit Klyftet"
-discovery_flag = "Found_Klyftet"
-fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres"
-fallback_scene_selector_key = "start_audio"
-debug_logging = true
-
-[node name="OverworldEncounterTrigger_Sapritree" parent="mapLocations" instance=ExtResource("5_5arl6")]
-position = Vector2(883, 737)
-activation_mode = 1
-prompt_active = "Visit old tree"
-prompt_after_discovery = "Visit old tree"
-discovery_flag = "Found_Tree"
-fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day.tres"
-fallback_scene_selector_key = "start_audio"
-debug_logging = true
-
-[node name="OverworldCombatTrigger_Creature" parent="mapLocations" instance=ExtResource("2_w08pr")]
-position = Vector2(289, 634)
-prompt_active = "Encounter Creature"
-prompt_after_discovery = "Encounter Creature again"
-discovery_flag = "found_creature"
-enemy_stats_path = "uid://byj1i1vmn5flc"
-
 [node name="WorldAudioManager" type="Node" parent="." node_paths=PackedStringArray("amb_audio_player", "music_player", "sfx_player")]
 script = ExtResource("1_ohuvh")
 amb_audio_player = NodePath("AmbiencePlayer")
@@ -662,6 +631,46 @@ stream = SubResource("AudioStreamPlaylist_nt6sv")
 bus = &"sfx"
 playback_type = 2
 script = ExtResource("13_r3enb")
+
+[node name="mapLocations" type="Node2D" parent="."]
+light_mask = 2
+z_index = 1
+position = Vector2(-148, -107)
+
+[node name="OverworldEncounterTrigger_Klyftet" parent="mapLocations" instance=ExtResource("5_5arl6")]
+position = Vector2(503, 661)
+prompt_active = "Enter settlement"
+prompt_after_discovery = "Visit Klyftet"
+discovery_flag = "Found_Klyftet"
+fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres"
+fallback_scene_selector_key = "start_audio"
+debug_logging = true
+
+[node name="OverworldEncounterTrigger_Temple" parent="mapLocations" instance=ExtResource("5_5arl6")]
+position = Vector2(-312, 826)
+prompt_active = "Enter strange ruin"
+prompt_after_discovery = "Visit Klyftet"
+discovery_flag = "Found_Klyftet"
+fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres"
+fallback_scene_selector_key = "start_audio"
+debug_logging = true
+
+[node name="OverworldEncounterTrigger_Sapritree" parent="mapLocations" instance=ExtResource("5_5arl6")]
+position = Vector2(883, 737)
+activation_mode = 1
+prompt_active = "Visit old tree"
+prompt_after_discovery = "Visit old tree"
+discovery_flag = "Found_Tree"
+fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day.tres"
+fallback_scene_selector_key = "start_audio"
+debug_logging = true
+
+[node name="OverworldCombatTrigger_Creature" parent="mapLocations" instance=ExtResource("2_w08pr")]
+position = Vector2(289, 634)
+prompt_active = "Encounter Creature"
+prompt_after_discovery = "Encounter Creature again"
+discovery_flag = "found_creature"
+enemy_stats_path = "uid://byj1i1vmn5flc"
 
 [node name="DayNightCycleColors" type="CanvasModulate" parent="."]
 script = ExtResource("1_l47sy")
@@ -695,15 +704,23 @@ position = Vector2(-1024, -768)
 tile_map_data = PackedByteArray("AAAAAAAAAgALAAMAAAABAAAAAgAMAAMAAAACAAAAAgANAAMAAAADAAAAAgAOAAMAAAAEAAAAAgAPAAMAAAAAAAEAAgALAAQAAAABAAEAAgAMAAQAAAACAAEAAgANAAQAAAADAAEAAgAOAAQAAAAEAAEAAgAPAAQAAAAAAAIAAgALAAUAAAABAAIAAgAMAAUAAAACAAIAAgANAAUAAAADAAIAAgAOAAUAAAAEAAIAAgAPAAUAAAAAAAMAAgALAAYAAAABAAMAAgAMAAYAAAAFAAAAAgAQAAMAAAAGAAAAAgARAAMAAAAHAAAAAgASAAMAAAAIAAAAAgATAAMAAAAIAAEAAgATAAQAAAAJAAEAAgAUAAQAAAAKAAEAAgAVAAQAAAALAAIAAgAWAAUAAAALAAMAAgAWAAYAAAAMAAQAAgAXAAcAAAAMAAUAAgABAAoAAAALAAYAAgABAAoAAAAKAAYAAgABAAoAAAAJAAYAAgAUAAkAAAALAAUAAgABAAoAAAAKAAUAAgAVAAgAAAAKAAQAAgAVAAcAAAAKAAMAAgAVAAYAAAAJAAQAAgAUAAcAAAAIAAQAAgATAAcAAAAHAAQAAgASAAcAAAAHAAUAAgASAAgAAAAGAAUAAgARAAgAAAAGAAYAAgARAAkAAAAFAAUAAgAQAAgAAAAFAAYAAgAQAAkAAAAEAAYAAgAPAAkAAAADAAYAAgAOAAkAAAACAAYAAgANAAkAAAACAAUAAgANAAgAAAABAAUAAgAMAAgAAAAAAAUAAgALAAgAAAAAAAQAAgALAAcAAAABAAQAAgAMAAcAAAACAAQAAgANAAcAAAACAAMAAgANAAYAAAAFAAEAAgAQAAQAAAAGAAEAAgARAAQAAAAHAAEAAgASAAQAAAAKAAIAAgAVAAUAAAAJAAIAAgAUAAUAAAADAAMAAgAOAAYAAAAEAAMAAgAPAAYAAAAFAAIAAgAQAAUAAAAFAAMAAgAQAAYAAAAGAAIAAgARAAUAAAAGAAMAAgARAAYAAAAHAAIAAgASAAUAAAAHAAMAAgASAAYAAAAIAAIAAgATAAUAAAAIAAMAAgATAAYAAAAJAAMAAgAUAAYAAAADAAQAAgAOAAcAAAADAAUAAgAOAAgAAAAEAAQAAgAPAAcAAAAEAAUAAgAPAAgAAAAFAAQAAgAQAAcAAAAGAAQAAgARAAcAAAAMAAYAAgAXAAkAAAD9////AgABAAoAAAD9/wMAAgAIAAYAAAD9/wQAAgAIAAcAAAD+/wMAAgAJAAYAAAD+/wQAAgAJAAcAAAD//wEAAgAKAAQAAAD//wIAAgAKAAUAAAD//wMAAgAKAAYAAAD//wQAAgAKAAcAAAD//wUAAgAKAAgAAAABAP//AgAMAAIAAAACAP//AgANAAIAAAADAP//AgAOAAIAAAAEAP//AgAPAAIAAAAFAP//AgAQAAIAAAAIAAUAAgATAAgAAAAJAAUAAgAUAAgAAAD2/wcAAgABAAoAAAD3/wUAAgACAAgAAAD3/wYAAgACAAkAAAD4/wUAAgADAAgAAAD4/wYAAgADAAkAAAD5/wUAAgAEAAgAAAD5/wYAAgAEAAkAAAD7/wIAAgAGAAUAAAD7/wMAAgAGAAYAAAD7/wQAAgAGAAcAAAD7/wUAAgAGAAgAAAD7/wYAAgAGAAkAAAD7/wcAAgAGAAoAAAD7/wgAAgAGAAsAAAD8/wAAAgAHAAMAAAD8/wEAAgAHAAQAAAD8/wIAAgAHAAUAAAD8/wMAAgAHAAYAAAD8/wQAAgAHAAcAAAD8/wUAAgAHAAgAAAD8/wYAAgAHAAkAAAD8/wcAAgAHAAoAAAD8/wgAAgAHAAsAAAD8/wkAAgAHAAwAAAD9/wAAAgAIAAMAAAD9/wEAAgAIAAQAAAD9/wIAAgAIAAUAAAD9/wUAAgAIAAgAAAD9/wYAAgAIAAkAAAD9/wcAAgAIAAoAAAD9/wgAAgAIAAsAAAD9/wkAAgAIAAwAAAD+/wAAAgAJAAMAAAD+/wEAAgAJAAQAAAD+/wIAAgAJAAUAAAD+/wUAAgAJAAgAAAD+/wYAAgAJAAkAAAD+/wcAAgAJAAoAAAD+/wgAAgAJAAsAAAD+/wkAAgAJAAwAAAD/////AgAKAAIAAAD//wAAAgAKAAMAAAD//wYAAgAKAAkAAAD//wcAAgAKAAoAAAD//wgAAgAKAAsAAAD//wkAAgAKAAwAAAD//woAAgAKAA0AAAAAAP7/AgALAAEAAAAAAP//AgALAAIAAAAAAAYAAgALAAkAAAAAAAcAAgALAAoAAAAAAAgAAgALAAsAAAAAAAkAAgALAAwAAAABAP7/AgAMAAEAAAABAAYAAgAMAAkAAAABAAcAAgAMAAoAAAABAAgAAgAMAAsAAAABAAkAAgAMAAwAAAACAP7/AgANAAEAAAACAAcAAgANAAoAAAACAAgAAgANAAsAAAADAP3/AgAOAAAAAAADAP7/AgAOAAEAAAADAAcAAgAOAAoAAAADAAgAAgAOAAsAAAAEAP7/AgAPAAEAAAAEAAcAAgAPAAoAAAAEAAgAAgAPAAsAAAAFAP7/AgAQAAEAAAAFAAcAAgAQAAoAAAAFAAgAAgAQAAsAAAAGAP7/AgARAAEAAAAGAP//AgARAAIAAAAGAAcAAgARAAoAAAAHAP7/AgASAAEAAAAHAP//AgASAAIAAAAHAAYAAgASAAkAAAAIAP7/AgATAAEAAAAIAP//AgATAAIAAAAIAAYAAgATAAkAAAAJAP//AgAUAAIAAAAJAAAAAgAUAAMAAAAJAAkAAgAUAAwAAAAKAP//AgAVAAIAAAAKAAAAAgAVAAMAAAAKAAgAAgAVAAsAAAAKAAkAAgAVAAwAAAAKAAoAAgAVAA0AAAALAP//AgAWAAIAAAALAAAAAgAWAAMAAAALAAEAAgAWAAQAAAALAAQAAgAWAAcAAAALAAcAAgAWAAoAAAALAAgAAgAWAAsAAAALAAkAAgAWAAwAAAALAAoAAgAWAA0AAAAMAP//AgAXAAIAAAAMAAAAAgAXAAMAAAAMAAEAAgAXAAQAAAAMAAIAAgAXAAUAAAAMAAMAAgAXAAYAAAAMAAcAAgAXAAoAAAAMAAgAAgAXAAsAAAAMAAkAAgAXAAwAAAAMAAoAAgAXAA0AAAANAAIAAgAYAAUAAAANAAMAAgAYAAYAAAANAAYAAgAYAAkAAAANAAcAAgAYAAoAAAANAAgAAgAYAAsAAAANAAkAAgAYAAwAAAANAAoAAgAYAA0AAAAOAAMAAgAZAAYAAAAOAAgAAgAZAAsAAAAOAAkAAgAZAAwAAAAOAAoAAgAZAA0AAAAPAAYAAgAaAAkAAAAPAAcAAgAaAAoAAAAPAAgAAgAaAAsAAAAPAAkAAgAaAAwAAAAQAAcAAgAbAAoAAAAQAAgAAgAbAAsAAAA=")
 tile_set = SubResource("TileSet_jqfou")
 
-[node name="Line2D" type="Line2D" parent="Map"]
-position = Vector2(-1667, 1391)
-points = PackedVector2Array(0, 0, 24, -18, 43, -43, -2, -61, -40, -89, -22, -125, -6, -127, 11, -130, 24, -131, 33.6969, -128.112, 43.2831, -125.256, 54, -118, 71, -117, 130, -68, 216, -37, 278, -50, 309, 33, 347, 22, 400, 12, 466, 1, 539, -29, 583, -77, 631, -36, 682, -42, 709, -17, 763, -22, 820, -30, 853, 10, 915, 14, 947, 26, 969, 13, 972, -15, 1002, -38, 1039, -58, 1054, -92, 1116, -100)
-width = 16.0
-texture = ExtResource("24_jqfou")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
+[node name="WorldLights" type="Node2D" parent="."]
+
+[node name="WorldLight_Temple" parent="WorldLights" instance=ExtResource("15_w08pr")]
+position = Vector2(-474, 724)
+scale = Vector2(0.52, 0.52)
+
+[node name="WorldLight_Klyftet01" parent="WorldLights" instance=ExtResource("15_w08pr")]
+position = Vector2(326, 532)
+scale = Vector2(0.64, 0.64)
+
+[node name="WorldLight_Klyftet02" parent="WorldLights" instance=ExtResource("15_w08pr")]
+position = Vector2(392, 532)
+scale = Vector2(0.520007, 0.520007)
+
+[node name="WorldLight_Klyftet03" parent="WorldLights" instance=ExtResource("15_w08pr")]
+position = Vector2(455, 536)
+scale = Vector2(0.480005, 0.480005)
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 position = Vector2(774, 859)
@@ -732,7 +749,7 @@ position = Vector2(454, 510)
 [node name="PlayerDot" type="CharacterBody2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(-1677, 1414)
+position = Vector2(-1660, 1355)
 script = ExtResource("2_5xsid")
 move_speed = 64.0
 step_size = 10
@@ -746,10 +763,12 @@ shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_ohuvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDot"]
-visible = false
+position = Vector2(0, 23)
 shape = SubResource("CircleShape2D_5xsid")
 
 [node name="PlayerInteractionArea" type="Area2D" parent="PlayerDot" node_paths=PackedStringArray("interactor")]
+position = Vector2(0, 24)
+scale = Vector2(0.75, 0.75)
 script = ExtResource("15_j4r2r")
 interactor = NodePath("..")
 
@@ -759,9 +778,9 @@ shape = SubResource("CircleShape2D_5xsid")
 debug_color = Color(0.894383, 0.317796, 0.0852838, 0.42)
 
 [node name="PlayerDetectionArea" type="Area2D" parent="PlayerDot"]
+position = Vector2(0, 23)
 
 [node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDot/PlayerDetectionArea"]
-position = Vector2(0, 9)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_5xsid")
 debug_color = Color(0.894383, 0.317796, 0.0852838, 0.42)
@@ -779,30 +798,33 @@ offset = Vector2(0, 24)
 [node name="IslandBoundary" type="StaticBody2D" parent="."]
 
 [node name="IslandBoundaryShape" type="CollisionPolygon2D" parent="IslandBoundary"]
-position = Vector2(27, 11)
+position = Vector2(0, 15.11)
 scale = Vector2(1.57237, 1.65025)
 build_mode = 1
-polygon = PackedVector2Array(-817.874, -404.787, -837.589, -303.59, -843.949, -255.113, -754.911, -230.874, -704.033, -273.898, -666.51, -290.865, -674.142, -309.65, -726.928, -338.131, -770.175, -382.366, -817.874, -443.569, -739.648, -503.56, -712.937, -569.611, -606.727, -630.814, -561.573, -673.837, -447.096, -662.93, -328.167, -721.103, -160.904, -708.984, -57.8744, -773.216, 31.7991, -742.312, 192.703, -773.216, 272.837, -690.198, 347.247, -721.103, 408.301, -767.157, 578.744, -727.163, 813.422, -558.703, 1006.12, -552.644, 1118.69, -598.697, 1298.68, -503.56, 1231.26, -433.268, 1305.04, -399.333, 1343.83, -362.975, 1317.76, -464.778, 1402.98, -391.456, 1422.69, -236.328, 1436.05, -98.7729, 1402.98, -44.2357, 1401.07, 14.5433, 1508.55, 1.81791, 1642.74, 1.81791, 1611.58, 37.5701, 1565.79, 50.2954, 1491.38, 121.194, 1260.52, 177.549, 1289.14, 213.301, 1368, 217.543, 1306.94, 259.355, 1262.43, 265.414, 1225.54, 294.501, 1135.23, 261.173, 1115.51, 200.576, 1100.25, 213.301, 1100.25, 288.441, 1043.01, 279.958, 981.957, 321.769, 999.129, 376.307, 970.51, 399.333, 861.12, 349.038, 856.669, 374.489, 920.267, 401.757, 924.719, 458.112, 829.957, 470.232, 755.547, 458.112, 735.832, 435.086, 665.238, 441.145, 630.259, 384.79, 595.28, 355.704, 555.849, 279.958, 489.707, 284.199, 445.824, 217.543, 404.485, 223.603, 360.602, 282.381, 342.795, 324.193, 316.719, 355.704, 338.343, 399.333, 406.393, 389.032, 406.393, 275.716, 443.916, 278.14, 461.087, 315.71, 520.87, 326.011, 540.585, 382.366, 489.707, 435.086, 527.23, 470.232, 448.368, 520.527, 356.15, 667.172, 256.937, 715.043, 185.071, 770.792, 122.109, 767.157, 8.90376, 787.759, -95.3974, 741.1, -143.096, 707.772, -260.117, 679.291, -384.77, 633.843, -398.125, 652.022, -368.234, 669.596, -350.426, 725.345, -317.355, 772.004, -317.355, 819.27, -368.234, 841.085, -381.59, 858.052, -422.292, 858.052, -426.744, 945.311, -480.803, 949.553, -473.171, 1006.51, -506.242, 1010.76, -516.418, 1050.75, -641.07, 1053.78, -746.008, 1029.54, -798.794, 1032.57, -833.137, 1045.3, -869.388, 1026.51, -900.551, 1048.33, -943.798, 1033.78, -943.798, 1005.3, -972.417, 1015, -1030.93, 1030.75, -1034.28, 998.666, -1118.06, 979.246, -1147.45, 964.017, -1182.29, 955.007, -1212.82, 899.258, -1280.23, 893.804, -1348.92, 892.592, -1320.3, 833.813, -1266.24, 798.061, -1291.17, 731.392, -1361, 683.533, -1366.73, 630.814, -1323.48, 638.085, -1329.2, 596.273, -1366.73, 518.103, -1395.35, 464.778, -1383.26, 418.118, -1432.87, 403.575, -1460.22, 370.853, -1420.79, 338.131, -1406.81, 304.436, -1374.36, 289.047, -1329.2, 299.349, -1322.3, 275.989, -1355.28, 270.868, -1335.88, 215.868, -1308.22, 195.122, -1329.2, 142.403, -1275.78, 95.1371, -1280.23, 53.3253, -1345.74, 33.3283, -1311.72, -28.0606, -1245.25, -49.0835, -1214.09, -35.1462, -1202.01, 0.605969, -1185.47, 42.4178, -1173.39, 79.3819, -1126.96, 63.6267, -1049.37, 57.567, -1076.08, 44.8417, -1082.09, 10.0028, -1095.8, -52.1133, -1068.45, -56.3551, -1058.28, -6.66566, -1028.38, 16.3612, -1030.93, -22.4208, -1049.37, -66.6566, -1077.35, -90.8953, -1110.43, -72.1103, -1139.04, -100.591, -1173.39, -84.8356, -1250.34, -64.8387, -1277.05, -119.376, -1250.34, -186.638, -1210.91, -275.11, -1141.59, -335.101, -967.966, -409.635)
+polygon = PackedVector2Array(-817.874, -404.787, -837.589, -303.59, -843.949, -255.113, -754.911, -230.874, -704.033, -273.898, -666.51, -290.865, -674.142, -309.65, -726.928, -338.131, -770.175, -382.366, -817.874, -443.569, -739.648, -503.56, -712.937, -569.611, -606.727, -630.814, -561.573, -673.837, -447.096, -662.93, -328.167, -721.103, -160.904, -708.984, -57.8744, -773.216, 31.7991, -742.312, 192.703, -773.216, 272.837, -690.198, 347.247, -721.103, 408.301, -767.157, 578.744, -727.163, 813.422, -558.703, 1006.12, -552.644, 1118.69, -598.697, 1298.68, -503.56, 1231.26, -433.268, 1305.04, -399.333, 1343.83, -362.975, 1317.76, -464.778, 1402.98, -391.456, 1422.69, -236.328, 1436.05, -98.7729, 1402.98, -44.2357, 1401.07, 14.5433, 1508.55, 1.81791, 1642.74, 1.81791, 1611.58, 37.5701, 1565.79, 50.2954, 1491.38, 121.194, 1260.52, 177.549, 1289.14, 213.301, 1368, 217.543, 1306.94, 259.355, 1262.43, 265.414, 1225.54, 294.501, 1135.23, 261.173, 1115.51, 200.576, 1100.25, 213.301, 1100.25, 288.441, 1043.01, 279.958, 981.957, 321.769, 999.129, 376.307, 970.51, 399.333, 861.12, 349.038, 856.669, 374.489, 920.267, 401.757, 924.719, 458.112, 829.957, 470.232, 755.547, 458.112, 735.832, 435.086, 665.238, 441.145, 630.259, 384.79, 595.28, 355.704, 555.849, 279.958, 489.707, 284.199, 445.824, 217.543, 404.485, 223.603, 360.602, 282.381, 342.795, 324.193, 316.719, 355.704, 338.343, 399.333, 406.393, 389.032, 406.393, 275.716, 443.916, 278.14, 461.087, 315.71, 520.87, 326.011, 540.585, 382.366, 489.707, 435.086, 527.23, 470.232, 448.368, 520.527, 356.15, 667.172, 256.937, 715.043, 185.071, 770.792, 122.109, 767.157, 8.90376, 787.759, -95.3974, 741.1, -143.096, 707.772, -260.117, 679.291, -384.77, 633.843, -398.125, 652.022, -370.778, 683.533, -330.711, 726.557, -302.092, 774.428, -311.632, 825.33, -353.606, 852.598, -381.59, 858.052, -422.292, 858.052, -426.744, 945.311, -480.803, 949.553, -473.171, 1006.51, -506.242, 1010.76, -516.418, 1050.75, -641.07, 1053.78, -746.008, 1029.54, -798.794, 1032.57, -833.137, 1045.3, -869.388, 1026.51, -900.551, 1048.33, -943.798, 1033.78, -943.798, 1005.3, -972.417, 1015, -1030.93, 1030.75, -1034.28, 998.666, -1118.06, 979.246, -1147.45, 964.017, -1182.29, 955.007, -1212.82, 899.258, -1280.23, 893.804, -1348.92, 892.592, -1320.3, 833.813, -1266.24, 798.061, -1291.17, 731.392, -1361, 683.533, -1366.73, 630.814, -1323.48, 638.085, -1329.2, 596.273, -1366.73, 518.103, -1395.35, 464.778, -1383.26, 418.118, -1432.87, 403.575, -1460.22, 370.853, -1420.79, 338.131, -1406.81, 304.436, -1374.36, 289.047, -1329.2, 299.349, -1322.3, 275.989, -1355.28, 270.868, -1335.88, 215.868, -1308.22, 195.122, -1329.2, 142.403, -1275.78, 95.1371, -1280.23, 53.3253, -1345.74, 33.3283, -1311.72, -28.0606, -1245.25, -49.0835, -1214.09, -35.1462, -1202.01, 0.605969, -1185.47, 42.4178, -1173.39, 79.3819, -1126.96, 63.6267, -1049.37, 57.567, -1076.08, 44.8417, -1082.09, 10.0028, -1095.8, -52.1133, -1068.45, -56.3551, -1058.28, -6.66566, -1028.38, 16.3612, -1030.93, -22.4208, -1049.37, -66.6566, -1077.35, -90.8953, -1110.43, -72.1103, -1139.04, -100.591, -1173.39, -84.8356, -1250.34, -64.8387, -1277.05, -119.376, -1250.34, -186.638, -1210.91, -275.11, -1141.59, -335.101, -967.966, -409.635)
 
 [node name="IslandInternalWalls" type="CollisionPolygon2D" parent="IslandBoundary"]
 position = Vector2(328, 206)
-polygon = PackedVector2Array(-40, -17, -45, -6, -79, 3, -122, 21, -151, 61, -149, 96, -128, 124, -146, 156, -157, 194, -145, 214, -168, 235, -216, 200, -273, 249, -158, 303, -79, 339, -29, 333, 42, 365, 103, 370, 213, 388, 217, 453, 306, 446, 332, 404, 412, 398, 594, 327, 605, 234, 554, 189, 521, 117, 449, 43, 326, -106, 147, -191, 114, -287, 65, -320, 5, -286, -68, -285, -119, -253, -100, -140, -120, -79, -125, -30, -67, -16)
+polygon = PackedVector2Array(-40, -17, -45, -6, -79, 3, -122, 21, -151, 61, -149, 96, -128, 124, -146, 156, -155, 197, -145, 214, -152, 228, -167, 219, -193, 191, -213, 188, -263, 274, -158, 303, -114, 331, -79, 339, -40, 345, -13, 344, 9, 346, 13, 337, 12, 323, 31, 319, 50, 328, 53, 343, 53, 352, 66, 350, 76, 342, 86, 334, 96, 330, 102, 321, 110, 323, 113, 333, 118, 340, 127, 346, 141, 343, 146, 330, 175, 322, 191, 316, 217, 316, 245, 298, 266, 287, 270, 301, 264, 315, 251, 324, 231, 337, 223, 349, 222, 359, 217, 369, 216, 381, 225, 394, 225, 407, 226, 441, 237, 456, 304, 447, 322, 422, 369, 402, 412, 398, 465, 392, 474, 375, 468, 350, 472, 337, 501, 326, 604, 292, 656, 290, 658, 266, 632, 246, 605, 234, 554, 189, 521, 117, 474, 6, 403, -315, 386, -386, 342, -170, 314, -125, 253, -187, 147, -191, 114, -287, 65, -320, -4, -310, -68, -285, -119, -253, -100, -140, -120, -79, -125, -30, -67, -16)
 
 [node name="IslandInternalWalls2" type="CollisionPolygon2D" parent="IslandBoundary"]
 position = Vector2(328, 206)
-polygon = PackedVector2Array(-904, 431, -806, 525, -726, 583, -735, 637, -819, 626, -840, 568, -909, 555, -956, 495, -1044, 485, -1095, 437, -1183, 431, -1209, 405, -1327, 386, -1333, 339, -1350, 330, -1369, 345, -1367, 395, -1419, 358, -1496, 337, -1492, 287, -1464, 242, -1406, 225, -1337, 229, -1277, 210, -1226, 257, -1185, 289, -1146, 337, -1121, 302, -1104, 358, -1071, 352, -1037, 386)
+polygon = PackedVector2Array(-931, 374, -921, 377, -910, 416, -888, 418, -884, 372, -867, 372, -835, 407, -819, 434, -823, 487, -814, 523, -805, 530, -785, 535, -719, 549, -713, 587, -739, 653, -775, 672, -819, 650, -840, 568, -897, 539, -956, 495, -1040, 477, -1095, 437, -1172, 424, -1209, 405, -1327, 386, -1367, 395, -1435, 386, -1510, 337, -1509, 280, -1464, 242, -1415, 221, -1337, 229, -1287, 201, -1226, 257, -1209, 253, -1193, 214, -1182, 220, -1169, 269, -1133, 270, -1126, 250, -1088, 253, -1040, 287, -1019, 308, -1007, 361, -994, 372, -986, 347, -972, 351, -965, 398, -951, 413)
 
 [node name="IslandInternalWalls3" type="CollisionPolygon2D" parent="IslandBoundary"]
 position = Vector2(328, 206)
-polygon = PackedVector2Array(-2388, 811, -2361, 786, -2350, 797, -2330, 778, -2291, 847, -2262, 904, -2234, 926, -2222, 972, -2194, 1031, -2196, 1084, -2167, 1090, -2136, 1128, -2120, 1119, -2077, 1177, -2083, 1211, -2079, 1248, -2054, 1256, -2023, 1261, -2003, 1246, -1981, 1237, -1951, 1270, -1906, 1233, -1855, 1344, -1815, 1343, -1746, 1420, -1689, 1489, -1689, 1552, -2202, 1461, -2461, 1271, -2481, 827)
+polygon = PackedVector2Array(-2388, 811, -2361, 786, -2350, 797, -2330, 778, -2291, 847, -2262, 904, -2234, 926, -2200, 948, -2178, 1026, -2196, 1084, -2167, 1090, -2136, 1128, -2120, 1119, -2096, 1103, -2050, 1127, -2037, 1178, -1973, 1197, -1945, 1221, -1906, 1233, -1855, 1344, -1798, 1330, -1746, 1420, -1689, 1489, -1689, 1552, -2202, 1461, -2461, 1271, -2481, 827)
 
 [node name="IslandInternalWalls4" type="CollisionPolygon2D" parent="IslandBoundary"]
 position = Vector2(328, 206)
-polygon = PackedVector2Array(-1310, 1467, -1229, 1393, -1177, 1483, -1139, 1441, -1120, 1422, -1092, 1419, -1104, 1378, -1041, 1312, -995, 1393, -1071, 1576, -1323, 1574)
+polygon = PackedVector2Array(-1310, 1467, -1276, 1424, -1229, 1393, -1185, 1427, -1159, 1422, -1124, 1410, -1097, 1411, -1104, 1378, -1098, 1313, -1029, 1279, -995, 1393, -1025, 1462, -1079, 1493, -1163, 1501, -1247, 1523, -1298, 1524, -1323, 1503)
 
 [node name="IslandInternalWalls5" type="CollisionPolygon2D" parent="IslandBoundary"]
 position = Vector2(328, 206)
-polygon = PackedVector2Array(-1128, -1333, -1119, -1288, -1138, -1224, -1091, -1110, -1070, -1140, -1033, -994, -1081, -930, -1021, -812, -967, -823, -943, -863, -922, -848, -881, -891, -817, -767, -871, -662, -856, -628, -877, -551, -920, -471, -909, -355, -847, -328, -873, -244, -847, -276, -742, -246, -690, -220, -686, -150, -650, -92, -573, -34, -485, 48, -423, 135, -350, 161, -294, 127, -249, 116, -253, 178, -210, 198, -223, 266, -305, 253, -573, 161, -781, 52, -961, -115, -1108, -319, -1166, -411, -1181, -512, -1147, -521, -1085, -506, -1057, -512, -1055, -559, -1057, -593, -1063, -645, -1066, -690, -1081, -750, -1119, -748, -1128, -718, -1160, -698, -1154, -666, -1141, -651, -1126, -632, -1121, -598, -1136, -576, -1171, -576, -1211, -572, -1250, -553, -1248, -495, -1308, -531, -1267, -585, -1271, -649, -1291, -694, -1319, -677, -1342, -671, -1454, -750, -1584, -891, -1636, -979, -1374, -1256)
+polygon = PackedVector2Array(-1128, -1333, -1119, -1288, -1138, -1224, -1070, -1140, -1032, -1046, -1039, -949, -920, -868, -895, -894, -811, -817, -814, -757, -856, -628, -854, -539, -873, -451, -909, -355, -847, -328, -847, -276, -742, -246, -690, -220, -686, -150, -653, -234, -600, -373, -596, -481, -580, -488, -546, -316, -469, -48, -437, 19, -420, 127, -350, 161, -294, 127, -249, 116, -253, 178, -210, 198, -262, 276, -305, 253, -434, 225, -565, 182, -786, 60, -870, -25, -961, -115, -1108, -319, -1124, -373, -1115, -415, -1118, -451, -1114, -479, -1137, -493, -1151, -503, -1150, -547, -1161, -568, -1156, -573, -1139, -544, -1125, -550, -1129, -565, -1134, -579, -1131, -587, -1144, -611, -1176, -612, -1198, -608, -1207, -575, -1212, -555, -1196, -558, -1186, -549, -1183, -533, -1187, -523, -1168, -495, -1160, -461, -1145, -446, -1152, -423, -1170, -430, -1186, -442, -1198, -436, -1183, -419, -1162, -410, -1149, -399, -1154, -385, -1184, -398, -1209, -420, -1248, -495, -1308, -531, -1333, -574, -1319, -624, -1320, -645, -1322, -669, -1361, -726, -1417, -778, -1584, -886, -1612, -903, -1636, -979, -1374, -1256)
+
+[node name="IslandInternalWalls6" type="CollisionPolygon2D" parent="IslandBoundary"]
+polygon = PackedVector2Array(0, -298, 104, -388, 132, -366, 157, -306, 118, -244, 54, -231, 52, -185, 10, -134, -50, -110, -100, -167, -77, -237)
 
 [node name="IslandBiome_Fields" type="Area2D" parent="IslandBoundary"]
 priority = 2

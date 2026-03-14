@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce0lhe1xumbat"]
+
+[ext_resource type="Script" path="res://Code/world_light.gd" id="1_u4jpk"]
+
+[sub_resource type="Gradient" id="Gradient_w08pr"]
+offsets = PackedFloat32Array(0.2, 0.7)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u4jpk"]
+gradient = SubResource("Gradient_w08pr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u4jpk"]
+radius = 32.9848
+
+[node name="WorldLight" type="Node2D"]
+script = ExtResource("1_u4jpk")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2, 2)
+color = Color(1, 0.75, 0.5, 1)
+energy = 0.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_u4jpk")
+
+[node name="DebugAreaVisibility" type="CollisionShape2D" parent="."]
+scale = Vector2(1.84, 1.84)
+shape = SubResource("CircleShape2D_u4jpk")
+disabled = true

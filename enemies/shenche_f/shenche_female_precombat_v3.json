@@ -26,7 +26,7 @@
 	{
 		"id": "shenche_precombat",
 		"type": "narration",
-		"text": "A female Shenche moves through the trees, her four legs stepping over roots in a slow, mechanical gait. She stops near a patch of moss-covered deadfall, her flat head sweeping left and right on its long neck. The mandibles along her jaw open and close absently. The green nodules along her abdomen shift as she breathes.",
+		"text": "A female Shenche moves through the trees, four legs stepping over roots in a slow, mechanical gait. It stops near a patch of moss-covered deadfall, the flat head sweeping left and right on its long neck. The mandibles open and close absently. The green nodules along its abdomen shift as it breathes.",
 		"next": "shenche_precombat_choice"
 	},
 	{
@@ -55,7 +55,7 @@
 	{
 		"id": "shenche_observe",
 		"type": "narration",
-		"text": "You settle behind a trunk and watch. The creature stands roughly waist-high at the shoulder, though the head rises higher when the neck straightens. That head is the strangest part — flat and wide, almost like a spade, with ridged mandibles that open sideways. They look sharp. Between them, smaller mouthparts work at something scraped from the bark of a dead tree. The neck is long and flat, curving and bending with a slow, boneless flexibility as the head moves. The thorax behind it is narrow, almost skeletal, joining to a softer, rounder abdomen mottled in greens and greys. Dark nodule-clusters are pressed into the belly like embedded stones. The four legs are angular, double-jointed, their inner surfaces a deep reddish-crimson against the grey chitin. She moves carefully, testing each step before shifting her weight.",
+		"text": "You settle behind a trunk and watch. The creature stands roughly waist-high at the shoulder, though the head rises higher when the neck straightens. That head is the strangest part — flat and wide, almost like a spade, with ridged mandibles that open sideways. They look sharp. Between them, smaller mouthparts work at something scraped from the bark of a dead tree. The neck is long and flat, curving and bending with a slow, boneless flexibility as the head moves. The thorax behind it is narrow, almost skeletal, joining to a softer, rounder abdomen mottled in greens and greys. Dark nodule-clusters are pressed into the belly like embedded stones. The four legs are angular, double-jointed, their inner surfaces a deep reddish-crimson against the grey chitin. It moves carefully, testing each step before shifting its weight.",
 		"set_flag": "observed_shenche",
 		"flag_type": "temp",
 		"next": "shenche_precombat_choice"
@@ -63,7 +63,7 @@
 	{
 		"id": "shenche_approach",
 		"type": "narration",
-		"text": "You step forward slowly. A twig cracks under your boot. The Shenche freezes, two legs planted and two raised mid-step. Her long neck bends sharply toward you, bringing that flat head around fast. The mandibles spread wide. You can see the serrated inner edges clearly now. You stop. Neither of you moves. Then the mandibles close halfway. She lowers her raised legs and sets them down. A low clicking starts somewhere inside her thorax — steady, like something tapping on wood.",
+		"text": "You step forward slowly. A twig cracks under your boot. The Shenche freezes, two legs planted and two raised mid-step. Its long neck bends sharply toward you, bringing that flat head around fast. The mandibles spread wide. You can see the serrated inner edges clearly now. You stop. Neither of you moves. Then the mandibles close halfway. It lowers the raised legs and sets them down. A low clicking starts somewhere inside its thorax — steady, like something tapping on wood.",
 		"command": "@STOP_ALL_AMBIENCE ; @PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
 		"clear": true,
 		"next": "shenche_approach_02"
@@ -71,7 +71,7 @@
 	{
 		"id": "shenche_approach_02",
 		"type": "narration",
-		"text": "She takes a step closer. Then another. Up close the head is wider than your shoulders, the chitin shell smooth with faint grooves like growth rings cut across its surface. The neck bends in a slow arc as she lowers the head toward your arm. Four small feelers beneath the mandibles extend and taste the air near your skin without touching it. Her abdomen sags low between the rear legs, the nodules there a dull green, shifting faintly with each breath. She smells like wet bark and loam.",
+		"text": "It takes a step closer. Then another. Up close the head is wider than your shoulders, the chitin shell smooth with faint grooves like growth rings cut across its surface. The neck bends in a slow arc as it lowers the head toward your arm. Four small feelers beneath the mandibles extend and taste the air near your skin without touching it. Its abdomen sags low between the rear legs, the nodules there a dull green, shifting faintly with each breath. It smells like wet bark and loam.",
 		"next": "shenche_approach_choice"
 	},
 	{
@@ -103,7 +103,7 @@
 	{
 		"id": "shenche_inspect",
 		"type": "narration",
-		"text": "She holds still as you move around her, the clicking in her thorax dropping to a low, even pulse. You run your palm across the top of her head shell. The chitin is hard and dry, sun-warmed even in the shade. At the base of the neck the surface gives way to softer, segmented tissue that flexes under your fingers. Her legs twitch when you brush past them but she doesn't pull away. You crouch beneath her. The underside of the abdomen is softer than the rest — the green nodules there slightly translucent, warm when you press your palm flat against them. Her body hums faintly beneath your hand, a vibration you feel more than hear.",
+		"text": "It holds still as you move around it, the clicking in its thorax dropping to a low, even pulse. You run your palm across the top of the head shell. The chitin is hard and dry, sun-warmed even in the shade. At the base of the neck the surface gives way to softer, segmented tissue that flexes under your fingers. Its legs twitch when you brush past them but it doesn't pull away. You crouch beneath it. The underside of the abdomen is softer than the rest — the green nodules there slightly translucent, warm when you press your palm flat against them. Its body hums faintly beneath your hand, a vibration you feel more than hear.",
 		"clear": false,
 		"next": "shenche_inspect_determinesex_choice"
 	},
@@ -168,7 +168,7 @@
 	{
 		"id": "shenche_sex_init",
 		"type": "narration",
-		"text": "You work your fingers free — it takes effort, the ridges gripping and releasing in reluctant stages. When they finally slip out, the opening contracts around empty air in slow, rhythmic pulls. You wipe your hand on your thigh. The fluid is thin and slick, almost like water but with more grip to it. You strip your clothes off and set them on a dry root. The forest air is cool against your body. The Shenche hasn't moved. Her feelers extend lazily toward you once, taste the air near your hip, and retract. That's all the acknowledgment you get.",
+		"text": "You work your fingers free — it takes effort, the ridges gripping and releasing in reluctant stages. When they finally slip out, the opening contracts around empty air in slow, rhythmic pulls. You wipe your hand on your thigh. The fluid is thin and slick, almost like water but with more grip to it. You strip your clothes off and set them on a dry root. The forest air is cool against your body. The Shenche hasn't moved. Its feelers extend lazily toward you once, taste the air near your hip, and retract. That's all the acknowledgment you get.",
 		"clear": false,
 		"next": "shenche_sex_choice"
 	},
@@ -211,7 +211,7 @@
 	{
 		"id": "shenche_sex_male_top_ongoing",
 		"type": "narration",
-		"text": "You push your hips forward. The ridges inside her flatten in smooth succession as you slide deeper — easy, almost welcoming. Then you pull back slightly and feel them. Every ridge catches your shaft on the outstroke, angling inward, gripping, resisting. The harder you try to withdraw, the tighter they hold. You push in again and the grip vanishes — smooth, slick, pulling you deeper. Out, and they clamp. In, and they release. Your body figures out the rhythm fast: deep, steady strokes that don't fight the direction of her anatomy.[p]Her fluid coats your entire length now, thin and slippery, running freely down your thighs in warm rivulets. Your cock throbs inside her. Her walls contract in slow, peristaltic waves — muscular bands that squeeze from base to tip in rolling pulses, milking your shaft independent of your own movement. She's not reacting to you. She's processing you. Her head hasn't turned. Her mandibles still work at the bark. The hum in her thorax is the only sign anything is happening at all.",
+		"text": "You push your hips forward. The ridges inside it flatten in smooth succession as you slide deeper — easy, almost welcoming. Then you pull back slightly and feel them. Every ridge catches your shaft on the outstroke, angling inward, gripping, resisting. The harder you try to withdraw, the tighter they hold. You push in again and the grip vanishes — smooth, slick, pulling you deeper. Out, and they clamp. In, and they release. Your body figures out the rhythm fast: deep, steady strokes that don't fight the direction of the anatomy.[p]Its fluid coats your entire length now, thin and slippery, running freely down your thighs in warm rivulets. Your cock throbs inside it. The walls contract in slow, peristaltic waves — muscular bands that squeeze from base to tip in rolling pulses, milking your shaft independent of your own movement. It isn't reacting to you. It's processing you. The head hasn't turned. Its mandibles still work at the bark. The hum in its thorax is the only sign anything is happening at all.",
 		"command": "@SHOW_SCENE malesex_top_ongoing",
 		"next": "shenche_sex_male_top_ongoing_choice"
 	},
@@ -294,14 +294,14 @@
 	{
 		"id": "shenche_sex_male_top_abdomen_climax",
 		"type": "narration",
-		"text": "You grab the edges of her chitin plates and grind harder against the soft belly. The undulating ridges massage your cock with each stroke — gentle, rhythmic pressure that builds and builds. Her fluid squelches loudly between your bodies, splashing in wet arcs with every hard thrust. Your forehead presses against her warm shell. Your breath comes in short, ragged bursts.[p]The orgasm rolls through you in a long, steady wave. You press yourself flat against her abdomen and cum in thick pulses across her belly, your seed mixing with her slick fluid and running down between the nodules in pale streaks. You keep rutting against her through the last few spasms, the wet friction dragging every last drop from you until your hips finally slow and stop.[p]You pull back, panting. Her underside is a mess — your cum smeared across the soft ridges, thinned by her own fluid, dripping slowly into the dirt. The Shenche doesn't acknowledge any of it.",
+		"text": "You grab the edges of her chitin plates and grind harder against the soft belly. The undulating ridges massage your cock with each stroke — gentle, rhythmic pressure that builds and builds. Its fluid squelches loudly between your bodies, splashing in wet arcs with every hard thrust. Your forehead presses against its warm shell. Your breath comes in short, ragged bursts.[p]The orgasm rolls through you in a long, steady wave. You press yourself flat against the abdomen and cum in thick pulses across the belly, your seed mixing with its slick fluid and running down between the nodules in pale streaks. You keep rutting against it through the last few spasms, the wet friction dragging every last drop from you until your hips finally slow and stop.[p]You pull back, panting. The underside is a mess — your cum smeared across the soft ridges, thinned by its own fluid, dripping slowly into the dirt. The Shenche doesn't acknowledge any of it.",
 		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE malesex_top_abdomen_climax",
 		"next": "shenche_sex_male_top_abdomen_aftermath"
 	},
 	{
 		"id": "shenche_sex_male_top_abdomen_aftermath",
 		"type": "narration",
-		"text": "The Shenche shifts her weight and takes a step forward. Your spend drips from her belly and leaves a scattered trail in the dirt. She doesn't clean herself. She doesn't look back. Her long neck bends once to check the ground ahead, and then she walks, same as before — slow, mechanical, already done with whatever just happened.",
+		"text": "The Shenche shifts its weight and takes a step forward. Your spend drips from its belly and leaves a scattered trail in the dirt. It doesn't clean itself. It doesn't look back. The long neck bends once to check the ground ahead, and then she walks, same as before — slow, mechanical, already done with whatever just happened.",
 		"command": "@SHOW_SCENE malesex_top_abdomen_aftermath ; @RECORD_SPECIES_SEX shenche",
 		"set_flag": "sexed_shenche",
 		"flag_type": "knowledge",
@@ -389,7 +389,7 @@
 	{
 		"id": "shenche_attack",
 		"type": "narration",
-		"text": "You charge. The Shenche's neck whips around fast — far faster than anything that size should move. Her mandibles split wide, serrated edges catching the light, and she braces all four legs into the dirt.",
+		"text": "You charge. The Shenche's neck whips around fast — far faster than anything that size should move. Its mandibles split wide, serrated edges catching the light, and it braces all four legs into the dirt.",
 		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
 		"next": "shenche_startcombat"
 	},
