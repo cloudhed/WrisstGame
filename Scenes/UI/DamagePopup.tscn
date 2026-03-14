@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b333pim2vobex"]
+[gd_scene load_steps=5 format=3 uid="uid://b333pim2vobex"]
 
 [ext_resource type="Script" uid="uid://cysfbek55vafi" path="res://Scripts/ui/combat/damage_popup.gd" id="1_8xje2"]
 [ext_resource type="FontFile" uid="uid://q7ie3cje7c1y" path="res://Assets/Fonts/HyperlegibleNext-ExtraBold.ttf" id="2_hqkma"]
+[ext_resource type="Material" uid="uid://br0rftn2wq10v" path="res://Themes/unshaded_material.tres" id="2_uovfa"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hqkma"]
 light_mode = 1
@@ -17,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_8xje2")
 
 [node name="DamageNumber" type="Label" parent="."]
+material = ExtResource("2_uovfa")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

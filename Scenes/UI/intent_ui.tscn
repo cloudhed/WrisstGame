@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c70f5rm6i5pcd"]
+[gd_scene load_steps=8 format=3 uid="uid://c70f5rm6i5pcd"]
 
 [ext_resource type="Script" uid="uid://ctvc2hfejumqo" path="res://Scripts/ui/combat/intent_ui.gd" id="1_g08mb"]
 [ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="1_iuk88"]
+[ext_resource type="Material" uid="uid://br0rftn2wq10v" path="res://Themes/unshaded_material.tres" id="2_7duqf"]
 [ext_resource type="Theme" uid="uid://c1p0164at7n2g" path="res://Themes/tile_theme.tres" id="2_g08mb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g08mb"]
@@ -32,6 +33,7 @@ alignment = 1
 script = ExtResource("1_g08mb")
 
 [node name="Icon" type="TextureRect" parent="."]
+material = ExtResource("2_7duqf")
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 texture = ExtResource("1_iuk88")
@@ -39,6 +41,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Number" type="Label" parent="."]
+material = ExtResource("2_7duqf")
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_g08mb")

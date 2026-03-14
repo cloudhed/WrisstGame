@@ -16,7 +16,7 @@ secondary_effect_amount = 0
 icon = ExtResource("2_b6ten")
 tooltip_icon = ExtResource("5_davgi")
 tooltip_source_label = "Naked"
-tooltip_text = "[center]Gain [b][color=blue]{effect_amount}[/color][/b] block.[/center]"
+tooltip_text = "[b]Cost: 1[/b] [center]Gain [b][color=blue]{effect_amount}[/color][/b] block.[/center]"
 message_template = "[b]{source_name}[/b] raises their arms in front of their face and prepares to block for [b][color=blue]{amount}[/color][/b] damage."
 sound = ExtResource("3_euvd6")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

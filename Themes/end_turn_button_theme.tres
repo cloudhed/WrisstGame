@@ -1,0 +1,45 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b5kudu2871o1l"]
+
+[ext_resource type="FontFile" uid="uid://q7ie3cje7c1y" path="res://Assets/Fonts/HyperlegibleNext-ExtraBold.ttf" id="1_o2hv2"]
+[ext_resource type="FontFile" uid="uid://dvs4q1dskmivb" path="res://Assets/Fonts/GrenzeGotisch-Medium.ttf" id="2_5qpdm"]
+[ext_resource type="FontFile" uid="uid://bwmsf3im26hm3" path="res://Assets/Fonts/HyperlegibleNext-Italic.ttf" id="3_61om4"]
+[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="4_a7wix"]
+[ext_resource type="StyleBox" uid="uid://cfn0o30rgf3r0" path="res://Themes/style_box_flat_ui.tres" id="5_a8wwb"]
+[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="6_g1657"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2hv2"]
+bg_color = Color(0.635771, 0.666767, 0.659254, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qpdm"]
+bg_color = Color(0.38531, 0.509889, 0.509467, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qa8ib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n2vt"]
+
+[resource]
+default_font = ExtResource("6_g1657")
+default_font_size = 18
+Button/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_o2hv2")
+Button/styles/hover = SubResource("StyleBoxFlat_o2hv2")
+Button/styles/normal = SubResource("StyleBoxFlat_5qpdm")
+Label/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+Label/font_sizes/font_size = 18
+LineEdit/font_sizes/font_size = 18
+Panel/styles/panel = SubResource("StyleBoxFlat_qa8ib")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_1n2vt")
+RichTextLabel/colors/default_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+RichTextLabel/colors/selection_color = Color(0.219501, 0.219501, 0.219501, 0.8)
+RichTextLabel/fonts/bold_font = ExtResource("1_o2hv2")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_5qpdm")
+RichTextLabel/fonts/italics_font = ExtResource("3_61om4")
+RichTextLabel/fonts/normal_font = ExtResource("4_a7wix")
+TextEdit/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
+TextEdit/styles/normal = ExtResource("5_a8wwb")

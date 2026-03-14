@@ -1,13 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://coqflun3u7db"]
+[gd_scene load_steps=5 format=3 uid="uid://coqflun3u7db"]
 
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="1_2u27o"]
 [ext_resource type="Script" uid="uid://bn0ckvai2l4gk" path="res://Scripts/ui/combat/stamina_ui.gd" id="2_twc0d"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2u27o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twc0d"]
+bg_color = Color(0.356262, 0.649391, 0.725782, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 2
+
 [node name="StaminaUI" type="Panel"]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(160, 64)
+offset_right = 110.0
+offset_bottom = 64.0
 theme = ExtResource("1_2u27o")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2u27o")
 script = ExtResource("2_twc0d")
+
+[node name="StaminaProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_twc0d")
+max_value = 30.0
+step = 1.0
+value = 30.0
+fill_mode = 1
+show_percentage = false
 
 [node name="StaminaLabel" type="Label" parent="."]
 layout_mode = 1
@@ -17,7 +44,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 32
 text = "1/1"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -18,7 +18,7 @@ background = ExtResource("1_toeud")
 icon = ExtResource("2_ddj3h")
 tooltip_icon = ExtResource("5_msfv3")
 tooltip_source_label = "Neckace of Begud"
-tooltip_text = "[center]Heal for [b][color=dark_green]{effect_amount}[/color][/b] points.[/center]"
+tooltip_text = "[b]Cost: 1[/b] [center]Heal for [b][color=dark_green]{effect_amount}[/color][/b] points.[/center]"
 message_template = "[b]{source_name}[/b] feels their {tooltip_source_label}vibrate, and heals for [b][color=dark_green]{amount}[/color][/b] damage."
 sound = ExtResource("4_x8141")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

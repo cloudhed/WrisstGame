@@ -613,7 +613,7 @@ z_index = 1
 position = Vector2(-148, -107)
 
 [node name="OverworldEncounterTrigger_Klyftet" parent="mapLocations" instance=ExtResource("5_5arl6")]
-position = Vector2(479, 686)
+position = Vector2(444, 660)
 prompt_active = "Enter settlement"
 prompt_after_discovery = "Visit Klyftet"
 discovery_flag = "Found_Klyftet"
@@ -622,7 +622,7 @@ fallback_scene_selector_key = "start_audio"
 debug_logging = true
 
 [node name="OverworldEncounterTrigger_Sapritree" parent="mapLocations" instance=ExtResource("5_5arl6")]
-position = Vector2(742, 827)
+position = Vector2(883, 737)
 activation_mode = 1
 prompt_active = "Visit old tree"
 prompt_after_discovery = "Visit old tree"
@@ -632,7 +632,7 @@ fallback_scene_selector_key = "start_audio"
 debug_logging = true
 
 [node name="OverworldCombatTrigger_Creature" parent="mapLocations" instance=ExtResource("2_w08pr")]
-position = Vector2(289, 575)
+position = Vector2(289, 634)
 prompt_active = "Encounter Creature"
 prompt_after_discovery = "Encounter Creature again"
 discovery_flag = "found_creature"
@@ -786,7 +786,7 @@ polygon = PackedVector2Array(-817.874, -404.787, -837.589, -303.59, -843.949, -2
 
 [node name="IslandInternalWalls" type="CollisionPolygon2D" parent="IslandBoundary"]
 position = Vector2(328, 206)
-polygon = PackedVector2Array(-40, -17, -36, -2, -72, 6, -104, 26, -119, 57, -120, 88, -107, 113, -119, 138, -130, 155, -132, 172, -121, 189, -97, 201, -82, 209, -67, 228, -52, 240, -48, 260, -43, 270, -22, 278, 29, 282, 71, 279, 112, 265, 160, 270, 188, 245, 209, 201, 220, 154, 252, 170, 314, 185, 294, 251, 382, 250, 594, 327, 605, 234, 554, 189, 521, 117, 449, 43, 326, -106, 147, -191, 114, -287, 65, -320, 5, -286, -68, -285, -119, -253, -100, -140, -120, -79, -125, -30, -67, -16)
+polygon = PackedVector2Array(-40, -17, -45, -6, -79, 3, -122, 21, -151, 61, -149, 96, -128, 124, -146, 156, -157, 194, -145, 214, -168, 235, -216, 200, -273, 249, -158, 303, -79, 339, -29, 333, 42, 365, 103, 370, 213, 388, 217, 453, 306, 446, 332, 404, 412, 398, 594, 327, 605, 234, 554, 189, 521, 117, 449, 43, 326, -106, 147, -191, 114, -287, 65, -320, 5, -286, -68, -285, -119, -253, -100, -140, -120, -79, -125, -30, -67, -16)
 
 [node name="IslandInternalWalls2" type="CollisionPolygon2D" parent="IslandBoundary"]
 position = Vector2(328, 206)
