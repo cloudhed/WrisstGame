@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://xyxvn2yghvwa"]
+[gd_scene load_steps=8 format=3 uid="uid://xyxvn2yghvwa"]
 
 [ext_resource type="Script" uid="uid://bjf6b1p05ub8o" path="res://global/dialog_manager.gd" id="1_a8n6i"]
+[ext_resource type="Resource" uid="uid://dtempleint001" path="res://Narrative/DialogScenes/Locations/Overworld/Temple Ruins/templeruins_interior_day.tres" id="2_uo8fh"]
 [ext_resource type="PackedScene" uid="uid://cbpihauqeos3w" path="res://Narrative/zone_container.tscn" id="3_6br8l"]
 [ext_resource type="PackedScene" uid="uid://bsauxo1g05656" path="res://Narrative/mist_container.tscn" id="5_sdxh1"]
 [ext_resource type="Texture2D" uid="uid://dq7yfdfo43jqc" path="res://Assets/Sprites/Characters/minttärä_portrait_base.png" id="5_svokt"]
@@ -16,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_a8n6i")
+dialog_scene_data = ExtResource("2_uo8fh")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0

@@ -502,6 +502,8 @@ func _evaluate_condition_key_value(key: String, value: Variant) -> bool:
 			return _has_all_items(_to_string_array(value))
 		"has_any_item":
 			return _has_any_item(_to_string_array(value))
+		"has_item_count":
+			return _check_item_count(value)
 		"content_disabled":
 			# True if the player has opted out of this content category.
 			# Usage: "hide_if": { "content_disabled": "feral" }
@@ -588,6 +590,38 @@ func _has_any_item(item_paths: Array[String]) -> bool:
 		if _has_item_by_key(item_path):
 			return true
 	return false
+
+
+func _check_item_count(value: Variant) -> bool:
+	if typeof(value) != TYPE_DICTIONARY:
+		push_warning("⚠️ has_item_count expects a dictionary: { item, amount, op }")
+		return false
+
+	var item_key: String = str(value.get("item", ""))
+	var amount: int = int(value.get("amount", 1))
+	var op: String = str(value.get("op", ">="))
+
+	var item: InventoryItem = null
+	if item_key.begins_with("res://"):
+		item = load(item_key) as InventoryItem
+	else:
+		item = load("res://Resources/Items/%s.tres" % item_key) as InventoryItem
+
+	if item == null:
+		push_warning("⚠️ has_item_count: could not load item: %s" % item_key)
+		return false
+
+	var count: int = GameState.get_item_count(item)
+
+	match op:
+		">=": return count >= amount
+		"<=": return count <= amount
+		"==": return count == amount
+		">":  return count > amount
+		"<":  return count < amount
+		_:
+			push_warning("⚠️ has_item_count: unknown op '%s', defaulting to >=" % op)
+			return count >= amount
 
 
 func _has_item_by_key(item_key: String) -> bool:

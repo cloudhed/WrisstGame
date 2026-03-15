@@ -204,6 +204,13 @@ func has_item(item: InventoryItem) -> bool:
 	return false
 
 
+func get_item_count(item: InventoryItem) -> int:
+	for slot in player_inventory:
+		if slot.item == item:
+			return slot.amount
+	return 0
+
+
 # ─────────────────────────────────────────────────────────────
 # Equipable gear
 

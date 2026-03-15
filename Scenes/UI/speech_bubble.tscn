@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c33yygdd0xpkd"]
+[gd_scene load_steps=4 format=3 uid="uid://ys0565hq13dd"]
 
-[ext_resource type="Theme" uid="uid://ceyp2wbkcsnns" path="res://Themes/bubble_theme.tres" id="1_guhem"]
+[ext_resource type="Theme" uid="uid://bq6onie4e1pjk" path="res://Themes/narrative_theme.tres" id="1_r5lct"]
 [ext_resource type="Script" uid="uid://driok6au7vhfy" path="res://Scenes/UI/speech_bubble.gd" id="2_r5lct"]
+[ext_resource type="Theme" uid="uid://by10iex6r6prc" path="res://Themes/narrative_choice_theme.tres" id="3_m0mij"]
 
 [node name="SpeechBubble" type="Control"]
 custom_minimum_size = Vector2(800, 90)
@@ -9,21 +10,23 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 800.0
 offset_bottom = 90.0
-size_flags_horizontal = 2
+size_flags_horizontal = 10
 mouse_filter = 2
-theme = ExtResource("1_guhem")
+theme = ExtResource("1_r5lct")
 script = ExtResource("2_r5lct")
 max_width = 760.0
-padding = 14.0
-gust_range_x = 16.0
-gust_range_y = 1.0
-drift_range_y = 1.0
+padding = 12.0
+gust_range_y = 3.0
+gust_time = 0.5
+drift_range_y = 0.0
+drift_time = 2.0
 
 [node name="BubbleWrapper" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 8.0
+offset_right = 20.0
+offset_bottom = 28.0
 mouse_filter = 2
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
 
 [node name="Panel" type="Panel" parent="BubbleWrapper"]
 layout_mode = 2
@@ -33,10 +36,10 @@ mouse_filter = 2
 clip_contents = false
 layout_mode = 0
 offset_right = 1.0
-offset_bottom = 351.0
+offset_bottom = 203.0
 mouse_filter = 2
-theme = ExtResource("1_guhem")
+theme = ExtResource("3_m0mij")
 bbcode_enabled = true
-text = "This is short"
+text = "You’ve "
 fit_content = true
 scroll_active = false

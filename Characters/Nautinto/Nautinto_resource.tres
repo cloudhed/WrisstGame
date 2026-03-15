@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://08ad6ne6c81r"]
+
+[ext_resource type="Resource" uid="uid://dofc83mff7t8j" path="res://Characters/Nautinto/Nautinto_portraits/Nautinto_portrait_deck.tres" id="1_rk2xl"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="2_wwyl4"]
+
+[resource]
+script = ExtResource("2_wwyl4")
+name = &"Nautinto"
+display_name = "Nautinto"
+portrait = ExtResource("1_rk2xl")
+color = Color(0.805191, 0.55194, 0.132489, 1)
+speech_bubble_color = Color(0.17, 0.0188417, 0.0051, 0.768627)
+speech_bubble_font_size = 20
+stats = {}
+default_flags = {}
+metadata/_custom_type_script = "uid://dqihe2ny7afn"

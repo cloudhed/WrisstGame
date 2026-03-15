@@ -1,0 +1,201 @@
+[
+    {
+        "id": "INIT_play_audio",
+        "type": "command",
+        "command": "@PLAY_AMBIENCE wind res://Audio/Ambience/Klyftet/klyftet_wind.mp3",
+        "clear": true,
+        "next": "INIT_FLAGCHECK"
+    },
+    {
+        "id": "INIT_FLAGCHECK",
+        "type": "logic",
+        "check_flags": {
+            "flags": ["Entered_Temple"],
+            "on_success": "temple_day_returning",
+            "on_fail": "temple_day_firsttime"
+        }
+    },
+
+    {
+        "id": "temple_day_firsttime",
+        "type": "narration",
+        "text": "Something rises from the flat, dry land ahead. At first it looks like a rock — another one of the strange formations that break the horizon here. But it does not look like a rock. The shape is wrong. Too smooth. Too deliberate.\n\nIt is tall. Rounded, tapering toward the top like a seed or a shell, half-buried in the sand as though it grew there, or fell there long ago. The surface is pale brown, warm-hued in the daylight. Oval openings break the face of it — dark, and silent, except for one near the base, where something glows faintly. Amber. Warm.\n\nA thin trickle of dark water winds from its base and loses itself in the dust.\n\nThe red-leafed trees off to one side are still. Nothing moves.",
+        "set_flag": "Entered_Temple",
+        "flag_type": "event",
+        "next": "choice_firsttime"
+    },
+    {
+        "id": "temple_day_returning",
+        "type": "narration",
+        "text": "The strange structure waits at the edge of the flats, same as before. The amber glow from the lower opening is visible even from here. The trickle of dark water at its base catches the light.",
+        "next": "choice_returning"
+    },
+
+    {
+        "id": "choice_firsttime",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> Look around",
+                "next": "firsttime_lookaround"
+            },
+            {
+                "text": "> Approach the structure",
+                "next": "firsttime_approach"
+            },
+            {
+                "text": "> [Leave]",
+                "next": "leave_pre"
+            }
+        ]
+    },
+
+    {
+        "id": "firsttime_lookaround",
+        "type": "narration",
+        "text": "The land around it is flat and dry, broken only by scattered scrub and the long shadows of distant mesas. No paths lead here — not worn ones, anyway. No signs of passage. Whatever this place is, it does not announce itself.\n\nThe smell is mineral. Hot stone and something faintly smoky, carried on the dry air from within.\n\nThat glow again. Low down, near the ground. Patient.",
+        "clear": true,
+        "next": "choice_firsttime"
+    },
+    {
+        "id": "firsttime_approach",
+        "type": "narration",
+        "text": "You walk toward it.",
+        "command": "@SHOW_ZONE Temple Ruins/TempleOutdoorsDay",
+        "clear": true,
+        "next": "firsttime_approach_close"
+    },
+    {
+        "id": "firsttime_approach_close",
+        "type": "narration",
+        "text": "Up close, the surface is smoother than it looked from a distance. Not carved — or not carved in any way that left marks. The material is warm beneath the fingers. Dense. Old.\n\nThe openings above are dark. The one at ground level is not. A soft amber light breathes from inside — oil, maybe, or something slower. The opening is wide enough to walk through. There is no door.\n\nSomething is in there.",
+        "set_flag": "temple_porch_reached",
+        "flag_type": "event",
+        "next": "choice_first_porch"
+    },
+    {
+        "id": "choice_first_porch",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> Knock on the surface",
+                "next": "firsttime_knock"
+            },
+            {
+                "text": "> Call inside",
+                "next": "firsttime_call"
+            },
+            {
+                "text": "> Step back",
+                "next": "choice_firsttime"
+            }
+        ]
+    },
+    {
+        "id": "firsttime_knock",
+        "type": "narration",
+        "text": "You press your knuckles to the surface and knock.\n\nThe sound carries strangely — a low, hollow resonance, as if the structure is not solid all the way through.\n\nA pause. Then, from somewhere inside, soft footsteps.",
+        "next": "firsttime_enter_interior"
+    },
+    {
+        "id": "firsttime_call",
+        "type": "narration",
+        "text": "You lean toward the opening and call out.\n\nYour voice feels oddly flat in the dry air. No echo from the structure — it seems to swallow the sound.\n\nA pause. Then, from somewhere inside, soft footsteps.",
+        "next": "firsttime_enter_interior"
+    },
+    {
+        "id": "firsttime_enter_interior",
+        "type": "command",
+        "command": "@CHANGE_LOCATION temple_interior",
+        "next": "end_shouldntshowup"
+    },
+
+    {
+        "id": "choice_returning",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> Knock",
+                "next": "returning_knock_check"
+            },
+            {
+                "text": "> Approach the opening",
+                "next": "returning_approach"
+            },
+            {
+                "text": "> [Leave]",
+                "next": "leave_pre"
+            }
+        ]
+    },
+    {
+        "id": "returning_knock_check",
+        "type": "logic",
+        "check_flags": {
+            "flags": ["nautinto_quest_complete"],
+            "on_success": "returning_knock_access",
+            "on_fail": "returning_knock_standard"
+        }
+    },
+    {
+        "id": "returning_knock_access",
+        "type": "narration",
+        "text": "You knock. Almost immediately — soft footsteps from within.",
+        "next": "returning_enter_interior"
+    },
+    {
+        "id": "returning_knock_standard",
+        "type": "narration",
+        "text": "You knock. The same low resonance as before. A pause. Then footsteps.",
+        "next": "returning_enter_interior"
+    },
+    {
+        "id": "returning_enter_interior",
+        "type": "command",
+        "command": "@CHANGE_LOCATION temple_interior",
+        "next": "end_shouldntshowup"
+    },
+    {
+        "id": "returning_approach",
+        "type": "narration",
+        "text": "You walk up to the structure. The amber glow from the lower opening is steady, warm. The surface is the same — smooth, old, still warm from the day's heat.",
+        "command": "@SHOW_ZONE Temple Ruins/TempleOutdoorsDay",
+        "clear": true,
+        "next": "choice_return_porch"
+    },
+    {
+        "id": "choice_return_porch",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> Knock",
+                "next": "returning_knock_check"
+            },
+            {
+                "text": "> Step back",
+                "next": "choice_returning"
+            }
+        ]
+    },
+
+    {
+        "id": "leave_pre",
+        "type": "narration",
+        "text": "You turn back toward the open land.",
+        "command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+        "clear": true,
+        "next": "leaving"
+    },
+    {
+        "id": "leaving",
+        "type": "command",
+        "command": "@LEAVE_ENCOUNTER",
+        "next": "end_shouldntshowup"
+    },
+    {
+        "id": "end_shouldntshowup",
+        "type": "command",
+        "command": "@LEAVE_ENCOUNTER",
+        "next": "end_shouldntshowup"
+    }
+]

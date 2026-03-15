@@ -1,0 +1,534 @@
+[
+    {
+        "id": "INIT_audio",
+        "type": "command",
+        "command": "@STOP_ALL_AMBIENCE ; @FADE_MUSIC_OUT",
+        "clear": true,
+        "next": "INIT_ambience"
+    },
+    {
+        "id": "INIT_ambience",
+        "type": "command",
+        "command": "@PLAY_AMBIENCE interior res://Audio/Ambience/Klyftet/klyftet_interior.mp3",
+        "next": "INIT_quest_complete_check"
+    },
+    {
+        "id": "INIT_quest_complete_check",
+        "type": "logic",
+        "check_flags": {
+            "flags": ["nautinto_quest_complete"],
+            "on_success": "interior_access_granted_entry",
+            "on_fail": "INIT_met_check"
+        }
+    },
+    {
+        "id": "INIT_met_check",
+        "type": "logic",
+        "check_flags": {
+            "flags": ["nautinto_met"],
+            "on_success": "interior_returning_prequest",
+            "on_fail": "interior_firsttime_entry"
+        }
+    },
+
+    {
+        "id": "interior_firsttime_entry",
+        "type": "narration",
+        "text": "Inside, the air is warm and close. The curved walls are smooth, amber-pale in the light of several small oil lamps set into shallow recesses. The ceiling vaults overhead — organic, uneven, nothing like a built thing. Cloth hangings fall from high up, woven with patterns you do not recognise. Geometric. Deliberate.\n\nThe smell is oil and dry mineral stone and something faintly smoky. Someone lives here. The small signs of it are everywhere — worn cloth, a low pallet, a few clay vessels arranged with care.",
+        "next": "interior_firsttime_figure"
+    },
+    {
+        "id": "interior_firsttime_figure",
+        "type": "narration",
+        "text": "A shape moves in the far shadow.\n\nTall. Very tall — it has to lower its head slightly near the far wall. Broad, wrapped in layers of woven cloth, hem-stitched with the same geometric marks as the hangings. A veil across the face. Large, dark eyes catch the lamp light and hold it, black and still.",
+		"clear": true,
+        "next": "interior_nautinto_oh"
+    },
+    {
+        "id": "interior_nautinto_oh",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Oh.\"",
+        "command": "@SHOW_PORTRAIT shrouded",
+        "next": "interior_nautinto_notsupposed"
+    },
+    {
+        "id": "interior_nautinto_notsupposed",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"...You are not supposed to be here.\"",
+        "next": "choice_initial"
+    },
+
+    {
+        "id": "choice_initial",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> What is this place?",
+                "next": "nautinto_whatisthis"
+            },
+            {
+                "text": "> I wandered in by accident.",
+                "next": "nautinto_wandered"
+            },
+            {
+                "text": "> I'll leave.",
+                "next": "nautinto_leave_early"
+            }
+        ]
+    },
+
+    {
+        "id": "nautinto_whatisthis",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"It is a hall. Of sorts.\"",
+        "next": "nautinto_whatisthis_b"
+    },
+    {
+        "id": "nautinto_whatisthis_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Why do you ask.\"",
+        "next": "choice_follow_a"
+    },
+
+    {
+        "id": "nautinto_wandered",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Wandered.\"",
+        "next": "nautinto_wandered_b"
+    },
+    {
+        "id": "nautinto_wandered_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Through a structure that does not open for strangers, into a hall that is not marked or known. Quite the wander.\"",
+        "next": "choice_follow_a"
+    },
+
+    {
+        "id": "choice_follow_a",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> I meant no harm.",
+                "next": "nautinto_no_harm"
+            },
+            {
+                "text": "> Can I stay a while?",
+                "next": "nautinto_can_i_stay"
+            },
+            {
+                "text": "> Who are you?",
+                "next": "nautinto_who_are_you"
+            }
+        ]
+    },
+
+    {
+        "id": "nautinto_no_harm",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"I know.\"",
+        "next": "nautinto_no_harm_b"
+    },
+    {
+        "id": "nautinto_no_harm_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"That I can see well enough. It does not change that you should not be here.\"",
+        "next": "choice_follow_b"
+    },
+
+    {
+        "id": "nautinto_can_i_stay",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"That is not mine alone to offer.\"",
+        "next": "nautinto_can_i_stay_b"
+    },
+    {
+        "id": "nautinto_can_i_stay_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"This hall is not only a place to sit.\"",
+        "next": "choice_follow_b"
+    },
+
+    {
+        "id": "nautinto_who_are_you",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Someone who tends what is kept here.\"",
+        "next": "nautinto_who_are_you_b"
+    },
+    {
+        "id": "nautinto_who_are_you_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"And someone deciding what to do with you.\"",
+        "next": "choice_follow_b"
+    },
+
+    {
+        "id": "choice_follow_b",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> What would it take to be welcome here?",
+                "next": "nautinto_whatwouldit"
+            },
+            {
+                "text": "> I understand. I'll go.",
+                "next": "nautinto_leave_early"
+            }
+        ]
+    },
+
+    {
+        "id": "nautinto_whatwouldit",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"You are strange.\"",
+        "next": "nautinto_whatwouldit_b"
+    },
+    {
+        "id": "nautinto_whatwouldit_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"I have not seen your kind before. Not here, not anywhere.\"",
+        "next": "nautinto_whatwouldit_c"
+    },
+    {
+        "id": "nautinto_whatwouldit_c",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"I do not give entry lightly. There are things here I am responsible for.\"",
+        "next": "nautinto_whatwouldit_d"
+    },
+    {
+        "id": "nautinto_whatwouldit_d",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"But you are... curious. Not threatening.\"",
+        "next": "choice_follow_c"
+    },
+
+    {
+        "id": "choice_follow_c",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> I can be useful.",
+                "next": "nautinto_can_be_useful"
+            },
+            {
+                "text": "> I respect what you protect.",
+                "next": "nautinto_respect"
+            }
+        ]
+    },
+
+    {
+        "id": "nautinto_can_be_useful",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Useful.\"",
+        "next": "nautinto_can_be_useful_b"
+    },
+    {
+        "id": "nautinto_can_be_useful_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Perhaps. Perhaps you are.\"",
+        "next": "nautinto_the_ask"
+    },
+
+    {
+        "id": "nautinto_respect",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"That is the right thing to say.\"",
+        "next": "nautinto_respect_b"
+    },
+    {
+        "id": "nautinto_respect_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Whether you mean it, I will learn in time.\"",
+        "next": "nautinto_the_ask"
+    },
+
+    {
+        "id": "nautinto_the_ask",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"There are things I need that I cannot easily gather myself.\"",
+        "next": "nautinto_the_ask_b"
+    },
+    {
+        "id": "nautinto_the_ask_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Teqqellon slime. Three portions should be enough. The creature leaves it on tide-stones after it feeds — you will recognise it. Translucent. Faintly warm.\"",
+        "next": "nautinto_the_ask_c"
+    },
+    {
+        "id": "nautinto_the_ask_c",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"...And a shenche loot as well. You will know it when you find one.\"",
+        "next": "nautinto_the_ask_d"
+    },
+    {
+        "id": "nautinto_the_ask_d",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Return with both, and I will consider your presence here less of an intrusion.\"",
+        "set_flag": ["nautinto_met", "nautinto_quest_given"],
+        "flag_type": "quest",
+        "next": "choice_quest_received"
+    },
+
+    {
+        "id": "choice_quest_received",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> Where can I find a teqqellon?",
+                "next": "nautinto_find_teqqellon"
+            },
+            {
+                "text": "> What is a teqqellon?",
+                "next": "nautinto_what_is_teqqellon",
+                "hide_if": { "has_flag": "knows_teqqellon" }
+            },
+            {
+                "text": "> Where can I find a shenche?",
+                "next": "nautinto_find_shenche"
+            },
+            {
+                "text": "> What is a shenche?",
+                "next": "nautinto_what_is_shenche",
+                "hide_if": { "has_flag": "knows_shenche" }
+            },
+            {
+                "text": "> What do you need these for?",
+                "next": "nautinto_why_items"
+            },
+            {
+                "text": "> I'll get them.",
+                "next": "nautinto_farewell_quest"
+            }
+        ]
+    },
+
+    {
+        "id": "nautinto_find_teqqellon",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"The coast. Tidal flats, kelp beds, wet sand near the waterline.\"",
+        "next": "nautinto_find_teqqellon_b"
+    },
+    {
+        "id": "nautinto_find_teqqellon_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"They wait. Move slowly when you approach the water's edge.\"",
+        "next": "choice_quest_received"
+    },
+
+    {
+        "id": "nautinto_what_is_teqqellon",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"A creature of the tide. Fluid. Glassy. It leaves a translucent slime on the stones where it has rested and fed.\"",
+        "next": "nautinto_what_is_teqqellon_b"
+    },
+    {
+        "id": "nautinto_what_is_teqqellon_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Gather it carefully. The potency does not keep long.\"",
+        "set_flag": "knows_teqqellon",
+        "flag_type": "knowledge",
+        "next": "choice_quest_received"
+    },
+
+    {
+        "id": "nautinto_find_shenche",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"The wilder paths near the ridge. They move at dusk, mostly. You will hear them before you see them.\"",
+        "next": "choice_quest_received"
+    },
+
+    {
+        "id": "nautinto_what_is_shenche",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"A predator. Fast, clever, territorial.\"",
+        "next": "nautinto_what_is_shenche_b"
+    },
+    {
+        "id": "nautinto_what_is_shenche_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"They leave something useful behind after an encounter. I trust you can manage.\"",
+        "set_flag": "knows_shenche",
+        "flag_type": "knowledge",
+        "next": "choice_quest_received"
+    },
+
+    {
+        "id": "nautinto_why_items",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"The hall has old workings. Things that require specific materials to maintain.\"",
+        "next": "nautinto_why_items_b"
+    },
+    {
+        "id": "nautinto_why_items_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"You do not need to know more than that. Not yet.\"",
+        "next": "choice_quest_received"
+    },
+
+    {
+        "id": "nautinto_farewell_quest",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Good.\"",
+        "next": "nautinto_farewell_quest_b"
+    },
+    {
+        "id": "nautinto_farewell_quest_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Be careful, strange one.\"",
+        "next": "leave_pre"
+    },
+
+    {
+        "id": "nautinto_leave_early",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Yes. That would be wiser.\"",
+        "next": "leave_pre"
+    },
+
+    {
+        "id": "interior_returning_prequest",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"You are back.\"",
+        "next": "interior_returning_prequest_b"
+    },
+    {
+        "id": "interior_returning_prequest_b",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Do you have what I asked for?\"",
+        "next": "interior_returning_choice"
+    },
+    {
+        "id": "interior_returning_choice",
+        "type": "choice",
+        "options": [
+            {
+                "text": "> Yes — here. (3x teqqellon slime, 1x shenche loot)",
+                "next": "nautinto_delivery",
+                "show_if": {
+                    "all_of": [
+                        { "has_item_count": { "item": "Misc/slime_glob", "op": ">=", "amount": 3 } },
+                        { "has_item": "Misc/shenche_loot" }
+                    ]
+                }
+            },
+            {
+                "text": "> I'm still looking.",
+                "next": "nautinto_not_yet"
+            },
+            {
+                "text": "> I have a question.",
+                "next": "choice_quest_received"
+            },
+            {
+                "text": "> [Leave]",
+                "next": "leave_pre"
+            }
+        ]
+    },
+
+    {
+        "id": "nautinto_delivery",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Let me see.\"",
+        "next": "nautinto_delivery_inspect"
+    },
+    {
+        "id": "nautinto_delivery_inspect",
+        "type": "narration",
+        "text": "The cloth shifts. Long fingers — broad at the knuckle, careful — examine what you have brought. A long pause.",
+        "next": "nautinto_delivery_verdict"
+    },
+    {
+        "id": "nautinto_delivery_verdict",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"...Yes. This is sufficient.\"",
+        "command": "@remove_item Misc/slime_glob 3 ; @remove_item Misc/shenche_loot 1",
+        "set_flag": "nautinto_quest_complete",
+        "flag_type": "quest",
+        "next": "nautinto_delivery_welcome"
+    },
+    {
+        "id": "nautinto_delivery_welcome",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Enter when you wish, strange one. This hall is open to you.\"",
+        "next": "leave_pre"
+    },
+
+    {
+        "id": "nautinto_not_yet",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Take your time. I am patient.\"",
+        "next": "leave_pre"
+    },
+
+    {
+        "id": "interior_access_granted_entry",
+        "type": "npc",
+        "name": "Nautinto",
+        "text": "\"Welcome back.\"",
+        "next": "leave_pre"
+    },
+
+    {
+        "id": "leave_pre",
+        "type": "narration",
+        "text": "You step back out through the opening into the dry air.",
+        "command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+        "clear": true,
+        "next": "leaving"
+    },
+    {
+        "id": "leaving",
+        "type": "command",
+        "command": "@LEAVE_ENCOUNTER",
+        "next": "end_shouldntshowup"
+    },
+    {
+        "id": "end_shouldntshowup",
+        "type": "command",
+        "command": "@LEAVE_ENCOUNTER",
+        "next": "end_shouldntshowup"
+    }
+]
