@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=6 format=3 uid="uid://bddgxod67ufrs"]
+
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_pfbtw"]
+[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="2_ts1k0"]
+[ext_resource type="PackedScene" uid="uid://btdip1lmpf870" path="res://Narrative/DialogScenes/Locations/Overworld/Temple Ruins/TempleRuins_day.tscn" id="4_ht8rj"]
+[ext_resource type="Resource" uid="uid://byj3dh5vdmbji" path="res://Narrative/DialogScenes/Locations/Overworld/Temple Ruins/templeruins_slidedeck.tres" id="4_pevsp"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_mg2vs"]
+
+[resource]
+script = ExtResource("2_ts1k0")
+zone_scene = ExtResource("4_ht8rj")
+music = SubResource("AudioStreamInteractive_mg2vs")
+sfx_library = {}
+dialogue_path = "res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day.json"
+characters = Array[ExtResource("1_pfbtw")]([])
+slide_deck = ExtResource("4_pevsp")
+flags_required = Array[String]([])
+flags_set_on_start = {}
+metadata/_custom_type_script = "uid://5m151tkuttgt"

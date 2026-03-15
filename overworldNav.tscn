@@ -649,9 +649,8 @@ debug_logging = true
 [node name="OverworldEncounterTrigger_Temple" parent="mapLocations" instance=ExtResource("5_5arl6")]
 position = Vector2(-312, 826)
 prompt_active = "Enter strange ruin"
-prompt_after_discovery = "Visit Klyftet"
-discovery_flag = "Found_Klyftet"
-fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres"
+prompt_after_discovery = "Visit Temple Ruins"
+discovery_flag = "Found_TempleRuins"
 fallback_scene_selector_key = "start_audio"
 debug_logging = true
 

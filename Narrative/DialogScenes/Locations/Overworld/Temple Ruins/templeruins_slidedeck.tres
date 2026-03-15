@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SlideDeck" load_steps=3 format=3 uid="uid://byj3dh5vdmbji"]
+
+[ext_resource type="Script" uid="uid://la225ydmy37u" path="res://Narrative/slide_deck.gd" id="1_gt8b2"]
+[ext_resource type="Script" uid="uid://b7o0w4hub0eja" path="res://Narrative/slide_entry.gd" id="2_ukp4s"]
+
+[resource]
+script = ExtResource("1_gt8b2")
+slides = Array[ExtResource("2_ukp4s")]([])
+metadata/_custom_type_script = "uid://la225ydmy37u"
