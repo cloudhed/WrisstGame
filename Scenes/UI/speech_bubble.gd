@@ -14,11 +14,11 @@ extends Control
 
 
 func set_text(
-	
 	text: String,
 	text_color: Color = Color.WHITE,
 	bubble_color: Color = Color.DIM_GRAY,
-	font_override: Font = null
+	font_override: Font = null,
+	font_size: int = 0
 ) -> void:
 	
 	visible = false  # Hide while sizing
@@ -35,6 +35,9 @@ func set_text(
 
 	if font_override:
 		label.add_theme_font_override("normal_font", font_override)
+
+	if font_size > 0:
+		label.add_theme_font_size_override("normal_font_size", font_size)
 
 	label.push_color(text_color)
 	label.append_text(text)

@@ -217,6 +217,6 @@
 		"id": "shenche_postcombat_end",
 		"type": "command",
 		"command": "@LEAVE_ENCOUNTER",
-		"end": true
+		"end": false
 	}
 ]

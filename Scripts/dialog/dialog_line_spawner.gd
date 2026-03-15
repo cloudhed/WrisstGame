@@ -17,7 +17,7 @@ func spawn_chunk(chunk: Dictionary, speaker: String, character_map: Dictionary) 
 
 	match chunk_type:
 		"speech":
-			var speech_scene = preload("uid://c33yygdd0xpkd") #res://Scenes/UI/speech_bubble.tscn 
+			var speech_scene = preload("uid://ys0565hq13dd") #res://Scenes/UI/speech_bubble.tscn
 			node = speech_scene.instantiate()
 
 			if node == null or not node.has_method("set_text"):
@@ -31,8 +31,7 @@ func spawn_chunk(chunk: Dictionary, speaker: String, character_map: Dictionary) 
 					character.color,
 					character.speech_bubble_color,
 					character.speech_bubble_font,
-					#character.speech_bubble_font_size,
-					#character.speech_bubble_style
+					character.speech_bubble_font_size
 				)
 			else:
 				node.set_text(chunk_text)

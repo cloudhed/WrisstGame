@@ -11,6 +11,7 @@ species_id = &"teqqellon"
 ai = ExtResource("1_j7ut2")
 pre_combat_dialog_path = "res://enemies/teqqellon/teqqellon_dialog_precombat.json"
 post_combat_dialog_path = "res://enemies/teqqellon/teqqellon_dialog_postcombat.json"
+loss_combat_dialog_path = ""
 slide_deck = ExtResource("4_0tk0l")
 is_runnable = true
 max_health = 16

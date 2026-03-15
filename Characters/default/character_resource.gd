@@ -13,7 +13,7 @@ extends Resource
 @export var color: Color = Color.WHITE
 @export var speech_bubble_color: Color = Color.html("242424c8")
 @export var speech_bubble_font: Font = null # Optional: fallback to default
-@export var speech_bubble_font_size: int = 18 # Optional: fallback to default
+@export var speech_bubble_font_size: int = 0 # Optional: 0 = use theme default
 @export var speech_bubble_style: StyleBox = null # Optional: fallback to default
 @export var stats: Dictionary = {} # For combat or other systems (optional)
 @export var default_flags: Dictionary

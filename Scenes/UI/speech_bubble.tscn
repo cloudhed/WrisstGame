@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ys0565hq13dd"]
+[gd_scene load_steps=3 format=3 uid="uid://ys0565hq13dd"]
 
-[ext_resource type="Theme" uid="uid://bq6onie4e1pjk" path="res://Themes/narrative_theme.tres" id="1_r5lct"]
+[ext_resource type="Theme" uid="uid://ceyp2wbkcsnns" path="res://Themes/bubble_theme.tres" id="1_guhem"]
 [ext_resource type="Script" uid="uid://driok6au7vhfy" path="res://Scenes/UI/speech_bubble.gd" id="2_r5lct"]
-[ext_resource type="Theme" uid="uid://by10iex6r6prc" path="res://Themes/narrative_choice_theme.tres" id="3_m0mij"]
 
 [node name="SpeechBubble" type="Control"]
 custom_minimum_size = Vector2(800, 90)
@@ -12,7 +11,7 @@ offset_right = 800.0
 offset_bottom = 90.0
 size_flags_horizontal = 10
 mouse_filter = 2
-theme = ExtResource("1_r5lct")
+theme = ExtResource("1_guhem")
 script = ExtResource("2_r5lct")
 max_width = 760.0
 padding = 12.0
@@ -38,7 +37,6 @@ layout_mode = 0
 offset_right = 1.0
 offset_bottom = 203.0
 mouse_filter = 2
-theme = ExtResource("3_m0mij")
 bbcode_enabled = true
 text = "You’ve "
 fit_content = true
