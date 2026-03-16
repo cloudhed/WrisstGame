@@ -332,6 +332,21 @@ func handle_condition_check(entry: Dictionary) -> void:
 				var result: bool = current >= required
 				target_id = entry.get("if_true", "") if result else entry.get("if_false", "")
 
+			"HAS_SPECIES_STAT":
+				# Usage: "condition": "HAS_SPECIES_STAT meehp sex 1"
+				# Stat can be: sex, wins, losses, met
+				if parts.size() < 4:
+					push_error("❌ HAS_SPECIES_STAT requires: species, stat, amount.")
+					return
+
+				var species_id: String = parts[1]
+				var stat_key: String = parts[2]
+				var required: int = parts[3].to_int()
+				var result: bool = false
+				if GameState.player_statistics != null:
+					result = GameState.player_statistics.get_species_stat(StringName(species_id), stat_key) >= required
+				target_id = entry.get("if_true", "") if result else entry.get("if_false", "")
+
 			_:
 				push_error("❌ Unknown condition keyword: %s" % check)
 				target_id = entry.get("if_false", "")
@@ -508,6 +523,28 @@ func _evaluate_condition_key_value(key: String, value: Variant) -> bool:
 			# True if the player has opted out of this content category.
 			# Usage: "hide_if": { "content_disabled": "feral" }
 			return GameState.content_settings.get(str(value), false)
+		"min_reputation":
+			# True if the player meets the minimum reputation with an NPC.
+			# Usage: "show_if": { "min_reputation": { "npc": "nautinto", "amount": 10 } }
+			if typeof(value) != TYPE_DICTIONARY:
+				push_warning("⚠️ min_reputation expects a dictionary with 'npc' and 'amount'.")
+				return false
+			var npc_id: String = str(value.get("npc", ""))
+			var required: int = int(value.get("amount", 0))
+			return GameState.get_reputation(npc_id) >= required
+		"min_species_stat":
+			# True if a species stat meets a minimum value.
+			# Stat can be: "sex", "wins", "losses", "met"
+			# Usage: "show_if": { "min_species_stat": { "species": "meehp", "stat": "sex", "amount": 1 } }
+			if typeof(value) != TYPE_DICTIONARY:
+				push_warning("⚠️ min_species_stat expects a dictionary with 'species', 'stat', and 'amount'.")
+				return false
+			var species_id: String = str(value.get("species", ""))
+			var stat_key: String = str(value.get("stat", "sex"))
+			var required: int = int(value.get("amount", 1))
+			if GameState.player_statistics == null:
+				return false
+			return GameState.player_statistics.get_species_stat(StringName(species_id), stat_key) >= required
 		_:
 			push_warning("⚠️ Unknown choice condition key: %s" % key)
 			return false

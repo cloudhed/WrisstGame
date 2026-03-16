@@ -132,7 +132,7 @@
 		"text": "The grip finally loosens, and as you start pulling away you can see globs of white coagulating within the translucent body. The teal membrane peels away from your shaft with a wet sloshing noise, sliding back into a protective heap. A thick, opalescent residue clings to your thighs, cooling in the air. The Teqqellon remains still, its core still spasming with the occasional flutter as it digests your fresh cum.",
 		"clear": true,
 		"set_flag": "sexed_teqqellon",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"command": "@RECORD_SPECIES_SEX teqqellon",
 		"next": "teqqellon_leave_01"
 	},

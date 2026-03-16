@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=8 format=3 uid="uid://b3bwjbek68ma2"]
+
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_utrfn"]
+[ext_resource type="Resource" uid="uid://08ad6ne6c81r" path="res://Characters/Nautinto/Nautinto_resource.tres" id="2_shjly"]
+[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="3_xn3st"]
+[ext_resource type="Resource" uid="uid://byj3dh5vdmbji" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_slidedeck.tres" id="4_khs5k"]
+[ext_resource type="PackedScene" uid="uid://d2yxskiltjru5" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/TempleRuinsInterior_day.tscn" id="5_606yg"]
+
+[sub_resource type="Resource" id="Resource_rgbxj"]
+script = ExtResource("1_utrfn")
+id = &"Nautinto"
+character_resource = ExtResource("2_shjly")
+metadata/_custom_type_script = "uid://cgc7i24b66gt8"
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_int01"]
+
+[resource]
+script = ExtResource("3_xn3st")
+zone_scene = ExtResource("5_606yg")
+music = SubResource("AudioStreamInteractive_int01")
+sfx_library = {}
+dialogue_path = "res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_interior_postquest_day.json"
+characters = Array[ExtResource("1_utrfn")]([SubResource("Resource_rgbxj")])
+slide_deck = ExtResource("4_khs5k")
+flags_required = Array[String]([])
+flags_set_on_start = {}
+metadata/_custom_type_script = "uid://5m151tkuttgt"

@@ -124,7 +124,7 @@
 		"text": "The female Meehp settles into a low stance, still alert but no longer pressing forward. Fluid drips slowly from your body. She watches you carefully, her four eyes blinking in sequence. The aggressive energy is gone from her posture. She straightens her long neck and begins to preen her frills.",
 		"command": "@RECORD_SPECIES_SEX meehp ; @MUSIC_CLIP breath",
 		"set_flag": "sexed_meehp",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "meehp_postcombat_leave"
 	},
 	{

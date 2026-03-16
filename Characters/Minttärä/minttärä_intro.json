@@ -12,7 +12,7 @@
 	{
 		"id": "add_rep",
 		"type": "command",
-		"command": "@ADD_REPUTATION minttärä 10 ; @ADD_ORE 64",
+		"command": "@ADD_REPUTATION minttärä 10",
 		"next": "check_flags"
 	},
 	{

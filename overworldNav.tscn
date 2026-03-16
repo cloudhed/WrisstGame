@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://clq6t52fwieia" path="res://Code/PlayerCameraFollow.gd" id="9_s8mij"]
 [ext_resource type="Script" uid="uid://bx6tjiqqmfg3r" path="res://music_player.gd" id="10_7vspy"]
 [ext_resource type="Script" uid="uid://bmm0gshj54yld" path="res://Code/worldenvironment_controller.gd" id="10_c7vby"]
-[ext_resource type="Resource" uid="uid://bddgxod67ufrs" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_day.tres" id="10_r3enb"]
+[ext_resource type="Resource" uid="uid://b3bwjbek68ma2" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_interior_main_day.tres" id="10_r3enb"]
 [ext_resource type="AudioStream" uid="uid://rrf8rois8qur" path="res://Audio/Music/Music_Map_DayNight.tres" id="12_5arl6"]
 [ext_resource type="AudioStream" uid="uid://dlb56s4480bjm" path="res://Audio/SFX/sfx_alert.mp3" id="12_w08pr"]
 [ext_resource type="Script" uid="uid://bgacujrf8waoa" path="res://sfx_player.gd" id="13_r3enb"]
@@ -753,7 +753,6 @@ y_sort_enabled = true
 position = Vector2(-1660, 1355)
 script = ExtResource("2_5xsid")
 move_speed = 64.0
-step_size = 20
 
 [node name="PlayerLight" type="PointLight2D" parent="PlayerDot"]
 scale = Vector2(2, 2)

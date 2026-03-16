@@ -409,7 +409,7 @@
 		"text": "Your breathing slowly levels out as the adrenaline fades. The beast gives a final, contented gurgle, a thick dollop of fluids slowly dripping from its rear and cock, before it returns its attention entirely to the half-eaten fruit on the ground, seemingly completely unfazed.",
 		"command": "@SHOW_SCENE malesex_top_aftermath ; @RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_male_top_aftermath_choice"
 	},
 	{
@@ -509,7 +509,7 @@
 		"text": "You slowly slide out of its slick mouth, strands of saliva and cum connecting you for a brief moment. You pack yourself away and get dressed while the <Creature> licks itself clean, giving a satisfied rumble before turning back to its fruit left on the ground.",
 		"command": "@SHOW_SCENE malesex_top_oral_aftermath ; @RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_male_oral_aftermath_choice"
 	},
 	{
@@ -608,7 +608,7 @@
 		"type": "narration",
 		"text": "You slump forward against the <Creature>'s back, catching your breath as the last few twitches of its erection slowly deflate inside you. It returns to nibbling its fruit, a puddle of its clear fluid pooling on the ground beneath you.",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"command": "@SHOW_SCENE femalesex_ride_aftermath ; @RECORD_SPECIES_SEX creature",
 		"next": "creature_sex_female_ride_aftermath_choice"
 	},
@@ -708,7 +708,7 @@
 		"type": "narration",
 		"text": "The <Creature> finally pulls its slick, softening length out of you with a wet pop. A steady stream of its coconut-scented fluid leaks from your hole, dripping down your legs. The beast gives your ass a final sniff before happily wandering back to the remains of its fruit.",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"command": "@SHOW_SCENE malesex_bottom_aftermath ; @RECORD_SPECIES_SEX creature",
 		"next": "creature_sex_bottom_aftermath_choice"
 	},
@@ -920,7 +920,7 @@
 		"type": "narration",
 		"text": "You slowly slide out of the messy, winking hole. The <Creature> lies completely still, panting heavily into the dirt, an oozing mix of fluids leaking from its rear.",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"command": "@SHOW_SCENE malesex_top_aftermath ; @RECORD_SPECIES_SEX creature",
 		"clear": true,
 		"next": "creature_capture_sex_male_anal_aftermath_choice"
@@ -1021,7 +1021,7 @@
 		"type": "narration",
 		"text": "You sit on the tied-up beast for a moment, letting the last few spasms of its cock milk out inside you before peeling yourself off with a wet squelch.",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"command": "@SHOW_SCENE femalesex_ride_aftermath ; @RECORD_SPECIES_SEX creature",
 		"next": "creature_capture_sex_female_ride_aftermath_choice"
 	},
@@ -1110,7 +1110,7 @@
 		"type": "narration",
 		"text": "You slide your softening cock out of its mouth, a messy trail of saliva and cum bridging the gap. The bound <Creature> coughs softly, licking itsself in a daze.",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"command": "@SHOW_SCENE malesex_top_oral_aftermath ; @RECORD_SPECIES_SEX creature",
 		"next": "creature_capture_sex_top_oral_aftermath_choice"
 	},
@@ -1210,7 +1210,7 @@
 		"type": "narration",
 		"text": "You pull back, wiping your chin as the <Creature>'s deflating purple cock flops weakly against its bound legs. The beast pants softly, totally spent.",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"command": "@SHOW_SCENE sex_give_oral_aftermath ; @RECORD_SPECIES_SEX creature",
 		"next": "creature_capture_sex_give_oral_aftermath_choice"
 	},

@@ -124,7 +124,7 @@
 		"text": "The Murisk slowly unspools from the tension, its slick body coated in its own fluids. The luminous segments along its hide dim from a harsh glare to a soft, pulsing throb as it enters a passive, satiated state. Its seam closes tight, retaining what you left behind.",
 		"command": "@RECORD_SPECIES_SEX murisk ; @MUSIC_CLIP breath",
 		"set_flag": "sexed_murisk",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "murisk_postcombat_leave"
 	},
 	{

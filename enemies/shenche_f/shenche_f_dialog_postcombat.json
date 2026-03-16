@@ -203,7 +203,7 @@
 		"text": "You straighten up. The Shenche's legs have shifted — one hind leg pulling in by inches, the other still splayed. Its neck moves in a slow arc. The clicking resumes, faint and uneven. It's coming back around. You pull your clothes on and step away before it gets there.",
 		"command": "@SHOW_SCENE postcombat_malesex_top_aftermath ; @RECORD_SPECIES_SEX shenche",
 		"set_flag": "sexed_shenche",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "shenche_postcombat_leave"
 	},
 	{

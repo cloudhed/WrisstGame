@@ -235,7 +235,7 @@
 		"text": "You slowly slide away, stepping back from the messy, winking hole. The <Creature> lies completely still, panting heavily into the dirt. An oozing mix of fluids leaks steadily from its rear and its deflated purple cock. It doesn't even attempt to stand up, thoroughly hollowed out and defeated.",
 		"command": "@SHOW_SCENE male_top_aftermath ; @RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_male_top_aftermath_choice"
 	},
 	{
@@ -356,7 +356,7 @@
 		"text": "You sit on the defeated beast's chest for a moment, catching your breath as the last few spasms run their course. The creature's head lolls lazily to the side, its eyes rolling back as it lies thoroughly drained in a puddle of its own fluids.",
 		"command": "@RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_female_ride_aftermath_choice"
 	},
 	{
@@ -467,7 +467,7 @@
 		"text": "You finally step back, sliding your softening cock out of its mouth. A messy, thick trail of saliva and cum bridges the gap before snapping. The defeated <Creature> coughs softly, licking its chops in a total daze as it rests its heavy, exhausted head back into the dirt.",
 		"command": "@SHOW_SCENE male_top_aftermath ; @RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_top_oral_aftermath_choice"
 	},
 	{
@@ -588,7 +588,7 @@
 		"text": "You finally pull back, wiping your chin with the back of your hand. The <Creature>'s deflating purple cock flops weakly against its trembling leg. The beast pants softly, its chest barely rising and falling, totally spent and unresponsive in the dirt.",
 		"command": "@RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_receive_oral_aftermath_choice"
 	},
 	{
@@ -709,7 +709,7 @@
 		"text": "A steady stream of its coconut-scented fluid leaks heavily from your skin, dripping down onto the dirt below. The <Creature> collapses back onto the ground, its energy fully depleted and its eyes glazed over. You wipe yourself off, leaving the broken beast to recover.",
 		"command": "@RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_bottom_aftermath_choice"
 	},
 	{

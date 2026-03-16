@@ -305,7 +305,7 @@
 		"text": "The Shenche shifts its weight and takes a step forward. Your spend drips from its belly and leaves a scattered trail in the dirt. It doesn't clean itself. It doesn't look back. The long neck bends once to check the ground ahead, and then she walks, same as before — slow, mechanical, already done with whatever just happened.",
 		"command": "@SHOW_SCENE malesex_top_abdomen_aftermath ; @RECORD_SPECIES_SEX shenche",
 		"set_flag": "sexed_shenche",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "shenche_sex_male_top_abdomen_aftermath_choice"
 	},
 	{
@@ -363,7 +363,7 @@
 		"text": "You stand there breathing hard, legs unsteady. The Shenche shifts her weight forward. Her seam seals shut with a faint wet click. She stretches her long neck, bending it in a slow arc to one side, then the other. Then she walks away between the trees, the same unhurried gait, stepping over the same roots. She doesn't look back. She doesn't make a sound.",
 		"command": "@SHOW_SCENE malesex_top_aftermath ; @RECORD_SPECIES_SEX shenche",
 		"set_flag": "sexed_shenche",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "shenche_sex_male_top_aftermath_choice"
 	},
 	{

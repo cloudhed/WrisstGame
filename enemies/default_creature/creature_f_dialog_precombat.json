@@ -421,7 +421,7 @@
 		"text": "You step back, your heavy breathing slowly leveling out in the quiet air. The creature gives a final, contented hum, thick, mixed fluids slowly dripping from its rear and pooling in the dirt. Completely unfazed by the intense feral mating, the beast simply turns away from you. Driven by pure animal simplicity, it lazily returns its attention to foraging in the soil as if nothing just happened.",
 		"command": "@SHOW_SCENE malesex_rear_aftermath ; @RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_male_aftermath_choice"
 	},
 	{
@@ -686,7 +686,7 @@
 		"text": "You collapse heavily against the beast's silver chest, struggling to catch your breath. The creature gives a final, deep, contented hum. Beneath your weight, its four heavy breasts slowly begin to soften and deflate as its immediate feral arousal fades. The thick, sweet scent of piña colada lingers heavily in the air and on your sticky skin. The beast lazily licks at your cheek with its rough tongue, entirely satisfied.",
 		"command": "@SHOW_SCENE malesex_supine_aftermath ; @RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_male_aftermath_choice"
 	},
 	{

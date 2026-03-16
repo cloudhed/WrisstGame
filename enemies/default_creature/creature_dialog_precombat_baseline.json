@@ -274,7 +274,7 @@
 		"text": "Your breathing slowly levels out as the adrenaline fades. The beast gives a final, contented gurgle, a thick dollop of fluids slowly dripping from its rear and cock, before it returns its attention entirely to the half-eaten fruit on the ground, seemingly completely unfazed.",
 		"command": "@SHOW_SCENE malesex_top_aftermath ; @RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_male_top_aftermath_choice"
 	},
 	{
@@ -374,7 +374,7 @@
 		"text": "You slowly slide out of its slick mouth, strands of saliva and cum connecting you for a brief moment. You pack yourself away and get dressed while the <Creature> licks itself clean, giving a satisfied rumble before turning back to its fruit left on the ground.",
 		"command": "@SHOW_SCENE malesex_top_oral_aftermath ; @RECORD_SPECIES_SEX creature",
 		"set_flag": "sexed_creature",
-		"flag_type": "knowledge",
+		"flag_type": "sex",
 		"next": "creature_sex_male_oral_aftermath_choice"
 	},
 	{
