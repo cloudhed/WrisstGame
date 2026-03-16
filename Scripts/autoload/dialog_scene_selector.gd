@@ -7,7 +7,7 @@ const KLYFTET_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/klyf
 const HOTBATHS_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Hotbaths/hotbaths_default.tres"
 const INN_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/WindbreakInn/Windbreak_Intro.tres"
 const OLDMINE_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Oldmine/oldmine_default.tres"
-const TEMPLE_INTERIOR_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/Temple Ruins/templeruins_interior_day.tres"
+const TEMPLE_INTERIOR_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_interior_day.tres"
 
 
 func _load_scene_cached(path: String) -> DialogSceneResource:

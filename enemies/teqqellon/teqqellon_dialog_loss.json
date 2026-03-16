@@ -1,0 +1,47 @@
+[
+	{
+		"id": "teqqellon_loss_intro",
+		"type": "narration",
+		"text": "You're flat on your back. The Teqqellon has shifted over your lower half — its teal membrane pressing cold and heavy across your hips and thighs. Its lilac core pulses a few inches above your stomach, the lobes slow and deliberate. It doesn't squeeze. It waits.",
+		"next": "teqqellon_loss_choice"
+	},
+	{
+		"id": "teqqellon_loss_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Go completely still",
+				"next": "teqqellon_loss_still"
+			},
+			{
+				"text": "> Press your palms against it and push",
+				"next": "teqqellon_loss_push"
+			}
+		]
+	},
+	{
+		"id": "teqqellon_loss_still",
+		"type": "narration",
+		"text": "You stop moving. The membrane responds to the lack of resistance — it presses closer, a slow increase in weight, its surface weeping thin fluid along your skin. Your hands rest at your sides. The core drifts lower. You feel a faint chemical sting at your inner thigh, numbing and shallow. Then it stills again, reading your heat.",
+		"next": "teqqellon_loss_resolve"
+	},
+	{
+		"id": "teqqellon_loss_push",
+		"type": "narration",
+		"text": "You press your palms flat against the teal surface and push. It gives — then flows back. No grip, no resistance, no reaction. Your arms sink slightly into the membrane. You stop pushing. It settles over you again, warmer than before.",
+		"next": "teqqellon_loss_resolve"
+	},
+	{
+		"id": "teqqellon_loss_resolve",
+		"type": "narration",
+		"text": "After a long still moment, its core dims. The membrane draws back in segments, peeling from your skin with a faint wet sound and pulling its mass inward. It settles into a low, compact heap nearby — core dark, barely pulsing. You sit up.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "teqqellon_loss_end"
+	},
+	{
+		"id": "teqqellon_loss_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"end": true
+	}
+]

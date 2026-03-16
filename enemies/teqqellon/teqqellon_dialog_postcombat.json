@@ -146,7 +146,7 @@
 	{
 		"id": "teqqellon_loot_give",
 		"type": "command",
-		"command": "@add_item Misc/slime_glob 2 ",
+		"command": "@add_item Misc/slime_glob 1 ",
 		"next": "teqqellon_loot_leave_choice"
 	},
 	{

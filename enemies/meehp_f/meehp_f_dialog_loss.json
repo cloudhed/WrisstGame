@@ -1,0 +1,47 @@
+[
+	{
+		"id": "meehp_loss_intro",
+		"type": "narration",
+		"text": "You're on the ground. She stands directly over you, frills spread full, all four eyes locked on you from above. Her circular mouth is open, small teeth ringing the dark center. She inhales your scent in a long, steady pull.",
+		"next": "meehp_loss_choice"
+	},
+	{
+		"id": "meehp_loss_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Lie completely still",
+				"next": "meehp_loss_still"
+			},
+			{
+				"text": "> Try to push yourself up",
+				"next": "meehp_loss_push"
+			}
+		]
+	},
+	{
+		"id": "meehp_loss_still",
+		"type": "narration",
+		"text": "You flatten against the ground and slow your breathing. Her frills ease down by degrees. She lowers her head, inhales once more above your chest, then straightens. One hind claw lifts and resettles beside you, testing her own weight. She holds there, deciding.",
+		"next": "meehp_loss_resolve"
+	},
+	{
+		"id": "meehp_loss_push",
+		"type": "narration",
+		"text": "You get one arm under you. Her hind claw comes down immediately on your forearm — not cutting, just pressure, pinning it flat. Her frills snap wide. The clacking is fast and layered. You go still.",
+		"next": "meehp_loss_resolve"
+	},
+	{
+		"id": "meehp_loss_resolve",
+		"type": "narration",
+		"text": "The frills slow, then fold back against her jaw. She lifts her weight off you one leg at a time and steps back two paces. Her four eyes stay on you while she samples the air again. Then she turns, presses her frills flat, and walks. The clacking fades after a short distance and stops.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "meehp_loss_end"
+	},
+	{
+		"id": "meehp_loss_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"end": true
+	}
+]

@@ -61,7 +61,7 @@
         "id": "firsttime_approach",
         "type": "narration",
         "text": "You walk toward it.",
-        "command": "@SHOW_ZONE Temple Ruins/TempleOutdoorsDay",
+        "command": "@SHOW_ZONE TempleRuins/TempleOutdoorsDay",
         "clear": true,
         "next": "firsttime_approach_close"
     },
@@ -159,7 +159,7 @@
         "id": "returning_approach",
         "type": "narration",
         "text": "You walk up to the structure. The amber glow from the lower opening is steady, warm. The surface is the same — smooth, old, still warm from the day's heat.",
-        "command": "@SHOW_ZONE Temple Ruins/TempleOutdoorsDay",
+        "command": "@SHOW_ZONE TempleRuins/TempleOutdoorsDay",
         "clear": true,
         "next": "choice_return_porch"
     },

@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://btdip1lmpf870"]
 
 [ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Scripts/dialog/zone_scene.gd" id="1_qlxbe"]
-[ext_resource type="Texture2D" uid="uid://3ms8a325t8x0" path="res://Narrative/DialogScenes/Locations/Overworld/Temple Ruins/temple_overview_day.jpg" id="2_pg2un"]
+[ext_resource type="Texture2D" uid="uid://3ms8a325t8x0" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/temple_overview_day.jpg" id="2_pg2un"]
 [ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="3_fe3c2"]
 [ext_resource type="Texture2D" uid="uid://bnnrv5do1k4ix" path="res://Assets/Sprites/Particles/pine_needle.png" id="5_8gbko"]
 [ext_resource type="Texture2D" uid="uid://r2jy08s834b5" path="res://Assets/Sprites/Particles/particle_windline_fade.png" id="6_2r6lb"]
@@ -98,7 +98,7 @@ blend_mode = 1
 size = Vector2(29.6961, 54.9724)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmgi8"]
-size = Vector2(32.1133, 49.5684)
+size = Vector2(8.16645, 8.01105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkbgm"]
 size = Vector2(5.21411, 5.21407)
@@ -172,11 +172,12 @@ debug_color = Color(0.368178, 0.615864, 0, 0.42)
 position = Vector2(1253, 468)
 script = ExtResource("10_3o67x")
 unlocked_dialog_id = "fade_audio"
+action_type = "enter"
 triggers_scene_change = true
-scene_selector_key = "inn"
+scene_selector_key = "temple_interior"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_FocusTemple"]
-position = Vector2(55.5, -71.1249)
+position = Vector2(-89.1251, 240)
 scale = Vector2(14.48, 14.48)
 shape = SubResource("RectangleShape2D_vmgi8")
 

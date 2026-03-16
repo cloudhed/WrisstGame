@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d2pnx4ne5hfgc"]
+[gd_scene load_steps=30 format=3 uid="uid://d2pnx4ne5hfgc"]
 
 [ext_resource type="Script" uid="uid://cvxsguh86sjw7" path="res://Scripts/combat/combat.gd" id="1_2n3pb"]
 [ext_resource type="Script" uid="uid://cfekx4udteyr" path="res://Scripts/combat/ui/combat_visual.gd" id="1_yt1oa"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dqs8v1l8mixra" path="res://Assets/Backgrounds/combat_bg_forest_lowres.jpg" id="6_umvpd"]
 [ext_resource type="Texture2D" uid="uid://dmk756pfyisqa" path="res://daynightCyclecolorsGradient1D.tres" id="7_f8ge6"]
 [ext_resource type="PackedScene" uid="uid://ckpnn4op5ijoc" path="res://Scenes/Enemy/enemy.tscn" id="9_tmuf1"]
-[ext_resource type="Resource" path="res://enemies/shenche_f/shenche_f_enemy.tres" id="10_umvpd"]
 [ext_resource type="PackedScene" uid="uid://f536kff4iqbq" path="res://Scenes/TileTargetSelector/tile_target_selector.tscn" id="11_nar6d"]
 [ext_resource type="Script" uid="uid://dj5k02ip2tecw" path="res://Scripts/entities/enemies/runtime/enemy_handler.gd" id="12_e8ln5"]
 [ext_resource type="PackedScene" uid="uid://c70f5rm6i5pcd" path="res://Scenes/UI/intent_ui.tscn" id="12_r5ubg"]
@@ -93,7 +92,7 @@ pre_action_delay = 0.4
 post_action_delay = 0.4
 
 [node name="Enemy" parent="EnemyHandler" instance=ExtResource("9_tmuf1")]
-stats = ExtResource("10_umvpd")
+stats = null
 
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("14_r5ubg")

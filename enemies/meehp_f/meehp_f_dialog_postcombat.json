@@ -1,149 +1,165 @@
 [
-   {
-		"id": "INIT_play_audio",
+	{
+		"id": "INIT_knowledge_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_meehp"],
+			"on_success": "meehp_postcombat",
+			"on_fail": "meehp_postcombat_unknown"
+		}
+	},
+	{
+		"id": "meehp_postcombat_unknown",
+		"type": "narration",
+		"text": "The tall biped is still on its feet, breathing hard through its circular mouth. Frills open and close in short bursts under its jaw. All four eyes track you from above. It's winded, but it hasn't lowered its head or yielded the space. Its hind claws are still dug in.",
+		"next": "meehp_postcombat_choice"
+	},
+	{
+		"id": "meehp_postcombat",
+		"type": "narration",
+		"text": "The female Meehp is still on her feet, breathing hard through her circular maw. Her frills open and close in short bursts while her hind claws stay dug in. She is winded, but still tracking you with all four eyes. Her tall, narrow body holds its position. Sweat slicks the dry brown and springy green pattern of her hide. She shifts her weight onto her muscular thighs, refusing to yield.",
+		"next": "meehp_postcombat_choice"
+	},
+	{
+		"id": "meehp_postcombat_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Loot the body",
+				"next": "meehp_loot_01"
+			},
+			{
+				"text": "> Step into her space and hold your ground",
+				"next": "meehp_approach_01",
+				"hide_if": {
+					"any_of": [
+						{ "content_disabled": "feral" },
+						{ "content_disabled": "violence" }
+					]
+				}
+			},
+			{
+				"text": "> Circle wide and test her reaction",
+				"next": "meehp_test_branch_01",
+				"hide_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Leave",
+				"next": "meehp_postcombat_leave"
+			}
+		]
+	},
+	{
+		"id": "meehp_approach_01",
+		"type": "narration",
+		"text": "You step in close and stop within arm's reach. She lowers her neck, inhales along your chest and groin, and braces one claw beside your foot without striking.",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
+		"next": "meehp_approach_choice"
+	},
+	{
+		"id": "meehp_approach_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [SURRENDER] Hold still and let her mount the pace",
+				"next": "meehp_path_surrender_01"
+			},
+			{
+				"text": "> [CONTROL] Grip her posture and force your own rhythm",
+				"next": "meehp_path_control_01"
+			}
+		]
+	},
+	{
+		"id": "meehp_path_surrender_01",
+		"type": "narration",
+		"text": "You keep your stance open and wait for her timing. She answers with slow pressure through thigh and hips, testing whether you can remain steady under her weight. She shifts lower, bringing her circular mouth just inches from your groin. Warm saliva drips from her small, dark teeth onto your pants. You carefully remove your clothes. She inhales deeply, her breath hot against your bare skin. She presses her mouth over your cock. Her lips are firm and round, creating an immediate seal. She pulls back slightly, and you feel the scrape of her teeth grazing your shaft. She bobs her head, taking your length. The suction is heavy and mechanical. You brace your legs as she quickens her rhythm. You feel your climax building. You grunt and thrust forward. She holds her position, taking your cum in thick swallows. She pulls away slowly, leaving your shaft slick and exposed.",
+		"command": "@MUSIC_CLIP love",
+		"next": "meehp_aftermath"
+	},
+	{
+		"id": "meehp_path_control_01",
+		"type": "narration",
+		"text": "You catch her movement at the shoulder-line and redirect her angle. She resists with a sharp clack of teeth, then counters by pressing harder through her hind legs to reclaim dominance. You step inside her guard and drive your weight forward. She stumbles backward, hind leg hitting something behind her, and her momentum stalls. You press your forearm hard against her chest, pinning her in place. She growls, a sharp clacking sound. Her four beady eyes widen as you hold your ground. Her frills flutter rapidly against her jaw. She tests your grip, muscles tightening beneath her dry brown hide. When you do not yield, her struggles cease. She spreads her digitigrade legs slightly, exposing her slick, heavy slit. She waits, yielding to your physical control.",
+		"command": "@MUSIC_CLIP love",
+		"next": "meehp_aftermath"
+	},
+	{
+		"id": "meehp_test_branch_01",
+		"type": "narration",
+		"text": "You move in a wide arc around her. She tracks each step and mirrors your movement, frills fluttering faster whenever you cross downwind. You maintain deliberate eye contact as you step sideways. She matches the distance exactly. Her nostrils flare, and the frills beneath her chin twitch as she pulls in your scent. Every time you pause, her hind claws press deeper into the dirt.",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP choices",
+		"next": "meehp_test_choice"
+	},
+	{
+		"id": "meehp_test_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Cut across and invite contact",
+				"next": "meehp_test_contact_01"
+			},
+			{
+				"text": "> Keep distance and disengage",
+				"next": "meehp_test_disengage_01"
+			}
+		]
+	},
+	{
+		"id": "meehp_test_contact_01",
+		"type": "narration",
+		"text": "You break the arc and step straight toward her. Her posture shifts from pursuit to claim, and she closes the gap immediately. She lunges and drives you onto your back. You hit the ground hard. She immediately mounts your hips. Instead of guiding your cock into her primary slit, she shifts higher. A secondary, tighter vent presses against your tip. You push your hips upward. The entrance is rigid and narrow. She clacks her teeth in surprise but sinks down, forcing your shaft inside. The internal grip is intense, clamping around you like a vise. She grinds her pelvis into yours, using her heavy thighs for leverage. You groan as the tight friction drags against your skin. You climax quickly, shooting your seed deep into the narrow cavity. She shudders, her muscles milking the final drops from your cock before she pulls away.",
+		"command": "@MUSIC_CLIP love",
+		"next": "meehp_aftermath"
+	},
+	{
+		"id": "meehp_test_disengage_01",
+		"type": "narration",
+		"text": "You keep your pace measured and peel away from the arc. She watches, frills easing down as your distance grows.",
+		"next": "meehp_aftermath"
+	},
+	{
+		"id": "meehp_aftermath",
+		"type": "narration",
+		"text": "The female Meehp settles into a low stance, still alert but no longer pressing forward. Fluid drips slowly from your body. She watches you carefully, her four eyes blinking in sequence. The aggressive energy is gone from her posture. She straightens her long neck and begins to preen her frills.",
+		"command": "@RECORD_SPECIES_SEX meehp ; @MUSIC_CLIP breath",
+		"set_flag": "sexed_meehp",
+		"flag_type": "knowledge",
+		"next": "meehp_postcombat_leave"
+	},
+	{
+		"id": "meehp_loot_01",
+		"type": "narration",
+		"text": "You cut a single coarse fur tuft free from her flank while she stays low and watchful.",
+		"next": "meehp_loot_give"
+	},
+	{
+		"id": "meehp_loot_give",
 		"type": "command",
-		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg", 
-		"clear": true,
-		"next": "meehp_f_postcombat_intro"
-   },
-  {
-    "id": "meehp_f_postcombat_intro",
-    "type": "narration",
-    "text": "The female Meehp stands over flattened grass, breathing hard through her circular maw. Her frills open and close in short bursts while her hind claws flex into the dirt. She is winded, but still tracking you with all four eyes. Her tall, narrow body looms above you. Sweat slicks the dry brown and springy green pattern of her hide. She shifts her weight onto her muscular thighs, refusing to yield the space.",
-    "next": "meehp_f_postcombat_choice"
-  },
-  {
-    "id": "meehp_f_postcombat_choice",
-    "type": "choice",
-    "options": [
-      {
-        "text": "> Loot the body",
-        "next": "meehp_f_loot_01"
-      },
-      {
-        "text": "> Step into her ring and hold your ground",
-        "next": "meehp_f_approach_01",
-        "hide_if": {
-          "any_of": [
-            { "content_disabled": "feral" },
-            { "content_disabled": "violence" }
-          ]
-        }
-      },
-      {
-        "text": "> Circle wide and test her reaction",
-        "next": "meehp_f_test_branch_01",
-        "hide_if": { "content_disabled": "feral" }
-      },
-      {
-        "text": "> Leave the clearing",
-        "next": "meehp_f_leave_01"
-      }
-    ]
-  },
-  {
-    "id": "meehp_f_approach_01",
-    "type": "narration",
-    "text": "You step into the flattened circle and stop within arm's reach. She lowers her neck, inhales along your chest and groin, and braces one claw beside your foot without striking.",
-    "next": "meehp_f_approach_choice"
-  },
-  {
-    "id": "meehp_f_approach_choice",
-    "type": "choice",
-    "options": [
-      {
-        "text": "> [SURRENDER] Hold still and let her mount the pace",
-        "next": "meehp_f_path_surrender_01"
-      },
-      {
-        "text": "> [CONTROL] Grip her posture and force your own rhythm",
-        "next": "meehp_f_path_control_01"
-      }
-    ]
-  },
-  {
-    "id": "meehp_f_path_surrender_01",
-    "type": "narration",
-    "text": "You keep your stance open and wait for her timing. She answers with slow pressure through thigh and hips, testing whether you can remain steady under her weight. She shifts lower, bringing her circular mouth just inches from your groin. Warm saliva drips from her small, dark teeth onto your pants[cite: 143, 157]. You carefully remove your clothes. She inhales deeply, her breath hot against your bare skin. She presses her mouth over your cock. Her lips are firm and round, creating an immediate seal. She pulls back slightly, and you feel the scrape of her teeth grazing your shaft. She bobs her head, taking your length. The suction is heavy and mechanical. You brace your legs as she quickens her rhythm. You feel your climax building. You grunt and thrust forward. She holds her position, taking your cum in thick swallows. She pulls away slowly, leaving your shaft slick and exposed.",
-    "next": "meehp_f_aftermath"
-  },
-  {
-    "id": "meehp_f_path_control_01",
-    "type": "narration",
-    "text": "You catch her movement at the shoulder-line and redirect her angle. She resists with a sharp clack of teeth, then counters by pressing harder through her hind legs to reclaim dominance. You step inside her guard and drive your weight forward. She stumbles backward against a large boulder. You press your forearm hard against her chest, pinning her in place. She growls, a sharp clacking sound. Her four beady eyes widen as you hold your ground. Her frills flutter rapidly against her jaw. She tests your grip, muscles tightening beneath her dry brown hide[cite: 139, 162]. When you do not yield, her struggles cease. She spreads her digitigrade legs slightly, exposing her slick, heavy slit. She waits, yielding to your physical control.",
-    "next": "meehp_f_aftermath"
-  },
-  {
-    "id": "meehp_f_test_branch_01",
-    "type": "narration",
-    "text": "You move along the edge of the ring. She tracks each step and mirrors your arc, frills fluttering faster whenever you cross downwind. You maintain deliberate eye contact as you step sideways. She mirrors your movement perfectly, keeping the distance exact. Her nostrils flare, and the frills beneath her chin twitch as she pulls in your scent[cite: 141, 153]. Every time you pause, her hind claws dig into the dirt, ready to lunge. The tension between you hangs heavy in the air.",
-    "next": "meehp_f_test_choice"
-  },
-  {
-    "id": "meehp_f_test_choice",
-    "type": "choice",
-    "options": [
-      {
-        "text": "> Cut across the center and invite contact",
-        "next": "meehp_f_test_contact_01"
-      },
-      {
-        "text": "> Keep distance and disengage",
-        "next": "meehp_f_test_disengage_01"
-      }
-    ]
-  },
-  {
-    "id": "meehp_f_test_contact_01",
-    "type": "narration",
-    "text": "You break the circle and step straight through the centerline. Her posture shifts from pursuit to claim, and she closes the gap immediately. She lunges and drives you onto your back. You hit the ground hard. She immediately mounts your hips. Instead of guiding your cock into her primary slit, she shifts higher. A secondary, tighter vent presses against your tip. You push your hips upward. The entrance is rigid and narrow. She clacks her teeth in surprise but sinks down, forcing your shaft inside. The internal grip is intense, clamping around you like a vise. She grinds her pelvis into yours, using her heavy thighs for leverage. You groan as the tight friction drags against your skin. You climax quickly, shooting your seed deep into the narrow cavity. She shudders, her muscles milking the final drops from your cock before she pulls away.",
-    "next": "meehp_f_aftermath"
-  },
-  {
-    "id": "meehp_f_test_disengage_01",
-    "type": "narration",
-    "text": "You keep your pace measured and peel away from the ring. She watches, frills easing down as your scent trail thins in the wind.",
-    "next": "meehp_f_aftermath"
-  },
-  {
-    "id": "meehp_f_aftermath",
-    "type": "narration",
-    "text": "The grass remains flattened in a near-perfect circle. The female Meehp settles into a low stance, still alert but no longer pressing forward. Fluid drips slowly from your body to the ground. She watches you carefully, her four eyes blinking in sequence. The aggressive energy is gone from her posture. She straightens her long neck and begins to preen her frills.",
-	"command": "@RECORD_SPECIES_SEX meehp",
-    "next": "meehp_f_leave_01"
-  },
-  {
-    "id": "meehp_f_loot_01",
-    "type": "narration",
-    "text": "You cut a single coarse fur tuft free from her flank while she stays low and watchful.",
-    "next": "meehp_f_loot_give"
-  },
-  {
-    "id": "meehp_f_loot_give",
-    "type": "command",
-    "command": "@add_item Misc/coarse_fur_tuft 1",
-    "next": "meehp_f_loot_leave_choice"
-  },
-  {
-    "id": "meehp_f_loot_leave_choice",
-    "type": "choice",
-    "options": [
-      {
-        "text": "> Leave",
-        "next": "meehp_f_leave_01"
-      }
-    ]
-  },
-  {
-    "id": "meehp_f_leave_01",
-    "type": "narration",
-    "text": "You back out of the clearing and let the wind erase your track.",
-	"command": "@STOP_ALL_AMBIENCE",
-    "next": "meehp_f_end"
-  },
-  {
-    "id": "meehp_f_end",
-    "type": "command",
-    "command": "@LEAVE_ENCOUNTER"
-  }
+		"command": "@add_item Misc/coarse_fur_tuft 1",
+		"next": "meehp_loot_leave_choice"
+	},
+	{
+		"id": "meehp_loot_leave_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Leave",
+				"next": "meehp_postcombat_leave"
+			}
+		]
+	},
+	{
+		"id": "meehp_postcombat_leave",
+		"type": "narration",
+		"text": "You step back and put distance between you. She stays where she is and watches you go, frills folding in slowly as you move away.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "meehp_postcombat_end"
+	},
+	{
+		"id": "meehp_postcombat_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"end": false
+	}
 ]

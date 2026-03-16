@@ -1,43 +1,125 @@
 [
 	{
-		"id": "meehp_f_precombat_intro",
-		"type": "narration",
-		"text": "Tall grass bends in a clean circle around you. A female Meehp rises from the flattened center, larger than expected, frills opening under her jaw as she samples your scent. Her four eyes blink out of sync, then lock on you.",
-		"next": "meehp_f_precombat_choice"
+		"id": "INIT_play_audio",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg",
+		"set_flag": "knows_meehp",
+		"flag_type": "knowledge",
+		"clear": true,
+		"next": "INIT_knowledge_CHECK"
 	},
 	{
-		"id": "meehp_f_precombat_choice",
+		"id": "INIT_knowledge_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_meehp"],
+			"on_success": "meehp_precombat",
+			"on_fail": "meehp_precombat_unknown"
+		}
+	},
+	{
+		"id": "meehp_precombat_unknown",
+		"type": "narration",
+		"text": "Something tall and narrow stands a short distance ahead, balanced on two heavy legs. It hasn't moved. Near the top of its wide, flat head, four small eyes sit in a loose cluster, each twitching independently before locking on you all at once. A row of frills hangs beneath its jaw, spreading open in short bursts. It has no arms. Its hind claws press into the ground.",
+		"next": "meehp_precombat_choice"
+	},
+	{
+		"id": "meehp_precombat",
+		"type": "narration",
+		"text": "A female Meehp stands a short distance ahead, frills spreading open beneath her jaw as she samples the air. Her four eyes blink out of sequence, then settle on you together. She plants her hind claws and holds her position. She's deciding.",
+		"next": "meehp_precombat_choice"
+	},
+	{
+		"id": "meehp_precombat_choice",
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Attack",
-				"next": "meehp_f_choice_attack"
+				"text": "> Watch it carefully",
+				"next": "meehp_observe",
+				"hide_if": { "has_flag": "observed_meehp" }
 			},
 			{
-				"text": "> Leave",
-				"next": "meehp_f_choice_leave"
+				"text": "> Attack",
+				"next": "meehp_attack"
+			},
+			{
+				"text": "> Step closer",
+				"next": "meehp_approach"
+			},
+			{
+				"text": "> Back away",
+				"next": "meehp_leave"
 			}
 		]
 	},
 	{
-		"id": "meehp_f_choice_attack",
+		"id": "meehp_observe",
 		"type": "narration",
-		"text": "You plant your feet in the grass and charge before she can complete the circling posture.",
-		"next": "meehp_f_startcombat"
+		"text": "You hold still and watch. The creature is tall — head above yours when its neck straightens fully. Its body is narrow and upright, the digitigrade legs thick with muscle at the thigh. The hide runs in overlapping patches of dry brown and faded green. No arms, no wings. The frills beneath its jaw hang loose, spreading and pulling closed in short bursts, processing your scent. Its circular mouth is shut. Small, irregular clacks come from somewhere inside it.",
+		"set_flag": "observed_meehp",
+		"flag_type": "temp",
+		"next": "meehp_precombat_choice"
 	},
 	{
-		"id": "meehp_f_startcombat",
+		"id": "meehp_approach",
+		"type": "narration",
+		"text": "You take a slow step forward. Her neck swings toward you — faster than you expected. The frills snap wide open beneath her jaw, full display, each one rigid. Her four eyes pull into alignment. Her hind claws press deep. A sharp clacking builds in her throat.",
+		"command": "@STOP_ALL_AMBIENCE ; @PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
+		"clear": true,
+		"next": "meehp_approach_02"
+	},
+	{
+		"id": "meehp_approach_02",
+		"type": "narration",
+		"text": "She holds the display — frills spread, head low and forward — but doesn't charge. You're close enough to see the small teeth ringing the inside of her circular mouth. Her nostrils work along the jaw line in short pulls, sampling you carefully. The clacking drops to a slow, steady pulse. She's reading whether you'll hold or break.",
+		"next": "meehp_approach_choice"
+	},
+	{
+		"id": "meehp_approach_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Attack",
+				"next": "meehp_attack"
+			},
+			{
+				"text": "> Step back slowly",
+				"next": "meehp_approach_leave"
+			}
+		]
+	},
+	{
+		"id": "meehp_approach_leave",
+		"type": "narration",
+		"text": "You take one careful step back. She tracks you with her head but doesn't follow. The frills pull in as you widen the gap. The clacking slows, then stops. She shifts her weight, turns her neck away, and samples the air in a different direction.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_meehp"],
+		"next": "meehp_end"
+	},
+	{
+		"id": "meehp_attack",
+		"type": "narration",
+		"text": "You plant your feet and charge before she can complete the display posture.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "meehp_startcombat"
+	},
+	{
+		"id": "meehp_startcombat",
 		"type": "command",
-		"command": "@START_COMBAT"
+		"command": "@STOP_ALL_AMBIENCE ; @START_COMBAT",
+		"clear_flag": ["observed_meehp"],
+		"end": false
 	},
 	{
-		"id": "meehp_f_choice_leave",
+		"id": "meehp_leave",
 		"type": "narration",
-		"text": "You keep your body turned sideways and back out of the ring without breaking eye contact.",
-		"next": "meehp_f_end"
+		"text": "You turn your body sideways and back away without breaking eye contact. Her frills hold open for a moment, then settle against her jaw. She doesn't follow.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_meehp"],
+		"next": "meehp_end"
 	},
 	{
-		"id": "meehp_f_end",
+		"id": "meehp_end",
 		"type": "command",
 		"command": "@LEAVE_ENCOUNTER"
 	}

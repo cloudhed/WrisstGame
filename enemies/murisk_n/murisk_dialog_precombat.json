@@ -1,8 +1,32 @@
 [
 	{
-		"id": "murisk_precombat_intro",
+		"id": "INIT_play_audio",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE nature res://Audio/sound_ambience_overworld_day.ogg",
+		"set_flag": "knows_murisk",
+		"flag_type": "knowledge",
+		"clear": true,
+		"next": "INIT_knowledge_CHECK"
+	},
+	{
+		"id": "INIT_knowledge_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_murisk"],
+			"on_success": "murisk_precombat",
+			"on_fail": "murisk_precombat_unknown"
+		}
+	},
+	{
+		"id": "murisk_precombat_unknown",
 		"type": "narration",
-		"text": "A heavy, coiled Murisk lies ahead, its pale internal glow showing through wet translucent rings. It repeats a warped version of your last footstep, then goes still.",
+		"text": "Something large lies coiled ahead, translucent and pale, faintly lit from within by a slow, sickly pulse. Its body is composed of heavy, overlapping rings. It has no eyes you can find. Then a sound reaches you — your last footstep, played back hollow and wet from a blunt circular opening at one end. It stops. The pale glow dims.",
+		"next": "murisk_precombat_choice"
+	},
+	{
+		"id": "murisk_precombat",
+		"type": "narration",
+		"text": "A Murisk lies coiled ahead, its heavy translucent rings pulsing with a dim bioluminescence. It emits a warped replay of your most recent footstep from its circular mouth — hollow and slightly wrong — then goes still. Its feeding seam is sealed shut along the underside. It hasn't moved.",
 		"next": "murisk_precombat_choice"
 	},
 	{
@@ -10,30 +34,48 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Attack",
-				"next": "murisk_choice_attack"
+				"text": "> Study it carefully",
+				"next": "murisk_observe",
+				"hide_if": { "has_flag": "observed_murisk" }
 			},
 			{
-				"text": "> Leave",
-				"next": "murisk_choice_leave"
+				"text": "> Attack",
+				"next": "murisk_attack"
+			},
+			{
+				"text": "> Back away",
+				"next": "murisk_leave"
 			}
 		]
 	},
 	{
-		"id": "murisk_choice_attack",
+		"id": "murisk_observe",
+		"type": "narration",
+		"text": "You hold still and watch. Its coils are thick — each segment the width of your torso, stacked in a heavy spiral. The pale skin is translucent enough that you can see shifting fluid inside, and the bioluminescence comes from that interior, not the surface. The blunt terminus at one end houses the circular mouth: no teeth, no tongue you can identify, just a wide, dark opening that issues another copy of your breathing back at you, compressed and wet. A longitudinal seam runs along the underside of the thickest coil. It twitches faintly, independent of the rest of the body.",
+		"set_flag": "observed_murisk",
+		"flag_type": "temp",
+		"next": "murisk_precombat_choice"
+	},
+	{
+		"id": "murisk_attack",
 		"type": "narration",
 		"text": "You brace your footing and rush the Murisk before it can coil around your legs.",
+		"command": "@STOP_ALL_AMBIENCE",
 		"next": "murisk_startcombat"
 	},
 	{
 		"id": "murisk_startcombat",
 		"type": "command",
-		"command": "@START_COMBAT"
+		"command": "@STOP_ALL_AMBIENCE ; @START_COMBAT",
+		"clear_flag": ["observed_murisk"],
+		"end": false
 	},
 	{
-		"id": "murisk_choice_leave",
+		"id": "murisk_leave",
 		"type": "narration",
-		"text": "You step back one pace at a time and retreat before the echo-worm commits to the chase.",
+		"text": "You break your rhythm with a hard shuffle and back off before it can echo you again. The pale glow dims and the coils settle. It loses interest as your scent trail thins.",
+		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear_flag": ["observed_murisk"],
 		"next": "murisk_end"
 	},
 	{

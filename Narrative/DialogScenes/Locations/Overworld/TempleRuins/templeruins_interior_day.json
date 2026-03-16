@@ -2,14 +2,8 @@
     {
         "id": "INIT_audio",
         "type": "command",
-        "command": "@STOP_ALL_AMBIENCE ; @FADE_MUSIC_OUT",
+        "command": "@PLAY_AMBIENCE interior res://Audio/Ambience/Klyftet/klyftet_interior.mp3 ; @PLAY_MUSIC res://Audio/Music/Characters/Nautinto_theme.ogg",
         "clear": true,
-        "next": "INIT_ambience"
-    },
-    {
-        "id": "INIT_ambience",
-        "type": "command",
-        "command": "@PLAY_AMBIENCE interior res://Audio/Ambience/Klyftet/klyftet_interior.mp3",
         "next": "INIT_quest_complete_check"
     },
     {
@@ -49,7 +43,7 @@
         "type": "npc",
         "name": "Nautinto",
         "text": "\"Oh.\"",
-        "command": "@SHOW_PORTRAIT shrouded ; @PLAY_MUSIC res://Audio/Music/Characters/Nautinto_theme.ogg",
+        "command": "@SHOW_PORTRAIT shrouded",
         "next": "interior_nautinto_notsupposed"
     },
     {
@@ -426,6 +420,7 @@
         "type": "npc",
         "name": "Nautinto",
         "text": "\"You are back.\"",
+        "command": "@SHOW_PORTRAIT shrouded",
         "next": "interior_returning_prequest_b"
     },
     {
@@ -508,6 +503,7 @@
         "type": "npc",
         "name": "Nautinto",
         "text": "\"Welcome back.\"",
+        "command": "@SHOW_PORTRAIT shrouded",
         "next": "leave_pre"
     },
 

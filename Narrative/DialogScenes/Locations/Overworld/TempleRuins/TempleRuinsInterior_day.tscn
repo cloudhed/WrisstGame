@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://d2yxskiltjru5"]
 
 [ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Scripts/dialog/zone_scene.gd" id="1_blsvc"]
-[ext_resource type="Texture2D" uid="uid://brsghnugoypqj" path="res://Narrative/DialogScenes/Locations/Overworld/Temple Ruins/temple_interior_day.jpg.png" id="2_blsvc"]
+[ext_resource type="Texture2D" uid="uid://brsghnugoypqj" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/temple_interior_day.jpg.png" id="2_blsvc"]
 [ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="3_c5klg"]
 [ext_resource type="Texture2D" uid="uid://bnnrv5do1k4ix" path="res://Assets/Sprites/Particles/pine_needle.png" id="4_5o1ls"]
 [ext_resource type="Texture2D" uid="uid://r2jy08s834b5" path="res://Assets/Sprites/Particles/particle_windline_fade.png" id="5_byr3b"]

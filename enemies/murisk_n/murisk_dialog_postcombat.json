@@ -1,141 +1,165 @@
 [
-  {
-    "id": "murisk_postcombat_intro",
-    "type": "narration",
-    "text": "The Murisk lies half-uncoiled on the ground, its internal glow pulsing in uneven, bruised waves beneath its translucent hide. It answers your heavy breathing with a delayed, hollow mimic—a wet, raspy sound vibrating from its feeding seam. It is beaten, but its muscles twitch with residual tension, reacting to every shift in your stance as you stand over its thick, glistening body.",
-    "next": "murisk_postcombat_choice"
-  },
-  {
-    "id": "murisk_postcombat_choice",
-    "type": "choice",
-    "options": [
-      {
-        "text": "> Loot the body",
-        "next": "murisk_loot_01"
-      },
-      {
-        "text": "> Get closer and inspect the feeding seam",
-        "next": "murisk_approach_01",
-        "hide_if": {
-          "any_of": [
-            { "content_disabled": "feral" },
-            { "content_disabled": "violence" }
-          ]
-        }
-      },
-      {
-        "text": "> Test its echo response from a safe distance",
-        "next": "murisk_echo_branch_01",
-        "hide_if": { "content_disabled": "feral" }
-      },
-      {
-        "text": "> Leave it where it fell",
-        "next": "murisk_leave_01"
-      }
-    ]
-  },
-  {
-    "id": "murisk_approach_01",
-    "type": "narration",
-    "text": "You crouch near the thickest coil and study the seam that flexes along its underside. Condensation runs over the translucent rings. Each pulse tightens the opening, then releases it.",
-    "next": "murisk_approach_choice"
-  },
-  {
-    "id": "murisk_approach_choice",
-    "type": "choice",
-    "options": [
-      {
-        "text": "> [SURRENDER] Stay still and let it set the rhythm",
-        "next": "murisk_path_surrender_01"
-      },
-      {
-        "text": "> [CONTROL] Pin the coil and force your pace",
-        "next": "murisk_path_control_01"
-      }
-    ]
-  },
-  {
-    "id": "murisk_path_surrender_01",
-    "type": "narration",
-    "text": "You hold position and let the Murisk align to your movement. You expose your cock, and the creature responds instantly, lifting its thickest coil. The feeding seam parts, revealing a slick, ribbed interior glowing with a soft, bioluminescent hue. You let it guide itself over your shaft. The chamber closes in stages, clamping down with a precise, repetitive rhythm, as if replaying a pattern it already learned from your heartbeat. Its internal rings flex and squeeze, drawing you deeper into the hot, wet muscular cavity. The suction is absolute. You let out a heavy breath, and it mimics the sound perfectly, vibrating the tight passage around your cock until you thrust deep and spill your cum into its glowing depths.",
-    "next": "murisk_aftermath"
-  },
-  {
-    "id": "murisk_path_control_01",
-    "type": "narration",
-    "text": "You press your weight onto the upper coil, pinning its thick body beneath you, and force your cock into the yielding seam. The Murisk bucks once, a surge of raw instinct, but you drive your hips forward, dictating a harsh, punishing tempo. The tight, translucent rings stretch forcefully around your girth. It answers your aggressive thrusts with heavy, desperate contractions, its internal muscles constantly trying to pull the timing back to its own natural cycle. You refuse to let up, grinding against the dense, ribbed walls of its orifice. The friction builds a searing heat. With a final, dominant thrust, you push past its resistance and pump your seed deep inside its quivering chamber.",
-    "next": "murisk_aftermath"
-  },
-  {
-    "id": "murisk_echo_branch_01",
-    "type": "narration",
-    "text": "You tap the ground with your boot and listen. The Murisk answers by copying the beat through its primary opening, the sound distorted and wet, echoing from deep within its throat-like chamber. It shifts its heavy coils, the bioluminescence flaring as it matches your breath in short, expectant intervals, waiting to see what rhythm you will establish next.",
-    "next": "murisk_echo_choice"
-  },
-  {
-    "id": "murisk_echo_choice",
-    "type": "choice",
-    "options": [
-      {
-        "text": "> Close in when it syncs to your breathing",
-        "next": "murisk_echo_close_01"
-      },
-      {
-        "text": "> Break the rhythm and step away",
-        "next": "murisk_echo_break_01"
-      }
-    ]
-  },
-  {
-    "id": "murisk_echo_close_01",
-    "type": "narration",
-    "text": "When the echo aligns perfectly with your breathing, you move directly into its reach, shedding your clothes. The seam opens wider, anticipating you, as if your sound itself unlocked its physical response. You guide your rigid cock into the wet, pulsing slit. Because you have synced to its rhythm, the internal rings do not resist; they welcome you, rippling in perfect harmony with your thrusts. It is a seamless, frictionless glide into intense heat. The creature hums, matching the exact pitch of your groans, the sound vibrating directly through the tight muscular walls gripping your shaft. You ride that shared cadence until the pleasure peaks, unloading your climax into the echoing, glowing void.",
-    "next": "murisk_aftermath"
-  },
-  {
-    "id": "murisk_echo_break_01",
-    "type": "narration",
-    "text": "You snap the pattern with a hard scrape of your heel and back off. The Murisk falters, loses the copied cadence, and settles into a dimmer, slower pulse.",
-    "next": "murisk_aftermath"
-  },
-  {
-    "id": "murisk_aftermath",
-    "type": "narration",
-    "text": "The surrounding air is thick with the musk of your encounter. The Murisk slowly unspools from the tension, its slick body coated in sweat and its own fluids. It recoils slightly into itself, the luminous segments along its hide dimming from a harsh glare to a soft, pulsing throb as it enters a passive, satiated state. Its seam closes tight, retaining what you left behind.",
-	"command": "@RECORD_SPECIES_SEX murisk",
-    "next": "murisk_loot_leave_choice"
-  },
-  {
-    "id": "murisk_loot_01",
-    "type": "narration",
-    "text": "You keep your distance and cut a single rigid whisker-needle free from one cooling segment.",
-    "next": "murisk_loot_give"
-  },
-  {
-    "id": "murisk_loot_give",
-    "type": "command",
-    "command": "@add_item Misc/whisker_needle 1",
-    "next": "murisk_loot_leave_choice"
-  },
-  {
-    "id": "murisk_loot_leave_choice",
-    "type": "choice",
-    "options": [
-      {
-        "text": "> Leave",
-        "next": "murisk_leave_01"
-      }
-    ]
-  },
-  {
-    "id": "murisk_leave_01",
-    "type": "narration",
-    "text": "You leave it where it fell and put distance between you.",
-    "next": "murisk_end"
-  },
-  {
-    "id": "murisk_end",
-    "type": "command",
-    "command": "@LEAVE_ENCOUNTER"
-  }
+	{
+		"id": "INIT_knowledge_CHECK",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["knows_murisk"],
+			"on_success": "murisk_postcombat",
+			"on_fail": "murisk_postcombat_unknown"
+		}
+	},
+	{
+		"id": "murisk_postcombat_unknown",
+		"type": "narration",
+		"text": "The creature is half-uncoiled, its pale inner light pulsing in uneven, bruised waves. It answers your heavy breathing with a delayed hollow mimic — a wet, rasping sound from its circular opening. Its rings twitch with residual tension, reacting to every shift in your stance. It is beaten, but it is still reading you.",
+		"next": "murisk_postcombat_choice"
+	},
+	{
+		"id": "murisk_postcombat",
+		"type": "narration",
+		"text": "The Murisk lies half-uncoiled, its internal glow pulsing in uneven, bruised waves beneath its translucent hide. It answers your heavy breathing with a delayed, hollow mimic — a wet, raspy sound vibrating from its feeding seam. It is beaten, but its muscles twitch with residual tension, reacting to every shift in your stance as you stand over its thick, glistening body.",
+		"next": "murisk_postcombat_choice"
+	},
+	{
+		"id": "murisk_postcombat_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Loot the body",
+				"next": "murisk_loot_01"
+			},
+			{
+				"text": "> Get closer and inspect the feeding seam",
+				"next": "murisk_approach_01",
+				"hide_if": {
+					"any_of": [
+						{ "content_disabled": "feral" },
+						{ "content_disabled": "violence" }
+					]
+				}
+			},
+			{
+				"text": "> Test its echo response from a safe distance",
+				"next": "murisk_echo_branch_01",
+				"hide_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Leave it where it fell",
+				"next": "murisk_postcombat_leave"
+			}
+		]
+	},
+	{
+		"id": "murisk_approach_01",
+		"type": "narration",
+		"text": "You crouch near the thickest coil and study the seam that flexes along its underside. Condensation runs over the translucent rings. Each pulse tightens the opening, then releases it.",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
+		"next": "murisk_approach_choice"
+	},
+	{
+		"id": "murisk_approach_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [SURRENDER] Stay still and let it set the rhythm",
+				"next": "murisk_path_surrender_01"
+			},
+			{
+				"text": "> [CONTROL] Pin the coil and force your pace",
+				"next": "murisk_path_control_01"
+			}
+		]
+	},
+	{
+		"id": "murisk_path_surrender_01",
+		"type": "narration",
+		"text": "You hold position and let the Murisk align to your movement. You expose your cock, and the creature responds instantly, lifting its thickest coil. The feeding seam parts, revealing a slick, ribbed interior glowing with a soft, bioluminescent hue. You let it guide itself over your shaft. The chamber closes in stages, clamping down with a precise, repetitive rhythm, as if replaying a pattern it already learned from your heartbeat. Its internal rings flex and squeeze, drawing you deeper into the hot, wet muscular cavity. The suction is absolute. You let out a heavy breath, and it mimics the sound perfectly, vibrating the tight passage around your cock until you thrust deep and spill your cum into its glowing depths.",
+		"command": "@MUSIC_CLIP love",
+		"next": "murisk_aftermath"
+	},
+	{
+		"id": "murisk_path_control_01",
+		"type": "narration",
+		"text": "You press your weight onto the upper coil, pinning its thick body beneath you, and force your cock into the yielding seam. The Murisk bucks once, a surge of raw instinct, but you drive your hips forward, dictating a harsh, punishing tempo. The tight, translucent rings stretch forcefully around your girth. It answers your aggressive thrusts with heavy, desperate contractions, its internal muscles constantly trying to pull the timing back to its own natural cycle. You refuse to let up, grinding against the dense, ribbed walls of its orifice. The friction builds a searing heat. With a final, dominant thrust, you push past its resistance and pump your seed deep inside its quivering chamber.",
+		"command": "@MUSIC_CLIP love",
+		"next": "murisk_aftermath"
+	},
+	{
+		"id": "murisk_echo_branch_01",
+		"type": "narration",
+		"text": "You tap a hard surface with your knuckle and listen. The Murisk answers by copying the beat through its primary opening, the sound distorted and wet, echoing from deep within its throat-like chamber. It shifts its heavy coils, the bioluminescence flaring as it matches your breath in short, expectant intervals.",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP choices",
+		"next": "murisk_echo_choice"
+	},
+	{
+		"id": "murisk_echo_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Close in when it syncs to your breathing",
+				"next": "murisk_echo_close_01"
+			},
+			{
+				"text": "> Break the rhythm and step away",
+				"next": "murisk_echo_break_01"
+			}
+		]
+	},
+	{
+		"id": "murisk_echo_close_01",
+		"type": "narration",
+		"text": "When the echo aligns perfectly with your breathing, you move directly into its reach, shedding your clothes. The seam opens wider, anticipating you, as if your sound itself unlocked its physical response. You guide your rigid cock into the wet, pulsing slit. Because you have synced to its rhythm, the internal rings do not resist — they welcome you, rippling in perfect harmony with your thrusts. It is a seamless, frictionless glide into intense heat. The creature hums, matching the exact pitch of your groans, the sound vibrating directly through the tight muscular walls gripping your shaft. You ride that shared cadence until the pleasure peaks, unloading your climax into the echoing, glowing void.",
+		"command": "@MUSIC_CLIP love",
+		"next": "murisk_aftermath"
+	},
+	{
+		"id": "murisk_echo_break_01",
+		"type": "narration",
+		"text": "You snap the pattern with a hard scrape of your heel and back off. The Murisk falters, loses the copied cadence, and settles into a dimmer, slower pulse.",
+		"next": "murisk_postcombat_leave"
+	},
+	{
+		"id": "murisk_aftermath",
+		"type": "narration",
+		"text": "The Murisk slowly unspools from the tension, its slick body coated in its own fluids. The luminous segments along its hide dim from a harsh glare to a soft, pulsing throb as it enters a passive, satiated state. Its seam closes tight, retaining what you left behind.",
+		"command": "@RECORD_SPECIES_SEX murisk ; @MUSIC_CLIP breath",
+		"set_flag": "sexed_murisk",
+		"flag_type": "knowledge",
+		"next": "murisk_postcombat_leave"
+	},
+	{
+		"id": "murisk_loot_01",
+		"type": "narration",
+		"text": "You keep your distance and cut a single rigid whisker-needle free from one cooling segment.",
+		"next": "murisk_loot_give"
+	},
+	{
+		"id": "murisk_loot_give",
+		"type": "command",
+		"command": "@add_item Misc/whisker_needle 1",
+		"next": "murisk_loot_leave_choice"
+	},
+	{
+		"id": "murisk_loot_leave_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Leave",
+				"next": "murisk_postcombat_leave"
+			}
+		]
+	},
+	{
+		"id": "murisk_postcombat_leave",
+		"type": "narration",
+		"text": "You leave it where it fell and put distance between you. Its pale glow is already dimming behind you.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "murisk_postcombat_end"
+	},
+	{
+		"id": "murisk_postcombat_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"end": false
+	}
 ]

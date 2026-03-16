@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brsghnugoypqj"
-path="res://.godot/imported/temple_interior_day.jpg.png-9e0f5ec0740680f06bd66f6ebb56d245.ctex"
+path="res://.godot/imported/temple_interior_day.jpg.png-cae5055b2a806b8c6fd87deb1312fa7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Narrative/DialogScenes/Locations/Overworld/Temple Ruins/temple_interior_day.jpg.png"
-dest_files=["res://.godot/imported/temple_interior_day.jpg.png-9e0f5ec0740680f06bd66f6ebb56d245.ctex"]
+source_file="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/temple_interior_day.jpg.png"
+dest_files=["res://.godot/imported/temple_interior_day.jpg.png-cae5055b2a806b8c6fd87deb1312fa7a.ctex"]
 
 [params]
 

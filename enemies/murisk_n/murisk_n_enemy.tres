@@ -10,6 +10,7 @@ species_id = &"murisk"
 ai = ExtResource("1_fk830")
 pre_combat_dialog_path = "res://enemies/murisk_n/murisk_dialog_precombat.json"
 post_combat_dialog_path = "res://enemies/murisk_n/murisk_dialog_postcombat.json"
+loss_combat_dialog_path = "res://enemies/murisk_n/murisk_dialog_loss.json"
 is_runnable = true
 max_health = 22
 art = ExtResource("2_f1v4f")
