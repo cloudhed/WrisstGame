@@ -118,17 +118,17 @@
 			{
 				"text": "> What is this hall, exactly?",
 				"next": "place_whathall",
-				"hide_if": { "has_flag": "asked_place_hall" }
+				"hide_if": "picked"
 			},
 			{
 				"text": "> The markings on the walls — what do they mean?",
 				"next": "place_markings",
-				"hide_if": { "has_flag": "asked_place_markings" }
+				"hide_if": "picked"
 			},
 			{
 				"text": "> Do others come here?",
 				"next": "place_others",
-				"hide_if": { "has_flag": "asked_place_others" }
+				"hide_if": "picked"
 			},
 			{
 				"text": "> You've made this place feel warm. It suits you.",
@@ -153,8 +153,6 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"It was here before I came. Older than anything in Klyftet. The stone is not carved — it grew. Or was grown. I have never been certain which.\"",
-		"set_flag": "asked_place_hall",
-		"flag_type": "temp",
 		"next": "place_whathall_02"
 	},
 	{
@@ -177,8 +175,6 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"They are not writing. Not in a way you would recognise.\"",
-		"set_flag": "asked_place_markings",
-		"flag_type": "temp",
 		"next": "place_markings_02"
 	},
 	{
@@ -200,9 +196,7 @@
 		"id": "place_others",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"Sometimes. Wanderers, mostly. Other wanderers and lost souls, young and old, with nowhere to sleep. I take them in when they come.\"",
-		"set_flag": "asked_place_others",
-		"flag_type": "temp",
+		"text": "\"Sometimes. Wanderers, mostly. Young and old, with nowhere to sleep. I take them in when they come.\"",
 		"next": "place_others_02"
 	},
 	{
@@ -304,17 +298,17 @@
 			{
 				"text": "> What creatures live near here?",
 				"next": "creatures_nearlive",
-				"hide_if": { "has_flag": "asked_creatures_near" }
+				"hide_if": "picked"
 			},
 			{
 				"text": "> Are any of them dangerous?",
 				"next": "creatures_danger",
-				"hide_if": { "has_flag": "asked_creatures_danger" }
+				"hide_if": "picked"
 			},
 			{
 				"text": "> Have you studied them closely?",
 				"next": "creatures_study",
-				"hide_if": { "has_flag": "asked_creatures_study" }
+				"hide_if": "picked"
 			},
 			{
 				"text": "> I had a close encounter with a teqqellon...",
@@ -374,8 +368,6 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"The steppe holds meehps. The coast holds teqqellons. The ridgeline, shenche. In the mine below, murrisk.\"",
-		"set_flag": "asked_creatures_near",
-		"flag_type": "temp",
 		"next": "creatures_nearlive_02"
 	},
 	{
@@ -398,8 +390,6 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"All of them, if you are foolish.\"",
-		"set_flag": "asked_creatures_danger",
-		"flag_type": "temp",
 		"next": "creatures_danger_02"
 	},
 	{
@@ -422,8 +412,6 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"In my own way. I do not trap them or cut them open. I watch. I listen.\"",
-		"set_flag": "asked_creatures_study",
-		"flag_type": "temp",
 		"next": "creatures_study_02"
 	},
 	{
@@ -548,7 +536,7 @@
 		"id": "creatures_sexed_shenche_05",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"You are either very lucky or very strange. I suspect both.\"",
+		"text": "\"You are either very lucky or very unusual. I suspect both.\"",
 		"next": "creatures_hub"
 	},
 
@@ -684,18 +672,18 @@
 			{
 				"text": "> What are you, exactly? Your kind, I mean.",
 				"next": "self_murn",
-				"hide_if": { "has_flag": "asked_self_murn" }
+				"hide_if": "picked"
 			},
 			{
 				"text": "> Where did you come from?",
 				"next": "self_origin",
-				"hide_if": { "has_flag": "asked_self_origin" }
+				"hide_if": "picked"
 			},
 			{
 				"text": "> The sigils on your clothes — what do they mean?",
 				"next": "self_sigils",
 				"show_if": { "has_flag": "Nautinto_noshroud" },
-				"hide_if": { "has_flag": "asked_self_sigils" }
+				"hide_if": "picked"
 			},
 			{
 				"text": "> You look different without the shroud. Good different.",
@@ -763,7 +751,7 @@
 	{
 		"id": "self_shroud_05_show",
 		"type": "command",
-        "name":"Nautinto",
+		"name": "Nautinto",
 		"command": "@SHOW_PORTRAIT base",
 		"set_flag": "Nautinto_noshroud",
 		"flag_type": "knowledge",
@@ -802,8 +790,6 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"Murn. That is the name others use. We have an older name for ourselves, but it does not translate well into trade-tongue.\"",
-		"set_flag": "asked_self_murn",
-		"flag_type": "temp",
 		"next": "self_murn_02"
 	},
 	{
@@ -833,8 +819,6 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"North. A hill-commune past the Jorm range. Close-knit. Warm in all the ways that matter.\"",
-		"set_flag": "asked_self_origin",
-		"flag_type": "temp",
 		"next": "self_origin_02"
 	},
 	{
@@ -878,8 +862,6 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"You notice them? Good. Most do not bother to look closely enough.\"",
-		"set_flag": "asked_self_sigils",
-		"flag_type": "temp",
 		"next": "self_sigils_02"
 	},
 	{
@@ -1048,13 +1030,74 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"Come here.\"",
-		"next": "sex_disrobe_show"
+		"next": "sex_entry_gate"
+	},
+
+	{
+		"id": "sex_entry_gate",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Go to her.)",
+				"next": "sex_disrobe_show"
+			},
+			{
+				"text": "> (Stay close. Not all the way. Not yet.)",
+				"next": "sex_sitclose_01"
+			},
+			{
+				"text": "> (Step back. Not tonight.)",
+				"next": "sex_entry_back_01"
+			}
+		]
+	},
+
+	{
+		"id": "sex_sitclose_01",
+		"type": "narration",
+		"text": "You don't move toward her. You sit. Close enough to feel the warmth radiating off her body, close enough that her breath stirs your hair. She watches you settle without moving herself. Those dark eyes hold you — patient, entirely unbothered by the distance.",
+		"next": "sex_sitclose_02"
+	},
+	{
+		"id": "sex_sitclose_02",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"Mm.\"",
+		"next": "sex_sitclose_03"
+	},
+	{
+		"id": "sex_sitclose_03",
+		"type": "narration",
+		"text": "After a moment one broad arm settles across your shoulders. Not pulling you in — just resting there. You lean into it. She takes your weight without comment. Her heartbeat is slow and steady against your temple. The lamps burn low. Neither of you speaks.",
+		"next": "sex_sitclose_04"
+	},
+	{
+		"id": "sex_sitclose_04",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"There is no hurry, little one. I will be here.\"",
+		"next": "main_hub"
+	},
+
+	{
+		"id": "sex_entry_back_01",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"Of course.\"",
+		"command": "@SHOW_PORTRAIT base",
+		"next": "sex_entry_back_02"
+	},
+	{
+		"id": "sex_entry_back_02",
+		"type": "narration",
+		"text": "Her posture doesn't change. Her expression doesn't shift. She simply lets the moment pass — easy as breathing — and settles back into the quiet of the hall.",
+		"next": "main_hub"
 	},
 
 	{
 		"id": "sex_disrobe_show",
 		"type": "command",
-        "name":"Nautinto",
+		"name": "Nautinto",
 		"command": "@SHOW_PORTRAIT nude",
 		"next": "sex_disrobe"
 	},
@@ -1063,7 +1106,6 @@
 		"clear": true,
 		"type": "narration",
 		"text": "She rises, and the room shrinks around her. Standing at full height, her head nearly grazes the ceiling. Her broad hands move to the ties of her crimson wrap. She loosens them with slow, certain fingers — no hesitation, no performance. The cloth parts and slides away from her shoulders, pooling at her feet in a heavy whisper of fabric.",
-		"command": "@SHOW_PORTRAIT nude",
 		"next": "sex_disrobe_02"
 	},
 	{
@@ -1118,18 +1160,51 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Let her lead.",
+				"text": "> (Let her lead)",
 				"next": "sex_she_leads"
 			},
 			{
-				"text": "> Kiss her.",
+				"text": "> (Kiss her)",
 				"next": "sex_kiss"
 			},
 			{
-				"text": "> Touch her breasts.",
+				"text": "> (Touch her breasts)",
 				"next": "sex_touch_breasts"
+			},
+			{
+				"text": "> I've changed my mind.",
+				"next": "sex_position_back"
 			}
 		]
+	},
+
+	{
+		"id": "sex_position_back",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"Of course.\"",
+		"command": "@SHOW_PORTRAIT base",
+		"next": "sex_position_back_02"
+	},
+	{
+		"id": "sex_position_back_02",
+		"type": "narration",
+		"text": "She reaches for her crimson wraps without urgency. No displeasure in her face. She settles them back across her shoulders and sits, as though nothing interrupted.",
+		"next": "sex_position_back_03"
+	},
+	{
+		"id": "sex_position_back_03",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"The hall is still open to you. Come back when you are ready.\"",
+		"next": "sex_redress"
+	},
+	{
+		"id": "sex_redress",
+		"clear": true,
+		"type": "narration",
+		"text": "You pull your clothes back on. Neither of you speaks of it. The hall is as warm as it has always been.",
+		"next": "main_hub"
 	},
 
 	{
@@ -1219,7 +1294,7 @@
 		"id": "sex_touch_breasts_04",
 		"clear": true,
 		"type": "narration",
-		"text": "She watches you for a moment with those dark, still eyes — something quiet and amused in them. Then her hand covers yours and presses it more firmly against her breast. The bead grows and begins to run in a thin line between your fingers. It's warm. Slightly sweet, faintly mineral.",
+		"text": "She watches you for a moment with those dark, still eyes — something quiet and amused in them. Then her hand covers yours and presses it more firmly against her breast. The bead grows and begins to run in a thin line between your fingers. Warm. Slightly sweet, faintly mineral.",
 		"next": "sex_touch_breasts_05"
 	},
 	{
@@ -1229,17 +1304,22 @@
 		"text": "\"You may taste, if you wish. It is offered freely.\"",
 		"next": "sex_taste_choice"
 	},
+
 	{
 		"id": "sex_taste_choice",
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Latch on and drink.",
+				"text": "> (Latch on and drink)",
 				"next": "sex_nursing"
 			},
 			{
 				"text": "> Later. I want more of you first.",
 				"next": "sex_mainact_choice"
+			},
+			{
+				"text": "> I think I want to stop.",
+				"next": "sex_mainact_back"
 			}
 		]
 	},
@@ -1255,7 +1335,112 @@
 		"id": "sex_nursing_02",
 		"type": "narration",
 		"text": "She cradles your head against her breast. Her other arm wraps around your back, pulling you against her body. You are surrounded by her warmth, her scent, the slow vibration humming through her chest. Your cock throbs against her belly, untouched.",
-		"next": "sex_nursing_03"
+		"next": "sex_nursing_beat"
+	},
+	{
+		"id": "sex_nursing_beat",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Let her hold you)",
+				"next": "sex_nursing_03"
+			},
+			{
+				"text": "> (Give yourself over completely.)",
+				"next": "sex_nursing_tend_01"
+			}
+		]
+	},
+
+	{
+		"id": "sex_nursing_tend_01",
+		"type": "narration",
+		"text": "You stop thinking about what comes next. Your jaw works slowly. Your hands relax. You feel the shift happen in yourself — the moment where it stops being a choice and starts being something you are simply doing. She notices. Her head tilts down. She looks at you against her breast.",
+		"next": "sex_nursing_tend_02"
+	},
+	{
+		"id": "sex_nursing_tend_02",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"Good. Just that. Don't think.\"",
+		"next": "sex_nursing_tend_03"
+	},
+	{
+		"id": "sex_nursing_tend_03",
+		"type": "narration",
+		"text": "Her hand leaves your hair. Traces slowly down your spine, across the small of your back, settling at your hip. She cups you there — large, warm, holding you in place without pressure. Then her other hand comes around your front. Her thumb moves in slow deliberate strokes across your stomach. Lower.",
+		"next": "sex_nursing_tend_mid"
+	},
+
+	{
+		"id": "sex_nursing_tend_mid",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Stay. Let her.)",
+				"next": "sex_nursing_tend_04"
+			},
+			{
+				"text": "> (Pull back — you need more than this.)",
+				"next": "sex_mainact_choice"
+			}
+		]
+	},
+
+	{
+		"id": "sex_nursing_tend_04",
+		"type": "narration",
+		"text": "Her fingers find you hard, still leaking against her belly. She wraps her grip around you in the same unhurried way she does everything — broad, warm, fully present. She strokes. Slow. Long. Her palm rolls over your tip with each pass.",
+		"next": "sex_nursing_tend_05"
+	},
+	{
+		"id": "sex_nursing_tend_05",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"There it is. Such a responsive little one.\"",
+		"next": "sex_nursing_tend_06"
+	},
+	{
+		"id": "sex_nursing_tend_06",
+		"type": "narration",
+		"text": "She holds you to her breast and tends to you. One hand cradling your head in place. The other working you in that same even rhythm. The milk flows steady with each pull of your mouth. Your hips begin to rock against her grip — small, helpless motions. She lets them. Gives you a little more pressure on the return stroke.",
+		"next": "sex_nursing_tend_finish"
+	},
+
+	{
+		"id": "sex_nursing_tend_finish",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Let go. Right here.)",
+				"next": "sex_nursing_tend_climax"
+			},
+			{
+				"text": "> (Pull free — you want to be inside her.)",
+				"next": "sex_mainact_choice"
+			}
+		]
+	},
+
+	{
+		"id": "sex_nursing_tend_climax",
+		"clear": true,
+		"type": "narration",
+		"text": "You come at her breast. Your body draws inward — mouth locked tight, hips shuddering forward into her grip, fingers clutching at whatever you can reach of her. Your cock pulses in thick, shaking beats, cum running in warm lines between her fingers. She strokes you through every one. Pressure steady. Rhythm unchanged.",
+		"next": "sex_nursing_tend_climax_02"
+	},
+	{
+		"id": "sex_nursing_tend_climax_02",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"There you are.\"",
+		"next": "sex_nursing_tend_climax_03"
+	},
+	{
+		"id": "sex_nursing_tend_climax_03",
+		"type": "narration",
+		"text": "When the last tremor passes she draws you closer, not away. Your mouth slips from her nipple. She guides it back, gently. A thread of milk and saliva connects your lower lip to the nub before she settles you against her breast again — not with hunger now, just warmth. She keeps her hand wrapped loosely around your softening cock, holding you there. The mess between your bodies is warm. She makes no move to clean it.",
+		"next": "sex_catchbreath"
 	},
 	{
 		"id": "sex_nursing_03",
@@ -1290,18 +1475,44 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Let her take you in her mouth.",
+				"text": "> (Give yourself to her mouth)",
 				"next": "sex_oral"
 			},
 			{
-				"text": "> Push inside her.",
+				"text": "> (Push inside her)",
 				"next": "sex_penetrate"
 			},
 			{
-				"text": "> Ask her to hold you against her and grind.",
+				"text": "> Hold me against you.",
 				"next": "sex_grind"
+			},
+			{
+				"text": "> Stop. I need to stop.",
+				"next": "sex_mainact_back"
 			}
 		]
+	},
+
+	{
+		"id": "sex_mainact_back",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"Mm. Come here.\"",
+		"command": "@SHOW_PORTRAIT base",
+		"next": "sex_mainact_back_02"
+	},
+	{
+		"id": "sex_mainact_back_02",
+		"type": "narration",
+		"text": "She draws you in without question — one broad arm around your back, holding you against her chest for a long moment. Her warmth is the same as it always is. She makes no mention of what was begun.",
+		"next": "sex_mainact_back_03"
+	},
+	{
+		"id": "sex_mainact_back_03",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"You know where I am.\"",
+		"next": "sex_redress"
 	},
 
 	{
@@ -1329,7 +1540,17 @@
 		"id": "sex_oral_04",
 		"type": "narration",
 		"text": "She takes you into her mouth. The warmth is immediate and overwhelming — her muzzle is wide enough to engulf your entire length without effort. Her tongue wraps around your shaft, rippling along the underside in slow waves. Saliva pools around the base as she begins a deep, steady suction.",
-		"next": "sex_oral_05"
+		"next": "sex_oral_beat"
+	},
+	{
+		"id": "sex_oral_beat",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Hold still)",
+				"next": "sex_oral_05"
+			}
+		]
 	},
 	{
 		"id": "sex_oral_05",
@@ -1377,7 +1598,17 @@
 		"id": "sex_penetrate_04",
 		"type": "narration",
 		"text": "She exhales. A long, full-bodied sound. Her hand finds the back of your head and presses your face into her chest. You are buried inside her to the hilt, surrounded by heat and pressure and the overwhelming scent of her body — mineral, sweet, alive.",
-		"next": "sex_penetrate_05"
+		"next": "sex_penetrate_beat"
+	},
+	{
+		"id": "sex_penetrate_beat",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Hold on to her)",
+				"next": "sex_penetrate_05"
+			}
+		]
 	},
 	{
 		"id": "sex_penetrate_05",
@@ -1426,7 +1657,17 @@
 		"clear": true,
 		"type": "narration",
 		"text": "Her breath deepens. The vibration in her chest transfers directly through your spine. One hand slides down from your chest, her broad palm pressing flat against your stomach, her fingers just above the base of your cock. She holds you in place and grinds harder.",
-		"next": "sex_grind_05"
+		"next": "sex_grind_beat"
+	},
+	{
+		"id": "sex_grind_beat",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Rock with her)",
+				"next": "sex_grind_05"
+			}
+		]
 	},
 	{
 		"id": "sex_grind_05",
@@ -1447,11 +1688,11 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Finish in her mouth.",
+				"text": "> (Finish in her mouth)",
 				"next": "sex_oral_climax"
 			},
 			{
-				"text": "> Pull out and finish on her chest.",
+				"text": "> (Pull out. Finish on her chest.)",
 				"next": "sex_oral_climax_outside"
 			}
 		]
@@ -1476,7 +1717,7 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"Good. You gave eagerly. And such abundance.\"",
-		"next": "sex_aftermath"
+		"next": "sex_catchbreath"
 	},
 
 	{
@@ -1503,7 +1744,7 @@
 		"id": "sex_oral_climax_outside_04",
 		"type": "narration",
 		"text": "She licks her finger clean. Her eyes never leave yours.",
-		"next": "sex_aftermath"
+		"next": "sex_catchbreath"
 	},
 
 	{
@@ -1511,11 +1752,11 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Finish deep inside her.",
+				"text": "> (Finish deep inside her)",
 				"next": "sex_penetrate_climax_inside"
 			},
 			{
-				"text": "> Pull out and finish on her belly.",
+				"text": "> (Pull out. Finish on her belly.)",
 				"next": "sex_penetrate_climax_outside"
 			}
 		]
@@ -1539,7 +1780,7 @@
 		"id": "sex_penetrate_climax_inside_03",
 		"type": "narration",
 		"text": "Your orgasm stretches longer than expected — her body pulling it from you in slow, deep waves. Your hips twitch against her with each spasm. When it finally fades, you collapse against her chest, utterly spent. You feel your cum slowly beginning to leak from around your softening cock, pooling between your bodies.",
-		"next": "sex_aftermath"
+		"next": "sex_catchbreath"
 	},
 
 	{
@@ -1566,7 +1807,7 @@
 		"id": "sex_penetrate_climax_outside_04",
 		"type": "narration",
 		"text": "There is no complaint in her voice. Just warmth.",
-		"next": "sex_aftermath"
+		"next": "sex_catchbreath"
 	},
 
 	{
@@ -1574,11 +1815,11 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Push inside her and finish.",
+				"text": "> (Push inside her and finish)",
 				"next": "sex_grind_climax_inside"
 			},
 			{
-				"text": "> Cum between her folds.",
+				"text": "> (Stay between her folds)",
 				"next": "sex_grind_climax_between"
 			}
 		]
@@ -1602,7 +1843,7 @@
 		"id": "sex_grind_climax_inside_03",
 		"type": "narration",
 		"text": "Her body rocks you through it, her hips still moving in slow circles as you spill inside her. When the last tremor passes, you go slack in her arms. She holds you there, still connected, your cock softening inside the wet embrace of her body.",
-		"next": "sex_aftermath"
+		"next": "sex_catchbreath"
 	},
 
 	{
@@ -1623,7 +1864,18 @@
 		"id": "sex_grind_climax_between_03",
 		"type": "narration",
 		"text": "She holds you close until the shaking stops. Her chin rests on the top of your head. Your cock softens slowly between her slick folds, still cradled in residual warmth.",
-		"next": "sex_aftermath"
+		"next": "sex_catchbreath"
+	},
+
+	{
+		"id": "sex_catchbreath",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Catch your breath)",
+				"next": "sex_aftermath"
+			}
+		]
 	},
 
 	{
@@ -1654,11 +1906,11 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Rest against her.",
+				"text": "> (Rest against her)",
 				"next": "sex_rest"
 			},
 			{
-				"text": "> Get dressed.",
+				"text": "> (Get dressed)",
 				"next": "sex_getdressed"
 			}
 		]
@@ -1667,7 +1919,7 @@
 		"id": "sex_rest",
 		"clear": true,
 		"type": "narration",
-		"text": "You close your eyes. Her body is warm and impossibly solid around you. The vibration in her chest settles into a steady, low hum that spreads through your bones. Your thoughts slow. The world narrows to the sound of her heartbeat and the rise and fall of her breathing.",
+		"text": "You close your eyes. Her body is warm and impossibly solid around you. The vibration in her chest settles into a steady, low hum that spreads through your bones. Your limbs go heavy. The world narrows to the sound of her heartbeat and the rise and fall of her breathing.",
 		"next": "sex_rest_02"
 	},
 	{
@@ -1702,8 +1954,8 @@
 		"id": "sex_getdressed",
 		"clear": true,
 		"type": "narration",
-        "name":"Nautinto",
-		"text": "You dress slowly. Nautinto watches you with quiet attention, making no move to rush. She pulls her crimson wraps back on with practiced ease, the geometric sigils settling into their familiar patterns.",
+		"name": "Nautinto",
+		"text": "You dress slowly. A smear of dried fluid catches on the inside of your thigh — you wipe it away without thinking. Nautinto watches you with quiet attention, making no move to rush. She pulls her crimson wraps back on with practiced ease, the geometric sigils settling into their familiar patterns.",
 		"command": "@SHOW_PORTRAIT base",
 		"next": "sex_getdressed_02"
 	},
@@ -1741,12 +1993,6 @@
 	},
 	{
 		"id": "leaving",
-		"type": "command",
-		"command": "@LEAVE_ENCOUNTER",
-		"next": "end_shouldntshowup"
-	},
-	{
-		"id": "end_shouldntshowup",
 		"type": "command",
 		"command": "@LEAVE_ENCOUNTER",
 		"next": "end_shouldntshowup"

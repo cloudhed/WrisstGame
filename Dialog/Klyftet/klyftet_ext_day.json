@@ -233,8 +233,12 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> [Go inside]",
+				"text": "> [Go inside] [Normal conditional]",
 				"next": "enter_inn"
+			},
+			{
+				"text": "> [Go inside] [DEBUG Night]",
+				"next": "enter_inn_DEBUG_night"
 			},
 			{
 				"text": "> [Go to Alley]",
@@ -252,6 +256,13 @@
         "command": "@LOCATION_CHANGE inn ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
 		"clear": true,
         "next": "intro_choice_hub"
+    },
+    {
+        "id": "enter_inn_DEBUG_night",
+        "type": "command",
+        "command": "@SET_TIME night",
+		"clear": true,
+        "next": "enter_inn"
     },
     {
         "id": "whereto_debug",

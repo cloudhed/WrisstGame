@@ -463,7 +463,13 @@ func _filter_choice_options(options: Array) -> Array:
 			is_visible = is_visible and _evaluate_option_condition(opt["show_if"])
 
 		if opt.has("hide_if"):
-			is_visible = is_visible and not _evaluate_option_condition(opt["hide_if"])
+			var hide_cond: Variant = opt["hide_if"]
+			if hide_cond == "picked":
+				var next_id: String = opt.get("next", "")
+				if not next_id.is_empty() and GameState.dialog_flags.get("_picked_" + next_id, false):
+					is_visible = false
+			else:
+				is_visible = is_visible and not _evaluate_option_condition(hide_cond)
 
 		if is_visible:
 			visible.append(opt)
@@ -532,6 +538,15 @@ func _evaluate_condition_key_value(key: String, value: Variant) -> bool:
 			var npc_id: String = str(value.get("npc", ""))
 			var required: int = int(value.get("amount", 0))
 			return GameState.get_reputation(npc_id) >= required
+		"min_flirt":
+			# True if the player meets the minimum flirt level with an NPC.
+			# Usage: "show_if": { "min_flirt": { "npc": "nautinto", "amount": 10 } }
+			if typeof(value) != TYPE_DICTIONARY:
+				push_warning("⚠️ min_flirt expects a dictionary with 'npc' and 'amount'.")
+				return false
+			var npc_id: String = str(value.get("npc", ""))
+			var required: int = int(value.get("amount", 0))
+			return GameState.get_flirt(npc_id) >= required
 		"min_species_stat":
 			# True if a species stat meets a minimum value.
 			# Stat can be: "sex", "wins", "losses", "met"
@@ -680,6 +695,12 @@ func choose(index: int) -> void:
 		return
 
 	clear_dialog()
+
+	var chosen_option: Dictionary = current_choice_entry.options[index]
+	if chosen_option.get("hide_if", "") == "picked":
+		var picked_id: String = chosen_option.get("next", "")
+		if not picked_id.is_empty():
+			GameState.set_flag(GameState.dialog_flags, "_picked_" + picked_id)
 
 	var next_id: String = current_choice_entry.options[index].next
 	var next_index: int = _find_entry_index_by_id(next_id)

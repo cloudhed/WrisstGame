@@ -72,3 +72,15 @@ Core writing rules are always loaded via `.clinerules/lore-style.md`. That file 
 - Narrative voice (2nd person, present tense, physical-first)
 - World rules (Monsterfolk vs Creatures, PC consent, no sudden death)
 - Standard feral encounter structure
+
+**Monsterfolk scene writing standard** is always loaded via `.clinerules/scene-writing-monsterfolk.md`. That file covers:
+- Node cadence and micro-choice rules (1–3 nodes between choices, never more)
+- Escape hatch requirements at every escalation point
+- Choice design philosophy (character control, 3-option spread, hide_if patterns)
+- Prose rules (sensory priority order, vocabulary register, no internal monologue)
+- NPC autonomy and distinct voice requirements
+- The full escalation ladder for Monsterfolk intimacy scenes
+- Hub-and-spoke scene architecture
+- JSON structural patterns and hard prohibitions
+
+Full reference document (deep detail on all sections): `WRISST_SCENE_WRITING_STANDARD.md`

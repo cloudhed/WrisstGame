@@ -4,6 +4,7 @@ const PLAYER_STATISTICS_SCRIPT := preload("res://Scripts/autoload/player_statist
 
 signal money_changed(currency: String, new_amount: int)
 signal reputation_changed(npc_id: String, new_value: int)
+signal flirt_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
 signal fallback_equipped
 signal combat_debug_settings_changed
@@ -57,8 +58,12 @@ var knowledge_flags: Dictionary = {}
 var sex_flags: Dictionary = {}
 var temp_flags: Dictionary = {}
 
+# Time of day — global toggle for day/night scene routing
+var is_night: bool = false
+
 # NPC relationship points
 var npc_reputation: Dictionary = {}
+var npc_flirt: Dictionary = {}
 
 # Returning to stuff
 var last_scene_id: String = ""
@@ -306,6 +311,26 @@ func remove_reputation(npc_id: String, amount: int) -> bool:
 
 func get_reputation(npc_id: String) -> int:
 	return npc_reputation.get(npc_id, 0)
+
+
+# ─────────────────────────────────────────────────────────────
+# NPC flirt management
+func add_flirt(npc_id: String, amount: int) -> void:
+	var nw = npc_flirt.get(npc_id, 0) + amount
+	npc_flirt[npc_id] = nw
+	emit_signal("flirt_changed", npc_id, nw)
+
+func remove_flirt(npc_id: String, amount: int) -> bool:
+	var old = npc_flirt.get(npc_id, 0)
+	if amount > old:
+		return false
+	var nw = old - amount
+	npc_flirt[npc_id] = nw
+	emit_signal("flirt_changed", npc_id, nw)
+	return true
+
+func get_flirt(npc_id: String) -> int:
+	return npc_flirt.get(npc_id, 0)
 
 
 # ─────────────────────────────────────────────────────────────

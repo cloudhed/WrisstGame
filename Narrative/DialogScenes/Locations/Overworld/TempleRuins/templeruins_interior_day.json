@@ -520,11 +520,5 @@
         "type": "command",
         "command": "@LEAVE_ENCOUNTER",
         "next": "end_shouldntshowup"
-    },
-    {
-        "id": "end_shouldntshowup",
-        "type": "command",
-        "command": "@LEAVE_ENCOUNTER",
-        "next": "end_shouldntshowup"
     }
 ]

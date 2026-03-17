@@ -60,6 +60,8 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 				print("✅ Scene from manually set to:", GameState.last_scene_id)
 		"CHANGE_LOCATION", "LOCATION_CHANGE":
 			_change_location(parts)
+		"SET_TIME":
+			_set_time(parts)
 		"RECORD_SPECIES_SEX":
 			_record_species_sex(parts, context)
 		_:
@@ -78,6 +80,31 @@ func _change_location(parts: PackedStringArray) -> void:
 
 	print("🌍 Dialog command requested location change:", area_key)
 	Events.dialog_scene_change_requested.emit(area_key)
+
+
+func _set_time(parts: PackedStringArray) -> void:
+	if parts.size() < 2:
+		push_warning("❌ SET_TIME missing argument. Use: @SET_TIME night  or  @SET_TIME day")
+		return
+	var period := parts[1].strip_edges().to_lower()
+	if period == "night":
+		GameState.is_night = true
+		_sync_clock(2, 0)
+		print("🌙 Time set to night (02:00).")
+	elif period == "day":
+		GameState.is_night = false
+		_sync_clock(9, 0)
+		print("☀️ Time set to day (09:00).")
+	else:
+		push_warning("❌ SET_TIME got unknown period: " + period + ". Use 'night' or 'day'.")
+
+
+func _sync_clock(hours: int, minutes: int) -> void:
+	var clock := Manager.get_node_or_null("/root/overworld_node/TimeOfDayControl")
+	if clock and clock.has_method("set_current_time"):
+		clock.set_current_time(hours, minutes)
+	Manager.last_time_of_day = {"hours": hours, "minutes": minutes}
+	Manager.last_time_period = "Night" if GameState.is_night else "Day"
 
 
 func _record_species_sex(parts: PackedStringArray, context: Dictionary) -> void:
@@ -155,6 +182,13 @@ func _handle_game_state_command(cmd: String, context: Dictionary = {}) -> void:
 
 		"remove_reputation":
 			game_state.remove_reputation(value, quantity)
+
+		# === Flirt ===
+		"add_flirt":
+			game_state.add_flirt(value, quantity)
+
+		"remove_flirt":
+			game_state.remove_flirt(value, quantity)
 
 		_:
 			print("❌ Unknown game state command:", cmd)
