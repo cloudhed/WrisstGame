@@ -1656,7 +1656,7 @@
 		"id": "scene_end",
 		"type": "command",
 		"command": "@LEAVE_ENCOUNTER",
-		"next": null
+		"next": "this_is_needed_in_order_to_avoid_a_weird_glitch_where_the_game_doesn't_end_properly_and_you_get_stuck_on_a_frozen_screen_after_leaving_the_encounter"
 	},
 
 	{

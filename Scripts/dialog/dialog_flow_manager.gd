@@ -464,7 +464,7 @@ func _filter_choice_options(options: Array) -> Array:
 
 		if opt.has("hide_if"):
 			var hide_cond: Variant = opt["hide_if"]
-			if hide_cond == "picked":
+			if typeof(hide_cond) == TYPE_STRING and hide_cond == "picked":
 				var next_id: String = opt.get("next", "")
 				if not next_id.is_empty() and GameState.dialog_flags.get("_picked_" + next_id, false):
 					is_visible = false
@@ -697,7 +697,7 @@ func choose(index: int) -> void:
 	clear_dialog()
 
 	var chosen_option: Dictionary = current_choice_entry.options[index]
-	if chosen_option.get("hide_if", "") == "picked":
+	if chosen_option.get("hide_if") is String and chosen_option.get("hide_if") == "picked":
 		var picked_id: String = chosen_option.get("next", "")
 		if not picked_id.is_empty():
 			GameState.set_flag(GameState.dialog_flags, "_picked_" + picked_id)
