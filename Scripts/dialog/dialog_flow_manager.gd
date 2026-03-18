@@ -277,6 +277,8 @@ func process_entry_type(entry: Dictionary) -> void:
 			if next_index != -1:
 				current_index = next_index
 				show_next_line()
+		"check":
+			_resolve_standalone_check(entry)
 		#"check_scene_from_multi":
 			#var next_id: String = logic_handler.check_scene_from_multi(entry)
 			#var next_index: int = _find_entry_index_by_id(next_id)
@@ -560,6 +562,17 @@ func _evaluate_condition_key_value(key: String, value: Variant) -> bool:
 			if GameState.player_statistics == null:
 				return false
 			return GameState.player_statistics.get_species_stat(StringName(species_id), stat_key) >= required
+		"ability_tier":
+			# True if the named ability is assigned to the given tier. No roll happens.
+			# Usage: "show_if": { "ability_tier": { "body": "high" } }
+			# Multiple entries are AND-ed: all must match.
+			if typeof(value) != TYPE_DICTIONARY:
+				push_warning("⚠️ ability_tier expects a dictionary, e.g. { \"body\": \"high\" }")
+				return false
+			for ability in value.keys():
+				if not AbilitySystem.is_tier(str(ability), str(value[ability])):
+					return false
+			return true
 		_:
 			push_warning("⚠️ Unknown choice condition key: %s" % key)
 			return false
@@ -702,15 +715,127 @@ func choose(index: int) -> void:
 		if not picked_id.is_empty():
 			GameState.set_flag(GameState.dialog_flags, "_picked_" + picked_id)
 
-	var next_id: String = current_choice_entry.options[index].next
+	current_choice_entry = {}
+
+	# If the option carries a hidden ability check, roll and branch — no "next" needed.
+	if chosen_option.has("check"):
+		_resolve_ability_check(chosen_option)
+		return
+
+	var next_id: String = chosen_option.get("next", "")
 	var next_index: int = _find_entry_index_by_id(next_id)
 	if next_index == -1:
 		push_error("❌ Next ID not found in dialogue.")
 		return
 
 	current_index = next_index
-	current_choice_entry = {}
 	show_next_line()
+
+
+## Performs a hidden d20 ability check for a choice option and routes to the result node.
+func _resolve_ability_check(option: Dictionary) -> void:
+	var check: Dictionary = option.get("check", {})
+	var ability: String  = str(check.get("ability", "body"))
+	var dc: int          = int(check.get("dc", 10))
+	var bonus_parts: Array = []
+	var bonus: int       = _evaluate_bonus_if(option.get("bonus_if", []), bonus_parts)
+	var result: Dictionary = AbilitySystem.perform_check(ability, dc, bonus)
+	_record_and_print_roll(ability, dc, bonus, bonus_parts, result)
+
+	var target_id: String = ""
+	if result["nat_20"] and option.has("on_nat20"):
+		target_id = str(option["on_nat20"])
+	elif result["success"]:
+		target_id = str(option.get("on_success", ""))
+	else:
+		target_id = str(option.get("on_fail", ""))
+
+	if target_id.is_empty():
+		push_error("❌ Ability check: no routing target (on_success/on_fail missing).")
+		return
+
+	var next_index: int = _find_entry_index_by_id(target_id)
+	if next_index == -1:
+		push_error("❌ Ability check: target ID not found: %s" % target_id)
+		return
+
+	current_index = next_index
+	show_next_line()
+
+
+## Sums all bonus_if bonuses whose condition is currently met.
+## Each entry: { "has_item": "path" OR "has_flag": "name", "bonus": int }
+## out_parts (optional) is filled with human-readable strings for each applied bonus.
+func _evaluate_bonus_if(bonus_if: Array, out_parts: Array = []) -> int:
+	var total: int = 0
+	for entry in bonus_if:
+		if typeof(entry) != TYPE_DICTIONARY:
+			continue
+		var bonus: int = int(entry.get("bonus", 0))
+		if entry.has("has_item") and _has_item_by_key(str(entry["has_item"])):
+			total += bonus
+			out_parts.append("+%d (%s item)" % [bonus, str(entry["has_item"])])
+		elif entry.has("has_flag") and _all_flags_set([str(entry["has_flag"])]):
+			total += bonus
+			out_parts.append("+%d (%s flag)" % [bonus, str(entry["has_flag"])])
+	return total
+
+
+## Processes a standalone "type": "check" node — rolls immediately, no player input.
+func _resolve_standalone_check(entry: Dictionary) -> void:
+	var ability: String  = str(entry.get("ability", "body"))
+	var dc: int          = int(entry.get("dc", 10))
+	var bonus_parts: Array = []
+	var bonus: int       = _evaluate_bonus_if(entry.get("bonus_if", []), bonus_parts)
+	var result: Dictionary = AbilitySystem.perform_check(ability, dc, bonus)
+	_record_and_print_roll(ability, dc, bonus, bonus_parts, result)
+
+	apply_flags(entry)
+
+	var target_id: String = ""
+	if result["nat_20"] and entry.has("on_nat20"):
+		target_id = str(entry["on_nat20"])
+	elif result["success"]:
+		target_id = str(entry.get("on_success", ""))
+	else:
+		target_id = str(entry.get("on_fail", ""))
+
+	if target_id.is_empty():
+		push_error("❌ Standalone check: no routing target (on_success/on_fail missing).")
+		return
+
+	var next_index: int = _find_entry_index_by_id(target_id)
+	if next_index == -1:
+		push_error("❌ Standalone check: target ID not found: %s" % target_id)
+		return
+
+	current_index = next_index
+	show_next_line()
+
+## Records the roll breakdown to AbilitySystem.last_roll and prints it to console.
+func _record_and_print_roll(ability: String, dc: int, bonus: int, bonus_parts: Array, result: Dictionary) -> void:
+	var score: int   = AbilitySystem.get_score(ability)
+	var tier: String = AbilitySystem.get_tier(ability)
+	AbilitySystem.last_roll = {
+		"ability":     ability,
+		"tier":        tier,
+		"score":       score,
+		"roll":        result["roll"],
+		"bonus":       bonus,
+		"bonus_parts": bonus_parts.duplicate(),
+		"total":       result["total"],
+		"dc":          dc,
+		"success":     result["success"],
+		"nat_20":      result["nat_20"],
+	}
+	var outcome: String = "NAT 20!" if result["nat_20"] else ("HIT" if result["success"] else "MISS")
+	print("🎲 CHECK [%s/%s] d20:%d + score:%d + bonus:%d = %d vs DC%d → %s" % [
+		ability.to_upper(), tier.to_upper(),
+		result["roll"], score, bonus, result["total"], dc, outcome,
+	])
+	if not bonus_parts.is_empty():
+		print("   Bonuses: %s" % ", ".join(bonus_parts))
+
 
 func _find_entry_index_by_id(id: String) -> int:
 	for i in dialogue.size():

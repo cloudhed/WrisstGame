@@ -13,6 +13,54 @@ func _ready():
 	if GameState.has_signal("combat_debug_settings_changed") and not GameState.combat_debug_settings_changed.is_connected(_refresh_debug_controls):
 		GameState.combat_debug_settings_changed.connect(_refresh_debug_controls)
 	_refresh_debug_controls()
+	_build_ability_buttons()
+
+
+func _build_ability_buttons() -> void:
+	var container: VBoxContainer = VBoxContainer.new()
+	container.position = Vector2(1602, 650)
+	debug_ui.add_child(container)
+
+	for ability: String in ["body", "mind", "soul"]:
+		var row: HBoxContainer = HBoxContainer.new()
+		container.add_child(row)
+
+		var lbl: Label = Label.new()
+		lbl.text = ability.capitalize() + ":"
+		lbl.custom_minimum_size = Vector2(48, 0)
+		row.add_child(lbl)
+
+		for tier: String in ["high", "low"]:
+			var btn: Button = Button.new()
+			btn.text = "Set " + tier.capitalize()
+			btn.pressed.connect(_on_ability_override.bind(ability, tier))
+			var col: Color = Color(1.0, 0.55, 0.0) if tier == "high" else Color(0.0, 0.78, 0.78)
+			btn.add_theme_color_override("font_color", col)
+			btn.add_theme_color_override("font_hover_color", col.lightened(0.25))
+			btn.add_theme_color_override("font_pressed_color", col.darkened(0.2))
+			row.add_child(btn)
+
+
+func _on_ability_override(ability: String, tier: String) -> void:
+	var current_high: String = ""
+	var current_low: String  = ""
+	for a: String in ["body", "mind", "soul"]:
+		match AbilitySystem.get_tier(a):
+			"high": current_high = a
+			"low":  current_low  = a
+
+	# Pick the best partner so the constraint (one high, one low) is always satisfied.
+	var others: Array[String] = []
+	for a: String in ["body", "mind", "soul"]:
+		if a != ability:
+			others.append(a)
+
+	if tier == "high":
+		var new_low: String = current_low if (current_low != "" and current_low != ability) else others[0]
+		AbilitySystem.assign_abilities(ability, new_low)
+	else:
+		var new_high: String = current_high if (current_high != "" and current_high != ability) else others[0]
+		AbilitySystem.assign_abilities(new_high, ability)
 
 
 func _process(delta):
@@ -59,6 +107,19 @@ func _update_debug_info():
 	core_info += "🃏 Deck reshuffle: %s\n" % GameState.get_debug_reshuffle_mode_label()
 
 
+	core_info += "🎲 Body: %s(%d)  Mind: %s(%d)  Soul: %s(%d)\n" % [
+		AbilitySystem.get_tier("body"), AbilitySystem.get_score("body"),
+		AbilitySystem.get_tier("mind"), AbilitySystem.get_score("mind"),
+		AbilitySystem.get_tier("soul"), AbilitySystem.get_score("soul"),
+	]
+	if not AbilitySystem.last_roll.is_empty():
+		var r: Dictionary = AbilitySystem.last_roll
+		var outcome: String = "NAT 20!" if r["nat_20"] else ("HIT" if r["success"] else "MISS")
+		core_info += "   └ Last: d20:%d + %s:%d + bonus:%d = %d vs DC%d → %s\n" % [
+			r["roll"], r["ability"], r["score"], r["bonus"], r["total"], r["dc"], outcome,
+		]
+		if not r["bonus_parts"].is_empty():
+			core_info += "     Bonuses: %s\n" % ", ".join(r["bonus_parts"])
 	core_info += "🎒 Inventory size: %d\n" % GameState.player_inventory.size()
 	core_info += "🤍 iReputation entries: %d\n" % GameState.npc_reputation.size()
 

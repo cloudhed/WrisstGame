@@ -1125,7 +1125,21 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"Now you.\"",
-		"next": "sex_player_undress"
+		"next": "sex_undress_micro"
+	},
+	{
+		"id": "sex_undress_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Take your clothes off)",
+				"next": "sex_player_undress"
+			},
+			{
+				"text": "> I've changed my mind.",
+				"next": "sex_position_back"
+			}
+		]
 	},
 	{
 		"id": "sex_player_undress",
@@ -1219,7 +1233,17 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"So fragile. And so warm.\"",
-		"next": "sex_she_leads_03"
+		"next": "sex_she_leads_micro"
+	},
+	{
+		"id": "sex_she_leads_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Stay still. Let her.)",
+				"next": "sex_she_leads_03"
+			}
+		]
 	},
 	{
 		"id": "sex_she_leads_03",
@@ -1261,7 +1285,17 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"Mmh. Eager thing.\"",
-		"next": "sex_kiss_04"
+		"next": "sex_kiss_micro"
+	},
+	{
+		"id": "sex_kiss_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Stay close)",
+				"next": "sex_kiss_04"
+			}
+		]
 	},
 	{
 		"id": "sex_kiss_04",
@@ -1288,7 +1322,17 @@
 		"type": "npc",
 		"name": "Nautinto",
 		"text": "\"You cannot get enough of them.\"",
-		"next": "sex_touch_breasts_04"
+		"next": "sex_breasts_micro"
+	},
+	{
+		"id": "sex_breasts_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Keep going)",
+				"next": "sex_touch_breasts_04"
+			}
+		]
 	},
 	{
 		"id": "sex_touch_breasts_04",
@@ -1549,6 +1593,10 @@
 			{
 				"text": "> (Hold still)",
 				"next": "sex_oral_05"
+			},
+			{
+				"text": "> Stop. I need to stop.",
+				"next": "sex_mainact_back"
 			}
 		]
 	},
@@ -1716,7 +1764,7 @@
 		"id": "sex_oral_climax_03",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"Good. You gave eagerly. And such abundance.\"",
+		"text": "\"There. Good.\"",
 		"next": "sex_catchbreath"
 	},
 
@@ -1753,7 +1801,10 @@
 		"options": [
 			{
 				"text": "> (Finish deep inside her)",
-				"next": "sex_penetrate_climax_inside"
+				"check": { "ability": "soul", "dc": 12 },
+				"on_fail":    "sex_penetrate_climax_inside",
+				"on_success": "sex_penetrate_climax_inside_nat20",
+				"on_nat20":   "sex_penetrate_climax_inside_nat20"
 			},
 			{
 				"text": "> (Pull out. Finish on her belly.)",
@@ -1780,6 +1831,30 @@
 		"id": "sex_penetrate_climax_inside_03",
 		"type": "narration",
 		"text": "Your orgasm stretches longer than expected — her body pulling it from you in slow, deep waves. Your hips twitch against her with each spasm. When it finally fades, you collapse against her chest, utterly spent. You feel your cum slowly beginning to leak from around your softening cock, pooling between your bodies.",
+		"next": "sex_catchbreath"
+	},
+
+	{
+		"id": "sex_penetrate_climax_inside_nat20",
+		"clear": true,
+		"type": "narration",
+		"text": "You bury yourself and let go — but she moves first. Her hips drive up hard, once, and the angle takes you deeper than you have been all night. Her thighs lock around the backs of yours. What follows is not the measured grip you have felt from her — it is involuntary, a deep clenching that starts where your cock ends and radiates outward, her inner walls seizing and releasing in long rolling spasms that pull the cum from you in waves you are not choosing to give. She is coming too. You feel it — the heat of her flooding around you, her fluids and yours mixing somewhere too deep to reach. Both of you shaking. Neither of you in control.",
+		"next": "sex_penetrate_climax_inside_nat20_02"
+	},
+	{
+		"id": "sex_penetrate_climax_inside_nat20_02",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"Stay — stay — don't — just—\"",
+		"command": "@ADD_REPUTATION nautinto 100",
+		"next": "sex_penetrate_climax_inside_nat20_03"
+	},
+	{
+		"id": "sex_penetrate_climax_inside_nat20_03",
+		"type": "narration",
+		"text": "She stops. The words cut off and the hall fills with the sound of her breathing — ragged, pulled tight, nothing like the slow steadiness you have come to know from her. Her grip on your back does not ease. Her muzzle is pressed hard against the top of your head and stays there, trembling once, faintly. When she finally exhales it is long and unsteady, and by the end of it she is still again. She does not explain. Whatever came out of her in those few seconds stays exactly where it landed.",
+		"set_flag": "nautinto_lost_composure",
+		"flag_type": "knowledge",
 		"next": "sex_catchbreath"
 	},
 
@@ -1940,6 +2015,13 @@
 		"id": "sex_rest_04",
 		"type": "narration",
 		"text": "She presses her muzzle gently against the top of your head. A kiss, or the closest thing to one.",
+		"next": "sex_rest_candid"
+	},
+	{
+		"id": "sex_rest_candid",
+		"type": "npc",
+		"name": "Nautinto",
+		"text": "\"I had forgotten. How quiet it is, with someone here.\"",
 		"next": "sex_rest_05"
 	},
 	{
@@ -1977,6 +2059,10 @@
 			{
 				"text": "> I'll be back soon.",
 				"next": "leave_pre"
+			},
+			{
+				"text": "> (Stay a while longer)",
+				"next": "main_hub"
 			}
 		]
 	},

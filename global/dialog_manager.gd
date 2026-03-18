@@ -35,6 +35,10 @@ var flags: Dictionary = {}
 
 var is_dialog_active := true
 
+## Minimum seconds between click-to-advance inputs (prevents spam-clicking through dialog)
+const ADVANCE_COOLDOWN: float = 1.0
+var _last_advance_time: float = -INF
+
 func _ready() -> void:
 	if GameState.pending_dialog_scene_data != null:
 		dialog_scene_data = GameState.pending_dialog_scene_data
@@ -150,10 +154,16 @@ func _input(event: InputEvent) -> void:
 	if flow_manager == null or choice_box.visible:
 		return
 
+	var now := Time.get_ticks_msec() / 1000.0
+	if now - _last_advance_time < ADVANCE_COOLDOWN:
+		return
+
 	if event is InputEventKey and event.is_action_pressed("confirm"):
+		_last_advance_time = now
 		flow_manager.waiting_for_input = false
 		flow_manager.show_next_line()
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_last_advance_time = now
 		flow_manager.waiting_for_input = false
 		flow_manager.show_next_line()
 

@@ -1,61 +1,206 @@
 [
-    {
-        "id": "pactest_intro",
-        "type": "narration",
-        "text": "You stand in front of a green door.[nb]What do you do?",
-        "next": "pactest_intro_choice_hub"
-    },
-    {
-        "id": "pactest_intro_choice_hub",
-        "type": "choice",
-        "options": [
-            {
-                "text": "> [Open door]",
-                "next": "pactest_opendoor_locked"
-            },
-            {
-                "text": "> [Inspect door]",
-                "next": "pactest_inspectdoor_locked"
-            },
-            {
-                "text": "> [Use the key on the door]",
-                "next": "pactest_inspectdoor_unlocked"
-            }
-        ]
-    },
-    {
-        "id": "pactest_opendoor_locked",
-        "type": "narration",
-        "text": "You try and open the door.[p]It doesn't budge.",
-		"clear": true,
-        "next": "pactest_intro_choice_hub"
-    },
-    {
-        "id": "pactest_opendoor_unlocked",
-        "type": "narration",
-        "text": "You try and open the door with the Rusty key.[p]It clicks and swings open.",
-		"clear": true,
-        "next": "pactest_intro_choice_hub"
-    },
-    {
-        "id": "pactest_barrel",
-        "type": "narration",
-        "text": "The barrel holds a key.",
-		"clear": true,
-        "next": "pactest_intro_choice_hub"
-    },
-    {
-        "id": "pactest_barrel_empty",
-        "type": "narration",
-        "text": "The barrel that held the key is now empty.",
-		"clear": true,
-        "next": "pactest_intro_choice_hub"
-    },
-    {
-        "id": "pactest_inspectdoor_locked",
-        "type": "narration",
-        "text": "The door is about as tall as doors usually are. It is made of a uneven collection of old wooden planks, and someone has painted it green.",
-		"clear": true,
-        "next": "pactest_intro_choice_hub"
-    }
+	{
+		"id": "test_start",
+		"type": "narration",
+		"clear": false,
+		"text": "You stand before a heavy iron door set into a crumbling stone wall.[p]A faint tripwire glints at ankle height across the threshold.",
+		"next": "test_auto_trap"
+	},
+
+	{
+		"id": "test_auto_trap",
+		"type": "check",
+		"ability": "body",
+		"dc": 11,
+		"bonus_if": [
+			{ "has_flag": "spotted_tripwire", "bonus": 4 }
+		],
+		"on_success": "test_trap_cleared",
+		"on_fail": "test_trap_hit",
+		"on_nat20": "test_trap_dodged_clean"
+	},
+
+	{
+		"id": "test_trap_dodged_clean",
+		"type": "narration",
+		"clear": false,
+		"text": "[Standalone check — Body DC 11 — NAT 20][p]Your body moves before your mind catches up. You clear the wire with a foot to spare and land in a low crouch, heart steady.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_trap_cleared",
+		"type": "narration",
+		"clear": false,
+		"text": "[Standalone check — Body DC 11 — Success][p]You catch the glint of wire in time and step over it. Clean enough.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_trap_hit",
+		"type": "narration",
+		"clear": false,
+		"text": "[Standalone check — Body DC 11 — Fail][p]You clip the wire. A loose stone crashes down from the lintel and grazes your shoulder. You stumble through.",
+		"next": "test_hub"
+	},
+
+	{
+		"id": "test_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Wrench the door off its hinges]",
+				"show_if": { "ability_tier": { "body": "high" } },
+				"next": "test_ripped"
+			},
+			{
+				"text": "> [Put your shoulder into it]",
+				"check": { "ability": "body", "dc": 13 },
+				"on_success": "test_forced",
+				"on_fail": "test_bounced",
+				"on_nat20": "test_splintered"
+			},
+			{
+				"text": "> [Work the lockpick into the keyhole]",
+				"show_if": { "has_item": "Items/Consumables/lockpick" },
+				"check": { "ability": "mind", "dc": 12 },
+				"bonus_if": [
+					{ "has_item": "Items/Consumables/lockpick", "bonus": 3 },
+					{ "has_flag": "studied_locks", "bonus": 2 }
+				],
+				"on_success": "test_lock_picked",
+				"on_fail": "test_lockpick_snapped",
+				"on_nat20": "test_lock_silent"
+			},
+			{
+				"text": "> [Study the mechanism — you see exactly how it works]",
+				"show_if": { "ability_tier": { "mind": "high" } },
+				"next": "test_mechanism_read"
+			},
+			{
+				"text": "> [Listen through the door]",
+				"check": { "ability": "mind", "dc": 10 },
+				"on_success": "test_listened_heard",
+				"on_fail": "test_listened_nothing"
+			},
+			{
+				"text": "> [You already know what's on the other side. Step through.]",
+				"show_if": {
+					"all_of": [
+						{ "ability_tier": { "soul": "high" } },
+						{ "has_flag": "scouted_door" }
+					]
+				},
+				"next": "test_soul_walk"
+			},
+			{
+				"text": "> [Force the lock — break it if you have to]",
+				"hide_if": { "ability_tier": { "body": "low" } },
+				"check": { "ability": "body", "dc": 16 },
+				"on_success": "test_forced",
+				"on_fail": "test_bounced"
+			},
+			{
+				"text": "> [Examine the door carefully]",
+				"hide_if": "picked",
+				"next": "test_scouted"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "test_leave"
+			}
+		]
+	},
+
+	{
+		"id": "test_ripped",
+		"type": "narration",
+		"clear": false,
+		"text": "[Body: High — no roll][p]You close both hands around the door frame and pull. The hinges groan, then tear free. The door comes away in your hands and you toss it aside.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_splintered",
+		"type": "narration",
+		"clear": false,
+		"text": "[Choice check — Body DC 13 — NAT 20][p]Your shoulder hits the door like a ram. The frame explodes outward in a shower of splinters. You walk through without breaking stride.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_forced",
+		"type": "narration",
+		"clear": false,
+		"text": "[Choice check — Body DC 13 — Success][p]Three solid hits. On the third, the latch gives and the door grinds open.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_bounced",
+		"type": "narration",
+		"clear": false,
+		"text": "[Choice check — Body — Fail][p]The door doesn't give. Your shoulder aches. The iron doesn't care.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_lock_silent",
+		"type": "narration",
+		"clear": false,
+		"text": "[Choice check — Mind DC 12 — NAT 20, bonus_if stacked][p]The tumblers roll one by one without a sound. The door swings open before anyone could have heard a thing.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_lock_picked",
+		"type": "narration",
+		"clear": false,
+		"text": "[Choice check — Mind DC 12 — Success, bonus_if stacked][p]Methodical turns, patient pressure. A soft click. The lock opens.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_lockpick_snapped",
+		"type": "narration",
+		"clear": false,
+		"text": "[Choice check — Mind DC 12 — Fail][p]The pick catches on something and snaps off inside the keyhole. You're left holding half a tool.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_mechanism_read",
+		"type": "narration",
+		"clear": false,
+		"text": "[Mind: High — no roll][p]You run your eye over the lock plate. Simple three-tumbler construction. Worn. You know exactly what it would take to open it — and exactly how long.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_listened_heard",
+		"type": "narration",
+		"clear": false,
+		"text": "[Choice check — Mind DC 10 — Success][p]You press your ear to the iron. Breathing. Slow and measured — whatever is on the other side is waiting, not searching.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_listened_nothing",
+		"type": "narration",
+		"clear": false,
+		"text": "[Choice check — Mind DC 10 — Fail][p]You press your ear to the iron. Nothing you can make out — either silence, or you're not listening the right way.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_soul_walk",
+		"type": "narration",
+		"clear": false,
+		"text": "[Soul: High + scouted_door flag — all_of — no roll][p]You push the door open without hesitation. You already knew it would give. You already knew what was behind it.",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_scouted",
+		"type": "narration",
+		"clear": false,
+		"text": "[hide_if: picked — sets flag — option disappears after this][p]You work over the door carefully. Standard lock, worn hinges, no warding. The space beyond is still. You file it away.",
+		"set_flag": "scouted_door",
+		"flag_type": "temp",
+		"next": "test_hub"
+	},
+	{
+		"id": "test_leave",
+		"type": "narration",
+		"clear": false,
+		"text": "You turn your back on the door and walk.",
+		"end": true
+	}
 ]

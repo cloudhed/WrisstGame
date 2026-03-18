@@ -206,9 +206,164 @@
     "id": "ref_check_temp_flags",
     "type": "check_temp_flags_multi",
     "check_temp_flags": {
-      "teq_ref_started": "ref_combat_and_exit",
-      "default": "ref_combat_and_exit"
+      "teq_ref_started": "ref_remaining_conditions",
+      "default": "ref_remaining_conditions"
     }
+  },
+
+  {
+    "_comment": "Remaining show_if / hide_if condition types not covered above: min_reputation, min_flirt, min_species_stat, has_item_count, content_disabled, hide_if:'picked'.",
+    "id": "ref_remaining_conditions",
+    "type": "choice",
+    "options": [
+      {
+        "text": "> min_reputation gate (bitalgut >= 5)",
+        "next": "ref_conditions_result",
+        "show_if": { "min_reputation": { "npc": "bitalgut", "amount": 5 } }
+      },
+      {
+        "text": "> min_flirt gate (bitalgut >= 3)",
+        "next": "ref_conditions_result",
+        "show_if": { "min_flirt": { "npc": "bitalgut", "amount": 3 } }
+      },
+      {
+        "text": "> min_species_stat gate (meehp sex >= 1)",
+        "next": "ref_conditions_result",
+        "show_if": { "min_species_stat": { "species": "meehp", "stat": "sex", "amount": 1 } }
+      },
+      {
+        "text": "> has_item_count gate (slime_glob >= 2)",
+        "next": "ref_conditions_result",
+        "show_if": { "has_item_count": { "item": "Misc/slime_glob", "amount": 2, "op": ">=" } }
+      },
+      {
+        "text": "> Hidden by content_disabled:feral",
+        "next": "ref_conditions_result",
+        "hide_if": { "content_disabled": "feral" }
+      },
+      {
+        "_comment": "hide_if:'picked' — option disappears permanently after first click. The '_picked_<next_id>' flag is auto-set in dialog_flags.",
+        "text": "> One-shot option (hide_if: picked)",
+        "hide_if": "picked",
+        "next": "ref_conditions_result"
+      },
+      {
+        "text": "> Continue",
+        "next": "ref_conditions_result"
+      }
+    ]
+  },
+
+  {
+    "id": "ref_conditions_result",
+    "type": "narration",
+    "text": "Condition branch resolved.",
+    "next": "ref_ability_auto_check"
+  },
+
+  {
+    "_comment": "Standalone check node — fires immediately, no player input. Body DC 12 with bonus_if flag. on_nat20 is optional; omit it and nat 20 falls through to on_success.",
+    "id": "ref_ability_auto_check",
+    "type": "check",
+    "ability": "body",
+    "dc": 12,
+    "bonus_if": [
+      { "has_flag": "teq_ref_started", "bonus": 2 }
+    ],
+    "on_success": "ref_ability_auto_pass",
+    "on_fail": "ref_ability_auto_fail",
+    "on_nat20": "ref_ability_auto_nat20"
+  },
+
+  {
+    "id": "ref_ability_auto_nat20",
+    "type": "narration",
+    "text": "[Standalone Body check — Nat 20] Perfect.",
+    "next": "ref_ability_choice_hub"
+  },
+  {
+    "id": "ref_ability_auto_pass",
+    "type": "narration",
+    "text": "[Standalone Body check — Success]",
+    "next": "ref_ability_choice_hub"
+  },
+  {
+    "id": "ref_ability_auto_fail",
+    "type": "narration",
+    "text": "[Standalone Body check — Fail]",
+    "next": "ref_ability_choice_hub"
+  },
+
+  {
+    "_comment": "Ability system choice patterns. ability_tier in show_if/hide_if does NOT roll — it only gates visibility. check on an option triggers a hidden d20 roll on click.",
+    "id": "ref_ability_choice_hub",
+    "type": "choice",
+    "options": [
+      {
+        "_comment": "ability_tier show_if — visible only when body is the High ability. No roll.",
+        "text": "> [Body:High only — no roll]",
+        "show_if": { "ability_tier": { "body": "high" } },
+        "next": "ref_ability_result"
+      },
+      {
+        "_comment": "ability_tier hide_if — hidden when soul is Low.",
+        "text": "> [Hidden when Soul:Low]",
+        "hide_if": { "ability_tier": { "soul": "low" } },
+        "next": "ref_ability_result"
+      },
+      {
+        "_comment": "Basic choice check — hidden d20 roll on click. No bonus_if, no nat20 path.",
+        "text": "> [Mind check DC 10 — basic]",
+        "check": { "ability": "mind", "dc": 10 },
+        "on_success": "ref_ability_result",
+        "on_fail": "ref_ability_result"
+      },
+      {
+        "_comment": "Choice check with on_nat20. bonus_if: both has_item and has_flag entries stack additively.",
+        "text": "> [Body check DC 14 — bonus_if + nat20 path]",
+        "check": { "ability": "body", "dc": 14 },
+        "bonus_if": [
+          { "has_item": "Misc/slime_glob", "bonus": 3 },
+          { "has_flag": "teq_ref_started", "bonus": 2 }
+        ],
+        "on_success": "ref_ability_result",
+        "on_fail": "ref_ability_result",
+        "on_nat20": "ref_ability_result"
+      },
+      {
+        "_comment": "show_if gates visibility (has_item), check gates the roll. bonus_if can reference the same item — they serve different roles.",
+        "text": "> [Visible only with slime_glob — Soul check DC 11]",
+        "show_if": { "has_item": "Misc/slime_glob" },
+        "check": { "ability": "soul", "dc": 11 },
+        "bonus_if": [
+          { "has_item": "Misc/slime_glob", "bonus": 2 }
+        ],
+        "on_success": "ref_ability_result",
+        "on_fail": "ref_ability_result"
+      },
+      {
+        "_comment": "all_of combining ability_tier with a flag — both must pass for option to appear.",
+        "text": "> [Soul:High AND flag:teq_ref_started — no roll]",
+        "show_if": {
+          "all_of": [
+            { "ability_tier": { "soul": "high" } },
+            { "has_flag": "teq_ref_started" }
+          ]
+        },
+        "next": "ref_ability_result"
+      },
+      {
+        "text": "> Continue",
+        "next": "ref_ability_result"
+      }
+    ]
+  },
+
+  {
+    "id": "ref_ability_result",
+    "type": "narration",
+    "text": "Ability branch resolved.",
+    "next": "ref_combat_and_exit"
   },
 
   {

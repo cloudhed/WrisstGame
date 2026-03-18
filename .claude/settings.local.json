@@ -3,7 +3,8 @@
     "allow": [
       "Bash(python3:*)",
       "Bash(node -e \"const fs = require\\(''fs''\\); try { JSON.parse\\(fs.readFileSync\\(''Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_interior_postquest_day.json'',''utf8''\\)\\); console.log\\(''Valid JSON''\\); } catch\\(e\\) { console.error\\(''INVALID:'', e.message\\); }\")",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "Bash(xargs grep:*)"
     ]
   }
 }
