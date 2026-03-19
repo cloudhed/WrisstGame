@@ -735,7 +735,7 @@ func choose(index: int) -> void:
 ## Performs a hidden d20 ability check for a choice option and routes to the result node.
 func _resolve_ability_check(option: Dictionary) -> void:
 	var check: Dictionary = option.get("check", {})
-	var ability: String  = str(check.get("ability", "body"))
+	var ability: String  = AbilitySystem.resolve_ability(str(check.get("ability", "body")))
 	var dc: int          = int(check.get("dc", 10))
 	var bonus_parts: Array = []
 	var bonus: int       = _evaluate_bonus_if(option.get("bonus_if", []), bonus_parts)
@@ -783,7 +783,7 @@ func _evaluate_bonus_if(bonus_if: Array, out_parts: Array = []) -> int:
 
 ## Processes a standalone "type": "check" node — rolls immediately, no player input.
 func _resolve_standalone_check(entry: Dictionary) -> void:
-	var ability: String  = str(entry.get("ability", "body"))
+	var ability: String  = AbilitySystem.resolve_ability(str(entry.get("ability", "body")))
 	var dc: int          = int(entry.get("dc", 10))
 	var bonus_parts: Array = []
 	var bonus: int       = _evaluate_bonus_if(entry.get("bonus_if", []), bonus_parts)
@@ -814,8 +814,9 @@ func _resolve_standalone_check(entry: Dictionary) -> void:
 
 ## Records the roll breakdown to AbilitySystem.last_roll and prints it to console.
 func _record_and_print_roll(ability: String, dc: int, bonus: int, bonus_parts: Array, result: Dictionary) -> void:
-	var score: int   = AbilitySystem.get_score(ability)
-	var tier: String = AbilitySystem.get_tier(ability)
+	var is_flat: bool = ability == "flat"
+	var score: int   = 0 if is_flat else AbilitySystem.get_score(ability)
+	var tier: String = "flat" if is_flat else AbilitySystem.get_tier(ability)
 	AbilitySystem.last_roll = {
 		"ability":     ability,
 		"tier":        tier,

@@ -1501,14 +1501,28 @@
 	{
 		"id": "sex_bar_07",
 		"type": "narration",
-		"text": "The attention is the warmth. Even now — hips snapping, breathing ragged — he notices everything. His free hand shifts to the small of your back. The angle changes. The next thrust hits different. Deeper. You groan against the counter and he does it again. And again.",
-		"next": "sex_bar_07b"
+		"text": "The attention is the warmth. Even now — hips snapping, breathing ragged — he notices everything. His free hand shifts to the small of your back. The angle changes. The next thrust hits deeper.",
+		"next": "sex_bar_07_choice"
+	},
+	{
+		"id": "sex_bar_07_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Groan into the counter)",
+				"next": "sex_bar_07b"
+			},
+			{
+				"text": "> (Stifle your noises)",
+				"next": "sex_bar_08"
+			}
+		]
 	},
 	{
 		"id": "sex_bar_07b",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "A single, clipped exhale through his nose. Almost a laugh. Like your reaction told him something he already knew.",
+		"text": "You groan against the counter as his lenght hammers against your prostate. A single, clipped exhale through his nose, almost a laugh.",
 		"next": "sex_bar_08"
 	},
 	{
@@ -1534,10 +1548,19 @@
 				"next": "sex_bar_10"
 			},
 			{
-				"text": "> (Shift your hips — make him pull out)",
-				"next": "sex_bar_10_outside"
+				"text": "> (Try and make him pull out)",
+				"check": { "ability": "body", "dc": 10 },
+				"on_success": "sex_bar_10_outside",
+				"on_fail": "sex_bar_10_outside_fail",
+				"on_nat20": "sex_bar_10_outside"
 			}
 		]
+	},
+	{
+		"id": "sex_bar_10_outside_fail",
+		"type": "narration",
+		"text": "In an effort to not get filled-up with the impending seed you try to push him off. He doesn't budge. His grip on your hip tightens even more and he pulls you back onto him with a growl. His hips slam into you, spurred on by the noise of your erection slapping against the counter.",
+		"next": "sex_bar_10"
 	},
 	{
 		"id": "sex_bar_10",

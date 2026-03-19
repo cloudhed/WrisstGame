@@ -45,10 +45,27 @@ func get_tier(ability_name: String) -> String:
 	return assignments.get(ability_name.to_lower(), "mid")
 
 
+## Resolves tier aliases ("high", "mid", "low") to the real ability name.
+## "flat" and named abilities pass through unchanged.
+func resolve_ability(ability_name: String) -> String:
+	var lower := ability_name.to_lower()
+	match lower:
+		"high", "mid", "low":
+			for ability in assignments.keys():
+				if assignments[ability] == lower:
+					return ability
+			return VALID_ABILITIES[0]
+		_:
+			return lower
+
+
 ## Rolls 1d20 + ability score + bonus vs dc. Natural 20 always succeeds.
+## Accepts real ability names, tier aliases ("high"/"mid"/"low"), or "flat" (no score added).
 func perform_check(ability_name: String, dc: int, bonus: int = 0) -> Dictionary:
+	var resolved: String = resolve_ability(ability_name)
 	var roll: int  = randi_range(1, 20)
-	var total: int = roll + get_score(ability_name) + bonus
+	var score: int = 0 if resolved == "flat" else get_score(resolved)
+	var total: int = roll + score + bonus
 	var nat_20: bool = roll == 20
 	return {
 		"success": nat_20 or total >= dc,

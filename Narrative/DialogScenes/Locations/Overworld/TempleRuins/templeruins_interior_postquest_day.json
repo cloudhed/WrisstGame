@@ -1803,7 +1803,7 @@
 				"text": "> (Finish deep inside her)",
 				"check": { "ability": "soul", "dc": 12 },
 				"on_fail":    "sex_penetrate_climax_inside",
-				"on_success": "sex_penetrate_climax_inside_nat20",
+				"on_success": "sex_penetrate_climax_inside",
 				"on_nat20":   "sex_penetrate_climax_inside_nat20"
 			},
 			{

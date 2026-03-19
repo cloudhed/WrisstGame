@@ -104,6 +104,10 @@
 				"next": "test_scouted"
 			},
 			{
+				"text": "> [Test tier-based and flat rolls]",
+				"next": "test_tier_hub"
+			},
+			{
 				"text": "> [Leave]",
 				"next": "test_leave"
 			}
@@ -196,6 +200,109 @@
 		"flag_type": "temp",
 		"next": "test_hub"
 	},
+	{
+		"id": "test_tier_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Roll against your HIGH stat (DC 15)]",
+				"check": { "ability": "high", "dc": 15 },
+				"on_success": "test_tier_high_success",
+				"on_fail": "test_tier_high_fail",
+				"on_nat20": "test_tier_high_nat20"
+			},
+			{
+				"text": "> [Roll against your MID stat (DC 12)]",
+				"check": { "ability": "mid", "dc": 12 },
+				"on_success": "test_tier_mid_success",
+				"on_fail": "test_tier_mid_fail"
+			},
+			{
+				"text": "> [Roll against your LOW stat (DC 8)]",
+				"check": { "ability": "low", "dc": 8 },
+				"on_success": "test_tier_low_success",
+				"on_fail": "test_tier_low_fail"
+			},
+			{
+				"text": "> [Roll flat — pure luck, no ability score (DC 11)]",
+				"check": { "ability": "flat", "dc": 11 },
+				"on_success": "test_tier_flat_success",
+				"on_fail": "test_tier_flat_fail"
+			},
+			{
+				"text": "> [Back]",
+				"next": "test_hub"
+			}
+		]
+	},
+
+	{
+		"id": "test_tier_high_nat20",
+		"type": "narration",
+		"clear": false,
+		"text": "[HIGH tier roll — DC 15 — NAT 20][p]Whatever your best is, you just hit its ceiling. Effortless.",
+		"next": "test_tier_hub"
+	},
+	{
+		"id": "test_tier_high_success",
+		"type": "narration",
+		"clear": false,
+		"text": "[HIGH tier roll — DC 15 — Success][p]Your strongest stat carried you over the line.",
+		"next": "test_tier_hub"
+	},
+	{
+		"id": "test_tier_high_fail",
+		"type": "narration",
+		"clear": false,
+		"text": "[HIGH tier roll — DC 15 — Fail][p]Even your best wasn't enough this time.",
+		"next": "test_tier_hub"
+	},
+
+	{
+		"id": "test_tier_mid_success",
+		"type": "narration",
+		"clear": false,
+		"text": "[MID tier roll — DC 12 — Success][p]Average, but it got you there.",
+		"next": "test_tier_hub"
+	},
+	{
+		"id": "test_tier_mid_fail",
+		"type": "narration",
+		"clear": false,
+		"text": "[MID tier roll — DC 12 — Fail][p]Middle-of-the-road wasn't quite enough.",
+		"next": "test_tier_hub"
+	},
+
+	{
+		"id": "test_tier_low_success",
+		"type": "narration",
+		"clear": false,
+		"text": "[LOW tier roll — DC 8 — Success][p]Your worst stat scraped through. The bar was low.",
+		"next": "test_tier_hub"
+	},
+	{
+		"id": "test_tier_low_fail",
+		"type": "narration",
+		"clear": false,
+		"text": "[LOW tier roll — DC 8 — Fail][p]Even an easy task trips you up where you're weakest.",
+		"next": "test_tier_hub"
+	},
+
+	{
+		"id": "test_tier_flat_success",
+		"type": "narration",
+		"clear": false,
+		"text": "[FLAT roll — DC 11 — Success][p]Pure luck. No skill, no stat — just the dice.",
+		"next": "test_tier_hub"
+	},
+	{
+		"id": "test_tier_flat_fail",
+		"type": "narration",
+		"clear": false,
+		"text": "[FLAT roll — DC 11 — Fail][p]Pure luck. The dice weren't in your favor.",
+		"next": "test_tier_hub"
+	},
+
 	{
 		"id": "test_leave",
 		"type": "narration",
