@@ -19,25 +19,14 @@
 	{
 		"id": "night_first_entry",
 		"type": "narration",
-		"text": "The Windbreak is empty.[p]Tables cleared. Fire banked down to coals. The last customers long gone. One oil lamp burns behind the bar, casting the room in amber and long shadow. Outside, the mountain wind presses against the shutters in slow, low notes — a sound that belongs to this place the same way the stone walls do.",
+		"text": "The Windbreak is empty. The tables that had been busy earlier in the day are cleared, and the fire has banked down to coals. No customers seem to be here anymore. One oil lamp burns faintly behind the bar, casting the room in amber and long shadow. Outside, the wind presses against the shutters in slow, low notes",
 		"next": "night_first_entry_02"
 	},
 	{
 		"id": "night_first_entry_02",
 		"type": "narration",
-		"text": "Tavo is there.",
-		"clear": true,
-		"next": "night_first_entry_03"
-	},
-	{
-		"id": "night_first_entry_03",
-		"type": "narration",
-		"text": "Alone behind the counter, moving through the closing routine with the automatic precision of someone who has done it ten thousand times. Stacking cups. Wiping the bar. Checking the jug levels. The apron is still on. It will probably be on when he dies.[p]He hasn't looked up. Or he's pretending he hasn't.",
-		"next": "night_tavo_notice"
-	},
-	{
-		"id": "night_tavo_notice",
-		"type": "command",
+		"name": "Tavo-Pavo",
+		"text": "Tavo-Pavo is alone behind the counter, moving through the closing routine like he's done it every night for years. The cups gets stacked, the bar gets wiped down. He's still wearing the apron, surprisingly clean after a work shift.",
 		"command": "@SHOW_PORTRAIT bar_base",
 		"next": "night_tavo_first_01"
 	},
@@ -45,7 +34,36 @@
 		"id": "night_tavo_first_01",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "He doesn't look up.[p]\"Bar's closed.\"[p]A beat. He sets down the cup he's wiping.[p]\"...Sit down if you're going to stand there.\"",
+		"text": "Without even looking up, he grunts. \"Bar's closed.\"",
+		"next": "night_hub"
+	},
+	{
+		"id": "night_tavo_first_01_answer",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Clear your throat]",
+				"next": "night_tavo_first_02"
+			},
+			{
+				"text": "> I was under the impression bars in mountain passes stayed open late",
+				"next": "night_tavo_first_02"
+			},
+			{
+				"text": "> Even if I pay more than the usual?",
+				"next": "night_tavo_first_02"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "night_leave"
+			}
+		]
+	},
+	{
+		"id": "night_tavo_first_02",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "He throws you a quick glance as he sets down the cup he's wiping.[p]\"...At least sit down if you're going to stand there.\"",
 		"next": "night_hub"
 	},
 
@@ -154,7 +172,7 @@
 				"hide_if": "picked"
 			},
 			{
-				"text": "> [Hold his gaze. Don't look away.]",
+				"text": "> [Hold his gaze.]",
 				"next": "flirt_night_gaze",
 				"show_if": {
 					"all_of": [
@@ -201,7 +219,7 @@
 	{
 		"id": "night_drink_first",
 		"type": "narration",
-		"text": "He doesn't ask what you want. He pulls two clay cups from the stack and fills them both from the same jug — the good bottle, kept under the counter and not on the shelf. He sets one in front of you without looking at you.",
+		"text": "He doesn't ask what you want and instead pulls two clay cups from the stack and fills them both from a jug procured from under the counter. He sets one in front of you without looking at you.",
 		"set_flag": "tavo_night_drink_1",
 		"flag_type": "dialog",
 		"next": "night_drink_first_02"
@@ -210,14 +228,14 @@
 		"id": "night_drink_first_02",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"Closing drink. Don't read into it.\"",
+		"text": "\"Closing drink.\"",
 		"command": "@add_flirt tavo_pavo 10",
 		"next": "night_hub"
 	},
 	{
 		"id": "night_drink_second",
 		"type": "narration",
-		"text": "He refills without being asked — yours first, then his. He sets the jug down less precisely than before. The second drink goes down fast for him. His ears shift, tracking you.",
+		"text": "Without asking he refills the cups. Yours first, then his. He sets the jug down less precisely than before. The second drink goes down fast for him. His ears shift, tracking you.",
 		"set_flag": "tavo_night_drink_2",
 		"flag_type": "dialog",
 		"next": "night_drink_second_02"
@@ -238,9 +256,9 @@
 	},
 	{
 		"id": "night_drink_third",
-		"clear": true,
+		"clear": false,
 		"type": "narration",
-		"text": "The third cup. He moves through the pour with the same precision as before — the body doesn't forget — but something has gone loose behind his eyes. His ears drift independently rather than tracking sound. A flush has crept up through the fur at their tips.[p]Nöteri. Low tolerance. Enjoys a drink anyway.",
+		"text": "The third cup. He moves through the pour with the same precision as before, but something has gone loose behind his eyes. His ears drift independently rather than tracking sound. A flush has crept up through the fur at their tips.",
 		"set_flag": "tavo_night_drink_3",
 		"flag_type": "dialog",
 		"next": "night_drink_third_02"
@@ -249,7 +267,7 @@
 		"id": "night_drink_third_02",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "He looks at his cup. Sets it down. Picks it back up.[p]\"This place almost didn't make it through the second winter. Roof collapsed on the east side. Just — sat down one night. Three meters of stone. I didn't sleep for three days after.\"",
+		"text": "He looks at his cup. Sets it down. Picks it back up.[p]\"This place almost didn't make it through the second snow season. Roof collapsed on the east side. Just sat down one night. Four meters of stone. I didn't sleep for three days after.\"",
 		"next": "night_drink_third_03"
 	},
 	{
@@ -294,34 +312,28 @@
 		"id": "flirt_night_alone",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"Always. Kekk would forget to lock the door half the time. Rüba leaves the fire too high.\" He stacks a cup. \"I don't trust the closing to anyone else.\"",
+		"text": "\"Always. Kekk would forget to lock the door half the time, and usually leaves the fire too high.\" He stacks a cup. \"Don't trust the closing to anyone else but yourself.\"",
 		"next": "flirt_night_alone_02"
 	},
 	{
 		"id": "flirt_night_alone_02",
 		"type": "narration",
-		"text": "A quiet settles. He doesn't fill it. Just keeps moving.",
+		"text": "A quiet settles that doesn't get filled. Tavo-Pavo keeps being busy behind the heavy counter.",
 		"command": "@add_flirt tavo_pavo 10",
 		"next": "night_hub"
 	},
 
 	{
 		"id": "flirt_night_place",
-		"type": "narration",
-		"text": "The empty tables. The low light. The sound the wind makes finding the seams in the shutters. You say it out loud without really meaning to.",
+		"type": "npc",
+		"name": "Tavo-Pavo",
+		"text": "He pauses mid-wipe.\"Most people don't stay long enough to notice.\"",
 		"next": "flirt_night_place_02"
 	},
 	{
 		"id": "flirt_night_place_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He pauses mid-wipe.[p]\"Most people don't stay long enough to notice.\"",
-		"next": "flirt_night_place_03"
-	},
-	{
-		"id": "flirt_night_place_03",
 		"type": "narration",
-		"text": "He doesn't elaborate. His tail twitches once at the base and goes still.",
+		"text": "His tail twitches once at the base and goes still.",
 		"command": "@add_flirt tavo_pavo 10",
 		"next": "night_hub"
 	},
@@ -358,20 +370,38 @@
 		"id": "night_talk_scar",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "He doesn't look at it. He knows which one.[p]\"Old business. Nothing you need to know.\"",
-		"next": "night_talk_scar_02"
+		"text": "He shrugs. \"Old business. Nothing you need to know.\"",
+		"next": "night_talk_scar_02_choice"
+	},
+	{
+		"id": "night_talk_scar_02_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Was it one of the ferals?",
+				"next": "night_talk_scar_02"
+			},
+			{
+				"text": "> Was it a customer?",
+				"next": "night_talk_scar_02"
+			},
+			{
+				"text": "> [Let it go]",
+				"next": "night_talk_scar_02"
+			}
+		]
 	},
 	{
 		"id": "night_talk_scar_02",
 		"type": "narration",
-		"text": "A long pause. He keeps moving. Something in his jaw has gone tight.",
+		"text": "He seems to be lost in thought for a moment, as something in his jaw goes tighter.",
 		"next": "night_talk_scar_03"
 	},
 	{
 		"id": "night_talk_scar_03",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"It didn't finish me. That's the whole story.\"",
+		"text": "\"...\"\"It didn't finish me. That's the whole story.\"",
 		"command": "@add_flirt tavo_pavo 10",
 		"next": "night_hub"
 	},
@@ -379,7 +409,7 @@
 	{
 		"id": "flirt_night_easier",
 		"type": "narration",
-		"text": "He goes very still.[p]It lasts less than a second. Then he picks up the cloth and wipes the counter again.",
+		"text": "He goes very still for a split second, before he picks up the cloth and wipes the counter again.",
 		"next": "flirt_night_easier_02"
 	},
 	{
@@ -387,27 +417,20 @@
 		"type": "npc",
 		"name": "Tavo-Pavo",
 		"text": "\"Don't.\"",
-		"next": "flirt_night_easier_03"
-	},
-	{
-		"id": "flirt_night_easier_03",
-		"type": "narration",
-		"text": "He doesn't move away.",
-		"command": "@add_flirt tavo_pavo 20",
 		"next": "night_hub"
 	},
 
 	{
 		"id": "flirt_night_closer",
 		"type": "narration",
-		"text": "You round the end of the counter and come to his side. There's barely room. He doesn't tell you to stop.[p]He side-eyes you from about chest height. Keeps polishing a cup that was already clean.",
+		"text": "You round the end of the counter and come to his side. There's barely room for the two of you back here.[p]He side-eyes you from about chest height as he keeps polishing a cup that was already clean.",
 		"next": "flirt_night_closer_02"
 	},
 	{
 		"id": "flirt_night_closer_02",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"Don't move things.\"",
+		"text": "\"Don't bump anything.\"",
 		"command": "@SHOW_PORTRAIT bar_annoyed",
 		"set_flag": "tavo_flirt_closer",
 		"flag_type": "knowledge",
@@ -424,7 +447,7 @@
 	{
 		"id": "flirt_night_watch",
 		"type": "narration",
-		"text": "You say it plainly. You've been watching him work all night and you like it.[p]He freezes mid-wipe.",
+		"text": "He freezes mid-wipe.",
 		"next": "flirt_night_watch_02"
 	},
 	{
@@ -446,7 +469,7 @@
 		"id": "flirt_night_gaze",
 		"clear": true,
 		"type": "narration",
-		"text": "You stop talking.[p]You just watch him. He reaches for another cup and glances up — reflex, checking the room — and catches you looking at him.[p]He doesn't reach for the cup.",
+		"text": "He reaches for another cup and glances up and catches you looking at him.[p]His paw pauses a few centimeters from the cup.",
 		"next": "flirt_night_gaze_02"
 	},
 	{
@@ -466,7 +489,7 @@
 		"id": "flirt_night_gaze_04",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "He sets the cloth down.[p]First time all night.",
+		"text": "He sets the cloth down for the first time all night.",
 		"command": "@SHOW_PORTRAIT bar_base ; @add_flirt tavo_pavo 20",
 		"next": "tavo_initiate_01"
 	},

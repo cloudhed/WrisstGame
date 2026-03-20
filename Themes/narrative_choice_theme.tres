@@ -7,7 +7,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skubk"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsm7u"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al1vr"]
+bg_color = Color(0.560054, 0.181734, 0.157979, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_al1vr"]
 
@@ -31,12 +32,12 @@ bg_color = Color(0.421141, 0.212102, 0.507426, 1)
 [resource]
 default_font_size = 22
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(0.951771, 0.39358, 0.793586, 1)
-Button/colors/font_hover_pressed_color = Color(0.578113, 0.17939, 0.461174, 1)
-Button/colors/font_pressed_color = Color(0.578113, 0.17939, 0.461174, 1)
+Button/colors/font_hover_color = Color(0.944952, 0.541378, 0.495945, 1)
+Button/colors/font_hover_pressed_color = Color(0.97, 0.409825, 0.3589, 1)
+Button/colors/font_pressed_color = Color(0.566216, 0.810566, 0.930293, 1)
 Button/fonts/font = ExtResource("1_al1vr")
 Button/styles/disabled = SubResource("StyleBoxEmpty_skubk")
-Button/styles/focus = SubResource("StyleBoxEmpty_wsm7u")
+Button/styles/focus = SubResource("StyleBoxFlat_al1vr")
 Button/styles/hover = SubResource("StyleBoxEmpty_al1vr")
 Button/styles/normal = SubResource("StyleBoxEmpty_jry3a")
 Button/styles/pressed = SubResource("StyleBoxEmpty_lfhyy")

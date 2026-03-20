@@ -21,7 +21,7 @@ drift_range_y = 0.0
 drift_time = 2.0
 
 [node name="BubbleWrapper" type="MarginContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
 offset_right = 20.0
 offset_bottom = 28.0
 mouse_filter = 2
