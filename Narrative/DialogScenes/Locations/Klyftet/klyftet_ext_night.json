@@ -1,0 +1,186 @@
+[
+	{
+		"id": "start_audio",
+		"type": "command",
+		"command": "@PLAY_MUSIC res://Audio/Music/Klyftet/music_klyftet_exterior.mp3 ; @PLAY_AMBIENCE wind res://Audio/Ambience/Klyftet/klyftet_wind.mp3",
+		"clear": false,
+		"next": "enter_from_inn"
+	},
+
+	{
+		"id": "enter_from_inn",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["visiting_inn"],
+			"on_success": "switch_inn_exterior_intro",
+			"on_fail": "enter_from_hotbaths"
+		}
+	},
+	{
+		"id": "enter_from_hotbaths",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["visiting_hotbaths"],
+			"on_success": "return_from_north",
+			"on_fail": "enter_from_oldmine"
+		}
+	},
+	{
+		"id": "enter_from_oldmine",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["visiting_oldmine"],
+			"on_success": "return_from_north",
+			"on_fail": "enter_first_time_check"
+		}
+	},
+
+	{
+		"id": "enter_first_time_check",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["Entered_Klyftet"],
+			"on_success": "night_south_hub",
+			"on_fail": "intro_first_time"
+		}
+	},
+
+	{
+		"id": "intro_first_time",
+		"type": "narration",
+		"text": "You step into Klyftet for the first time — or what you can see of it. Lanterna lights flicker along the main road, but most of the stalls and side streets are dark and shuttered. The wind carries a chill.\n\nThe pass town is quieter than you expected.",
+		"clear": true,
+		"next": "set_entered_klyftet"
+	},
+	{
+		"id": "set_entered_klyftet",
+		"type": "command",
+		"set_flag": "Entered_Klyftet",
+		"flag_type": "event",
+		"next": "night_south_hub"
+	},
+
+	{
+		"id": "return_from_north",
+		"type": "narration",
+		"text": "You make your way back through the darkened streets toward the south end of town. Most doors are bolted. The place feels smaller at night.",
+		"clear_flag": ["visiting_hotbaths", "visiting_oldmine"],
+		"clear": true,
+		"next": "switch_south_intro"
+	},
+
+	{
+		"id": "switch_south_intro",
+		"type": "command",
+		"command": "@SHOW_ZONE Klyftet/KlyftetExtSouthNight ; @STOP_AMBIENCE lake",
+		"clear": true,
+		"next": "night_south_hub"
+	},
+	{
+		"id": "night_south_hub",
+		"type": "choice",
+		"clear": false,
+		"options": [
+			{
+				"text": "> [Go to the Inn]",
+				"next": "switch_inn_exterior_intro"
+			},
+			{
+				"text": "> [Go to the Lake]",
+				"next": "switch_lakeside_intro"
+			},
+			{
+				"text": "> [Look at Sign]",
+				"next": "look_sign"
+			},
+			{
+				"text": "> [Leave Klyftet]",
+				"next": "leave_klyftet"
+			}
+		]
+	},
+
+	{
+		"id": "look_sign",
+		"type": "narration",
+		"text": "The crude stone sign is painted with a rust-red color: [b]KLYFTET[/b], probably the name of the town.",
+		"clear": true,
+		"next": "night_south_hub"
+	},
+
+	{
+		"id": "switch_inn_exterior_intro",
+		"type": "command",
+		"command": "@SHOW_ZONE Klyftet/KlyftetExtInnDay",
+		"clear": true,
+		"next": "inn_exterior_narration"
+	},
+	{
+		"id": "inn_exterior_narration",
+		"type": "narration",
+		"text": "The Windbreak looms ahead. Warm light spills from its windows — the only welcoming glow on this stretch of street.",
+		"clear_flag": ["visiting_inn"],
+		"clear": false,
+		"next": "inn_hub"
+	},
+	{
+		"id": "inn_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Go inside]",
+				"next": "enter_inn"
+			},
+			{
+				"text": "> [Go back to South Entrance]",
+				"next": "switch_south_intro"
+			}
+		]
+	},
+	{
+		"id": "enter_inn",
+		"type": "command",
+		"command": "@LOCATION_CHANGE inn ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear": true
+	},
+
+	{
+		"id": "switch_lakeside_intro",
+		"type": "command",
+		"command": "@SHOW_ZONE Klyftet/KlyftetExtLakesideDay ; @PLAY_AMBIENCE lake res://Audio/Ambience/Klyftet/lake_waves.mp3",
+		"clear": true,
+		"next": "lakeside_narration"
+	},
+	{
+		"id": "lakeside_narration",
+		"type": "narration",
+		"text": "The path down to the lake is mostly dark. The water catches what little moonlight there is, silver and still.",
+		"clear": false,
+		"next": "lakeside_hub"
+	},
+	{
+		"id": "lakeside_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Return to town]",
+				"next": "switch_south_intro"
+			}
+		]
+	},
+
+	{
+		"id": "leave_klyftet",
+		"type": "narration",
+		"text": "You step back out into the wilderness.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear": true,
+		"next": "leave_klyftet_end"
+	},
+	{
+		"id": "leave_klyftet_end",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"next": "this_is_needed_in_order_to_avoid_a_weird_glitch_where_the_game_doesn't_end_properly_and_you_get_stuck_on_a_frozen_screen_after_leaving_the_encounter"
+	}
+]

@@ -4,11 +4,12 @@ extends Node
 var _scene_cache: Dictionary = {}
 
 const KLYFTET_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres"
-const KLYFTET_NIGHT_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres" #klyftet_ext_south_night.tres
+const KLYFTET_NIGHT_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_night.tres"
 const HOTBATHS_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Hotbaths/hotbaths_default.tres"
 const INN_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/WindbreakInn/Windbreak_Intro.tres"
 const INN_POSTQUEST_NIGHT_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/WindbreakInn/Windbreak_Postquest_Night.tres"
 const OLDMINE_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Oldmine/oldmine_default.tres"
+const TEMPLE_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_day.tres"
 const TEMPLE_INTERIOR_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_interior_day.tres"
 
 
@@ -34,6 +35,8 @@ func get_scene(area: String) -> DialogSceneResource:
 			return _get_inn_scene()
 		"oldmine":
 			return _get_oldmine_scene()
+		"temple":
+			return _get_temple_scene()
 		"temple_interior":
 			return _get_temple_interior_scene()
 		"market":
@@ -71,6 +74,9 @@ func _get_inn_scene() -> DialogSceneResource:
 func _get_oldmine_scene() -> DialogSceneResource:
 	return _load_scene_cached(OLDMINE_SCENE_PATH)
 
+
+func _get_temple_scene() -> DialogSceneResource:
+	return _load_scene_cached(TEMPLE_SCENE_PATH)
 
 func _get_temple_interior_scene() -> DialogSceneResource:
 	return _load_scene_cached(TEMPLE_INTERIOR_SCENE_PATH)

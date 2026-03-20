@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=6 format=3 uid="uid://d1srjtrbbu8q2"]
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=6 format=3 uid="uid://b1tnrrfd1okle"]
 
 [ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_7vshn"]
 [ext_resource type="Resource" uid="uid://ci0n5huurah7d" path="res://Characters/Minttärä/minttärä_resource.tres" id="2_amqr6"]

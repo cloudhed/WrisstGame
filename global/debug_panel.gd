@@ -97,6 +97,7 @@ func _refresh_debug_controls() -> void:
 
 func _update_debug_info():
 	var core_info = ""
+	core_info += "%s %s\n" % ["🌙" if GameState.is_night else "☀️", "Night" if GameState.is_night else "Day"]
 	core_info += "💾 Player: %s (%s)\n" % [GameState.player_name, GameState.player_gender]
 	core_info += "💰 Crowns: %d\n" % GameState.player_crowns
 	core_info += "💰 Öre: %d\n" % GameState.player_ore

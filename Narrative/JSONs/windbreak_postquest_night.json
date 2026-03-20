@@ -70,7 +70,7 @@
 	{
 		"id": "night_repeat_entry",
 		"type": "narration",
-		"text": "The Windbreak is quiet. One lamp. The wind outside. Tavo is at the bar — same place, same apron, same motion — and he looks up when you come in.",
+		"text": "The Windbreak is quiet again. One oil lamp holds the bar in amber, and the wind presses against the shutters in those same low notes. Tavo is at the bar — same place, same apron, same motion — and he looks up when you come in.",
 		"next": "night_repeat_tavo"
 	},
 	{
@@ -109,7 +109,7 @@
 	{
 		"id": "postgame_drink_02",
 		"type": "narration",
-		"text": "You sit there. He cleans. The fire ticks down to nothing.[p]It's enough.",
+		"text": "You take a stool at the bar and let him work. The fire ticks down to nothing.[p]It's enough.",
 		"next": "night_leave"
 	},
 	{
@@ -250,7 +250,7 @@
 	{
 		"id": "night_drink_second_03",
 		"type": "narration",
-		"text": "He's aware this isn't what you were talking about. He keeps wiping.",
+		"text": "He knows this isn't what you were talking about. He keeps his eyes on the counter and keeps wiping the same spot.",
 		"command": "@add_flirt tavo_pavo 10",
 		"next": "night_hub"
 	},
@@ -296,7 +296,7 @@
 	{
 		"id": "flirt_night_rough_02",
 		"type": "narration",
-		"text": "He looks up from the counter. Something in the question caught on something. He looks back down.",
+		"text": "He looks up from the counter — something in the question catches on him and holds him there a beat — before he looks back down.",
 		"next": "flirt_night_rough_03"
 	},
 	{
@@ -318,7 +318,7 @@
 	{
 		"id": "flirt_night_alone_02",
 		"type": "narration",
-		"text": "A quiet settles that doesn't get filled. Tavo-Pavo keeps being busy behind the heavy counter.",
+		"text": "A quiet settles that doesn't get filled. Tavo-Pavo stays busy behind the counter, moving through the last of the closing work.",
 		"command": "@add_flirt tavo_pavo 10",
 		"next": "night_hub"
 	},
@@ -333,7 +333,7 @@
 	{
 		"id": "flirt_night_place_02",
 		"type": "narration",
-		"text": "His tail twitches once at the base and goes still.",
+		"text": "His tail makes one slow twitch at the base and settles, the only sign that the comment landed at all.",
 		"command": "@add_flirt tavo_pavo 10",
 		"next": "night_hub"
 	},
@@ -355,7 +355,7 @@
 	{
 		"id": "night_talk_history_03",
 		"type": "narration",
-		"text": "He picks up the cloth again.",
+		"text": "He picks up the cloth and turns back to the bar, putting his hands to work.",
 		"next": "night_talk_history_04"
 	},
 	{
@@ -439,7 +439,7 @@
 	{
 		"id": "flirt_night_closer_03",
 		"type": "narration",
-		"text": "He doesn't move away. His shoulder is barely an inch from your arm.[p]He keeps working.",
+		"text": "He stays where he is, his shoulder barely an inch from your arm. His hands go back to the work without comment.",
 		"command": "@add_flirt tavo_pavo 20",
 		"next": "night_hub"
 	},
@@ -447,7 +447,7 @@
 	{
 		"id": "flirt_night_watch",
 		"type": "narration",
-		"text": "He freezes mid-wipe.",
+		"text": "He stops mid-wipe, the cloth held flat and still against the counter.",
 		"next": "flirt_night_watch_02"
 	},
 	{
@@ -460,7 +460,7 @@
 	{
 		"id": "flirt_night_watch_03",
 		"type": "narration",
-		"text": "He resumes. Slower than before. His nose twitches twice.",
+		"text": "He starts wiping again, slower than before, his nose twitching twice against the lamplight.",
 		"command": "@add_flirt tavo_pavo 20",
 		"next": "night_hub"
 	},
@@ -482,7 +482,7 @@
 	{
 		"id": "flirt_night_gaze_03",
 		"type": "narration",
-		"text": "You don't answer. You hold it.[p]The fire ticks in the grate. The wind moves across the shutters.",
+		"text": "You don't answer — you hold the look and let the silence stretch.[p]The fire ticks in the grate. The wind moves across the shutters.",
 		"next": "flirt_night_gaze_04"
 	},
 	{
@@ -498,7 +498,7 @@
 		"id": "tavo_initiate_01",
 		"clear": true,
 		"type": "narration",
-		"text": "He's still.[p]Fully still. Hands flat on the counter. The bar between you feels like it's made of something thinner than wood.",
+		"text": "He has gone completely still, both hands flat on the counter.[p]The bar between you feels like it's made of something thinner than wood.",
 		"next": "tavo_initiate_02"
 	},
 	{
@@ -511,7 +511,7 @@
 	{
 		"id": "tavo_initiate_03",
 		"type": "narration",
-		"text": "He doesn't look away.[p]His ears are flushed — visibly even through the fur — pressed slightly back. Warm at the tips.",
+		"text": "He holds the look. His ears are flushed and pressed slightly back, the warmth visible at the tips even through the fur.",
 		"next": "tavo_initiate_04"
 	},
 	{
@@ -560,7 +560,7 @@
 		"id": "sex_wrist_attempt",
 		"clear": true,
 		"type": "narration",
-		"text": "You bring your hand up and close it around his wrist.[p]He stops moving.",
+		"text": "You bring your hand up and close it around his wrist, your fingers settling over the fur and bone.[p]The motion in him stops completely.",
 		"set_flag": "tavo_wrist_attempted",
 		"flag_type": "dialog",
 		"next": "sex_wrist_attempt_02"
@@ -675,7 +675,7 @@
 	{
 		"id": "sex_bj_stop_early_03",
 		"type": "narration",
-		"text": "He picks up the cloth. Goes back to the counter. His ears are still flushed.",
+		"text": "He picks up the cloth and goes back to the counter, ears still flushed at the tips.",
 		"next": "night_hub"
 	},
 	{
@@ -802,7 +802,7 @@
 	{
 		"id": "sex_bj_end_only",
 		"type": "narration",
-		"text": "You get back to your feet.[p]He's already pulling himself together. One smooth motion — adjusting, straightening. He looks at you. Then away.",
+		"text": "You get back to your feet.[p]He's already pulling himself together — adjusting and straightening in one efficient motion. He looks at you, then looks away.",
 		"set_flag": "tavo_night_sex_happened",
 		"flag_type": "sex",
 		"command": "@RECORD_SPECIES_SEX noteri",
@@ -1012,7 +1012,7 @@
 	{
 		"id": "sex_deny_13",
 		"type": "narration",
-		"text": "He doesn't see you stand.[p]You move fast.",
+		"text": "He doesn't see you stand. You move before he can gather himself.",
 		"next": "sex_deny_position_choice"
 	},
 	{
@@ -1435,7 +1435,7 @@
 	{
 		"id": "sex_bar_02b",
 		"type": "narration",
-		"text": "His hands deal with the rest of it quickly. He's recovered faster than seems fair. He's at the right height for this too. The counter puts you exactly where he needs you.",
+		"text": "His hands deal with the rest of it quickly. He has recovered faster than seems fair, and he is exactly the right height for this — the counter puts you precisely where he needs you.",
 		"next": "sex_bar_03_choice"
 	},
 	{
@@ -1545,7 +1545,7 @@
 		"id": "sex_bar_07b",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "You groan against the counter as his lenght hammers against your prostate. A single, clipped exhale through his nose, almost a laugh.",
+		"text": "You groan against the counter as his length hammers against your prostate. A single, clipped exhale through his nose, almost a laugh.",
 		"next": "sex_bar_08"
 	},
 	{
@@ -1624,7 +1624,7 @@
 		"id": "sex_top_aftermath",
 		"clear": true,
 		"type": "narration",
-		"text": "He sits on the counter for a long time.[p]Looking at the bar surface. Not at you.",
+		"text": "He sits on the counter for a long time, looking at the bar surface. He keeps his eyes there rather than on you.",
 		"next": "sex_top_aftermath_02"
 	},
 	{
@@ -1647,7 +1647,7 @@
 	{
 		"id": "sex_aftermath_02",
 		"type": "narration",
-		"text": "He wipes the counter. The same spot he's wiped a dozen times tonight. He doesn't look at you directly. His ears are still flushed at the tips.",
+		"text": "He works the cloth over the counter again, moving across the same spot he's already cleaned a dozen times tonight. He doesn't look at you directly, but his ears are still flushed at the tips.",
 		"next": "sex_aftermath_03"
 	},
 	{
@@ -1708,7 +1708,7 @@
 	{
 		"id": "sex_refuse",
 		"type": "narration",
-		"text": "You step back.[p]He holds your gaze for a beat. Long enough to read it clearly.",
+		"text": "You step back, giving him the space.[p]He holds your gaze for a beat, long enough that there's nothing unclear about what he understood.",
 		"next": "sex_refuse_02"
 	},
 	{
@@ -1722,14 +1722,14 @@
 	{
 		"id": "sex_refuse_03",
 		"type": "narration",
-		"text": "He will not bring it up.[p]You both know this.",
+		"text": "He won't bring it up again. The way he settles back into the work makes that clear without a word.",
 		"next": "night_leave"
 	},
 
 	{
 		"id": "night_leave",
 		"type": "narration",
-		"text": "The Windbreak door swings shut behind you.[p]The mountain cold hits immediately. Inside, Tavo keeps working.[p]He always does.",
+		"text": "The Windbreak door swings shut behind you.[p]The mountain cold moves in immediately, pressing against your skin. Through the shut door, Tavo is still working — moving through the last of it the way he always does.",
 		"command": "@HIDE_PORTRAIT ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LOCATION_CHANGE klyftet",
 		"clear": true,
 		"next": "night_leave_end"

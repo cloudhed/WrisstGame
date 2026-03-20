@@ -60,32 +60,6 @@
 		"clear": true,
         "next": "intro_choice_hub"
     },
-    {
-        "id": "debug_bubbles_01",
-        "type": "npc",
-		"name": "Minttärä",
-		"text": "\"Well...\" She nods slowly. \"I suppose we'll see how this goes. What are we looking out for again? Something to do with stacking boxes? Is that right?\"",
-        "next": "debug_bubbles_02"
-    },
-    {
-        "id": "debug_bubbles_02",
-        "type": "narration",
-        "text": "Let's see if this stacks in the correct spot.",
-        "next": "debug_bubbles_03"
-    },
-    {
-        "id": "debug_bubbles_03",
-        "type": "npc",
-		"name": "Minttärä",
-		"text": "\"We can't be certain.\"\"I hope so!\"",
-        "next": "debug_bubbles_04"
-    },
-    {
-        "id": "debug_bubbles_04",
-        "type": "narration",
-        "text": "But we'll see, I guess.",
-        "next": "south_entrance_setflag"
-    },
 	{
 		"id": "intro_choice_hub",
 		"type": "choice",
@@ -106,14 +80,6 @@
 			{
 				"text": "> [Leave]",
 				"next": "leave_nocontact_01"
-			},
-			{
-				"text": "> [Look at Sign 2], Let's see if this stacks in the correct spot.",
-				"next": "look_sign"
-			},
-			{
-				"text": "> [Look at the [b]fucking[/b] Sign 3], Let's see if this stacks in the correct spot.",
-				"next": "look_sign"
 			}
 		]
 	},

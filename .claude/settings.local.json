@@ -5,7 +5,19 @@
       "Bash(node -e \"const fs = require\\(''fs''\\); try { JSON.parse\\(fs.readFileSync\\(''Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_interior_postquest_day.json'',''utf8''\\)\\); console.log\\(''Valid JSON''\\); } catch\\(e\\) { console.error\\(''INVALID:'', e.message\\); }\")",
       "Bash(node -e \":*)",
       "Bash(xargs grep:*)",
-      "Bash(find /d/Projects/Godot/wrisst_test -name *ability* -o -name *Ability*)"
+      "Bash(find /d/Projects/Godot/wrisst_test -name *ability* -o -name *Ability*)",
+      "Bash(find d:/Projects/Godot/wrisst_test -iname *overworld* -o -iname *encounter_trigger* -o -iname *nav*)",
+      "Bash(grep -rl \"encounter_trigger\\\\|EncounterTrigger\" d:/Projects/Godot/wrisst_test --include=*.tscn)",
+      "Bash(grep -n -B 15 'fallback_scene_selector_key = \"\"klyftet\"\"' \"d:/Projects/Godot/wrisst_test/overworldNav.tscn\")",
+      "Bash(grep -rl \"space\\\\|KEY_SPACE\\\\|_input\\\\|_unhandled\" d:/Projects/Godot/wrisst_test --include=*.gd)",
+      "Bash(find /d/Projects/Godot/wrisst_test -type f \\\\\\(-iname *inventory* -o -iname *item* -o -iname *shop* -o -iname *equipment* -o -iname *currency* -o -iname *combat* -o -iname *tile* \\\\\\))",
+      "Bash(find /d/Projects/Godot/wrisst_test -type d -name *[Cc]ode* -o -type d -name *[Ss]cript* -o -type d -name *[Uu]i* -o -type d -name *[Gg]ame*)",
+      "Bash(find /d/Projects/Godot/wrisst_test/Code -type f -name *.gd)",
+      "Bash(find /d/Projects/Godot/wrisst_test/Scripts -type f -name *.gd)",
+      "Bash(find /d/Projects/Godot/wrisst_test/Scenes -name *inventory* -o -name *ui*)",
+      "Bash(grep -r \"hand_slot\\\\|tile_bundle\" /d/Projects/Godot/wrisst_test/Scripts --include=*.gd -l)",
+      "Bash(find /d/Projects/Godot/wrisst_test/Scenes -name *.tscn)",
+      "Bash(find /d/Projects/Godot/wrisst_test -name *character*stats* -type f)"
     ]
   }
 }

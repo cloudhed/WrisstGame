@@ -102,7 +102,7 @@ alignment = 2
 [node name="SpeechBubble" parent="CanvasLayer" instance=ExtResource("2_i24h7")]
 visible = false
 anchors_preset = 15
-anchor_left = 0.0
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 937.0
 offset_top = 180.0
@@ -131,4 +131,3 @@ offset_left = 335.0
 offset_top = 582.0
 offset_right = 1615.0
 offset_bottom = 720.0
-

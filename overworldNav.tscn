@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bsk688e4ksiee"]
+[gd_scene load_steps=40 format=4 uid="uid://bsk688e4ksiee"]
 
 [ext_resource type="AudioStream" uid="uid://faqrtb1uggnb" path="res://Audio/sound_ambience_overworld_day.ogg" id="1_0bjjx"]
 [ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="1_68n6a"]
@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://clq6t52fwieia" path="res://Code/PlayerCameraFollow.gd" id="9_s8mij"]
 [ext_resource type="Script" uid="uid://bx6tjiqqmfg3r" path="res://music_player.gd" id="10_7vspy"]
 [ext_resource type="Script" uid="uid://bmm0gshj54yld" path="res://Code/worldenvironment_controller.gd" id="10_c7vby"]
-[ext_resource type="Resource" uid="uid://b3bwjbek68ma2" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_interior_main_day.tres" id="10_r3enb"]
 [ext_resource type="AudioStream" uid="uid://rrf8rois8qur" path="res://Audio/Music/Music_Map_DayNight.tres" id="12_5arl6"]
 [ext_resource type="AudioStream" uid="uid://dlb56s4480bjm" path="res://Audio/SFX/sfx_alert.mp3" id="12_w08pr"]
 [ext_resource type="Script" uid="uid://bgacujrf8waoa" path="res://sfx_player.gd" id="13_r3enb"]
@@ -643,8 +642,7 @@ position = Vector2(503, 661)
 prompt_active = "Enter settlement"
 prompt_after_discovery = "Visit Klyftet"
 discovery_flag = "Found_Klyftet"
-fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Klyftet/klyftet_ext_south_day.tres"
-fallback_scene_selector_key = "start_audio"
+fallback_scene_selector_key = "klyftet"
 debug_logging = true
 
 [node name="OverworldEncounterTrigger_Temple" parent="mapLocations" instance=ExtResource("5_5arl6")]
@@ -652,8 +650,7 @@ position = Vector2(-312, 826)
 prompt_active = "Enter strange ruin"
 prompt_after_discovery = "Visit Temple Ruins"
 discovery_flag = "Found_TempleRuins"
-fallback_dialog_scene = ExtResource("10_r3enb")
-fallback_scene_selector_key = "start_audio"
+fallback_scene_selector_key = "temple"
 debug_logging = true
 
 [node name="OverworldEncounterTrigger_Sapritree" parent="mapLocations" instance=ExtResource("5_5arl6")]
@@ -663,7 +660,6 @@ prompt_active = "Visit old tree"
 prompt_after_discovery = "Visit old tree"
 discovery_flag = "Found_Tree"
 fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day.tres"
-fallback_scene_selector_key = "start_audio"
 debug_logging = true
 
 [node name="OverworldCombatTrigger_Creature" parent="mapLocations" instance=ExtResource("2_w08pr")]

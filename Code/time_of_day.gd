@@ -8,6 +8,7 @@ var current_time_seconds: float
 var total_minutes_in_day: float = 24 * 60
 # var total_minutes_in_day: float
 var last_displayed_minute: int = -1 # Tracking when to update display
+var _last_time_period: String = ""
 
 func _ready():
 	total_minutes_in_day = 24 * 60
@@ -30,6 +31,12 @@ func _process(delta):
 	var hours = floor(current_minutes / 60)
 	var minutes = floor(fmod(current_minutes, 60))
 	
+	# Sync GameState.is_night whenever the time period changes
+	var period := get_time_period()
+	if period != _last_time_period:
+		_last_time_period = period
+		GameState.is_night = (period == "Night")
+
 	# Only update the display if the minute has changed to a new 10-minute interval
 	var displayed_minute = floor(minutes / 30.0) * 30
 	if displayed_minute != last_displayed_minute:
