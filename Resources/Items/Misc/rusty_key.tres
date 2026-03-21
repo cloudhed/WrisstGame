@@ -10,4 +10,7 @@ item_type = "misc"
 is_stackable = true
 max_stack = 99
 hidden_from_inventory = false
+sell_price_ore = 1
+sell_price_crowns = 0
+sell_price_drots = 0
 metadata/_custom_type_script = "uid://b8pjpxowjf87j"

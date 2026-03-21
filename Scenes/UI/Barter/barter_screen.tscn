@@ -1,0 +1,386 @@
+[gd_scene load_steps=8 format=3 uid="uid://c258ylga4y2gx"]
+
+[ext_resource type="Script" uid="uid://cqnvxu56kraw0" path="res://Scenes/UI/Barter/barter_screen.gd" id="1_barter"]
+[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="2_header"]
+[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="3_body"]
+[ext_resource type="PackedScene" uid="uid://8miyci6curga" path="res://Scenes/UI/Barter/quantity_popup.tscn" id="4_popup"]
+[ext_resource type="PackedScene" uid="uid://cnuyeim88cd6g" path="res://Scenes/UI/tooltip.tscn" id="5_tooltip"]
+
+[sub_resource type="StyleBoxFlat" id="panel_style"]
+bg_color = Color(0.29, 0.17168, 0.1421, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.293244, 0.495061, 0.316758, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="barter_panel_style"]
+bg_color = Color(0.22, 0.18, 0.16, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.7, 0.55, 0.25, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="BarterScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_barter")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMargin" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 160
+theme_override_constants/margin_bottom = 160
+
+[node name="MainVBox" type="VBoxContainer" parent="Background/MainMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TopRow" type="HBoxContainer" parent="Background/MainMargin/MainVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PlayerCurrencyPanel" type="PanelContainer" parent="Background/MainMargin/MainVBox/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("panel_style")
+
+[node name="Margin" type="MarginContainer" parent="Background/MainMargin/MainVBox/TopRow/PlayerCurrencyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBox" type="HBoxContainer" parent="Background/MainMargin/MainVBox/TopRow/PlayerCurrencyPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Header" type="Label" parent="Background/MainMargin/MainVBox/TopRow/PlayerCurrencyPanel/Margin/HBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 20
+text = "Your Coin"
+
+[node name="PlayerOreLabel" type="Label" parent="Background/MainMargin/MainVBox/TopRow/PlayerCurrencyPanel/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Öre: 0"
+
+[node name="PlayerCrownsLabel" type="Label" parent="Background/MainMargin/MainVBox/TopRow/PlayerCurrencyPanel/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Crowns: 0"
+
+[node name="PlayerDrotsLabel" type="Label" parent="Background/MainMargin/MainVBox/TopRow/PlayerCurrencyPanel/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Drots: 0"
+
+[node name="BarterBalancePanel" type="PanelContainer" parent="Background/MainMargin/MainVBox/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("barter_panel_style")
+
+[node name="Margin" type="MarginContainer" parent="Background/MainMargin/MainVBox/TopRow/BarterBalancePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBox" type="HBoxContainer" parent="Background/MainMargin/MainVBox/TopRow/BarterBalancePanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Header" type="Label" parent="Background/MainMargin/MainVBox/TopRow/BarterBalancePanel/Margin/HBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 20
+text = "Balance"
+horizontal_alignment = 1
+
+[node name="BalanceOreLabel" type="Label" parent="Background/MainMargin/MainVBox/TopRow/BarterBalancePanel/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Öre: 0"
+horizontal_alignment = 1
+
+[node name="BalanceCrownsLabel" type="Label" parent="Background/MainMargin/MainVBox/TopRow/BarterBalancePanel/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Crowns: 0"
+horizontal_alignment = 1
+
+[node name="BalanceDrotsLabel" type="Label" parent="Background/MainMargin/MainVBox/TopRow/BarterBalancePanel/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Drots: 0"
+horizontal_alignment = 1
+
+[node name="ShopNamePanel" type="PanelContainer" parent="Background/MainMargin/MainVBox/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("panel_style")
+
+[node name="Margin" type="MarginContainer" parent="Background/MainMargin/MainVBox/TopRow/ShopNamePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="ShopNameLabel" type="Label" parent="Background/MainMargin/MainVBox/TopRow/ShopNamePanel/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 22
+text = "Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MiddleRow" type="HBoxContainer" parent="Background/MainMargin/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+theme_override_constants/separation = 12
+
+[node name="PlayerInventoryPanel" type="PanelContainer" parent="Background/MainMargin/MainVBox/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("panel_style")
+
+[node name="Margin" type="MarginContainer" parent="Background/MainMargin/MainVBox/MiddleRow/PlayerInventoryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="Background/MainMargin/MainVBox/MiddleRow/PlayerInventoryPanel/Margin"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Background/MainMargin/MainVBox/MiddleRow/PlayerInventoryPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 20
+text = "Your Items"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/MainMargin/MainVBox/MiddleRow/PlayerInventoryPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerItemList" type="VBoxContainer" parent="Background/MainMargin/MainVBox/MiddleRow/PlayerInventoryPanel/Margin/VBox/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="BarterWindowPanel" type="PanelContainer" parent="Background/MainMargin/MainVBox/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("barter_panel_style")
+
+[node name="Margin" type="MarginContainer" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 20
+text = "Barter"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BarterItemList" type="VBoxContainer" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ButtonPanel" type="PanelContainer" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("panel_style")
+
+[node name="Margin" type="MarginContainer" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox/ButtonPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox/ButtonPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox/ButtonPanel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 22
+text = "CONFIRM TRADE"
+
+[node name="LeaveButton" type="Button" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox/ButtonPanel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "LEAVE"
+
+[node name="EquippedMessage" type="Label" parent="Background/MainMargin/MainVBox/MiddleRow/BarterWindowPanel/Margin/VBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.4, 0.3, 1)
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 14
+text = "Unequip this item first."
+horizontal_alignment = 1
+
+[node name="ShopInventoryPanel" type="PanelContainer" parent="Background/MainMargin/MainVBox/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("panel_style")
+
+[node name="Margin" type="MarginContainer" parent="Background/MainMargin/MainVBox/MiddleRow/ShopInventoryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="Background/MainMargin/MainVBox/MiddleRow/ShopInventoryPanel/Margin"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Background/MainMargin/MainVBox/MiddleRow/ShopInventoryPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 20
+text = "Shop Wares"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/MainMargin/MainVBox/MiddleRow/ShopInventoryPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ShopItemList" type="VBoxContainer" parent="Background/MainMargin/MainVBox/MiddleRow/ShopInventoryPanel/Margin/VBox/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="BottomRow" type="HBoxContainer" parent="Background/MainMargin/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
+theme_override_constants/separation = 12
+
+[node name="TilePreviewPanel" type="PanelContainer" parent="Background/MainMargin/MainVBox/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("panel_style")
+
+[node name="Margin" type="MarginContainer" parent="Background/MainMargin/MainVBox/BottomRow/TilePreviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="Background/MainMargin/MainVBox/BottomRow/TilePreviewPanel/Margin"]
+layout_mode = 2
+
+[node name="TilePreviewLabel" type="Label" parent="Background/MainMargin/MainVBox/BottomRow/TilePreviewPanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 18
+text = "Equipment Tiles"
+
+[node name="TilePreviewGrid" type="GridContainer" parent="Background/MainMargin/MainVBox/BottomRow/TilePreviewPanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 8
+
+[node name="Tooltip" parent="." instance=ExtResource("5_tooltip")]
+layout_mode = 0
+
+[node name="QuantityPopup" parent="." instance=ExtResource("4_popup")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 240.0
+offset_bottom = 140.0
+grow_horizontal = 1
+grow_vertical = 1

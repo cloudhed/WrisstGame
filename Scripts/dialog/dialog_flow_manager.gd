@@ -21,6 +21,7 @@ var chunk_index: int = 0
 var last_command_index: int = -1
 var waiting_for_input: bool = false
 var waiting_for_combat_end: bool = false
+var waiting_for_barter_end: bool = false
 var current_choice_entry: Dictionary = {}
 
 var context: Dictionary = {}
@@ -59,7 +60,7 @@ func initialize(
 
 
 func show_next_line() -> void:
-	if waiting_for_combat_end:
+	if waiting_for_combat_end or waiting_for_barter_end:
 		return
 
 	if check_dialog_end():
@@ -109,11 +110,12 @@ func handle_special_entry(entry: Dictionary) -> bool:
 	if entry.get("type", "") == "command":
 		var cmd: String = entry.get("command", entry.get("text", ""))
 		var is_start_combat_entry: bool = _is_start_combat_command(cmd)
+		var is_open_barter_entry: bool = _is_open_barter_command(cmd)
 		if cmd is String and not cmd.is_empty():
 			handle_command(cmd)
 
 		await get_tree().process_frame
-		
+
 		apply_flags(entry)
 
 		# Process flags
@@ -122,6 +124,9 @@ func handle_special_entry(entry: Dictionary) -> bool:
 		# If the entry had no chunks and didn't continue itself, move to next
 		if chunk_list.is_empty():
 			if is_start_combat_entry and _connect_combat_end_to_dialog_resume(entry):
+				return true
+
+			if is_open_barter_entry and _connect_barter_end_to_dialog_resume(entry):
 				return true
 
 			if entry.has("next"):
@@ -192,6 +197,49 @@ func _on_blocking_combat_ended(next_id: String) -> void:
 			return
 
 	current_index += 1
+
+
+# === BARTER BLOCKING ===
+
+func _is_open_barter_command(cmd: String) -> bool:
+	if cmd.is_empty():
+		return false
+
+	for raw_cmd in cmd.split(";"):
+		var trimmed := raw_cmd.strip_edges()
+		if trimmed.trim_prefix("@").to_upper().begins_with("OPEN_BARTER"):
+			return true
+
+	return false
+
+
+func _connect_barter_end_to_dialog_resume(entry: Dictionary) -> bool:
+	var next_id: String = entry.get("next", "")
+
+	if Events.barter_closed.is_connected(_on_barter_ended):
+		Events.barter_closed.disconnect(_on_barter_ended)
+
+	Events.barter_closed.connect(
+		Callable(self, "_on_barter_ended").bind(next_id),
+		CONNECT_ONE_SHOT
+	)
+	waiting_for_barter_end = true
+	waiting_for_input = false
+	return true
+
+
+func _on_barter_ended(next_id: String) -> void:
+	waiting_for_barter_end = false
+
+	if not next_id.is_empty():
+		var next_index: int = _find_entry_index_by_id(next_id)
+		if next_index != -1:
+			current_index = next_index
+			show_next_line()
+			return
+
+	current_index += 1
+	show_next_line()
 	show_next_line()
 
 func handle_entry_command(entry: Dictionary) -> void:

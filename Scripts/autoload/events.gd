@@ -48,3 +48,7 @@ signal dialog_scene_change_requested(area_key: String)
 # Overworld interaction prompts
 signal overworld_interact_prompt_requested(text: String)
 signal overworld_interact_prompt_hidden
+
+# Barter/trading
+signal barter_requested(shop: Resource)
+signal barter_closed

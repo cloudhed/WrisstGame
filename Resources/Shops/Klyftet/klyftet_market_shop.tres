@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="ShopInventory" load_steps=11 format=3 uid="uid://bcrojfkv732ex"]
+
+[ext_resource type="Script" uid="uid://cfaewlk18jkla" path="res://Resources/Shops/shop_inventory.gd" id="1_4uajf"]
+[ext_resource type="Script" uid="uid://b25q2b6tn43rr" path="res://Resources/Shops/shop_item_entry.gd" id="2_15ti7"]
+[ext_resource type="Resource" uid="uid://cyrdq8aj8yy3o" path="res://Resources/Items/Equipment/Armor/scrappy_armor.tres" id="3_p38d0"]
+[ext_resource type="Resource" uid="uid://dtrvile7gieh0" path="res://Resources/Items/Consumables/lockpick.tres" id="5_7kena"]
+[ext_resource type="Resource" uid="uid://bl3tkb6fogvxd" path="res://Resources/Items/Equipment/Weapons/long_stick_weapon.tres" id="6_p38d0"]
+[ext_resource type="Resource" uid="uid://bb6hyr02t7qn5" path="res://Resources/Items/Misc/rusty_key.tres" id="6_x71wr"]
+
+[sub_resource type="Resource" id="Resource_w8jjr"]
+script = ExtResource("2_15ti7")
+item = ExtResource("3_p38d0")
+stock = 1
+buy_price_ore = 49
+buy_price_crowns = 0
+buy_price_drots = 0
+is_unique = true
+metadata/_custom_type_script = "uid://b25q2b6tn43rr"
+
+[sub_resource type="Resource" id="Resource_yprka"]
+script = ExtResource("2_15ti7")
+item = ExtResource("5_7kena")
+stock = 10
+buy_price_ore = 4
+buy_price_crowns = 0
+buy_price_drots = 0
+is_unique = false
+metadata/_custom_type_script = "uid://b25q2b6tn43rr"
+
+[sub_resource type="Resource" id="Resource_wcnl5"]
+script = ExtResource("2_15ti7")
+item = ExtResource("6_x71wr")
+stock = 2
+buy_price_ore = 0
+buy_price_crowns = 1
+buy_price_drots = 0
+is_unique = false
+metadata/_custom_type_script = "uid://b25q2b6tn43rr"
+
+[sub_resource type="Resource" id="Resource_18xpo"]
+script = ExtResource("2_15ti7")
+item = ExtResource("6_p38d0")
+stock = 1
+buy_price_ore = 0
+buy_price_crowns = 48
+buy_price_drots = 0
+is_unique = true
+metadata/_custom_type_script = "uid://b25q2b6tn43rr"
+
+[resource]
+script = ExtResource("1_4uajf")
+shop_name = "Rupaaa & Baaaku"
+markup_percent = 15.0
+shop_items = Array[ExtResource("2_15ti7")]([SubResource("Resource_w8jjr"), SubResource("Resource_yprka"), SubResource("Resource_wcnl5"), SubResource("Resource_18xpo")])
+metadata/_custom_type_script = "uid://cfaewlk18jkla"

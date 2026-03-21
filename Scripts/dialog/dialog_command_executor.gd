@@ -64,6 +64,8 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_set_time(parts)
 		"RECORD_SPECIES_SEX":
 			_record_species_sex(parts, context)
+		"OPEN_BARTER":
+			_open_barter(context)
 		_:
 			_handle_game_state_command(cmd, context)
 
@@ -130,6 +132,24 @@ func _record_species_sex(parts: PackedStringArray, context: Dictionary) -> void:
 		species_id = StringName("unknown")
 
 	GameState.player_statistics.record_sex(species_id)
+
+# === BARTER ===
+
+func _open_barter(context: Dictionary) -> void:
+	var cmd: String = context.get("raw_command", "")
+	var parts: PackedStringArray = cmd.split(" ", false)
+	if parts.size() < 2:
+		push_error("❌ OPEN_BARTER needs a shop resource path.")
+		return
+
+	var shop_path: String = parts[1]
+	var shop_res: Resource = load(shop_path)
+	if shop_res == null:
+		push_error("❌ Could not load ShopInventory: " + shop_path)
+		return
+
+	Events.barter_requested.emit(shop_res)
+
 
 # === MONEY COMMANDS ===
 

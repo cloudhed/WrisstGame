@@ -25,4 +25,7 @@ item_type = "equipable"
 is_stackable = false
 max_stack = 99
 hidden_from_inventory = false
+sell_price_ore = 20
+sell_price_crowns = 0
+sell_price_drots = 0
 metadata/_custom_type_script = "uid://bvo3h06fcka4k"

@@ -31,7 +31,11 @@ extends Control
 @onready var hide_timer: Timer = %NotificationHideTimer
 
 const TILE_GRID_CARD_SCENE_PATH := "res://Scenes/TileUI/tile_grid_card.tscn"
+const BARTER_SCREEN_PATH := "res://Scenes/UI/Barter/barter_screen.tscn"
+
 var _tile_grid_card_scene: PackedScene = null
+var _barter_screen_scene: PackedScene = null
+var barter_screen: BarterScreen = null
 var _visible_inventory_slots: Array = []
 
 
@@ -58,6 +62,8 @@ func _ready():
 	GameState.reputation_changed.connect(_on_reputation_changed)
 	GameState.fallback_equipped.connect(_update_equipped_labels)
 	print("✅ Connected fallback_equipped to _update_equipped_labels")
+
+	Events.barter_requested.connect(_on_barter_requested)
 	
 	hide_timer.timeout.connect(_on_hide_timer_timeout)
 
@@ -88,8 +94,11 @@ func _on_item_clicked(index: int, at_position: Vector2, mouse_button_index: int)
 
 
 func _unhandled_input(ev):
-	# Toggle inventory on “I” press (make sure you set ui_inventory in InputMap)
+	# Toggle inventory on "I" press (make sure you set ui_inventory in InputMap)
 	if ev.is_action_pressed("inventory"):
+		# Block inventory while barter screen is open
+		if barter_screen != null and barter_screen.visible:
+			return
 		_toggle_inventory()
 
 
@@ -100,7 +109,7 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func is_ui_open() -> bool:
-	return inv_screen.visible #or popup_panel.visible
+	return inv_screen.visible or (barter_screen != null and barter_screen.visible)
 # ──────────────────────────────────────────────────
 # Inventory methods
 
@@ -153,9 +162,9 @@ func _on_inventory_changed(action: String, item):
 		_refresh_inventory()
 	# Also pop up a notification:
 	if action == "add":
-		notify("“%s” added" % item.name)
+		notify("'%s' added" % item.name)
 	else:
-		notify("“%s” removed" % item.name)
+		notify("'%s' removed" % item.name)
 
 # ──────────────────────────────────────────────────
 # ITEM AND EQUIPMENT #
@@ -329,3 +338,23 @@ func _on_reputation_changed(npc_id: String, new_value: int) -> void:
 	var pretty_name = npc_id.capitalize()
 	var msg = "Reputation with %s: %d" % [pretty_name, new_value]
 	notify(msg)
+
+
+# ──────────────────────────────────────────────────
+# Barter screen
+
+func _on_barter_requested(shop: Resource) -> void:
+	if barter_screen == null:
+		if _barter_screen_scene == null:
+			_barter_screen_scene = load(BARTER_SCREEN_PATH) as PackedScene
+		barter_screen = _barter_screen_scene.instantiate()
+		$UIContainer.add_child(barter_screen)
+		barter_screen.barter_closed.connect(_on_barter_closed)
+
+	barter_screen.open(shop)
+	_disable_hotspots()
+
+
+func _on_barter_closed() -> void:
+	_enable_hotspots()
+	Events.barter_closed.emit()

@@ -9,6 +9,8 @@ extends Resource
 @export var max_stack: int = 99
 @export var hidden_from_inventory: bool = false
 @export var sell_price_ore: int = 0
+@export var sell_price_crowns: int = 0
+@export var sell_price_drots: int = 0
 
 func is_sellable() -> bool:
-	return sell_price_ore > 0
+	return sell_price_ore > 0 or sell_price_crowns > 0 or sell_price_drots > 0
