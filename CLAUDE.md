@@ -27,6 +27,15 @@ All sheets are in `X ReadMe for LLMs/CharacterSheets/`.
 | Selenna | `Selenna.md` | Sleid free-diver; minimal speech, water-bound and mysterious |
 | Rupaaa & Baaaku | `RupaaaAndBaaaku.md` | Kraaal merchant brothers; bickering duo at the marketplace |
 | Bwavrek | `Bwavrek.md` | Bwavrek hotbaths owner; disciplined, blunt, physically imposing |
+| Pichidi | `Pichidi.md` | Ichmi sewer-dweller; no established connections; recurring sexual partner option |
+
+---
+
+## Shared Language Reference
+
+| Reference | Sheet | Use |
+|-----------|-------|-----|
+| Old Mire Language | `OldMire_Language.md` | Old Mire vocabulary (deh, nah, bolk, grat, etc.) — spoken by Pichidi and Bitalgut |
 
 ---
 

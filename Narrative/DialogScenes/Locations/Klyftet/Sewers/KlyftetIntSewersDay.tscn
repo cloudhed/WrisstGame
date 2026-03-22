@@ -1,0 +1,201 @@
+[gd_scene load_steps=17 format=3 uid="uid://d1hr06cwe6nkf"]
+
+[ext_resource type="Script" uid="uid://0p0mqph8bqhs" path="res://Scripts/dialog/zone_scene.gd" id="1_qlino"]
+[ext_resource type="Texture2D" uid="uid://doyqw7ervkb31" path="res://Assets/Backgrounds/EnvExt/klyftet/inn/env_klyftet_sewers_int.jpg" id="2_d0fdq"]
+[ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="3_d0fdq"]
+[ext_resource type="Script" uid="uid://csl2p1tdinykd" path="res://Scripts/dialog/hotspot.gd" id="5_ond1r"]
+[ext_resource type="Texture2D" uid="uid://bpb02auixh6gi" path="res://Assets/UI/icons/back_arrow.png" id="6_4vxtx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h1njm"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_qsbrg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.501805, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2hxa2"]
+curve = SubResource("Curve_qsbrg")
+
+[sub_resource type="Gradient" id="Gradient_8kfyo"]
+colors = PackedColorArray(0.403252, 0.865681, 0.624907, 1, 0.0924, 0.42, 0.3381, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j7b6n"]
+gradient = SubResource("Gradient_8kfyo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lqmb1"]
+emission_shape = 3
+emission_box_extents = Vector3(128.67, 153.26, 80)
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 1, 1)
+initial_velocity_min = 85.86
+initial_velocity_max = 85.86
+orbit_velocity_min = 0.656
+orbit_velocity_max = 0.899
+gravity = Vector3(0, -100, 50)
+linear_accel_min = 25.76
+linear_accel_max = 43.44
+tangential_accel_min = -15.24
+tangential_accel_max = 20.58
+scale_min = 0.05
+color = Color(0.521141, 0.521141, 0.521141, 1)
+color_ramp = SubResource("GradientTexture1D_j7b6n")
+alpha_curve = SubResource("CurveTexture_2hxa2")
+hue_variation_min = -0.19
+hue_variation_max = 0.09
+turbulence_enabled = true
+turbulence_noise_strength = 15.2
+turbulence_noise_scale = 9.711
+turbulence_noise_speed = Vector3(200, 2.485, 1)
+turbulence_influence_max = 0.116
+turbulence_initial_displacement_min = -17.1
+turbulence_initial_displacement_max = 11.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8kfyo"]
+emission_shape = 3
+emission_box_extents = Vector3(73.595, 129.185, 1000)
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 1, 1)
+initial_velocity_min = 85.86
+initial_velocity_max = 85.86
+orbit_velocity_min = 0.656
+orbit_velocity_max = 0.899
+gravity = Vector3(0, -100, 50)
+linear_accel_min = 25.76
+linear_accel_max = 43.44
+tangential_accel_min = -15.24
+tangential_accel_max = 20.58
+scale_min = 0.5
+scale_max = 1.5
+color = Color(0.521141, 0.521141, 0.521141, 1)
+color_ramp = SubResource("GradientTexture1D_j7b6n")
+alpha_curve = SubResource("CurveTexture_2hxa2")
+hue_variation_min = -0.19
+hue_variation_max = 0.09
+turbulence_enabled = true
+turbulence_noise_strength = 15.2
+turbulence_noise_scale = 9.711
+turbulence_noise_speed = Vector3(200, 2.485, 1)
+turbulence_influence_max = 0.116
+turbulence_initial_displacement_min = -17.1
+turbulence_initial_displacement_max = 11.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j7b6n"]
+emission_shape = 3
+emission_box_extents = Vector3(55.87, 129.185, 1000)
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 1, 1)
+initial_velocity_min = 85.86
+initial_velocity_max = 85.86
+orbit_velocity_min = 0.656
+orbit_velocity_max = 0.899
+gravity = Vector3(0, -100, 50)
+linear_accel_min = 25.76
+linear_accel_max = 43.44
+tangential_accel_min = -15.24
+tangential_accel_max = 20.58
+scale_min = 0.05
+scale_max = 0.3
+color = Color(0.521141, 0.521141, 0.521141, 1)
+color_ramp = SubResource("GradientTexture1D_j7b6n")
+alpha_curve = SubResource("CurveTexture_2hxa2")
+hue_variation_min = -0.19
+hue_variation_max = 0.09
+turbulence_enabled = true
+turbulence_noise_strength = 15.2
+turbulence_noise_scale = 9.711
+turbulence_noise_speed = Vector3(200, 2.485, 1)
+turbulence_influence_max = 0.116
+turbulence_initial_displacement_min = -17.1
+turbulence_initial_displacement_max = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwxah"]
+size = Vector2(44.6133, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnb2"]
+size = Vector2(18.163, 11.0324)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i4s"]
+size = Vector2(5.21411, 5.21407)
+
+[node name="KlyftetIntSewersDay" type="Node2D"]
+script = ExtResource("1_qlino")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_d0fdq")
+centered = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_h1njm")
+position = Vector2(932.97, 529.7)
+scale = Vector2(6.89, 4.075)
+amount = 30
+texture = ExtResource("3_d0fdq")
+lifetime = 6.0
+preprocess = 6.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_lqmb1")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_h1njm")
+position = Vector2(136, 916)
+scale = Vector2(6.89, 4.075)
+amount = 60
+texture = ExtResource("3_d0fdq")
+lifetime = 6.0
+preprocess = 6.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_8kfyo")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_h1njm")
+position = Vector2(224, 612)
+scale = Vector2(3.10261, 1.835)
+amount = 60
+texture = ExtResource("3_d0fdq")
+lifetime = 6.0
+preprocess = 6.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_j7b6n")
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Hotspot_MoveBar" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+script = ExtResource("5_ond1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_MoveBar"]
+position = Vector2(-416, 547)
+scale = Vector2(14.48, 14.48)
+shape = SubResource("RectangleShape2D_uwxah")
+
+[node name="Hotspot_Return2" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+position = Vector2(1844, 0)
+script = ExtResource("5_ond1r")
+action_type = "enter"
+triggers_scene_change = true
+scene_selector_key = "klyftet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Return2"]
+position = Vector2(-357.5, 120.125)
+scale = Vector2(14.48, 14.48)
+shape = SubResource("RectangleShape2D_fcnb2")
+debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
+
+[node name="Hotspot_Return" type="Area2D" parent="Hotspots" groups=["hotspots"]]
+position = Vector2(1844, 0)
+script = ExtResource("5_ond1r")
+action_type = "enter"
+triggers_scene_change = true
+scene_selector_key = "klyftet"
+
+[node name="BackArrow" type="Sprite2D" parent="Hotspots/Hotspot_Return"]
+position = Vector2(37, 37)
+texture = ExtResource("6_4vxtx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_Return"]
+position = Vector2(38.2498, 38.2501)
+scale = Vector2(14.48, 14.48)
+shape = SubResource("RectangleShape2D_j0i4s")
+debug_color = Color(0.931952, 0.261124, 3.85046e-07, 0.42)
+
+[connection signal="mouse_entered" from="Hotspots/Hotspot_MoveBar" to="Hotspots/Hotspot_MoveBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hotspots/Hotspot_MoveBar" to="Hotspots/Hotspot_MoveBar" method="_on_mouse_exited"]

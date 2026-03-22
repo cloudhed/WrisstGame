@@ -67,7 +67,7 @@
 		"options": [
 			{
 				"text": "> [Go to Market]",
-				"next": "market_intro"
+				"next": "switch_market_intro"
 			},
 			{
 				"text": "> [Go to Inn]",
@@ -85,7 +85,7 @@
 	},
 	{
 		"id": "south_entrance_setflag",
-		"type": "command",
+		"type": "logic",
 		"set_flag": "Entered_Klyftet",
 		"flag_type": "event",
         "next": "intro_choice_hub"
@@ -280,6 +280,15 @@
 			}
 		]
 	},
+	{
+		"id": "switch_inn_alley_intro_check",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["alley_grate_opened", "alley_bothered_smoke"],
+			"on_success": "inn_alley_intro_choice",
+			"on_fail": "switch_inn_alley_intro"
+		}
+	},
     {
         "id": "switch_inn_alley_intro",
         "type": "command",
@@ -291,7 +300,7 @@
     {
         "id": "inn_alley_intro_show_portrait",
         "type": "command",
-		"name": "Pichidel",
+		"name": "Pichidi",
         "command": "@SHOW_PORTRAIT smoke1",
 		"clear": true,
         "next": "inn_alley_intro_choice"
@@ -302,52 +311,79 @@
 		"options": [
 			{
 				"text": "> [Open grate]",
-				"next": "alley_open_grate",
-				"hide_if": "picked"
+				"next": "alley_open_grate_flags",
+				"hide_if": { "has_flag": "alley_grate_opened" }
 			},
 			{
 				"text": "> [Bother smoke]",
-				"next": "alley_smoke_animation"
+				"next": "alley_bother_smoke_flagset",
+				"hide_if": { "has_flag": "alley_bothered_smoke" }
 			},
 			{
-				"text": "> [Go back to Inn Exterior]",
-				"next": "switch_inn_exterior_intro"
+				"text": "> [Enter the hole]",
+				"next": "alley_enter_sewers_flagset",
+				"show_if": { "has_flag": ["alley_grate_opened", "alley_bothered_smoke"] }
+			},
+			{
+				"text": "> [Go back to Inn]",
+				"next": "switch_inn_exterior_intro_hide_portrait"
 			}
 		]
 	},
     {
+        "id": "switch_inn_exterior_intro_hide_portrait",
+        "type": "command",
+        "command": "@HIDE_PORTRAIT ; HIDE_EXTRA",
+		"clear": true,
+        "next": "switch_inn_exterior_intro"
+    },
+	{
+		"id": "alley_open_grate_flags",
+		"type": "logic",
+		"set_flag": "alley_grate_opened",
+		"flag_type": "event",
+		"next": "alley_open_grate"
+    },
+    {
         "id": "alley_open_grate",
         "type": "npc",
 		"name": "grate",
-        "command": "@SHOW_EXTRA open ; @SET_TEMP_FLAG picked",
+        "command": "@SHOW_EXTRA open",
 		"text": "You open the grate, revealing a dark hole leading down into the ground. A foul stench wafts up from the hole.",
         "next": "inn_alley_intro_choice"
     },
+	{
+		"id": "alley_bother_smoke_flagset",
+		"type": "logic",
+		"set_flag": "alley_bothered_smoke",
+		"flag_type": "event",
+		"next": "alley_smoke_animation"
+	},
     {
         "id": "alley_smoke_animation",
         "type": "command",
-		"name": "Pichidel",
+		"name": "Pichidi",
         "command": "@SHOW_PORTRAIT smoke2",
         "next": "alley_smoke_animation2"
     },
     {
         "id": "alley_smoke_animation2",
         "type": "command",
-		"name": "Pichidel",
+		"name": "Pichidi",
         "command": "@SHOW_PORTRAIT smoke3",
         "next": "alley_smoke_animation3"
     },
     {
         "id": "alley_smoke_animation3",
         "type": "command",
-		"name": "Pichidel",
+		"name": "Pichidi",
         "command": "@SHOW_PORTRAIT smoke4",
         "next": "alley_smoke_animation4"
     },
     {
         "id": "alley_smoke_animation4",
         "type": "command",
-		"name": "Pichidel",
+		"name": "Pichidi",
         "command": "@HIDE_PORTRAIT",
         "next": "inn_alley_intro_choice"
     },

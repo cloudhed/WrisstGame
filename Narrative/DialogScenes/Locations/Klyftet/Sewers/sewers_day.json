@@ -2,7 +2,7 @@
 	{
 		"id": "INIT_audio",
 		"type": "command",
-		"command": "@STOP_ALL_AMBIENCE ; @FADE_MUSIC_OUT ; @PLAY_AMBIENCE tavern_night res://Audio/Ambience/Klyftet/tavern_interior_night.mp3 ; @SHOW_ZONE Klyftet/WindbreakInn/KlyftetIntInnBarDay",
+		"command": "@STOP_ALL_AMBIENCE ; @FADE_MUSIC_OUT ; @PLAY_AMBIENCE sewers_ambience res://Audio/Ambience/Klyftet/mine_ambience.mp3",
 		"clear": true,
 		"next": "INIT_done_check"
 	},
@@ -10,9 +10,9 @@
 		"id": "INIT_done_check",
 		"type": "logic",
 		"check_flags": {
-			"flags": ["tavo_night_sex_happened"],
-			"on_success": "night_repeat_entry",
-			"on_fail": "night_first_entry"
+			"flags": ["pichidi_sexed"],
+			"on_success": "repeat_entry",
+			"on_fail": "first_entry"
 		}
 	},
 

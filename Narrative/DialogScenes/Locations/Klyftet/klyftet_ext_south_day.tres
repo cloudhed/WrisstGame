@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="DialogSceneResource" load_steps=8 format=3 uid="uid://b1tnrrfd1okle"]
 
 [ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_7vshn"]
-[ext_resource type="Resource" uid="uid://c8r00og7058ck" path="res://Characters/Pichidel/Pichidel_resource.tres" id="2_amqr6"]
+[ext_resource type="Resource" uid="uid://c8r00og7058ck" path="res://Characters/Pichidi/Pichidi_resource.tres" id="2_amqr6"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="2_v75d5"]
 [ext_resource type="PackedScene" uid="uid://clwyogetlajb1" path="res://Narrative/DialogScenes/Locations/Klyftet/KlyftetExtSouthDay.tscn" id="3_7vshn"]
 [ext_resource type="Resource" uid="uid://56u4gdq3tx0c" path="res://Characters/environment/grate_resource.tres" id="3_fo810"]
 
 [sub_resource type="Resource" id="Resource_exp53"]
 script = ExtResource("1_7vshn")
-id = &"Pichidel"
+id = &"Pichidi"
 character_resource = ExtResource("2_amqr6")
 metadata/_custom_type_script = "uid://cgc7i24b66gt8"
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0cs0yx12stss"
-path="res://.godot/imported/pichidel_smoke_2.png-e681d8e9f7261b10686ea0cc150d4a81.ctex"
+uid="uid://b338av20h850j"
+path="res://.godot/imported/pichidi_base.png-1b57795237fbb92b57cd2c813ef7c35c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Pichidel/Pichidel_portraits/pichidel_smoke_2.png"
-dest_files=["res://.godot/imported/pichidel_smoke_2.png-e681d8e9f7261b10686ea0cc150d4a81.ctex"]
+source_file="res://Characters/Pichidi/Pichidi_portraits/pichidi_base.png"
+dest_files=["res://.godot/imported/pichidi_base.png-1b57795237fbb92b57cd2c813ef7c35c.ctex"]
 
 [params]
 

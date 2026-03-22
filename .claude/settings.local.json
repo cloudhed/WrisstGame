@@ -17,7 +17,21 @@
       "Bash(find /d/Projects/Godot/wrisst_test/Scenes -name *inventory* -o -name *ui*)",
       "Bash(grep -r \"hand_slot\\\\|tile_bundle\" /d/Projects/Godot/wrisst_test/Scripts --include=*.gd -l)",
       "Bash(find /d/Projects/Godot/wrisst_test/Scenes -name *.tscn)",
-      "Bash(find /d/Projects/Godot/wrisst_test -name *character*stats* -type f)"
+      "Bash(find /d/Projects/Godot/wrisst_test -name *character*stats* -type f)",
+      "Bash(find /d/Projects/Godot/wrisst_test -name *shenche* -o -name *dialog*reference*)",
+      "Bash(mv \"Characters/Pichidel/Pichidel_portraits/Pichidel_portrait_deck.tres\" \"Characters/Pichidel/Pichidel_portraits/Pichidi_portrait_deck.tres\")",
+      "Bash(mv \"Characters/Pichidel/Pichidel_resource.tres\" \"Characters/Pichidel/Pichidi_resource.tres\")",
+      "Bash(mv \"Characters/Pichidel/Pichidel_portraits/pichidel_sitting.png\" \"Characters/Pichidel/Pichidel_portraits/pichidi_sitting.png\")",
+      "Bash(mv \"Characters/Pichidel/Pichidel_portraits/pichidel_sitting.png.import\" \"Characters/Pichidel/Pichidel_portraits/pichidi_sitting.png.import\")",
+      "Bash(mv \"Characters/Pichidel/Pichidel_portraits/pichidel_base.png\" \"Characters/Pichidel/Pichidel_portraits/pichidi_base.png\")",
+      "Bash(mv \"Characters/Pichidel/Pichidel_portraits\" \"Characters/Pichidel/Pichidi_portraits\")",
+      "Bash(mv \"Characters/Pichidel\" \"Characters/Pichidi\")",
+      "Bash(mv \".godot/imported/pichidel_sitting.png-7e9c2cb9682ee2ae5a2087663ca6e39f.ctex\" \".godot/imported/pichidi_sitting.png-7e9c2cb9682ee2ae5a2087663ca6e39f.ctex\")",
+      "Bash(mv \".godot/imported/pichidel_sitting.png-7e9c2cb9682ee2ae5a2087663ca6e39f.md5\" \".godot/imported/pichidi_sitting.png-7e9c2cb9682ee2ae5a2087663ca6e39f.md5\")",
+      "Bash(mv \".godot/imported/pichidel_base.png-689c682f9906c01ee30bd7f7c4c28299.ctex\" \".godot/imported/pichidi_base.png-689c682f9906c01ee30bd7f7c4c28299.ctex\")",
+      "Bash(mv \".godot/imported/pichidel_base.png-689c682f9906c01ee30bd7f7c4c28299.md5\" \".godot/imported/pichidi_base.png-689c682f9906c01ee30bd7f7c4c28299.md5\")",
+      "Bash(mv \".godot/imported/pichidel_smoke_1.png-0680b6f7d0e7d357195649d7918f9abd.ctex\" \".godot/imported/pichidi_smoke_1.png-0680b6f7d0e7d357195649d7918f9abd.ctex\")",
+      "Bash(wc -l \"d:/Projects/Godot/wrisst_test/X ReadMe for LLMs/\\(ReadMe for LLMs\\) Wrisst Knowledge Database & Design plan 05-03-2026.txt\")"
     ]
   }
 }

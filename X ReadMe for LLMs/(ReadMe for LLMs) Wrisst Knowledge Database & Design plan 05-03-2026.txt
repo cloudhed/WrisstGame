@@ -479,6 +479,34 @@ Meta Note (for LLM use only):
 ________________
 
 
+📖 Individual: Pichidi
+Species: Ichmi (only one I have encountered; appears to be the only one in the region — does not volunteer information about their kind)
+Pronouns: They/them
+Location: Klyftet — The Sewers
+Appearance:
+Pichidi stands slightly shorter than me, slight in frame. Their skin is smooth and faintly cool to the touch — surface temperature noticeably lower than mine, like the underside of a stone. Complexion is a muted mauve-rose with small light freckles scattered across the face and shoulders. The freckles are very faintly tactile; there is a texture difference under a fingertip, not raised, just different. Their hair is dark, falls loose. It catches blue light in it rather than reflecting — seems to hold color rather than wear it. Their irises are pale and luminous blue. They tend to hold eye contact longer than is comfortable. Teeth visible when they speak or smile: off-white shading into faint blue-grey at the tips. Legs below mid-thigh covered in dark practical stockings. Clothing minimal — chosen for movement in tight wet spaces.
+When still, they look lighter than they are. When they move with intention, the muscle underneath shows itself.
+(Note to self #1: I haven't gotten a clear look at what the anatomy is. They move fast and they're never quite still. Something there, not external. I think.)
+(Note to self #2: Ichmi appear to carry anatomy that shifts between states over what they call "cycles." In one state there is an enlarged external structure that produces milt — closer to maybe 5 cm, functional. In another state this recedes and the body shifts toward being receptive. Pichidi seems to be somewhere between both right now. I did not ask. I noticed.)
+________________
+
+Personality:
+Pichidi doesn't share the social assumptions that surface people operate on. They move through friction the way water moves through a crack. They are not guarded — they simply have a different map. Curious about me in a very deliberate way, the kind of curiosity that intends to arrive somewhere. Will say something cutting without warning, not to wound but because they found the gap and the gap was interesting. No performance around sex — they name what they want plainly and don't seem to track my discomfort as a thing worth managing.
+Backstory:
+They have been through Klyftet's sewers on and off for some time. They know the passages in the dark. Some things go missing in the lower town that I suspect are theirs. I have not asked. They have not offered. Whether the sewers are a stop or a home is something they seem to have decided is not my business.
+Potential Wrisst story beats (the following is not truth, just potential):
+         * Sexual partner — recurring, low-ceremony.
+         * May be the only source of information on Ichmi biology and wherever they come from.
+         * Warmth accumulates slowly, expressed only as absence of something: shorter barbs, staying when there is no reason to. Does not name it.
+         * Tavo-Pavo is aware of them at a distance and has not acted. Could become relevant if the sewers become important.
+Meta Note (for LLM use only):
+         * Archetype: Feral opportunist / accidental recurring presence / Fierce Dom turned Drooling Sub
+         * Style: Clipped inverted syntax, self-satisfied verbal tic ("heee"), no performance around sex or want.
+         * Sexual tone: Upfront and self-directed in breeder mode; contradictory and slightly flustered in brood transition — the contradiction is the engine.
+         * Important: Warmth must never be stated. It is visible only in what Pichidi stops doing. The barbs get shorter. They stay longer. That is it.
+________________
+
+
 📖 Bestiary Entry: The Meehp
 Classification: Plainsbound Biped
 Habitat: Tallgrass Expanse, Rolling Dews, Cracked Steppe

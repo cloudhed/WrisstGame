@@ -812,7 +812,7 @@ func _resolve_ability_check(option: Dictionary) -> void:
 
 
 ## Sums all bonus_if bonuses whose condition is currently met.
-## Each entry: { "has_item": "path" OR "has_flag": "name", "bonus": int }
+## Each entry: { "has_item": "path" OR "has_flag": "name" OR "has_any_flag": ["f1","f2"], "bonus": int }
 ## out_parts (optional) is filled with human-readable strings for each applied bonus.
 func _evaluate_bonus_if(bonus_if: Array, out_parts: Array = []) -> int:
 	var total: int = 0
@@ -826,6 +826,9 @@ func _evaluate_bonus_if(bonus_if: Array, out_parts: Array = []) -> int:
 		elif entry.has("has_flag") and _all_flags_set([str(entry["has_flag"])]):
 			total += bonus
 			out_parts.append("+%d (%s flag)" % [bonus, str(entry["has_flag"])])
+		elif entry.has("has_any_flag") and _any_flag_set(_to_string_array(entry["has_any_flag"])):
+			total += bonus
+			out_parts.append("+%d (any of %s flags)" % [bonus, str(entry["has_any_flag"])])
 	return total
 
 

@@ -29,7 +29,7 @@ turbulence_initial_displacement_min = 10.5
 turbulence_initial_displacement_max = 60.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s8um"]
-size = Vector2(30.6285, 59.8066)
+size = Vector2(18.0594, 59.8066)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdrov"]
 size = Vector2(5.21411, 5.21407)
@@ -57,7 +57,7 @@ script = ExtResource("7_wlu3f")
 unlocked_dialog_id = "switch_inn_exterior_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_FocusInn"]
-position = Vector2(230.25, 469)
+position = Vector2(139.25, 469)
 scale = Vector2(14.48, 14.48)
 shape = SubResource("RectangleShape2D_3s8um")
 

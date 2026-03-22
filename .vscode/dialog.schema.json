@@ -66,8 +66,20 @@
       "type": "object",
       "description": "Visibility or gating condition for show_if / hide_if.",
       "properties": {
-        "has_flag":          { "type": "string",  "description": "True if this flag is set." },
-        "has_item":          { "type": "string",  "description": "True if player owns this item (Items/…tres)." },
+        "has_flag": {
+          "description": "True if ALL listed flags are set. Accepts a single flag name or an array.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        },
+        "has_item": {
+          "description": "True if player owns ALL listed items. Accepts a single item path or an array.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        },
         "has_any_flag":      { "type": "array", "items": { "type": "string" }, "description": "True if any of these flags are set." },
         "has_any_item":      { "type": "array", "items": { "type": "string" }, "description": "True if player owns any of these items." },
         "has_item_count": {
@@ -113,15 +125,14 @@
           "description": "True if a species stat meets a minimum.",
           "properties": {
             "species": { "type": "string" },
-            "stat":    { "type": "string" },
+            "stat":    { "type": "string", "enum": ["sex", "wins", "losses", "met"] },
             "amount":  { "type": "integer" }
           },
           "required": ["species", "stat", "amount"]
         },
         "content_disabled": {
           "type": "string",
-          "description": "True if this content category is disabled in settings.",
-          "enum": ["feral", "monsterfolk"]
+          "description": "True if this content category is disabled in settings. Known values: 'feral', 'violence', 'monsterfolk'."
         },
         "all_of": {
           "type": "array",
@@ -354,7 +365,7 @@
             },
             {
               "type": "string",
-              "description": "Shorthand string condition. Supports: 'HAS_ITEM <path>', 'HAS_REPUTATION <npc> <n>'"
+              "description": "Shorthand string condition. Supports:\n  HAS_ITEM <Items/path.tres>\n  HAS_REPUTATION <npc_id> <amount>\n  HAS_SPECIES_STAT <species_id> <stat_key> <amount>"
             }
           ]
         },
@@ -364,7 +375,7 @@
     },
 
     "LogicSceneFrom": {
-      "description": "Logic subtype: branches based on which scene the player arrived from.",
+      "description": "Logic subtype: branches based on which scene the player arrived from (GameState.last_scene_id). NOTE: the dispatch for this node type ('check_scene_from_multi') is currently commented out in dialog_flow_manager.gd — this will not fire until re-enabled.",
       "properties": {
         "check_scene_from": {
           "type": "object",
