@@ -2,1742 +2,1345 @@
 	{
 		"id": "INIT_audio",
 		"type": "command",
-		"command": "@STOP_ALL_AMBIENCE ; @FADE_MUSIC_OUT ; @PLAY_AMBIENCE sewers_ambience res://Audio/Ambience/Klyftet/mine_ambience.mp3",
+		"command": "@STOP_ALL_AMBIENCE ; @FADE_MUSIC_OUT ; @PLAY_AMBIENCE sewers res://Audio/Ambience/Klyftet/mine_ambience.mp3",
 		"clear": true,
-		"next": "INIT_done_check"
+		"next": "INIT_check_v4_brood"
 	},
 	{
-		"id": "INIT_done_check",
+		"id": "INIT_check_v4_brood",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["pichidi_sex_v4_brood"],
+			"on_success": "entry_v5_brood_peak",
+			"on_fail": "INIT_check_v3"
+		}
+	},
+	{
+		"id": "INIT_check_v3",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["pichidi_sex_v3"],
+			"on_success": "entry_v4_sex3plus",
+			"on_fail": "INIT_check_v2"
+		}
+	},
+	{
+		"id": "INIT_check_v2",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["pichidi_sex_v2"],
+			"on_success": "entry_v3_sex2",
+			"on_fail": "INIT_check_sexed"
+		}
+	},
+	{
+		"id": "INIT_check_sexed",
 		"type": "logic",
 		"check_flags": {
 			"flags": ["pichidi_sexed"],
-			"on_success": "repeat_entry",
-			"on_fail": "first_entry"
+			"on_success": "entry_v2_sex1",
+			"on_fail": "INIT_check_met"
+		}
+	},
+	{
+		"id": "INIT_check_met",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["pichidi_met"],
+			"on_success": "entry_v2_met_nosex",
+			"on_fail": "entry_v1_first"
 		}
 	},
 
 	{
-		"id": "night_first_entry",
+		"id": "entry_v1_first",
 		"type": "narration",
-		"text": "The Windbreak is empty. The tables that had been busy earlier in the day are cleared, and the fire has banked down to coals. No customers seem to be here anymore. One oil lamp burns faintly behind the bar, casting the room in amber and long shadow. Outside, the wind presses against the shutters in slow, low notes",
-		"next": "night_first_entry_02"
+		"name": "Pichidi",
+		"command": "@SHOW_PORTRAIT sitting",
+		"text": "The sewer passage drops below the alley-level drain and opens into something wider than you expected. The walls are old cut stone, slick and dark. Water runs in a shallow channel down the center, slow and black. Oil from somewhere catches it and sheens. The smell is mineral and damp, cold without the wind's edge.",
+		"next": "v1_sewer_02"
 	},
 	{
-		"id": "night_first_entry_02",
+		"id": "v1_sewer_02",
 		"type": "narration",
-		"name": "Tavo-Pavo",
-		"text": "Tavo-Pavo is alone behind the counter, moving through the closing routine like he's done it every night for years. The cups gets stacked, the bar gets wiped down. He's still wearing the apron, surprisingly clean after a work shift.",
-		"command": "@SHOW_PORTRAIT bar_base",
-		"next": "night_tavo_first_01"
+		"text": "You hear something before you see it. A shift of weight above you. A small displacement of sound. Then nothing.",
+		"next": "v1_pichidi_drop"
 	},
 	{
-		"id": "night_tavo_first_01",
+		"id": "v1_pichidi_drop",
+		"type": "narration",
+		"name": "Pichidi",
+		"text": "Something moves behind you in the shadow from the light pouring in through the hole you came from. Pale luminous eyes catch the thin light, and hold eye contact. The figure is small, crouched low on the ledge where the passage bends. They wear a hood that shadows their face, but you can see the pale freckles that dust their cheeks and nose. ",
+		"next": "v1_pichidi_first"
+	},
+	{
+		"id": "v1_pichidi_first",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "Without even looking up, he grunts. \"Bar's closed.\"",
-		"next": "night_hub"
+		"name": "Pichidi",
+		"text": "\"You follow hooded figure into sewers like bolk who finds coin on floor and does not think why it is there.\"",
+		"next": "v1_intro_choice"
 	},
 	{
-		"id": "night_tavo_first_01_answer",
+		"id": "v1_intro_choice",
 		"type": "choice",
 		"options": [
 			{
-				"text": "> [Clear your throat]",
-				"next": "night_tavo_first_02"
+				"text": "> I heard something down here.",
+				"next": "v1_pichidi_response"
 			},
 			{
-				"text": "> I was under the impression bars in mountain passes stayed open late",
-				"next": "night_tavo_first_02"
+				"text": "> I was curious.",
+				"next": "v1_pichidi_response"
 			},
 			{
-				"text": "> Even if I pay more than the usual?",
-				"next": "night_tavo_first_02"
-			},
-			{
-				"text": "> [Leave]",
-				"next": "night_leave"
+				"text": "> [Say nothing]",
+				"next": "v1_pichidi_response_silent"
 			}
 		]
 	},
 	{
-		"id": "night_tavo_first_02",
+		"id": "v1_pichidi_response",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He throws you a quick glance as he sets down the cup he's wiping.[p]\"...At least sit down if you're going to stand there.\"",
-		"next": "night_hub"
+		"name": "Pichidi",
+		"text": "\"Heee.\" They shift their weight as they keep their legs crossed. \"Curious. Or something else on you. I do not know yet which.\"",
+		"next": "v1_set_met"
+	},
+	{
+		"id": "v1_pichidi_response_silent",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "The silence doesn't appear to bother the monster. They tilt their head, studying you with uncomfortable patience. \"Heee. Silent kind. Also interesting.\"",
+		"next": "v1_set_met"
+	},
+	{
+		"id": "v1_set_met",
+		"type": "command",
+		"command": "@add_reputation pichidi 5",
+		"set_flag": "pichidi_met",
+		"flag_type": "dialog",
+		"next": "main_hub"
 	},
 
 	{
-		"id": "night_repeat_entry",
+		"id": "entry_v2_met_nosex",
 		"type": "narration",
-		"text": "The Windbreak is quiet again. One oil lamp holds the bar in amber, and the wind presses against the shutters in those same low notes. Tavo is at the bar — same place, same apron, same motion — and he looks up when you come in.",
-		"next": "night_repeat_tavo"
+		"name": "Pichidi",
+		"command": "@SHOW_PORTRAIT clothed",
+		"text": "The passage is quiet. The thin line of water runs in the channel below. You don't have to wait — they're already there, perched at the low ledge where the passage bends, watching you come in.",
+		"next": "entry_v2_met_nosex_npc"
 	},
 	{
-		"id": "night_repeat_tavo",
+		"id": "entry_v2_met_nosex_npc",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Back.\"[p]He sets down his cloth. Pulls out a cup without being asked.",
-		"command": "@SHOW_PORTRAIT bar_base",
-		"next": "night_hub_postgame"
-	},
-	{
-		"id": "night_hub_postgame",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Have a drink with him]",
-				"next": "postgame_drink"
-			},
-			{
-				"text": "> [Sit quietly]",
-				"next": "postgame_quiet"
-			},
-			{
-				"text": "> [Leave]",
-				"next": "night_leave"
-			}
-		]
-	},
-	{
-		"id": "postgame_drink",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He pours. Slides it over. Pours one for himself.[p]\"Don't make it weird.\"",
-		"next": "postgame_drink_02"
-	},
-	{
-		"id": "postgame_drink_02",
-		"type": "narration",
-		"text": "You take a stool at the bar and let him work. The fire ticks down to nothing.[p]It's enough.",
-		"next": "night_leave"
-	},
-	{
-		"id": "postgame_quiet",
-		"type": "narration",
-		"text": "You find a stool at the far end of the bar. He doesn't tell you to move. He goes back to closing up.[p]The lamp gutters. The wind runs across the shutters.[p]Nobody says anything. That's fine too.",
-		"next": "night_leave"
+		"name": "Pichidi",
+		"text": "\"Back. You do not have task here, I think. Heee. Still, you come.\"",
+		"next": "main_hub"
 	},
 
 	{
-		"id": "night_hub",
+		"id": "entry_v2_sex1",
+		"type": "narration",
+		"name": "Pichidi",
+		"command": "@SHOW_PORTRAIT clothed",
+		"text": "The sewer smells the same. Sounds the same. But there's a different quality to arriving now, something in the body that knows the space already. They're at the ledge, watching you from the moment you round the passage. They speak before you reach them.",
+		"next": "entry_v2_sex1_npc"
+	},
+	{
+		"id": "entry_v2_sex1_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee... you are back down here with me. Memory of last time is heavy on you. You act like bolk. Is need on you to see me in sewers again? I ride your deh again, I think. It almost does not fit my nah last time. I make it fit today. ...Or is other reason on you to come here?\"",
+		"next": "main_hub"
+	},
+
+	{
+		"id": "entry_v3_sex2",
+		"type": "narration",
+		"name": "Pichidi",
+		"command": "@SHOW_PORTRAIT clothed",
+		"text": "They're in the same spot. They were probably already there before you reached the grate. They look at you the way they always do — like they were expecting you and don't need to make a thing of it.",
+		"next": "entry_v3_sex2_npc"
+	},
+	{
+		"id": "entry_v3_sex2_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Back again.\" A pause, shorter than their usual silences. \"Good.\"",
+		"next": "main_hub"
+	},
+
+	{
+		"id": "entry_v4_sex3plus",
+		"type": "narration",
+		"name": "Pichidi",
+		"command": "@SHOW_PORTRAIT clothed",
+		"text": "You don't need to look for them anymore. They're where they always are. The familiarity of the space sits differently now — less like an unfamiliar passage, more like a room.",
+		"next": "entry_v4_sex3plus_npc"
+	},
+	{
+		"id": "entry_v4_sex3plus_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee.\" They don't move from their perch. \"You know where to find me now. This is fine.\"",
+		"next": "main_hub"
+	},
+
+	{
+		"id": "entry_v5_brood_peak",
+		"type": "narration",
+		"name": "Pichidi",
+		"command": "@SHOW_PORTRAIT clothed",
+		"text": "They're not at the ledge. It takes you a moment to locate them — lower than usual, near the drainage shelf, half in shadow. They're watching the water run. When you enter they don't look up immediately. The silence before they acknowledge you has a different quality than the usual waiting silence.",
+		"next": "main_hub"
+	},
+
+	{
+		"id": "main_hub",
 		"type": "choice",
 		"options": [
 			{
-				"text": "> [Order a drink]",
-				"next": "night_order_drink_check"
+				"text": "> [Look around]",
+				"next": "hub_look_around"
 			},
 			{
-				"text": "> Rough night?",
-				"next": "flirt_night_rough",
+				"text": "> [Move closer]",
+				"next": "hub_approach_closer"
+			},
+			{
+				"text": "> Ask them something",
+				"next": "question_hub"
+			},
+			{
+				"text": "> That language you use — I think I've heard it somewhere.",
+				"next": "hub_mention_bitalgut",
+				"show_if": { "has_flag": "bitalgut_met" },
 				"hide_if": "picked"
 			},
 			{
-				"text": "> You always close up alone?",
-				"next": "flirt_night_alone",
+				"text": "> Tavo-Pavo at the inn must know something's down here.",
+				"next": "hub_mention_tavo",
+				"show_if": { "has_flag": "tavo_met" },
 				"hide_if": "picked"
 			},
 			{
-				"text": "> This place is different at night.",
-				"next": "flirt_night_place",
+				"text": "> Nautinto mentioned hearing things about something skulking below Klyftet.",
+				"next": "hub_mention_nautinto",
+				"show_if": { "has_flag": "nautinto_met" },
 				"hide_if": "picked"
 			},
 			{
-				"text": "> How long have you had the Windbreak?",
-				"next": "night_talk_history",
+				"text": "> [Hold eye contact a beat longer than necessary]",
+				"next": "hub_flirt_gaze",
+				"show_if": { "min_horny": { "npc": "pichidi", "amount": 20 } },
 				"hide_if": "picked"
 			},
 			{
-				"text": "> You seem easier right now.",
-				"next": "flirt_night_easier",
-				"show_if": { "min_flirt": { "npc": "tavo_pavo", "amount": 20 } },
-				"hide_if": "picked"
+				"text": "> [Touch their shoulder]",
+				"next": "hub_touch_option",
+				"show_if": { "min_horny": { "npc": "pichidi", "amount": 40 } }
 			},
 			{
-				"text": "> That scar on your shoulder, what's the story there?",
-				"next": "night_talk_scar",
-				"show_if": { "min_flirt": { "npc": "tavo_pavo", "amount": 20 } },
-				"hide_if": "picked"
-			},
-			{
-				"text": "> [Slide closer to him]",
-				"next": "flirt_night_closer",
-				"show_if": { "min_flirt": { "npc": "tavo_pavo", "amount": 40 } },
-				"hide_if": { "has_flag": "tavo_flirt_closer" }
-			},
-			{
-				"text": "> I like watching you work.",
-				"next": "flirt_night_watch",
-				"show_if": { "min_flirt": { "npc": "tavo_pavo", "amount": 40 } },
-				"hide_if": "picked"
-			},
-			{
-				"text": "> [Hold his gaze.]",
-				"next": "flirt_night_gaze",
+				"text": "> You know what I came back for.",
+				"next": "hub_flirt_direct",
 				"show_if": {
 					"all_of": [
-						{ "min_flirt": { "npc": "tavo_pavo", "amount": 60 } },
-						{ "has_flag": "tavo_night_drink_3" }
+						{ "min_horny": { "npc": "pichidi", "amount": 40 } },
+						{ "has_flag": "pichidi_met" }
 					]
 				},
 				"hide_if": "picked"
 			},
 			{
+				"text": "> [You look different today]",
+				"show_if": { "has_flag": "pichidi_sex_v4_brood" },
+				"hide_if": "picked",
+				"check": { "ability": "soul", "dc": 9 },
+				"on_success": "brood_peak_success",
+				"on_fail": "brood_peak_soul_fail",
+				"on_nat20": "brood_peak_nat20"
+			},
+			{
+				"text": "> [Don't move yet]",
+				"next": "cuddle_pichidi_asks",
+				"show_if": { "has_flag": "pichidi_sex_v2" },
+				"hide_if": { "has_flag": "pichidi_cuddled" }
+			},
+			{
+				"text": "> [Reach for them]",
+				"next": "hub_propose_sex",
+				"show_if": { "min_horny": { "npc": "pichidi", "amount": 60 } }
+			},
+			{
 				"text": "> [Leave]",
-				"next": "night_leave"
+				"next": "hub_leave"
 			}
 		]
 	},
 
 	{
-		"id": "night_order_drink_check",
-		"type": "logic",
-		"check_flags": {
-			"flags": ["tavo_night_drink_3"],
-			"on_success": "night_drunk_already",
-			"on_fail": "night_drink_check_2"
-		}
-	},
-	{
-		"id": "night_drink_check_2",
-		"type": "logic",
-		"check_flags": {
-			"flags": ["tavo_night_drink_2"],
-			"on_success": "night_drink_third",
-			"on_fail": "night_drink_check_1"
-		}
-	},
-	{
-		"id": "night_drink_check_1",
-		"type": "logic",
-		"check_flags": {
-			"flags": ["tavo_night_drink_1"],
-			"on_success": "night_drink_second",
-			"on_fail": "night_drink_first"
-		}
-	},
-	{
-		"id": "night_drink_first",
+		"id": "hub_look_around",
 		"type": "narration",
-		"text": "He doesn't ask what you want and instead pulls two clay cups from the stack and fills them both from a jug procured from under the counter. He sets one in front of you without looking at you.",
-		"set_flag": "tavo_night_drink_1",
-		"flag_type": "dialog",
-		"next": "night_drink_first_02"
+		"command": "@add_horny pichidi 5",
+		"text": "You take in the space. Stone walls sheened with moisture, the thin waterway cutting the center of the floor, a high ledge above the bend where something has clearly spent a lot of time. You notice the small details — a folded cloth, a half-used candle stub, an arrangement that is deliberate if minimal. Someone lives here, or close enough to it.",
+		"next": "main_hub"
 	},
 	{
-		"id": "night_drink_first_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Closing drink.\"",
-		"command": "@add_flirt tavo_pavo 10",
-		"next": "night_hub"
-	},
-	{
-		"id": "night_drink_second",
+		"id": "hub_approach_closer",
 		"type": "narration",
-		"text": "Without asking he refills the cups. Yours first, then his. He sets the jug down less precisely than before. The second drink goes down fast for him. His ears shift, tracking you.",
-		"set_flag": "tavo_night_drink_2",
-		"flag_type": "dialog",
-		"next": "night_drink_second_02"
+		"command": "@add_horny pichidi 10",
+		"text": "You close the distance between you. The light is thin down here — what reaches from the grate catches the pale freckles on their face, the sheen of their hair. They don't move back.",
+		"next": "hub_approach_npc"
 	},
 	{
-		"id": "night_drink_second_02",
+		"id": "hub_approach_npc",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He wipes the counter. Same spot he's wiped three times already.[p]\"Kekk burned the garlic this morning. Still smells it. Whole kitchen. Can't get it out.\"",
-		"next": "night_drink_second_03"
+		"name": "Pichidi",
+		"text": "\"Heee. You come closer. Not afraid of dark, I see. Or of me.\" They let you stand there a moment before their head tilts fractionally. \"What is it on you.\"",
+		"next": "main_hub"
 	},
 	{
-		"id": "night_drink_second_03",
+		"id": "hub_flirt_gaze",
 		"type": "narration",
-		"text": "He knows this isn't what you were talking about. He keeps his eyes on the counter and keeps wiping the same spot.",
-		"command": "@add_flirt tavo_pavo 10",
-		"next": "night_hub"
+		"command": "@add_horny pichidi 10",
+		"text": "You hold their gaze a beat past the natural break — the point where you'd normally look away. They don't blink. The pale irises don't waver. Then the corner of their mouth moves, barely.",
+		"next": "hub_flirt_gaze_npc"
 	},
 	{
-		"id": "night_drink_third",
-		"clear": false,
+		"id": "hub_flirt_gaze_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee.\" Their voice is low and carries a quality of satisfaction that has nothing to do with you winning. \"You have confidence. This is good. Or it is bolk acting brave. I find out which soon enough.\"",
+		"next": "main_hub"
+	},
+	{
+		"id": "hub_touch_option",
 		"type": "narration",
-		"text": "The third cup. He moves through the pour with the same precision as before, but something has gone loose behind his eyes. His ears drift independently rather than tracking sound. A flush has crept up through the fur at their tips.",
-		"set_flag": "tavo_night_drink_3",
-		"flag_type": "dialog",
-		"next": "night_drink_third_02"
+		"command": "@add_horny pichidi 15",
+		"text": "You reach and set your hand on their shoulder. The texture through the fabric is slight — the firm underlying muscle, the barely-cooler-than-expected skin temperature that transfers even through cloth. They go still. Not flinching. Just aware.",
+		"next": "hub_touch_npc"
 	},
 	{
-		"id": "night_drink_third_02",
+		"id": "hub_touch_npc",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He looks at his cup. Sets it down. Picks it back up.[p]\"This place almost didn't make it through the second snow season. Roof collapsed on the east side. Just sat down one night. Four meters of stone. I didn't sleep for three days after.\"",
-		"next": "night_drink_third_03"
+		"name": "Pichidi",
+		"text": "They look at your hand. Then at you. The pause is not discomfort — it reads closer to assessment. \"You do not ask first. Heee. This I notice.\" They don't move the hand away.",
+		"next": "main_hub"
 	},
 	{
-		"id": "night_drink_third_03",
+		"id": "hub_flirt_direct",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He blinks. Like he surprised himself.[p]\"Don't know why I said that.\"",
-		"command": "@add_flirt tavo_pavo 10",
-		"next": "night_hub"
+		"name": "Pichidi",
+		"command": "@add_horny pichidi 10",
+		"text": "\"Heee.\" They let the word sit there a moment. \"You say true thing.\" Their eyes track over you briefly, unhurried, the way something decides whether to move toward a thing or through it. \"Then say what you came for. I do not need it wrapped.\"",
+		"next": "main_hub"
 	},
 	{
-		"id": "night_drunk_already",
+		"id": "hub_mention_bitalgut",
+		"type": "narration",
+		"command": "@add_horny pichidi 10",
+		"text": "You say it casually — one of the words you heard, the shape of it. Something shifts in their expression. Not much. Enough.",
+		"next": "hub_mention_bitalgut_npc"
+	},
+	{
+		"id": "hub_mention_bitalgut_npc",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He looks at the jug. Looks at his cup. Turns the cup over on the counter.[p]\"That's enough.\"[p]It's not clear if he's talking to you.",
-		"next": "night_hub"
+		"name": "Pichidi",
+		"text": "\"...You know Old Mire word.\" Not a question. Their gaze sharpens without moving. \"Where you hear this.\" A beat. \"Not from here, I know. Not from town above.\"",
+		"next": "main_hub"
+	},
+	{
+		"id": "hub_mention_tavo",
+		"type": "npc",
+		"name": "Pichidi",
+		"command": "@add_horny pichidi 5",
+		"text": "\"Nöteri innkeeper.\" The corners of their mouth flatten slightly — not irritation, more assessment. \"He knows something walks his pipes. Heee. He does not come down to look. Smart of him.\" They say nothing else about it.",
+		"next": "main_hub"
+	},
+	{
+		"id": "hub_mention_nautinto",
+		"type": "npc",
+		"name": "Pichidi",
+		"command": "@add_horny pichidi 5",
+		"text": "\"Nautinto.\" They repeat the name once, like testing its weight. \"I do not know this one. But if sound carries, it carries both directions.\" They glance toward the ceiling briefly. \"It is fine. No danger on me from that.\"",
+		"next": "main_hub"
+	},
+	{
+		"id": "hub_propose_sex",
+		"type": "narration",
+		"command": "@add_horny pichidi 10",
+		"text": "You close the distance and reach for them — not tentative, not performing confidence. Just reaching. They watch your hand come toward them and don't move back.",
+		"next": "hub_propose_sex_npc"
+	},
+	{
+		"id": "hub_propose_sex_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee. You reach for me. Bold.\" They look at you steadily. \"I was going to do this anyway. But you reaching first is interesting to me.\" They rise from the crouch in one unhurried motion. \"Come, then.\"",
+		"next": "route_entry_hub"
+	},
+	{
+		"id": "hub_leave",
+		"type": "command",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LEAVE_ENCOUNTER",
+		"end": true
 	},
 
 	{
-		"id": "flirt_night_rough",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Every night's rough. That's the job.\"",
-		"next": "flirt_night_rough_02"
-	},
-	{
-		"id": "flirt_night_rough_02",
-		"type": "narration",
-		"text": "He looks up from the counter — something in the question catches on him and holds him there a beat — before he looks back down.",
-		"next": "flirt_night_rough_03"
-	},
-	{
-		"id": "flirt_night_rough_03",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Tonight was fine. Better than most.\"",
-		"command": "@add_flirt tavo_pavo 10",
-		"next": "night_hub"
-	},
-
-	{
-		"id": "flirt_night_alone",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Always. Kekk would forget to lock the door half the time, and usually leaves the fire too high.\" He stacks a cup. \"Don't trust the closing to anyone else but yourself.\"",
-		"next": "flirt_night_alone_02"
-	},
-	{
-		"id": "flirt_night_alone_02",
-		"type": "narration",
-		"text": "A quiet settles that doesn't get filled. Tavo-Pavo stays busy behind the counter, moving through the last of the closing work.",
-		"command": "@add_flirt tavo_pavo 10",
-		"next": "night_hub"
-	},
-
-	{
-		"id": "flirt_night_place",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He pauses mid-wipe.\"Most people don't stay long enough to notice.\"",
-		"next": "flirt_night_place_02"
-	},
-	{
-		"id": "flirt_night_place_02",
-		"type": "narration",
-		"text": "His tail makes one slow twitch at the base and settles, the only sign that the comment landed at all.",
-		"command": "@add_flirt tavo_pavo 10",
-		"next": "night_hub"
-	},
-
-	{
-		"id": "night_talk_history",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Long enough.\" He sets down a cup. \"Scavenged stone from a collapsed waystation east of the pass. Two seasons to get the walls solid. Third to put a roof on that stayed. Built the counter myself.\"",
-		"next": "night_talk_history_02"
-	},
-	{
-		"id": "night_talk_history_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Don't ask me why I stayed in this particular mountain pass and built an inn out of rubble instead of doing something sensible.\"",
-		"next": "night_talk_history_03"
-	},
-	{
-		"id": "night_talk_history_03",
-		"type": "narration",
-		"text": "He picks up the cloth and turns back to the bar, putting his hands to work.",
-		"next": "night_talk_history_04"
-	},
-	{
-		"id": "night_talk_history_04",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"I don't have an answer I like.\"",
-		"next": "night_hub"
-	},
-
-	{
-		"id": "night_talk_scar",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He shrugs. \"Old business. Nothing you need to know.\"",
-		"next": "night_talk_scar_02_choice"
-	},
-	{
-		"id": "night_talk_scar_02_choice",
+		"id": "question_hub",
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Was it one of the ferals?",
-				"next": "night_talk_scar_02"
+				"text": "> Who are you?",
+				"next": "q_who_deflect",
+				"hide_if": "picked"
 			},
 			{
-				"text": "> Was it a customer?",
-				"next": "night_talk_scar_02"
+				"text": "> What are you?",
+				"next": "q_what_01",
+				"hide_if": "picked"
 			},
 			{
-				"text": "> [Let it go]",
-				"next": "night_talk_scar_02"
+				"text": "> How long have you been down here?",
+				"next": "q_howlong_01",
+				"hide_if": "picked"
+			},
+			{
+				"text": "> Does anyone on the surface know you're here?",
+				"next": "q_anyone_check",
+				"hide_if": "picked"
+			},
+			{
+				"text": "> That language — I heard some of those words somewhere.",
+				"show_if": { "has_flag": "bitalgut_met" },
+				"hide_if": { "has_flag": "pichidi_told_bitalgut" },
+				"check": { "ability": "soul", "dc": 13 },
+				"on_fail": "q_mire_fail",
+				"on_success": "q_mire_success",
+				"on_nat20": "q_mire_nat20"
+			},
+			{
+				"text": "> [Something about the way they hold themselves — ask about it]",
+				"next": "q_deeper_01",
+				"show_if": { "has_flag": "pichidi_who_nat20_unlocked" },
+				"hide_if": "picked"
+			},
+			{
+				"text": "> [Back]",
+				"next": "main_hub"
+			}
+		]
+	},
+
+	{
+		"id": "q_who_deflect",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Name.\" A short pause. \"Heee. Not thing I give to everyone who falls into my floor.\"",
+		"next": "q_who_check"
+	},
+	{
+		"id": "q_who_check",
+		"type": "check",
+		"ability": "soul",
+		"dc": 11,
+		"on_success": "q_who_success",
+		"on_fail": "q_who_fail",
+		"on_nat20": "q_who_nat20"
+	},
+	{
+		"id": "q_who_fail",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "The monster looks you up and down. \"...Bolk do not need it.\" They look away toward the water. \"Who does the asking?\"",
+		"next": "q_who_fail_choice"
+	},
+	{
+		"id": "q_who_fail_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> My name is [Player Name].",
+				"next": "q_who_fail_name"
 			}
 		]
 	},
 	{
-		"id": "night_talk_scar_02",
-		"type": "narration",
-		"text": "He seems to be lost in thought for a moment, as something in his jaw goes tighter.",
-		"next": "night_talk_scar_03"
-	},
-	{
-		"id": "night_talk_scar_03",
+		"id": "q_who_fail_name",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"...\"\"It didn't finish me. That's the whole story.\"",
-		"command": "@add_flirt tavo_pavo 10",
-		"next": "night_hub"
-	},
-
-	{
-		"id": "flirt_night_easier",
-		"type": "narration",
-		"text": "He goes very still for a split second, before he picks up the cloth and wipes the counter again.",
-		"next": "flirt_night_easier_02"
+		"name": "Pichidi",
+		"text": "Their gaze peers at you from under the hood. \"Heee... Polite to do introduction.\" They say your name with a slight hesitation, as if testing the sound of it. \"I remember this.[nb]Pichidi remember this.\"",
+		"next": "question_hub"
 	},
 	{
-		"id": "flirt_night_easier_02",
+		"id": "q_who_success",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Don't.\"",
-		"next": "night_hub"
-	},
-
-	{
-		"id": "flirt_night_closer",
-		"type": "narration",
-		"text": "You round the end of the counter and come to his side. There's barely room for the two of you back here.[p]He side-eyes you from about chest height as he keeps polishing a cup that was already clean.",
-		"next": "flirt_night_closer_02"
+		"name": "Pichidi",
+		"command": "@add_reputation pichidi 10",
+		"text": "Something in their expression shifts — minor, but real. \"Pichidi.\" They say it short. \"You remember it.\"",
+		"next": "question_hub"
 	},
 	{
-		"id": "flirt_night_closer_02",
+		"id": "q_who_nat20",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Don't bump anything.\"",
-		"command": "@SHOW_PORTRAIT bar_annoyed",
-		"set_flag": "tavo_flirt_closer",
+		"name": "Pichidi",
+		"command": "@add_reputation pichidi 25",
+		"set_flag": "pichidi_who_nat20_unlocked",
 		"flag_type": "knowledge",
-		"next": "flirt_night_closer_03"
+		"text": "\"...Pichidi.\"[p]They hold the eye contact through the pause. \"And you are strange shape of bolk I have not seen before.\" They look you up and down, then back to your face. \"This is interesting.\"",
+		"next": "question_hub"
 	},
 	{
-		"id": "flirt_night_closer_03",
-		"type": "narration",
-		"text": "He stays where he is, his shoulder barely an inch from your arm. His hands go back to the work without comment.",
-		"command": "@add_flirt tavo_pavo 20",
-		"next": "night_hub"
-	},
-
-	{
-		"id": "flirt_night_watch",
-		"type": "narration",
-		"text": "He stops mid-wipe, the cloth held flat and still against the counter.",
-		"next": "flirt_night_watch_02"
-	},
-	{
-		"id": "flirt_night_watch_02",
+		"id": "q_what_01",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"...Don't say things like that.\"",
-		"next": "flirt_night_watch_03"
+		"name": "Pichidi",
+		"text": "\"Ichmi.\" The word is foreign to you, but they say it with a weight that suggests it's important. \"Ichmi.\" They repeat it, slower this time. \"This is what I am.\" They don't elaborate, and the word doesn't seem to be from any language you know.",
+		"next": "q_what_02"
 	},
 	{
-		"id": "flirt_night_watch_03",
-		"type": "narration",
-		"text": "He starts wiping again, slower than before, his nose twitching twice against the lamplight.",
-		"command": "@add_flirt tavo_pavo 20",
-		"next": "night_hub"
-	},
-
-	{
-		"id": "flirt_night_gaze",
-		"clear": true,
-		"type": "narration",
-		"text": "He reaches for another cup and glances up and catches you looking at him.[p]His paw pauses a few centimeters from the cup.",
-		"next": "flirt_night_gaze_02"
-	},
-	{
-		"id": "flirt_night_gaze_02",
+		"id": "q_what_02",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"...What.\"",
-		"next": "flirt_night_gaze_03"
+		"name": "Pichidi",
+		"text": "\"No more of us near this water. Not for long time.\"",
+		"next": "question_hub"
 	},
 	{
-		"id": "flirt_night_gaze_03",
-		"type": "narration",
-		"text": "You don't answer — you hold the look and let the silence stretch.[p]The fire ticks in the grate. The wind moves across the shutters.",
-		"next": "flirt_night_gaze_04"
-	},
-	{
-		"id": "flirt_night_gaze_04",
+		"id": "q_howlong_01",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He sets the cloth down for the first time all night.",
-		"command": "@SHOW_PORTRAIT bar_base ; @add_flirt tavo_pavo 20",
-		"next": "tavo_initiate_01"
-	},
-
-	{
-		"id": "tavo_initiate_01",
-		"clear": true,
-		"type": "narration",
-		"text": "He has gone completely still, both hands flat on the counter.[p]The bar between you feels like it's made of something thinner than wood.",
-		"next": "tavo_initiate_02"
+		"name": "Pichidi",
+		"text": "\"Long enough to know how small creechs count their corners here.\" A pause. \"Long enough that question does not have useful answer for you.\"",
+		"next": "question_hub"
 	},
 	{
-		"id": "tavo_initiate_02",
+		"id": "q_anyone_check",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["tavo_met"],
+			"on_success": "q_anyone_tavo",
+			"on_fail": "q_anyone_notavo"
+		}
+	},
+	{
+		"id": "q_anyone_tavo",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Don't look at me like that.\"",
-		"next": "tavo_initiate_03"
+		"name": "Pichidi",
+		"text": "\"Nöteri innkeeper knows something walks his pipes. Heee. Does not check.\" Their satisfaction is audible. \"Other residents know sounds. They call it building. Pipes settling. Heee. Useful, this.\"",
+		"next": "question_hub"
 	},
 	{
-		"id": "tavo_initiate_03",
-		"type": "narration",
-		"text": "He holds the look. His ears are flushed and pressed slightly back, the warmth visible at the tips even through the fur.",
-		"next": "tavo_initiate_04"
-	},
-	{
-		"id": "tavo_initiate_04",
-		"type": "narration",
-		"text": "He rounds the counter.[p]Moves into your space the way he moves through his kitchen — like he has a right to be exactly where he is. He stops close. Closer than he's ever stood. His head comes to your chest. He tilts it up.",
-		"next": "tavo_initiate_05"
-	},
-	{
-		"id": "tavo_initiate_05",
+		"id": "q_anyone_notavo",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"You're not leaving.\"",
-		"next": "sex_gate_choice"
+		"name": "Pichidi",
+		"text": "\"Some hear sounds. None come to find source.\" They shrug slightly. \"Folk above prefer to not know what lives below them. This is convenient for me.\"",
+		"next": "question_hub"
 	},
-
 	{
-		"id": "sex_gate_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Stay]",
-				"next": "sex_bj_start"
-			},
-			{
-				"text": "> [Grab his wrist. Don't pull — just hold it.]",
-				"next": "sex_wrist_attempt",
-				"show_if": {
-					"all_of": [
-						{ "min_flirt": { "npc": "tavo_pavo", "amount": 80 } },
-						{ "has_flag": "tavo_flirt_closer" },
-						{ "has_flag": "tavo_night_drink_3" }
-					]
-				}
-			},
-			{
-				"text": "> [Step back. Not tonight.]",
-				"next": "sex_refuse"
-			}
-		]
+		"id": "q_mire_fail",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heard some words.\" They look at you, then away. \"Many things make sounds. Not all of them mean something.\" The door, such as it was, stays closed.",
+		"next": "question_hub"
 	},
-
-
-
 	{
-		"id": "sex_wrist_attempt",
-		"clear": true,
-		"type": "narration",
-		"text": "You bring your hand up and close it around his wrist, your fingers settling over the fur and bone.[p]The motion in him stops completely.",
-		"set_flag": "tavo_wrist_attempted",
+		"id": "q_mire_success",
+		"type": "npc",
+		"name": "Pichidi",
+		"command": "@add_reputation pichidi 15",
+		"set_flag": "pichidi_told_bitalgut",
 		"flag_type": "dialog",
-		"next": "sex_wrist_attempt_02"
+		"text": "\"...You found Old Mire speaker somewhere.\" They look at you with a quality of attention that wasn't there a moment ago. \"Interesting.\" The tone in their voice suggests that they have noted this.",
+		"next": "question_hub"
 	},
 	{
-		"id": "sex_wrist_attempt_02",
-		"type": "narration",
-		"text": "His ears flatten. His wide eyes snap from your hand to your face. The look isn't anger. It's something closer to alarm — the look of someone whose hand just got read.",
-		"next": "sex_wrist_attempt_03"
-	},
-	{
-		"id": "sex_wrist_attempt_03",
+		"id": "q_mire_nat20",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"What do you think you're—\"",
-		"next": "sex_wrist_attempt_04"
+		"name": "Pichidi",
+		"command": "@add_reputation pichidi 30",
+		"set_flag": "pichidi_told_bitalgut",
+		"flag_type": "dialog",
+		"text": "\"Heee.\"[p] The blue eyes widen slightly as they look at you directly. \"Where?\"",
+		"next": "question_hub"
 	},
 	{
-		"id": "sex_wrist_attempt_04",
+		"id": "q_deeper_01",
 		"type": "narration",
-		"text": "He twists his wrist free. Fast. One practiced motion — you feel the calluses scrape across your palm and then he's out, already pivoting, already taking the space back.",
-		"next": "sex_wrist_attempt_05"
+		"text": "You name the thing you've noticed — not the body language itself, but the quality beneath it. Something that arrives and leaves without announcement, something that makes them hold a position a half-second longer than before. They are quiet for a moment that is longer than their usual silences.",
+		"next": "q_deeper_02"
 	},
 	{
-		"id": "sex_wrist_attempt_05",
-		"clear": true,
-		"type": "narration",
-		"text": "His other hand is at your collar before you can reset. Four fingers, iron grip, pulling you down to his height. His breath is fast and warm against your chin. His nose twitches once.",
-		"next": "sex_wrist_attempt_06"
-	},
-	{
-		"id": "sex_wrist_attempt_06",
+		"id": "q_deeper_02",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"No.\"[p]A beat. His eyes hold yours.[p]\"On your knees.\"",
-		"next": "sex_wrist_attempt_07"
-	},
-	{
-		"id": "sex_wrist_attempt_07",
-		"type": "narration",
-		"text": "He shoves you down. Not hard enough to hurt. Hard enough to mean it.[p]Your knees hit the flagstone. He's already dealing with his waistband.",
-		"next": "sex_bj_04"
+		"name": "Pichidi",
+		"text": "\"...Body does what it does.\" Their voice is even. \"I am not confused by it. Only mildly — \" a pause, that small fractional hesitation — \"...inconvenienced.\" They move past it with their usual speed. \"This is not interesting question. Ask other thing.\"",
+		"next": "question_hub"
 	},
 
-
+	{
+		"id": "route_entry_hub",
+		"type": "choice",
+		"clear": true,
+		"options": [
+			{
+				"text": "> [Let them set the terms]",
+				"next": "routeA_start"
+			},
+			{
+				"text": "> [Push them against the wall first]",
+				"next": "routeB_entry_check",
+				"show_if": { "has_flag": "pichidi_reversal_happened" }
+			},
+			{
+				"text": "> [Put your mouth on them first]",
+				"next": "routeC_start"
+			},
+			{
+				"text": "> [Back away]",
+				"next": "main_hub"
+			}
+		]
+	},
 
 	{
-		"id": "sex_bj_start",
-		"clear": true,
+		"id": "routeA_start",
 		"type": "narration",
-		"text": "His hand moves to the front of your collar. Not gentle.[p]His four-fingered grip closes in the fabric and he looks up at you, and there's nothing soft about the look.",
-		"next": "sex_bj_02"
+		"command": "@SHOW_SCENE pichidi_routeA",
+		"clear": true,
+		"text": "They move into your space without hurry — not toward you, not circling you, just through the distance between you as though it wasn't a boundary to begin with. Their hand finds your chest and pushes, lightly, enough to back you against the wall.",
+		"next": "routeA_undress"
 	},
 	{
-		"id": "sex_bj_02",
+		"id": "routeA_undress",
+		"type": "narration",
+		"text": "They work your clothing with efficiency. Their fingers are cool and quick. When they press their palm flat against your stomach the skin-temperature difference is immediate — like stone that has sat in shadow. You feel the faint texture difference of the freckles when they drag their hand down and fumble with your fly. Pichidi gives off a content giggle when your erection springs free.",
+		"next": "routeA_pichidi_mounts"
+	},
+	{
+		"id": "routeA_pichidi_mounts",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"On your knees.\"",
-		"next": "sex_bj_03"
+		"name": "Pichidi",
+		"text": "\"Hold still.\" They position themselves and back up their hips and rear while they grab their knees, unhurried. \"I make it fit.\"",
+		"next": "routeA_narration_01"
 	},
 	{
-		"id": "sex_bj_03",
+		"id": "routeA_narration_01",
 		"type": "narration",
-		"text": "You go down. The flagstone is cold through your trousers.[p]He's at exactly the right height for this. He's always been at exactly the right height for this.",
-		"next": "sex_bj_04"
+		"text": "They straddle you — compact frame, deceptively solid, their weight settling into position with a precision that suggests they've considered this already. Their slick slit presses against your cock and holds there a moment, the warmth of it sharp against the cool of everything else.",
+		"next": "routeA_micro_01"
 	},
 	{
-		"id": "sex_bj_04",
-		"clear": true,
-		"type": "narration",
-		"text": "He gets his hand into your hair. Not a request. His other hand deals with his clothing with the same efficiency he applies to everything — waistband loosened, fabric pulled aside in one motion.[p]His cock is still extending. Slender, glossy, the ribs along the underside flushing darker as it stiffens against the amber light. The warmth coming off his body hits your face before anything else does.",
-		"next": "sex_bj_05"
-	},
-	{
-		"id": "sex_bj_05",
-		"type": "narration",
-		"text": "He pushes your head forward.[p]Your lips part around the tip. He's warm, the taste faintly mineral — clean fur and something sharper underneath. The ribbing drags across your tongue as he slides in, each ridge catching and releasing. He's fully hard now. The last ridge presses past your teeth and a sound cuts off in his throat.",
-		"next": "sex_bj_mid_choice"
-	},
-	{
-		"id": "sex_bj_mid_choice",
+		"id": "routeA_micro_01",
 		"type": "choice",
 		"options": [
 			{
-				"text": "> (Let him set the pace)",
-				"next": "sex_bj_06"
+				"text": "> [Submit]",
+				"next": "routeA_submit_01"
 			},
 			{
-				"text": "> (Take him deeper)",
-				"next": "sex_bj_06"
+				"text": "> [Contest for control]",
+				"check": { "ability": "body", "dc": 13 },
+				"bonus_if": [
+					{ "has_flag": "pichidi_sexed", "bonus": 2 }
+				],
+				"on_fail": "routeA_contest_fail_01",
+				"on_success": "routeA_contest_success_01",
+				"on_nat20": "routeA_contest_nat20"
 			},
 			{
-				"text": "> (Pull back)",
-				"next": "sex_bj_stop_early"
+				"text": "> [Stop]",
+				"next": "aftermath_entry"
 			}
 		]
 	},
 	{
-		"id": "sex_bj_stop_early",
+		"id": "routeA_submit_01",
 		"type": "narration",
-		"text": "You pull off. His hand tightens in your hair — reflex — then lets go.[p]You get to your feet. He stares at you, breathing hard, cock still wet and rigid in the lamplight.",
-		"next": "sex_bj_stop_early_02"
+		"text": "You let them have the position. They read your stillness immediately — the way they pause a half-breath before continuing suggests they clocked it. Their hips shift and the pressure changes.",
+		"next": "routeA_submit_02"
 	},
 	{
-		"id": "sex_bj_stop_early_02",
+		"id": "routeA_submit_02",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He tucks himself away. Fast. Professional.[p]\"Fine.\"",
-		"command": "@SHOW_PORTRAIT bar_base",
-		"next": "sex_bj_stop_early_03"
+		"name": "Pichidi",
+		"text": "\"Heee. Good.\"",
+		"next": "routeA_submit_micro"
 	},
 	{
-		"id": "sex_bj_stop_early_03",
+		"id": "routeA_submit_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Catch your breath)",
+				"next": "routeA_submit_03"
+			}
+		]
+	},
+	{
+		"id": "routeA_submit_03",
 		"type": "narration",
-		"text": "He picks up the cloth and goes back to the counter, ears still flushed at the tips.",
-		"next": "night_hub"
+		"text": "They take you in degrees — resistance first, a slow initial squeeze, then the give of it. Pichidi settles their full weight down, their cool thighs against yours, their clit pressing against your lower belly as they seat themselves to the root of your lenght. You feel how tight their hole is around your cock as your glans slides against the roof of their inner canal. They begin to move and grind, a slow deliberate roll, like they're measuring the fit and finding it satisfactory.",
+		"next": "routeA_climax_choice"
 	},
 	{
-		"id": "sex_bj_06",
+		"id": "routeA_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Finish inside them]",
+				"next": "routeA_climax_inside"
+			},
+			{
+				"text": "> [Pull out]",
+				"next": "routeA_climax_outside"
+			}
+		]
+	},
+	{
+		"id": "routeA_climax_inside",
+		"type": "narration",
+		"text": "You grip their hips hard and they slam themselves down to meet you — burying your cock to the root inside their tight nah as you flood them with your hot seed. They grip and pulse around you with an involuntary precision, muscle clamping as they work through it, and you feel the warmth of their own response: a slick pulse of milt mixing with yours inside them. Pichidi's breath goes short through their teeth. Their thighs press tight once. Then they hold the position, head slightly forward, breathing through it, not moving until they're ready to.",
+		"next": "routeA_climax_inside_npc"
+	},
+	{
+		"id": "routeA_climax_inside_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They hold the position through it. When you're done they let out a short breath — not a sigh, something more clipped — and press their palm flat against your chest again. \"Heee.\" Low, to themselves as much as you. \"Yes. This is good.\"",
+		"next": "aftermath_entry"
+	},
+	{
+		"id": "routeA_climax_outside",
+		"type": "narration",
+		"text": "You pull free and spray your cum across their inner thigh in thick, hot streaks — the heat of it sharp against their cool skin. They glance down without shifting their hips, watching it happen with the expression of something taking an inventory. Your seed marks pale across the mauve-rose, beading in the hollow where their thigh meets their hip. They don't wipe it immediately.",
+		"next": "routeA_climax_outside_npc"
+	},
+	{
+		"id": "routeA_climax_outside_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They look down at it. Then at you. \"Heee. You have aim at least.\" They reach and wipe their hand across the spatter with no particular expression, more inventory than objection.",
+		"next": "aftermath_entry"
+	},
+	{
+		"id": "routeA_contest_fail_01",
+		"type": "narration",
+		"text": "You try to shift their weight — hands on their hips, pushing. They don't budge. The muscle beneath their skin is more substantial than the frame suggests; you feel it brace against you.",
+		"next": "routeA_contest_fail_npc"
+	},
+	{
+		"id": "routeA_contest_fail_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee.\" They hold the position easily. \"Bolk.\" They resume like you didn't try. The warmth of their nah presses against you again, decisive.",
+		"next": "routeA_submit_micro"
+	},
+	{
+		"id": "routeA_contest_success_01",
+		"type": "narration",
+		"text": "You get a grip on their hips and push — and something shifts. The resistance is there, real and solid, but you find the leverage point and take it. Their weight moves. For a half-second they're genuinely off-balance.",
+		"next": "routeA_contest_success_02"
+	},
+	{
+		"id": "routeA_contest_success_02",
+		"type": "narration",
+		"text": "You reverse the position — them against the stone, you above. There's a beat of stillness. Something in them goes quiet, processing.",
+		"next": "routeB_reversal_desc_01"
+	},
+	{
+		"id": "routeA_contest_nat20",
+		"type": "narration",
+		"command": "@add_reputation pichidi 15",
+		"set_flag": "pichidi_reversal_happened",
+		"flag_type": "knowledge",
+		"text": "You find the leverage before they've finished setting their weight and take it completely. The move is cleaner than you expected. They end up against the stone before they've processed what happened — which is, you suspect, the first time that has happened to them in a long while.",
+		"next": "routeB_reversal_desc_01"
+	},
+
+	{
+		"id": "routeB_entry_check",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["pichidi_reversal_happened"],
+			"on_success": "routeB_direct_entry_desc",
+			"on_fail": "routeB_reversal_desc_01"
+		}
+	},
+	{
+		"id": "routeB_direct_entry_desc",
+		"type": "narration",
+		"command": "@SHOW_SCENE pichidi_routeB",
 		"clear": true,
-		"type": "narration",
-		"text": "He sets the pace. Short, controlled thrusts — shallow at first, testing, then deeper as his grip tightens. He fucks your mouth the way he runs his kitchen: precise, no wasted motion. Each push meets the back of your throat and pulls back just far enough for you to breathe.[p]His composure holds for a while. His breathing stays measured. His hips keep rhythm.",
-		"next": "sex_bj_07"
+		"text": "You move toward them with clear intent and they let you do it — there's still a slight stiffening when you press them toward the wall, something in their posture that hasn't fully let go of its usual authority. But they don't contest it.",
+		"next": "routeB_pichidi_recalibrate"
 	},
 	{
-		"id": "sex_bj_07",
+		"id": "routeB_reversal_desc_01",
 		"type": "narration",
-		"text": "Then it starts to crack.[p]A low click from his throat. Involuntary. His grip in your hair shifts — tighter, less controlled. His thrusts lose their clean rhythm by fractions, pushing deeper, holding longer. A hissed consonant escapes between his teeth. Not trade-tongue. Something older.",
-		"next": "sex_bj_08_choice"
+		"command": "@SHOW_SCENE pichidi_routeB",
+		"clear": true,
+		"text": "You press them against the stone and they go briefly still. Not compliance — not surrender. A pause. Something has arrived that they weren't running the calculation on.",
+		"next": "routeB_pichidi_recalibrate"
 	},
 	{
-		"id": "sex_bj_08_choice",
+		"id": "routeB_pichidi_recalibrate",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"...Grat.\"",
+		"next": "routeB_narration_02"
+	},
+	{
+		"id": "routeB_narration_02",
+		"type": "narration",
+		"text": "Not protest. Just a recalibration sound. They brace their hands flat against the wall. Their breathing has changed — still controlled, but you can see it change.",
+		"next": "routeB_micro_01"
+	},
+	{
+		"id": "routeB_micro_01",
 		"type": "choice",
 		"options": [
 			{
 				"text": "> (Brace yourself)",
-				"next": "sex_bj_08"
-			},
-			{
-				"text": "> (Grab his thigh — match his rhythm)",
-				"next": "sex_bj_08"
+				"next": "routeB_narration_03"
 			}
 		]
 	},
 	{
-		"id": "sex_bj_08",
-		"clear": true,
+		"id": "routeB_narration_03",
 		"type": "narration",
-		"text": "His hips snap forward harder now. The ribbing bumps against the roof of your mouth with every stroke. Saliva pools around his shaft and runs down your chin. His free hand fumbles behind him for the counter edge — misses — grabs it on the second try. His knees are starting to shake.",
-		"next": "sex_bj_09"
+		"text": "You slam your cock into their eager hole. They exhale through their nose, a slow and controlled breath, as you slide deep inside them. Their hands are flat against the cold stone, bracing for the impact. This angle gives you more leverage than they're used to, and you feel them adjust their weight, trying to take all of you. Their bud grinds against the stone on entry and they shift to protect it, a move that only serves to change the angle and drive you even deeper. A raw, involuntary sound escapes them as your cock seats fully against their insides.",
+		"next": "routeB_soul_check"
 	},
 	{
-		"id": "sex_bj_09",
+		"id": "routeB_soul_check",
+		"type": "check",
+		"ability": "soul",
+		"dc": 11,
+		"on_success": "routeB_soul_success",
+		"on_fail": "routeB_soul_fail",
+		"on_nat20": "routeB_soul_nat20"
+	},
+	{
+		"id": "routeB_soul_fail",
+		"type": "narration",
+		"text": "You read nothing from them beyond the physical — the brace of their hands, the movement of their hips. Whatever is happening inside the posture, you can't reach it.",
+		"next": "routeB_climax_build"
+	},
+	{
+		"id": "routeB_soul_success",
+		"type": "narration",
+		"text": "You catch something in the set of their shoulders. They're not fighting it. More than that — the grip they have on the wall isn't resistance. It's anchor.",
+		"next": "routeB_climax_build"
+	},
+	{
+		"id": "routeB_soul_nat20",
+		"type": "narration",
+		"text": "They make a sound they didn't plan on. Short, swallowed fast, but there — a sound that doesn't come from the part of them that has opinions about what's happening. Their grip on the wall is wrong in a way you can't articulate: like they're holding it to stay in place rather than to push away from it.",
+		"next": "routeB_brood_nat20_beat"
+	},
+	{
+		"id": "routeB_brood_nat20_beat",
 		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"—[i]kkt[/i]— don't— don't stop—\"",
-		"next": "sex_bj_preclimx_check"
+		"name": "Pichidi",
+		"command": "@add_reputation pichidi 30",
+		"set_flag": "pichidi_brood_surfaced",
+		"flag_type": "knowledge",
+		"text": "\"...Do not—\" A beat. \"Heee.\" Different this time — not satisfied, more like something resetting under pressure. \"Do not make face at me.\"",
+		"next": "routeB_brood_nat20_after"
+	},
+	{
+		"id": "routeB_brood_nat20_after",
+		"type": "narration",
+		"text": "They pick themselves back up quickly. The moment doesn't linger. Their jaw sets, their posture closes back in. They act like it was always fine. It was not fine, in the best way.",
+		"next": "routeB_climax_build"
+	},
+	{
+		"id": "routeB_climax_build",
+		"type": "narration",
+		"text": "You set your own pace — long strokes, deliberate. They grip you on each withdrawal, the clench tight and rhythmic. Their bud catches against the stone on the forward press and they shift to avoid it, which shifts the angle, and you follow. They can't quite get stable. You use that.",
+		"next": "routeB_micro_02"
+	},
+	{
+		"id": "routeB_micro_02",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Keep going until they break]",
+				"next": "routeB_climax_inside"
+			},
+			{
+				"text": "> [Pull out — finish on their back]",
+				"next": "routeB_climax_outside"
+			}
+		]
+	},
+	{
+		"id": "routeB_climax_inside",
+		"type": "narration",
+		"command": "@add_reputation pichidi 10",
+		"set_flag": "pichidi_reversal_happened",
+		"flag_type": "knowledge",
+		"text": "You slam in to the hilt and hold them pinned against the stone as you unload your hot seed deep into their guts, your cock buried deep in their nah and pumping relentlessly. Pichidi's whole body goes taut, then breaks — a shudder they cannot manage or shorten, the held position dissolving into something less controlled. They grip and pulse around you in rhythmic involuntary contractions. A thin thread of their own milt, warm and slick, runs down between the stone and their skin. They don't move after. You stay there together, pressed against the wet cold stone and each other's heat, breathing. It goes longer than either of you planned.",
+		"next": "routeB_climax_inside_npc"
+	},
+	{
+		"id": "routeB_climax_inside_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "Silence, for a moment. Then: \"...Shigrat.\" Delivered quietly, with no particular emotion attached. They straighten slowly, step away from the wall, and don't look at you for a second. When they do their expression is level. Reassembled. \"This happened. Is fine.\"",
+		"next": "aftermath_entry"
+	},
+	{
+		"id": "routeB_climax_outside",
+		"type": "narration",
+		"set_flag": "pichidi_reversal_happened",
+		"flag_type": "knowledge",
+		"text": "You pull free and paint their lower back with your hot seed — it lays hot across their cool skin, the contrast immediate. They hold the wall through it, spine curved forward, head down, a slow exhale leaving them as the warmth spreads. They stay in position until you're finished, then straighten.",
+		"next": "routeB_climax_outside_npc"
+	},
+	{
+		"id": "routeB_climax_outside_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They straighten and reach back without looking, running a hand across where they were marked. \"Heee.\" They glance at their hand. \"Warm.\" Said neutrally, like a temperature reading.",
+		"next": "aftermath_entry"
 	},
 
 	{
-		"id": "sex_bj_preclimx_check",
+		"id": "routeC_start",
+		"type": "narration",
+		"command": "@SHOW_SCENE pichidi_routeC",
+		"clear": true,
+		"text": "They close the distance in one fluid motion and drop to their knees, pulling you with them — or rather, making the space into a position so quickly that following feels like your own decision.",
+		"next": "routeC_pichidi_initiates"
+	},
+	{
+		"id": "routeC_pichidi_initiates",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Deh-glim. I do it.\" They look up at you from their position, unhurried. \"You stay.\"",
+		"next": "routeC_choice_01"
+	},
+	{
+		"id": "routeC_choice_01",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Stay still and let them]",
+				"next": "routeC_deh_glim_01"
+			},
+			{
+				"text": "> I'll use my mouth on you.",
+				"next": "routeC_nah_glim_01"
+			},
+			{
+				"text": "> [Pull back]",
+				"next": "main_hub"
+			}
+		]
+	},
+	{
+		"id": "routeC_deh_glim_01",
+		"type": "narration",
+		"text": "Their mouth is cool against you — that registers before anything else. They take their time at the start, their tongue tracing first, gathering information. The faint blue-grey of their tooth-tips is briefly visible before their lips close and the sensation becomes pressure and warm suction, cool at the edges, warmer toward the center. One hand at your hip.",
+		"next": "routeC_deh_glim_02"
+	},
+	{
+		"id": "routeC_deh_glim_02",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They pull back just enough to speak, mouth still close: \"Heee. You are clean at least.\" Then resume, as if the comment required no reaction.",
+		"next": "routeC_micro_01"
+	},
+	{
+		"id": "routeC_micro_01",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Catch your breath)",
+				"next": "routeC_deh_glim_03"
+			}
+		]
+	},
+	{
+		"id": "routeC_deh_glim_03",
+		"type": "narration",
+		"text": "They find what works and stay with it. Their other hand joins — fingers wrapping the base, moving in complement to their mouth. Their pale eyes track up to your face occasionally, not seeking reassurance, gathering data on what's effective. You feel the approach of it building low and spreading. Their rhythm doesn't shift. They don't rush. They are getting precisely what they came for.",
+		"next": "routeC_oral_climax_choice"
+	},
+	{
+		"id": "routeC_oral_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Finish in their mouth]",
+				"next": "routeC_climax_oral"
+			},
+			{
+				"text": "> [Pull them up — keep going]",
+				"next": "route_entry_hub"
+			}
+		]
+	},
+	{
+		"id": "routeC_climax_oral",
+		"type": "narration",
+		"text": "You finish hard into their mouth and they take all of it — don't pull back, don't flinch, just let you unload your hot seed onto their waiting tongue before they swallow it down clean. Their throat works once, deliberate. The grip of their hand at your base holds through it. When it's done they sit back on their heels and run their tongue across their teeth once, taking stock. Nothing in their expression apologizes for any of it.",
+		"next": "routeC_climax_oral_npc"
+	},
+	{
+		"id": "routeC_climax_oral_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They sit back on their heels and say nothing for a moment. The silence isn't awkward. It's just the end of the action. Then: \"Acceptable.\"",
+		"next": "aftermath_entry"
+	},
+	{
+		"id": "routeC_nah_glim_01",
+		"type": "narration",
+		"text": "You say it plainly. They look at you from their position on the floor with an expression that takes a moment to read — Consideration.",
+		"next": "routeC_nah_glim_npc"
+	},
+	{
+		"id": "routeC_nah_glim_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"...Fine.\" They shift their position, unhurried. \"But do not take long.\" They say it like they mean it, though the slight pause before they positioned themselves suggests they weren't as indifferent as the line implied.",
+		"next": "routeC_micro_02"
+	},
+	{
+		"id": "routeC_micro_02",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Brace yourself)",
+				"next": "routeC_nah_glim_03"
+			}
+		]
+	},
+	{
+		"id": "routeC_nah_glim_03",
+		"type": "narration",
+		"text": "They taste mineral and faintly cool, with something underneath that has no common-tongue comparison. Their opening is smooth and tight-edged, the texture shifting inward. You find the bud — still partly enlarged, sensitive in proportion — and when you press your tongue against it a sound leaves them despite themselves: short, immediately suppressed, but present. Their hips shift forward, involuntary. You follow. They grab a handful of your hair, not directing you, managing themselves.",
+		"next": "routeC_oral_climax_choice_b"
+	},
+	{
+		"id": "routeC_oral_climax_choice_b",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Keep going until they finish]",
+				"next": "routeC_climax_oral_b"
+			},
+			{
+				"text": "> [Come up and press them down]",
+				"next": "routeB_reversal_desc_01"
+			}
+		]
+	},
+	{
+		"id": "routeC_climax_oral_b",
+		"type": "narration",
+		"text": "Their thighs close around you, firm and present, and then they let go with a full exhale that they cannot shorten. They come in a thin warm thread — more than you expected, brighter in taste than everything else about them. Their hips rock once, twice, into the contact and then go still. The grip in your hair loosens by degrees. You stay there a moment after, breathing against their inner thigh. The silence that follows is denser than their usual silence. It has the quality of something that didn't mean to happen quite like that.",
+		"next": "routeC_climax_oral_b_npc"
+	},
+	{
+		"id": "routeC_climax_oral_b_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "Nothing, for a moment.[p]Then: \"...You are not bad at this.\" Delivered quietly, and with a precision that makes it clear they are not saying this to be kind.",
+		"next": "aftermath_entry"
+	},
+
+	{
+		"id": "aftermath_entry",
+		"type": "command",
+		"command": "@HIDE_SCENE",
+		"clear": true,
+		"next": "aftermath_which_visit"
+	},
+	{
+		"id": "aftermath_which_visit",
 		"type": "logic",
 		"check_flags": {
-			"flags": ["tavo_wrist_attempted"],
-			"on_success": "sex_bj_deny_choice",
-			"on_fail": "sex_bj_climax"
+			"flags": ["pichidi_sex_v3"],
+			"on_success": "aftermath_set_v4",
+			"on_fail": "aftermath_which_v3"
 		}
 	},
-
 	{
-		"id": "sex_bj_deny_choice",
-		"type": "narration",
-		"text": "You've kept him at the edge long enough. His cock is rigid and dark, slick from the effort of holding back. His knees are shaking against the sides of your face. His hand in your hair has stopped guiding anything.",
-		"next": "sex_bj_deny_choice_prompt"
+		"id": "aftermath_which_v3",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["pichidi_sex_v2"],
+			"on_success": "aftermath_set_v3",
+			"on_fail": "aftermath_which_v2"
+		}
 	},
 	{
-		"id": "sex_bj_deny_choice_prompt",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Let him finish.]",
-				"next": "sex_bj_climax"
-			},
-			{
-				"text": "> [Pull off. Don't let him.]",
-				"next": "sex_deny_start"
-			}
-		]
+		"id": "aftermath_which_v2",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["pichidi_sexed"],
+			"on_success": "aftermath_set_v2",
+			"on_fail": "aftermath_set_v1"
+		}
 	},
-
-
-
 	{
-		"id": "sex_bj_climax",
-		"type": "narration",
-		"text": "His thighs tense against the sides of your face. You feel his cock swell — the ridges thickening, a heavy pulse running through the shaft. His hips push forward one last time, hard, and hold.[p]He comes with his knuckles white in your hair. His cock pulses against your tongue in short, thick spurts — warm, slightly bitter. A sound escapes him. Not a word. Breath cut hard through clenched teeth. His whole body locks, trembles once, and slowly releases.",
-		"set_flag": "tavo_night_sex_bj",
-		"flag_type": "sex",
-		"next": "sex_bj_climax_02"
-	},
-	{
-		"id": "sex_bj_climax_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"...Hh.\"",
-		"next": "sex_bj_climax_03"
-	},
-	{
-		"id": "sex_bj_climax_03",
-		"type": "narration",
-		"text": "His hand loosens in your hair. He breathes. His cock softens slowly against your lower lip before he pulls free. A strand of spit and cum connects you for a moment, then breaks.[p]He does not say anything else.",
-		"next": "sex_bj_breath"
-	},
-	{
-		"id": "sex_bj_breath",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Catch your breath)",
-				"next": "sex_bj_followup_choice"
-			}
-		]
-	},
-	{
-		"id": "sex_bj_followup_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Stay where you are]",
-				"next": "sex_bar_start"
-			},
-			{
-				"text": "> [Stand up]",
-				"next": "sex_bj_end_only"
-			}
-		]
-	},
-
-	{
-		"id": "sex_bj_end_only",
-		"type": "narration",
-		"text": "You get back to your feet.[p]He's already pulling himself together — adjusting and straightening in one efficient motion. He looks at you, then looks away.",
-		"set_flag": "tavo_night_sex_happened",
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri",
-		"next": "sex_aftermath_start"
-	},
-
-
-
-	{
-		"id": "sex_deny_start",
-		"clear": true,
-		"type": "narration",
-		"text": "You pull off.[p]His cock slips free from your mouth, slick and swollen, twitching hard in the open air. The sudden loss of pressure hits him like a slap. His hips buck forward into nothing. A choked sound catches in his chest.",
-		"next": "sex_deny_02"
-	},
-	{
-		"id": "sex_deny_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Wh— the fuck— get back—\"",
-		"next": "sex_deny_03"
-	},
-	{
-		"id": "sex_deny_03",
-		"type": "narration",
-		"text": "His hand grabs for your hair. You catch his wrist. This time he doesn't twist free — his grip has gone weak, his coordination stolen by the orgasm that didn't come. His cock bobs between you, flushed dark, the ridges engorged, a thick bead of fluid welling at the tip and stretching toward the flagstone.",
-		"next": "sex_deny_04"
-	},
-	{
-		"id": "sex_deny_04",
-		"type": "narration",
-		"text": "His whole body is shaking. You can see his pulse in his throat. His ears are flat, eyes glassy, and his hips keep twitching forward in small, desperate jerks — searching for friction that isn't there.",
-		"next": "sex_deny_04_choice"
-	},
-	{
-		"id": "sex_deny_04_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Hold him there)",
-				"next": "sex_deny_05"
-			},
-			{
-				"text": "> (Let go. Finish him off.)",
-				"next": "sex_deny_mercy"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_mercy",
-		"type": "narration",
-		"text": "You let go of his wrist. Your hand closes around his cock — slick, rigid, pulsing. One stroke. Two. He comes on the third with a strangled click, spilling hot over your knuckles. His knees buckle. He catches himself on the counter.",
-		"next": "sex_deny_mercy_02"
-	},
-	{
-		"id": "sex_deny_mercy_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"...Hh.\"[p]He won't look at you.",
-		"set_flag": ["tavo_night_sex_bj", "tavo_night_sex_happened"],
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri",
-		"next": "sex_deny_mercy_breath"
-	},
-	{
-		"id": "sex_deny_mercy_breath",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Catch your breath)",
-				"next": "sex_bj_followup_choice"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_05",
-		"clear": true,
-		"type": "narration",
-		"text": "You let go of his wrist. You lean forward, mouth open, and let a long, heavy strand of spit run from your tongue onto the head of his cock. It slides down the shaft in a slow trail. He hisses through his teeth. His cock jumps at the contact but you don't touch it.[p]Instead, your mouth moves lower.",
-		"next": "sex_deny_06"
-	},
-	{
-		"id": "sex_deny_06",
-		"type": "narration",
-		"text": "Your tongue traces down past his shaft. Along the velvet-furred ridge. Down to the crease of his body where the fur is shorter, softer, and the skin beneath radiates heat. You find the tight, dark ring behind his balls. It clenches the moment your breath hits it.",
-		"next": "sex_deny_07"
-	},
-	{
-		"id": "sex_deny_07",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"—hhn— don't— that's not—\"",
-		"next": "sex_deny_08_choice"
-	},
-	{
-		"id": "sex_deny_08_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Keep going)",
-				"next": "sex_deny_08"
-			},
-			{
-				"text": "> (Stop. Give him what he wants.)",
-				"next": "sex_deny_relent"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_relent",
-		"type": "narration",
-		"text": "You bring your mouth back up. His cock slides past your lips and he shoves your head down immediately, graceless and shaking. He comes in three thrusts — hot, thick, filling your mouth before you're ready.",
-		"next": "sex_deny_relent_02"
-	},
-	{
-		"id": "sex_deny_relent_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "A broken click. His hand stays locked in your hair through the last pulse.[p]\"...Fuck.\"",
-		"set_flag": ["tavo_night_sex_bj", "tavo_night_sex_happened"],
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri",
-		"next": "sex_deny_relent_breath"
-	},
-	{
-		"id": "sex_deny_relent_breath",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Catch your breath)",
-				"next": "sex_bj_followup_choice"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_08",
-		"type": "narration",
-		"text": "He says don't. His hips push forward.[p]You let your spit run from your mouth in a slow, deliberate trail. It pools in the crease of his body, dripping lower, slicking the tight ring of muscle. His tail jerks hard to one side and stays there, trembling. His denied cock aches above you, rigid and leaking, pulsing with each heartbeat.",
-		"next": "sex_deny_09"
-	},
-	{
-		"id": "sex_deny_09",
-		"clear": true,
-		"type": "narration",
-		"text": "You press your tongue flat against his hole.[p]He gasps. Sharp, strangled. The muscle clenches against you, then slowly, grudgingly, opens. You push the tip in. He shudders from his ears to his tail — the sensation layering on top of the denied orgasm still coiled tight in his gut.",
-		"next": "sex_deny_10"
-	},
-	{
-		"id": "sex_deny_10",
-		"type": "narration",
-		"text": "You work him open with your mouth. Patient. Thorough. Every stroke of your tongue earns a new sound — clicks that stutter, half-swallowed trills, a hiss through clenched teeth. His cock drools constantly now, a steady line of clear fluid running down the shaft and dripping off the tip onto your forehead. He's so hard it looks painful.",
-		"next": "sex_deny_11_choice"
-	},
-	{
-		"id": "sex_deny_11_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Don't stop)",
-				"next": "sex_deny_11"
-			},
-			{
-				"text": "> (Reach up. Stroke him.)",
-				"next": "sex_deny_stroke_mercy"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_stroke_mercy",
-		"type": "narration",
-		"text": "Your hand wraps around his cock while your tongue stays buried. One slow stroke and his whole body convulses. The second stroke sends him over — cum spurting in thick arcs across your wrist, his stomach, the floor. His hole spasms around your tongue in wild, rhythmic clenches. A trill tears from his chest, high and uncontrolled.",
-		"next": "sex_deny_stroke_mercy_02"
-	},
-	{
-		"id": "sex_deny_stroke_mercy_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "A long, shaking exhale. He sags against the counter.[p]\"...Gods.\"",
-		"set_flag": ["tavo_night_sex_bj", "tavo_night_sex_happened"],
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri",
-		"next": "sex_deny_stroke_breath"
-	},
-	{
-		"id": "sex_deny_stroke_breath",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Catch your breath)",
-				"next": "sex_bj_followup_choice"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_11",
-		"type": "narration",
-		"text": "His hand finds your hair. Not gripping. Just resting there, fingers curling and uncurling without rhythm. He's braced against the counter with the other hand, knuckles bone-white, head tipping back. Every few seconds his hips jerk involuntarily — still chasing the climax you stole.",
-		"next": "sex_deny_12"
-	},
-	{
-		"id": "sex_deny_12",
-		"clear": true,
-		"type": "narration",
-		"text": "You pull back and look up.[p]He's wrecked. The flush has spread from his ear-tips down his neck and across his chest. His breathing is fast, open-mouthed, ragged. His hole clenches on nothing, slick and swollen. His cock stands rigid between his legs, dark, throbbing visibly, a strand of fluid hanging from the tip.[p]His guard is gone. He's not watching you. He's trying not to fall over.",
-		"next": "sex_deny_13"
-	},
-	{
-		"id": "sex_deny_13",
-		"type": "narration",
-		"text": "He doesn't see you stand. You move before he can gather himself.",
-		"next": "sex_deny_position_choice"
-	},
-	{
-		"id": "sex_deny_position_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Spin him around. Bend him over the counter.]",
-				"next": "sex_deny_doggy_start"
-			},
-			{
-				"text": "> [Lift him. Put him on the bar, facing you.]",
-				"next": "sex_deny_lift_start"
-			}
-		]
-	},
-
-
-
-	{
-		"id": "sex_deny_doggy_start",
-		"clear": true,
-		"type": "narration",
-		"text": "You grab his hips and spin him. He yelps — a raw, undignified sound, pure Nöteri — and his chest hits the counter. His claws scrabble at the bar surface. His ass pushes back on reflex, hole clenching and unclenching in the cold air, still wet and open from your tongue.",
-		"next": "sex_deny_doggy_02"
-	},
-	{
-		"id": "sex_deny_doggy_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"—wait— you can't just—\"",
-		"next": "sex_deny_doggy_03"
-	},
-	{
-		"id": "sex_deny_doggy_03",
-		"type": "narration",
-		"text": "You can. You line up and push in.[p]The head slides past the loosened ring and his whole body bucks against the counter. A sound punches out of him — deep, guttural, nothing like a word. His hole is hot and slick and opens for you in a slow, clutching pull that sucks you deeper. You sink to the hilt in one stroke.",
-		"next": "sex_deny_doggy_04"
-	},
-	{
-		"id": "sex_deny_doggy_04",
-		"clear": true,
-		"type": "narration",
-		"text": "He comes the instant you bottom out.[p]His denied orgasm rips through him. His cock erupts against the underside of the counter — thick, heavy ropes splattering the wood he built with his own hands. His body seizes around your shaft in crushing, rhythmic contractions that squeeze you so hard your vision swims. A broken, clicking wail tears from his throat, muffled against his own forearm.",
-		"next": "sex_deny_doggy_05_choice"
-	},
-	{
-		"id": "sex_deny_doggy_05_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Don't wait for it to finish)",
-				"next": "sex_deny_doggy_05"
-			},
-			{
-				"text": "> (Let him ride it out)",
-				"next": "sex_deny_doggy_05_gentle"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_doggy_05_gentle",
-		"type": "narration",
-		"text": "You hold still inside him. His body clenches and unclenches around you in waves as the orgasm rolls through — each spasm wringing his cock dry against the underside of the bar. His sounds taper to clicks, then silence. Just breathing.",
-		"next": "sex_deny_doggy_06"
-	},
-	{
-		"id": "sex_deny_doggy_05",
-		"type": "narration",
-		"text": "You don't wait for it to finish. You thrust through it.[p]Each push drives another spurt from his cock. Cum runs down the inside of the counter, pools on the flagstone, drips from the bar edge. The wet slap of your hips against his ass echoes in the empty room. His sounds dissolve into raw Nöteri — rapid clicks, a high whine, a trill that breaks every time you drive forward.",
-		"next": "sex_deny_doggy_06"
-	},
-	{
-		"id": "sex_deny_doggy_06",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"—[i]Holdet[/i]— hhn— [i]holdet[/i]—\"",
-		"next": "sex_deny_doggy_07"
-	},
-	{
-		"id": "sex_deny_doggy_07",
-		"clear": true,
-		"type": "narration",
-		"text": "His orgasm hasn't stopped. Or it ended and another one started — you can't tell and neither can he. His body is clenching in waves, milking your cock in deep, involuntary pulses. The counter is soaked. His cock still twitches weakly against the wood, dripping the last of what he has.",
-		"next": "sex_deny_doggy_climax_choice"
-	},
-	{
-		"id": "sex_deny_doggy_climax_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Finish inside him]",
-				"next": "sex_deny_doggy_08"
-			},
-			{
-				"text": "> [Pull out. Finish on his back.]",
-				"next": "sex_deny_doggy_08_outside"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_doggy_08",
-		"type": "narration",
-		"text": "You grab his hips and bury yourself deep. Your own climax hits hard — thick, heavy pulses flooding his insides. His hole clamps down one final time, wringing you dry. A shattered moan rattles out of him as the warmth spreads inside, and his claws drag white lines across the bar surface.",
-		"next": "sex_deny_doggy_09"
-	},
-	{
-		"id": "sex_deny_doggy_08_outside",
-		"type": "narration",
-		"text": "You pull free at the last second. His hole clenches on the sudden emptiness. Your cock throbs and you paint thick ropes across the small of his back, his tail, the fur at the base of his spine. He flinches at the heat but doesn't move. Can't.",
-		"next": "sex_deny_doggy_09"
-	},
-	{
-		"id": "sex_deny_doggy_09",
-		"type": "narration",
-		"text": "He collapses flat against the counter. Arms splayed. Cheek pressed to the wet wood. Breathing in short, shallow gasps. His tail hangs limp over the edge.",
-		"next": "sex_deny_doggy_breath"
-	},
-	{
-		"id": "sex_deny_doggy_breath",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Catch your breath)",
-				"next": "sex_deny_doggy_second_choice"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_doggy_second_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Pull out. He's done.]",
-				"next": "sex_deny_doggy_end"
-			},
-			{
-				"text": "> [Pull him off the counter. Turn him around.]",
-				"next": "sex_deny_doggy_round2"
-			}
-		]
-	},
-
-	{
-		"id": "sex_deny_doggy_round2",
-		"clear": true,
-		"type": "narration",
-		"text": "You grab his hips and haul him back from the counter.[p]He barely registers the motion — a slurred sound, hands sliding off the wood — and then you've already spun him. He sways. His eyes are open, barely tracking. One ear is still pressed flat from where his face was against the bar.",
-		"next": "sex_deny_doggy_round2_02"
-	},
-	{
-		"id": "sex_deny_doggy_round2_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"—wh—\"",
-		"next": "sex_deny_doggy_round2_03"
-	},
-	{
-		"id": "sex_deny_doggy_round2_03",
-		"type": "narration",
-		"text": "You get your hands under his thighs and lift.[p]His paws go to your shoulders on reflex — then higher, finding your neck, fingers closing there. Not for anything except balance. His weight settles against your chest, hole clenching on nothing, still slick and full.[p]You push back inside him standing.",
-		"next": "sex_deny_doggy_round2_04"
-	},
-	{
-		"id": "sex_deny_doggy_round2_04",
-		"clear": true,
-		"type": "narration",
-		"text": "There's nothing for him to brace against. No counter, no floor, no surface. Just your hands on his thighs and gravity driving him down onto every thrust.[p]He stops making sounds with shapes. It's trill, continuous, breaking apart every time you bottom out. His paws tighten on your neck each time you fill him — not from want, just from the need to stay upright. His cock, spent and half-soft, twitches against your stomach with every deep stroke.[p]The second orgasm hits dry and devastating. His body seizes around you. His paws spasm hard against your neck. You come a moment later, buried deep, and he barely reacts — just a small catch in his breathing, like a hiccup.[p]His paws slide off your neck. All the weight of him goes slack at once.",
-		"next": "sex_deny_doggy_round2_05"
-	},
-	{
-		"id": "sex_deny_doggy_round2_05",
-		"type": "narration",
-		"text": "He's breathing. You can feel his chest moving against yours. That's the most active thing he's doing.[p]You are the only reason he's not on the floor.",
-		"set_flag": ["tavo_night_sex_top", "tavo_night_sex_happened"],
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri",
-		"next": "sex_deny_doggy_round2_breath"
-	},
-	{
-		"id": "sex_deny_doggy_round2_breath",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Catch your breath)",
-				"next": "sex_deny_doggy_round2_06"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_doggy_round2_06",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "A very long silence.[p]\"...Put me down.\"[p]Barely a whisper.",
-		"next": "sex_top_aftermath"
-	},
-
-	{
-		"id": "sex_deny_doggy_end",
-		"type": "narration",
-		"text": "You pull out slowly. He doesn't move. A trickle of cum follows your cock out and runs down between his thighs. He stays pressed against the counter, breathing hard, face turned to the side.[p]After a long time, he peels himself off the bar surface. He doesn't look at it. He doesn't look at you.",
-		"set_flag": ["tavo_night_sex_top", "tavo_night_sex_happened"],
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri",
-		"next": "sex_top_aftermath"
-	},
-
-
-
-	{
-		"id": "sex_deny_lift_start",
-		"clear": true,
-		"type": "narration",
-		"text": "Your hands go under his thighs. He's light — dense but short — and you lift him clean off the floor. His legs hook around your waist on instinct, claws digging into your shoulders. His eyes go wide. His denied cock presses hot and rigid against your stomach, leaking in a constant trickle.",
-		"next": "sex_deny_lift_02"
-	},
-	{
-		"id": "sex_deny_lift_02",
-		"type": "narration",
-		"text": "You set him on the counter. His ass hits the bar. Cups scatter. He's sitting level with you for the first time tonight, legs apart, cock straining between you, hole slick and twitching.",
-		"next": "sex_deny_lift_03"
-	},
-	{
-		"id": "sex_deny_lift_03",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"You— what the fuck—\"",
-		"next": "sex_deny_lift_04"
-	},
-	{
-		"id": "sex_deny_lift_04",
-		"type": "narration",
-		"text": "You're already between his thighs. You line up and push in.[p]The head slides past the loosened ring. His hands shoot to your shoulders. His claws break skin.",
-		"next": "sex_deny_lift_05"
-	},
-	{
-		"id": "sex_deny_lift_05",
-		"clear": true,
-		"type": "narration",
-		"text": "He comes before you're halfway in.[p]The denied orgasm tears through him the instant your cock fills him. His whole body arches. His cock erupts between your bodies — thick, violent spurts hitting his own chest, his chin, your shirt, painting both of you in heavy ropes. His hole locks down in crushing waves, pulling you deeper even as he shakes apart.",
-		"next": "sex_deny_lift_06"
-	},
-	{
-		"id": "sex_deny_lift_06",
-		"type": "narration",
-		"text": "A sound rips out of him. Not a word. Not a click. Something raw and broken from the base of his throat that he could not have stopped with a hand over his mouth. His body curls forward, forehead hitting your collarbone, and every muscle in him clenches and releases in helpless, shuddering spasms.",
-		"next": "sex_deny_lift_mid_choice"
-	},
-	{
-		"id": "sex_deny_lift_mid_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Don't wait for it to end)",
-				"next": "sex_deny_lift_07"
-			},
-			{
-				"text": "> (Hold him through it)",
-				"next": "sex_deny_lift_07_slow"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_lift_07_slow",
-		"type": "narration",
-		"text": "You stay buried. Your arms tighten around him. He shakes against your chest, cock pulsing weakly between you, each aftershock squeezing your shaft. His breathing hitches. His claws ease their grip. You wait until the last tremor passes, then roll your hips — slow, deliberate.",
-		"next": "sex_deny_lift_08"
-	},
-	{
-		"id": "sex_deny_lift_07",
-		"type": "narration",
-		"text": "You don't wait for it to end. You thrust. Deep. His back arches off the bar. Another spurt of cum squeezes from his cock between your pressed-together bodies — thick, warm, smearing across both your stomachs. His hole is still clenching in orgasm around your shaft and every stroke drags through the aftershocks.",
-		"next": "sex_deny_lift_08"
-	},
-	{
-		"id": "sex_deny_lift_08",
-		"clear": true,
-		"type": "narration",
-		"text": "You set a rhythm. Slow, deep, each push pressing him flat against the counter. He's got nothing left to fight with. His composure was gone before you lifted him. What's left is just body — gasping, gripping, hips jerking to meet yours in motions he's never practiced. An involuntary trill rolls from his chest, high and broken.",
-		"next": "sex_deny_lift_09"
-	},
-	{
-		"id": "sex_deny_lift_09",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"—[i]Holdet[/i]— don't— don't stop—\"",
-		"next": "sex_deny_lift_climax_choice"
-	},
-	{
-		"id": "sex_deny_lift_climax_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Finish inside him]",
-				"next": "sex_deny_lift_10"
-			},
-			{
-				"text": "> [Pull out. Finish on him.]",
-				"next": "sex_deny_lift_10_outside"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_lift_10",
-		"type": "narration",
-		"text": "You bury yourself deep. Your own climax hits — thick, heavy pulses flooding his insides. His hole clamps down one last time, holding you in, and a small stunned sound falls out of him as the warmth spreads. His legs tighten around your waist. His face stays pressed against your shoulder.",
-		"next": "sex_deny_lift_11"
-	},
-	{
-		"id": "sex_deny_lift_10_outside",
-		"type": "narration",
-		"text": "You pull free. His hole clenches on nothing. You come against his stomach, his cock, his thighs — thick ropes mixing with the mess he already made. He flinches at the heat. His legs stay locked around your waist, holding you close even as you finish outside him.",
-		"next": "sex_deny_lift_11"
-	},
-	{
-		"id": "sex_deny_lift_11",
-		"type": "narration",
-		"text": "You stay there. Hips flush against him. Both of you slick. Both of you breathing hard.",
-		"next": "sex_deny_lift_breath"
-	},
-	{
-		"id": "sex_deny_lift_breath",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Catch your breath)",
-				"next": "sex_deny_lift_second_choice"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_lift_second_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Keep going. Don't let him come down.]",
-				"next": "sex_deny_lift_round2"
-			},
-			{
-				"text": "> [Stop. Hold him.]",
-				"next": "sex_deny_lift_end"
-			}
-		]
-	},
-
-	{
-		"id": "sex_deny_lift_round2",
-		"clear": true,
-		"type": "narration",
-		"text": "You roll your hips. He flinches against you — a choked trill ripping from his chest. He tries to squirm back but you hold his thighs and he's pinned between you and the bar. His hole flutters around your cock, still swollen, still full of your cum.",
-		"next": "sex_deny_lift_round2_02"
-	},
-	{
-		"id": "sex_deny_lift_round2_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"...I can't—\"",
-		"next": "sex_deny_lift_round2_03"
-	},
-	{
-		"id": "sex_deny_lift_round2_03",
-		"type": "narration",
-		"text": "He can.[p]You thrust. Harder than before. The counter creaks. His body is open and wrecked, offering nothing but wet heat. The sounds are obscene — cum squelching with every push, dripping from where you meet, running in warm lines down the counter's edge. His sounds are pure Nöteri now. Clicks that crack into whimpers. A trill that spikes every time you bottom out.",
-		"next": "sex_deny_lift_round2_04"
-	},
-	{
-		"id": "sex_deny_lift_round2_04",
-		"clear": true,
-		"type": "narration",
-		"text": "His second orgasm hits like a wall.[p]His mouth opens and nothing comes out. His cock jerks — almost dry, thin and watery — but his insides seize around your shaft so hard everything goes white. You come inside him again, grinding deep, and he shakes through it with his eyes squeezed shut and both fists knotted in your shirt.[p]He collapses forward against your shoulder. Dead weight. Breathing ragged and wet against your neck. His legs slide from your waist and dangle off the counter edge. Tail limp. Completely boneless.",
-		"set_flag": ["tavo_night_sex_top", "tavo_night_sex_happened"],
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri",
-		"next": "sex_deny_lift_round2_breath"
-	},
-	{
-		"id": "sex_deny_lift_round2_breath",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Catch your breath)",
-				"next": "sex_deny_lift_round2_05"
-			}
-		]
-	},
-	{
-		"id": "sex_deny_lift_round2_05",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "A long silence.[p]\"...Don't.\"[p]He doesn't know what he's saying don't to.",
-		"next": "sex_top_aftermath"
-	},
-
-	{
-		"id": "sex_deny_lift_end",
-		"type": "narration",
-		"text": "You stop.[p]You stay inside him. He stays against your shoulder. His breathing shakes against your skin. Neither of you move.[p]After a while, his grip on your shirt loosens. Not letting go. Just easing.",
-		"set_flag": ["tavo_night_sex_top", "tavo_night_sex_happened"],
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri",
-		"next": "sex_top_aftermath"
-	},
-
-
-
-	{
-		"id": "sex_bar_start",
-		"clear": true,
-		"type": "narration",
-		"text": "He reaches down, gets hold of your arm, and turns you.[p]Not a shove. A direction. You go over the counter without quite deciding to — chest against the cold slab wood, face to the side.",
-		"next": "sex_bar_02"
-	},
-	{
-		"id": "sex_bar_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Stay still.\"",
-		"next": "sex_bar_02b"
-	},
-	{
-		"id": "sex_bar_02b",
-		"type": "narration",
-		"text": "His hands deal with the rest of it quickly. He has recovered faster than seems fair, and he is exactly the right height for this — the counter puts you precisely where he needs you.",
-		"next": "sex_bar_03_choice"
-	},
-	{
-		"id": "sex_bar_03_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Grip the counter)",
-				"next": "sex_bar_03"
-			},
-			{
-				"text": "> (Push off. Stand up.)",
-				"next": "sex_bar_stop"
-			}
-		]
-	},
-	{
-		"id": "sex_bar_stop",
-		"type": "narration",
-		"text": "You push off the counter and straighten up. His hands lift from your hips immediately.",
-		"next": "sex_bar_stop_02"
-	},
-	{
-		"id": "sex_bar_stop_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He steps back. Fast. Like you burned him.[p]\"...Right.\"",
-		"next": "sex_bar_stop_03"
-	},
-	{
-		"id": "sex_bar_stop_03",
-		"type": "narration",
-		"text": "He tucks himself away and picks up the cloth. He will not bring it up again.",
-		"set_flag": "tavo_night_sex_happened",
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri ; @SHOW_PORTRAIT bar_base",
-		"next": "sex_aftermath_start"
-	},
-	{
-		"id": "sex_bar_03",
-		"type": "narration",
-		"text": "His hands are on your hips before anything else — not gripping yet, just placed. Knowing where things are.",
-		"next": "sex_bar_04"
-	},
-	{
-		"id": "sex_bar_04",
-		"clear": true,
-		"type": "narration",
-		"text": "He pushes your trousers down just far enough. Cool air hits your skin. Then his cock — slender, hot, the ribbing catching at the rim of your hole. He doesn't wait for permission he already has. One steady push and he's inside.[p]The ridges drag past the ring one by one. Each bump sends a shock up your spine. He sinks in to the base and holds.",
-		"next": "sex_bar_05"
-	},
-	{
-		"id": "sex_bar_05",
-		"type": "narration",
-		"text": "He fucks you the way he does everything else. Steady. Efficient. No wasted motion. His hips snap forward in a clean rhythm, each thrust bottoming out with a dull slap of fur and skin against your ass. One hand stays on your hip. The other grips the counter edge beside your ribs.",
-		"next": "sex_bar_05b"
-	},
-	{
-		"id": "sex_bar_05b",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "A low sound behind his teeth. Controlled. Barely there.[p]He adjusts his grip on your hip. Thumb pressed into the hollow of your pelvis.",
-		"next": "sex_bar_mid_choice"
-	},
-	{
-		"id": "sex_bar_mid_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Push back against him)",
-				"next": "sex_bar_06"
-			},
-			{
-				"text": "> (Let him work)",
-				"next": "sex_bar_06"
-			}
-		]
-	},
-	{
-		"id": "sex_bar_06",
-		"clear": true,
-		"type": "narration",
-		"text": "He doesn't narrate. He barely breathes louder. But you hear it start to give — a hissed consonant behind you. Then another. A click he swallows. His grip on your hip tightens by degrees, pulling you back onto each thrust.[p]Your cock aches against the cold underside of the counter. You feel him adjust every time you shift — tracking your reactions, finding what makes your breath catch, and repeating it without comment.",
-		"next": "sex_bar_07"
-	},
-	{
-		"id": "sex_bar_07",
-		"type": "narration",
-		"text": "The attention is the warmth. Even now — hips snapping, breathing ragged — he notices everything. His free hand shifts to the small of your back. The angle changes. The next thrust hits deeper.",
-		"next": "sex_bar_07_choice"
-	},
-	{
-		"id": "sex_bar_07_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Groan into the counter)",
-				"next": "sex_bar_07b"
-			},
-			{
-				"text": "> (Stifle your noises)",
-				"next": "sex_bar_08"
-			}
-		]
-	},
-	{
-		"id": "sex_bar_07b",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "You groan against the counter as his length hammers against your prostate. A single, clipped exhale through his nose, almost a laugh.",
-		"next": "sex_bar_08"
-	},
-	{
-		"id": "sex_bar_08",
-		"clear": true,
-		"type": "narration",
-		"text": "He's close. You can tell from the shift — the rhythm tightening, each thrust shorter, harder. His breathing finally breaks into something fully audible. Clipped. Cut short. His hand on your hip is bruise-tight.",
-		"next": "sex_bar_09"
-	},
-	{
-		"id": "sex_bar_09",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "Short sounds. Hissed syllables not quite words. His grip on your hip tightens hard enough to leave marks.[p]Then, clearly: \"—[i]Holdet—[/i]\"",
-		"next": "sex_bar_climax_choice"
-	},
-	{
-		"id": "sex_bar_climax_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Let him finish inside)",
-				"next": "sex_bar_10"
-			},
-			{
-				"text": "> (Try and make him pull out)",
-				"check": { "ability": "body", "dc": 10 },
-				"on_success": "sex_bar_10_outside",
-				"on_fail": "sex_bar_10_outside_fail",
-				"on_nat20": "sex_bar_10_outside"
-			}
-		]
-	},
-	{
-		"id": "sex_bar_10_outside_fail",
-		"type": "narration",
-		"text": "In an effort to not get filled-up with the impending seed you try to push him off. He doesn't budge. His grip on your hip tightens even more and he pulls you back onto him with a growl. His hips slam into you, spurred on by the noise of your erection slapping against the counter.",
-		"next": "sex_bar_10"
-	},
-	{
-		"id": "sex_bar_10",
-		"type": "narration",
-		"text": "He buries himself deep and holds. You feel him pulse inside you — hot, thick, each spasm pressing the ridges hard against your inner walls. His hand flattens against your lower back, holding you still while he empties himself in a series of short, tight jerks. A long, shuddering exhale escapes through his teeth.[p]He holds the position until the last twitch fades.",
-		"next": "sex_bar_11"
-	},
-	{
-		"id": "sex_bar_10_outside",
-		"type": "narration",
-		"text": "You shift forward. He pulls free at the last second — a strangled click escaping his teeth — and comes across the small of your back. Hot, thick spurts landing on your skin, your waistband, the counter beneath you. His hand grips your hip hard enough to bruise as his body shudders through it.",
-		"next": "sex_bar_11"
-	},
-	{
-		"id": "sex_bar_11",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Don't move.\"[p]A long beat.[p]\"Give me a second.\"",
-		"set_flag": ["tavo_night_sex_bar", "tavo_night_sex_happened"],
-		"flag_type": "sex",
-		"command": "@RECORD_SPECIES_SEX noteri",
-		"next": "sex_bar_breath"
-	},
-	{
-		"id": "sex_bar_breath",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> (Catch your breath)",
-				"next": "sex_aftermath_start"
-			}
-		]
-	},
-
-
-
-	{
-		"id": "sex_top_aftermath",
-		"clear": true,
-		"type": "narration",
-		"text": "He sits on the counter for a long time, looking at the bar surface. He keeps his eyes there rather than on you.",
-		"next": "sex_top_aftermath_02"
-	},
-	{
-		"id": "sex_top_aftermath_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "Eventually:[p]\"...Don't tell anyone.\"[p]No eye contact. He slides off the counter.",
-		"next": "sex_aftermath_start"
-	},
-
-
-
-	{
-		"id": "sex_aftermath_start",
-		"clear": true,
-		"type": "narration",
-		"text": "The bar is quiet again.[p]He straightens up. Gets the apron flat. Moves back behind the counter like gravity put him there. Picks up the cloth.[p]Like nothing happened. Or close enough.",
-		"next": "sex_aftermath_02"
-	},
-	{
-		"id": "sex_aftermath_02",
-		"type": "narration",
-		"text": "He works the cloth over the counter again, moving across the same spot he's already cleaned a dozen times tonight. He doesn't look at you directly, but his ears are still flushed at the tips.",
-		"next": "sex_aftermath_03"
-	},
-	{
-		"id": "sex_aftermath_03",
-		"type": "narration",
-		"text": "He goes to the back shelf and comes back with something — a plate of cold flatbread and dried black-root, leftover from dinner service. He sets it in front of you without a word.",
-		"next": "sex_aftermath_tavo"
-	},
-	{
-		"id": "sex_aftermath_tavo",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"You need a place tonight or what.\"[p]It's not a question.",
-		"next": "sex_aftermath_choice"
-	},
-	{
-		"id": "sex_aftermath_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Take the room.]",
-				"next": "sex_end_room"
-			},
-			{
-				"text": "> [I'll head out.]",
-				"next": "night_leave"
-			}
-		]
-	},
-	{
-		"id": "sex_end_room",
-		"type": "narration",
-		"text": "He reaches under the counter and slides a key across the wood without looking up.[p]Brass. Worn smooth. A knot of leather cord around the ring.",
-		"next": "sex_end_room_02"
-	},
-	{
-		"id": "sex_end_room_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "\"Top of the stairs. Don't break anything.\"",
-		"command": "@HIDE_PORTRAIT",
-		"next": "sex_end_room_03"
-	},
-	{
-		"id": "sex_end_room_03",
-		"type": "narration",
-		"text": "You take the key.[p]He's already moving back toward the kitchen. Closing up the last of it.[p]By the time you're at the stairs, the lamp behind the bar is out.",
-		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @SET_TIME day",
-		"next": "scene_end"
-	},
-	{
-		"id": "scene_end",
+		"id": "aftermath_set_v1",
 		"type": "command",
-		"command": "@LEAVE_ENCOUNTER",
-		"next": "this_is_needed_in_order_to_avoid_a_weird_glitch_where_the_game_doesn't_end_properly_and_you_get_stuck_on_a_frozen_screen_after_leaving_the_encounter"
-	},
-
-	{
-		"id": "sex_refuse",
-		"type": "narration",
-		"text": "You step back, giving him the space.[p]He holds your gaze for a beat, long enough that there's nothing unclear about what he understood.",
-		"next": "sex_refuse_02"
+		"command": "@add_reputation pichidi 20 ; @RECORD_SPECIES_SEX ichmi",
+		"set_flag": "pichidi_sexed",
+		"flag_type": "sex",
+		"next": "aftermath_v1"
 	},
 	{
-		"id": "sex_refuse_02",
-		"type": "npc",
-		"name": "Tavo-Pavo",
-		"text": "He picks up the cloth. Goes back to the counter.[p]\"Right.\"",
-		"command": "@SHOW_PORTRAIT bar_base",
-		"next": "sex_refuse_03"
-	},
-	{
-		"id": "sex_refuse_03",
-		"type": "narration",
-		"text": "He won't bring it up again. The way he settles back into the work makes that clear without a word.",
-		"next": "night_leave"
-	},
-
-	{
-		"id": "night_leave",
-		"type": "narration",
-		"text": "The Windbreak door swings shut behind you.[p]The mountain cold moves in immediately, pressing against your skin. Through the shut door, Tavo is still working — moving through the last of it the way he always does.",
-		"command": "@HIDE_PORTRAIT ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LOCATION_CHANGE klyftet",
-		"clear": true,
-		"next": "night_leave_end"
-	},
-	{
-		"id": "night_leave_end",
+		"id": "aftermath_set_v2",
 		"type": "command",
-		"command": "@LEAVE_ENCOUNTER",
-		"next": "this_is_needed_in_order_to_avoid_a_weird_glitch_where_the_game_doesn't_end_properly_and_you_get_stuck_on_a_frozen_screen_after_leaving_the_encounter"
+		"command": "@add_reputation pichidi 20 ; @RECORD_SPECIES_SEX ichmi",
+		"set_flag": "pichidi_sex_v2",
+		"flag_type": "sex",
+		"next": "aftermath_v2"
+	},
+	{
+		"id": "aftermath_set_v3",
+		"type": "command",
+		"command": "@add_reputation pichidi 20 ; @RECORD_SPECIES_SEX ichmi",
+		"set_flag": "pichidi_sex_v3",
+		"flag_type": "sex",
+		"next": "aftermath_v3"
+	},
+	{
+		"id": "aftermath_set_v4",
+		"type": "command",
+		"command": "@add_reputation pichidi 20 ; @RECORD_SPECIES_SEX ichmi",
+		"set_flag": "pichidi_sex_v4_brood",
+		"flag_type": "sex",
+		"next": "aftermath_v4"
+	},
+	{
+		"id": "aftermath_v1",
+		"type": "narration",
+		"text": "The space between you settles back into stone and water. They look away first — not avoidance, just the direction they were already facing.",
+		"next": "aftermath_micro"
+	},
+	{
+		"id": "aftermath_v2",
+		"type": "narration",
+		"text": "They don't move away as quickly as last time. It's a small thing. They sit or stand in the same space for longer than strictly necessary, looking at nothing in particular.",
+		"next": "aftermath_micro"
+	},
+	{
+		"id": "aftermath_v3",
+		"type": "narration",
+		"text": "They stay close. You notice this because you're used to them using the space after — returning to position, returning to distance. They don't, this time. They remain near you in the cooling air.",
+		"next": "aftermath_micro"
+	},
+	{
+		"id": "aftermath_v4",
+		"type": "narration",
+		"text": "Something is different in the quiet that follows. You can't name it exactly. It has the texture of something that has shifted past the point of pretending it hasn't.",
+		"next": "aftermath_micro"
+	},
+	{
+		"id": "aftermath_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Catch your breath)",
+				"next": "aftermath_pillowtalk"
+			}
+		]
+	},
+	{
+		"id": "aftermath_pillowtalk",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Say nothing]",
+				"next": "aftermath_pichidi_nothing"
+			},
+			{
+				"text": "> That fit.",
+				"next": "aftermath_pichidi_fit"
+			}
+		]
+	},
+	{
+		"id": "aftermath_pichidi_nothing",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They sit with the silence for a moment, then huff — the beginning of a \"heee\" that doesn't quite complete itself. They begin adjusting their clothing.",
+		"next": "main_hub"
+	},
+	{
+		"id": "aftermath_pichidi_fit",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee. It did.\" Said with complete equanimity, like reporting weather.",
+		"next": "main_hub"
+	},
+
+	{
+		"id": "cuddle_pichidi_asks",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"You do not have to go.\" Flat. Not looking at you — at the water, at the wall. Strategic delivery, or they want it to read that way.",
+		"next": "cuddle_choice"
+	},
+	{
+		"id": "cuddle_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Stay]",
+				"next": "cuddle_stay_01"
+			},
+			{
+				"text": "> I'm not sure...",
+				"next": "cuddle_uncertain"
+			},
+			{
+				"text": "> I should get back.",
+				"next": "cuddle_leave_route"
+			}
+		]
+	},
+	{
+		"id": "cuddle_leave_route",
+		"type": "narration",
+		"text": "You pull yourself together and move toward the passage. They don't stop you. They don't say anything. When you glance back they're looking at the water.",
+		"next": "cleanup_01"
+	},
+	{
+		"id": "cuddle_uncertain",
+		"type": "narration",
+		"text": "You don't move. But you don't commit either — hovering in the space between staying and going, waiting for something to tip it.",
+		"next": "cuddle_pichidi_press"
+	},
+	{
+		"id": "cuddle_pichidi_press",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Stay.\"[p]A beat. Then, quieter, which is worse: \"...I am asking.\"[p]They know what that sounded like. The slight embarrassment lands in the set of their jaw — visible, brief. They don't retract it. They don't explain it. The brood hormones are not consulting them on the matter.",
+		"next": "cuddle_uncertain_choice"
+	},
+	{
+		"id": "cuddle_uncertain_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Settle in]",
+				"next": "cuddle_stay_01"
+			},
+			{
+				"text": "> I really should go.",
+				"next": "cuddle_leave_route"
+			}
+		]
+	},
+	{
+		"id": "cuddle_stay_01",
+		"type": "narration",
+		"text": "You don't move. They don't move. The sewer water runs its unhurried course in the channel below. Somewhere above, the town presses on without you.",
+		"next": "cuddle_stay_02"
+	},
+	{
+		"id": "cuddle_stay_02",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee. Bolk who stays.\" Quiet, directed more at the wall than at you.",
+		"next": "cuddle_micro"
+	},
+	{
+		"id": "cuddle_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Settle in closer]",
+				"next": "cuddle_fall_asleep"
+			},
+			{
+				"text": "> [Change your mind]",
+				"next": "cuddle_leave_route"
+			}
+		]
+	},
+	{
+		"id": "cuddle_fall_asleep",
+		"type": "narration",
+		"text": "You settle into the warmth of them — their back against you, or you against them, the arrangement solving itself without discussion. Their skin temperature is lower than yours. The freckles on their shoulder, barely tactile under your hand. The water keeps moving in its channel. The drip from somewhere above. The dark that is its own kind of quiet. You drift.",
+		"next": "cuddle_commands"
+	},
+	{
+		"id": "cuddle_commands",
+		"type": "command",
+		"command": "@SET_TIME night",
+		"set_flag": "pichidi_cuddled",
+		"flag_type": "knowledge",
+		"clear": true,
+		"next": "cuddle_wake_narration"
+	},
+	{
+		"id": "cuddle_wake_narration",
+		"type": "narration",
+		"text": "The water is louder in the dark. The warmth beside you is gone. The space where they were holds nothing but the faint press of stone and the distant smell of them, already going cold.",
+		"next": "cuddle_night_choice"
+	},
+	{
+		"id": "cuddle_night_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Get up and go]",
+				"next": "cuddle_leave_night"
+			}
+		]
+	},
+	{
+		"id": "cuddle_leave_night",
+		"type": "narration",
+		"text": "You find the passage by feel and memory. The grate overhead lets in a strip of night sky — no moon yet, just stars. The town above is quiet. You climb back up alone.",
+		"next": "leave_command"
+	},
+
+	{
+		"id": "brood_peak_soul_fail",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Different.\" They repeat the word without inflection. \"Water is different every hour. You notice water?\" They don't wait for an answer.",
+		"next": "main_hub"
+	},
+	{
+		"id": "brood_peak_success",
+		"type": "narration",
+		"text": "You say it carefully — not what they look like, but the quality underneath the look. Something that is not their usual frequency.",
+		"next": "brood_peak_success_npc"
+	},
+	{
+		"id": "brood_peak_success_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"command": "@add_reputation pichidi 15",
+		"text": "They look at you. Don't answer. The not-answering is itself an answer — the first time they've responded to a direct question by simply holding eye contact and staying with it.",
+		"next": "main_hub"
+	},
+	{
+		"id": "brood_peak_nat20",
+		"type": "npc",
+		"name": "Pichidi",
+		"command": "@add_reputation pichidi 30",
+		"text": "\"...Endah-mjis havet.\"[p]Old Mire. Two words, maybe three, spoken quietly and then not repeated. They don't translate. They don't explain. But they said it to you and not to the wall, which is something.",
+		"next": "main_hub"
+	},
+
+	{
+		"id": "cleanup_01",
+		"type": "narration",
+		"text": "You find the passage out and take it. The grate overhead lets in a line of daylight. The sewer falls away behind you.",
+		"next": "leave_command"
+	},
+	{
+		"id": "leave_command",
+		"type": "command",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LEAVE_ENCOUNTER",
+		"end": true
 	}
 ]

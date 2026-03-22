@@ -203,12 +203,12 @@ func _handle_game_state_command(cmd: String, context: Dictionary = {}) -> void:
 		"remove_reputation":
 			game_state.remove_reputation(value, quantity)
 
-		# === Flirt ===
-		"add_flirt":
-			game_state.add_flirt(value, quantity)
+		# === Horny ===
+		"add_horny":
+			game_state.add_horny(value, quantity)
 
-		"remove_flirt":
-			game_state.remove_flirt(value, quantity)
+		"remove_horny":
+			game_state.remove_horny(value, quantity)
 
 		_:
 			print("❌ Unknown game state command:", cmd)

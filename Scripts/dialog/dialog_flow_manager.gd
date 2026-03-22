@@ -588,15 +588,15 @@ func _evaluate_condition_key_value(key: String, value: Variant) -> bool:
 			var npc_id: String = str(value.get("npc", ""))
 			var required: int = int(value.get("amount", 0))
 			return GameState.get_reputation(npc_id) >= required
-		"min_flirt":
-			# True if the player meets the minimum flirt level with an NPC.
-			# Usage: "show_if": { "min_flirt": { "npc": "nautinto", "amount": 10 } }
+		"min_horny":
+			# True if the player meets the minimum horny level with an NPC.
+			# Usage: "show_if": { "min_horny": { "npc": "nautinto", "amount": 10 } }
 			if typeof(value) != TYPE_DICTIONARY:
-				push_warning("⚠️ min_flirt expects a dictionary with 'npc' and 'amount'.")
+				push_warning("⚠️ min_horny expects a dictionary with 'npc' and 'amount'.")
 				return false
 			var npc_id: String = str(value.get("npc", ""))
 			var required: int = int(value.get("amount", 0))
-			return GameState.get_flirt(npc_id) >= required
+			return GameState.get_horny(npc_id) >= required
 		"min_species_stat":
 			# True if a species stat meets a minimum value.
 			# Stat can be: "sex", "wins", "losses", "met"

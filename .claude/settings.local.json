@@ -31,7 +31,13 @@
       "Bash(mv \".godot/imported/pichidel_base.png-689c682f9906c01ee30bd7f7c4c28299.ctex\" \".godot/imported/pichidi_base.png-689c682f9906c01ee30bd7f7c4c28299.ctex\")",
       "Bash(mv \".godot/imported/pichidel_base.png-689c682f9906c01ee30bd7f7c4c28299.md5\" \".godot/imported/pichidi_base.png-689c682f9906c01ee30bd7f7c4c28299.md5\")",
       "Bash(mv \".godot/imported/pichidel_smoke_1.png-0680b6f7d0e7d357195649d7918f9abd.ctex\" \".godot/imported/pichidi_smoke_1.png-0680b6f7d0e7d357195649d7918f9abd.ctex\")",
-      "Bash(wc -l \"d:/Projects/Godot/wrisst_test/X ReadMe for LLMs/\\(ReadMe for LLMs\\) Wrisst Knowledge Database & Design plan 05-03-2026.txt\")"
+      "Bash(wc -l \"d:/Projects/Godot/wrisst_test/X ReadMe for LLMs/\\(ReadMe for LLMs\\) Wrisst Knowledge Database & Design plan 05-03-2026.txt\")",
+      "Bash(sed -i 's/\"\"min_flirt\"\"/\"\"min_horny\"\"/g; s/@add_flirt/@add_horny/g; s/@remove_flirt/@remove_horny/g' \"d:/Projects/Godot/wrisst_test/Narrative/JSONs/windbreak_postquest_night.json\")",
+      "Bash(sed -i 's/\"\"min_flirt\"\"/\"\"min_horny\"\"/g; s/@add_flirt/@add_horny/g; s/@remove_flirt/@remove_horny/g' \"d:/Projects/Godot/wrisst_test/Narrative/DialogScenes/Locations/Klyftet/Sewers/sewers_day.json\")",
+      "Bash(find d:/Projects/Godot/wrisst_test -name *pichidi* -o -name *sewer*)",
+      "Bash(grep -E \"\\\\.\\(json|tscn|gd\\)$\")",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''Narrative/DialogScenes/Locations/Klyftet/Sewers/sewers_day.json'', encoding=''utf-8''\\)\\); ids=[n.get\\(''id''\\) for n in data if n.get\\(''id''\\)]; print\\(f''Valid JSON. {len\\(ids\\)} nodes with IDs.''\\)\")",
+      "Bash(python -c \":*)"
     ]
   }
 }

@@ -240,6 +240,10 @@
 				"next": "enter_inn_DEBUG_night"
 			},
 			{
+				"text": "> [Go Sewers] [DEBUG]",
+				"next": "enter_sewers_pre"
+			},
+			{
 				"text": "> [Go to Alley]",
 				"next": "switch_inn_alley_intro"
 			},
@@ -330,6 +334,29 @@
 			}
 		]
 	},
+
+	{
+		"id": "alley_enter_sewers_flagset",
+		"type": "logic",
+		"set_flag": "entered_sewer_from_alley",
+		"flag_type": "event",
+		"next": "enter_sewers_pre"
+	},
+	{
+		"id": "enter_sewers_pre",
+		"type": "narration",
+		"text": "You climb down into the hole.",
+		"clear": true,
+		"next": "enter_sewers"
+	},
+	{
+		"id": "enter_sewers",
+		"type": "command",
+        "command": "@LOCATION_CHANGE sewers ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"clear": true,
+        "next": "intro_choice_hub"
+	},
+
     {
         "id": "switch_inn_exterior_intro_hide_portrait",
         "type": "command",

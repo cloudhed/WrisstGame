@@ -150,25 +150,25 @@
 			{
 				"text": "> You seem easier right now.",
 				"next": "flirt_night_easier",
-				"show_if": { "min_flirt": { "npc": "tavo_pavo", "amount": 20 } },
+				"show_if": { "min_horny": { "npc": "tavo_pavo", "amount": 20 } },
 				"hide_if": "picked"
 			},
 			{
 				"text": "> That scar on your shoulder, what's the story there?",
 				"next": "night_talk_scar",
-				"show_if": { "min_flirt": { "npc": "tavo_pavo", "amount": 20 } },
+				"show_if": { "min_horny": { "npc": "tavo_pavo", "amount": 20 } },
 				"hide_if": "picked"
 			},
 			{
 				"text": "> [Slide closer to him]",
 				"next": "flirt_night_closer",
-				"show_if": { "min_flirt": { "npc": "tavo_pavo", "amount": 40 } },
+				"show_if": { "min_horny": { "npc": "tavo_pavo", "amount": 40 } },
 				"hide_if": { "has_flag": "tavo_flirt_closer" }
 			},
 			{
 				"text": "> I like watching you work.",
 				"next": "flirt_night_watch",
-				"show_if": { "min_flirt": { "npc": "tavo_pavo", "amount": 40 } },
+				"show_if": { "min_horny": { "npc": "tavo_pavo", "amount": 40 } },
 				"hide_if": "picked"
 			},
 			{
@@ -176,7 +176,7 @@
 				"next": "flirt_night_gaze",
 				"show_if": {
 					"all_of": [
-						{ "min_flirt": { "npc": "tavo_pavo", "amount": 60 } },
+						{ "min_horny": { "npc": "tavo_pavo", "amount": 60 } },
 						{ "has_flag": "tavo_night_drink_3" }
 					]
 				},
@@ -229,7 +229,7 @@
 		"type": "npc",
 		"name": "Tavo-Pavo",
 		"text": "\"Closing drink.\"",
-		"command": "@add_flirt tavo_pavo 10",
+		"command": "@add_horny tavo_pavo 10",
 		"next": "night_hub"
 	},
 	{
@@ -251,7 +251,7 @@
 		"id": "night_drink_second_03",
 		"type": "narration",
 		"text": "He knows this isn't what you were talking about. He keeps his eyes on the counter and keeps wiping the same spot.",
-		"command": "@add_flirt tavo_pavo 10",
+		"command": "@add_horny tavo_pavo 10",
 		"next": "night_hub"
 	},
 	{
@@ -275,7 +275,7 @@
 		"type": "npc",
 		"name": "Tavo-Pavo",
 		"text": "He blinks. Like he surprised himself.[p]\"Don't know why I said that.\"",
-		"command": "@add_flirt tavo_pavo 10",
+		"command": "@add_horny tavo_pavo 10",
 		"next": "night_hub"
 	},
 	{
@@ -304,7 +304,7 @@
 		"type": "npc",
 		"name": "Tavo-Pavo",
 		"text": "\"Tonight was fine. Better than most.\"",
-		"command": "@add_flirt tavo_pavo 10",
+		"command": "@add_horny tavo_pavo 10",
 		"next": "night_hub"
 	},
 
@@ -319,7 +319,7 @@
 		"id": "flirt_night_alone_02",
 		"type": "narration",
 		"text": "A quiet settles that doesn't get filled. Tavo-Pavo stays busy behind the counter, moving through the last of the closing work.",
-		"command": "@add_flirt tavo_pavo 10",
+		"command": "@add_horny tavo_pavo 10",
 		"next": "night_hub"
 	},
 
@@ -334,7 +334,7 @@
 		"id": "flirt_night_place_02",
 		"type": "narration",
 		"text": "His tail makes one slow twitch at the base and settles, the only sign that the comment landed at all.",
-		"command": "@add_flirt tavo_pavo 10",
+		"command": "@add_horny tavo_pavo 10",
 		"next": "night_hub"
 	},
 
@@ -402,7 +402,7 @@
 		"type": "npc",
 		"name": "Tavo-Pavo",
 		"text": "\"...\"\"It didn't finish me. That's the whole story.\"",
-		"command": "@add_flirt tavo_pavo 10",
+		"command": "@add_horny tavo_pavo 10",
 		"next": "night_hub"
 	},
 
@@ -440,7 +440,7 @@
 		"id": "flirt_night_closer_03",
 		"type": "narration",
 		"text": "He stays where he is, his shoulder barely an inch from your arm. His hands go back to the work without comment.",
-		"command": "@add_flirt tavo_pavo 20",
+		"command": "@add_horny tavo_pavo 20",
 		"next": "night_hub"
 	},
 
@@ -461,7 +461,7 @@
 		"id": "flirt_night_watch_03",
 		"type": "narration",
 		"text": "He starts wiping again, slower than before, his nose twitching twice against the lamplight.",
-		"command": "@add_flirt tavo_pavo 20",
+		"command": "@add_horny tavo_pavo 20",
 		"next": "night_hub"
 	},
 
@@ -490,7 +490,7 @@
 		"type": "npc",
 		"name": "Tavo-Pavo",
 		"text": "He sets the cloth down for the first time all night.",
-		"command": "@SHOW_PORTRAIT bar_base ; @add_flirt tavo_pavo 20",
+		"command": "@SHOW_PORTRAIT bar_base ; @add_horny tavo_pavo 20",
 		"next": "tavo_initiate_01"
 	},
 
@@ -541,7 +541,7 @@
 				"next": "sex_wrist_attempt",
 				"show_if": {
 					"all_of": [
-						{ "min_flirt": { "npc": "tavo_pavo", "amount": 80 } },
+						{ "min_horny": { "npc": "tavo_pavo", "amount": 80 } },
 						{ "has_flag": "tavo_flirt_closer" },
 						{ "has_flag": "tavo_night_drink_3" }
 					]

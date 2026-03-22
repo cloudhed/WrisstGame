@@ -1,0 +1,203 @@
+## Brief overview
+- Applies to all dialogue scenes, encounter JSONs, and intimacy scenes involving sapient **Monsterfolk**.
+- This rule governs node cadence, choice design, prose, NPC voice, and scene architecture.
+- Full reference document: `WRISST_SCENE_WRITING_STANDARD.md` (project root). Read it for deep detail on any section below.
+
+---
+
+## Node cadence
+- **1–2 narration nodes** between choices in non-sex scenes. **1–3** in sex scenes. Never more.
+- If 3+ narration nodes pass without a choice, insert a **micro-choice**: `> (Catch your breath)`, `> (Brace yourself)`, `> (Nod)`, etc.
+- Two dialogue choices may converge on the same next node — the goal is player activity, not branching.
+
+## Escape hatches
+- Every escalation point must include a way out: `> Back away` / `> Stop` / `> I've changed my mind`.
+- Remove "Stop" only after active penetration is established; replace it with a climax-choice (inside / outside / mouth).
+
+## Choice design
+- Choices control **who the PC is**, not what happens next. The story advances either way.
+- Default to a **3-option spread**: Bold/Flirty — Neutral Action (bracketed) — Cautious/Withdrawal.
+- Dialogue choices are written as PC speech. Action choices use brackets: `> (Kiss her)`.
+- Optional flavour lines use `"hide_if"` so they vanish once picked, leaving at least one always-visible action.
+- Gate flirty or clever options behind flags or stat checks when appropriate.
+
+## Prose rules
+- **Second person, present tense. Always.** Never slip into past tense in narration.
+- Sentence length: 8–20 words standard; 20–35 word sentences only for overwhelming-sensation moments; use fragments for impact: "Warm. Wet. Impossibly tight."
+- Sensory priority: **Touch → Sound → Sight → Smell → Taste**. Every sex narration node must engage at least two senses; touch is almost always one.
+- Vocabulary is **direct and physical**: cock, shaft, slit, cloaca, cum/seed, slick, throb, clench, buck, gasp — not purple prose, not clinical.
+- Invent NPC-specific anatomy terms for alien biology (e.g. "winking hole," "coral plates"). First encounter = discovery; repeat encounter = skip description, go straight to sensation.
+- Internal monologue: near zero. PC feelings are shown through physical reactions. One sentence maximum if emotional state must be named, then back to action.
+- **Narrative voice is a camera, not a character.** Beat-action narration nodes (`"type": "narration"`) describe NPC reactions from the outside. They must stay in the standard Wrisst observer voice (second person, present tense, 8–20 word sentences) even when the content is an NPC's micro-reaction. Do NOT borrow the NPC's speech register, clipped rhythm, or sentence-fragment style in narration. That register belongs exclusively inside `"type": "npc"` nodes.
+  - Wrong (voice bleed — clipped NPC register): *"You soap him up. He looks at you. A faint smile. He returns the favor. You kneel. Hands down his thighs. He doesn't pull away. Almost embarrassed. Awkward smile. Eyes meet. His head level."*
+  - Right (camera voice — full scene, medium sentences, NPC observed from outside): *"You pick up a bar of soap and start gently foaming it on his skin. He looks at you with a slight surprise and smiles faintly. He lathers you up as well and as high as he can. You carefully rub under the folds of his torso, neck and then move lower by kneeling in front of him. You run your hands down along his thighs and back up his buttocks. [Name] seems almost embarrassed at the attention you give him. He awkwardly smiles at you while enjoying the roaming hands. The two of you stare at each other at his head level."*
+
+## NPC rules
+- NPCs are participants, not receptacles. Every NPC in a sex scene must do at least one unprompted thing: set a rule, push back, change rhythm, reject an advance.
+- NPC personality intensifies during intimacy — it does not disappear.
+- Every NPC must have a recognisable voice. If you can swap their name and the dialogue still fits anyone, rewrite it.
+- Include 2–3 short in-character NPC dialogue lines during sex scenes.
+- The NPC's reaction to climax is a major character beat. Write it with care equal to the climax itself.
+
+## Escalation ladder (Monsterfolk sex scenes)
+Steps can be compressed but not skipped:
+1. Context / Permission
+2. Undressing (micro-choice; note NPC's reaction to the PC's body)
+3. Foreplay / anatomy discovery
+4. Act Choice (oral / penetrative / grinding / etc.)
+5. The Act (2–4 escalating nodes)
+6. Pre-Climax — choice of HOW to finish
+7. Climax (dense, all-senses, both bodies; 80–120 words acceptable)
+8. Aftermath — `> (Catch your breath)` micro-choice, non-negotiable
+9. Pillow talk — character-building dialogue, set relationship flags
+10. Cleanup / departure (at least one fluid/cleanup detail)
+
+## Scene architecture
+- Hub-and-spoke: topic branches return to the hub. No dead-end branches.
+- Any significant player action unlocks at least one new option or changes at least one hub text.
+- Flirt options escalate gradually across branches; sex-initiation option appears only at high reputation.
+
+## JSON structural reminders
+- Every scene opens with an `INIT` command node (audio/environment setup).
+- Conditional routing: `"type": "logic"` with `"check_flags"`.
+- Hub nodes: `"type": "choice"` with `"hide_if"` / `"show_if"`.
+- NPC speech: `"type": "npc"` with `"name"`. Narration: `"type": "narration"`.
+- `"clear": true` at scene transitions and major beats.
+- Set flags via `"set_flag"` / `"flag_type"` (knowledge / temp / sex).
+- Reputation: `@ADD_REPUTATION npc_name amount`. Species-sex tracking: `@RECORD_SPECIES_SEX`.
+- Scene end: hide scenes, fade music, stop ambience, call `@LEAVE_ENCOUNTER`.
+
+## Hard prohibitions
+- Do NOT write the PC's internal opinions, emotional conclusions, or romantic feelings — only physical reactions.
+- Do NOT write porn-logic transitions (NPC consents for no established reason).
+- Do NOT skip aftermath. The post-climax beat is as important as the climax itself.
+- Do NOT let all NPCs sound the same in bed.
+
+---
+
+## Ability checks
+
+Three abilities: **body** (physical endurance / force), **mind** (quick thinking / perception), **soul** (emotional presence / intuition / persuasion). Each is assigned one tier at character creation: **high** (+7), **mid** (+0), or **low** (−6). Player sets one high and one low; the third becomes mid automatically.
+
+**Roll formula:** 1d20 + ability score + situational bonus vs DC. A raw roll of 20 (nat 20) always succeeds regardless of total. There is no automatic failure on a 1.
+
+**Route priority:** nat 20 → `on_nat20` (if present); success → `on_success`; fail → `on_fail`. `on_nat20` is optional — if omitted, nat 20 still routes to `on_success`.
+
+### Choice-attached check
+
+Hidden roll — triggers the moment the player picks the choice. No `"next"` field. Routes come from `on_success` / `on_fail` / `on_nat20`.
+
+```json
+{
+    "text": "> (Your option text here)",
+    "check": { "ability": "soul", "dc": 13 },
+    "bonus_if": [
+        { "has_flag": "some_relevant_flag", "bonus": 2 },
+        { "has_item": "Misc/some_item", "bonus": 3 }
+    ],
+    "on_fail":    "check_fail_node_id",
+    "on_success": "check_success_node_id",
+    "on_nat20":   "check_nat20_node_id"
+}
+```
+
+`bonus_if` entries each require `"has_flag"` (flag name) or `"has_item"` (item resource path), plus `"bonus"` (int). All matching bonuses stack at roll time.
+
+### Standalone check node
+
+Rolls immediately when the node is reached — no player input. Use for automatic consequences or environmental reads.
+
+```json
+{
+    "id": "some_auto_check",
+    "type": "check",
+    "ability": "soul",
+    "dc": 11,
+    "on_success": "felt_something",
+    "on_fail":    "felt_nothing"
+}
+```
+
+### Tier gate — show/hide without rolling
+
+Use `ability_tier` in `show_if` / `hide_if` to gate a choice option on the PC's innate quality, with no roll. Multiple entries are AND-ed.
+
+```json
+"show_if": { "ability_tier": { "soul": "high" } }
+```
+
+Use this for options that require a certain quality by nature, not a lucky roll — e.g. only a high-soul PC would even think to say this.
+
+---
+
+### Writing check outcomes
+
+The player never sees the roll. Do not write "you failed" or "your soul was high enough." Write only physical behaviour and NPC response. Each branch must read as natural prose.
+
+| Outcome | What to write |
+|---------|---------------|
+| **Fail** | The attempt lands wrong — clumsy, blunt, off-pitch. The NPC isn't hostile; the moment just doesn't open. 1–2 nodes, return to hub. |
+| **Success** | Something shifts. The NPC gives more than expected. Minor reputation gain appropriate. 2–3 nodes. |
+| **Nat 20** | A moment they weren't ready for. Unmistakable unguardedness; something candid that wouldn't surface otherwise. Set a knowledge flag. Larger reputation gain. 2–4 nodes. |
+
+The nat 20 is a **character beat**, not just a bigger success. It reveals something the NPC has not shown anyone else.
+
+---
+
+### Full worked example — soul check, DC 13
+
+The PC tries to say something that actually reaches Nautinto. The soul check determines whether they read the moment right.
+
+**The choice option (on the hub or a branch):**
+```json
+{
+    "text": "> I think I understand what you're carrying.",
+    "check": { "ability": "soul", "dc": 13 },
+    "bonus_if": [
+        { "has_flag": "told_naut_teqqellon", "bonus": 2 }
+    ],
+    "on_fail":    "soul_fail",
+    "on_success": "soul_success",
+    "on_nat20":   "soul_nat20"
+}
+```
+
+**Fail — d20 + score + bonus < 13, and no nat 20:**
+```json
+{ "id": "soul_fail",
+  "type": "narration",
+  "text": "The words come out blunt where they should be gentle. She hears you. She doesn't feel heard.",
+  "next": "soul_fail_npc" },
+{ "id": "soul_fail_npc",
+  "type": "npc", "name": "Nautinto",
+  "text": "\"...Yes. Perhaps you do.\"",
+  "next": "main_hub" }
+```
+
+**Success — d20 + score + bonus >= 13:**
+```json
+{ "id": "soul_success",
+  "type": "narration",
+  "text": "Her whiskers go still. A beat of silence — the kind that means something landed.",
+  "next": "soul_success_npc" },
+{ "id": "soul_success_npc",
+  "type": "npc", "name": "Nautinto",
+  "text": "\"You are not what I expected, little one. Not at all.\"",
+  "command": "@ADD_REPUTATION nautinto 15",
+  "next": "main_hub" }
+```
+
+**Nat 20 — raw d20 roll was 20:**
+```json
+{ "id": "soul_nat20",
+  "type": "narration",
+  "text": "Something crosses her face she wasn't ready to show. Her jaw tightens once, then releases. Her hands go still in her lap.",
+  "next": "soul_nat20_npc" },
+{ "id": "soul_nat20_npc",
+  "type": "npc", "name": "Nautinto",
+  "text": "\"...I have not been asked that in a very long time.\"",
+  "command": "@ADD_REPUTATION nautinto 30",
+  "set_flag": "nautinto_opened_up",
+  "flag_type": "knowledge",
+  "next": "main_hub" }
+```

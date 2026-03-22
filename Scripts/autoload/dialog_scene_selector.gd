@@ -11,6 +11,7 @@ const INN_POSTQUEST_NIGHT_SCENE_PATH := "res://Narrative/DialogScenes/Locations/
 const OLDMINE_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Oldmine/oldmine_default.tres"
 const TEMPLE_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_day.tres"
 const TEMPLE_INTERIOR_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_interior_day.tres"
+const SEWERS_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Sewers/Sewers_Day.tres"
 
 
 func _load_scene_cached(path: String) -> DialogSceneResource:
@@ -41,6 +42,8 @@ func get_scene(area: String) -> DialogSceneResource:
 			return _get_temple_interior_scene()
 		"market":
 			return _get_market_scene()
+		"sewers":
+			return _get_sewers_scene()
 		_:
 			push_warning("❌ Unknown area passed to DialogSceneSelector: " + area)
 			return null
@@ -80,6 +83,11 @@ func _get_temple_scene() -> DialogSceneResource:
 
 func _get_temple_interior_scene() -> DialogSceneResource:
 	return _load_scene_cached(TEMPLE_INTERIOR_SCENE_PATH)
+
+func _get_sewers_scene() -> DialogSceneResource:
+	if GameState.is_night:
+		return _load_scene_cached(SEWERS_SCENE_PATH)
+	return _load_scene_cached(SEWERS_SCENE_PATH)
 
 
 func _get_market_scene() -> DialogSceneResource:

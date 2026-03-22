@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="PortraitDeck" load_steps=15 format=3 uid="uid://b8wl8a7dnrggi"]
+[gd_resource type="Resource" script_class="PortraitDeck" load_steps=17 format=3 uid="uid://b8wl8a7dnrggi"]
 
 [ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Characters/portrait_entry.gd" id="1_cxa8w"]
 [ext_resource type="Texture2D" uid="uid://bn0ft2r38xd5d" path="res://Characters/Pichidi/Pichidi_portraits/pichidi_sitting.png" id="2_r5iqy"]
 [ext_resource type="Texture2D" uid="uid://b338av20h850j" path="res://Characters/Pichidi/Pichidi_portraits/pichidi_base.png" id="3_p8tmq"]
 [ext_resource type="Texture2D" uid="uid://ddq8kf8dwiq8p" path="res://Characters/Pichidi/Pichidi_portraits/pichidi_smoke_1.png" id="3_yls23"]
+[ext_resource type="Texture2D" uid="uid://5i72o5buso0j" path="res://Characters/Pichidi/Pichidi_portraits/pichidil_base_clothed.png" id="4_2bmgg"]
 [ext_resource type="Texture2D" uid="uid://b0cs0yx12stss" path="res://Characters/Pichidi/Pichidi_portraits/pichidi_smoke_2.png" id="4_p8tmq"]
 [ext_resource type="Script" uid="uid://dh0gvf3ssl3yi" path="res://Characters/portrait_deck.gd" id="5_fhjkx"]
 [ext_resource type="Texture2D" uid="uid://qp1v0njrwj5h" path="res://Characters/Pichidi/Pichidi_portraits/pichidi_smoke_3.png" id="5_igj07"]
@@ -19,6 +20,12 @@ metadata/_custom_type_script = "uid://bbcjegrw16og0"
 script = ExtResource("1_cxa8w")
 id = &"base"
 portrait = ExtResource("3_p8tmq")
+metadata/_custom_type_script = "uid://bbcjegrw16og0"
+
+[sub_resource type="Resource" id="Resource_grttt"]
+script = ExtResource("1_cxa8w")
+id = &"clothed"
+portrait = ExtResource("4_2bmgg")
 metadata/_custom_type_script = "uid://bbcjegrw16og0"
 
 [sub_resource type="Resource" id="Resource_6i80w"]
@@ -47,5 +54,5 @@ metadata/_custom_type_script = "uid://bbcjegrw16og0"
 
 [resource]
 script = ExtResource("5_fhjkx")
-portraits = Array[ExtResource("1_cxa8w")]([SubResource("Resource_713jv"), SubResource("Resource_igj07"), SubResource("Resource_6i80w"), SubResource("Resource_1cdb5"), SubResource("Resource_7o2tx"), SubResource("Resource_w1vak")])
+portraits = Array[ExtResource("1_cxa8w")]([SubResource("Resource_713jv"), SubResource("Resource_igj07"), SubResource("Resource_grttt"), SubResource("Resource_6i80w"), SubResource("Resource_1cdb5"), SubResource("Resource_7o2tx"), SubResource("Resource_w1vak")])
 metadata/_custom_type_script = "uid://dh0gvf3ssl3yi"

@@ -2,8 +2,8 @@
 
 [ext_resource type="Resource" uid="uid://b8wl8a7dnrggi" path="res://Characters/Pichidi/Pichidi_portraits/Pichidi_portrait_deck.tres" id="1_pcxpj"]
 [ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="2_k2j23"]
+[ext_resource type="FontFile" uid="uid://d375qotamopn0" path="res://Assets/Fonts/StrangerThings-Regular.ttf" id="3_bgix3"]
 [ext_resource type="AudioStream" uid="uid://c63knhfxqpy3e" path="res://Audio/SFX/Characters/female_short_huh.wav" id="3_pob6j"]
-[ext_resource type="FontFile" uid="uid://5h6t5qxb36o7" path="res://Assets/Fonts/CrayonLibre.ttf" id="3_typic"]
 
 [resource]
 script = ExtResource("2_k2j23")
@@ -13,7 +13,7 @@ portrait = ExtResource("1_pcxpj")
 voice_clip = ExtResource("3_pob6j")
 color = Color(0.131439, 0.761179, 1, 1)
 speech_bubble_color = Color(0.00848967, 0, 0.236383, 0.827451)
-speech_bubble_font = ExtResource("3_typic")
+speech_bubble_font = ExtResource("3_bgix3")
 speech_bubble_font_size = 24
 stats = {}
 default_flags = {}

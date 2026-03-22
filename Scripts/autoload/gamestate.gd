@@ -4,7 +4,7 @@ const PLAYER_STATISTICS_SCRIPT := preload("res://Scripts/autoload/player_statist
 
 signal money_changed(currency: String, new_amount: int)
 signal reputation_changed(npc_id: String, new_value: int)
-signal flirt_changed(npc_id: String, new_value: int)
+signal horny_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
 signal fallback_equipped
 signal combat_debug_settings_changed
@@ -63,7 +63,7 @@ var is_night: bool = false
 
 # NPC relationship points
 var npc_reputation: Dictionary = {}
-var npc_flirt: Dictionary = {}
+var npc_horny: Dictionary = {}
 
 # Returning to stuff
 var last_scene_id: String = ""
@@ -314,23 +314,23 @@ func get_reputation(npc_id: String) -> int:
 
 
 # ─────────────────────────────────────────────────────────────
-# NPC flirt management
-func add_flirt(npc_id: String, amount: int) -> void:
-	var nw = npc_flirt.get(npc_id, 0) + amount
-	npc_flirt[npc_id] = nw
-	emit_signal("flirt_changed", npc_id, nw)
+# NPC horny management
+func add_horny(npc_id: String, amount: int) -> void:
+	var nw = npc_horny.get(npc_id, 0) + amount
+	npc_horny[npc_id] = nw
+	emit_signal("horny_changed", npc_id, nw)
 
-func remove_flirt(npc_id: String, amount: int) -> bool:
-	var old = npc_flirt.get(npc_id, 0)
+func remove_horny(npc_id: String, amount: int) -> bool:
+	var old = npc_horny.get(npc_id, 0)
 	if amount > old:
 		return false
 	var nw = old - amount
-	npc_flirt[npc_id] = nw
-	emit_signal("flirt_changed", npc_id, nw)
+	npc_horny[npc_id] = nw
+	emit_signal("horny_changed", npc_id, nw)
 	return true
 
-func get_flirt(npc_id: String) -> int:
-	return npc_flirt.get(npc_id, 0)
+func get_horny(npc_id: String) -> int:
+	return npc_horny.get(npc_id, 0)
 
 
 # ─────────────────────────────────────────────────────────────

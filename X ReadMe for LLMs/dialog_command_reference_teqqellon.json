@@ -212,7 +212,7 @@
   },
 
   {
-    "_comment": "Remaining show_if / hide_if condition types not covered above: min_reputation, min_flirt, min_species_stat, has_item_count, content_disabled, hide_if:'picked'.",
+    "_comment": "Remaining show_if / hide_if condition types not covered above: min_reputation, min_horny, min_species_stat, has_item_count, content_disabled, hide_if:'picked'.",
     "id": "ref_remaining_conditions",
     "type": "choice",
     "options": [
@@ -222,9 +222,9 @@
         "show_if": { "min_reputation": { "npc": "bitalgut", "amount": 5 } }
       },
       {
-        "text": "> min_flirt gate (bitalgut >= 3)",
+        "text": "> min_horny gate (bitalgut >= 3)",
         "next": "ref_conditions_result",
-        "show_if": { "min_flirt": { "npc": "bitalgut", "amount": 3 } }
+        "show_if": { "min_horny": { "npc": "bitalgut", "amount": 3 } }
       },
       {
         "text": "> min_species_stat gate (meehp sex >= 1)",

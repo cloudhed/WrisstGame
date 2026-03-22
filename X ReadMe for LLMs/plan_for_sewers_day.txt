@@ -1,0 +1,414 @@
+# Plan: sewers_day.json — Full Pichidi Scene
+
+## Context
+
+`sewers_day.json` needs a complete rewrite as a multi-visit Pichidi encounter scene. Pichidi is an Ichmi sewer-dweller in active breeder→brood transition: dominant by habit, increasingly pulled toward being mounted, aware of the biology, mildly annoyed rather than distressed. The scene spans up to five visit states, a question hub, three sex routes with branching, nat20 brood moments, and a post-sex cuddle/sleep sequence that is itself a major character beat.
+
+---
+
+## Critical Files
+
+- `X ReadMe for LLMs/CharacterSheets/Pichidi.md` — authoritative voice/biology/behavioral logic
+- `X ReadMe for LLMs/CharacterSheets/OldMire_Language.md` — Old Mire vocabulary (deh, nah, endah, mjisiv, nah-bac, deh-bac, deh-glim, nah-glim, bolk, grat, shigrat)
+- `Narrative/JSONs/windbreakinn_intro.json` — structural pattern (hub architecture, logic chains, flag conventions)
+- `X ReadMe for LLMs/dialog_command_reference_teqqellon.json` — definitive command/condition/check syntax reference
+- `.clinerules/scene-writing-monsterfolk.md` — node cadence, escalation ladder, escape hatch rules, ability check format
+
+---
+
+## Scene Architecture Overview
+
+~280–320 nodes total. Five entry states (via chained logic). One main hub. One question sub-hub. Three sex routes. Shared aftermath. Cuddle/sleep sequence.
+
+---
+
+## Section 1: INIT & Entry Routing
+
+### INIT node
+```
+INIT_audio → @STOP_ALL_AMBIENCE ; @FADE_MUSIC_OUT ; @PLAY_AMBIENCE sewers res://Audio/Ambience/Klyftet/mine_ambience.mp3
+             clear: true
+             next → INIT_check_v4_brood
+```
+
+### Chained entry check (logic nodes)
+```
+INIT_check_v4_brood  → flags: [pichidi_sex_v4_brood]
+  success → entry_v5_brood_peak
+  fail    → INIT_check_v3
+
+INIT_check_v3        → flags: [pichidi_sex_v3]
+  success → entry_v4_sex2plus
+  fail    → INIT_check_v2
+
+INIT_check_v2        → flags: [pichidi_sex_v2]
+  success → entry_v3_sex1
+  fail    → INIT_check_sexed
+
+INIT_check_sexed     → flags: [pichidi_sexed]
+  success → entry_v2_had_sex_once
+  fail    → INIT_check_met
+
+INIT_check_met       → flags: [pichidi_met]
+  success → entry_v2_met_nosex  (met but no sex)
+  fail    → entry_v1_first
+```
+
+**Note on flag logic:** `pichidi_sexed` is set after the FIRST sex. `pichidi_sex_v2` after second, etc. The chain works because `pichidi_sex_v2` is checked before `pichidi_sexed`, so reaching `INIT_check_sexed` means exactly one sex session happened.
+
+### Entry narration nodes (5 variants)
+
+**entry_v1_first:** Long sewer description. Drip, passage dark, catch a sound overhead. Pichidi drops from a ledge. Portrait shown on reveal. They make themselves known when it suits them. First words: `"You follow hooded figure into sewers like bolk who finds coin on floor and does not think why it is there."` → intro_choice_01
+
+**entry_v2_met_nosex:** Shorter. They're already in view. `"Back. You do not have task here, I think. Heee. Still, you come."` → main_hub
+
+**entry_v2_had_sex_once:** They're watching from their usual spot. Speak first. Classic repeat-visit opener (see Pichidi.md example). `"Heee... you are back down here with me. Memory of last time is heavy on you."` → main_hub
+
+**entry_v4_sex2plus:** They're in position, waiting. Narration notes the familiarity of the space. One-line NPC greeting, no elaboration. → main_hub
+
+**entry_v5_brood_peak:** They're lower than usual. Near the drainage shelf. Different quality to the silence. They don't speak first. → brood_peak_check → main_hub
+
+**First contact choice (v1 only):** `intro_choice_01` — 3 options feeding into same narration (Pichidi ignores the variance, acknowledges them equally). Sets `pichidi_met` (dialog_flag) via command or set_flag.
+
+---
+
+## Section 2: Main Hub
+
+Single `"type": "choice"` node: `main_hub`. Narration before it differs per visit (handled by entry nodes — the hub itself is one node).
+
+### Hub options table
+
+| Text | show_if | hide_if | Next |
+|---|---|---|---|
+| `> [Look around]` | — | — | hub_look_around |
+| `> [Move closer]` | — | — | hub_approach_closer |
+| `> Ask them something` | — | — | question_hub |
+| `> That language you use — I think I've heard it before.` | has_flag bitalgut_met | picked | hub_mention_bitalgut |
+| `> Tavo-Pavo at the inn seems to know something's down here.` | has_flag tavo_met | picked | hub_mention_tavo |
+| `> Nautinto mentioned hearing things in these passages.` | has_flag nautinto_met | picked | hub_mention_nautinto |
+| `> [Hold eye contact a beat longer than you should]` | min_horny pichidi 20 | picked | hub_flirt_gaze |
+| `> [Touch their shoulder]` | min_horny pichidi 40 | — | hub_touch_option |
+| `> You know what I came back for.` | min_horny pichidi 40, has_flag pichidi_met | picked | hub_flirt_direct |
+| `> [Reach for them]` | min_horny pichidi 60 | — | hub_propose_sex |
+| `> [Leave]` | — | — | hub_leave |
+
+**Horny increments per interaction (via @ADD_HORNY pichidi N in result nodes):**
+- hub_look_around_result: +5
+- hub_approach_closer_result: +10
+- hub_flirt_gaze result: +10
+- hub_touch_result success: +15
+- hub_flirt_direct result: +10
+- hub_mention_bitalgut result: +10 (they're briefly thrown)
+- hub_mention_tavo result: +5
+- hub_mention_nautinto result: +5
+- Each question success: +5
+- Question soul check success: +10, nat20: +20
+
+---
+
+## Section 3: Question Hub
+
+`question_hub` — `"type": "choice"`. All questions use `"hide_if": "picked"` except `> [Back]`.
+
+### Questions
+
+| ID | Text | Condition | Mechanic | Returns to |
+|---|---|---|---|---|
+| q_who | `> Who are you?` | — | standalone soul DC 11 (fires after NPC deflects) | question_hub |
+| q_what | `> What are you?` | — | no roll — they name "Ichmi," no elaboration | question_hub |
+| q_howlong | `> How long have you been here?` | — | no roll — deflection | question_hub |
+| q_anyone | `> Does anyone on the surface know you're here?` | — | logic branch: if tavo_met → tavo-specific line | question_hub |
+| q_mire | `> That language — I heard some of those words somewhere.` | show_if: bitalgut_met | choice-attached soul DC 13 | question_hub |
+| q_deeper | `> [deeper question about their cycles/nature]` | show_if: pichidi_who_nat20_unlocked | no roll — character beat | question_hub |
+| back | `> [Back]` | — | always visible | main_hub |
+
+**Voice examples (NPC nodes):**
+
+`q_who` → NPC deflect first: `"Name. Heee. Not thing I give to everyone who falls into my floor."` → standalone soul check
+- fail → `"...You do not need it."` → q_hub
+- success → `"Pichidi. You remember it."` @ADD_REPUTATION pichidi 10 → q_hub
+- nat20 → `"...Pichidi."` [longer pause] `"And you are strange shape of bolk I have not seen before."` → set_flag: pichidi_who_nat20_unlocked (knowledge) @ADD_REPUTATION pichidi 25 → q_hub (unlocks q_deeper)
+
+`q_what` → NPC: `"Ichmi."` [short pause] `"No more of us near this water. Not for long time."` → q_hub
+
+`q_howlong` → NPC: `"Long enough to know how rats count their corners here."` → q_hub
+
+`q_anyone` (with tavo_met) → NPC: `"Nöteri innkeeper knows something walks his pipes. Heee. He does not check."` → q_hub
+
+`q_mire` soul DC 13 (choice-attached):
+- fail: they dismiss it, move on → q_hub
+- success: `"...You found Old Mire speaker somewhere."` [not a question] `"Interesting."` @ADD_REPUTATION pichidi 15 set_flag: pichidi_told_bitalgut (dialog) → q_hub
+- nat20: `"Heee."` [pause — genuinely surprised] `"Where."` → unguarded follow-up, they ask a question for once → @ADD_REPUTATION pichidi 30 → q_hub
+
+---
+
+## Section 4: Sex Route Entry
+
+After `hub_propose_sex` → `hub_propose_sex_respond` (they state, don't ask — narration + NPC) → `route_entry_hub`:
+
+```json
+route_entry_hub (choice):
+  > [Let them set the terms]              → routeA_start
+  > [Push them against the wall first]   show_if: has_flag pichidi_reversal_happened   → routeB_start
+  > [Put your mouth on them first]       → routeC_start
+  > [Back away]                          → main_hub (escape hatch — always visible until here)
+```
+
+---
+
+## Section 5: Route A — Pichidi Tops (Breeder Mode)
+
+**Escalation nodes:**
+```
+routeA_start        (narration — clear: true — they move into your space)
+routeA_undress      (1–2 nodes: positioning, tactile detail — their cool skin)
+routeA_pichidi_mounts (npc: "Hold still. I make it fit.")
+routeA_narration_01 (narration — physical detail of mounting)
+routeA_micro_01     (choice — 3 options):
+  > [Submit]                → routeA_submit_01
+  > [Contest for control]   → routeA_contest_check (choice-attached body DC 13)
+  > [Stop]                  → aftermath_entry (no sex flags — escape hatch)
+```
+
+**Submit path:** `routeA_submit_01` → `routeA_submit_02` (npc: "Heee. Good.") → `routeA_submit_micro` (> Catch your breath) → `routeA_submit_03` (explicit narration 2–3 sentences) → `routeA_climax_choice`:
+- `> [Finish inside them]` → routeA_climax_inside
+- `> [Pull out]` → routeA_climax_outside
+
+**Contest path (body DC 13, bonus_if: pichidi_sexed +2):**
+- fail → routeA_contest_fail_01 → _fail_02 (they win, resume mounting) → routeA_submit_micro
+- success → routeA_contest_success_01 → _success_02 → routeB_reversal_desc_01
+- nat20 → same as success + set_flag: pichidi_reversal_happened (knowledge)
+
+**Climax nodes:** explicit, dense, all-senses (80–100 words), then NPC reaction beat, then → aftermath_entry
+
+---
+
+## Section 6: Route B — PC Tops / Reversal
+
+**Entry logic check:**
+```
+routeB_entry_check (logic):
+  flags: [pichidi_reversal_happened]
+  success → routeB_direct_entry_desc    (familiar — they stiffen slightly, then don't fight)
+  fail    → routeB_reversal_desc_01     (first time — something clicks)
+```
+
+**Key nodes:**
+```
+routeB_reversal_desc_01  (narration — they go briefly still; a pause, not a surrender)
+routeB_pichidi_recalibrate (npc: "...Grat." — not protest; recalibration sound)
+routeB_narration_02      (narration — you move, they brace; 2nd person present)
+routeB_micro_01          (> [Brace yourself])
+routeB_narration_03      (narration — explicit entry, their initial response)
+
+routeB_soul_check (standalone, soul DC 11):
+  fail    → routeB_soul_fail (you read nothing — 1 node, continue to climax_build)
+  success → routeB_soul_success (their posture: not fighting it)
+  nat20   → routeB_soul_nat20
+               → routeB_brood_nat20_beat (npc: "...Do not— heee. Do not make face at me.")
+               → set_flag: pichidi_brood_surfaced (knowledge) @ADD_REPUTATION pichidi 30
+               → routeB_brood_nat20_after (narration: they reassemble fast — camera voice)
+
+routeB_climax_build      (1–2 narration nodes)
+routeB_micro_02          (choice: > [Keep going] / > [Pull out])
+routeB_climax_inside/outside → aftermath_entry
+  Both climax nodes: set_flag pichidi_reversal_happened (knowledge) if not already set
+```
+
+**Pichidi brood nat20 voice example:**
+
+NPC: `"...Do not— heee. Do not make face at me."`
+Narration (camera voice — full sentences, no register bleed): `They pick themselves back up quickly. The moment doesn't linger. Their jaw sets, their posture closes back in. They act like it was always fine. It was not fine, in the best way.`
+
+---
+
+## Section 7: Route C — Oral Exchange
+
+```
+routeC_start            (narration — close quarters, they position)
+routeC_pichidi_initiates (npc: "Deh-glim. I do it. You stay." — matter-of-fact, not a question)
+routeC_choice_01        (choice):
+  > [Stay still]                    → routeC_she_deh_glim_01
+  > [I'll use my mouth on you]      → routeC_nah_glim_01
+  > [Pull back]                     → main_hub (escape hatch)
+```
+
+**They-give path:** `_deh_glim_01` → `_02` (npc mid-act: "Heee. You are clean at least.") → `routeC_micro_01 (> Catch your breath)` → `_03` (escalating explicit narration) → `routeC_oral_climax_choice`:
+- `> [Finish in their mouth]` → routeC_climax_oral
+- `> [Pull them up — keep going]` → route_entry_hub (feeds into A or B)
+
+**PC-gives path:** `routeC_nah_glim_01` (they consider, allow) → `_02` (npc: "...Fine. But do not take long.") → `routeC_micro_02 (> Brace yourself)` → `_03` (explicit narration — their taste, texture, their reaction) → `routeC_oral_climax_choice_b`:
+- `> [Keep going until they finish]` → routeC_climax_oral_b
+- `> [Come up and press them down]` → routeB_start
+
+**Both climax nodes:** explicit, dense. Their climax: NPC reaction is near-silent — which is the tell. → aftermath_entry
+
+---
+
+## Section 8: Shared Aftermath
+
+```
+aftermath_entry → @HIDE_SCENE (if any slideshow running)
+
+aftermath_which_visit (chained logic to determine which sex flag to set):
+  check pichidi_sex_v3 → success → aftermath_set_v4
+  else check pichidi_sex_v2 → success → aftermath_set_v3
+  else check pichidi_sexed  → success → aftermath_set_v2
+  else → aftermath_set_v1
+
+aftermath_set_v1: set_flag pichidi_sexed (sex_flag), @ADD_REPUTATION pichidi 20, @RECORD_SPECIES_SEX → aftermath_v1
+aftermath_set_v2: set_flag pichidi_sex_v2 (sex_flag), @ADD_REPUTATION pichidi 20, @RECORD_SPECIES_SEX → aftermath_v2
+aftermath_set_v3: set_flag pichidi_sex_v3 (sex_flag), ... → aftermath_v3
+aftermath_set_v4: set_flag pichidi_sex_v4_brood (sex_flag), ... → aftermath_v4_brood
+
+aftermath_v1: brief, no warmth stated — they look away first
+aftermath_v2: slightly less clipped — they don't move as fast
+aftermath_v3: narration notes they stay closer after
+aftermath_v4_brood: something is different — narration catches it, doesn't name it
+```
+
+**Pillow talk choice (node: aftermath_pillowtalk_choice):**
+- `> [Say nothing]` → pichidi response: short, satisfied. Returns to main_hub.
+- `> That fit.` → pichidi: `"Heee. It did."` Returns to main_hub.
+- `> [Stay a moment longer]` (show_if: pichidi_sex_v2) hide_if: pichidi_cuddled → cuddle_pichidi_asks
+
+After pillowtalk: return to `main_hub` (player can then choose to leave, or pick remaining options).
+
+---
+
+## Section 9: Cuddle / Sleep Sequence
+
+Accessible from main_hub after aftermath sets pichidi_sex_v2. Appears as `> [Don't move]` (show_if: pichidi_sex_v2, hide_if: pichidi_cuddled).
+
+### Full flow
+
+```
+cuddle_pichidi_asks (npc):
+"You do not have to go." [Flat, not looking at you. Strategic, or they want it to read that way.]
+
+cuddle_choice (3 options):
+  > [Stay]                    → cuddle_stay_01
+  > [I'm not sure...]         → cuddle_uncertain
+  > [I should get back]       → cuddle_leave_route
+
+cuddle_leave_route:
+  narration (you move, they don't stop you; matter-of-fact departure) → cleanup_01
+
+cuddle_uncertain:
+  narration (you don't move, but don't commit) → cuddle_pichidi_press
+
+cuddle_pichidi_press (npc — BROOD-RAW SLIP):
+  Something comes through that they didn't mean to let through. Not softness performed — not
+  a plea dressed in politeness. The brood hormones are not asking their permission.
+
+  Voice example: "Stay." [A beat. Then, quieter, which is worse:] "...I am asking."
+
+  The slight embarrassment is present — they know what that sounded like. But they don't
+  retract it. The beat is the embarrassment AND the not-caring-enough-to-walk-it-back.
+
+  → cuddle_uncertain_choice
+
+cuddle_uncertain_choice (choice):
+  > [Settle in]               → cuddle_stay_01
+  > [I really should go]      → cuddle_leave_route
+
+cuddle_stay_01 (narration — you don't move; they don't move; the sewer water runs):
+cuddle_stay_02 (npc — quieter than their usual register: "Heee. Bolk who stays." — to themselves as much as you):
+
+cuddle_micro (choice):
+  > [Settle in closer]        → cuddle_fall_asleep
+  > [Change your mind]        → cuddle_leave_route (final escape)
+
+cuddle_fall_asleep (narration — specific and tight: sewer sounds, their cool back against you, dark water, slow dark):
+
+cuddle_commands (command node):
+  @SET_TIME night
+  @SET_FLAG pichidi_cuddled knowledge
+  next → cuddle_wake_narration
+  clear: true
+
+cuddle_wake_narration (narration, 2–3 sentences):
+  The water is louder in the dark. The warmth beside you is gone. The space where they were
+  holds nothing but the faint press of stone.
+
+cuddle_night_choice (choice):
+  > [Get up and go]           → cuddle_leave_night
+
+cuddle_leave_night (narration — brief; finding the passage in the dark):
+
+leave_command (command):
+  @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LEAVE_ENCOUNTER
+  end: true
+```
+
+**Note on night destination:** No sewers_night.json exists yet. The sequence ends with `@LEAVE_ENCOUNTER` after the night wake narration — no `@LOCATION_CHANGE` needed. PC returns to wherever they entered from. Night state (`@SET_TIME night`) is set via the command node so world state reflects night.
+
+---
+
+## Section 10: V5 Brood Peak Overlay
+
+When entry routes to `entry_v5_brood_peak`:
+- `brood_peak_intro` (narration — they're positioned lower than usual; quality of silence is different)
+- `brood_peak_check` (logic: has_flag pichidi_brood_surfaced?) → adds extra hub option if true
+- Extra hub option: `> [You look different today]` (show_if: pichidi_sex_v4_brood, hide_if: picked) → soul DC 9
+  - fail: they deflect, return to hub
+  - success: they look at you. Don't answer. That's the answer.
+  - nat20: NPC — they name it, briefly, in Old Mire. One phrase. Then stop.
+- Route B is the natural path this visit (body DC drops to 11 in contest if pichidi_brood_surfaced)
+- Pillow talk v4_brood: unique node — something from them that isn't quite armor. Not sentiment. Less armor.
+
+---
+
+## Flag Table
+
+| Flag | Type | Set When |
+|---|---|---|
+| `pichidi_met` | dialog_flag | During v1 intro sequence (after first contact) |
+| `pichidi_sexed` | sex_flag | After first sex climax |
+| `pichidi_sex_v2` | sex_flag | After second sex climax |
+| `pichidi_sex_v3` | sex_flag | After third sex climax |
+| `pichidi_sex_v4_brood` | sex_flag | After fourth sex climax |
+| `pichidi_reversal_happened` | knowledge_flag | Route B climax OR Route A contest nat20 |
+| `pichidi_brood_surfaced` | knowledge_flag | Route B soul check nat20 |
+| `pichidi_cuddled` | knowledge_flag | cuddle_commands node |
+| `pichidi_who_nat20_unlocked` | knowledge_flag | q_who nat20 outcome |
+| `pichidi_told_bitalgut` | dialog_flag | q_mire success+ |
+
+---
+
+## Writing Rules to Enforce
+
+- **Pronouns:** Pichidi uses **they/them** throughout — in narration, in choice text, everywhere. The Ichmi species cycles through roles; no fixed gender.
+- **Pichidi's voice pattern:** Finnish syntax with English and Old Mire words. Articles drop. Subject-object inverts. Emotion and need are expressed as weight or pressure, not state.
+  - Wrong: *"Heee... so you're back down here with me again. Couldn't let go of the experience from last time? I wouldn't mind taking your deh for a ride again."*
+  - Right: *"Heee... you are back down here with me. Memory of last time is heavy on you. Is need on you to see me in sewers again? I ride your deh again, heee..."*
+- **Narration nodes:** second person present tense; camera voice only. Full sentences, 8–20 words. No clipped syntax, no dropped articles, no "heee" — those belong exclusively in NPC nodes.
+- **NPC nodes:** `"name": "Pichidi"` always. Old Mire terms only here. "heee" only here.
+- **Cadence:** 1–2 narration nodes between choices (conversation); 1–3 (sex). Micro-choice if 3+ nodes pass without a choice.
+- **Escape hatches:** present at every escalation point until penetration is established.
+- **Sensory:** touch + at least one other sense in every sex narration node.
+- **NPC unprompted actions:** at least one per sex route (they set a rule, change rhythm, push back).
+- **Write all content fully.** No WrisstExpert placeholders — write every explicit beat directly.
+
+---
+
+## Verification
+
+### Pre-test setup (set flags manually via console/debug)
+
+1. **V1 fresh entry:** no flags → `entry_v1_first` plays, portrait hidden, question hub functional
+2. **V2 met-no-sex:** set `pichidi_met` only → `entry_v2_met_nosex` plays
+3. **V2 had-sex-once:** set `pichidi_sexed` (without v2) → `entry_v2_had_sex_once`, cuddle option absent
+4. **Cuddle unlock:** set `pichidi_sex_v2` → `> [Don't move]` appears in hub after sex
+5. **V5 brood peak:** set `pichidi_sex_v4_brood` → brood peak intro, extra hub option
+6. **Route B locked/unlocked:** `pichidi_reversal_happened` absent → Route B hidden in `route_entry_hub`; set flag → visible
+7. **Bitalgut gate:** `bitalgut_met` absent → question and hub mention hidden; set flag → both visible
+8. **Tavo/Nautinto gates:** same test as above
+9. **Horny thresholds:** test at 0, 20, 40, 60 — correct hub options appear/disappear
+10. **Soul check routing:** soul check DC 11 on q_who routes correctly to fail/success/nat20 branches
+11. **Body check routing:** Route A contest body DC 13 with/without pichidi_sexed bonus
+12. **Cuddle beg path:** take `> [I'm not sure...]` → brood-raw press plays → both `> Settle in` and `> Go` options functional
+13. **Night sequence:** stay → wake narration plays → `@SET_TIME night` fires → `@LEAVE_ENCOUNTER` fires, no crash
+14. **No orphaned nodes:** every node has at least one inbound reference; all `next`/`on_success`/`on_fail` targets exist
+15. **Voice audit:** grep narration nodes for "heee", "bolk", "deh", "nah" → should be zero matches (those live only in NPC nodes)
+16. **Pronoun audit:** grep for " she " and " her " in narration nodes → should be zero matches for Pichidi references
