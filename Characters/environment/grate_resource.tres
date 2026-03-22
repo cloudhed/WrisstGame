@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=4 format=3 uid="uid://56u4gdq3tx0c"]
+
+[ext_resource type="Resource" uid="uid://cy3lkr63cdtlk" path="res://Characters/environment/grate_portrait_deck.tres" id="1_xigpq"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="2_wkvr0"]
+[ext_resource type="AudioStream" uid="uid://c63knhfxqpy3e" path="res://Audio/SFX/Characters/female_short_huh.wav" id="4_a0ybw"]
+
+[resource]
+script = ExtResource("2_wkvr0")
+name = &"grate"
+display_name = "grate"
+portrait = ExtResource("1_xigpq")
+voice_clip = ExtResource("4_a0ybw")
+color = Color(1, 1, 1, 1)
+speech_bubble_color = Color(0, 0, 0, 0.827451)
+speech_bubble_font_size = 24
+stats = {}
+default_flags = {}
+metadata/_custom_type_script = "uid://dqihe2ny7afn"

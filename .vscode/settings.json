@@ -1,3 +1,15 @@
 {
-    "godotTools.editorPath.godot4": "d:\\Program Files\\Godot\\Godot v4.4.exe"
+    "godotTools.editorPath.godot4": "d:\\Program Files\\Godot\\Godot v4.4.exe",
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/Dialog/**/*.json",
+                "/Characters/*/dialogue/*.json",
+                "/Narrative/DialogScenes/**/*.json",
+                "/enemies/**/*_dialog*.json",
+                "/X ReadMe for LLMs/dialog_command_reference*.json"
+            ],
+            "url": "./.vscode/dialog.schema.json"
+        }
+    ]
 }

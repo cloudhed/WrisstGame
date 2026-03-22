@@ -283,10 +283,76 @@
     {
         "id": "switch_inn_alley_intro",
         "type": "command",
-        "command": "@SHOW_ZONE Klyftet/KlyftetExtInnAlleyDay",
+		"name": "grate",
+        "command": "@SHOW_ZONE Klyftet/KlyftetExtInnAlleyDay ; @SHOW_EXTRA closed",
 		"clear": true,
-        "next": "whereto_debug"
+        "next": "inn_alley_intro_show_portrait"
     },
+    {
+        "id": "inn_alley_intro_show_portrait",
+        "type": "command",
+		"name": "Pichidel",
+        "command": "@SHOW_PORTRAIT smoke1",
+		"clear": true,
+        "next": "inn_alley_intro_choice"
+    },
+	{
+		"id": "inn_alley_intro_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Open grate]",
+				"next": "alley_open_grate",
+				"hide_if": "picked"
+			},
+			{
+				"text": "> [Bother smoke]",
+				"next": "alley_smoke_animation"
+			},
+			{
+				"text": "> [Go back to Inn Exterior]",
+				"next": "switch_inn_exterior_intro"
+			}
+		]
+	},
+    {
+        "id": "alley_open_grate",
+        "type": "npc",
+		"name": "grate",
+        "command": "@SHOW_EXTRA open ; @SET_TEMP_FLAG picked",
+		"text": "You open the grate, revealing a dark hole leading down into the ground. A foul stench wafts up from the hole.",
+        "next": "inn_alley_intro_choice"
+    },
+    {
+        "id": "alley_smoke_animation",
+        "type": "command",
+		"name": "Pichidel",
+        "command": "@SHOW_PORTRAIT smoke2",
+        "next": "alley_smoke_animation2"
+    },
+    {
+        "id": "alley_smoke_animation2",
+        "type": "command",
+		"name": "Pichidel",
+        "command": "@SHOW_PORTRAIT smoke3",
+        "next": "alley_smoke_animation3"
+    },
+    {
+        "id": "alley_smoke_animation3",
+        "type": "command",
+		"name": "Pichidel",
+        "command": "@SHOW_PORTRAIT smoke4",
+        "next": "alley_smoke_animation4"
+    },
+    {
+        "id": "alley_smoke_animation4",
+        "type": "command",
+		"name": "Pichidel",
+        "command": "@HIDE_PORTRAIT",
+        "next": "inn_alley_intro_choice"
+    },
+
+
     {
         "id": "switch_lakeside_intro",
         "type": "command",

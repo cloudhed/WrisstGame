@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="PortraitDeck" load_steps=7 format=3 uid="uid://cy3lkr63cdtlk"]
+
+[ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Characters/portrait_entry.gd" id="1_ishra"]
+[ext_resource type="Texture2D" uid="uid://c1yr1bbr0phlm" path="res://Assets/Backgrounds/EnvExt/klyftet/inn/alley_grate_closed.png" id="2_wvjso"]
+[ext_resource type="Texture2D" uid="uid://cmqmd7u8wb13a" path="res://Assets/Backgrounds/EnvExt/klyftet/inn/alley_grate_open.png" id="3_s6qe0"]
+[ext_resource type="Script" uid="uid://dh0gvf3ssl3yi" path="res://Characters/portrait_deck.gd" id="7_fap4p"]
+
+[sub_resource type="Resource" id="Resource_713jv"]
+script = ExtResource("1_ishra")
+id = &"closed"
+portrait = ExtResource("2_wvjso")
+metadata/_custom_type_script = "uid://bbcjegrw16og0"
+
+[sub_resource type="Resource" id="Resource_6i80w"]
+script = ExtResource("1_ishra")
+id = &"open"
+portrait = ExtResource("3_s6qe0")
+metadata/_custom_type_script = "uid://bbcjegrw16og0"
+
+[resource]
+script = ExtResource("7_fap4p")
+portraits = Array[ExtResource("1_ishra")]([SubResource("Resource_713jv"), SubResource("Resource_6i80w")])
+metadata/_custom_type_script = "uid://dh0gvf3ssl3yi"

@@ -1,0 +1,411 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "dialog.schema.json",
+  "title": "Wrisst Dialog Scene",
+  "description": "Array of dialog nodes for the Wrisst dialog system.",
+  "type": "array",
+  "items": { "$ref": "#/$defs/DialogNode" },
+
+  "$defs": {
+
+    "_____________PRIMITIVES_____________": { "description": "─────────────────────────────────────────────────────────" },
+
+    "NodeId": {
+      "type": "string",
+      "description": "The 'id' of another node to jump to."
+    },
+
+    "FlagType": {
+      "type": "string",
+      "description": "Which GameState bucket the flag is stored in.",
+      "enum": ["quest", "dialog", "event", "knowledge", "sex", "temp"]
+    },
+
+    "AbilityType": {
+      "type": "string",
+      "description": "Stat used for the ability check roll.",
+      "enum": ["body", "mind", "soul", "high", "mid", "low", "flat"]
+    },
+
+    "SetFlag": {
+      "description": "Flag name(s) to set when this node is processed.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+
+    "ClearFlag": {
+      "description": "Flag name(s) to clear when this node is processed.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+
+    "CommandString": {
+      "type": "string",
+      "description": "One or more @COMMAND directives separated by ' ; '.\n\nUI:\n  @SHOW_PORTRAIT <portrait_id>   @HIDE_PORTRAIT\n  @SHOW_EXTRA <portrait_id>      @HIDE_EXTRA\n  @SHOW_SLIDESHOW <path>         @HIDE_SLIDESHOW\n  @SHOW_SCENE <slide_id>         @HIDE_SCENE\n  @SHOW_ZONE <Location/SubPath>  (expands to res://Narrative/DialogScenes/Locations/…tscn)\n  @CLEAR_ALL\n\nAudio:\n  @PLAY_MUSIC <path>             @STOP_MUSIC    @FADE_MUSIC_OUT\n  @MUSIC_CLIP <index_or_name>\n  @PLAY_AMBIENCE <tag> <path>    @STOP_AMBIENCE <tag>    @STOP_ALL_AMBIENCE\n\nWorld / time:\n  @CHANGE_LOCATION <area_key>    @LOCATION_CHANGE <area_key>\n  @SET_SCENE_FROM <scene_id>\n  @SET_TIME day|night\n\nCombat / encounter:\n  @START_COMBAT [enemy_path]     @LEAVE_ENCOUNTER\n\nShop:\n  @OPEN_BARTER <res://Resources/Shops/…tres>\n\nCurrency:\n  @add_ore <n>        @remove_ore <n>\n  @add_crowns <n>     @remove_crowns <n>\n  @add_drots <n>      @remove_drots <n>\n\nItems:\n  @add_item <Items/path.tres> [qty]    @remove_item <Items/path.tres> [qty]\n\nReputation / flirt:\n  @add_reputation <npc_id> <n>    @remove_reputation <npc_id> <n>\n  @add_flirt <npc_id> <n>         @remove_flirt <npc_id> <n>\n\nSpecial:\n  @RECORD_SPECIES_SEX [species_id]"
+    },
+
+    "_____________CONDITIONS_____________": { "description": "─────────────────────────────────────────────────────────" },
+
+    "BonusIfEntry": {
+      "type": "object",
+      "description": "A conditional bonus applied to an ability check roll.",
+      "properties": {
+        "has_flag":     { "type": "string",  "description": "Bonus applies if this flag is set." },
+        "has_item":     { "type": "string",  "description": "Bonus applies if player has this item (Items/…tres)." },
+        "has_any_flag": { "type": "array", "items": { "type": "string" }, "description": "Bonus applies if any of these flags are set." },
+        "bonus":        { "type": "integer", "description": "Amount added to the roll." }
+      },
+      "required": ["bonus"]
+    },
+
+    "ConditionObject": {
+      "type": "object",
+      "description": "Visibility or gating condition for show_if / hide_if.",
+      "properties": {
+        "has_flag":          { "type": "string",  "description": "True if this flag is set." },
+        "has_item":          { "type": "string",  "description": "True if player owns this item (Items/…tres)." },
+        "has_any_flag":      { "type": "array", "items": { "type": "string" }, "description": "True if any of these flags are set." },
+        "has_any_item":      { "type": "array", "items": { "type": "string" }, "description": "True if player owns any of these items." },
+        "has_item_count": {
+          "type": "object",
+          "description": "True if player owns a certain quantity of an item.",
+          "properties": {
+            "item":   { "type": "string" },
+            "amount": { "type": "integer" },
+            "op":     { "type": "string", "enum": [">=", "<=", ">", "<", "=="] }
+          },
+          "required": ["item", "amount"]
+        },
+        "player_gender":    { "type": "string", "enum": ["male", "female"] },
+        "ability_tier": {
+          "type": "object",
+          "description": "True if the specified ability is in the given tier.",
+          "properties": {
+            "body":  { "type": "string", "enum": ["high", "mid", "low"] },
+            "mind":  { "type": "string", "enum": ["high", "mid", "low"] },
+            "soul":  { "type": "string", "enum": ["high", "mid", "low"] }
+          }
+        },
+        "min_reputation": {
+          "type": "object",
+          "description": "True if reputation with an NPC meets a minimum.",
+          "properties": {
+            "npc":    { "type": "string" },
+            "amount": { "type": "integer" }
+          },
+          "required": ["npc", "amount"]
+        },
+        "min_flirt": {
+          "type": "object",
+          "description": "True if flirt level with an NPC meets a minimum.",
+          "properties": {
+            "npc":    { "type": "string" },
+            "amount": { "type": "integer" }
+          },
+          "required": ["npc", "amount"]
+        },
+        "min_species_stat": {
+          "type": "object",
+          "description": "True if a species stat meets a minimum.",
+          "properties": {
+            "species": { "type": "string" },
+            "stat":    { "type": "string" },
+            "amount":  { "type": "integer" }
+          },
+          "required": ["species", "stat", "amount"]
+        },
+        "content_disabled": {
+          "type": "string",
+          "description": "True if this content category is disabled in settings.",
+          "enum": ["feral", "monsterfolk"]
+        },
+        "all_of": {
+          "type": "array",
+          "description": "All sub-conditions must be true (AND logic).",
+          "items": { "$ref": "#/$defs/ConditionObject" }
+        },
+        "any_of": {
+          "type": "array",
+          "description": "At least one sub-condition must be true (OR logic).",
+          "items": { "$ref": "#/$defs/ConditionObject" }
+        }
+      }
+    },
+
+    "ConditionValue": {
+      "description": "A condition for show_if. Either an object or a shorthand string.",
+      "oneOf": [
+        { "$ref": "#/$defs/ConditionObject" },
+        { "type": "string" }
+      ]
+    },
+
+    "HideIfValue": {
+      "description": "A condition for hide_if. Use 'picked' to auto-hide after first selection.",
+      "oneOf": [
+        { "$ref": "#/$defs/ConditionObject" },
+        { "type": "string", "enum": ["picked"] }
+      ]
+    },
+
+    "_____________SHARED_BLOCKS_____________": { "description": "─────────────────────────────────────────────────────────" },
+
+    "CheckProps": {
+      "type": "object",
+      "description": "An inline ability check definition.",
+      "properties": {
+        "ability": { "$ref": "#/$defs/AbilityType" },
+        "dc":      { "type": "integer", "description": "Difficulty class — the roll must meet or beat this." }
+      },
+      "required": ["ability", "dc"]
+    },
+
+    "ChoiceOption": {
+      "type": "object",
+      "description": "One option in a choice node's 'options' array.",
+      "properties": {
+        "text":       { "type": "string",  "description": "Displayed option text. Convention: start with '> '." },
+        "next":       { "$ref": "#/$defs/NodeId", "description": "Node to jump to (simple, no check)." },
+        "check":      { "$ref": "#/$defs/CheckProps", "description": "Hidden ability roll on click." },
+        "bonus_if":   { "type": "array", "items": { "$ref": "#/$defs/BonusIfEntry" }, "description": "Conditional bonuses applied to the check." },
+        "on_success": { "$ref": "#/$defs/NodeId", "description": "Node if check passes." },
+        "on_fail":    { "$ref": "#/$defs/NodeId", "description": "Node if check fails." },
+        "on_nat20":   { "$ref": "#/$defs/NodeId", "description": "Node on natural 20 (defaults to on_success)." },
+        "show_if":    { "$ref": "#/$defs/ConditionValue", "description": "Option is only shown if this condition is true." },
+        "hide_if":    { "$ref": "#/$defs/HideIfValue",   "description": "Option is hidden if this condition is true. Use 'picked' to permanently hide after first selection." },
+        "set_flag":   { "$ref": "#/$defs/SetFlag" },
+        "flag_type":  { "$ref": "#/$defs/FlagType" }
+      },
+      "required": ["text"]
+    },
+
+    "CommonNodeProps": {
+      "type": "object",
+      "description": "Properties shared by all node types.",
+      "properties": {
+        "id":          { "type": "string",  "description": "Unique node identifier within this file." },
+        "type":        { "type": "string",  "description": "Determines node behaviour." },
+        "next":        { "$ref": "#/$defs/NodeId", "description": "Default next node after this one." },
+        "clear":       { "type": "boolean", "description": "If true, clears dialog UI before this node displays." },
+        "end":         { "type": "boolean", "description": "If true, emits dialog_ended signal after this node." },
+        "set_flag":    { "$ref": "#/$defs/SetFlag" },
+        "flag_type":   { "$ref": "#/$defs/FlagType" },
+        "clear_flag":  { "$ref": "#/$defs/ClearFlag" }
+      },
+      "required": ["id", "type"]
+    },
+
+    "_____________NODE_TYPES_____________": { "description": "─────────────────────────────────────────────────────────" },
+
+    "NarrationNode": {
+      "description": "type:narration — Displays prose/narrative text. No speaker name.",
+      "allOf": [
+        { "$ref": "#/$defs/CommonNodeProps" },
+        {
+          "properties": {
+            "type":    { "type": "string", "const": "narration" },
+            "text":    { "type": "string", "description": "Narrative prose. Supports BBCode ([b], [i], [p]) and inline commands ([@COMMAND])." },
+            "command": { "$ref": "#/$defs/CommandString" }
+          },
+          "required": ["text"]
+        }
+      ]
+    },
+
+    "NpcNode": {
+      "description": "type:npc — NPC dialogue with a speaker name and portrait.",
+      "allOf": [
+        { "$ref": "#/$defs/CommonNodeProps" },
+        {
+          "properties": {
+            "type":    { "type": "string", "const": "npc" },
+            "name":    { "type": "string", "description": "NPC display name (matches portrait ID in character_map)." },
+            "text":    { "type": "string", "description": "Spoken dialogue. Supports BBCode and inline commands ([@COMMAND])." },
+            "command": { "$ref": "#/$defs/CommandString" }
+          },
+          "required": ["name", "text"]
+        }
+      ]
+    },
+
+    "ChoiceNode": {
+      "description": "type:choice — Presents the player with a list of selectable options.",
+      "allOf": [
+        { "$ref": "#/$defs/CommonNodeProps" },
+        {
+          "properties": {
+            "type":    { "type": "string", "const": "choice" },
+            "options": {
+              "type": "array",
+              "description": "List of player options. Each option is a ChoiceOption.",
+              "items": { "$ref": "#/$defs/ChoiceOption" },
+              "minItems": 1
+            }
+          },
+          "required": ["options"]
+        }
+      ]
+    },
+
+    "CommandNode": {
+      "description": "type:command — Executes one or more @COMMAND directives with no displayed text.",
+      "allOf": [
+        { "$ref": "#/$defs/CommonNodeProps" },
+        {
+          "properties": {
+            "type":    { "type": "string", "const": "command" },
+            "command": { "$ref": "#/$defs/CommandString" },
+            "name":    { "type": "string", "description": "Optional label (used by some commands for context)." }
+          },
+          "required": ["command"]
+        }
+      ]
+    },
+
+    "CheckNode": {
+      "description": "type:check — Auto-rolls an ability check when reached. No player interaction.",
+      "allOf": [
+        { "$ref": "#/$defs/CommonNodeProps" },
+        {
+          "properties": {
+            "type":       { "type": "string",  "const": "check" },
+            "ability":    { "$ref": "#/$defs/AbilityType" },
+            "dc":         { "type": "integer", "description": "Difficulty class." },
+            "bonus_if":   { "type": "array", "items": { "$ref": "#/$defs/BonusIfEntry" } },
+            "on_success": { "$ref": "#/$defs/NodeId" },
+            "on_fail":    { "$ref": "#/$defs/NodeId" },
+            "on_nat20":   { "$ref": "#/$defs/NodeId", "description": "Optional special outcome on natural 20." }
+          },
+          "required": ["ability", "dc", "on_success", "on_fail"]
+        }
+      ]
+    },
+
+    "LogicNode": {
+      "description": "type:logic — Conditional branching without display. Has sub-types via logic_type.",
+      "allOf": [
+        { "$ref": "#/$defs/CommonNodeProps" },
+        {
+          "properties": {
+            "type":       { "type": "string", "const": "logic" },
+            "logic_type": {
+              "type": "string",
+              "description": "Which branching strategy to use.",
+              "enum": ["check_flags", "condition"]
+            }
+          }
+        },
+        {
+          "anyOf": [
+            { "$ref": "#/$defs/LogicCheckFlags" },
+            { "$ref": "#/$defs/LogicCondition" },
+            { "$ref": "#/$defs/LogicSceneFrom" }
+          ]
+        }
+      ]
+    },
+
+    "LogicCheckFlags": {
+      "description": "Logic subtype: checks whether ALL listed flags are set.",
+      "properties": {
+        "check_flags": {
+          "type": "object",
+          "properties": {
+            "flags":      { "type": "array", "items": { "type": "string" }, "description": "All of these flags must be set for success." },
+            "on_success": { "$ref": "#/$defs/NodeId" },
+            "on_fail":    { "$ref": "#/$defs/NodeId" }
+          },
+          "required": ["flags", "on_success", "on_fail"]
+        }
+      }
+    },
+
+    "LogicCondition": {
+      "description": "Logic subtype: checks a stat, item, or currency condition.",
+      "properties": {
+        "condition": {
+          "oneOf": [
+            {
+              "type": "object",
+              "description": "Stat or gender condition.",
+              "properties": {
+                "stat":       { "type": "string", "description": "e.g. 'player_gender'" },
+                "is":         { "type": "string", "description": "Expected value, e.g. 'male'" },
+                "on_success": { "$ref": "#/$defs/NodeId" },
+                "on_fail":    { "$ref": "#/$defs/NodeId" }
+              },
+              "required": ["stat", "is", "on_success", "on_fail"]
+            },
+            {
+              "type": "object",
+              "description": "Currency check (optionally deducts on success).",
+              "properties": {
+                "currency":   { "type": "string", "enum": ["ore", "crowns", "drots"] },
+                "amount":     { "type": "integer" },
+                "deduct":     { "type": "boolean", "description": "If true, currency is deducted when check passes." },
+                "on_success": { "$ref": "#/$defs/NodeId" },
+                "on_fail":    { "$ref": "#/$defs/NodeId" }
+              },
+              "required": ["currency", "amount", "on_success", "on_fail"]
+            },
+            {
+              "type": "string",
+              "description": "Shorthand string condition. Supports: 'HAS_ITEM <path>', 'HAS_REPUTATION <npc> <n>'"
+            }
+          ]
+        },
+        "if_true":  { "$ref": "#/$defs/NodeId", "description": "Alternative to on_success for string-based conditions." },
+        "if_false": { "$ref": "#/$defs/NodeId", "description": "Alternative to on_fail for string-based conditions." }
+      }
+    },
+
+    "LogicSceneFrom": {
+      "description": "Logic subtype: branches based on which scene the player arrived from.",
+      "properties": {
+        "check_scene_from": {
+          "type": "object",
+          "description": "Maps scene_id strings to next node IDs. Use 'default' as a fallback.",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+
+    "CheckTempFlagsMultiNode": {
+      "description": "type:check_temp_flags_multi — Routes to a node based on which temp flag is set. First match wins.",
+      "allOf": [
+        { "$ref": "#/$defs/CommonNodeProps" },
+        {
+          "properties": {
+            "type": { "type": "string", "const": "check_temp_flags_multi" },
+            "check_temp_flags": {
+              "type": "object",
+              "description": "Map of flag_name → node_id. Add a 'default' key as fallback.",
+              "additionalProperties": { "type": "string" }
+            }
+          },
+          "required": ["check_temp_flags"]
+        }
+      ]
+    },
+
+    "_____________UNION_____________": { "description": "─────────────────────────────────────────────────────────" },
+
+    "DialogNode": {
+      "description": "Any valid dialog node. Determined by the 'type' field.",
+      "anyOf": [
+        { "$ref": "#/$defs/NarrationNode" },
+        { "$ref": "#/$defs/NpcNode" },
+        { "$ref": "#/$defs/ChoiceNode" },
+        { "$ref": "#/$defs/CommandNode" },
+        { "$ref": "#/$defs/CheckNode" },
+        { "$ref": "#/$defs/LogicNode" },
+        { "$ref": "#/$defs/CheckTempFlagsMultiNode" }
+      ]
+    }
+
+  }
+}
