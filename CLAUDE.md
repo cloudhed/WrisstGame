@@ -1,6 +1,6 @@
 # Wrisst — LLM Context Guide
 
-**Wrisst** is a Godot 4 adult RPG. The player character (PC) is a human male who arrived in the world of Wrisst through an unknown gateway with no memory of how. There are no other humans. All other inhabitants are Monsterfolk (sapient) or Creatures (feral). The world is low-fantasy with a frontier/Wild West flavor.
+**Wrisst** is a Godot 4 adult RPG. The player character (PC) is a human male/female who arrived in the world of Wrisst through an unknown gateway with no memory of how. There are no other humans. All other inhabitants are Monsterfolk (sapient) or Creatures (feral). The world is low-fantasy with a frontier/Wild West flavor.
 
 ---
 
