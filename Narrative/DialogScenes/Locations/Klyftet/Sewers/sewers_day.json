@@ -63,14 +63,14 @@
 	{
 		"id": "v1_sewer_02",
 		"type": "narration",
-		"text": "You hear something before you see it. A shift of weight above you. A small displacement of sound. Then nothing.",
+		"text": "You hear something before you see it. A shift of weight above you. A small displacement of sound. Then quiet.",
 		"next": "v1_pichidi_drop"
 	},
 	{
 		"id": "v1_pichidi_drop",
 		"type": "narration",
 		"name": "Pichidi",
-		"text": "Something moves behind you in the shadow from the light pouring in through the hole you came from. Pale luminous eyes catch the thin light, and hold eye contact. The figure is small, crouched low on the ledge where the passage bends. They wear a hood that shadows their face, but you can see the pale freckles that dust their cheeks and nose. ",
+		"text": "Something moves behind you in the shadow pouring in through the hole you came from. Pale luminous eyes catch the thin light. The figure is small, crouched low on the ledge where the passage bends. They wear a hood that shadows their face, but you can see the pale freckles that dust their mauve-rose cheeks and nose.",
 		"next": "v1_pichidi_first"
 	},
 	{
@@ -102,14 +102,14 @@
 		"id": "v1_pichidi_response",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heee.\" They shift their weight as they keep their legs crossed. \"Curious. Or something else on you. I do not know yet which.\"",
+		"text": "\"Heee.\" They shift their weight, keeping their legs crossed. \"Curious. Or you have other need on you. I find out soon.\"",
 		"next": "v1_set_met"
 	},
 	{
 		"id": "v1_pichidi_response_silent",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "The silence doesn't appear to bother the monster. They tilt their head, studying you with uncomfortable patience. \"Heee. Silent kind. Also interesting.\"",
+		"text": "The silence doesn't bother the monster. They tilt their head, studying you with uncomfortable patience. \"Heee. Silent kind. Also interesting.\"",
 		"next": "v1_set_met"
 	},
 	{
@@ -126,7 +126,7 @@
 		"type": "narration",
 		"name": "Pichidi",
 		"command": "@SHOW_PORTRAIT clothed",
-		"text": "The passage is quiet. The thin line of water runs in the channel below. You don't have to wait — they're already there, perched at the low ledge where the passage bends, watching you come in.",
+		"text": "The passage is quiet. The thin line of water runs in the channel below. You don't have to wait. They are already perched at the low ledge where the passage bends, watching you come in.",
 		"next": "entry_v2_met_nosex_npc"
 	},
 	{
@@ -142,14 +142,14 @@
 		"type": "narration",
 		"name": "Pichidi",
 		"command": "@SHOW_PORTRAIT clothed",
-		"text": "The sewer smells the same. Sounds the same. But there's a different quality to arriving now, something in the body that knows the space already. They're at the ledge, watching you from the moment you round the passage. They speak before you reach them.",
+		"text": "The sewer smells the same. Sounds the same. They are at the ledge, watching you from the moment you round the passage. They speak before you reach them.",
 		"next": "entry_v2_sex1_npc"
 	},
 	{
 		"id": "entry_v2_sex1_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heee... you are back down here with me. Memory of last time is heavy on you. You act like bolk. Is need on you to see me in sewers again? I ride your deh again, I think. It almost does not fit my nah last time. I make it fit today. ...Or is other reason on you to come here?\"",
+		"text": "\"Heee. You are back down here with me. Memory of last time is heavy on you. Is need on you to see me in sewers again? Your human [b]deh[/b] is strange shape. Heavy. Burns like furnace. I ride it today.\"",
 		"next": "main_hub"
 	},
 
@@ -158,14 +158,14 @@
 		"type": "narration",
 		"name": "Pichidi",
 		"command": "@SHOW_PORTRAIT clothed",
-		"text": "They're in the same spot. They were probably already there before you reached the grate. They look at you the way they always do — like they were expecting you and don't need to make a thing of it.",
+		"text": "They are in the same spot. They look at you the way they always do, expecting you and needing no introduction.",
 		"next": "entry_v3_sex2_npc"
 	},
 	{
 		"id": "entry_v3_sex2_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Back again.\" A pause, shorter than their usual silences. \"Good.\"",
+		"text": "\"Back again.\" Pichidi stands up and moves over to you. \"Good.\"",
 		"next": "main_hub"
 	},
 
@@ -174,14 +174,14 @@
 		"type": "narration",
 		"name": "Pichidi",
 		"command": "@SHOW_PORTRAIT clothed",
-		"text": "You don't need to look for them anymore. They're where they always are. The familiarity of the space sits differently now — less like an unfamiliar passage, more like a room.",
+		"text": "You don't need to look for them anymore. The familiarity of the wet stone space sits differently now.",
 		"next": "entry_v4_sex3plus_npc"
 	},
 	{
 		"id": "entry_v4_sex3plus_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heee.\" They don't move from their perch. \"You know where to find me now. This is fine.\"",
+		"text": "\"Heee.\" They stay perched on the ledge. \"You know where to find me now. This is fine.\"",
 		"next": "main_hub"
 	},
 
@@ -190,7 +190,7 @@
 		"type": "narration",
 		"name": "Pichidi",
 		"command": "@SHOW_PORTRAIT clothed",
-		"text": "They're not at the ledge. It takes you a moment to locate them — lower than usual, near the drainage shelf, half in shadow. They're watching the water run. When you enter they don't look up immediately. The silence before they acknowledge you has a different quality than the usual waiting silence.",
+		"text": "They are not at the ledge. You locate them lower than usual, near the drainage shelf, half in shadow. They are watching the water run. They don't look up immediately when you enter.",
 		"next": "main_hub"
 	},
 
@@ -200,44 +200,45 @@
 		"options": [
 			{
 				"text": "> [Look around]",
-				"next": "hub_look_around"
+				"next": "hub_look_around",
+				"hide_if": "picked"
 			},
 			{
 				"text": "> [Move closer]",
-				"next": "hub_approach_closer"
+				"next": "hub_approach_closer",
+				"hide_if": "picked"
 			},
 			{
 				"text": "> Ask them something",
 				"next": "question_hub"
 			},
 			{
-				"text": "> That language you use — I think I've heard it somewhere.",
+				"text": "> That language you use. I've heard it somewhere.",
 				"next": "hub_mention_bitalgut",
 				"show_if": { "has_flag": "bitalgut_met" },
 				"hide_if": "picked"
 			},
 			{
-				"text": "> Tavo-Pavo at the inn must know something's down here.",
-				"next": "hub_mention_tavo",
-				"show_if": { "has_flag": "tavo_met" },
-				"hide_if": "picked"
-			},
-			{
-				"text": "> Nautinto mentioned hearing things about something skulking below Klyftet.",
-				"next": "hub_mention_nautinto",
-				"show_if": { "has_flag": "nautinto_met" },
-				"hide_if": "picked"
-			},
-			{
-				"text": "> [Hold eye contact a beat longer than necessary]",
+				"text": "> [Hold eye contact longer than necessary]",
 				"next": "hub_flirt_gaze",
-				"show_if": { "min_horny": { "npc": "pichidi", "amount": 20 } },
+				"show_if": {
+					"all_of": [
+						{ "min_horny": { "npc": "pichidi", "amount": 20 } },
+						{ "has_flag": "pichidi_sexed" }
+					]
+				},
 				"hide_if": "picked"
 			},
 			{
 				"text": "> [Touch their shoulder]",
 				"next": "hub_touch_option",
-				"show_if": { "min_horny": { "npc": "pichidi", "amount": 40 } }
+				"show_if": {
+					"all_of": [
+						{ "min_horny": { "npc": "pichidi", "amount": 40 } },
+						{ "has_flag": "pichidi_sexed" }
+					]
+				},
+				"hide_if": "picked"
 			},
 			{
 				"text": "> You know what I came back for.",
@@ -245,13 +246,13 @@
 				"show_if": {
 					"all_of": [
 						{ "min_horny": { "npc": "pichidi", "amount": 40 } },
-						{ "has_flag": "pichidi_met" }
+						{ "has_flag": "pichidi_sexed" }
 					]
 				},
 				"hide_if": "picked"
 			},
 			{
-				"text": "> [You look different today]",
+				"text": "> You look different today, Pichidi.",
 				"show_if": { "has_flag": "pichidi_sex_v4_brood" },
 				"hide_if": "picked",
 				"check": { "ability": "soul", "dc": 9 },
@@ -268,7 +269,23 @@
 			{
 				"text": "> [Reach for them]",
 				"next": "hub_propose_sex",
-				"show_if": { "min_horny": { "npc": "pichidi", "amount": 60 } }
+				"show_if": {
+					"all_of": [
+						{ "min_horny": { "npc": "pichidi", "amount": 60 } },
+						{ "has_flag": "pichidi_sexed" }
+					]
+				}
+			},
+			{
+				"text": "> [Their gaze keeps settling below your belt]",
+				"next": "v1_hj_pichidi_reaches",
+				"show_if": { "min_horny": { "npc": "pichidi", "amount": 15 } },
+				"hide_if": { "has_flag": "pichidi_sexed" }
+			},
+			{
+				"text": "> Pichidi, do you want to play?",
+				"next": "brood_hub",
+				"show_if": { "has_flag": "pichidi_brood_final" }
 			},
 			{
 				"text": "> [Leave]",
@@ -281,49 +298,49 @@
 		"id": "hub_look_around",
 		"type": "narration",
 		"command": "@add_horny pichidi 5",
-		"text": "You take in the space. Stone walls sheened with moisture, the thin waterway cutting the center of the floor, a high ledge above the bend where something has clearly spent a lot of time. You notice the small details — a folded cloth, a half-used candle stub, an arrangement that is deliberate if minimal. Someone lives here, or close enough to it.",
+		"text": "You take in the space. Stone walls sheened with moisture, the thin waterway cutting the center of the floor, a high ledge above the bend. You notice a folded cloth and a half-used candle stub. Someone lives here.",
 		"next": "main_hub"
 	},
 	{
 		"id": "hub_approach_closer",
 		"type": "narration",
 		"command": "@add_horny pichidi 10",
-		"text": "You close the distance between you. The light is thin down here — what reaches from the grate catches the pale freckles on their face, the sheen of their hair. They don't move back.",
+		"text": "You step closer. The thin light from the grate catches the pale freckles on their face and the sheen of their hair. They track your movement without backing away.",
 		"next": "hub_approach_npc"
 	},
 	{
 		"id": "hub_approach_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heee. You come closer. Not afraid of dark, I see. Or of me.\" They let you stand there a moment before their head tilts fractionally. \"What is it on you.\"",
+		"text": "\"Heee. You come closer. Not afraid of dark, I see. Or of me.\" They let you stand there a moment before tilting their head. \"What is it on you.\"",
 		"next": "main_hub"
 	},
 	{
 		"id": "hub_flirt_gaze",
 		"type": "narration",
 		"command": "@add_horny pichidi 10",
-		"text": "You hold their gaze a beat past the natural break — the point where you'd normally look away. They don't blink. The pale irises don't waver. Then the corner of their mouth moves, barely.",
+		"text": "You hold their pale eyes. They don't blink. A slow breath shifts their shoulders. Then the corner of their mouth ticks upward.",
 		"next": "hub_flirt_gaze_npc"
 	},
 	{
 		"id": "hub_flirt_gaze_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heee.\" Their voice is low and carries a quality of satisfaction that has nothing to do with you winning. \"You have confidence. This is good. Or it is bolk acting brave. I find out which soon enough.\"",
+		"text": "\"Heee.\" Their voice is low, vibrating with quiet satisfaction. \"You have confidence. This is good. Or it is bolk acting brave. I find out which.\"",
 		"next": "main_hub"
 	},
 	{
 		"id": "hub_touch_option",
 		"type": "narration",
 		"command": "@add_horny pichidi 15",
-		"text": "You reach and set your hand on their shoulder. The texture through the fabric is slight — the firm underlying muscle, the barely-cooler-than-expected skin temperature that transfers even through cloth. They go still. Not flinching. Just aware.",
+		"text": "You set your hand on their shoulder. Under the fabric, their muscle is incredibly dense. Their skin temperature transfers through the cloth, startlingly cool against your palm. They go entirely still, assessing the contact.",
 		"next": "hub_touch_npc"
 	},
 	{
 		"id": "hub_touch_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "They look at your hand. Then at you. The pause is not discomfort — it reads closer to assessment. \"You do not ask first. Heee. This I notice.\" They don't move the hand away.",
+		"text": "They look at your hand, then at your face. \"You do not ask first. Heee. This I notice.\" They do not brush you off.",
 		"next": "main_hub"
 	},
 	{
@@ -331,21 +348,21 @@
 		"type": "npc",
 		"name": "Pichidi",
 		"command": "@add_horny pichidi 10",
-		"text": "\"Heee.\" They let the word sit there a moment. \"You say true thing.\" Their eyes track over you briefly, unhurried, the way something decides whether to move toward a thing or through it. \"Then say what you came for. I do not need it wrapped.\"",
+		"text": "\"Heee.\" They let the word hang in the damp air. Their pale eyes drag slowly over your frame. \"You say true thing. Then say what you came for. I do not need it wrapped.\"",
 		"next": "main_hub"
 	},
 	{
 		"id": "hub_mention_bitalgut",
 		"type": "narration",
 		"command": "@add_horny pichidi 10",
-		"text": "You say it casually — one of the words you heard, the shape of it. Something shifts in their expression. Not much. Enough.",
+		"text": "You speak a word you learned. The syllables echo slightly in the sewer. Pichidi's expression sharpens instantly.",
 		"next": "hub_mention_bitalgut_npc"
 	},
 	{
 		"id": "hub_mention_bitalgut_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"...You know Old Mire word.\" Not a question. Their gaze sharpens without moving. \"Where you hear this.\" A beat. \"Not from here, I know. Not from town above.\"",
+		"text": "\"...You know Old Mire word.\" They lock onto your face. \"Where you hear this. Not from here, I know. Not from town above.\"",
 		"next": "main_hub"
 	},
 	{
@@ -353,29 +370,29 @@
 		"type": "npc",
 		"name": "Pichidi",
 		"command": "@add_horny pichidi 5",
-		"text": "\"Nöteri innkeeper.\" The corners of their mouth flatten slightly — not irritation, more assessment. \"He knows something walks his pipes. Heee. He does not come down to look. Smart of him.\" They say nothing else about it.",
-		"next": "main_hub"
+		"text": "\"Nöteri innkeeper.\" The corners of their mouth flatten. \"He knows something walks his pipes. Heee. He does not come down to look. Smart of him. Might trick him on his [b]mjisiv.[/b]\"",
+		"next": "q_anyone_hub"
 	},
 	{
 		"id": "hub_mention_nautinto",
 		"type": "npc",
 		"name": "Pichidi",
 		"command": "@add_horny pichidi 5",
-		"text": "\"Nautinto.\" They repeat the name once, like testing its weight. \"I do not know this one. But if sound carries, it carries both directions.\" They glance toward the ceiling briefly. \"It is fine. No danger on me from that.\"",
-		"next": "main_hub"
+		"text": "\"Nautinto.\" They test the weight of the name. \"I know not this. But if sound carries, carries it into both directions. It is fine. Not from it is to me danger.\"",
+		"next": "q_anyone_hub"
 	},
 	{
 		"id": "hub_propose_sex",
 		"type": "narration",
 		"command": "@add_horny pichidi 10",
-		"text": "You close the distance and reach for them — not tentative, not performing confidence. Just reaching. They watch your hand come toward them and don't move back.",
+		"text": "You step into their space and reach for them. They watch your hands approach and make zero effort to retreat.",
 		"next": "hub_propose_sex_npc"
 	},
 	{
 		"id": "hub_propose_sex_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heee. You reach for me. Bold.\" They look at you steadily. \"I was going to do this anyway. But you reaching first is interesting to me.\" They rise from the crouch in one unhurried motion. \"Come, then.\"",
+		"text": "\"Heee. You reach for me. Bold.\" They rise from their crouch in one smooth, liquid motion. \"Was I intending to do this anyway. But your reaching first is from me interesting. Come, then.\"",
 		"next": "route_entry_hub"
 	},
 	{
@@ -383,6 +400,176 @@
 		"type": "command",
 		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LEAVE_ENCOUNTER",
 		"end": true
+	},
+
+	{
+		"id": "v1_hj_pichidi_reaches",
+		"type": "narration",
+		"text": "Their gaze drops to your waist. The movement of their hand is utterly devoid of human hesitation—a smooth, predatory strike across the space between you. Their fingers feel like cold river clay as they hook the fabric of your trousers and pull, testing the give with heavy, mechanical strength.",
+		"next": "v1_hj_choice"
+	},
+	{
+		"id": "v1_hj_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Do nothing]",
+				"next": "v1_hj_passive"
+			},
+			{
+				"text": "> Finally, someone I don't have to ask.",
+				"next": "v1_hj_enthusiastic"
+			},
+			{
+				"text": "> Hey, what the hell?",
+				"next": "v1_hj_protest"
+			}
+		]
+	},
+	{
+		"id": "v1_hj_passive",
+		"type": "narration",
+		"text": "You let the cold hand stay. Pichidi registers the absence of resistance instantly. Their fingers hook the lacing and rip it loose with practiced efficiency.",
+		"next": "v1_hj_act_start"
+	},
+	{
+		"id": "v1_hj_enthusiastic",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee.\" The sound vibrates in the damp air, low and thick with satisfaction. \"Forward [b]bolk.[/b] This is to me pleasing.\"",
+		"next": "v1_hj_enthusiastic_narr"
+	},
+	{
+		"id": "v1_hj_enthusiastic_narr",
+		"type": "narration",
+		"text": "They strip the barrier away. There is no fumbling, no performative seduction. They drag your trousers down with the blunt efficiency of a creature unearthing a meal.",
+		"next": "v1_hj_act_start"
+	},
+	{
+		"id": "v1_hj_protest",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee.\" They freeze. The cold weight of their hand remains hooked in your clothes, applying no pressure. Their luminous pale eyes blink once. \"Is your want that I stop, or is your want that I ask first?\"",
+		"next": "v1_hj_protest_choice"
+	},
+	{
+		"id": "v1_hj_protest_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> ...Just ask first.",
+				"next": "v1_hj_ask_first"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "hub_leave"
+			}
+		]
+	},
+	{
+		"id": "v1_hj_ask_first",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Fine.\" They stare at you, profoundly unbothered by the administrative delay. \"Touch-I your [b]deh[/b] now. Yes?\"",
+		"next": "v1_hj_ask_first_choice"
+	},
+	{
+		"id": "v1_hj_ask_first_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Yes.",
+				"next": "v1_hj_ask_first_go"
+			},
+			{
+				"text": "> No.",
+				"next": "hub_leave"
+			}
+		]
+	},
+	{
+		"id": "v1_hj_ask_first_go",
+		"type": "narration",
+		"text": "They resume instantly. Cool, dense fingers rip the lacing loose and free your hardening length into the damp sewer air.",
+		"next": "v1_hj_act_start"
+	},
+	{
+		"id": "v1_hj_act_start",
+		"type": "narration",
+		"text": "Your erection springs free, hot in the damp chill. Pichidi locks their fingers around your base immediately. The temperature contrast is violently sharp—your burning, pulsing flesh wrapped in their clay-cool, unyielding grip. They squeeze hard, testing the heavy human girth, and a sharp breath hisses through their blue-tipped teeth.",
+		"clear": true,
+		"next": "v1_hj_pichidi_react"
+	},
+	{
+		"id": "v1_hj_pichidi_react",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Grat.\" The Old Mire curse slips out on a harsh exhale. \"Stranger [b]deh[/b] heavier than I think. Burns like furnace.\" Their grip tightens, locking onto your root. \"Heee. Good.\"",
+		"clear": true,
+		"next": "v1_hj_pichidi_react_02"
+	},
+	{
+		"id": "v1_hj_pichidi_react_02",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "Pichidi's blue eyes widen as they lift your lenght and study your testicles. \"Heee... This where [b]mjisiv[/b] lives. Yes?\" Their nostrils flare as they sniff your balls from a few centimeters away. \"Good. give [b]mjisiv[/b] for me, a lot. Am curious.\"",
+		"next": "v1_hj_micro_01"
+	},
+	{
+		"id": "v1_hj_micro_01",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> (Let the monster continue)",
+				"next": "v1_hj_act_02"
+			}
+		]
+	},
+	{
+		"id": "v1_hj_act_02",
+		"type": "narration",
+		"text": "They establish a punishing rhythm immediately. Long, brutal strokes from root to tip, their cool palm slicking with your pre-cum as they work your shaft with relentless efficiency. Their thumb drags heavily over your swollen glans on every upstroke. The dense muscle of their forearm flexes hard against your thigh, anchoring you in place as the friction builds. You're close, and you let out a groan.",
+		"next": "v1_hj_climax_choice"
+	},
+	{
+		"id": "v1_hj_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Let them finish you]",
+				"next": "v1_hj_climax"
+			},
+			{
+				"text": "> [Push their hand away]",
+				"next": "v1_hj_stop"
+			}
+		]
+	},
+	{
+		"id": "v1_hj_climax",
+		"type": "narration",
+		"text": "The pace accelerates, the cool, slick friction pulling you over the edge. You erupt, blasting thick, heavy ropes of your warm cum across their knuckles and wrist. Pichidi refuses to let go, clamping down on your base and milking every last pulse from your twitching cock with methodical, heavy strokes. The heat of your seed against their cool skin makes their breath hitch. They flex their dripping hand once, watching the thick fluid stretch between their fingers.",
+		"next": "v1_hj_climax_npc"
+	},
+	{
+		"id": "v1_hj_climax_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They examine the mess painting their hand with interest. \"Heee. [b]Mjisiv[/b] very warm, and so thick.\" They wipe the bulk of your seed onto the wet stone with a casual flick. \"More thick than mine.\" With a nonchalant gest Pichini gives their fingers a quick sniff. \"You come back more. Is on me more curiosity about this stranger [b]deh[/b] and more [b]mjisiv.[/b]\"",
+		"next": "aftermath_entry"
+	},
+	{
+		"id": "v1_hj_stop",
+		"type": "narration",
+		"text": "You grab their wrist. They release immediately, leaving your aching cock exposed to the cool air.",
+		"next": "v1_hj_stop_npc"
+	},
+	{
+		"id": "v1_hj_stop_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee. Other time, then.\" They wipe their cold hand on their thigh and return to their perch, entirely unaffected by the rejection.",
+		"next": "main_hub"
 	},
 
 	{
@@ -406,20 +593,23 @@
 			},
 			{
 				"text": "> Does anyone on the surface know you're here?",
-				"next": "q_anyone_check",
-				"hide_if": "picked"
+				"next": "q_anyone_check"
 			},
 			{
-				"text": "> That language — I heard some of those words somewhere.",
-				"show_if": { "has_flag": "bitalgut_met" },
-				"hide_if": { "has_flag": "pichidi_told_bitalgut" },
+				"text": "> Why do you speak so strangely?",
+				"next": "q_strangespeech_answer"
+			},
+			{
+				"text": "> That language. I heard some of those words somewhere.",
+				"show_if": { "has_flag": "bitalgut_met, pichidi_told_oldmire" },
+				"hide_if": "picked",
 				"check": { "ability": "soul", "dc": 13 },
 				"on_fail": "q_mire_fail",
 				"on_success": "q_mire_success",
 				"on_nat20": "q_mire_nat20"
 			},
 			{
-				"text": "> [Something about the way they hold themselves — ask about it]",
+				"text": "> [Ask about the way their body tenses]",
 				"next": "q_deeper_01",
 				"show_if": { "has_flag": "pichidi_who_nat20_unlocked" },
 				"hide_if": "picked"
@@ -435,7 +625,7 @@
 		"id": "q_who_deflect",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Name.\" A short pause. \"Heee. Not thing I give to everyone who falls into my floor.\"",
+		"text": "\"Name. Heee. Not thing I give to everyone who falls into my floor.\"",
 		"next": "q_who_check"
 	},
 	{
@@ -451,7 +641,7 @@
 		"id": "q_who_fail",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "The monster looks you up and down. \"...Bolk do not need it.\" They look away toward the water. \"Who does the asking?\"",
+		"text": "The monster looks you up and down. \"Bolk do not need it.\" They look away toward the flowing water. \"Who does the asking?\"",
 		"next": "q_who_fail_choice"
 	},
 	{
@@ -468,7 +658,7 @@
 		"id": "q_who_fail_name",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "Their gaze peers at you from under the hood. \"Heee... Polite to do introduction.\" They say your name with a slight hesitation, as if testing the sound of it. \"I remember this.[nb]Pichidi remember this.\"",
+		"text": "Their gaze sharpens under the hood. \"Heee. Polite to do introduction.\" They test the sound of your name on their tongue, feeling its shape. \"I remember this.[mb]Pichidi remember this.\"",
 		"next": "question_hub"
 	},
 	{
@@ -476,7 +666,7 @@
 		"type": "npc",
 		"name": "Pichidi",
 		"command": "@add_reputation pichidi 10",
-		"text": "Something in their expression shifts — minor, but real. \"Pichidi.\" They say it short. \"You remember it.\"",
+		"text": "Their posture relaxes a fraction. \"Pichidi.\" They clip the word short. \"You remember it.\"",
 		"next": "question_hub"
 	},
 	{
@@ -486,14 +676,14 @@
 		"command": "@add_reputation pichidi 25",
 		"set_flag": "pichidi_who_nat20_unlocked",
 		"flag_type": "knowledge",
-		"text": "\"...Pichidi.\"[p]They hold the eye contact through the pause. \"And you are strange shape of bolk I have not seen before.\" They look you up and down, then back to your face. \"This is interesting.\"",
+		"text": "\"...Pichidi.\"[p]They hold eye contact. \"And you are strange shape of bolk I have not seen before. You run so hot. This is interesting.\"",
 		"next": "question_hub"
 	},
 	{
 		"id": "q_what_01",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Ichmi.\" The word is foreign to you, but they say it with a weight that suggests it's important. \"Ichmi.\" They repeat it, slower this time. \"This is what I am.\" They don't elaborate, and the word doesn't seem to be from any language you know.",
+		"text": "\"Ichmi.\" They say it with heavy importance. \"Ichmi. This is what I am.\"",
 		"next": "q_what_02"
 	},
 	{
@@ -507,37 +697,52 @@
 		"id": "q_howlong_01",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Long enough to know how small creechs count their corners here.\" A pause. \"Long enough that question does not have useful answer for you.\"",
+		"text": "\"Long enough to know how small [b]creechs[/b] count their corners here. Long enough that question does not have useful answer for you.\"",
 		"next": "question_hub"
 	},
 	{
 		"id": "q_anyone_check",
-		"type": "logic",
-		"check_flags": {
-			"flags": ["tavo_met"],
-			"on_success": "q_anyone_tavo",
-			"on_fail": "q_anyone_notavo"
-		}
-	},
-	{
-		"id": "q_anyone_tavo",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Nöteri innkeeper knows something walks his pipes. Heee. Does not check.\" Their satisfaction is audible. \"Other residents know sounds. They call it building. Pipes settling. Heee. Useful, this.\"",
-		"next": "question_hub"
+		"text": "\"Some hear sounds. None come to find source. Folk above prefer to not know what lives below them. This is convenient for me.\"",
+		"next": "q_anyone_hub"
 	},
 	{
-		"id": "q_anyone_notavo",
+		"id": "q_anyone_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Tavo-Pavo at the inn must know something's down here.",
+				"next": "hub_mention_tavo",
+				"show_if": { "has_flag": "tavo_met" },
+				"hide_if": "picked"
+			},
+			{
+				"text": "> Nautinto mentioned hearing things below Klyftet.",
+				"next": "hub_mention_nautinto",
+				"show_if": { "has_flag": "nautinto_met" },
+				"hide_if": "picked"
+			},
+			{
+				"text": "> [Back]",
+				"next": "question_hub"
+			}
+		]
+	},
+	{
+		"id": "q_strangespeech_answer",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Some hear sounds. None come to find source.\" They shrug slightly. \"Folk above prefer to not know what lives below them. This is convenient for me.\"",
+		"set_flag": "pichidi_told_oldmire",
+		"flag_type": "knowledge",
+		"text": "\"Heee. You ask about how I speak. This is... interesting.\" Pichidi looks at you, seemingly calculating how much to share. \"I learn words from cub times. Ichmi has many voices. Old Mire, called by some.\"",
 		"next": "question_hub"
 	},
 	{
 		"id": "q_mire_fail",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heard some words.\" They look at you, then away. \"Many things make sounds. Not all of them mean something.\" The door, such as it was, stays closed.",
+		"text": "\"Heard some words.\" They look at the dark water. \"Many things make sounds. Not all of them mean something.\"",
 		"next": "question_hub"
 	},
 	{
@@ -547,7 +752,7 @@
 		"command": "@add_reputation pichidi 15",
 		"set_flag": "pichidi_told_bitalgut",
 		"flag_type": "dialog",
-		"text": "\"...You found Old Mire speaker somewhere.\" They look at you with a quality of attention that wasn't there a moment ago. \"Interesting.\" The tone in their voice suggests that they have noted this.",
+		"text": "\"...You found Old Mire speaker somewhere.\" They stare at you, dissecting you with their gaze. \"Interesting.\"",
 		"next": "question_hub"
 	},
 	{
@@ -557,20 +762,20 @@
 		"command": "@add_reputation pichidi 30",
 		"set_flag": "pichidi_told_bitalgut",
 		"flag_type": "dialog",
-		"text": "\"Heee.\"[p] The blue eyes widen slightly as they look at you directly. \"Where?\"",
+		"text": "\"Heee.\"[p] Their luminous pale eyes widen. \"Where?\"",
 		"next": "question_hub"
 	},
 	{
 		"id": "q_deeper_01",
 		"type": "narration",
-		"text": "You name the thing you've noticed — not the body language itself, but the quality beneath it. Something that arrives and leaves without announcement, something that makes them hold a position a half-second longer than before. They are quiet for a moment that is longer than their usual silences.",
+		"text": "You point out the way they stiffen. The heavy, unprompted sighs. The way their body seems to want things their mind is currently annoyed by. Pichidi goes completely silent.",
 		"next": "q_deeper_02"
 	},
 	{
 		"id": "q_deeper_02",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"...Body does what it does.\" Their voice is even. \"I am not confused by it. Only mildly — \" a pause, that small fractional hesitation — \"...inconvenienced.\" They move past it with their usual speed. \"This is not interesting question. Ask other thing.\"",
+		"text": "\"Body does what it does.\" Their voice is razor-flat. \"I am not confused by it. Only mildly... inconvenienced. This is not interesting question. Ask other thing.\"",
 		"next": "question_hub"
 	},
 
@@ -604,26 +809,26 @@
 		"type": "narration",
 		"command": "@SHOW_SCENE pichidi_routeA",
 		"clear": true,
-		"text": "They move into your space without hurry — not toward you, not circling you, just through the distance between you as though it wasn't a boundary to begin with. Their hand finds your chest and pushes, lightly, enough to back you against the wall.",
+		"text": "They step into your space. Their palm hits your chest, pushing you backward until your shoulders hit the damp stone. They move with total, unhurried authority.",
 		"next": "routeA_undress"
 	},
 	{
 		"id": "routeA_undress",
 		"type": "narration",
-		"text": "They work your clothing with efficiency. Their fingers are cool and quick. When they press their palm flat against your stomach the skin-temperature difference is immediate — like stone that has sat in shadow. You feel the faint texture difference of the freckles when they drag their hand down and fumble with your fly. Pichidi gives off a content giggle when your erection springs free.",
+		"text": "Pichidi strips you with brutal efficiency. When they press their palm flat against your bare stomach, the shock is immediate. Their skin is incredibly cool, like riverbed clay. They drag a cold hand down and pull your heavy, blazing human cock free into the damp air. A low hiss of pure satisfaction escapes their lips as they wrap their fingers around your thick base.",
 		"next": "routeA_pichidi_mounts"
 	},
 	{
 		"id": "routeA_pichidi_mounts",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Hold still.\" They position themselves and back up their hips and rear while they grab their knees, unhurried. \"I make it fit.\"",
+		"text": "\"Hold still.\" They step close, pressing their cool thighs to your hips. \"Your deh is strange shape. Heavy. I make it fit.\"",
 		"next": "routeA_narration_01"
 	},
 	{
 		"id": "routeA_narration_01",
 		"type": "narration",
-		"text": "They straddle you — compact frame, deceptively solid, their weight settling into position with a precision that suggests they've considered this already. Their slick slit presses against your cock and holds there a moment, the warmth of it sharp against the cool of everything else.",
+		"text": "They straddle you. Their compact frame is deceptively heavy. The slick entrance of their hole presses against your human cock. It feels bizarre—smooth, tight-edged, and drastically cooler than your own burning flesh. They hold themselves there, letting your heat bleed into them.",
 		"next": "routeA_micro_01"
 	},
 	{
@@ -653,7 +858,7 @@
 	{
 		"id": "routeA_submit_01",
 		"type": "narration",
-		"text": "You let them have the position. They read your stillness immediately — the way they pause a half-breath before continuing suggests they clocked it. Their hips shift and the pressure changes.",
+		"text": "You let them have the position. Pichidi clocks your absolute stillness immediately. Their cool inner thighs flex against your hips as they prepare to take you.",
 		"next": "routeA_submit_02"
 	},
 	{
@@ -676,7 +881,7 @@
 	{
 		"id": "routeA_submit_03",
 		"type": "narration",
-		"text": "They take you in degrees — resistance first, a slow initial squeeze, then the give of it. Pichidi settles their full weight down, their cool thighs against yours, their clit pressing against your lower belly as they seat themselves to the root of your lenght. You feel how tight their hole is around your cock as your glans slides against the roof of their inner canal. They begin to move and grind, a slow deliberate roll, like they're measuring the fit and finding it satisfactory.",
+		"text": "They sink down, taking your massive human cock by degrees. Their glistening and wet entrance swallows your glans. The alien interior is tight, heavily muscled, and smooth as wet glass, warming rapidly as you stretch them open. Their swollen bud grinds into your stomach as they seat themselves to the root. Pichidi bares their blue-tipped teeth, letting out a ragged gasp as they begin a slow, grinding roll of their hips, relishing the intense stretch.",
 		"next": "routeA_climax_choice"
 	},
 	{
@@ -696,52 +901,52 @@
 	{
 		"id": "routeA_climax_inside",
 		"type": "narration",
-		"text": "You grip their hips hard and they slam themselves down to meet you — burying your cock to the root inside their tight nah as you flood them with your hot seed. They grip and pulse around you with an involuntary precision, muscle clamping as they work through it, and you feel the warmth of their own response: a slick pulse of milt mixing with yours inside them. Pichidi's breath goes short through their teeth. Their thighs press tight once. Then they hold the position, head slightly forward, breathing through it, not moving until they're ready to.",
+		"text": "You grip their cool, firm thighs and thrust upward, burying yourself to the hilt. You erupt, spraying thick jets of boiling human seed deep into their smooth, alien guts. Pichidi gasps sharply, their internal walls clamping like a vice to milk you empty. A gush of bright, sweet-smelling milt shoots from their swollen bud, smearing slick and wet between your grinding hips. They ride out the crest with their teeth bared and thighs trembling.",
 		"next": "routeA_climax_inside_npc"
 	},
 	{
 		"id": "routeA_climax_inside_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "They hold the position through it. When you're done they let out a short breath — not a sigh, something more clipped — and press their palm flat against your chest again. \"Heee.\" Low, to themselves as much as you. \"Yes. This is good.\"",
+		"text": "They hold the heavy position. They let out a clipped exhale and press their cool palm flat against your chest. \"Heee. Yes. This is good.\"",
 		"next": "aftermath_entry"
 	},
 	{
 		"id": "routeA_climax_outside",
 		"type": "narration",
-		"text": "You pull free and spray your cum across their inner thigh in thick, hot streaks — the heat of it sharp against their cool skin. They glance down without shifting their hips, watching it happen with the expression of something taking an inventory. Your seed marks pale across the mauve-rose, beading in the hollow where their thigh meets their hip. They don't wipe it immediately.",
+		"text": "You pull free just in time. Your heavy human cock erupts in the cool sewer air, spraying thick, hot ropes of cum across their mauve-rose stomach. The blistering heat of your seed is a sharp shock against their cool skin. Pichidi watches your mess mark them, taking clinical inventory as the thick fluid pools over their pale freckles.",
 		"next": "routeA_climax_outside_npc"
 	},
 	{
 		"id": "routeA_climax_outside_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "They look down at it. Then at you. \"Heee. You have aim at least.\" They reach and wipe their hand across the spatter with no particular expression, more inventory than objection.",
+		"text": "\"Heee. You have aim at least.\" They wipe a cool hand through the spatter of your hot seed, thoroughly unbothered.",
 		"next": "aftermath_entry"
 	},
 	{
 		"id": "routeA_contest_fail_01",
 		"type": "narration",
-		"text": "You try to shift their weight — hands on their hips, pushing. They don't budge. The muscle beneath their skin is more substantial than the frame suggests; you feel it brace against you.",
+		"text": "You grab their hips and push, trying to flip them. They don't budge. The alien muscle beneath their cool skin is incredibly dense. They brace against you flawlessly.",
 		"next": "routeA_contest_fail_npc"
 	},
 	{
 		"id": "routeA_contest_fail_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heee.\" They hold the position easily. \"Bolk.\" They resume like you didn't try. The warmth of their nah presses against you again, decisive.",
+		"text": "\"Heee. Bolk.\" They dismiss your struggle instantly. The cold, wet entrance of their hole presses firmly against your tip.",
 		"next": "routeA_submit_micro"
 	},
 	{
 		"id": "routeA_contest_success_01",
 		"type": "narration",
-		"text": "You get a grip on their hips and push — and something shifts. The resistance is there, real and solid, but you find the leverage point and take it. Their weight moves. For a half-second they're genuinely off-balance.",
+		"text": "You grab their hips and heave. Their resistance is solid, but you find the leverage. Their weight shifts, and for a split second, the arrogant monster is entirely off-balance.",
 		"next": "routeA_contest_success_02"
 	},
 	{
 		"id": "routeA_contest_success_02",
 		"type": "narration",
-		"text": "You reverse the position — them against the stone, you above. There's a beat of stillness. Something in them goes quiet, processing.",
+		"text": "You hurl them backward against the damp stone wall. Pichidi hits the rock and goes perfectly still. You step into their space, boxing them in.",
 		"next": "routeB_reversal_desc_01"
 	},
 	{
@@ -750,7 +955,7 @@
 		"command": "@add_reputation pichidi 15",
 		"set_flag": "pichidi_reversal_happened",
 		"flag_type": "knowledge",
-		"text": "You find the leverage before they've finished setting their weight and take it completely. The move is cleaner than you expected. They end up against the stone before they've processed what happened — which is, you suspect, the first time that has happened to them in a long while.",
+		"text": "You read their center of gravity instantly. You grab their hips and flip them backward before they even fully mount you. Pichidi slams back into the wet stone wall, their pale eyes blowing wide in genuine shock. It is clearly the first time they have ever been physically overpowered.",
 		"next": "routeB_reversal_desc_01"
 	},
 
@@ -768,7 +973,7 @@
 		"type": "narration",
 		"command": "@SHOW_SCENE pichidi_routeB",
 		"clear": true,
-		"text": "You move toward them with clear intent and they let you do it — there's still a slight stiffening when you press them toward the wall, something in their posture that hasn't fully let go of its usual authority. But they don't contest it.",
+		"text": "You step into their space with heavy intent. Pichidi stiffens slightly, their natural authority warring with their biological urge to be mounted. They let you push them backward until their spine hits the wet stone.",
 		"next": "routeB_pichidi_recalibrate"
 	},
 	{
@@ -776,7 +981,7 @@
 		"type": "narration",
 		"command": "@SHOW_SCENE pichidi_routeB",
 		"clear": true,
-		"text": "You press them against the stone and they go briefly still. Not compliance — not surrender. A pause. Something has arrived that they weren't running the calculation on.",
+		"text": "You press them hard against the slick stone. Pichidi freezes. Their pale eyes lock onto yours as they process the total loss of control.",
 		"next": "routeB_pichidi_recalibrate"
 	},
 	{
@@ -789,7 +994,7 @@
 	{
 		"id": "routeB_narration_02",
 		"type": "narration",
-		"text": "Not protest. Just a recalibration sound. They brace their hands flat against the wall. Their breathing has changed — still controlled, but you can see it change.",
+		"text": "They brace their cool hands flat against the rock. Their breathing pitches up. You feel the heavy, pulsing heat of your cock pressing against their dripping wet folds.",
 		"next": "routeB_micro_01"
 	},
 	{
@@ -805,7 +1010,7 @@
 	{
 		"id": "routeB_narration_03",
 		"type": "narration",
-		"text": "You slam your cock into their eager hole. They exhale through their nose, a slow and controlled breath, as you slide deep inside them. Their hands are flat against the cold stone, bracing for the impact. This angle gives you more leverage than they're used to, and you feel them adjust their weight, trying to take all of you. Their bud grinds against the stone on entry and they shift to protect it, a move that only serves to change the angle and drive you even deeper. A raw, involuntary sound escapes them as your cock seats fully against their insides.",
+		"text": "You grab their hips and drive your stiff cock straight into their dripping passage. The slick grip of their insides resists the human bulk for a second before yielding completely. Pichidi exhales a harsh hiss through their blue-tipped teeth as you bottom out. The intense, smooth friction of their alien anatomy clamps down on your shaft. Their swollen bud catches against your lower stomach, already leaking bright, sweet-smelling milt from the overwhelming stretch.",
 		"next": "routeB_soul_check"
 	},
 	{
@@ -820,19 +1025,19 @@
 	{
 		"id": "routeB_soul_fail",
 		"type": "narration",
-		"text": "You read nothing from them beyond the physical — the brace of their hands, the movement of their hips. Whatever is happening inside the posture, you can't reach it.",
+		"text": "You focus purely on the physical resistance of their tight, muscled core. They brace against the wall, taking your brutal thrusts without giving you any emotional tell.",
 		"next": "routeB_climax_build"
 	},
 	{
 		"id": "routeB_soul_success",
 		"type": "narration",
-		"text": "You catch something in the set of their shoulders. They're not fighting it. More than that — the grip they have on the wall isn't resistance. It's anchor.",
+		"text": "You feel it in their shoulders. They aren't fighting the pin. They are holding the wall as an anchor because they desperately want you to keep driving into them.",
 		"next": "routeB_climax_build"
 	},
 	{
 		"id": "routeB_soul_nat20",
 		"type": "narration",
-		"text": "They make a sound they didn't plan on. Short, swallowed fast, but there — a sound that doesn't come from the part of them that has opinions about what's happening. Their grip on the wall is wrong in a way you can't articulate: like they're holding it to stay in place rather than to push away from it.",
+		"text": "They make a raw, unguarded sound. A short whine that they swallow instantly. Their cool fingers dig into the wet stone, anchoring their body to take the brutal friction of your human cock. They want to be wrecked.",
 		"next": "routeB_brood_nat20_beat"
 	},
 	{
@@ -842,19 +1047,19 @@
 		"command": "@add_reputation pichidi 30",
 		"set_flag": "pichidi_brood_surfaced",
 		"flag_type": "knowledge",
-		"text": "\"...Do not—\" A beat. \"Heee.\" Different this time — not satisfied, more like something resetting under pressure. \"Do not make face at me.\"",
+		"text": "\"...Do not.\" A sharp inhale. \"Heee. Do not make face at me. Keep pushing your deh.\"",
 		"next": "routeB_brood_nat20_after"
 	},
 	{
 		"id": "routeB_brood_nat20_after",
 		"type": "narration",
-		"text": "They pick themselves back up quickly. The moment doesn't linger. Their jaw sets, their posture closes back in. They act like it was always fine. It was not fine, in the best way.",
+		"text": "They snap their jaw shut, trying to rebuild their arrogant composure while their slick insides milk your cock relentlessly.",
 		"next": "routeB_climax_build"
 	},
 	{
 		"id": "routeB_climax_build",
 		"type": "narration",
-		"text": "You set your own pace — long strokes, deliberate. They grip you on each withdrawal, the clench tight and rhythmic. Their bud catches against the stone on the forward press and they shift to avoid it, which shifts the angle, and you follow. They can't quite get stable. You use that.",
+		"text": "You set a punishing pace. Long, deliberate strokes into their cool, slick body. Their tight hole clenches hard on every withdrawal. They squirm as their swollen bud grinds between your bodies, desperate for friction but trapped by your heavy pin. You use their imbalance, plunging deeper.",
 		"next": "routeB_micro_02"
 	},
 	{
@@ -866,7 +1071,7 @@
 				"next": "routeB_climax_inside"
 			},
 			{
-				"text": "> [Pull out — finish on their back]",
+				"text": "> [Pull out and finish on them]",
 				"next": "routeB_climax_outside"
 			}
 		]
@@ -877,14 +1082,14 @@
 		"command": "@add_reputation pichidi 10",
 		"set_flag": "pichidi_reversal_happened",
 		"flag_type": "knowledge",
-		"text": "You slam in to the hilt and hold them pinned against the stone as you unload your hot seed deep into their guts, your cock buried deep in their nah and pumping relentlessly. Pichidi's whole body goes taut, then breaks — a shudder they cannot manage or shorten, the held position dissolving into something less controlled. They grip and pulse around you in rhythmic involuntary contractions. A thin thread of their own milt, warm and slick, runs down between the stone and their skin. They don't move after. You stay there together, pressed against the wet cold stone and each other's heat, breathing. It goes longer than either of you planned.",
+		"text": "You slam your hips forward, pinning them flush against the wall. You erupt, pumping heavy ropes of boiling human cum deep into their core. Pichidi shudders violently, losing all control. Their tight hole spasms, milking your cock dry while a jet of bright, sweet milt shoots from their swollen bud. The slick fluids mix between you, running down the dark stone. You stay buried in their sloppy, twitching hole.",
 		"next": "routeB_climax_inside_npc"
 	},
 	{
 		"id": "routeB_climax_inside_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "Silence, for a moment. Then: \"...Shigrat.\" Delivered quietly, with no particular emotion attached. They straighten slowly, step away from the wall, and don't look at you for a second. When they do their expression is level. Reassembled. \"This happened. Is fine.\"",
+		"text": "Silence. Only harsh panting. \"...Shigrat.\" They step away from the wall slowly, leaking your hot seed onto the floor. They force their face into a level mask. \"This happened. Is fine.\"",
 		"next": "aftermath_entry"
 	},
 	{
@@ -892,14 +1097,14 @@
 		"type": "narration",
 		"set_flag": "pichidi_reversal_happened",
 		"flag_type": "knowledge",
-		"text": "You pull free and paint their lower back with your hot seed — it lays hot across their cool skin, the contrast immediate. They hold the wall through it, spine curved forward, head down, a slow exhale leaving them as the warmth spreads. They stay in position until you're finished, then straighten.",
+		"text": "You pull your heavy cock free and unload. Thick ropes of human cum splatter violently across their cool stomach and inner thighs. Pichidi shudders at the blistering heat of your seed. They stay locked against the wall, their dripping genitals exposed to the sewer air, letting your white mess run down their pale freckles.",
 		"next": "routeB_climax_outside_npc"
 	},
 	{
 		"id": "routeB_climax_outside_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "They straighten and reach back without looking, running a hand across where they were marked. \"Heee.\" They glance at their hand. \"Warm.\" Said neutrally, like a temperature reading.",
+		"text": "They straighten up, looking down at their ruined skin. \"Heee.\" They drag a finger through your thick cum. \"Warm.\"",
 		"next": "aftermath_entry"
 	},
 
@@ -908,14 +1113,14 @@
 		"type": "narration",
 		"command": "@SHOW_SCENE pichidi_routeC",
 		"clear": true,
-		"text": "They close the distance in one fluid motion and drop to their knees, pulling you with them — or rather, making the space into a position so quickly that following feels like your own decision.",
+		"text": "They drop to their knees in front of you, moving with a fluid, liquid grace. They pull you closer, placing their cool hands on your hips.",
 		"next": "routeC_pichidi_initiates"
 	},
 	{
 		"id": "routeC_pichidi_initiates",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Deh-glim. I do it.\" They look up at you from their position, unhurried. \"You stay.\"",
+		"text": "\"Deh-glim. I do it.\" They stare up at you with luminous eyes. \"You stay.\"",
 		"next": "routeC_choice_01"
 	},
 	{
@@ -939,14 +1144,14 @@
 	{
 		"id": "routeC_deh_glim_01",
 		"type": "narration",
-		"text": "Their mouth is cool against you — that registers before anything else. They take their time at the start, their tongue tracing first, gathering information. The faint blue-grey of their tooth-tips is briefly visible before their lips close and the sensation becomes pressure and warm suction, cool at the edges, warmer toward the center. One hand at your hip.",
+		"text": "Pichidi takes you into their mouth. The interior is shocking—cool, heavily ribbed, and completely lacking human softness. Their blue-tipped teeth graze your shaft as their tongue swirls, tasting the salt and heat of your strange flesh. They swallow the length of you, applying a crushing, rhythmic suction.",
 		"next": "routeC_deh_glim_02"
 	},
 	{
 		"id": "routeC_deh_glim_02",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "They pull back just enough to speak, mouth still close: \"Heee. You are clean at least.\" Then resume, as if the comment required no reaction.",
+		"text": "They pop off your cock with a wet smack. \"Heee. You are clean at least.\" They immediately swallow you again.",
 		"next": "routeC_micro_01"
 	},
 	{
@@ -962,7 +1167,7 @@
 	{
 		"id": "routeC_deh_glim_03",
 		"type": "narration",
-		"text": "They find what works and stay with it. Their other hand joins — fingers wrapping the base, moving in complement to their mouth. Their pale eyes track up to your face occasionally, not seeking reassurance, gathering data on what's effective. You feel the approach of it building low and spreading. Their rhythm doesn't shift. They don't rush. They are getting precisely what they came for.",
+		"text": "Their cool fingers wrap around the base of your shaft, milking in perfect complement to the sloppy, wet suction of their mouth. Their pale eyes track your face, watching your human reactions with predatory interest. The tight, slick vice of their throat pulls you inevitably toward the edge.",
 		"next": "routeC_oral_climax_choice"
 	},
 	{
@@ -974,7 +1179,7 @@
 				"next": "routeC_climax_oral"
 			},
 			{
-				"text": "> [Pull them up — keep going]",
+				"text": "> [Pull them up to fuck them]",
 				"next": "route_entry_hub"
 			}
 		]
@@ -982,27 +1187,27 @@
 	{
 		"id": "routeC_climax_oral",
 		"type": "narration",
-		"text": "You finish hard into their mouth and they take all of it — don't pull back, don't flinch, just let you unload your hot seed onto their waiting tongue before they swallow it down clean. Their throat works once, deliberate. The grip of their hand at your base holds through it. When it's done they sit back on their heels and run their tongue across their teeth once, taking stock. Nothing in their expression apologizes for any of it.",
+		"text": "You thrust deep past their teeth and erupt. Thick, hot ropes of your seed blast the back of their throat. Pichidi takes every drop, their throat working in heavy, deliberate swallows. They pull off your twitching cock, leaving a thick string of cum connecting your tip to their pale lips. They swipe their blue-tipped tongue over their mouth, tasting you completely.",
 		"next": "routeC_climax_oral_npc"
 	},
 	{
 		"id": "routeC_climax_oral_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "They sit back on their heels and say nothing for a moment. The silence isn't awkward. It's just the end of the action. Then: \"Acceptable.\"",
+		"text": "They sit back on their heels, licking their lips clean. \"Acceptable.\"",
 		"next": "aftermath_entry"
 	},
 	{
 		"id": "routeC_nah_glim_01",
 		"type": "narration",
-		"text": "You say it plainly. They look at you from their position on the floor with an expression that takes a moment to read — Consideration.",
+		"text": "You push them down and declare your intent. They sprawl back against the wet stone, staring at you with calculating eyes.",
 		"next": "routeC_nah_glim_npc"
 	},
 	{
 		"id": "routeC_nah_glim_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"...Fine.\" They shift their position, unhurried. \"But do not take long.\" They say it like they mean it, though the slight pause before they positioned themselves suggests they weren't as indifferent as the line implied.",
+		"text": "\"...Fine. Do your nah-glim. But do not take long.\" They spread their cool thighs, exposing their dripping, swollen slit.",
 		"next": "routeC_micro_02"
 	},
 	{
@@ -1018,7 +1223,7 @@
 	{
 		"id": "routeC_nah_glim_03",
 		"type": "narration",
-		"text": "They taste mineral and faintly cool, with something underneath that has no common-tongue comparison. Their opening is smooth and tight-edged, the texture shifting inward. You find the bud — still partly enlarged, sensitive in proportion — and when you press your tongue against it a sound leaves them despite themselves: short, immediately suppressed, but present. Their hips shift forward, involuntary. You follow. They grab a handful of your hair, not directing you, managing themselves.",
+		"text": "You bury your face between their cool thighs. Their slit tastes like raw minerals and deep, musky dampness. You drag your tongue over the swollen, rigid bud, and Pichidi jolts. Their hips buck involuntarily into your mouth. The slick folds are tight and completely smooth, leaking their sweet-tasting milt. You suck the bud hard, and they fist their hands into your hair.",
 		"next": "routeC_oral_climax_choice_b"
 	},
 	{
@@ -1030,7 +1235,7 @@
 				"next": "routeC_climax_oral_b"
 			},
 			{
-				"text": "> [Come up and press them down]",
+				"text": "> [Come up and push inside them]",
 				"next": "routeB_reversal_desc_01"
 			}
 		]
@@ -1038,14 +1243,14 @@
 	{
 		"id": "routeC_climax_oral_b",
 		"type": "narration",
-		"text": "Their thighs close around you, firm and present, and then they let go with a full exhale that they cannot shorten. They come in a thin warm thread — more than you expected, brighter in taste than everything else about them. Their hips rock once, twice, into the contact and then go still. The grip in your hair loosens by degrees. You stay there a moment after, breathing against their inner thigh. The silence that follows is denser than their usual silence. It has the quality of something that didn't mean to happen quite like that.",
+		"text": "Pichidi's thighs clamp around your ears in a crushing grip. They let out a ragged sound and erupt, squirting a thick, warm stream of bright milt directly onto your tongue. The taste is blindingly sweet and sharp. They grind their leaking folds against your face, forcing you to swallow their release. The grip in your hair goes white-knuckle tight.",
 		"next": "routeC_climax_oral_b_npc"
 	},
 	{
 		"id": "routeC_climax_oral_b_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "Nothing, for a moment.[p]Then: \"...You are not bad at this.\" Delivered quietly, and with a precision that makes it clear they are not saying this to be kind.",
+		"text": "They slump back against the stone, chest heaving. \"...You are not bad at this.\" They say it quietly, almost angry at the pleasure.",
 		"next": "aftermath_entry"
 	},
 
@@ -1058,6 +1263,15 @@
 	},
 	{
 		"id": "aftermath_which_visit",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["pichidi_sex_v4"],
+			"on_success": "aftermath_set_v5",
+			"on_fail": "aftermath_which_v4"
+		}
+	},
+	{
+		"id": "aftermath_which_v4",
 		"type": "logic",
 		"check_flags": {
 			"flags": ["pichidi_sex_v3"],
@@ -1083,6 +1297,7 @@
 			"on_fail": "aftermath_set_v1"
 		}
 	},
+
 	{
 		"id": "aftermath_set_v1",
 		"type": "command",
@@ -1116,27 +1331,41 @@
 		"next": "aftermath_v4"
 	},
 	{
+		"id": "aftermath_set_v5",
+		"type": "command",
+		"command": "@add_reputation pichidi 20 ; @RECORD_SPECIES_SEX ichmi",
+		"set_flag": "pichidi_sex_v5_brood",
+		"flag_type": "sex",
+		"next": "aftermath_v5"
+	},
+	{
 		"id": "aftermath_v1",
 		"type": "narration",
-		"text": "The space between you settles back into stone and water. They look away first — not avoidance, just the direction they were already facing.",
+		"text": "The space settles back into damp stone and flowing water. Pichidi steps back to their original distance, looking toward the dark tunnel.",
 		"next": "aftermath_micro"
 	},
 	{
 		"id": "aftermath_v2",
 		"type": "narration",
-		"text": "They don't move away as quickly as last time. It's a small thing. They sit or stand in the same space for longer than strictly necessary, looking at nothing in particular.",
+		"text": "They don't move away as quickly as last time. They linger near you in the cooling sewer air, watching the water flow.",
 		"next": "aftermath_micro"
 	},
 	{
 		"id": "aftermath_v3",
 		"type": "narration",
-		"text": "They stay close. You notice this because you're used to them using the space after — returning to position, returning to distance. They don't, this time. They remain near you in the cooling air.",
+		"text": "They stay extremely close. It is a stark difference from their usual need for space. Their cool skin practically brushes your arm.",
 		"next": "aftermath_micro"
 	},
 	{
 		"id": "aftermath_v4",
 		"type": "narration",
-		"text": "Something is different in the quiet that follows. You can't name it exactly. It has the texture of something that has shifted past the point of pretending it hasn't.",
+		"text": "The quiet is thick. The dynamic has shifted past the point of casual rutting, settling into an undeniable, instinctual gravity.",
+		"next": "aftermath_micro"
+	},
+	{
+		"id": "aftermath_v5",
+		"type": "narration",
+		"text": "The quiet is thick. The dynamic has shifted past the point of casual rutting, settling into an undeniable, instinctual gravity.",
 		"next": "aftermath_micro"
 	},
 	{
@@ -1167,14 +1396,14 @@
 		"id": "aftermath_pichidi_nothing",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "They sit with the silence for a moment, then huff — the beginning of a \"heee\" that doesn't quite complete itself. They begin adjusting their clothing.",
+		"text": "They begin adjusting their clothing. \"Heee.\" The sound is a quiet, self-satisfied hum.",
 		"next": "main_hub"
 	},
 	{
 		"id": "aftermath_pichidi_fit",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heee. It did.\" Said with complete equanimity, like reporting weather.",
+		"text": "\"Heee. It did.\" They state it with the certainty of someone reporting the weather.",
 		"next": "main_hub"
 	},
 
@@ -1182,7 +1411,7 @@
 		"id": "cuddle_pichidi_asks",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"You do not have to go.\" Flat. Not looking at you — at the water, at the wall. Strategic delivery, or they want it to read that way.",
+		"text": "\"You do not have to go.\" They say it flatly, staring at the dark water instead of you.",
 		"next": "cuddle_choice"
 	},
 	{
@@ -1206,20 +1435,20 @@
 	{
 		"id": "cuddle_leave_route",
 		"type": "narration",
-		"text": "You pull yourself together and move toward the passage. They don't stop you. They don't say anything. When you glance back they're looking at the water.",
+		"text": "You pull yourself together and step away. They don't stop you or say another word. When you glance back, they are still watching the water.",
 		"next": "cleanup_01"
 	},
 	{
 		"id": "cuddle_uncertain",
 		"type": "narration",
-		"text": "You don't move. But you don't commit either — hovering in the space between staying and going, waiting for something to tip it.",
+		"text": "You hesitate, caught between the damp tunnel out and the cold stone next to them.",
 		"next": "cuddle_pichidi_press"
 	},
 	{
 		"id": "cuddle_pichidi_press",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Stay.\"[p]A beat. Then, quieter, which is worse: \"...I am asking.\"[p]They know what that sounded like. The slight embarrassment lands in the set of their jaw — visible, brief. They don't retract it. They don't explain it. The brood hormones are not consulting them on the matter.",
+		"text": "\"Stay.\" Pichidi's voice trembles slightly, and takes a breath. \"I am asking.\" They grind their jaw, almost like they're annoyed, yet nervous.",
 		"next": "cuddle_uncertain_choice"
 	},
 	{
@@ -1239,14 +1468,14 @@
 	{
 		"id": "cuddle_stay_01",
 		"type": "narration",
-		"text": "You don't move. They don't move. The sewer water runs its unhurried course in the channel below. Somewhere above, the town presses on without you.",
+		"text": "You sit back down on the cold stone. The sewer water flows steadily. Somewhere far above, the town of Klyftet moves and bustles without you.",
 		"next": "cuddle_stay_02"
 	},
 	{
 		"id": "cuddle_stay_02",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Heee. Bolk who stays.\" Quiet, directed more at the wall than at you.",
+		"text": "\"Heee. Bolk who stays.\"",
 		"next": "cuddle_micro"
 	},
 	{
@@ -1266,7 +1495,7 @@
 	{
 		"id": "cuddle_fall_asleep",
 		"type": "narration",
-		"text": "You settle into the warmth of them — their back against you, or you against them, the arrangement solving itself without discussion. Their skin temperature is lower than yours. The freckles on their shoulder, barely tactile under your hand. The water keeps moving in its channel. The drip from somewhere above. The dark that is its own kind of quiet. You drift.",
+		"text": "You wrap around their frame. Their skin feels like riverbed clay—cool and exceedingly smooth. They press their back into your human heat, letting out a long, slow breath as the dark sewer finally goes entirely quiet. You drift off.",
 		"next": "cuddle_commands"
 	},
 	{
@@ -1281,7 +1510,7 @@
 	{
 		"id": "cuddle_wake_narration",
 		"type": "narration",
-		"text": "The water is louder in the dark. The warmth beside you is gone. The space where they were holds nothing but the faint press of stone and the distant smell of them, already going cold.",
+		"text": "You wake up alone. The warmth beside you is gone. The space where Pichidi slept holds nothing but the chill of the stone and their fading musky scent.",
 		"next": "cuddle_night_choice"
 	},
 	{
@@ -1297,7 +1526,7 @@
 	{
 		"id": "cuddle_leave_night",
 		"type": "narration",
-		"text": "You find the passage by feel and memory. The grate overhead lets in a strip of night sky — no moon yet, just stars. The town above is quiet. You climb back up alone.",
+		"text": "You find the passage out by feel. The grate overhead lets in a strip of starlight. The town above is dead quiet as you climb back to the surface.",
 		"next": "leave_command"
 	},
 
@@ -1305,42 +1534,324 @@
 		"id": "brood_peak_soul_fail",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Different.\" They repeat the word without inflection. \"Water is different every hour. You notice water?\" They don't wait for an answer.",
+		"text": "\"Different. Water is different every hour. You notice water?\"",
 		"next": "main_hub"
 	},
 	{
 		"id": "brood_peak_success",
 		"type": "narration",
-		"text": "You say it carefully — not what they look like, but the quality underneath the look. Something that is not their usual frequency.",
+		"text": "You point out the heavy shift in their demeanor. The strange vibration humming under their skin.",
 		"next": "brood_peak_success_npc"
 	},
 	{
 		"id": "brood_peak_success_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"command": "@add_reputation pichidi 15",
-		"text": "They look at you. Don't answer. The not-answering is itself an answer — the first time they've responded to a direct question by simply holding eye contact and staying with it.",
-		"next": "main_hub"
+		"text": "Pichidi stare at you. They give you a slow blink and what looks like a slight smile.",
+		"next": "brood_peak_nat20"
 	},
 	{
 		"id": "brood_peak_nat20",
 		"type": "npc",
 		"name": "Pichidi",
-		"command": "@add_reputation pichidi 30",
-		"text": "\"...Endah-mjis havet.\"[p]Old Mire. Two words, maybe three, spoken quietly and then not repeated. They don't translate. They don't explain. But they said it to you and not to the wall, which is something.",
-		"next": "main_hub"
+		"command": "@add_reputation pichidi 30 ; @add_horny pichidi 100",
+		"set_flag": "pichidi_brood_final",
+		"flag_type": "knowledge",
+		"text": "\"...Endah-mijis havet.\" They speak the Old Mire words quietly into the damp air. \"...Deh-glim-mijis havet.\" They blink and meet your gaze, their bright blue eyes reflecting the dim light. \"...Nah-bakk-mijis unda havet, bolk.\" Pichidi stays quiet for a moment, before they lean into your space.",
+		"next": "brood_hub"
 	},
+	
+	{
+		"id": "brood_hub_answer",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "With glistening eyes they crawl over to you, a string of drool hanging from their mouth. They press their cool, slick flat chest against yours. \"Heee. What have on mind?\"",
+		"next": "brood_hub"
+	},
+	{
+		"id": "brood_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Kiss them]",
+				"next": "brood_kiss_01"
+			},
+			{
+				"text": "> [Just stay here and hold them]",
+				"next": "brood_cuddle_01"
+			},
+			{
+				"text": "> I'm going to use you however I want.",
+				"next": "brood_free_use_answer"
+			},
+			{
+				"text": "> What is your body telling you to do?",
+				"next": "brood_pichidi_decides"
+			}
+		]
+	},
+	{
+		"id": "brood_free_use_answer",
+		"type": "narration",
+		"text": "Pichidi's eyes widen in surprise as they slump forward, pressing their cool forehead hard against your collarbone. You can hear the slick, wet sound of dripping from their swollen groin onto the damp stone.",
+		"next": "brood_free_use_npc"
+	},
+	{
+		"id": "brood_free_use_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "\"Heee...\" The sound is ragged, completely stripped of its usual mockery. They grind their hips blindly against your thigh. \"Yes. Is on me heavy need. Take you what you want. Do not make me wait for it.\"",
+		"next": "brood_free_use_hub"
+	},
+	{
+		"id": "brood_free_use_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Take their dripping front slit]",
+				"next": "brood_free_use_cloaca"
+			},
+			{
+				"text": "> [Use their mouth]",
+				"next": "brood_free_use_mouth"
+			},
+			{
+				"text": "> [Use their second passage]",
+				"next": "brood_free_use_endah",
+				"show_if": { "has_flag": "pichidi_found_endah" }
+			},
+			{
+				"text": "> [Make them use their hands on you]",
+				"next": "brood_free_use_hj"
+			},
+			{
+				"text": "> Do you have any other holes I can use?",
+				"next": "brood_free_use_holes_answer",
+				"hide_if": "picked"
+			}
+		]
+	},
+	{
+		"id": "brood_free_use_holes_answer",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They lift their head, their pale eyes blown wide with what could only be assumed as hormone-addled confusion. \"Other ways? Have-I the [b]nah[/b] for breeding. Have-I the [b]endah[/b] for waste. Have-I mouth for eating. What more do [b]bolk[/b] need? Are you wanting to [b]bak[/b] my ears?\"",
+		"next": "brood_free_use_hub"
+	},
+	{
+		"id": "brood_kiss_01",
+		"type": "narration",
+		"text": "You cup their cool, mauve-rose face and press your mouth to theirs. Pichidi goes completely rigid. Their lips are firm and taste intensely of raw minerals and copper. They don't kiss back—they clearly have no instinct for it. When you part their lips with your tongue, their sharp, blue-tipped teeth clink against yours in a clumsy, bewildered collision.",
+		"next": "brood_kiss_npc"
+	},
+	{
+		"id": "brood_kiss_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They pull back slightly, their pale eyes darting over your face in pure confusion. \"What data are you taking? Is this mammalian feeding? Put-you your mouth on my bud if fluid is your want. This face-pressing is madness.\"",
+		"next": "brood_hub"
+	},
+
+	{
+		"id": "brood_cuddle_01",
+		"type": "narration",
+		"text": "You ignore their leaking groin and wrap your arms around their compact frame, pulling them flush against your chest. Pichidi stiffens, bracing for a sexual strike that never comes. As your furnace-like human heat bleeds into their clay-cool skin, the violent tension in their muscles begins to dissolve.",
+		"next": "brood_cuddle_npc"
+	},
+	{
+		"id": "brood_cuddle_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They let out a long, ragged exhale that shudders through their whole body. \"Heee...\" They bury their face into the crook of your neck. \"Burn-you so hot. Is heavy, this heat. I stay.\"",
+		"next": "cuddle_commands"
+	},
+
+	{
+		"id": "brood_pichidi_decides",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "Their pale eyes blow wide. A feral, desperate noise escapes their throat. \"Heee. Ask-you the monster what it wants?\" They shove you backward against the wet stone, their cool hands clawing at your clothes. \"Wants-it your heavy [b]deh[/b] to split its [b]nah[/b]. Now.\"",
+		"next": "routeA_undress"
+	},
+
+	{
+		"id": "brood_free_use_cloaca",
+		"type": "narration",
+		"text": "You firmly grab their cool soft hips and turn them around against the wall. Pichidi arch their back slightly and spread their legs as you align your cock, and drive it straight into their dripping slit. The glass-smooth, ribbed walls of their reproductive tract swallow you with a loud, suctioning pop. Their internal muscles clamp down instantly, violently tight and flooded with lubrication.",
+		"next": "brood_cloaca_npc"
+	},
+	{
+		"id": "brood_cloaca_npc",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They bare their blue-tipped teeth, throwing their head back as a raw gasp tears out of them. \"[b]Grat![/b] Yes! Push-you deeper. Fill the [b]nah[/b]. Thick [b]mjisiv[/b]!\"",
+		"next": "brood_cloaca_micro"
+	},
+	{
+		"id": "brood_cloaca_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Finish inside]",
+				"next": "brood_cloaca_climax_inside"
+			},
+			{
+				"text": "> [Finish outside]",
+				"next": "brood_cloaca_climax_outside"
+			}
+		]
+	},
+	{
+		"id": "brood_cloaca_climax_inside",
+		"type": "narration",
+		"command": "@add_reputation pichidi 10",
+		"text": "You hammer into them mercilessly, bottoming out inside their slick guts. You erupt, blasting thick seed deep into their core. Pichidi's entire body locks up in a violent spasm. Their tight hole milks your shaft dry while their swollen bud responds, shooting a hot stream of thin, bright seed all over the stone slabs of the sewer. They sob a feral, breathless sound into the damp air.",
+		"next": "aftermath_entry"
+	},
+	{
+		"id": "brood_cloaca_climax_outside",
+		"type": "narration",
+		"command": "@add_reputation pichidi 10",
+		"text": "You hammer into them mercilessly, bottoming out inside their slick guts. As your balls churn and indicate your impending orgasm, you pull out just in time with a wet noise. Thick strands of your cum spray Pichidi's arched back, painting a sticky trail of white contrasting with their rose-colored skin. Pichidi shudders at the intense heat of your seed on their skin, their whole body trembling. Their swollen bud responds to the stimulation, shooting a hot stream of thin, bright seed all over the stone slabs of the sewer. The breaths of you both echo between the tight walls of the sewer.",
+		"next": "aftermath_entry"
+	},
+
+	{
+		"id": "brood_free_use_mouth",
+		"type": "narration",
+		"text": "You grab the back of their hood, force them to their knees, and shove your cock past their mouth opening. Pichidi takes the brutal intrusion without a single gag. Their cool, ribbed throat clamps around your shaft like a slick vice. They abandon all dignity, sucking with desperate, mechanical suction while their swollen groin leaks bright seed onto the sewer floor.",
+		"next": "brood_mouth_micro"
+	},
+	{
+		"id": "brood_mouth_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Use their throat]",
+				"next": "brood_mouth_climax"
+			}
+		]
+	},
+	{
+		"id": "brood_mouth_climax",
+		"type": "narration",
+		"text": "You thrust deep past their blue-tipped teeth and unload. Thick jets of hot human cum blast the back of their throat. Pichidi's pale eyes water, but they swallow every drop with heavy, rhythmic gulps, draining you completely. When you pull out, a thick string of your seed connects your tip to their chin. They lick it away with predatory satisfaction.",
+		"next": "aftermath_entry"
+	},
+
+	{
+		"id": "brood_free_use_endah",
+		"type": "narration",
+		"text": "With Pichidi's back against you, you drag your glans past the slick, swollen folds of their groin. Once past the outer folds, you stop and prod upwards, above the natural canal. Smaller folds envelop your head, until you feel a wall. As you push carefully, the folds and the wall give way to reveal a second passage. The opening is tight and doesn't welcome your intrusion the same way.",
+		"next": "brood_endah_shock"
+	},
+	{
+		"id": "brood_endah_shock",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They freeze completely. Their cool hands dig frantically into your arms. \"What do-you?\" Their voice spikes in what sounds like alarm. \"Is that the endah! Waste-path! Have proper nah leaking for you right here!\"",
+		"next": "brood_endah_force_choice"
+	},
+	{
+		"id": "brood_endah_force_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Lube up your shaft, then press into their waste-path]",
+				"next": "brood_endah_lube"
+			},
+			{
+				"text": "> [Back out and use their leaking hole instead]",
+				"next": "brood_free_use_cloaca"
+			}
+		]
+	},
+	{
+		"id": "brood_endah_lube",
+		"type": "narration",
+		"text": "You back out slightly to use their natural leaking lube to lubricate your shaft, before pushing in again to find the tight back passage. You anchor their hips and drive your cock forward. Even with the wetness, the resistance is immense. The dense, heavily ridged sphincter fights you for every inch before finally yielding with a tight, suctioning pop. Pichidi lets out a sharp, ragged scream as you bottom out inside their waste-path.",
+		"next": "brood_endah_rhythm"
+	},
+	{
+		"id": "brood_endah_rhythm",
+		"type": "narration",
+		"set_flag": "pichidi_used_endah",
+		"flag_type": "sex",
+		"text": "The crushing grip on your shaft borders on painful. You pull back and slam forward again, setting a punishing, abrasive pace. Pichidi completely falls apart. Their arrogant posture shatters. They begin sobbing short, breathless, feral sounds while their neglected hole involuntarily gushes sweet-smelling fluid down their thighs in sympathetic arousal.",
+		"next": "brood_endah_micro"
+	},
+	{
+		"id": "brood_endah_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Breed the wrong hole]",
+				"next": "brood_endah_climax_inside"
+			},
+			{
+				"text": "> [Pull out and finish on their back]",
+				"next": "brood_cloaca_climax_outside"
+			},
+			{
+				"text": "> [Switch holes and unload into their main passage]",
+				"next": "brood_endah_to_nah_climax_inside"
+			}
+		]
+	},
+	{
+		"id": "brood_endah_climax_inside",
+		"type": "narration",
+		"text": "You pin them flush against you and erupt. Your warm seed flood their dry, tight waste-path. The intense heat of your seed inside a cavity never meant for breeding sends a violent shudder through Pichidi's entire frame. Their crushed sphincter milks your cock dry as their swollen front bud reaches it point-of-no-return, shooting a heavy stream of their own fluids across the stone.",
+		"next": "brood_endah_aftermath"
+	},
+	{
+		"id": "brood_endah_to_nah_climax_inside",
+		"type": "narration",
+		"text": "Just as the familiar sensation of impending orgasm has reached its peak, you pull your length just enough for your glans to leave the tight canal. The sensation of the tight sphincter rolling over your glans sends you just over the edge as you find Pichidi's proper hole and bury your cock within their guts. Pichidi lets out a short noise as the head of your cock starts hitting their bud from the inside, and as your seed fills them up, their orgasm crashes through their body. A fine mist of clear, white fluid sprays from their genitals as you both climax.",
+		"next": "brood_endah_aftermath"
+	},
+	{
+		"id": "brood_endah_aftermath",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They slump against you, their chest heaving, thick white seed leaking slowly from their ruined back passage. When they finally speak, their voice is wrecked and quiet. \"...Are bolk entirely sick in the head. Heee...\" A shudder runs through Pichidi's body. \"Was not bad. Surprised me!\"",
+		"next": "aftermath_entry"
+	},
+
+	{
+		"id": "brood_free_use_hj",
+		"type": "narration",
+		"text": "You grab their wrist and force their clay-cool hand around the blistering heat of your heavy cock. Pichidi hisses through their teeth at the temperature shock, but the brood hormones take over immediately. They lock their dense fingers around your base and begin a brutal, mechanical milking rhythm.",
+		"next": "brood_hj_micro"
+	},
+	{
+		"id": "brood_hj_micro",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Let them milk you dry]",
+				"next": "brood_hj_climax"
+			}
+		]
+	},
+	{
+		"id": "brood_hj_climax",
+		"type": "narration",
+		"text": "The cool, slick friction builds relentlessly. You erupt in their tight grip, blasting thick ropes of hot cum over their knuckles and wrist. Pichidi refuses to let go, dragging their thumb over your leaking slit and milking every last pulse from you. They stare at the violent white mess painting their cool skin, their pale eyes blown wide with heavy fascination.",
+		"next": "aftermath_entry"
+	},
+
 
 	{
 		"id": "cleanup_01",
 		"type": "narration",
-		"text": "You find the passage out and take it. The grate overhead lets in a line of daylight. The sewer falls away behind you.",
+		"text": "You find the passage out and take it. The grate overhead lets in a line of daylight. The damp smell of the sewer falls away.",
 		"next": "leave_command"
 	},
 	{
 		"id": "leave_command",
 		"type": "command",
 		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LEAVE_ENCOUNTER",
-		"end": true
+		"end": false
 	}
 ]

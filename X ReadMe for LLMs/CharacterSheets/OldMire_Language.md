@@ -30,8 +30,10 @@ These verbs are **inflected by whose anatomy is being stimulated**, not by who i
 |------|---------|-----------------|
 | **nah-bac** | Penetrative act (nah being stimulated) | "pussy-fuck" register — used when the receiver's nah is the focus |
 | **deh-bac** | Penetrative act (deh being stimulated) | "cock-fuck" register — used when the active partner's deh is the focus |
+| **endah-bac** | Penetrative act (endah being stimulated) | "ass-fuck / secondary hole-fuck" register — used when the active partner's endah is the focus |
 | **deh-glim** | Oral stimulation of a deh | "cock-suck / cock-lick" register |
-| **nah-glim** | Oral stimulation of a nah | "pussy-lick / cloaca-lick" register |
+| **nah-glim** | Oral stimulation of a nah | "pussy-lick / cloaca-lick / clit-suck" register |
+| **endah-glim** | Oral stimulation of a endah | "ass-lick / hole-lick / rimming" register |
 
 *Note for writers: the inflection is about whose anatomy the action centers, not about who is dominant or receiving. A character giving oral stimulation to a deh uses deh-glim. A character receiving oral stimulation to their nah uses nah-glim.*
 

@@ -99,7 +99,7 @@
 	"id": "btlgt_gift_01",
 	"type": "npc",
 	"name": "Bitalgut",
-	"text": "\"Drink that. Better than nothing. Probably smells like swamp and soot, but it's gonna make your skin tougher.\"\"Maybe not tougher. But it might accustom your body a bit better to this world and it's [b]creetchs.[b]\"",
+	"text": "\"Drink that. Better than nothing. Probably smells like swamp and soot, but it's gonna make your skin tougher.\"\"Maybe not tougher. But it might accustom your body a bit better to this world and it's [b]creetchs.[/b]\"",
 	"clear": true
   },
   {
