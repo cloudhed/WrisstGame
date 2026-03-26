@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="DialogSceneResource" load_steps=15 format=3 uid="uid://dnsn2llylpk6v"]
 
-[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_gmfql"]
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Scripts/entities/CharacterEntry.gd" id="1_gmfql"]
 [ext_resource type="Resource" uid="uid://ci0n5huurah7d" path="res://Characters/Minttärä/minttärä_resource.tres" id="2_bmd4j"]
-[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="3_lti7w"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Scripts/resources/character_resource.gd" id="3_lti7w"]
 [ext_resource type="FontFile" uid="uid://djxswkeeywbsp" path="res://Assets/Fonts/Holidays Homework.ttf" id="4_3ef11"]
 [ext_resource type="Texture2D" uid="uid://cnuviw40mwts6" path="res://Assets/UI/ui backgrounds/jade_wax_tile.png" id="5_j7adi"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="6_u6lvq"]

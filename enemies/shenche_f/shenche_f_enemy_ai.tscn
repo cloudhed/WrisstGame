@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://b7fvqoersgk0w" path="res://Scripts/entities/enemies/runtime/actions/add_player_dud_tiles_action.gd" id="10_dud"]
 [ext_resource type="Resource" uid="uid://cucn0ef2pmi0n" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/dud_naked_fail.tres" id="11_dud_tile"]
 [ext_resource type="Texture2D" uid="uid://crajgrif2lrsa" path="res://Assets/UI/intent/intent_dud.png" id="12_dud_icon"]
-[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="13_intent"]
+[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://Scripts/resources/intent.gd" id="13_intent"]
 
 [sub_resource type="Resource" id="Resource_atk_intent"]
 script = ExtResource("13_intent")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce0lhe1xumbat"]
 
-[ext_resource type="Script" path="res://Code/world_light.gd" id="1_u4jpk"]
+[ext_resource type="Script" path="res://Scripts/world/world_light.gd" id="1_u4jpk"]
 
 [sub_resource type="Gradient" id="Gradient_w08pr"]
 offsets = PackedFloat32Array(0.2, 0.7)

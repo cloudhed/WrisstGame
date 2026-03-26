@@ -1,6 +1,6 @@
 [gd_resource type="GradientTexture1D" load_steps=2 format=3 uid="uid://dmk756pfyisqa"]
 
-[ext_resource type="Gradient" uid="uid://wunjc34q4hf6" path="res://daynightGradient.tres" id="1_cdv0q"]
+[ext_resource type="Gradient" uid="uid://wunjc34q4hf6" path="res://Resources/daynightGradient.tres" id="1_cdv0q"]
 
 [resource]
 gradient = ExtResource("1_cdv0q")

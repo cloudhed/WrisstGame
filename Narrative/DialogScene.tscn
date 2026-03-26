@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://xyxvn2yghvwa"]
 
-[ext_resource type="Script" uid="uid://bjf6b1p05ub8o" path="res://global/dialog_manager.gd" id="1_a8n6i"]
+[ext_resource type="Script" path="res://Scripts/dialog/dialog_manager.gd" id="1_a8n6i"]
 [ext_resource type="Resource" uid="uid://dtar7g2x5j77k" path="res://Narrative/DialogScenes/Locations/Overworld/KemenWoods/kemenwoods_intro.tres" id="2_3jfb8"]
 [ext_resource type="PackedScene" uid="uid://cbpihauqeos3w" path="res://Narrative/zone_container.tscn" id="3_6br8l"]
 [ext_resource type="PackedScene" uid="uid://bsauxo1g05656" path="res://Narrative/mist_container.tscn" id="5_sdxh1"]

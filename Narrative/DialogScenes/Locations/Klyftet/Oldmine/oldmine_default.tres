@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="DialogSceneResource" load_steps=13 format=3 uid="uid://yqlobynkfhgb"]
 
-[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_g2l61"]
-[ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Characters/portrait_entry.gd" id="2_seodj"]
+[ext_resource type="Script" path="res://Scripts/entities/CharacterEntry.gd" id="1_g2l61"]
+[ext_resource type="Script" path="res://Scripts/entities/portrait_entry.gd" id="2_seodj"]
 [ext_resource type="Texture2D" uid="uid://bnrjf4ra0uq0d" path="res://enemies/murisk_n/murisk_n_base.png" id="3_seodj"]
 [ext_resource type="PackedScene" uid="uid://bsi1trks5wwmi" path="res://Narrative/DialogScenes/Locations/Klyftet/Oldmine/Oldmine01Entrance.tscn" id="3_vtq72"]
-[ext_resource type="Script" uid="uid://dh0gvf3ssl3yi" path="res://Characters/portrait_deck.gd" id="4_c4bq1"]
-[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="5_mbp8q"]
+[ext_resource type="Script" path="res://Scripts/entities/portrait_deck.gd" id="4_c4bq1"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Scripts/resources/character_resource.gd" id="5_mbp8q"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="6_q073q"]
 
 [sub_resource type="Resource" id="Resource_rv2ka"]

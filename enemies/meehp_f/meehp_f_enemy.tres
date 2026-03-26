@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://6snc8lofjfxy"]
 
-[ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://custom_resources/enemy_stats.gd" id="1_351ve"]
+[ext_resource type="Script" uid="uid://dlksefa8n68ng" path="res://Scripts/resources/enemy_stats.gd" id="1_351ve"]
 [ext_resource type="PackedScene" uid="uid://br1rla8w2usxt" path="res://enemies/meehp_f/meehp_f_enemy_ai.tscn" id="1_sn2da"]
 [ext_resource type="Texture2D" uid="uid://71lgg7h1dh4h" path="res://enemies/meehp_f/meehp_f_base.png" id="2_sn2da"]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogSceneResource" load_steps=4 format=3 uid="uid://d1srjtrbbu8q2"]
 
-[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_7gpjg"]
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Scripts/entities/CharacterEntry.gd" id="1_7gpjg"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="3_0353h"]
 [ext_resource type="PackedScene" uid="uid://b2dtn2ijqks5c" path="res://Narrative/DialogScenes/Locations/Klyftet/KlyftetExtSouthNight.tscn" id="3_a3yc8"]
 

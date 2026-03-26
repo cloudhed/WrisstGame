@@ -1,7 +1,7 @@
 class_name CombatPlayer
 extends Node2D
 
-const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres")
+const WHITE_SPRITE_MATERIAL := preload("res://Assets/Shaders/white_sprite_material.tres")
 
 @export var stats: CharacterStats : set = set_character_stats
 @export var auto_end_turn_on_zero_stamina: bool = true

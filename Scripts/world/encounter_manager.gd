@@ -10,7 +10,7 @@ signal biome_updated(new_biome: String)
 @export var encounter_tables: Array[EncounterTable] = []
 @onready var whiteout_anim: AnimationPlayer = $AnimationPlayer
 
-const OVERWORLD_SCENE_PATH := "res://overworldNav.tscn"
+const OVERWORLD_SCENE_PATH := "res://Scenes/overworld/overworldNav.tscn"
 const COMBAT_SCENE_PATH := "res://Scenes/combat.tscn"
 const DEFAULT_ENEMY_PATH := "res://enemies/teqqellon/teqqellon_enemy.tres"
 const DEFAULT_ENCOUNTER_TABLE_PATH := "res://Resources/Encounters/tables/default_overworld_encounter_table.tres"

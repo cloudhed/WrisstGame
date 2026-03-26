@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://nan2mnob5ovu"]
+[gd_scene load_steps=8 format=3 uid="uid://n8nvjrr5n0lb"]
 
-[ext_resource type="Script" uid="uid://dvt261b3ogdh6" path="res://Code/encounter_manager.gd" id="1_ty6ug"]
-[ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="2_qalwd"]
-[ext_resource type="Texture2D" uid="uid://wl136llg6fmh" path="res://Assets/Backgrounds/CombatBGDesert.png" id="3_tbk4x"]
+[ext_resource type="Script" path="res://Scripts/world/encounter_manager.gd" id="1_w2vef"]
+[ext_resource type="FontFile" uid="uid://urmfr60o7dhb" path="res://Assets/Fonts/Hyperlegible-Regular.ttf" id="2_et7il"]
+[ext_resource type="Texture2D" uid="uid://wl136llg6fmh" path="res://Assets/Backgrounds/CombatBGDesert.png" id="3_4ssw4"]
 
 [sub_resource type="Animation" id="Animation_f0hu4"]
 length = 0.001
@@ -57,7 +57,7 @@ _data = {
 }
 
 [node name="Manager" type="Node2D"]
-script = ExtResource("1_ty6ug")
+script = ExtResource("1_w2vef")
 
 [node name="ManagerDebug" type="CanvasLayer" parent="."]
 
@@ -72,7 +72,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.249886, 0.286901, 1)
-theme_override_fonts/font = ExtResource("2_qalwd")
+theme_override_fonts/font = ExtResource("2_et7il")
 theme_override_font_sizes/font_size = 16
 text = "%Encounter Label"
 
@@ -80,7 +80,7 @@ text = "%Encounter Label"
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.249886, 0.286901, 1)
-theme_override_fonts/font = ExtResource("2_qalwd")
+theme_override_fonts/font = ExtResource("2_et7il")
 theme_override_font_sizes/font_size = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -91,7 +91,7 @@ libraries = {
 [node name="CombatBgDesert" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(628, 357)
-texture = ExtResource("3_tbk4x")
+texture = ExtResource("3_4ssw4")
 
 [node name="WhiteoutLayer" type="CanvasLayer" parent="."]
 layer = 9

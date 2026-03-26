@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://n2ph37g6j3q7"]
 
-[ext_resource type="Script" uid="uid://gewf0begkw6p" path="res://Code/player_dot.gd" id="1_8covg"]
-[ext_resource type="Script" uid="uid://bje4bfe0omhkk" path="res://Characters/Player/interaction_area_map.gd" id="2_opcru"]
+[ext_resource type="Script" path="res://Scripts/entities/player/player_dot.gd" id="1_8covg"]
+[ext_resource type="Script" path="res://Scripts/entities/player/interaction_area_map.gd" id="2_opcru"]
 [ext_resource type="Texture2D" uid="uid://cl3prflv62lrj" path="res://Assets/Sprites/Map/mapmarkerPlayer.png" id="3_vbhwa"]
 
 [sub_resource type="Gradient" id="Gradient_5v8ck"]

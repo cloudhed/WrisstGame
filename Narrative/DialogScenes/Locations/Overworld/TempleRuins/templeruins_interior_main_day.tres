@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogSceneResource" load_steps=8 format=3 uid="uid://b3bwjbek68ma2"]
 
-[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_utrfn"]
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Scripts/entities/CharacterEntry.gd" id="1_utrfn"]
 [ext_resource type="Resource" uid="uid://08ad6ne6c81r" path="res://Characters/Nautinto/Nautinto_resource.tres" id="2_shjly"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="3_xn3st"]
 [ext_resource type="Resource" uid="uid://byj3dh5vdmbji" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_slidedeck.tres" id="4_khs5k"]

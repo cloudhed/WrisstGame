@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterResource" load_steps=4 format=3 uid="uid://c8r00og7058ck"]
 
 [ext_resource type="Resource" uid="uid://b8wl8a7dnrggi" path="res://Characters/Pichidi/Pichidi_portraits/Pichidi_portrait_deck.tres" id="1_pcxpj"]
-[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="2_k2j23"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Scripts/resources/character_resource.gd" id="2_k2j23"]
 [ext_resource type="AudioStream" uid="uid://c63knhfxqpy3e" path="res://Audio/SFX/Characters/female_short_huh.wav" id="3_pob6j"]
 
 [resource]

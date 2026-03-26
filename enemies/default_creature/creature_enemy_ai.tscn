@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bj44iwbjx87nc" path="res://Assets/UI/intent/intent_block.png" id="7_2b7on"]
 [ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="8_sp5c4"]
 [ext_resource type="Script" uid="uid://ckufpdyo1uynq" path="res://Scripts/entities/enemies/runtime/actions/apply_player_status_action.gd" id="9_status"]
-[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="10_intent"]
+[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://Scripts/resources/intent.gd" id="10_intent"]
 [ext_resource type="Script" uid="uid://4dnis58rkgt4" path="res://Scripts/entities/enemies/runtime/actions/set_player_stamina_action.gd" id="10_stamina"]
 [ext_resource type="Script" uid="uid://b7fvqoersgk0w" path="res://Scripts/entities/enemies/runtime/actions/add_player_dud_tiles_action.gd" id="11_duds"]
 [ext_resource type="Texture2D" uid="uid://caxww5p70f5bf" path="res://Assets/UI/intent/intent_poison.png" id="11_mvd5u"]

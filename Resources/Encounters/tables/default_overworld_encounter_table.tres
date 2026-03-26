@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EncounterTable" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://custom_resources/encounter_table.gd" id="1_table_script"]
+[ext_resource type="Script" path="res://Scripts/resources/encounter_table.gd" id="1_table_script"]
 [ext_resource type="Resource" path="res://Resources/Encounters/entries/default_teqqellon_entry.tres" id="3_teqq_entry"]
 [ext_resource type="Resource" path="res://Resources/Encounters/entries/default_murisk_entry.tres" id="4_murisk_entry"]
 [ext_resource type="Resource" path="res://Resources/Encounters/entries/default_meehp_night_entry.tres" id="5_meehp_night_entry"]

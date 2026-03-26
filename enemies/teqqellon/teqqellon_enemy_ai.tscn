@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_nq0e8"]
 [ext_resource type="Script" uid="uid://bndjoyy1g7g45" path="res://Scripts/entities/enemies/teqqellon/actions/teqqellon_block_action.gd" id="3_vcmfx"]
 [ext_resource type="Script" uid="uid://mce3ckan8cvx" path="res://Scripts/entities/enemies/teqqellon/actions/teqqellon_leech_action.gd" id="4_8b302"]
-[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="4_x7x38"]
+[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://Scripts/resources/intent.gd" id="4_x7x38"]
 [ext_resource type="Script" uid="uid://g7lt5qykb82e" path="res://Scripts/entities/enemies/teqqellon/actions/teqqellon_mega_block_action.gd" id="5_ewsoj"]
 [ext_resource type="AudioStream" uid="uid://cx2wcws563kk4" path="res://Audio/SFX/sfx_hit_low.wav" id="5_pe2td"]
 [ext_resource type="Texture2D" uid="uid://bj44iwbjx87nc" path="res://Assets/UI/intent/intent_block.png" id="6_lert7"]

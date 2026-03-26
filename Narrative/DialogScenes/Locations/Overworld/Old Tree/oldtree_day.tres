@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogSceneResource" load_steps=6 format=3 uid="uid://bvv38ga5puwh2"]
 
-[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_egwhb"]
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Scripts/entities/CharacterEntry.gd" id="1_egwhb"]
 [ext_resource type="Resource" uid="uid://b4ukom1ncm7vs" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_slidedeck.tres" id="3_dwlxe"]
 [ext_resource type="PackedScene" uid="uid://cdbav6g4qvmbp" path="res://Narrative/DialogScenes/Locations/Overworld/Old Tree/OldTree_day.tscn" id="4_e1dv0"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="6_cktrt"]

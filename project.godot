@@ -18,9 +18,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Manager="*res://Code/manager.tscn"
+Manager="*res://Scripts/autoload/manager.tscn"
 Events="*res://Scripts/autoload/events.gd"
-DebugPanel="*res://global/debug_panel.tscn"
+DebugPanel="*res://Scripts/autoload/debug_panel.tscn"
 Shaker="*res://Scripts/autoload/shaker.gd"
 GameState="*res://Scripts/autoload/gamestate.gd"
 AbilitySystem="*res://Scripts/autoload/ability_system.gd"
@@ -28,9 +28,9 @@ SceneManager="*res://Scripts/autoload/scene_manager.gd"
 DialogSceneSelector="*res://Scripts/autoload/dialog_scene_selector.gd"
 PileManager="*res://Scripts/autoload/pile_manager.gd"
 GameUI="*res://Scenes/UI/GameUI.tscn"
-MusicPlayer="*res://Assets/Sprites/Particles/music_player.tscn"
-SFXPlayer="*res://global/sfx_player.tscn"
-AmbiencePlayer="*res://global/ambience_player.tscn"
+MusicPlayer="*res://Scripts/autoload/music_player.tscn"
+SFXPlayer="*res://Scripts/autoload/sfx_player.tscn"
+AmbiencePlayer="*res://Scripts/autoload/ambience_player.tscn"
 
 [debug]
 

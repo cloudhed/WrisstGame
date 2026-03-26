@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bcu5sngbenaeg"]
 
-[ext_resource type="Script" uid="uid://c1orc7drn75i4" path="res://global/audio_player.gd" id="1_alefi"]
+[ext_resource type="Script" uid="uid://c1orc7drn75i4" path="res://Scripts/autoload/audio_player.gd" id="1_alefi"]
 
 [node name="MusicPlayer" type="Node"]
 script = ExtResource("1_alefi")

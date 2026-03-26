@@ -49,7 +49,7 @@ func return_to_previous_scene() -> void:
 	if _previous_scene:
 		get_tree().change_scene_to_packed(_previous_scene)
 	else:
-		get_tree().change_scene_to_file("uid://bsk688e4ksiee") #res://overworldNav.tscn
+		get_tree().change_scene_to_file("uid://bsk688e4ksiee") #res://Scenes/overworld/overworldNav.tscn
 
 
 #func start_combat(enemy_res: Resource, return_scene: PackedScene) -> void:
@@ -83,4 +83,4 @@ func return_to_previous_scene() -> void:
 	#else:
 		#print("⚠️ No previous scene set, fallback to world or main menu.")
 		## Replace this with your actual world scene
-		#get_tree().change_scene_to_file("res://overworldNav.tscn")
+		#get_tree().change_scene_to_file("res://Scenes/overworld/overworldNav.tscn")

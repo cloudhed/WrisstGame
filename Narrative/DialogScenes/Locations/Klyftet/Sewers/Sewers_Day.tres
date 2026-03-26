@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogSceneResource" load_steps=7 format=3 uid="uid://benvf2o2j4eiw"]
 
-[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_ri4dp"]
+[ext_resource type="Script" path="res://Scripts/entities/CharacterEntry.gd" id="1_ri4dp"]
 [ext_resource type="Resource" uid="uid://c8r00og7058ck" path="res://Characters/Pichidi/Pichidi_resource.tres" id="2_8tpos"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="3_hn0cy"]
-[ext_resource type="PackedScene" uid="uid://d1hr06cwe6nkf" path="res://Narrative/DialogScenes/Locations/Klyftet/Sewers/KlyftetIntSewersDay.tscn" id="4_f8hmp"]
+[ext_resource type="PackedScene" uid="uid://d1hr06cwe6nkf" path="res://Narrative/DialogScenes/Locations/Klyftet/Sewers/KlyftetIntSewersDay.tscn" id="4_tddw1"]
 
 [sub_resource type="Resource" id="Resource_66qpk"]
 script = ExtResource("1_ri4dp")
@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://cgc7i24b66gt8"
 
 [resource]
 script = ExtResource("3_hn0cy")
-zone_scene = ExtResource("4_f8hmp")
+zone_scene = ExtResource("4_tddw1")
 music = SubResource("AudioStreamInteractive_mg2vs")
 sfx_library = {}
 dialogue_path = "res://Narrative/DialogScenes/Locations/Klyftet/Sewers/sewers_day.json"

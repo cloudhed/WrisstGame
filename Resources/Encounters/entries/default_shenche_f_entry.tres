@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EncounterEntry" load_steps=3 format=3 uid="uid://fw0ivfqnrhik"]
 
-[ext_resource type="Script" uid="uid://ccchfxpah7h82" path="res://custom_resources/encounter_entry.gd" id="1_entry_script"]
+[ext_resource type="Script" uid="uid://ccchfxpah7h82" path="res://Scripts/resources/encounter_entry.gd" id="1_entry_script"]
 [ext_resource type="Script" uid="uid://b8pjpxowjf87j" path="res://Resources/Items/inventory_item.gd" id="1_hg7ip"]
 
 [resource]

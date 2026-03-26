@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RandomMessagePool" load_steps=2 format=3 uid="uid://b3dbwkdr33mtr"]
 
-[ext_resource type="Script" uid="uid://431wyyo4h25x" path="res://custom_resources/random_message_pool.gd" id="1_7cjin"]
+[ext_resource type="Script" uid="uid://431wyyo4h25x" path="res://Scripts/resources/random_message_pool.gd" id="1_7cjin"]
 
 [resource]
 script = ExtResource("1_7cjin")

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="PortraitDeck" load_steps=7 format=3 uid="uid://cy3lkr63cdtlk"]
 
-[ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Characters/portrait_entry.gd" id="1_ishra"]
+[ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Scripts/entities/portrait_entry.gd" id="1_ishra"]
 [ext_resource type="Texture2D" uid="uid://c1yr1bbr0phlm" path="res://Assets/Backgrounds/EnvExt/klyftet/inn/alley_grate_closed.png" id="2_wvjso"]
 [ext_resource type="Texture2D" uid="uid://cmqmd7u8wb13a" path="res://Assets/Backgrounds/EnvExt/klyftet/inn/alley_grate_open.png" id="3_s6qe0"]
-[ext_resource type="Script" uid="uid://dh0gvf3ssl3yi" path="res://Characters/portrait_deck.gd" id="7_fap4p"]
+[ext_resource type="Script" uid="uid://dh0gvf3ssl3yi" path="res://Scripts/entities/portrait_deck.gd" id="7_fap4p"]
 
 [sub_resource type="Resource" id="Resource_713jv"]
 script = ExtResource("1_ishra")

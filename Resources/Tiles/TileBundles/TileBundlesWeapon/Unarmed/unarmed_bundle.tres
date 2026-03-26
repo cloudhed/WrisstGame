@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TileBundle" load_steps=6 format=3 uid="uid://bt4p7q80j43rt"]
 
 [ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="1_x1pjf"]
-[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="2_bhmkp"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="2_bhmkp"]
 [ext_resource type="Resource" uid="uid://da3xunfxujpsu" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_attack_01.tres" id="3_s2wdj"]
 [ext_resource type="Resource" uid="uid://ck47tcw2hno3a" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_attack_02.tres" id="4_h7817"]
 [ext_resource type="Resource" uid="uid://4hswreosnca7" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_fail.tres" id="5_1w3lp"]

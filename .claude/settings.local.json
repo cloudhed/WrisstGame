@@ -40,7 +40,26 @@
       "Bash(python -c \":*)",
       "Bash(python -c \"import json; json.load\\(open\\(''Narrative/DialogScenes/Locations/Klyftet/Sewers/sewers_day.json''\\)\\); print\\(''Valid JSON''\\)\")",
       "Bash(python validate_sewers.py)",
-      "Bash(find /d/Projects/Godot/wrisst_test -name \"*.gd\" -type f -exec grep -l \"test\\\\|debug\\\\|mock\" {})"
+      "Bash(find /d/Projects/Godot/wrisst_test -name \"*.gd\" -type f -exec grep -l \"test\\\\|debug\\\\|mock\" {})",
+      "Bash(sed 's/.*\\\\.//')",
+      "Bash(ls d:/Projects/Godot/wrisst_test/*.gd d:/Projects/Godot/wrisst_test/*.uid)",
+      "Bash(grep -E \"\\\\.\\(gd|uid|tres\\)$\")",
+      "Bash(ls d:/Projects/Godot/wrisst_test/*.tres d:/Projects/Godot/wrisst_test/*.tscn)",
+      "Bash(mkdir -p \"Scenes/overworld\")",
+      "Bash(mv \"overworldNav.tscn\" \"Scenes/overworld/overworldNav.tscn\")",
+      "Bash(mv \"overworldNav.gdshader\" \"Scenes/overworld/overworldNav.gdshader\")",
+      "Bash(mv \"overworldNav.gdshader.uid\" \"Scenes/overworld/overworldNav.gdshader.uid\")",
+      "Bash(grep -r res://Code/ --include=*.gd --include=*.tscn --include=*.tres --include=*.godot .)",
+      "Bash(rmdir \"Code/CombatCode\" \"Code/DialogCode\" \"Code/Scripts\" \"Code\")",
+      "Bash(rmdir \"global\")",
+      "Bash(mv \"Narrative/JSONs/windbreak_postquest_night.json\" \"Narrative/DialogScenes/Locations/Klyftet/WindbreakInn/windbreak_postquest_night.json\")",
+      "Bash(mv \"Narrative/JSONs/windbreakinn_intro.json\" \"Narrative/DialogScenes/Locations/Klyftet/WindbreakInn/windbreakinn_intro.json\")",
+      "Bash(rmdir \"Narrative/JSONs\")",
+      "Bash(mkdir -p \"Assets/Shaders\")",
+      "Bash(mv Shaders/* \"Assets/Shaders/\")",
+      "Bash(rmdir Shaders)",
+      "Bash(rm \"overworldNav.tscn\")",
+      "Bash(rm \"Assets/Sprites/Particles/music_player.tscn\")"
     ]
   }
 }

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_lrdxd"]
 [ext_resource type="Script" uid="uid://cn0jp8734f31q" path="res://Scripts/entities/enemies/meehp_f/actions/meehp_f_attack_action.gd" id="2_tkr82"]
 [ext_resource type="Texture2D" uid="uid://by3fc41rvysbc" path="res://Assets/UI/intent/intent_attack.png" id="3_ch0wi"]
-[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://custom_resources/intent.gd" id="4_intent"]
+[ext_resource type="Script" uid="uid://brb0lypq5pxrh" path="res://Scripts/resources/intent.gd" id="4_intent"]
 [ext_resource type="Script" uid="uid://dr1as1h20an04" path="res://Scripts/entities/enemies/meehp_f/actions/meehp_f_clawattack_action.gd" id="5_ef0kp"]
 [ext_resource type="Script" uid="uid://c1wf5yx8vcy48" path="res://Scripts/entities/enemies/meehp_f/actions/meehp_f_rage_action.gd" id="6_emfcc"]
 [ext_resource type="Texture2D" uid="uid://dhmkraw3jt45h" path="res://Assets/UI/intent/intent_special.png" id="7_88v6k"]

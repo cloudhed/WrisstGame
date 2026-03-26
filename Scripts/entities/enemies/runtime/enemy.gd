@@ -2,7 +2,7 @@ class_name Enemy
 extends Area2D
 
 #const ARROW_OFFSET := 0
-const WHITE_SPRITE_MATERIAL := preload("res://Shaders/white_sprite_material.tres")
+const WHITE_SPRITE_MATERIAL := preload("res://Assets/Shaders/white_sprite_material.tres")
 
 @export var stats: EnemyStats : set = set_enemy_stats
 
@@ -42,7 +42,6 @@ func set_current_action(value: EnemyAction) -> void:
 
 func set_enemy_stats(value: EnemyStats) -> void:
 	if value == null:
-		push_error("Enemy stats resource is missing on %s. Check the assigned enemy .tres and any nested slide/resource references." % name)
 		stats = null
 		return
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://lqncldxuuxmr"]
 
-[ext_resource type="Script" uid="uid://c1orc7drn75i4" path="res://global/audio_player.gd" id="1_3ar0a"]
+[ext_resource type="Script" uid="uid://c1orc7drn75i4" path="res://Scripts/autoload/audio_player.gd" id="1_3ar0a"]
 
 [node name="SFXPlayer" type="Node"]
 script = ExtResource("1_3ar0a")

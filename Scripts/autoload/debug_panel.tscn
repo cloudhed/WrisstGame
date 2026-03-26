@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://p420ju4prhr3"]
+[gd_scene load_steps=3 format=3 uid="uid://d2x4i21774ytb"]
 
-[ext_resource type="Theme" uid="uid://b83wp6l46xi84" path="res://Themes/GameUI_theme.tres" id="1_lykws"]
-[ext_resource type="Script" uid="uid://bivey5rpiuku5" path="res://global/debug_panel.gd" id="1_uslt5"]
+[ext_resource type="Theme" uid="uid://b83wp6l46xi84" path="res://Themes/GameUI_theme.tres" id="1_cvteg"]
+[ext_resource type="Script" path="res://Scripts/autoload/debug_panel.gd" id="2_letyd"]
 
 [node name="DebugPanel" type="Control"]
 layout_mode = 3
@@ -11,8 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_lykws")
-script = ExtResource("1_uslt5")
+theme = ExtResource("1_cvteg")
+script = ExtResource("2_letyd")
 
 [node name="DebugUI" type="CanvasLayer" parent="."]
 layer = 10

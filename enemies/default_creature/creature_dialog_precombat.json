@@ -823,17 +823,17 @@
 			{
 				"text": "> Fuck its tied-up ass",
 				"next": "creature_capture_sex_male_anal_start",
-		        "show_if": { "player_gender": "male" }
+				"show_if": { "player_gender": "male" }
 			},
 			{
 				"text": "> Ride the tied-up dick",
 				"next": "creature_capture_sex_female_ride_start",
-		        "show_if": { "player_gender": "female" }
+				"show_if": { "player_gender": "female" }
 			},
 			{
 				"text": "> Force your cock into its mouth",
 				"next": "creature_capture_sex_top_oral_start",
-		        "show_if": { "player_gender": "male" }
+				"show_if": { "player_gender": "male" }
 			},
 			{
 				"text": "> Suck its dick while it's bound",

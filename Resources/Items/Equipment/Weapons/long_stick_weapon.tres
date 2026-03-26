@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_1gw54"]
 [ext_resource type="Texture2D" uid="uid://cir4vun6ndv7x" path="res://Assets/Sprites/Items/items_weapon_longstick_icon.png" id="1_iqfoy"]
 [ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="2_757jb"]
-[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://custom_resources/tile.gd" id="3_beg6s"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="3_beg6s"]
 [ext_resource type="Resource" uid="uid://2ypvnstw0l5s" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_smack.tres" id="4_beg6s"]
 [ext_resource type="Resource" uid="uid://chgvxbs5v02nn" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_2hsmack.tres" id="5_iqfoy"]
 [ext_resource type="Resource" uid="uid://4hswreosnca7" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_fail.tres" id="7_dmi4f"]

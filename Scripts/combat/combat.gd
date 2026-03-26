@@ -45,7 +45,6 @@ func setup_with_enemy(enemy_res: Resource) -> void:
 func _ready() -> void:
 	combat_ui.visible = false
 	$IntentUI.visible = false
-
 	if override_enemy_resource == null and Manager.has_method("consume_selected_enemy_resource"):
 		var encounter_enemy: EnemyStats = Manager.consume_selected_enemy_resource()
 		if encounter_enemy != null:
@@ -163,6 +162,7 @@ func _on_player_ready(p: CombatPlayer) -> void:
 	combat_ui.char_stats = new_stats
 
 	p.stats = new_stats
+	p.visible = false
 	player = p
 	_bind_status_debug_to_stats(new_stats)
 
@@ -170,6 +170,7 @@ func start_combat(stats: CharacterStats) -> void:
 	print("⚔️ Combat has started!")
 	combat_ui.visible = true
 	$IntentUI.visible = true
+	player.visible = true
 	_bind_status_debug_to_stats(stats)
 
 	MusicPlayer.play(music, true)

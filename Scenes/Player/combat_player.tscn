@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://by7co2c71yp2n"]
 
-[ext_resource type="Script" uid="uid://jdvrbblc1rew" path="res://Scenes/Player/combat_player.gd" id="1_duq1a"]
+[ext_resource type="Script" uid="uid://jdvrbblc1rew" path="res://Scripts/entities/player/combat_player.gd" id="1_duq1a"]
 [ext_resource type="Texture2D" uid="uid://nygmvi43m6bm" path="res://Assets/Sprites/combat_player_blur.png" id="2_b84tv"]
 
 [node name="CombatPlayer" type="Node2D" groups=["player"]]

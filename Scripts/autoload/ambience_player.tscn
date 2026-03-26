@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://disw4kify850u"]
+[gd_scene load_steps=2 format=3 uid="uid://bclthfc43r6vm"]
 
-[ext_resource type="Script" uid="uid://c1orc7drn75i4" path="res://global/audio_player.gd" id="1_vtumv"]
+[ext_resource type="Script" path="res://Scripts/autoload/audio_player.gd" id="1_inadv"]
 
 [node name="AmbiencePlayer" type="Node"]
-script = ExtResource("1_vtumv")
+script = ExtResource("1_inadv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"ambience"

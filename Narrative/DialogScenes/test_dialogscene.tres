@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogSceneResource" load_steps=4 format=3 uid="uid://ckp27gnkxlokl"]
 
-[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="1_nsls1"]
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Scripts/entities/CharacterEntry.gd" id="1_nsls1"]
 [ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="2_w3j54"]
 [ext_resource type="PackedScene" uid="uid://b42bkqfkcykpb" path="res://enemies/teqqellon/teqqellon_slides/sd_teqqellon_init_pen.tscn" id="3_w3j54"]
 
