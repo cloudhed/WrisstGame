@@ -59,7 +59,7 @@ func _ready():
 
 	GameState.inventory_changed.connect(_on_inventory_changed)
 	GameState.money_changed.connect(_on_money_changed)
-	GameState.reputation_changed.connect(_on_reputation_changed)
+
 	GameState.fallback_equipped.connect(_update_equipped_labels)
 	print("✅ Connected fallback_equipped to _update_equipped_labels")
 

@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=16 format=3 uid="uid://dtar7g2x5j77k"]
+
+[ext_resource type="Script" uid="uid://cgc7i24b66gt8" path="res://Characters/CharacterEntry.gd" id="2_4xgn3"]
+[ext_resource type="Resource" uid="uid://bbkelqtijglk7" path="res://Characters/Bitalgut/bitalgut_resource.tres" id="3_qrdop"]
+[ext_resource type="Script" uid="uid://bbcjegrw16og0" path="res://Characters/portrait_entry.gd" id="4_ymjom"]
+[ext_resource type="Texture2D" uid="uid://ctlbbo2eamynl" path="res://Characters/Bitalgut/Bitalgut_portraits/bitalgut_fire_bag.png" id="5_l0ara"]
+[ext_resource type="Script" uid="uid://dh0gvf3ssl3yi" path="res://Characters/portrait_deck.gd" id="6_jsnbr"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Characters/default/character_resource.gd" id="7_jmusa"]
+[ext_resource type="AudioStream" uid="uid://eysphlhhq5tn" path="res://Audio/Music/250413 Wrisst - Bitalgut.mp3" id="8_if3c0"]
+[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="9_evjoc"]
+[ext_resource type="PackedScene" uid="uid://cuqd2i7b38vfq" path="res://Narrative/DialogScenes/Locations/Overworld/KemenWoods/KemenWoods_night.tscn" id="9_tad1y"]
+
+[sub_resource type="Resource" id="Resource_3etik"]
+script = ExtResource("2_4xgn3")
+id = &"Bitalgut"
+character_resource = ExtResource("3_qrdop")
+metadata/_custom_type_script = "uid://cgc7i24b66gt8"
+
+[sub_resource type="Resource" id="Resource_h7bum"]
+script = ExtResource("4_ymjom")
+id = &"fire_bag"
+portrait = ExtResource("5_l0ara")
+metadata/_custom_type_script = "uid://bbcjegrw16og0"
+
+[sub_resource type="Resource" id="Resource_iue31"]
+script = ExtResource("6_jsnbr")
+portraits = Array[ExtResource("4_ymjom")]([SubResource("Resource_h7bum")])
+metadata/_custom_type_script = "uid://dh0gvf3ssl3yi"
+
+[sub_resource type="Resource" id="Resource_25iut"]
+script = ExtResource("7_jmusa")
+name = &"Bitalgut\'s bag"
+display_name = "Bitalgut's bag"
+portrait = SubResource("Resource_iue31")
+color = Color(1, 1, 1, 1)
+speech_bubble_color = null
+speech_bubble_font_size = 18
+stats = {}
+default_flags = {}
+metadata/_custom_type_script = "uid://dqihe2ny7afn"
+
+[sub_resource type="Resource" id="Resource_btseo"]
+script = ExtResource("2_4xgn3")
+id = &"Bitalgut\'s bag"
+character_resource = SubResource("Resource_25iut")
+metadata/_custom_type_script = "uid://cgc7i24b66gt8"
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_mg2vs"]
+clip_count = 1
+clip_0/name = &"bitalgut_music"
+clip_0/stream = ExtResource("8_if3c0")
+clip_0/auto_advance = 0
+
+[resource]
+script = ExtResource("9_evjoc")
+zone_scene = ExtResource("9_tad1y")
+music = SubResource("AudioStreamInteractive_mg2vs")
+sfx_library = {}
+dialogue_path = "res://Narrative/DialogScenes/Locations/Overworld/KemenWoods/kemenwoods_intro.json"
+characters = Array[ExtResource("2_4xgn3")]([SubResource("Resource_3etik"), SubResource("Resource_btseo")])
+flags_required = Array[String]([])
+flags_set_on_start = {}
+metadata/_custom_type_script = "uid://5m151tkuttgt"

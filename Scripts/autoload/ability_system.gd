@@ -19,6 +19,9 @@ var assignments: Dictionary = {
 ## Full breakdown of the most recent check. Empty until the first roll.
 var last_roll: Dictionary = {}
 
+## Debug roll override: "rng" = normal, "nat1" = always 1, "nat20" = always 20.
+var roll_override: String = "rng"
+
 
 ## Set one ability High, one Low; the third becomes Mid automatically.
 func assign_abilities(high: String, low: String) -> void:
@@ -63,7 +66,11 @@ func resolve_ability(ability_name: String) -> String:
 ## Accepts real ability names, tier aliases ("high"/"mid"/"low"), or "flat" (no score added).
 func perform_check(ability_name: String, dc: int, bonus: int = 0) -> Dictionary:
 	var resolved: String = resolve_ability(ability_name)
-	var roll: int  = randi_range(1, 20)
+	var roll: int
+	match roll_override:
+		"nat1":  roll = 1
+		"nat20": roll = 20
+		_:       roll = randi_range(1, 20)
 	var score: int = 0 if resolved == "flat" else get_score(resolved)
 	var total: int = roll + score + bonus
 	var nat_20: bool = roll == 20

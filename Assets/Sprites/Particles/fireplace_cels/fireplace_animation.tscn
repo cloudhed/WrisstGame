@@ -1,0 +1,71 @@
+[gd_scene load_steps=15 format=3 uid="uid://dtqefo7iafxn8"]
+
+[ext_resource type="Texture2D" uid="uid://dph5wvt53bwqy" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0000.png" id="1_5eevx"]
+[ext_resource type="Texture2D" uid="uid://bq66nmjvauw0o" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0001.png" id="2_xr1qr"]
+[ext_resource type="Texture2D" uid="uid://bunepi75mjoo7" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0002.png" id="3_t81jm"]
+[ext_resource type="Texture2D" uid="uid://dgymauupvs72m" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0003.png" id="4_peyt2"]
+[ext_resource type="Texture2D" uid="uid://c2biu7qgnp4b5" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0004.png" id="5_b1iy3"]
+[ext_resource type="Texture2D" uid="uid://dxckonqpvgti4" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0005.png" id="6_sx7oi"]
+[ext_resource type="Texture2D" uid="uid://jg1ryu06uk1q" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0006.png" id="7_8pqcs"]
+[ext_resource type="Texture2D" uid="uid://bvlk1uiwqnew8" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0007.png" id="8_tb0n7"]
+[ext_resource type="Texture2D" uid="uid://bm1icejivtm8j" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0008.png" id="9_k6mtd"]
+[ext_resource type="Texture2D" uid="uid://5spy3arw6vtx" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0009.png" id="10_pjgva"]
+[ext_resource type="Texture2D" uid="uid://ndsbdlp0s3ud" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0010.png" id="11_i7bwo"]
+[ext_resource type="Texture2D" uid="uid://dxrnvwqc8mmrx" path="res://Assets/Sprites/Particles/fireplace_cels/fire_0011.png" id="12_0nyn1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cmg33"]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndxf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5eevx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xr1qr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t81jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_peyt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b1iy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sx7oi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8pqcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tb0n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_k6mtd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pjgva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i7bwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0nyn1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="FireplaceAnimation" type="AnimatedSprite2D"]
+material = SubResource("CanvasItemMaterial_cmg33")
+sprite_frames = SubResource("SpriteFrames_ndxf3")
+frame_progress = 0.0389308
+offset = Vector2(8.095, -130)

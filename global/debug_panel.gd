@@ -16,6 +16,10 @@ func _ready():
 	_build_ability_buttons()
 
 
+## Roll override toggle buttons — keyed by mode string.
+var _roll_buttons: Dictionary = {}
+
+
 func _build_ability_buttons() -> void:
 	var container: VBoxContainer = VBoxContainer.new()
 	container.position = Vector2(1602, 650)
@@ -39,6 +43,49 @@ func _build_ability_buttons() -> void:
 			btn.add_theme_color_override("font_hover_color", col.lightened(0.25))
 			btn.add_theme_color_override("font_pressed_color", col.darkened(0.2))
 			row.add_child(btn)
+
+	# --- Roll override row ---
+	var roll_row: HBoxContainer = HBoxContainer.new()
+	container.add_child(roll_row)
+
+	var roll_lbl: Label = Label.new()
+	roll_lbl.text = "Roll:"
+	roll_lbl.custom_minimum_size = Vector2(48, 0)
+	roll_row.add_child(roll_lbl)
+
+	var modes: Array[Array] = [
+		["nat1",  "Nat1",  Color(0.9, 0.2, 0.2)],
+		["rng",   "RNG",   Color(0.8, 0.8, 0.8)],
+		["nat20", "Nat20", Color(0.2, 0.9, 0.2)],
+	]
+	for mode_data: Array in modes:
+		var mode: String  = mode_data[0]
+		var label: String = mode_data[1]
+		var col: Color    = mode_data[2]
+		var btn: Button = Button.new()
+		btn.text = label
+		btn.pressed.connect(_on_roll_override.bind(mode))
+		btn.add_theme_color_override("font_color", col)
+		btn.add_theme_color_override("font_hover_color", col.lightened(0.25))
+		btn.add_theme_color_override("font_pressed_color", col.darkened(0.2))
+		roll_row.add_child(btn)
+		_roll_buttons[mode] = btn
+
+	_refresh_roll_buttons()
+
+
+func _on_roll_override(mode: String) -> void:
+	AbilitySystem.roll_override = mode
+	_refresh_roll_buttons()
+
+
+func _refresh_roll_buttons() -> void:
+	var active_mode: String = AbilitySystem.roll_override
+	for mode: String in _roll_buttons:
+		var btn: Button = _roll_buttons[mode]
+		var is_active: bool = mode == active_mode
+		btn.flat = not is_active
+		btn.disabled = is_active
 
 
 func _on_ability_override(ability: String, tier: String) -> void:

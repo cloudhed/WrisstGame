@@ -39,7 +39,8 @@
       "Bash(python -c \"import json; data=json.load\\(open\\(''Narrative/DialogScenes/Locations/Klyftet/Sewers/sewers_day.json'', encoding=''utf-8''\\)\\); ids=[n.get\\(''id''\\) for n in data if n.get\\(''id''\\)]; print\\(f''Valid JSON. {len\\(ids\\)} nodes with IDs.''\\)\")",
       "Bash(python -c \":*)",
       "Bash(python -c \"import json; json.load\\(open\\(''Narrative/DialogScenes/Locations/Klyftet/Sewers/sewers_day.json''\\)\\); print\\(''Valid JSON''\\)\")",
-      "Bash(python validate_sewers.py)"
+      "Bash(python validate_sewers.py)",
+      "Bash(find /d/Projects/Godot/wrisst_test -name \"*.gd\" -type f -exec grep -l \"test\\\\|debug\\\\|mock\" {})"
     ]
   }
 }

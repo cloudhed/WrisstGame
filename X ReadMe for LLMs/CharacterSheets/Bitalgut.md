@@ -91,7 +91,7 @@ Small and compact. Smooth amphibian-dark skin, flecked with old scars or moss-st
 ## Sexual Tone
 <!-- TODO: confirm whether Bitalgut is a sexual partner option, and fill in if so -->
 
-If applicable: He would approach it the same way he approaches everything — curious, no ceremony, efficient. Would probably initiate sideways: something that could be read as incidental until it clearly isn't. Would not stay the night. Would not name what happened. Might hand you something useful on the way out.
+N/A.
 
 ## Writing Notes
 - His warmth is always dressed as practicality. He does kind things and immediately reframes them as convenience or curiosity.
