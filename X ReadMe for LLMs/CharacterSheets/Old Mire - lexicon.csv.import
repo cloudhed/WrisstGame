@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bp44sknljnrlb"
+
+[deps]
+
+files=["res://X ReadMe for LLMs/CharacterSheets/Old Mire - lexicon.Category.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - lexicon.Direct Translation.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - lexicon.Context/Notes.translation"]
+
+source_file="res://X ReadMe for LLMs/CharacterSheets/Old Mire - lexicon.csv"
+dest_files=["res://X ReadMe for LLMs/CharacterSheets/Old Mire - lexicon.Category.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - lexicon.Direct Translation.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - lexicon.Context/Notes.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -32,7 +32,7 @@ Their body feels lighter than it looks until they move with intent, at which poi
 
 **The "heee" tic:** Surfaces when they're self-satisfied, when they're about to say something cutting, or occasionally after their own punchline. It is not nervous laughter. It reads closer to a cat's slow blink.
 
-**Vocabulary:** Pichidi speaks Old Mire — the same language layer Bitalgut uses. They do not reach for common-tongue equivalents. For the full glossary, see [OldMire_Language.md](OldMire_Language.md). Key terms they use regularly: *deh* (penetrating genital), *nah* (receiving genital), *endah* (secondary receiving hole), *mjisiv* (seed/milt), *nah-bac / deh-bac* (penetrative act verbs), *deh-glim / nah-glim* (oral stimulation verbs), *bolk* (fool, idiot), *grat / shigrat* (expletives).
+**Vocabulary:** Pichidi speaks Old Mire — the same language layer Bitalgut uses. They do not reach for common-tongue equivalents. For the full glossary, see [OldMire_Language.md](OldMire_Language.md). Key terms they use regularly: *deh* (penetrating genital), *nah* (receiving genital), *endah* (secondary receiving hole), *mjisan* (seed/milt), *nah-bac / deh-bac* (penetrative act verbs), *deh-glim / nah-glim* (oral stimulation verbs), *bolk* (fool, idiot), *grat / shigrat* (expletives).
 
 **Words they never use:** Apologies. Common-tongue anatomical terms. Anything that performs politeness they don't feel.
 

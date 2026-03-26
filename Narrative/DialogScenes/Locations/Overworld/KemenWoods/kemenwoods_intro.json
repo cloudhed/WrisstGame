@@ -131,6 +131,13 @@
 	"id": "btlgt_exposition_02_narr_2",
 	"type": "narration",
 	"text": "He seems to narrate to himself.",
+	"next": "btlgt_oldmire_mutter"
+  },
+  {
+	"id": "btlgt_oldmire_mutter",
+	"type": "npc",
+	"name": "Bitalgut",
+	"text": "\"Havet-ni moi. Oshet-ni su-sui. Ucruss... mi-la halla.\"",
 	"next": "btlgt_show_portrait_squat_talk"
   },
   {

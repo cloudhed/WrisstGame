@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c10uw74ki1u8o"
+
+[deps]
+
+files=["res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Category.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Linguistic Marker.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Description.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Key Rule.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Context/Note.translation"]
+
+source_file="res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.csv"
+dest_files=["res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Category.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Linguistic Marker.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Description.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Key Rule.translation", "res://X ReadMe for LLMs/CharacterSheets/Old Mire - rules & syntax.Context/Note.translation"]
+
+[params]
+
+compress=true
+delimiter=0

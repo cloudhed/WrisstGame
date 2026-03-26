@@ -343,13 +343,7 @@
 				"check": { "ability": "soul", "dc": 9 },
 				"on_success": "brood_peak_success",
 				"on_fail": "brood_peak_soul_fail",
-				"on_nat20": "brood_peak_nat20"
-			},
-			{
-				"text": "> [Don't move yet]",
-				"next": "cuddle_entry_narr",
-				"show_if": { "has_flag": "pichidi_sex_v2" },
-				"hide_if": { "has_flag": "pichidi_cuddled" }
+				"on_nat20": "brood_peak_success"
 			},
 			{
 				"text": "> [Lay them down gently]",
@@ -455,7 +449,7 @@
 		"type": "npc",
 		"name": "Pichidi",
 		"command": "@add_horny pichidi 5",
-		"text": "\"Nöteri innkeeper.\" The corners of their mouth flatten. \"He knows something walks his pipes. Heee. He does not come down to look. Smart of him. Might trick him for his [b]mjisiv.[/b]\"",
+		"text": "\"Nöteri innkeeper.\" The corners of their mouth flatten. \"He knows something walks his pipes. Heee. He does not come down to look. Smart of him. Might trick him for his [b]mjisan.[/b]\"",
 		"next": "q_anyone_hub"
 	},
 	{
@@ -556,7 +550,7 @@
 		"id": "v1_hj_ask_first",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Fine.\" They stare at you, profoundly unbothered by the administrative delay. \"Touch-I your [b]deh[/b] now. Yes?\"",
+		"text": "\"Fine.\" They stare at you, profoundly unbothered by the administrative delay. \"Touch-mi [b]deh[/b]-ni now. Yes?\"",
 		"next": "v1_hj_ask_first_choice"
 	},
 	{
@@ -598,7 +592,7 @@
 		"id": "v1_hj_pichidi_react_02",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "Pichidi's blue eyes widen as they lift your length and study your testicles. \"Heee... This where [b]mjisiv[/b] lives. Yes?\" Their nostrils flare as they seem to take in the scent emanating from your balls. \"Good. Give-you [b]mjisiv[/b] to me, a lot. Am curious.\"",
+		"text": "Pichidi's blue eyes widen as they lift your length and study your testicles. \"Heee... This where [b]mjisan[/b] lives. Yes?\" Their nostrils flare as they seem to take in the scent emanating from your balls. \"[b]Oshet[/b]-ni moi.\" They inhale again. \"Give-you [b]mjisan[/b] to me, a lot. Am curious.\"",
 		"next": "v1_hj_micro_01"
 	},
 	{
@@ -641,7 +635,7 @@
 		"id": "v1_hj_climax_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "They examine the mess painting their hand with interest. \"Heee. [b]Mjisiv[/b] very warm, and so thick.\" They wipe the bulk of your seed onto the wet stone with a casual flick. \"More thick than mine.\" With a nonchalant gesture Pichidi gives their fingers a quick sniff. \"You come back more. Is on me more curiosity about this stranger [b]deh[/b] and more [b]mjisiv.[/b]\"",
+		"text": "They examine the mess painting their hand with interest. \"Heee. [b]Mjisan[/b] very warm, and so thick.\" They wipe the bulk of your seed onto the wet stone with a casual flick. \"More thick than mine.\" With a nonchalant gesture Pichidi gives their fingers a quick sniff. \"[b]Oshet[/b] ash.\" They glance back at you. \"You come back more. Is on me more curiosity about this stranger [b]deh[/b] and more [b]mjisan.[/b]\"",
 		"next": "aftermath_entry"
 	},
 	{
@@ -755,14 +749,14 @@
 		"id": "q_ichmi_biology_mammal",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Female.\" They spit the word out like it tastes foul. \"Warm-blood words. Do not put your small boxes on me. Have-I [b]deh[/b] that makes [b]mjisiv[/b] for seasons. Then it sleeps. Then [b]nah[/b] wakes up, slick and wet, and desires to be filled. Simple.\"",
+		"text": "\"Female.\" They spit the word out like it tastes foul. \"Warm-blood words. Do not put your small boxes on me. Have-I [b]deh[/b] that makes [b]mjisan[/b] for seasons. Then it sleeps. Then [b]nah[/b] wakes up, slick and wet, and desires to be filled. Simple.\"",
 		"next": "q_ichmi_biology_02"
 	},
 	{
 		"id": "q_ichmi_biology_tide",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Brings the brood.\" They say it with a mix of reverence and annoyance. \"My [b]deh[/b] sleeps soon. Stops making [b]mjisiv[/b]. Then [b]nah[/b] wakes up and needs seed. Is what it is.\"",
+		"text": "\"Brings the brood.\" They say it with a mix of reverence and annoyance. \"My [b]deh[/b] sleeps soon. Stops making [b]mjisan[/b]. Then [b]nah[/b] wakes up and needs seed. Is what it is.\"",
 		"next": "q_ichmi_biology_02"
 	},
 	{
@@ -785,7 +779,7 @@
 		"id": "q_ichmi_pregnancy_02",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "\"Your [b]mjisiv[/b] is thick. Much warm and hot. Satisfies the [b]nah[/b]. But is not Ichmi. Does not take root. I do not become round and heavy from you.\"",
+		"text": "\"Your [b]mjisan[/b] is thick. Much warm and hot. Satisfies the [b]nah[/b]. But is not Ichmi. Does not take root. I do not become round and heavy from you.\"",
 		"next": "q_ichmi_pregnancy_03"
 	},
 	{
@@ -1416,7 +1410,7 @@
 	{
 		"id": "routeD_climax_outside",
 		"type": "narration",
-		"text": "You pull out at the last second, spilling thick jets of your white seed across their flat, mauve-rose chest and toned stomach. Pichidi shudders violently at the contrasting heat. They don't push you away. They stay flat on their back, breathing heavily, letting your weight and your mess keep them completely pinned to the floor as your cum slowly drips down the sides of their torso only the stone.",
+		"text": "You pull out at the last second, spilling thick jets of your white seed across their flat, mauve-rose chest and toned stomach. Pichidi shudders violently at the contrasting heat. They don't push you away. They stay flat on their back, breathing heavily, letting your weight and your mess keep them completely pinned to the floor as your cum slowly drips down the sides of their torso onto the stone.",
 		"next": "aftermath_entry"
 	},
 
@@ -1508,31 +1502,88 @@
 		"id": "aftermath_v1",
 		"type": "narration",
 		"text": "The space settles back into damp stone and flowing water. Pichidi steps back to their original distance, looking toward the dark tunnel.",
-		"next": "main_hub"
+		"next": "pichidi_post_sex_departure"
 	},
 	{
 		"id": "aftermath_v2",
 		"type": "narration",
 		"text": "They don't move away as quickly as last time. They linger near you in the cooling sewer air, watching the water flow.",
-		"next": "main_hub"
+		"next": "pichidi_post_sex_departure"
 	},
 	{
 		"id": "aftermath_v3",
 		"type": "narration",
 		"text": "They stay extremely close. It is a stark difference from their usual need for space. Their cool skin practically brushes your arm.",
-		"next": "main_hub"
+		"next": "pichidi_post_sex_departure"
 	},
 	{
 		"id": "aftermath_v4",
 		"type": "narration",
 		"text": "The quiet is thick. The dynamic has shifted past the point of casual rutting, settling into an undeniable, instinctual gravity.",
-		"next": "main_hub"
+		"next": "aftermath_cuddle_choice"
 	},
 	{
 		"id": "aftermath_v5",
 		"type": "narration",
 		"text": "The quiet is thick. The dynamic has shifted past the point of casual rutting, settling into an undeniable, instinctual gravity.",
-		"next": "main_hub"
+		"next": "aftermath_cuddle_choice"
+	},
+	{
+		"id": "aftermath_cuddle_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Don't move yet]",
+				"next": "cuddle_entry_narr"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "pichidi_post_sex_departure"
+			}
+		]
+	},
+	{
+		"id": "pichidi_post_sex_departure",
+		"type": "npc",
+		"name": "Pichidi",
+		"command": "@SET_TIME night",
+		"text": "They glance up toward the grate where the thin light has now faded into deep blue. \"Already dark out? Heee, time for work. See you around, [b]havet[/b].\"",
+		"next": "post_sex_hub_intro"
+	},
+	{
+		"id": "post_sex_hub_intro",
+		"type": "narration",
+		"text": "Pichidi slips away into the deeper, darker passages of the sewer without another sound, leaving you alone in the damp corridor.",
+		"next": "pichidi_post_sex_hide"
+	},
+	{
+		"id": "pichidi_post_sex_hide",
+		"type": "command",
+		"command": "@HIDE_PORTRAIT",
+		"clear": true,
+		"next": "post_sex_hub"
+	},
+
+	{
+		"id": "post_sex_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Inspect the boxes]",
+				"next": "post_sex_inspect_boxes",
+				"hide_if": "picked"
+			},
+			{
+				"text": "> [Leave]",
+				"next": "leave_command"
+			}
+		]
+	},
+	{
+		"id": "post_sex_inspect_boxes",
+		"type": "narration",
+		"text": "You peer into the discarded wooden crates near their makeshift camp. They're filled with strange, silvery fish that smell faintly of the lake above. Selenna's sjölfisk, most likely. It seems Pichidi has been raiding the docks while everyone sleeps.",
+		"next": "post_sex_hub"
 	},
 
 	{
@@ -1563,8 +1614,8 @@
 	{
 		"id": "cuddle_leave_route",
 		"type": "narration",
-		"text": "You pull yourself together and step away. They don't stop you or say another word. When you glance back, they are still watching the water.",
-		"next": "cleanup_01"
+		"text": "You pull yourself together and step away. They don't stop you or say another word, simply rising to their feet instead.",
+		"next": "pichidi_post_sex_departure"
 	},
 	{
 		"id": "cuddle_uncertain",
@@ -1629,7 +1680,7 @@
 	{
 		"id": "cuddle_commands",
 		"type": "command",
-		"command": "@SET_TIME night",
+		"command": "@SET_TIME night ; @HIDE_PORTRAIT",
 		"set_flag": "pichidi_cuddled",
 		"flag_type": "knowledge",
 		"clear": true,
@@ -1639,23 +1690,7 @@
 		"id": "cuddle_wake_narration",
 		"type": "narration",
 		"text": "You wake up alone. The warmth beside you is gone. The space where Pichidi slept holds nothing but the chill of the stone and their fading musky scent.",
-		"next": "cuddle_night_choice"
-	},
-	{
-		"id": "cuddle_night_choice",
-		"type": "choice",
-		"options": [
-			{
-				"text": "> [Get up and go]",
-				"next": "cuddle_leave_night"
-			}
-		]
-	},
-	{
-		"id": "cuddle_leave_night",
-		"type": "narration",
-		"text": "You find the passage out by feel. The grate overhead lets in a strip of starlight. The town above is dead quiet as you climb back to the surface.",
-		"next": "leave_command"
+		"next": "post_sex_hub"
 	},
 
 	{
@@ -1762,8 +1797,10 @@
 	{
 		"id": "brood_free_use_holes_answer",
 		"type": "npc",
+		"set_flag": "pichidi_found_endah",
+		"flag_type": "knowledge",
 		"name": "Pichidi",
-		"text": "They lift their head, their pale eyes blown wide with what could only be assumed as hormone-addled confusion. \"Other ways? Have-I the [b]nah[/b] for breeding. Have-I the [b]endah[/b] for waste. Have-I mouth for eating. What more do [b]bolk[/b] need? Are you wanting to [b]bac[/b] my ears?\"",
+		"text": "They lift their head, their pale eyes blown wide with what could only be assumed as hormone-addled confusion. \"Other ways? Have-I the [b]nah[/b] for breeding — [b]fim[/b] moi, already dripping for you. Have-I the [b]endah[/b] for waste. Have-I mouth for eating. What more do [b]bolk[/b] need? Are you wanting to [b]bac[/b] my ears?\"",
 		"next": "brood_free_use_hub"
 	},
 	{
@@ -1812,7 +1849,7 @@
 		"id": "brood_cloaca_npc",
 		"type": "npc",
 		"name": "Pichidi",
-		"text": "They bare their blue-tipped teeth, throwing their head back as a raw gasp tears out of them. \"[b]Grat![/b] Yes! Push-you deeper. Fill the [b]nah[/b]. Thick [b]mjisiv[/b]!\"",
+		"text": "They bare their blue-tipped teeth, throwing their head back as a raw gasp tears out of them. \"[b]Grat![/b] Yes! Push-you deeper. Fill the [b]nah[/b]. Thick [b]mjisan[/b]!\"",
 		"next": "brood_cloaca_micro"
 	},
 	{
@@ -1929,20 +1966,29 @@
 	{
 		"id": "brood_endah_climax_inside",
 		"type": "narration",
+		"command": "@add_reputation pichidi 10",
 		"text": "You pin them flush against you and erupt. Your warm seed flood their dry, tight waste-path. The intense heat of your seed inside a cavity never meant for breeding sends a violent shudder through Pichidi's entire frame. Their crushed sphincter milks your cock dry as their swollen front bud reaches it point-of-no-return, shooting a fine stream of their own fluids across the stone.",
 		"next": "brood_endah_aftermath"
 	},
 	{
 		"id": "brood_endah_to_nah_climax_inside",
 		"type": "narration",
+		"command": "@add_reputation pichidi 10",
 		"text": "Just as the familiar sensation of impending orgasm has reached its peak, you pull out your length just enough for your glans to leave the tight canal. The sensation of the tight sphincter rolling over your glans sends you just over the edge as you find Pichidi's proper hole and bury your cock within their guts. Pichidi lets out a short noise as the head of your cock starts hitting against their bud from within, and as your seed fills them up, their orgasm crashes through their body. A fine mist of clear, white fluid sprays from their genitals as you both climax.",
-		"next": "brood_endah_aftermath"
+		"next": "brood_endah_to_nah_aftermath"
 	},
 	{
 		"id": "brood_endah_aftermath",
 		"type": "npc",
 		"name": "Pichidi",
 		"text": "They slump against you, their chest heaving, thick white seed leaking slowly from their ruined back passage. When they finally speak, their voice is wrecked and quiet. \"...Are [b]bolk[/b] entirely sick in the head. Heee...\" A shudder runs through Pichidi's body. \"Ucruss, was not bad. Surprise on me!\"",
+		"next": "aftermath_entry"
+	},
+	{
+		"id": "brood_endah_to_nah_aftermath",
+		"type": "npc",
+		"name": "Pichidi",
+		"text": "They slump against you, their chest heaving, thick white seed leaking slowly from their proper passage. When they finally speak, their voice is wrecked and quiet. \"...Are [b]bolk[/b] entirely sick in the head. Heee...\" A shudder runs through Pichidi's body. \"Ucruss, to stretch the [b]endah[/b] just to ruin the [b]nah[/b]... surprise on me!\"",
 		"next": "aftermath_entry"
 	},
 
@@ -1994,12 +2040,6 @@
 	},
 
 
-	{
-		"id": "cleanup_01",
-		"type": "narration",
-		"text": "You find the passage out and take it. The grate overhead lets in a line of daylight. The damp smell of the sewer falls away.",
-		"next": "leave_command"
-	},
 	{
 		"id": "leave_command",
 		"type": "command",
