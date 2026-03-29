@@ -185,7 +185,7 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> My name is [Player Name].",
+				"text": "> My name is {player_name}.",
 				"next": "q_who_fail_name"
 			}
 		]

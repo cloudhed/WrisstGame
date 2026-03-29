@@ -287,7 +287,7 @@ func show_next_chunk(entry: Dictionary) -> bool:
 func process_entry_type(entry: Dictionary) -> void:
 	match entry.get("type", ""):
 		"narration", "npc":
-			chunk_list = parser.parse_dialog_chunks(entry.get("text", ""))
+			chunk_list = parser.parse_dialog_chunks(parser.substitute_player_vars(entry.get("text", "")))
 			chunk_index = 0
 			begin_entry_chunks()
 		"choice":
@@ -522,7 +522,9 @@ func _filter_choice_options(options: Array) -> Array:
 				is_visible = is_visible and not _evaluate_option_condition(hide_cond)
 
 		if is_visible:
-			visible.append(opt)
+			var display_opt: Dictionary = opt.duplicate()
+			display_opt["text"] = parser.substitute_player_vars(display_opt.get("text", ""))
+			visible.append(display_opt)
 
 	return visible
 

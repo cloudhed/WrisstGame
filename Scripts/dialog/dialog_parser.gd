@@ -30,6 +30,10 @@ func parse_dialog_chunks(text: String) -> Array:
 	return chunks
 
 
+func substitute_player_vars(text: String) -> String:
+	return text.replace("{player_name}", GameState.player_name)
+
+
 func parse_inline_commands(text: String) -> Array:
 	var commands: Array = []
 	var pattern = RegEx.new()
