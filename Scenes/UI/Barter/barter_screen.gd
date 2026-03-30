@@ -95,9 +95,9 @@ func _update_shop_name() -> void:
 # --- Currency display ---
 
 func _refresh_player_currency() -> void:
-	player_ore_label.text = "Öre: %d" % GameState.player_ore
-	player_crowns_label.text = "Crowns: %d" % GameState.player_crowns
-	player_drots_label.text = "Drots: %d" % GameState.player_drots
+	player_ore_label.text = "%d %s" % [GameState.player_ore, GameState.ORE_SYMBOL]
+	player_crowns_label.text = "%d %s" % [GameState.player_crowns, GameState.CROWN_SYMBOL]
+	player_drots_label.text = "%d %s" % [GameState.player_drots, GameState.DROT_SYMBOL]
 
 
 # --- Player inventory panel ---
@@ -328,9 +328,9 @@ func _after_barter_change() -> void:
 func _recalculate_balance() -> void:
 	var balance: Dictionary = _calculate_balance()
 
-	_format_balance_label(balance_ore_label, balance.ore, "öre")
-	_format_balance_label(balance_crowns_label, balance.crowns, "cr")
-	_format_balance_label(balance_drots_label, balance.drots, "dr")
+	_format_balance_label(balance_ore_label, balance.ore, GameState.ORE_SYMBOL)
+	_format_balance_label(balance_crowns_label, balance.crowns, GameState.CROWN_SYMBOL)
+	_format_balance_label(balance_drots_label, balance.drots, GameState.DROT_SYMBOL)
 
 	confirm_button.disabled = not _can_confirm_trade()
 

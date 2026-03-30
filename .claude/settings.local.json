@@ -59,7 +59,9 @@
       "Bash(mv Shaders/* \"Assets/Shaders/\")",
       "Bash(rmdir Shaders)",
       "Bash(rm \"overworldNav.tscn\")",
-      "Bash(rm \"Assets/Sprites/Particles/music_player.tscn\")"
+      "Bash(rm \"Assets/Sprites/Particles/music_player.tscn\")",
+      "Bash(find /d/Projects/Godot/wrisst_test -type f \\\\\\(-name *inventory* -o -name *currency* \\\\\\))",
+      "Bash(grep -r \"format.*amount\\\\|format.*price\\\\|format.*currency\" /d/Projects/Godot/wrisst_test --include=*.gd)"
     ]
   }
 }

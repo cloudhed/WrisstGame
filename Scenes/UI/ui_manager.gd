@@ -148,9 +148,9 @@ func _refresh_inventory():
 
 
 	# Update currency labels
-	current_ore_label.text = "Öre: %d" % GameState.player_ore
-	current_crowns.text = "Crowns: %d" % GameState.player_crowns
-	current_drots.text = "Drots: %d" % GameState.player_drots
+	current_ore_label.text = "%d %s" % [GameState.player_ore, GameState.ORE_SYMBOL]
+	current_crowns.text = "%d %s" % [GameState.player_crowns, GameState.CROWN_SYMBOL]
+	current_drots.text = "%d %s" % [GameState.player_drots, GameState.DROT_SYMBOL]
 
 	_update_equipped_labels()  # keep equipped panel in sync
 
@@ -327,11 +327,11 @@ func _on_money_changed(currency: String, new_amount: int) -> void:
 
 	match currency:
 		"ore":
-			current_ore_label.text = "Ore: %d" % new_amount
+			current_ore_label.text = "%d %s" % [new_amount, GameState.ORE_SYMBOL]
 		"crowns":
-			current_crowns.text = "Crowns: %d" % new_amount
+			current_crowns.text = "%d %s" % [new_amount, GameState.CROWN_SYMBOL]
 		"drots":
-			current_drots.text = "Drots: %d" % new_amount
+			current_drots.text = "%d %s" % [new_amount, GameState.DROT_SYMBOL]
 
 func _on_reputation_changed(npc_id: String, new_value: int) -> void:
 	# Show rep with the NPC by name

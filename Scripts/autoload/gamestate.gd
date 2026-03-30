@@ -43,6 +43,11 @@ var FALLBACK_WEAPON: EquipableItem = null
 # Player stats and resources
 var player_stats: CharacterStats = null
 var player_statistics: Resource = null
+# Currency display symbols
+const ORE_SYMBOL: String    = "◆"
+const CROWN_SYMBOL: String  = "◇"
+const DROT_SYMBOL: String   = "◈"
+
 var player_ore: int = 0
 var player_crowns: int = 0
 var player_drots: int = 0
