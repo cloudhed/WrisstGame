@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://ced4ekxl4k3l6" path="res://Scripts/combat/ui/combat_ui.gd" id="12_umvpd"]
 [ext_resource type="PackedScene" uid="uid://by7co2c71yp2n" path="res://Scenes/Player/combat_player.tscn" id="13_tmuf1"]
 [ext_resource type="Resource" uid="uid://cnwrtxw8tktmj" path="res://Characters/Player/player.tres" id="14_5kjvk"]
-[ext_resource type="Script" path="res://Scripts/entities/player/player_handler.gd" id="14_r5ubg"]
+[ext_resource type="Script" uid="uid://bvman73aw84wc" path="res://Scripts/entities/player/player_handler.gd" id="14_r5ubg"]
 [ext_resource type="Script" uid="uid://bku5mw8nd76qj" path="res://Scenes/UI/hand.gd" id="15_50454"]
 [ext_resource type="Theme" uid="uid://c6k5mhha4mujr" path="res://Themes/combatUI_theme.tres" id="16_ceo1n"]
 [ext_resource type="PackedScene" uid="uid://coqflun3u7db" path="res://Scenes/UI/stamina_ui.tscn" id="22_3cqtn"]
@@ -121,16 +121,16 @@ end_turn_glow_min_alpha = 0.2
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
+offset_left = 106.0
 offset_top = -202.0
-offset_right = 1886.0
+offset_right = 1832.69
 offset_bottom = -29.0
 grow_vertical = 0
 theme = ExtResource("16_ceo1n")
 theme_override_constants/separation = 16
 
 [node name="PlayerVBoxContainer" type="VBoxContainer" parent="CombatUI/StatsUIManager"]
-custom_minimum_size = Vector2(271.055, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
@@ -171,17 +171,20 @@ theme = ExtResource("16_ceo1n")
 [node name="StatsUIPlayer" parent="CombatUI/StatsUIManager/PlayerVBoxContainer/Panel" instance=ExtResource("22_5g3cp")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = -133.5
-offset_top = 2.0
-offset_right = 97.5
-offset_bottom = 97.0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 285.0
+offset_bottom = 95.0
+grow_horizontal = 1
 
 [node name="CombatTextUI" type="PanelContainer" parent="CombatUI/StatsUIManager"]
 visible = false
 custom_minimum_size = Vector2(0, 71.01)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 5.0
+size_flags_stretch_ratio = 2.92
 theme = ExtResource("16_ceo1n")
 script = ExtResource("23_2n3pb")
 
@@ -199,7 +202,7 @@ theme = ExtResource("16_ceo1n")
 bbcode_enabled = true
 
 [node name="EnemyVBoxContainer" type="VBoxContainer" parent="CombatUI/StatsUIManager"]
-custom_minimum_size = Vector2(271.055, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("16_ceo1n")
 theme_override_constants/separation = 14

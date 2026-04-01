@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=6 format=3 uid="uid://08y15xan7ca4"]
+
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_shield"]
+[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="2_bundle"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="3_tile"]
+[ext_resource type="Resource" uid="uid://dg3pnqhnwspu" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/WoodenShield/woodenshield_block.tres" id="4_j4jog"]
+
+[sub_resource type="Resource" id="Resource_shield_bundle"]
+script = ExtResource("2_bundle")
+tiles = Array[ExtResource("3_tile")]([ExtResource("4_j4jog"), ExtResource("4_j4jog"), ExtResource("4_j4jog")])
+metadata/_custom_type_script = "uid://c814t8855evro"
+
+[resource]
+script = ExtResource("1_shield")
+equip_type = "offhand"
+hand_slot = "1-handed"
+tile_bundle = SubResource("Resource_shield_bundle")
+armor_points = 0
+name = "Wooden Shield"
+description = "A rough wooden shield. Blocks incoming hits when you play its tiles."
+item_type = "equipable"
+is_stackable = false
+max_stack = 1
+hidden_from_inventory = false
+sell_price_ore = 15
+sell_price_crowns = 0
+sell_price_drots = 0
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

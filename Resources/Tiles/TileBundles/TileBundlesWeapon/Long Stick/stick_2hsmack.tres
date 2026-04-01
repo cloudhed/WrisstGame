@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=6 format=3 uid="uid://chgvxbs5v02nn"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_i41mf"]
-[ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="2_i41mf"]
+[ext_resource type="Texture2D" uid="uid://db65nugcco2e3" path="res://Assets/UI/tile_stickhit.png" id="2_i41mf"]
 [ext_resource type="AudioStream" uid="uid://b2lcgove03ygd" path="res://Audio/SFX/tile_sfx/wood_hit.ogg" id="3_2js72"]
 [ext_resource type="Script" uid="uid://dlb2lkyoatlfv" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_2hsmack.gd" id="3_i41mf"]
 [ext_resource type="Texture2D" uid="uid://bp08yx8c03uy3" path="res://Assets/UI/icons/icon_attack_mini.png" id="5_jg4b4"]
@@ -13,6 +13,7 @@ id = "Two-handed block-strike"
 type = 0
 target = 1
 cost = 2
+exile_on_play = false
 effect_amount = 6
 secondary_effect_amount = 1
 background = ExtResource("1_i41mf")

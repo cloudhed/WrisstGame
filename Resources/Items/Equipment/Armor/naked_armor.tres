@@ -1,13 +1,11 @@
-[gd_resource type="Resource" script_class="EquipableItem" load_steps=3 format=3 uid="uid://d2ppabccs4kjd"]
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=2 format=3 uid="uid://d2ppabccs4kjd"]
 
 [ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="2_7ey2w"]
-[ext_resource type="Resource" uid="uid://d2unukp8hvntr" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Naked/naked_bundle.tres" id="2_jmeip"]
 
 [resource]
 script = ExtResource("2_7ey2w")
 equip_type = "armor"
 hand_slot = "none"
-tile_bundle = ExtResource("2_jmeip")
 name = "Naked"
 description = "Nothing but your bare skin."
 item_type = "equipable"

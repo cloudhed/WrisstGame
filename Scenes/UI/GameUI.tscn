@@ -193,6 +193,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Equipped Weapon:"
 
+[node name="EquippedOffhandLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Offhand:"
+
 [node name="EquippedTrinketsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -255,7 +260,8 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 60.0
+offset_top = 60.0
+offset_bottom = 120.0
 grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/VBoxContainer"]

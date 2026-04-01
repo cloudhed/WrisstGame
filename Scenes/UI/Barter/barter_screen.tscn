@@ -365,7 +365,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
-columns = 8
+columns = 16
 
 [node name="Tooltip" parent="." instance=ExtResource("5_tooltip")]
 layout_mode = 0

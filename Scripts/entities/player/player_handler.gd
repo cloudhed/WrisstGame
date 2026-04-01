@@ -130,4 +130,6 @@ func _reshuffle_deck_from_discard() -> void:
 
 
 func _on_tile_played(tile: Tile) -> void:
+	if tile.exile_on_play:
+		return
 	character.discard.add_tile(tile)

@@ -12,9 +12,10 @@ extends Control
 @onready var current_crowns: Label = %CurrentCrownsLabel
 @onready var current_drots: Label = %CurrentDrotsLabel
 
-#-WEAPON, ARMOR, TRINKETS-#
+#-WEAPON, ARMOR, OFFHAND, TRINKETS-#
 @onready var current_weapon_label: Label = %EquippedWeaponLabel
 @onready var current_armor_label: Label = %EquippedArmorLabel
+@onready var current_offhand_label: Label = %EquippedOffhandLabel
 @onready var current_trinkets_label: Label = %EquippedTrinketsLabel
 
 
@@ -143,7 +144,7 @@ func _refresh_inventory():
 		var index := item_list.item_count - 1
 		if item is EquipableItem:
 			var equip_item := item as EquipableItem
-			if equip_item == GameState.equipped_weapon or equip_item == GameState.equipped_armor or equip_item in GameState.equipped_trinkets:
+			if equip_item == GameState.equipped_weapon or equip_item == GameState.equipped_armor or equip_item == GameState.equipped_offhand or equip_item in GameState.equipped_trinkets:
 				item_list.select(index)
 
 
@@ -196,6 +197,14 @@ func _on_item_toggled(index: int, checked: bool) -> void:
 			elif GameState.equipped_armor == item:
 				GameState.unequip_armor()
 
+		"offhand":
+			if checked:
+				if GameState.equipped_offhand and GameState.equipped_offhand != item:
+					_uncheck_item(GameState.equipped_offhand)
+				GameState.equip_offhand(item)
+			elif GameState.equipped_offhand == item:
+				GameState.unequip_offhand()
+
 		"trinket":
 			if checked:
 				GameState.equip_trinket(item)
@@ -219,6 +228,7 @@ func _update_equipped_labels() -> void:
 
 	current_weapon_label.text = "Weapon: " + (GameState.equipped_weapon.name if GameState.equipped_weapon != null else "None")
 	current_armor_label.text = "Armor: " + (GameState.equipped_armor.name if GameState.equipped_armor != null else "None")
+	current_offhand_label.text = "Offhand: " + (GameState.equipped_offhand.name if GameState.equipped_offhand != null else "None")
 
 	var trinket_names: Array[String] = []
 	for trinket in GameState.equipped_trinkets:
@@ -241,9 +251,9 @@ func _update_tile_grid():
 	if GameState.equipped_weapon and GameState.equipped_weapon.tile_bundle:
 		tile_pile += GameState.equipped_weapon.tile_bundle.tiles
 
-	# Armor tiles
-	if GameState.equipped_armor and GameState.equipped_armor.tile_bundle:
-		tile_pile += GameState.equipped_armor.tile_bundle.tiles
+	# Offhand tiles (shields — armor no longer contributes tiles)
+	if GameState.equipped_offhand and GameState.equipped_offhand.tile_bundle:
+		tile_pile += GameState.equipped_offhand.tile_bundle.tiles
 
 	# Trinket tiles
 	for trinket in GameState.equipped_trinkets:

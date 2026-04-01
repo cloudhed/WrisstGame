@@ -9,6 +9,7 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var type: Type
 @export var target: Target
 @export var cost: int = 1
+@export var exile_on_play: bool = false
 #amount is added by me, not tutorial. might need to turn off if "amount" is happening elsewhere idk
 @export var effect_amount: int = 0
 @export var secondary_effect_amount: int = 0

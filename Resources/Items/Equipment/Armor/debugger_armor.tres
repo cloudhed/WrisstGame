@@ -1,21 +1,13 @@
-[gd_resource type="Resource" script_class="EquipableItem" load_steps=7 format=3 uid="uid://can3381gn7ol4"]
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=3 format=3 uid="uid://can3381gn7ol4"]
 
 [ext_resource type="Texture2D" uid="uid://c5ft7qjyeul53" path="res://Assets/Sprites/Items/items_armor_debugger_icon.png" id="1_2uaqa"]
 [ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="2_jvjkg"]
-[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="3_ikqi3"]
-[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="4_jv4w6"]
-[ext_resource type="Resource" uid="uid://c67x5vrj8db67" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Armor of the Debugger/debug_armor_block.tres" id="5_jv4w6"]
-
-[sub_resource type="Resource" id="Resource_twip5"]
-script = ExtResource("3_ikqi3")
-tiles = Array[ExtResource("4_jv4w6")]([ExtResource("5_jv4w6"), ExtResource("5_jv4w6"), ExtResource("5_jv4w6"), ExtResource("5_jv4w6"), ExtResource("5_jv4w6"), ExtResource("5_jv4w6")])
-metadata/_custom_type_script = "uid://c814t8855evro"
 
 [resource]
 script = ExtResource("2_jvjkg")
 equip_type = "armor"
 hand_slot = "none"
-tile_bundle = SubResource("Resource_twip5")
+armor_points = 16
 name = "Armor of the Debugger"
 icon = ExtResource("1_2uaqa")
 description = "A piece of armor told by the legends as lost forever.[p]Well, it's here now, in [b]your[/b] possession. Poisson."

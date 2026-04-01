@@ -10,9 +10,9 @@
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -115.5
-offset_right = 115.5
-offset_bottom = 54.0
+offset_left = -142.5
+offset_right = 142.5
+offset_bottom = 89.0
 grow_horizontal = 2
 theme = ExtResource("1_kmp8n")
 script = ExtResource("2_0l5yy")
@@ -79,3 +79,28 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("4_05r6v")
 theme_override_font_sizes/font_size = 30
 text = "2"
+
+[node name="Armor" type="HBoxContainer" parent="Health"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Health/Armor"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="ArmorIcon" type="TextureRect" parent="Health/Armor"]
+layout_mode = 2
+texture = ExtResource("5_05r6v")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ArmorLabel" type="Label" parent="Health/Armor"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.6, 0.2, 1)
+theme_override_colors/font_outline_color = Color(1, 0.9, 0.7, 0.501961)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_05r6v")
+theme_override_font_sizes/font_size = 30
+text = "4"

@@ -33,8 +33,9 @@ func get_logical_deck() -> TilePile:
 			combined_deck.add_tile(tile)
 			added_any = true
 
-	if GameState.equipped_armor and GameState.equipped_armor.tile_bundle:
-		for tile in GameState.equipped_armor.tile_bundle.tiles:
+	# Offhand (shields) contribute tiles to the deck; armor does NOT (passive armor_points instead)
+	if GameState.equipped_offhand and GameState.equipped_offhand.tile_bundle:
+		for tile in GameState.equipped_offhand.tile_bundle.tiles:
 			combined_deck.add_tile(tile)
 			added_any = true
 

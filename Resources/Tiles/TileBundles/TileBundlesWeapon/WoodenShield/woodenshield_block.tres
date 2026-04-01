@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dg3pnqhnwspu"]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_cq2j1"]
+[ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_u4iul"]
+[ext_resource type="Script" uid="uid://ctoqb62kvcn2i" path="res://Resources/Tiles/TileBundles/TileBundlesArmor/Armor of the Debugger/debug_armor_block.gd" id="3_5mbrc"]
+[ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="4_ia8hs"]
+[ext_resource type="Texture2D" uid="uid://4blmsmmfytuf" path="res://Assets/UI/icons/icon_defend_mini.png" id="5_n18bn"]
+
+[resource]
+script = ExtResource("3_5mbrc")
+id = "debug_armor_block"
+type = 1
+target = 0
+cost = 1
+effect_amount = 3
+secondary_effect_amount = 0
+background = ExtResource("1_cq2j1")
+icon = ExtResource("2_u4iul")
+tooltip_icon = ExtResource("5_n18bn")
+tooltip_source_label = "Wooden Shield"
+tooltip_text = "[b]Cost: 1[/b] [center]Do [i]Thing[/i] for [b][color=red]{amount} or {effect_amount}[/color][/b] points.[/center]"
+message_template = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] points!"
+sound = ExtResource("4_ia8hs")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

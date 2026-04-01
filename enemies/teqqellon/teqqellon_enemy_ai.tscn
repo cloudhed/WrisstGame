@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://lwwyf3857u6g"]
+[gd_scene load_steps=21 format=3 uid="uid://lwwyf3857u6g"]
 
 [ext_resource type="Script" uid="uid://chfwk6ko6soec" path="res://Scripts/entities/enemies/runtime/enemy_action_picker.gd" id="1_0vyqd"]
 [ext_resource type="Script" uid="uid://dgcficmmkycgp" path="res://Scripts/entities/enemies/teqqellon/actions/teqqellon_attack_action.gd" id="2_rdh1j"]
@@ -10,12 +10,15 @@
 [ext_resource type="AudioStream" uid="uid://cx2wcws563kk4" path="res://Audio/SFX/sfx_hit_low.wav" id="5_pe2td"]
 [ext_resource type="Texture2D" uid="uid://bj44iwbjx87nc" path="res://Assets/UI/intent/intent_block.png" id="6_lert7"]
 [ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="8_pe2td"]
-[ext_resource type="Texture2D" uid="uid://dhmkraw3jt45h" path="res://Assets/UI/intent/intent_special.png" id="9_pe2td"]
+[ext_resource type="Script" uid="uid://b7fvqoersgk0w" path="res://Scripts/entities/enemies/runtime/actions/add_player_dud_tiles_action.gd" id="9_6w567"]
+[ext_resource type="Resource" uid="uid://dvea2fsprhtdj" path="res://Resources/Tiles/TileBundles/TileBundleSpecial/dud_slime_fail.tres" id="10_6w567"]
 [ext_resource type="AudioStream" uid="uid://c1w2fsjabnkt3" path="res://Audio/SFX/sfx_defeat.wav" id="10_7jwsv"]
+[ext_resource type="Texture2D" uid="uid://caxww5p70f5bf" path="res://Assets/UI/intent/intent_poison.png" id="10_pe2td"]
+[ext_resource type="Texture2D" uid="uid://crajgrif2lrsa" path="res://Assets/UI/intent/intent_dud.png" id="11_6amcq"]
 
 [sub_resource type="Resource" id="Resource_6yoig"]
 script = ExtResource("4_x7x38")
-number = "1-2"
+number = "2"
 icon = ExtResource("3_nq0e8")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
@@ -25,16 +28,22 @@ number = "3"
 icon = ExtResource("6_lert7")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
+[sub_resource type="Resource" id="Resource_c3jdp"]
+script = ExtResource("4_x7x38")
+number = "+3"
+icon = ExtResource("11_6amcq")
+metadata/_custom_type_script = "uid://brb0lypq5pxrh"
+
 [sub_resource type="Resource" id="Resource_6w567"]
 script = ExtResource("4_x7x38")
-number = "4"
-icon = ExtResource("3_nq0e8")
+number = "5"
+icon = ExtResource("10_pe2td")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [sub_resource type="Resource" id="Resource_0cdi0"]
 script = ExtResource("4_x7x38")
 number = "16"
-icon = ExtResource("9_pe2td")
+icon = ExtResource("6_lert7")
 metadata/_custom_type_script = "uid://brb0lypq5pxrh"
 
 [node name="TeqqellonEnemyAi" type="Node"]
@@ -42,6 +51,8 @@ script = ExtResource("1_0vyqd")
 
 [node name="AttackAction" type="Node" parent="."]
 script = ExtResource("2_rdh1j")
+min_damage = 2
+max_damage = 3
 intent = SubResource("Resource_6yoig")
 sound = ExtResource("5_pe2td")
 type = 1
@@ -50,25 +61,35 @@ message_template = "[b]{source_name}[/b] strikes [b]{target_name}[/b] for [b][co
 
 [node name="BlockAction" type="Node" parent="."]
 script = ExtResource("3_vcmfx")
-block = 3
 intent = SubResource("Resource_7jwsv")
 sound = ExtResource("8_pe2td")
 type = 1
 chance_weight = 1.0
 message_template = "[b]{source_name}[/b] hardens its gelatinous body and prepares to block for [b][color=blue]{amount}[/color][/b] damage!"
 
+[node name="SlimeTilesAction" type="Node" parent="."]
+script = ExtResource("9_6w567")
+dud_tile = ExtResource("10_6w567")
+dud_count = 3
+target_pile = "draw_pile"
+intent = SubResource("Resource_c3jdp")
+sound = ExtResource("10_7jwsv")
+type = 1
+chance_weight = 0.4
+message_template = "[b]{source_name}[/b] clutters [b]{target_name}[/b]'s pile with [b][color=gray]{amount}[/color][/b] dud tiles!"
+
 [node name="LeechAction" type="Node" parent="."]
 script = ExtResource("4_8b302")
+damage = 5
 heal_amount = 2
 intent = SubResource("Resource_6w567")
 sound = ExtResource("10_7jwsv")
 type = 1
-chance_weight = 0.3
+chance_weight = 0.2
 
 [node name="MegaBlockAction" type="Node" parent="."]
 script = ExtResource("5_ewsoj")
-hp_threshold = 4
+hp_threshold = 5
 intent = SubResource("Resource_0cdi0")
 sound = ExtResource("8_pe2td")
 message_template = "[b]{source_name}[/b] in its paniced state turns all of its debris attached to its back into a shield. It will block for [b][color=blue]{amount}[/color][/b] damage!"
-

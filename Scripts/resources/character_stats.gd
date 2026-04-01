@@ -224,6 +224,10 @@ func create_instance() -> Resource:
 	instance.block = 0
 	instance.reset_stamina()
 
+	# Set passive armor from equipped armor
+	if GameState.equipped_armor and GameState.equipped_armor.armor_points > 0:
+		instance.armor_points = GameState.equipped_armor.armor_points
+
 	# Use the logical deck created from equipment
 	instance.deck = PileManager.get_logical_deck()
 

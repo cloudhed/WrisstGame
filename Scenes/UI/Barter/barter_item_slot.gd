@@ -97,6 +97,7 @@ func _check_equipped() -> bool:
 	return (
 		equip == GameState.equipped_weapon
 		or equip == GameState.equipped_armor
+		or equip == GameState.equipped_offhand
 		or equip in GameState.equipped_trinkets
 	)
 

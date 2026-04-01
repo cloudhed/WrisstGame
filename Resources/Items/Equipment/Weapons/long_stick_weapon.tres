@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EquipableItem" load_steps=9 format=3 uid="uid://bl3tkb6fogvxd"]
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=10 format=3 uid="uid://bl3tkb6fogvxd"]
 
 [ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_1gw54"]
 [ext_resource type="Texture2D" uid="uid://cir4vun6ndv7x" path="res://Assets/Sprites/Items/items_weapon_longstick_icon.png" id="1_iqfoy"]
@@ -7,10 +7,11 @@
 [ext_resource type="Resource" uid="uid://2ypvnstw0l5s" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_smack.tres" id="4_beg6s"]
 [ext_resource type="Resource" uid="uid://chgvxbs5v02nn" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_2hsmack.tres" id="5_iqfoy"]
 [ext_resource type="Resource" uid="uid://4hswreosnca7" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_fail.tres" id="7_dmi4f"]
+[ext_resource type="Resource" uid="uid://coum1ucna0o7c" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_weaksmack.tres" id="8_1lqhy"]
 
 [sub_resource type="Resource" id="Resource_iqfoy"]
 script = ExtResource("2_757jb")
-tiles = Array[ExtResource("3_beg6s")]([ExtResource("4_beg6s"), ExtResource("4_beg6s"), ExtResource("4_beg6s"), ExtResource("5_iqfoy"), ExtResource("7_dmi4f"), ExtResource("7_dmi4f")])
+tiles = Array[ExtResource("3_beg6s")]([ExtResource("4_beg6s"), ExtResource("4_beg6s"), ExtResource("8_1lqhy"), ExtResource("8_1lqhy"), ExtResource("8_1lqhy"), ExtResource("8_1lqhy"), ExtResource("5_iqfoy"), ExtResource("7_dmi4f"), ExtResource("7_dmi4f"), ExtResource("7_dmi4f"), ExtResource("7_dmi4f"), ExtResource("7_dmi4f")])
 metadata/_custom_type_script = "uid://c814t8855evro"
 
 [resource]
@@ -18,6 +19,7 @@ script = ExtResource("1_1gw54")
 equip_type = "weapon"
 hand_slot = "2-handed"
 tile_bundle = SubResource("Resource_iqfoy")
+armor_points = 0
 name = "Long stick"
 icon = ExtResource("1_iqfoy")
 description = "It's a long stick. What more is there to say?"

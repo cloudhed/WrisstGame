@@ -9,16 +9,25 @@ signal stats_changed
 
 var health: int : set = set_health
 var block: int : set = set_block
+var armor_points: int = 0 : set = set_armor_points
 var entity: Node = null
+
+
+func set_armor_points(value: int) -> void:
+	armor_points = maxi(value, 0)
+	stats_changed.emit()
 
 
 func resolve_damage(damage: int) -> Dictionary:
 	var attempted: int = maxi(damage, 0)
 	var blocked: int = mini(block, attempted)
-	var dealt: int = maxi(attempted - blocked, 0)
+	var after_block: int = maxi(attempted - blocked, 0)
+	var armor_absorbed: int = mini(armor_points, after_block)
+	var dealt: int = maxi(after_block - armor_absorbed, 0)
 	return {
 		"attempted": attempted,
 		"blocked": blocked,
+		"armor_absorbed": armor_absorbed,
 		"dealt": dealt,
 	}
 
@@ -38,6 +47,7 @@ func take_damage(damage: int) -> Dictionary:
 		return result
 
 	self.block = clampi(block - int(result["attempted"]), 0, block)
+	self.armor_points -= int(result["armor_absorbed"])
 	self.health -= int(result["dealt"])
 	return result
 
@@ -57,5 +67,6 @@ func create_instance() -> Resource:
 	var instance: Stats = self.duplicate()
 	instance.health = max_health
 	instance.block = 0
+	instance.armor_points = 0
 	instance.player_name = player_name
 	return instance

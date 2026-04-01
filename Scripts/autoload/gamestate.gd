@@ -226,6 +226,7 @@ func get_item_count(item: InventoryItem) -> int:
 
 var equipped_weapon: EquipableItem = null
 var equipped_armor: EquipableItem = null
+var equipped_offhand: EquipableItem = null
 var equipped_trinkets: Array[EquipableItem] = []
 
 func equip_weapon(item: EquipableItem) -> void:
@@ -240,6 +241,12 @@ func equip_weapon(item: EquipableItem) -> void:
 	
 	equipped_weapon = item
 	print("🧪 Equipped weapon:", item.name)
+
+	# 2-handed weapons lock out the offhand slot
+	if item.hand_slot == "2-handed" and equipped_offhand != null:
+		unequip_offhand()
+		print("⚔️ 2H weapon equipped — offhand cleared")
+
 	fallback_equipped.emit()  # Update UI
 
 func equip_armor(item: EquipableItem) -> void:
@@ -276,6 +283,27 @@ func unequip_weapon() -> void:
 func unequip_armor() -> void:
 	equipped_armor = null
 	check_and_equip_fallback()
+
+func equip_offhand(item: EquipableItem) -> void:
+	if item.equip_type != "offhand":
+		push_error("Trying to equip non-offhand as offhand.")
+		return
+
+	# Can't equip offhand with a 2-handed weapon
+	if equipped_weapon and equipped_weapon.hand_slot == "2-handed":
+		print("⚠️ Can't equip offhand — current weapon is 2-handed:", equipped_weapon.name)
+		return
+
+	if equipped_offhand and equipped_offhand != item:
+		print("🛡️ Unequipping previous offhand:", equipped_offhand.name)
+
+	equipped_offhand = item
+	print("🛡️ Equipped offhand:", item.name)
+	fallback_equipped.emit()
+
+func unequip_offhand() -> void:
+	equipped_offhand = null
+	fallback_equipped.emit()
 
 func unequip_trinket(item: EquipableItem) -> void:
 	equipped_trinkets.erase(item)
