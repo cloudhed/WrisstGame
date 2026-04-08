@@ -65,6 +65,9 @@
       "Bash(grep -E \"\\\\.gd$\")",
       "Bash(grep -r add_player_dud_tiles /d/Projects/Godot/wrisst_test --include=*.tres --include=*.gd)",
       "Bash(find /d/Projects/Godot/wrisst_test -type f \\\\\\(-name *.md -o -name *.txt -o -name *README* \\\\\\))"
+    ],
+    "additionalDirectories": [
+      "d:\\Projects\\Godot\\wrisst_test\\Scenes\\UI"
     ]
   }
 }

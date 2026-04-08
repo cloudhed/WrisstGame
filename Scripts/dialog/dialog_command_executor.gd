@@ -66,6 +66,16 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_record_species_sex(parts, context)
 		"OPEN_BARTER":
 			_open_barter(context)
+		"ADD_LOGBOOK":
+			if parts.size() >= 2:
+				game_state.add_logbook_entry(parts[1])
+			else:
+				push_error("❌ ADD_LOGBOOK requires an entry ID")
+		"COMPLETE_LOGBOOK":
+			if parts.size() >= 2:
+				game_state.complete_logbook_entry(parts[1])
+			else:
+				push_error("❌ COMPLETE_LOGBOOK requires an entry ID")
 		_:
 			_handle_game_state_command(cmd, context)
 

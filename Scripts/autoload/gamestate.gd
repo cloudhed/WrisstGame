@@ -6,6 +6,7 @@ signal money_changed(currency: String, new_amount: int)
 signal reputation_changed(npc_id: String, new_value: int)
 signal horny_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
+signal logbook_updated(entry_id: String)
 signal fallback_equipped
 signal combat_debug_settings_changed
 
@@ -69,6 +70,10 @@ var is_night: bool = false
 # NPC relationship points
 var npc_reputation: Dictionary = {}
 var npc_horny: Dictionary = {}
+
+# Logbook — tracks which entries have been revealed and their status
+# Key: entry_id (String), Value: "active" or "complete"
+var logbook_entries: Dictionary = {}
 
 # Returning to stuff
 var last_scene_id: String = ""
@@ -364,6 +369,38 @@ func remove_horny(npc_id: String, amount: int) -> bool:
 
 func get_horny(npc_id: String) -> int:
 	return npc_horny.get(npc_id, 0)
+
+
+# ─────────────────────────────────────────────────────────────
+# Logbook management
+
+func add_logbook_entry(entry_id: String) -> void:
+	if not LogbookData.has_entry(entry_id):
+		push_warning("⚠️ Logbook entry not in LogbookData: " + entry_id)
+		return
+	if logbook_entries.has(entry_id):
+		return  # already added
+	logbook_entries[entry_id] = "active"
+	# Auto-add parent if it hasn't been added yet
+	var parent_id: String = LogbookData.get_entry(entry_id).get("parent", "")
+	if not parent_id.is_empty() and not logbook_entries.has(parent_id):
+		logbook_entries[parent_id] = "active"
+		logbook_updated.emit(parent_id)
+	logbook_updated.emit(entry_id)
+	print("📓 Logbook entry added: " + entry_id)
+
+
+func complete_logbook_entry(entry_id: String) -> void:
+	if not logbook_entries.has(entry_id):
+		push_warning("⚠️ Logbook entry not found: " + entry_id)
+		return
+	logbook_entries[entry_id] = "complete"
+	logbook_updated.emit(entry_id)
+	print("📓 Logbook entry completed: " + entry_id)
+
+
+func get_logbook_status(entry_id: String) -> String:
+	return logbook_entries.get(entry_id, "")
 
 
 # ─────────────────────────────────────────────────────────────

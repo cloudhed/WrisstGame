@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://da0p1vc21wthm"]
+[gd_scene load_steps=9 format=3 uid="uid://da0p1vc21wthm"]
 
-[ext_resource type="Script" uid="uid://dk4mquk7rtogq" path="res://Scenes/UI/ui_manager.gd" id="2_71wt1"]
-[ext_resource type="Theme" uid="uid://wii45adw77en" path="res://Themes/GameUI_itemlist_theme.tres" id="2_xkiwj"]
+[ext_resource type="Script" uid="uid://dk4mquk7rtogq" path="res://Scenes/UI/ui_manager.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="2_header"]
+[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="3_body"]
+[ext_resource type="PackedScene" uid="uid://cnuyeim88cd6g" path="res://Scenes/UI/tooltip.tscn" id="4_tooltip"]
+[ext_resource type="PackedScene" uid="uid://dre0giwru7and" path="res://Scenes/UI/Logbook/logbook_screen.tscn" id="5_logbook"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71wt1"]
+[sub_resource type="StyleBoxFlat" id="panel_style"]
 bg_color = Color(0.29, 0.17168, 0.1421, 1)
 border_width_left = 4
 border_width_top = 4
@@ -15,37 +18,41 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkiwj"]
-bg_color = Color(0.225782, 0.201731, 0.20798, 1)
+[sub_resource type="StyleBoxFlat" id="accent_style"]
+bg_color = Color(0.22, 0.18, 0.16, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0, 0.495596, 0.419666, 1)
+border_color = Color(0.7, 0.55, 0.25, 1)
 border_blend = true
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-corner_detail = 1
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tog36"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tog36"]
-bg_color = Color(0.0899, 0.276985, 0.31, 0.682353)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
+[sub_resource type="StyleBoxFlat" id="notif_style"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.22, 0.15, 0.12, 0.92)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
 border_width_bottom = 3
+border_color = Color(0.7, 0.55, 0.25, 1)
 border_blend = true
-expand_margin_right = 11.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("2_71wt1")
+script = ExtResource("1_script")
 
 [node name="UIContainer" type="CanvasLayer" parent="."]
 layer = 2
@@ -54,255 +61,252 @@ layer = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/InventoryScreen"]
+[node name="MainMargin" type="MarginContainer" parent="UIContainer/InventoryScreen"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 120
 
-[node name="UISpacerLeft" type="Control" parent="UIContainer/InventoryScreen/HBoxContainer"]
+[node name="MainVBox" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TopRow" type="HBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CurrencyPanel" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+theme_override_styles/panel = SubResource("panel_style")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer"]
+[node name="Margin" type="MarginContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 10.0
-
-[node name="UISpacerTop" type="Control" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 16.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_71wt1")
-
-[node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="TabContainer" type="TabContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
-current_tab = 0
-
-[node name="Panel" type="Panel" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xkiwj")
-metadata/_tab_index = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ItemListContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
+theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/ItemListContainer"]
+[node name="HBox" type="HBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin"]
 layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-
-[node name="ItemList" type="ItemList" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/ItemListContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-theme = ExtResource("2_xkiwj")
-select_mode = 2
-allow_search = false
-auto_width = true
-auto_height = true
-max_columns = 2
-same_column_width = true
-fixed_column_width = 495
-
-[node name="InventoryContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="InventoryList" type="VBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CurrencyHbox" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
-layout_mode = 2
-theme_override_constants/separation = 120
-
-[node name="CurrentOreLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Öre: "
-
-[node name="CurrentCrownsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Crowns: "
-
-[node name="CurrentDrotsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/CurrencyHbox"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Drots: "
-
-[node name="EquippedArmorLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Equipped Armor:"
-
-[node name="EquippedWeaponLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Equipped Weapon:"
-
-[node name="EquippedOffhandLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Offhand:"
-
-[node name="EquippedTrinketsLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Equipped Trinket(s):"
-
-[node name="TileLabelHbox" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
-layout_mode = 2
-
-[node name="CurrentTilesLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/TileLabelHbox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Tiles in Deck: "
-
-[node name="PilePowerLabel" type="Label" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/TileLabelHbox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Pile Power:"
-
-[node name="MarginContainer" type="MarginContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TilePilePanel" type="Panel" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer"]
-layout_mode = 2
-
-[node name="TileGrid" type="GridContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/TilePilePanel"]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 8.575
-offset_top = 6.57
-offset_right = 494.575
-offset_bottom = 776.57
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.0
-theme_override_constants/h_separation = 34
-theme_override_constants/v_separation = 29
-columns = 4
-
-[node name="CurrentTilesList" type="HBoxContainer" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer/Panel/MarginContainer/TabContainer/Panel/HBoxContainer/InventoryContainer/InventoryList/MarginContainer/TilePilePanel"]
-visible = false
-layout_mode = 2
-offset_right = 502.0
-offset_bottom = 770.0
-size_flags_vertical = 3
-theme = ExtResource("2_xkiwj")
-
-[node name="UISpacerBot" type="Control" parent="UIContainer/InventoryScreen/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="UISpacerRight" type="Control" parent="UIContainer/InventoryScreen/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 60.0
-offset_bottom = 120.0
-grow_horizontal = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="UIContainer/VBoxContainer/HBoxContainer"]
+[node name="Header" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin/HBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 20
+text = "Your Coin"
+
+[node name="CurrentOreLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Öre: 0 ◆"
+
+[node name="CurrentCrownsLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Crowns: 0 ◇"
+
+[node name="CurrentDrotsLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Drots: 0 ◈"
+
+[node name="EquipmentPanel" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 8.6
+theme_override_styles/panel = SubResource("accent_style")
 
-[node name="NotificationPopup" type="Panel" parent="UIContainer/VBoxContainer/HBoxContainer"]
+[node name="Margin" type="MarginContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Header" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 20
+text = "Equipment"
+horizontal_alignment = 1
+
+[node name="EquippedArmorLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 15
+text = "Equipped Armor:"
+
+[node name="EquippedWeaponLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 15
+text = "Equipped Weapon:"
+
+[node name="EquippedOffhandLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 15
+text = "Offhand:"
+
+[node name="EquippedTrinketsLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 15
+text = "Equipped Trinket(s):"
+
+[node name="MiddleRow" type="HBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox"]
+layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
-focus_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_tog36")
+theme_override_constants/separation = 12
 
-[node name="NotificationLabel" type="Label" parent="UIContainer/VBoxContainer/HBoxContainer/NotificationPopup"]
+[node name="ItemsPanel" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("panel_style")
+
+[node name="Margin" type="MarginContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 20
+text = "Your Items"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemContainer" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="TilePanel" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("panel_style")
+
+[node name="Margin" type="MarginContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Header" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 20
+text = "Tile Pile"
+horizontal_alignment = 1
+
+[node name="TileLabelHbox" type="HBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin/VBox"]
+layout_mode = 2
+
+[node name="CurrentTilesLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin/VBox/TileLabelHbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 15
+text = "Tiles in Deck: "
+
+[node name="PilePowerLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin/VBox/TileLabelHbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 15
+text = "Pile Power:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TileGrid" type="GridContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin/VBox/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 34
+theme_override_constants/v_separation = 29
+columns = 6
+
+[node name="LogbookScreen" parent="UIContainer" instance=ExtResource("5_logbook")]
+unique_name_in_owner = true
+
+[node name="Tooltip" parent="UIContainer" instance=ExtResource("4_tooltip")]
+offset_right = 366.0
+
+[node name="NotificationPopup" type="Panel" parent="UIContainer"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.55
+anchor_right = 1.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 70.0
+theme_override_styles/panel = SubResource("notif_style")
+
+[node name="NotificationLabel" type="Label" parent="UIContainer/NotificationPopup"]
 unique_name_in_owner = true
 layout_mode = 1
-offset_right = 512.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.3157, 0.732142, 0.77, 1)
-theme_override_colors/font_outline_color = Color(0.0448662, 0.137339, 0.254239, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 7
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_tog36")
-text = "50 öre removed"
-horizontal_alignment = 2
+theme_override_colors/font_shadow_color = Color(0.2, 0.15, 0.1, 0.5)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="NotificationHideTimer" type="Timer" parent="UIContainer/VBoxContainer/HBoxContainer/NotificationPopup"]
+[node name="NotificationHideTimer" type="Timer" parent="UIContainer/NotificationPopup"]
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true

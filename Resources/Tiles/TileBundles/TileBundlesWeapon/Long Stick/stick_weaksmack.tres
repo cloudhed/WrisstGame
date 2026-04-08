@@ -19,7 +19,7 @@ background = ExtResource("1_kix8i")
 icon = ExtResource("2_4fl2o")
 tooltip_icon = ExtResource("5_7pwkq")
 tooltip_source_label = "Long Stick"
-tooltip_text = "[b]Cost: 1[/b] Weak strike for [b][color=darkred]{effect_amount}[/color][/b] damage.[/center]"
+tooltip_text = "[b]Cost: 1[/b]\\n Weak strike for [b][color=darkred]{effect_amount}[/color][/b] damage."
 message_template = "[b]You[/b] swing your Long Stick and hit the [b]{target_name}[/b] for [b][color=darkred]{amount}[/color][/b] damage!"
 sound = ExtResource("4_1clc4")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

@@ -59,6 +59,109 @@
     "id": "ref_currency_and_items",
     "type": "command",
     "command": "@add_ore 8 ; @remove_ore 1 ; @add_crowns 2 ; @remove_crowns 1 ; @add_drots 1 ; @remove_drots 1 ; @add_item Misc/slime_glob 2 ; @remove_item Misc/slime_glob 1 ; @add_reputation bitalgut 3 ; @remove_reputation bitalgut 1",
+    "next": "ref_logbook_add_toplevel"
+  },
+
+  {
+    "_comment": "LOGBOOK — Use 1: Add a top-level entry (no parent). Appears in the logbook as a standalone task header. Entry text and hierarchy are defined in LogbookData.gd, not here — the command only references the ID.",
+    "id": "ref_logbook_add_toplevel",
+    "type": "command",
+    "command": "@ADD_LOGBOOK tavo_favors",
+    "next": "ref_logbook_add_child"
+  },
+
+  {
+    "_comment": "LOGBOOK — Use 2: Add a child entry. 'investigate_mines' has parent='tavo_favors' in LogbookData. If the parent hasn't been added yet, GameState auto-adds it first — so you can safely call ADD_LOGBOOK on a child without pre-adding the parent.",
+    "id": "ref_logbook_add_child",
+    "type": "command",
+    "command": "@ADD_LOGBOOK investigate_mines",
+    "next": "ref_logbook_add_grandchild"
+  },
+
+  {
+    "_comment": "LOGBOOK — Use 3: Add a grandchild entry (two levels deep). 'find_noise_source' has parent='investigate_mines'. Nesting can go as deep as LogbookData defines — the screen indents children by one level regardless of depth.",
+    "id": "ref_logbook_add_grandchild",
+    "type": "command",
+    "command": "@ADD_LOGBOOK find_noise_source",
+    "next": "ref_logbook_complete_child"
+  },
+
+  {
+    "_comment": "LOGBOOK — Use 4: Complete a child entry. The entry turns grey with strikethrough in the UI. The parent is NOT auto-completed — completion is always explicit. Use this when a sub-task is done but the parent quest continues.",
+    "id": "ref_logbook_complete_child",
+    "type": "command",
+    "command": "@COMPLETE_LOGBOOK find_noise_source",
+    "next": "ref_logbook_complete_parent"
+  },
+
+  {
+    "_comment": "LOGBOOK — Use 5: Complete a parent entry. Children stay visible, struck-through under the struck-through parent. This is the correct way to close a whole quest branch — complete the parent when the quest resolves, not when each sub-task does.",
+    "id": "ref_logbook_complete_parent",
+    "type": "command",
+    "command": "@COMPLETE_LOGBOOK investigate_mines",
+    "next": "ref_logbook_inline"
+  },
+
+  {
+    "_comment": "LOGBOOK — Use 6: ADD_LOGBOOK inline inside narration text, using the [@COMMAND] syntax. Fires mid-text — the entry is added at the moment the player reads that line. Useful when a discovery or revelation happens as part of narrated prose rather than a clean command node.",
+    "id": "ref_logbook_inline",
+    "type": "narration",
+    "text": "Something shifts in the mine. [@ADD_LOGBOOK find_noise_source] You've heard it before — something lives down there.",
+    "next": "ref_logbook_chained"
+  },
+
+  {
+    "_comment": "LOGBOOK — Use 7: Chaining logbook commands with other commands in a single command node. ADD and COMPLETE can be mixed with currency, flags, reputation, music — anything the executor handles. Order of execution follows left-to-right.",
+    "id": "ref_logbook_chained",
+    "type": "command",
+    "command": "@ADD_LOGBOOK investigate_mines ; @add_reputation tavo_pavo 5 ; @add_ore 10 ; @COMPLETE_LOGBOOK tavo_favors",
+    "next": "ref_set_time"
+  },
+
+  {
+    "_comment": "SET_TIME: switches the global is_night flag and syncs the in-world clock. 'night' sets 02:00, 'day' sets 09:00. Affects encounter tables and any time-gated dialogue conditions. Only two valid values: 'day' and 'night'.",
+    "id": "ref_set_time",
+    "type": "command",
+    "command": "@SET_TIME night",
+    "next": "ref_set_time_back"
+  },
+
+  {
+    "id": "ref_set_time_back",
+    "type": "command",
+    "command": "@SET_TIME day",
+    "next": "ref_open_barter"
+  },
+
+  {
+    "_comment": "OPEN_BARTER: loads a ShopInventory resource and opens the barter screen. BLOCKING — the dialogue flow pauses here and does NOT advance to 'next' until the player closes the barter screen. Path must point to a .tres ShopInventory resource.",
+    "id": "ref_open_barter",
+    "type": "command",
+    "command": "@OPEN_BARTER res://Resources/Shops/rupaaa_baaaku_general.tres",
+    "next": "ref_record_species_sex"
+  },
+
+  {
+    "_comment": "RECORD_SPECIES_SEX: writes a sex encounter to player_statistics for a species. Two forms: (1) explicit species ID as argument — use this when the species is known at write time. (2) no argument — auto-detects active enemy species from the combat context, used inside post-combat dialogue overlays.",
+    "id": "ref_record_species_sex",
+    "type": "command",
+    "command": "@RECORD_SPECIES_SEX meehp",
+    "next": "ref_record_species_sex_auto"
+  },
+
+  {
+    "_comment": "RECORD_SPECIES_SEX (auto-detect form): no species ID argument. The executor walks up the scene tree from dialog_manager to find the active CombatScene and reads species from active_enemy_stats. Falls back to 'unknown' if not found. Use this inside combat overlay dialogue so you don't need to hardcode species IDs.",
+    "id": "ref_record_species_sex_auto",
+    "type": "command",
+    "command": "@RECORD_SPECIES_SEX",
+    "next": "ref_horny_commands"
+  },
+
+  {
+    "_comment": "add_horny / remove_horny: per-NPC arousal points, same pattern as reputation. Used to gate and unlock intimate scene content separately from trust (reputation). remove_horny returns false if the NPC has less than the requested amount — no underflow.",
+    "id": "ref_horny_commands",
+    "type": "command",
+    "command": "@add_horny minttara 5 ; @remove_horny minttara 2",
     "next": "ref_set_scene_and_location"
   },
 
@@ -75,6 +178,64 @@
     "id": "ref_show_zone",
     "type": "command",
     "command": "@SHOW_ZONE Klyftet/KlyftetExtInnDay",
+    "next": "ref_flag_types"
+  },
+
+  {
+    "_comment": "flag_type controls which GameState dictionary set_flag writes to. Default (omit flag_type) writes to quest_flags. All types shown: dialog, event, knowledge, sex, temp, quest. Also shows set_flag as a single string (not array) — both forms work identically.",
+    "id": "ref_flag_types",
+    "type": "narration",
+    "text": "Flag type reference node.",
+    "set_flag": "ref_single_string_flag",
+    "flag_type": "dialog",
+    "next": "ref_flag_types_others"
+  },
+
+  {
+    "_comment": "Remaining flag types shown in sequence. Array form of set_flag also works: \"set_flag\": [\"flag_a\", \"flag_b\"]. clear_flag always searches ALL flag dictionaries — flag_type does not apply to clear_flag.",
+    "id": "ref_flag_types_others",
+    "type": "command",
+    "set_flag": ["ref_event_flag", "ref_knowledge_flag"],
+    "flag_type": "event",
+    "command": "@CLEAR_ALL",
+    "next": "ref_flag_types_sex"
+  },
+
+  {
+    "id": "ref_flag_types_sex",
+    "type": "command",
+    "set_flag": "ref_sex_flag",
+    "flag_type": "sex",
+    "command": "@CLEAR_ALL",
+    "next": "ref_flag_types_knowledge"
+  },
+
+  {
+    "id": "ref_flag_types_knowledge",
+    "type": "command",
+    "set_flag": "ref_knowledge_flag",
+    "flag_type": "knowledge",
+    "command": "@CLEAR_ALL",
+    "next": "ref_flag_types_temp"
+  },
+
+  {
+    "_comment": "Temp flags are the same as quest flags but conventionally used for within-scene state that should be cleared afterward. No mechanical difference — it is a naming convention enforced by the writer, not the engine.",
+    "id": "ref_flag_types_temp",
+    "type": "command",
+    "set_flag": "ref_temp_flag",
+    "flag_type": "temp",
+    "clear_flag": ["ref_temp_flag"],
+    "command": "@CLEAR_ALL",
+    "next": "ref_npc_node"
+  },
+
+  {
+    "_comment": "type:'npc' is an alias for 'narration' — processed identically. The 'name' property sets the speaker label rendered above the dialogue line. Use 'npc' for NPC speech and 'narration' for unattributed prose. {player_name} is replaced at render time with GameState.player_name.",
+    "id": "ref_npc_node",
+    "type": "npc",
+    "name": "Tavo-Pavo",
+    "text": "You look like you've been out in the wind, {player_name}. Come in.",
     "next": "ref_logic_flags"
   },
 
@@ -197,8 +358,45 @@
     "type": "logic",
     "logic_type": "condition",
     "condition": "HAS_REPUTATION bitalgut 1",
-    "if_true": "ref_check_temp_flags",
-    "if_false": "ref_check_temp_flags"
+    "if_true": "ref_condition_string_species_stat",
+    "if_false": "ref_condition_string_species_stat"
+  },
+
+  {
+    "_comment": "Logic type condition (string HAS_SPECIES_STAT). Checks player_statistics for a species-specific counter. Stat options: 'sex' (intimate encounters), 'wins' (combat wins), 'losses' (combat losses), 'met' (first contact flag). Second argument is the species ID, third is minimum required value.",
+    "id": "ref_condition_string_species_stat",
+    "type": "logic",
+    "logic_type": "condition",
+    "condition": "HAS_SPECIES_STAT meehp sex 1",
+    "if_true": "ref_condition_player_name",
+    "if_false": "ref_condition_player_name"
+  },
+
+  {
+    "_comment": "Logic type condition (dictionary stat, player_name). Same pattern as player_gender but checks the player's chosen name. Useful for name-gated flavour or if a specific name was entered. 'is' is a strict equality check.",
+    "id": "ref_condition_player_name",
+    "type": "logic",
+    "logic_type": "condition",
+    "condition": {
+      "stat": "player_name",
+      "is": "MilkshakeMan",
+      "on_success": "ref_condition_deduct",
+      "on_fail": "ref_condition_deduct"
+    }
+  },
+
+  {
+    "_comment": "Logic type condition (currency with deduct:true). The pay-to-pass pattern: if the player has enough ore, the amount is deducted immediately and the scene continues. If not, it routes to on_fail without touching the wallet. Combine with on_fail routing to a 'can't afford this' narration node.",
+    "id": "ref_condition_deduct",
+    "type": "logic",
+    "logic_type": "condition",
+    "condition": {
+      "currency": "ore",
+      "amount": 5,
+      "deduct": true,
+      "on_success": "ref_check_temp_flags",
+      "on_fail": "ref_check_temp_flags"
+    }
   },
 
   {
@@ -351,6 +549,17 @@
           ]
         },
         "next": "ref_ability_result"
+      },
+      {
+        "_comment": "bonus_if with has_any_flag: grants the bonus if ANY of the listed flags is set. Additive with other bonus_if entries. has_item, has_flag, and has_any_flag can all appear in the same bonus_if array.",
+        "text": "> [Body check DC 10 — bonus_if has_any_flag]",
+        "check": { "ability": "body", "dc": 10 },
+        "bonus_if": [
+          { "has_any_flag": ["teq_ref_started", "teq_ref_other"], "bonus": 2 },
+          { "has_flag": "teq_ref_started", "bonus": 1 }
+        ],
+        "on_success": "ref_ability_result",
+        "on_fail": "ref_ability_result"
       },
       {
         "text": "> Continue",

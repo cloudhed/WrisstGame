@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scenes/UI/inventory_item_slot.gd" id="1_slot"]
+[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="2_font"]
+
+[node name="InventoryItemSlot" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+size_flags_horizontal = 3
+mouse_filter = 0
+theme_override_constants/separation = 8
+script = ExtResource("1_slot")
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Item Name"
+vertical_alignment = 1
+
+[node name="EquipLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.8, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 13
+text = "EQUIPPED"
+horizontal_alignment = 2
+vertical_alignment = 1
