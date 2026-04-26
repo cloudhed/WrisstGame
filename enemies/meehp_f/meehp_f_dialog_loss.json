@@ -28,7 +28,7 @@
 	{
 		"id": "meehp_loss_push",
 		"type": "narration",
-		"text": "You get one arm under you. Her hind claw comes down immediately on your forearm — not cutting, just pressure, pinning it flat. Her frills snap wide. The clacking is fast and layered. You go still.",
+		"text": "You get one arm under you. Her hind claw comes down immediately on your forearm, pinning it flat. Her frills snap wide. The clacking is fast and layered. You go still.",
 		"next": "meehp_loss_resolve"
 	},
 	{
@@ -42,6 +42,6 @@
 		"id": "meehp_loss_end",
 		"type": "command",
 		"command": "@LEAVE_ENCOUNTER",
-		"end": true
+		"end": false
 	}
 ]

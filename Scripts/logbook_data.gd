@@ -6,6 +6,30 @@ class_name LogbookData
 ## Then use [@ADD_LOGBOOK my_entry_id] in dialogue to activate it.
 
 const ENTRIES: Dictionary = {
+	# ── Main Quest: Find a Way Home ──
+	"find_way_home": {
+		"text": "Find a way back home",
+		"parent": "",
+	},
+	"search_answers_caarth": {
+		"text": "Search for answers in Caarth",
+		"parent": "find_way_home",
+	},
+
+	# ── Nautinto: Earn Access to the Hall ──
+	"nautinto_hall_access": {
+		"text": "Earn access to Nautinto's hall",
+		"parent": "",
+	},
+	"nautinto_slime": {
+		"text": "Collect teqqellon slime × 3",
+		"parent": "nautinto_hall_access",
+	},
+	"nautinto_shenche": {
+		"text": "Find a shenche loot",
+		"parent": "nautinto_hall_access",
+	},
+
 	# ── Tavo-Pavo's Ledger of Favors (MQ-03) ──
 	"tavo_favors": {
 		"text": "Tavo-Pavo's tasks — the Ledger of Favors",
@@ -19,12 +43,6 @@ const ENTRIES: Dictionary = {
 		"text": "Find the source of the noise",
 		"parent": "investigate_mines",
 	},
-
-	# ── Example standalone entry (no parent) ──
-	#"explore_plains": {
-	#	"text": "Explore the plains beyond Klyftet",
-	#	"parent": "",
-	#},
 }
 
 

@@ -2,7 +2,7 @@
 	{
 		"id": "teqqellon_loss_intro",
 		"type": "narration",
-		"text": "You're flat on your back. The Teqqellon has shifted over your lower half — its teal membrane pressing cold and heavy across your hips and thighs. Its lilac core pulses a few inches above your stomach, the lobes slow and deliberate. It doesn't squeeze. It waits.",
+		"text": "You hit the ground, your energy completely spent. The large slime doesn't hesitate as its heavy, teal mass surges over your legs and hips, pinning you to the ground. The strange lilac core inside it pulses rapidly.",
 		"next": "teqqellon_loss_choice"
 	},
 	{
@@ -10,31 +10,38 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Go completely still",
-				"next": "teqqellon_loss_still"
+				"text": "> [Stay awake]",
+				"next": "teqqellon_loss_stay_awake"
 			},
 			{
-				"text": "> Press your palms against it and push",
-				"next": "teqqellon_loss_push"
+				"text": "> [Pass out]",
+				"next": "teqqellon_loss_pass_out"
 			}
 		]
 	},
 	{
-		"id": "teqqellon_loss_still",
+		"id": "teqqellon_loss_stay_awake",
 		"type": "narration",
-		"text": "You stop moving. The membrane responds to the lack of resistance — it presses closer, a slow increase in weight, its surface weeping thin fluid along your skin. Your hands rest at your sides. The core drifts lower. You feel a faint chemical sting at your inner thigh, numbing and shallow. Then it stills again, reading your heat.",
-		"next": "teqqellon_loss_resolve"
+		"text": "You grit your teeth, forcing your eyes to stay open. The creature's heavy mass fully engulfs your groin. Its slime eats through your remaining defenses, dragging a violent, forced erection from your exhausted body. A thick, wet fold opens beneath its core and swallows your cock to the base with a sickening, suctioning pop.",
+		"next": "teqqellon_loss_stay_awake_02"
 	},
 	{
-		"id": "teqqellon_loss_push",
+		"id": "teqqellon_loss_stay_awake_02",
 		"type": "narration",
-		"text": "You press your palms flat against the teal surface and push. It gives — then flows back. No grip, no resistance, no reaction. Your arms sink slightly into the membrane. You stop pushing. It settles over you again, warmer than before.",
-		"next": "teqqellon_loss_resolve"
+		"text": "You thrash weakly, but its weight is absolute. The internal walls of the creature are cool and incredibly dense, crushing down on your shaft with merciless, rhythmic contractions. Slick, invasive tendrils slide out from the folds, wrapping tightly around your testicles and squeezing hard. The extraction is brutal. It wants your essence, and it's taking it by force.",
+		"next": "teqqellon_loss_stay_awake_03"
 	},
 	{
-		"id": "teqqellon_loss_resolve",
+		"id": "teqqellon_loss_stay_awake_03",
 		"type": "narration",
-		"text": "After a long still moment, its core dims. The membrane draws back in segments, peeling from your skin with a faint wet sound and pulling its mass inward. It settles into a low, compact heap nearby — core dark, barely pulsing. You sit up.",
+		"text": "Your hips jerk against the ground as the creature violently milks you. The lilac core flares bright purple as it draws your seed upward, pulling thick ropes of cum directly from your aching core. The relentless suction doesn't stop even as you spasm and cry out, draining you completely dry until your vision finally blurs and the overwhelming pleasure-pain drags you into unconsciousness.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "teqqellon_loss_end"
+	},
+	{
+		"id": "teqqellon_loss_pass_out",
+		"type": "narration",
+		"text": "The numbing exhaustion is too much to fight. You let your heavy head fall back against the ground and close your eyes as the darkness drags you under before you can feel anything else. The world fades completely.",
 		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
 		"next": "teqqellon_loss_end"
 	},
@@ -42,6 +49,13 @@
 		"id": "teqqellon_loss_end",
 		"type": "command",
 		"command": "@LEAVE_ENCOUNTER",
-		"end": true
+		"end": false,
+		"next": "teqqellon_loss_end_2"
+	},
+	{
+		"id": "teqqellon_loss_end_2",
+		"type": "command",
+		"command": "@LEAVE_ENCOUNTER",
+		"end": false
 	}
 ]

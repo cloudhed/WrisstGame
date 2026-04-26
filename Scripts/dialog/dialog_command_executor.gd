@@ -64,6 +64,10 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 			_set_time(parts)
 		"RECORD_SPECIES_SEX":
 			_record_species_sex(parts, context)
+		"HEAL_PLAYER":
+			_heal_player(parts)
+		"HEAL_PLAYER_FULL":
+			game_state.heal_player_full()
 		"OPEN_BARTER":
 			_open_barter(context)
 		"ADD_LOGBOOK":
@@ -142,6 +146,15 @@ func _record_species_sex(parts: PackedStringArray, context: Dictionary) -> void:
 		species_id = StringName("unknown")
 
 	GameState.player_statistics.record_sex(species_id)
+
+# === HEALING ===
+
+func _heal_player(parts: PackedStringArray) -> void:
+	if parts.size() >= 2 and parts[1].is_valid_int():
+		game_state.heal_player(parts[1].to_int())
+	else:
+		game_state.heal_player_full()
+
 
 # === BARTER ===
 

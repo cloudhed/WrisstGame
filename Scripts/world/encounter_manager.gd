@@ -78,7 +78,10 @@ func _get_default_enemy() -> EnemyStats:
 func save_player_data(player: PlayerDot) -> void:
 	var biome_obj = player.get_highest_priority_biome()
 	combat_biome = biome_obj.biome_name if biome_obj else "Default"
-	GameState.player_stats = player.get_stats()
+	# Only overwrite if PlayerDot actually returns stats — never null out the global
+	var stats = player.get_stats()
+	if stats != null:
+		GameState.player_stats = stats
 	player_last_position = player.global_position
 
 	if debug_encounter_flow:

@@ -282,6 +282,7 @@
         "type": "npc",
         "name": "Nautinto",
         "text": "\"Return with both, and I will consider your presence here less of an intrusion.\"",
+        "command": "@ADD_LOGBOOK nautinto_slime ; @ADD_LOGBOOK nautinto_shenche",
         "set_flag": ["nautinto_met", "nautinto_quest_given"],
         "flag_type": "quest",
         "next": "choice_quest_received"
@@ -477,7 +478,7 @@
         "type": "npc",
         "name": "Nautinto",
         "text": "\"...Yes. This is sufficient.\"",
-        "command": "@remove_item Misc/slime_glob 3 ; @remove_item Misc/shenche_loot 1",
+        "command": "@remove_item Misc/slime_glob 3 ; @remove_item Misc/shenche_loot 1 ; @COMPLETE_LOGBOOK nautinto_slime ; @COMPLETE_LOGBOOK nautinto_shenche ; @COMPLETE_LOGBOOK nautinto_hall_access",
         "set_flag": "nautinto_quest_complete",
         "flag_type": "quest",
         "next": "nautinto_delivery_welcome"

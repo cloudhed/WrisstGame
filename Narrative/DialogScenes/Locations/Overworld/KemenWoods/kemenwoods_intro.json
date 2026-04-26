@@ -432,7 +432,7 @@
   {
 	"id": "logbook_received",
 	"type": "command",
-	"command": "@add_item logbook",
+	"command": "@add_item logbook ; @ADD_LOGBOOK search_answers_caarth",
 	"next": "logbook_tracking"
   },
   {

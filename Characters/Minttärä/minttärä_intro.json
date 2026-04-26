@@ -262,6 +262,7 @@
 		"type": "npc",
 		"name": "Minttärä",
 		"text": "You hand over 8 öre. Minttärä points to a low bench in the back corner.\"Feet up. Head back. No talking unless you're talked to.\"You settle into the corner seat. The bench is warm to the touch.[nb]Time passes quietly.",
+		"command": "@HEAL_PLAYER_FULL",
 		"set_flag": "hotbaths_paid_shortrest",
 		"end": false,
 		"next": "hotbaths_sign_choice"
@@ -271,6 +272,7 @@
 		"type": "npc",
 		"name": "Minttärä",
 		"text": "You hand over 32 öre. Minttärä gives you a brief nod, already moving toward the alcoves.\"Table Seven. Drop the gear, grab a towel. I’ll be right there.\"",
+		"command": "@HEAL_PLAYER_FULL",
 		"next": "hotbaths_service_debug_massage"
 	},
 	{

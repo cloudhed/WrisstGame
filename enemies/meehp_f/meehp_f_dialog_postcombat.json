@@ -11,13 +11,13 @@
 	{
 		"id": "meehp_postcombat_unknown",
 		"type": "narration",
-		"text": "The tall biped is still on its feet, breathing hard through its circular mouth. Frills open and close in short bursts under its jaw. All four eyes track you from above. It's winded, but it hasn't lowered its head or yielded the space. Its hind claws are still dug in.",
+		"text": "The tall biped has collapsed into the dirt, breathing hard through its circular mouth. Its long neck rests heavily against the ground, and its frills twitch erratically under its jaw. All four eyes track you from below. It's completely winded, its muscular hind legs splayed out as it struggles to find the strength to rise.",
 		"next": "meehp_postcombat_choice"
 	},
 	{
 		"id": "meehp_postcombat",
 		"type": "narration",
-		"text": "The female Meehp is still on her feet, breathing hard through her circular maw. Her frills open and close in short bursts while her hind claws stay dug in. She is winded, but still tracking you with all four eyes. Her tall, narrow body holds its position. Sweat slicks the dry brown and springy green pattern of her hide. She shifts her weight onto her muscular thighs, refusing to yield.",
+		"text": "The female Meehp has collapsed into the dirt, breathing hard through her circular maw. Her tall, narrow body lies defeated, sweat slicking the dry brown and springy green pattern of her hide. Her long neck rests heavily against the ground, and her frills twitch erratically. All four of her eyes track you from below. She is completely winded, her muscular digitigrade legs splayed out as she struggles to find the strength to rise and reclaim her dominance.",
 		"next": "meehp_postcombat_choice"
 	},
 	{
@@ -29,7 +29,7 @@
 				"next": "meehp_loot_01"
 			},
 			{
-				"text": "> Step into her space and hold your ground",
+				"text": "> Overpower and inspect the defeated beast",
 				"next": "meehp_approach_01",
 				"hide_if": {
 					"any_of": [
@@ -37,11 +37,6 @@
 						{ "content_disabled": "violence" }
 					]
 				}
-			},
-			{
-				"text": "> Circle wide and test her reaction",
-				"next": "meehp_test_branch_01",
-				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Leave",
@@ -52,77 +47,199 @@
 	{
 		"id": "meehp_approach_01",
 		"type": "narration",
-		"text": "You step in close and stop within arm's reach. She lowers her neck, inhales along your chest and groin, and braces one claw beside your foot without striking.",
+		"text": "You kneel beside the defeated beast. Her instinct flares, and she lets out a sharp, clacking growl, weakly kicking one of her hind claws to keep you back. You drop your weight onto her hips, immediately pinning her down. She thrashes beneath you, her dry hide shifting against the dirt, but her stamina is entirely spent. You grab her thick, muscular thighs and forcefully spread them wide. Her frills flutter in panic and anger as you expose her slick, heavy primary slit and the tighter, secondary vent just above it.",
 		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
-		"next": "meehp_approach_choice"
+		"next": "meehp_sex_choice_init"
 	},
 	{
-		"id": "meehp_approach_choice",
+		"id": "meehp_sex_choice_init",
 		"type": "choice",
 		"options": [
 			{
-				"text": "> [SURRENDER] Hold still and let her mount the pace",
-				"next": "meehp_path_surrender_01"
+				"text": "Have your way with the defeated Meehp",
+				"next": "meehp_sex_init"
 			},
 			{
-				"text": "> [CONTROL] Grip her posture and force your own rhythm",
-				"next": "meehp_path_control_01"
+				"text": "> Stop and leave",
+				"next": "meehp_postcombat_leave"
 			}
 		]
 	},
 	{
-		"id": "meehp_path_surrender_01",
+		"id": "meehp_sex_init",
 		"type": "narration",
-		"text": "You keep your stance open and wait for her timing. She answers with slow pressure through thigh and hips, testing whether you can remain steady under her weight. She shifts lower, bringing her circular mouth just inches from your groin. Warm saliva drips from her small, dark teeth onto your pants. You carefully remove your clothes. She inhales deeply, her breath hot against your bare skin. She presses her mouth over your cock. Her lips are firm and round, creating an immediate seal. She pulls back slightly, and you feel the scrape of her teeth grazing your shaft. She bobs her head, taking your length. The suction is heavy and mechanical. You brace your legs as she quickens her rhythm. You feel your climax building. You grunt and thrust forward. She holds her position, taking your cum in thick swallows. She pulls away slowly, leaving your shaft slick and exposed.",
-		"command": "@MUSIC_CLIP love",
-		"next": "meehp_aftermath"
+		"text": "You decide to take full advantage of the helpless beast. You unfasten your clothes, letting them drop heavily into the dirt. The female Meehp watches you with all four eyes, letting out a breathy, defeated huff. She tries to weakly scoot backward away from you, but her muscular legs give out almost immediately. Her primary slit continues to pool with thick secretions as you stand completely bare over your prize.",
+		"clear": true,
+		"next": "meehp_sex_choice"
 	},
 	{
-		"id": "meehp_path_control_01",
-		"type": "narration",
-		"text": "You catch her movement at the shoulder-line and redirect her angle. She resists with a sharp clack of teeth, then counters by pressing harder through her hind legs to reclaim dominance. You step inside her guard and drive your weight forward. She stumbles backward, hind leg hitting something behind her, and her momentum stalls. You press your forearm hard against her chest, pinning her in place. She growls, a sharp clacking sound. Her four beady eyes widen as you hold your ground. Her frills flutter rapidly against her jaw. She tests your grip, muscles tightening beneath her dry brown hide. When you do not yield, her struggles cease. She spreads her digitigrade legs slightly, exposing her slick, heavy slit. She waits, yielding to your physical control.",
-		"command": "@MUSIC_CLIP love",
-		"next": "meehp_aftermath"
-	},
-	{
-		"id": "meehp_test_branch_01",
-		"type": "narration",
-		"text": "You move in a wide arc around her. She tracks each step and mirrors your movement, frills fluttering faster whenever you cross downwind. You maintain deliberate eye contact as you step sideways. She matches the distance exactly. Her nostrils flare, and the frills beneath her chin twitch as she pulls in your scent. Every time you pause, her hind claws press deeper into the dirt.",
-		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP choices",
-		"next": "meehp_test_choice"
-	},
-	{
-		"id": "meehp_test_choice",
+		"id": "meehp_sex_choice",
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Cut across and invite contact",
-				"next": "meehp_test_contact_01"
+				"text": "> Force your cock into her primary slit",
+				"next": "meehp_sex_slit_start",
+				"show_if": { "player_gender": "male" }
 			},
 			{
-				"text": "> Keep distance and disengage",
-				"next": "meehp_test_disengage_01"
+				"text": "> Force into her tighter secondary vent",
+				"next": "meehp_sex_vent_start",
+				"show_if": { "player_gender": "male" }
+			},
+			{
+				"text": "> Grind your pussy against her",
+				"next": "meehp_sex_female_ride_start",
+				"show_if": { "player_gender": "female" }
+			},
+			{
+				"text": "> Leave her be",
+				"next": "meehp_postcombat_leave"
 			}
 		]
 	},
 	{
-		"id": "meehp_test_contact_01",
+		"id": "meehp_sex_slit_start",
 		"type": "narration",
-		"text": "You break the arc and step straight toward her. Her posture shifts from pursuit to claim, and she closes the gap immediately. She lunges and drives you onto your back. You hit the ground hard. She immediately mounts your hips. Instead of guiding your cock into her primary slit, she shifts higher. A secondary, tighter vent presses against your tip. You push your hips upward. The entrance is rigid and narrow. She clacks her teeth in surprise but sinks down, forcing your shaft inside. The internal grip is intense, clamping around you like a vise. She grinds her pelvis into yours, using her heavy thighs for leverage. You groan as the tight friction drags against your skin. You climax quickly, shooting your seed deep into the narrow cavity. She shudders, her muscles milking the final drops from your cock before she pulls away.",
+		"text": "You line your hard length up with her heavy, dripping slit. She snaps her circular jaw and tries to buck her hips away from your heat. You tighten your grip bruisingly on her muscular thighs, anchoring her to the dirt, and drive your hips forward. The first thrust is heavily contested; her internal walls are dense and rigid, fighting the intrusion. You grunt and push harder, burying yourself deep. She lets out a garbled, furious hiss, her four eyes widening as you forcefully breach her.",
 		"command": "@MUSIC_CLIP love",
+		"next": "meehp_sex_slit_ongoing_choice"
+	},
+	{
+		"id": "meehp_sex_slit_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Establish a brutal rhythm",
+				"next": "meehp_sex_slit_ongoing"
+			}
+		]
+	},
+	{
+		"id": "meehp_sex_slit_ongoing",
+		"type": "narration",
+		"text": "You establish a heavy, slapping rhythm. At first, she thrashes against every stroke, her frills flaring wildly in protest. But as you relentlessly pound into her slick depths, her feral biology betrays her. The rigid resistance of her walls begins to soften, shifting into a rhythmic, pulsing grip that actively milks your shaft. Her angry hisses melt into low, vibrating coos. The dominant female yields to your sheer physical control, her hips instinctively rising from the dirt to meet your thrusts, accepting her role as your plaything.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "meehp_sex_slit_climax_choice"
+	},
+	{
+		"id": "meehp_sex_slit_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Breed the defeated Meehp",
+				"next": "meehp_sex_slit_climax_inside"
+			},
+			{
+				"text": "> Pull out and finish on her hide",
+				"next": "meehp_sex_slit_climax_outside"
+			}
+		]
+	},
+	{
+		"id": "meehp_sex_slit_climax_inside",
+		"type": "narration",
+		"text": "She is completely yours now, her circular maw hanging open as she pants, taking every inch you give her. You grab her thick thighs even tighter, pulling her deep onto your shaft as the pressure in your groin peaks. You slam down to the hilt and let go with a loud grunt. Thick ropes of your hot seed pump deep into the female Meehp's womb. She shudders violently, her frills fluttering in a helpless frenzy as her body eagerly takes every drop. Her walls spasm around you, milking your softening cock with deep, instinctual clenches.",
+		"command": "@MUSIC_CLIP breath",
 		"next": "meehp_aftermath"
 	},
 	{
-		"id": "meehp_test_disengage_01",
+		"id": "meehp_sex_slit_climax_outside",
 		"type": "narration",
-		"text": "You keep your pace measured and peel away from the arc. She watches, frills easing down as your distance grows.",
+		"text": "She is completely yours now, her circular maw hanging open as she pants, taking every inch you give her. As the pressure in your groin peaks, you rip yourself out of her slick grip at the last second. Your cock erupts, spraying thick, heavy strands of white across the Meehp's sweating hide and her gaping slit. She squelches loudly, bucking her hips once into the empty air before collapsing completely back into the dirt, spent and defeated.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "meehp_aftermath"
+	},
+	{
+		"id": "meehp_sex_vent_start",
+		"type": "narration",
+		"text": "You ignore her primary slit and align your tip against the tighter, secondary vent resting just above it. She clacks her teeth in sudden alarm and violently tries to buck you off. You bear down hard, driving your weight forward, forcing your shaft inside the narrow cavity. The internal grip is incredibly intense, clamping around you like a hot vise. She growls, her muscles fighting desperately to reject you.",
+		"command": "@MUSIC_CLIP love",
+		"next": "meehp_sex_vent_ongoing_choice"
+	},
+	{
+		"id": "meehp_sex_vent_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Pound into the tight vent",
+				"next": "meehp_sex_vent_ongoing"
+			}
+		]
+	},
+	{
+		"id": "meehp_sex_vent_ongoing",
+		"type": "narration",
+		"text": "You grab her thick thighs to anchor yourself and begin to thrust relentlessly against the crushing friction. For the first few strokes, she writhes in protest, refusing to surrender. But the overwhelming stimulation soon breaks her. The vise-like grip inside her vent turns into a desperate, rhythmic milking motion. Her hisses fade into a constant, gurgling purr. She goes completely limp beneath you, her body fully surrendering to your overpowering rhythm.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "meehp_sex_vent_climax_choice"
+	},
+	{
+		"id": "meehp_sex_vent_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Fill her tight vent",
+				"next": "meehp_sex_vent_climax_inside"
+			},
+			{
+				"text": "> Pull out and finish on her hide",
+				"next": "meehp_sex_slit_climax_outside"
+			}
+		]
+	},
+	{
+		"id": "meehp_sex_vent_climax_inside",
+		"type": "narration",
+		"text": "The tight friction drags against your skin, pulling you rapidly over the edge. You groan and bury yourself as deep as you can, shooting your seed forcefully into the narrow cavity. The female Meehp shudders wildly, her body arching off the dirt as she takes your climax. The vent spasms, its tight muscles ruthlessly milking the final drops from your cock before her exhaustion completely overtakes her.",
+		"command": "@MUSIC_CLIP breath",
+		"next": "meehp_aftermath"
+	},
+	{
+		"id": "meehp_sex_female_ride_start",
+		"type": "narration",
+		"text": "You swing a leg over the defeated Meehp's hips, dropping your weight to pin her firmly to the dirt. She snaps her circular jaw, weakly trying to buck you off. You grab her thick, muscular thighs to anchor yourself, aligning your slick pussy directly over her lower abdomen. As you begin to aggressively grind your clit against her firm, sweating hide, her furious hisses quickly turn into surprised, garbled trills.",
+		"command": "@MUSIC_CLIP love",
+		"next": "meehp_sex_female_ride_ongoing_choice"
+	},
+	{
+		"id": "meehp_sex_female_ride_ongoing_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Ride the defeated beast",
+				"next": "meehp_sex_female_ride_ongoing"
+			}
+		]
+	},
+	{
+		"id": "meehp_sex_female_ride_ongoing",
+		"type": "narration",
+		"text": "You establish a heavy, dominating rhythm. At first, she thrashes beneath you, her pride fighting the submission. But as your grinding friction intensifies, her feral instincts hijack her exhaustion. She yields to your weight, her frills flattening as her hips begin to lazily buck upward, meeting your rhythm and accepting her fate beneath you.",
+		"command": "@MUSIC_CLIP climax",
+		"next": "meehp_sex_female_ride_climax_choice"
+	},
+	{
+		"id": "meehp_sex_female_ride_climax_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Grind out your climax",
+				"next": "meehp_sex_female_ride_climax"
+			}
+		]
+	},
+	{
+		"id": "meehp_sex_female_ride_climax",
+		"type": "narration",
+		"text": "You ride the defeated beast mercilessly. She is completely subservient now, letting out low, vibrating coos as you dominate her body. As your orgasm hits, you cry out and bear down hard against her. The Meehp shudders beneath you, her body going entirely limp as your juices coat her hide in your release.",
+		"command": "@MUSIC_CLIP breath",
 		"next": "meehp_aftermath"
 	},
 	{
 		"id": "meehp_aftermath",
 		"type": "narration",
-		"text": "The female Meehp settles into a low stance, still alert but no longer pressing forward. Fluid drips slowly from your body. She watches you carefully, her four eyes blinking in sequence. The aggressive energy is gone from her posture. She straightens her long neck and begins to preen her frills.",
-		"command": "@RECORD_SPECIES_SEX meehp ; @MUSIC_CLIP breath",
+		"text": "You finally pull away and step back from the exhausted creature. The female Meehp lies completely still, panting heavily into the dirt. The aggressive energy is entirely gone from her posture. She watches you lazily with half-closed eyes, completely subdued, before slowly resting her long neck back against the ground.",
+		"command": "@RECORD_SPECIES_SEX meehp",
 		"set_flag": "sexed_meehp",
 		"flag_type": "sex",
 		"next": "meehp_postcombat_leave"
@@ -130,7 +247,7 @@
 	{
 		"id": "meehp_loot_01",
 		"type": "narration",
-		"text": "You cut a single coarse fur tuft free from her flank while she stays low and watchful.",
+		"text": "You ignore the panting beast and cut a single coarse fur tuft free from her flank. She gives a weak clack of her teeth but doesn't have the strength to stop you.",
 		"next": "meehp_loot_give"
 	},
 	{

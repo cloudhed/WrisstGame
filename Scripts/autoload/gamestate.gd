@@ -9,6 +9,7 @@ signal inventory_changed(action: String, item)
 signal logbook_updated(entry_id: String)
 signal fallback_equipped
 signal combat_debug_settings_changed
+signal health_changed(current: int, maximum: int)
 
 @export var grant_debug_starting_items: bool = true
 @export var debug_immediate_discard_reshuffle: bool = false
@@ -33,7 +34,7 @@ var content_settings: Dictionary = {
 
 # DEFAULT FALLBACK NAKED&CONFUSED
 const FALLBACK_ARMOR_PATH := "res://Resources/Items/Equipment/Armor/naked_armor.tres"
-const FALLBACK_WEAPON_PATH := "res://Resources/Items/Equipment/Weapons/long_stick_weapon.tres" #default is unarmed_weapon.tres
+const FALLBACK_WEAPON_PATH := "res://Resources/Items/Equipment/Weapons/unarmed_weapon.tres" #default is unarmed_weapon.tres
 
 var FALLBACK_ARMOR: EquipableItem = null
 var FALLBACK_WEAPON: EquipableItem = null
@@ -94,7 +95,8 @@ func _ready():
 		if player_stats == null:
 			push_error("❌ Failed to load fallback player_stats from player.tres!")
 		else:
-			print("✅ player_stats loaded from player.tres")
+			player_stats.health = player_stats.max_health
+			print("✅ player_stats loaded from player.tres (HP: %d/%d)" % [player_stats.health, player_stats.max_health])
 
 	if grant_debug_starting_items:
 		var debug_armor: EquipableItem = load("res://Resources/Items/Equipment/Armor/debugger_armor.tres")
@@ -413,6 +415,38 @@ func clear_flag(flag_dict: Dictionary, key: String) -> void:
 
 func has_flag(flag_dict: Dictionary, key: String) -> bool:
 	return flag_dict.has(key) and flag_dict[key] == true
+
+
+# ─────────────────────────────────────────────────────────────
+# Player health — persistent across combat encounters
+# GameState.player_stats.health is the single source of truth.
+
+## Save combat result back to persistent health. Called on victory, defeat, and flee.
+func set_player_health(value: int) -> void:
+	if player_stats == null:
+		push_error("❌ set_player_health called but player_stats is null!")
+		return
+	player_stats.health = clampi(value, 0, player_stats.max_health)
+	health_changed.emit(player_stats.health, player_stats.max_health)
+
+
+## Heal the player by [amount] HP, clamped to max. Used by town services, consumables, etc.
+func heal_player(amount: int) -> void:
+	if player_stats == null:
+		return
+	var before := player_stats.health
+	player_stats.health = clampi(player_stats.health + amount, 0, player_stats.max_health)
+	if player_stats.health != before:
+		health_changed.emit(player_stats.health, player_stats.max_health)
+		print("💚 Healed %d HP → %d/%d" % [player_stats.health - before, player_stats.health, player_stats.max_health])
+
+
+## Fully restore health. Used by Bwavrek's hotbaths, debug, new-game reset.
+func heal_player_full() -> void:
+	if player_stats == null:
+		return
+	set_player_health(player_stats.max_health)
+	print("💚 Full heal → %d/%d" % [player_stats.health, player_stats.max_health])
 
 
 func toggle_debug_immediate_discard_reshuffle() -> void:

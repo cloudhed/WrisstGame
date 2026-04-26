@@ -50,13 +50,23 @@ func _ready() -> void:
 		if encounter_enemy != null:
 			override_enemy_resource = encounter_enemy
 
-	if char_stats == null:
-		print("⚠️ char_stats is null in _ready(). Using fallback GameState.player_stats.")
+	# Always prefer GameState.player_stats — it's the single source of truth for persistent health.
+	# Fall back to the @export char_stats only for editor-only testing.
+	if GameState.player_stats != null:
 		char_stats = GameState.player_stats
-		
+	elif char_stats == null:
+		push_warning("⚠️ No player stats available from GameState or @export!")
+
+	print("🩺 Combat._ready() | char_stats=%s | GameState.player_stats=%s | same? %s" % [
+		char_stats, GameState.player_stats, str(char_stats == GameState.player_stats)
+	])
+	if char_stats != null:
+		print("🩺 char_stats.health=%d/%d" % [char_stats.health, char_stats.max_health])
+
 	# Only create stats ONCE
 	created_stats = char_stats.create_instance()
 	combat_ui.char_stats = created_stats
+	print("🩺 created_stats.health=%d/%d after create_instance()" % [created_stats.health, created_stats.max_health])
 
 	# UI setup
 	player_handler.combat_player = player
@@ -220,8 +230,12 @@ func _on_enemies_child_order_changed() -> void:
 	print("Checking enemies_child_order_changed.")
 
 	if _all_enemies_defeated():
-		print("🏆 Victory!")
+		print("🏆 Victory! created_stats.health=%d | GameState.player_stats=%s" % [
+			created_stats.health if created_stats else -1,
+			str(GameState.player_stats != null)
+		])
 		_record_combat_result(true)
+		_save_health_to_gamestate()
 		combat_over = true
 #		combat_ui.visible = false
 		$IntentUI.visible = false
@@ -244,7 +258,7 @@ func _on_enemy_turn_ended() -> void:
 	enemy_handler.reset_enemy_actions()
 
 func _on_player_died() -> void:
-	print("☠️ Game over!")
+	print("☠️ Defeated! Waking up at 1 HP...")
 	if combat_over:
 		return
 
@@ -253,23 +267,57 @@ func _on_player_died() -> void:
 	enemy_handler.cancel_turn_sequence()
 	$IntentUI.visible = false
 	_record_combat_result(false)
+
+	# Wake up at 1 HP and advance time by ~7 hours as a penalty
+	GameState.set_player_health(1)
+	_advance_time_penalty(7)
+
 	if active_enemy_stats and not active_enemy_stats.loss_combat_dialog_path.is_empty() and not combat_aborted:
 		_show_dialog_overlay(active_enemy_stats.loss_combat_dialog_path, active_enemy_stats.slide_deck)
 		return
-	# You can optionally also emit leave_encounter_requested here if you want
+
+	# Return to overworld after a brief delay so the player sees the defeat
+	await get_tree().create_timer(1.5).timeout
+	Events.leave_encounter_requested.emit()
+
+
+## Push the overworld clock forward as a defeat penalty.
+func _advance_time_penalty(hours: int) -> void:
+	if Manager.last_time_of_day.has("hours") and Manager.last_time_of_day.has("minutes"):
+		var new_hours: int = int(Manager.last_time_of_day["hours"]) + hours
+		var new_minutes: int = int(Manager.last_time_of_day["minutes"])
+		# Wrap around midnight
+		new_hours = new_hours % 24
+		Manager.last_time_of_day["hours"] = new_hours
+		Manager.last_time_of_day["minutes"] = new_minutes
+		print("⏰ Time advanced +%dh → %02d:%02d" % [hours, new_hours, new_minutes])
 
 
 func abort_combat() -> void:
 	if combat_aborted:
 		return
 
-	print("⚠️ abort_combat() CALLED.")
+	print("⚠️ abort_combat() CALLED. created_stats=%s | GameState.player_stats=%s | combat_over=%s" % [
+		str(created_stats != null), str(GameState.player_stats != null), str(combat_over)
+	])
+	# Only save health if this is a flee — not if combat already ended via victory/defeat
+	var is_flee := not combat_over
 	combat_aborted = true
 	combat_over = true
+	if is_flee:
+		_save_health_to_gamestate()
 	MusicPlayer.fade_out(0.6)
 	if dialog_overlay:
 		dialog_overlay.queue_free()
 		dialog_overlay = null
+
+
+## Save the combat instance's health back to GameState so it persists.
+func _save_health_to_gamestate() -> void:
+	if created_stats == null or GameState.player_stats == null:
+		return
+	GameState.set_player_health(created_stats.health)
+	print("💾 Persistent HP saved: %d/%d" % [created_stats.health, GameState.player_stats.max_health])
 
 
 func _record_combat_result(won: bool) -> void:

@@ -64,7 +64,8 @@
       "Bash(grep -r \"format.*amount\\\\|format.*price\\\\|format.*currency\" /d/Projects/Godot/wrisst_test --include=*.gd)",
       "Bash(grep -E \"\\\\.gd$\")",
       "Bash(grep -r add_player_dud_tiles /d/Projects/Godot/wrisst_test --include=*.tres --include=*.gd)",
-      "Bash(find /d/Projects/Godot/wrisst_test -type f \\\\\\(-name *.md -o -name *.txt -o -name *README* \\\\\\))"
+      "Bash(find /d/Projects/Godot/wrisst_test -type f \\\\\\(-name *.md -o -name *.txt -o -name *README* \\\\\\))",
+      "Bash(xargs ls:*)"
     ],
     "additionalDirectories": [
       "d:\\Projects\\Godot\\wrisst_test\\Scenes\\UI"

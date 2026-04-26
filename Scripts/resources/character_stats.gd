@@ -220,8 +220,14 @@ func _format_status_summary(status_id: StringName, status_data: Dictionary) -> S
 func create_instance() -> Resource:
 	var instance: CharacterStats = self.duplicate()
 	instance.player_name = player_name
-	instance.health = max_health
+	# Carry over persistent health from GameState — clamp to at least 1 (never enter combat dead)
+	instance.health = clampi(health, 1, max_health)
 	instance.block = 0
+	print("🔧 create_instance() called on resource: %s | self.health=%d self.max_health=%d → instance.health=%d | self is GameState.player_stats? %s" % [
+		resource_path if resource_path else "(no path / duplicate)",
+		health, max_health, instance.health,
+		str(self == GameState.player_stats)
+	])
 	instance.reset_stamina()
 
 	# Set passive armor from equipped armor
