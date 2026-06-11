@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Cup 2026 Tracker</title>
+    <meta name="description" content="2026 FIFA World Cup schedule, Sweden filter, local time, reminders and live scores." />
+    <meta name="theme-color" content="#0b6e4f" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar__title">
+        <h1>⚽ World Cup 2026</h1>
+        <p id="tz-label" class="topbar__sub">Loading…</p>
+      </div>
+      <div class="topbar__actions">
+        <button id="notif-btn" class="chip" type="button">🔔 Enable reminders</button>
+        <button id="theme-btn" class="chip chip--icon" type="button" title="Toggle theme">🌗</button>
+      </div>
+    </header>
+
+    <div id="countdown" class="countdown" hidden></div>
+
+    <section class="controls" aria-label="Filters">
+      <button id="quick-team-btn" class="chip" type="button">🇸🇪 Sweden only</button>
+
+      <label class="control">
+        <span class="control__label">Team</span>
+        <select id="f-team"></select>
+      </label>
+      <label class="control">
+        <span class="control__label">Group</span>
+        <select id="f-group"></select>
+      </label>
+      <label class="control">
+        <span class="control__label">Stage</span>
+        <select id="f-stage"></select>
+      </label>
+
+      <label class="control control--grow">
+        <span class="control__label">Search</span>
+        <input id="f-search" type="search" placeholder="team, city, group…" />
+      </label>
+
+      <label class="toggle">
+        <input id="f-mymatches" type="checkbox" />
+        <span>⭐ Followed only</span>
+      </label>
+      <label class="toggle">
+        <input id="f-hidepast" type="checkbox" />
+        <span>Hide past games</span>
+      </label>
+    </section>
+
+    <main id="schedule" class="schedule">
+      <p class="empty">Loading schedule…</p>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Schedule data: public-domain
+        <a href="https://github.com/openfootball/worldcup.json" target="_blank" rel="noopener">openfootball/worldcup.json</a>.
+        Times in your device's local timezone. Tap ☆ on a team to get a reminder before kickoff.
+      </p>
+    </footer>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

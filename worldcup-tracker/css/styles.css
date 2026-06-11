@@ -1,0 +1,230 @@
+/* World Cup 2026 Tracker — mobile-first, light/dark via [data-theme]. */
+
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #eef0f3;
+  --text: #1a1d21;
+  --text-dim: #5c636e;
+  --border: #d9dde3;
+  --accent: #0b6e4f;
+  --accent-text: #ffffff;
+  --live: #e23a3a;
+  --ft: #6b7280;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1216;
+  --surface: #181c22;
+  --surface-2: #20262e;
+  --text: #e8ebef;
+  --text-dim: #9aa3af;
+  --border: #2b323b;
+  --accent: #1aa179;
+  --accent-text: #04130d;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    --bg: #0f1216;
+    --surface: #181c22;
+    --surface-2: #20262e;
+    --text: #e8ebef;
+    --text-dim: #9aa3af;
+    --border: #2b323b;
+    --accent: #1aa179;
+    --accent-text: #04130d;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+  padding-bottom: 2rem;
+}
+
+a { color: var(--accent); }
+
+/* Topbar */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  background: var(--accent);
+  color: var(--accent-text);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.topbar h1 { margin: 0; font-size: 1.25rem; }
+.topbar__sub { margin: 0.1rem 0 0; font-size: 0.78rem; opacity: 0.9; }
+.topbar__actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+
+/* Chips / buttons */
+.chip {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.14);
+  color: inherit;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chip--icon { padding: 0.4rem 0.55rem; }
+.chip--on { background: #fff; color: var(--accent); border-color: #fff; font-weight: 600; }
+
+/* Countdown banner */
+.countdown {
+  margin: 0.75rem 1rem 0;
+  padding: 0.65rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  box-shadow: var(--shadow);
+}
+.countdown em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: flex-end;
+  padding: 1rem;
+}
+.controls .chip {
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+.controls .chip.chip--on {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+.control { display: flex; flex-direction: column; gap: 0.2rem; }
+.control--grow { flex: 1 1 180px; }
+.control__label { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.03em; }
+.control select,
+.control input {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  padding: 0.45rem 0;
+  cursor: pointer;
+}
+
+/* Schedule */
+.schedule { padding: 0 1rem; max-width: 760px; margin: 0 auto; }
+.dayhead {
+  font-size: 0.95rem;
+  margin: 1.4rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-dim);
+}
+.daygroup { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.match {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.85rem;
+  box-shadow: var(--shadow);
+}
+.match--past { opacity: 0.62; }
+.match--live { border-color: var(--live); box-shadow: 0 0 0 1px var(--live); }
+
+.match__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+}
+.match__time { font-weight: 700; color: var(--text); font-size: 0.95rem; }
+.match__tag {
+  background: var(--surface-2);
+  border-radius: 6px;
+  padding: 0.05rem 0.45rem;
+}
+
+.badge {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 6px;
+}
+.badge--live { background: var(--live); color: #fff; animation: pulse 1.6s infinite; }
+.badge--ft { background: var(--ft); color: #fff; }
+@keyframes pulse { 50% { opacity: 0.55; } }
+
+.match__teams { display: flex; flex-direction: column; gap: 0.25rem; }
+.team {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.02rem;
+}
+.team__flag { font-size: 1.25rem; width: 1.6rem; text-align: center; }
+.team__name { flex: 1; }
+.team--winner .team__name { font-weight: 700; }
+.team__score { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 1.2rem; text-align: right; }
+
+.match__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+  flex-wrap: wrap;
+}
+.match__venue { font-size: 0.78rem; color: var(--text-dim); }
+.match__follow { display: flex; gap: 0.35rem; }
+.followbtn {
+  font: inherit;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.followbtn--on { background: #f6c945; color: #3a2c00; border-color: #f6c945; font-weight: 700; }
+
+.empty { text-align: center; color: var(--text-dim); padding: 2rem 1rem; }
+
+.footer {
+  max-width: 760px;
+  margin: 2rem auto 0;
+  padding: 1rem;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-align: center;
+}

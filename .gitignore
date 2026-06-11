@@ -11,3 +11,9 @@
 *.tmp
 .DS_Store
 Thumbs.db
+
+# Web app (worldcup-tracker) — never commit the live API key or local deps
+worldcup-tracker/proxy/config.php
+node_modules/
+.env
+.env.local
