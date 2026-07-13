@@ -11,13 +11,13 @@
 	{
 		"id": "murisk_postcombat_unknown",
 		"type": "narration",
-		"text": "The creature is half-uncoiled, its pale inner light pulsing in uneven, bruised waves. It answers your heavy breathing with a delayed hollow mimic — a wet, rasping sound from its circular opening. Its rings twitch with residual tension, reacting to every shift in your stance. It is beaten, but it is still reading you.",
+		"text": "The creature is half-uncoiled, its pale inner light pulsing in uneven, bruised waves. It answers your heavy breathing with a delayed hollow mimic, a wet, rasping sound from its circular opening. Its rings twitch with residual tension, reacting to every shift in your stance. It is beaten, but it is still reading you.",
 		"next": "murisk_postcombat_choice"
 	},
 	{
 		"id": "murisk_postcombat",
 		"type": "narration",
-		"text": "The Murisk lies half-uncoiled, its internal glow pulsing in uneven, bruised waves beneath its translucent hide. It answers your heavy breathing with a delayed, hollow mimic — a wet, raspy sound vibrating from its feeding seam. It is beaten, but its muscles twitch with residual tension, reacting to every shift in your stance as you stand over its thick, glistening body.",
+		"text": "The Murisk lies half-uncoiled, its internal glow pulsing in uneven, bruised waves beneath its translucent hide. It answers your heavy breathing with a delayed, hollow mimic, a wet, raspy sound vibrating from its feeding seam. It is beaten, but its muscles twitch with residual tension, reacting to every shift in your stance as you stand over its thick, glistening body.",
 		"next": "murisk_postcombat_choice"
 	},
 	{
@@ -29,19 +29,12 @@
 				"next": "murisk_loot_01"
 			},
 			{
-				"text": "> Get closer and inspect the feeding seam",
-				"next": "murisk_approach_01",
-				"hide_if": {
-					"any_of": [
-						{ "content_disabled": "feral" },
-						{ "content_disabled": "violence" }
-					]
-				}
+				"text": "> Inspect the feeding seam",
+				"next": "murisk_inspect_01"
 			},
 			{
 				"text": "> Test its echo response from a safe distance",
-				"next": "murisk_echo_branch_01",
-				"hide_if": { "content_disabled": "feral" }
+				"next": "murisk_echo_branch_01"
 			},
 			{
 				"text": "> Leave it where it fell",
@@ -50,11 +43,63 @@
 		]
 	},
 	{
-		"id": "murisk_approach_01",
+		"id": "murisk_inspect_01",
+		"type": "narration",
+		"text": "You crouch near the thickest coil. Up close its translucent hide is faintly ridged, the interior fluid shifting with each slow pulse of bioluminescence. The feeding seam along the underside flexes open and shut in a steady rhythm, unrelated to your presence. Condensation beads along the rings and drips into the dirt. It answers your breathing with a delayed, hollow mimic from its blunt terminus, half a beat behind.",
+		"next": "murisk_inspect_choice"
+	},
+	{
+		"id": "murisk_inspect_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Determine its sex",
+				"next": "murisk_determinesex_clinical",
+				"show_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Determine its sex",
+				"next": "murisk_determinesex_feral",
+				"hide_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Leave it be",
+				"next": "murisk_postcombat_leave"
+			}
+		]
+	},
+	{
+		"id": "murisk_determinesex_clinical",
+		"type": "narration",
+		"text": "You look for anything resembling sexing traits: segment symmetry, seam placement, the density of the internal glow near the rings. The Murisk's biology gives up almost nothing external; whatever distinguishes its sex, if it has one in any familiar sense, isn't visible from out here.",
+		"next": "murisk_postcombat_leave"
+	},
+	{
+		"id": "murisk_determinesex_feral",
 		"type": "narration",
 		"text": "You crouch near the thickest coil and study the seam that flexes along its underside. Condensation runs over the translucent rings. Each pulse tightens the opening, then releases it.",
-		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
-		"next": "murisk_approach_choice"
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro ; @SHOW_SCENE murisk_inspect_seam",
+		"next": "murisk_go_further_choice"
+	},
+	{
+		"id": "murisk_go_further_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Go further",
+				"next": "murisk_approach_choice",
+				"hide_if": {
+					"any_of": [
+						{ "content_disabled": "feral" },
+						{ "content_disabled": "violence" }
+					]
+				}
+			},
+			{
+				"text": "> Stop and leave",
+				"next": "murisk_postcombat_leave"
+			}
+		]
 	},
 	{
 		"id": "murisk_approach_choice",
@@ -97,7 +142,8 @@
 		"options": [
 			{
 				"text": "> Close in when it syncs to your breathing",
-				"next": "murisk_echo_close_01"
+				"next": "murisk_echo_close_01",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Break the rhythm and step away",
@@ -108,7 +154,7 @@
 	{
 		"id": "murisk_echo_close_01",
 		"type": "narration",
-		"text": "When the echo aligns perfectly with your breathing, you move directly into its reach, shedding your clothes. The seam opens wider, anticipating you, as if your sound itself unlocked its physical response. You guide your rigid cock into the wet, pulsing slit. Because you have synced to its rhythm, the internal rings do not resist — they welcome you, rippling in perfect harmony with your thrusts. It is a seamless, frictionless glide into intense heat. The creature hums, matching the exact pitch of your groans, the sound vibrating directly through the tight muscular walls gripping your shaft. You ride that shared cadence until the pleasure peaks, unloading your climax into the echoing, glowing void.",
+		"text": "When the echo aligns perfectly with your breathing, you move directly into its reach, shedding your clothes. The seam opens wider, anticipating you, as if your sound itself unlocked its physical response. You guide your rigid cock into the wet, pulsing slit. Because you have synced to its rhythm, the internal rings do not resist, they welcome you, rippling in perfect harmony with your thrusts. It is a seamless, frictionless glide into intense heat. The creature hums, matching the exact pitch of your groans, the sound vibrating directly through the tight muscular walls gripping your shaft. You ride that shared cadence until the pleasure peaks, unloading your climax into the echoing, glowing void.",
 		"command": "@MUSIC_CLIP love",
 		"next": "murisk_aftermath"
 	},

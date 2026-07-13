@@ -12,6 +12,7 @@ signal biome_updated(new_biome: String)
 
 const OVERWORLD_SCENE_PATH := "res://Scenes/overworld/overworldNav.tscn"
 const COMBAT_SCENE_PATH := "res://Scenes/combat.tscn"
+const DEFAULT_PLAYER_START := Vector2(290, 650)
 const DEFAULT_ENEMY_PATH := "res://enemies/teqqellon/teqqellon_enemy.tres"
 const DEFAULT_ENCOUNTER_TABLE_PATH := "res://Resources/Encounters/tables/default_overworld_encounter_table.tres"
 
@@ -42,7 +43,7 @@ var next_encounter_step_goal: int = 100
 var selected_enemy_resource: EnemyStats = null
 var _last_enemy_resource: EnemyStats = null
 
-var player_last_position: Vector2 = Vector2(290, 650)
+var player_last_position: Vector2 = DEFAULT_PLAYER_START
 var last_time_of_day: Dictionary = {}
 var last_time_period: String = "Day"
 

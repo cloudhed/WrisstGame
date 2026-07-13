@@ -2,7 +2,7 @@
 	{
 		"id": "shenche_loss_intro",
 		"type": "narration",
-		"text": "You're on the ground. The Shenche stands over you, all four legs planted in a wide square around your body. Its mandibles are spread wide, serrated edges catching the filtered light. The clicking from its thorax is loud now — rapid and layered, like multiple things tapping at once. The flat head hangs low over your chest, neck bent at a sharp angle, examining you from a foot away. You can smell wet bark and the faint chemical edge of its fluid.",
+		"text": "You're on the ground. The Shenche stands over you, all four legs planted in a wide square around your body. Its mandibles are spread wide, serrated edges catching the filtered light. The clicking from its thorax is loud now, rapid and layered, like multiple things tapping at once. The flat head hangs low over your chest, neck bent at a sharp angle, examining you from a foot away. You can smell wet bark and the faint chemical edge of its fluid.",
 		"next": "shenche_loss_choice"
 	},
 	{
@@ -28,13 +28,13 @@
 	{
 		"id": "shenche_loss_crawl",
 		"type": "narration",
-		"text": "You try to push yourself backward. One of the Shenche's forelegs shifts and comes down three inches from your shoulder — not a strike, just repositioning. You freeze. The flat head drops lower, mandibles spreading wider, clicking accelerating into a sustained rattle. It's not going to let you leave on your own terms.",
+		"text": "You try to push yourself backward. One of the Shenche's forelegs shifts and comes down three inches from your shoulder, not a strike, just repositioning. You freeze. The flat head drops lower, mandibles spreading wider, clicking accelerating into a sustained rattle. It's not going to let you leave on your own terms.",
 		"next": "shenche_loss_examine"
 	},
 	{
 		"id": "shenche_loss_examine",
 		"type": "narration",
-		"text": "The clicking slows. It lowers its head until the feelers brush your forearm — a brief, light contact, then retraction. It holds there for a long moment, neck coiled, head suspended above you. Then it straightens. Its legs shift one by one as it steps back, deliberate and unhurried. She doesn't look back. She walks between the trees and the forest closes behind her. The clicking fades over about thirty seconds, then stops entirely. You're alone.",
+		"text": "The clicking slows. It lowers its head until the feelers brush your forearm, a brief, light contact, then retraction. It holds there for a long moment, neck coiled, head suspended above you. Then it straightens. Its legs shift one by one as it steps back, deliberate and unhurried. She doesn't look back. She walks between the trees and the forest closes behind her. The clicking fades over about thirty seconds, then stops entirely. You're alone.",
 		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
 		"next": "shenche_loss_end"
 	},

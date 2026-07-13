@@ -47,7 +47,7 @@
 	{
 		"id": "greeting_noshroud",
 		"type": "narration",
-		"text": "The hall greets you with its usual warmth — oil lamps, the smell of stone and sweetness, the quiet weight of a place that has been lived in and cared for.",
+		"text": "The hall greets you with its usual warmth: oil lamps, the smell of stone and sweetness, the quiet weight of a place that has been lived in and cared for.",
 		"next": "greeting_noshroud_02"
 	},
 	{
@@ -121,7 +121,7 @@
 				"hide_if": "picked"
 			},
 			{
-				"text": "> The markings on the walls — what do they mean?",
+				"text": "> The markings on the walls, what do they mean?",
 				"next": "place_markings",
 				"hide_if": "picked"
 			},
@@ -152,7 +152,7 @@
 		"id": "place_whathall",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"It was here before I came. Older than anything in Klyftet. The stone is not carved — it grew. Or was grown. I have never been certain which.\"",
+		"text": "\"It was here before I came. Older than anything in Klyftet. The stone is not carved, it grew. Or was grown. I have never been certain which.\"",
 		"next": "place_whathall_02"
 	},
 	{
@@ -271,7 +271,7 @@
 	{
 		"id": "flirt_place_return_04",
 		"type": "narration",
-		"text": "A low sound leaves her chest. Not a laugh — something deeper, warmer. Her broad hand rests on her knee, fingers curling once.",
+		"text": "A low sound leaves her chest. Not a laugh, something deeper and warmer. Her broad hand rests on her knee, fingers curling once.",
 		"next": "flirt_place_return_05"
 	},
 	{
@@ -340,7 +340,7 @@
 				"hide_if": { "has_flag": "told_naut_creature" }
 			},
 			{
-				"text": "> The way you talk about them — it's calming. I could listen to you all day.",
+				"text": "> The way you talk about them is calming. I could listen to you all day.",
 				"next": "flirt_creature_voice",
 				"show_if": { "has_flag": "Nautinto_noshroud" },
 				"hide_if": { "has_flag": "flirted_naut_voice" }
@@ -396,7 +396,7 @@
 		"id": "creatures_danger_02",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"The shenche will kill you before you know you have been spotted. The murrisk will hold you until you have nothing left to give. Even the sluglets — they look harmless, but they do not stop on their own.\"",
+		"text": "\"The shenche will kill you before you know you have been spotted. The murrisk will hold you until you have nothing left to give. Even the sluglets, they look harmless, but they do not stop on their own.\"",
 		"next": "creatures_danger_03"
 	},
 	{
@@ -433,7 +433,7 @@
 		"id": "creatures_sexed_teqqellon",
 		"clear": true,
 		"type": "narration",
-		"text": "You hesitate. The words come slowly. You tell her about the tide-flats. The weight settling over you. The warmth that seeped through your skin. The tendrils. The pull.",
+		"text": "You hesitate. The words come slowly, and you tell her about the tide-flats: the weight settling over you, the warmth that seeped through your skin, the tendrils, the pull.",
 		"set_flag": ["told_naut_teqqellon", "told_naut_any_creature"],
 		"flag_type": "knowledge",
 		"next": "creatures_sexed_teqqellon_02"
@@ -455,7 +455,7 @@
 		"id": "creatures_sexed_teqqellon_04",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"The teqqellon feeds through intimacy. It does not take from the unwilling — it wraps those who are still. Those who allow it. There is a kind of trust in that, even if neither side names it.\"",
+		"text": "\"The teqqellon feeds through intimacy. It does not take from the unwilling, it wraps those who are still. Those who allow it. There is a kind of trust in that, even if neither side names it.\"",
 		"next": "creatures_sexed_teqqellon_05"
 	},
 	{
@@ -470,7 +470,7 @@
 		"id": "creatures_sexed_meehp",
 		"clear": true,
 		"type": "narration",
-		"text": "You describe the grasslands. The tall female that pinned you. The weight and the heat. The smaller male that came after, eager and exposed. Her eyes don't widen. Her posture doesn't change.",
+		"text": "You describe the grasslands, the tall female that pinned you, the weight and the heat, the smaller male that came after, eager and exposed. Her eyes don't widen, and her posture doesn't change.",
 		"set_flag": ["told_naut_meehp", "told_naut_any_creature"],
 		"flag_type": "knowledge",
 		"next": "creatures_sexed_meehp_02"
@@ -544,7 +544,7 @@
 		"id": "creatures_sexed_creature",
 		"clear": true,
 		"type": "narration",
-		"text": "You do not name a specific creature. You just let the truth sit between you — that you have been out there, and that what happened was not combat.",
+		"text": "You do not name a specific creature. You just let the truth sit between you: that you have been out there, and that what happened was not combat.",
 		"set_flag": ["told_naut_creature", "told_naut_any_creature"],
 		"flag_type": "knowledge",
 		"next": "creatures_sexed_creature_02"
@@ -603,7 +603,7 @@
 	{
 		"id": "flirt_creature_voice_03",
 		"type": "narration",
-		"text": "Her muzzle shifts. It might be a smile — you are still learning her expressions.",
+		"text": "Her muzzle shifts. It might be a smile, you are still learning her expressions.",
 		"next": "flirt_creature_voice_04"
 	},
 	{
@@ -640,7 +640,7 @@
 	{
 		"id": "flirt_creature_comfort_04",
 		"type": "narration",
-		"text": "Her broad hand lifts. She extends one finger and traces it very lightly along the line of your jaw. The touch is brief. Deliberate.",
+		"text": "Her broad hand lifts. She extends one finger and traces it very lightly along the line of your jaw. The touch is brief and deliberate.",
 		"next": "flirt_creature_comfort_05"
 	},
 	{
@@ -680,7 +680,7 @@
 				"hide_if": "picked"
 			},
 			{
-				"text": "> The sigils on your clothes — what do they mean?",
+				"text": "> The sigils on your clothes, what do they mean?",
 				"next": "self_sigils",
 				"show_if": { "has_flag": "Nautinto_noshroud" },
 				"hide_if": "picked"
@@ -692,7 +692,7 @@
 				"hide_if": { "has_flag": "flirted_naut_looks" }
 			},
 			{
-				"text": "> Your eyes — I could stare into them for hours.",
+				"text": "> Your eyes, I could stare into them for hours.",
 				"next": "flirt_self_eyes",
 				"show_if": { "has_flag": "Nautinto_noshroud" },
 				"hide_if": { "has_flag": "flirted_naut_eyes" }
@@ -745,7 +745,7 @@
 	{
 		"id": "self_shroud_05",
 		"type": "narration",
-		"text": "She stands. The hall feels smaller immediately — her full height is immense, her head nearly brushing the vaulted ceiling. She reaches behind her neck and pulls the shroud forward over her head in one slow, practiced motion.",
+		"text": "She stands, and the hall feels smaller immediately. Her full height is immense, her head nearly brushing the vaulted ceiling. She reaches behind her neck and pulls the shroud forward over her head in one slow, practiced motion.",
 		"next": "self_shroud_05_show"
 	},
 	{
@@ -761,7 +761,7 @@
 		"id": "self_shroud_06",
 		"clear": true,
 		"type": "narration",
-		"text": "Beneath it, she wears crimson. Deep red wraps, tightly fitted, embroidered with faint geometric sigils in thread that catches the lamplight. The cloth sits close against her wide frame — full breasts, broad hips, thick arms. Soft fur frames her throat and runs along her forearms and the outer line of her thighs. Her double-lobed muzzle parts slightly, and the whiskers at its sides drift with her slow breath.",
+		"text": "Beneath it, she wears crimson. Deep red wraps, tightly fitted, embroidered with faint geometric sigils in thread that catches the lamplight. The cloth sits close against her wide frame: full breasts, broad hips, thick arms. Soft fur frames her throat and runs along her forearms and the outer line of her thighs. Her double-lobed muzzle parts slightly, and the whiskers at its sides drift with her slow breath.",
 		"next": "self_shroud_07"
 	},
 	{
@@ -774,7 +774,7 @@
 		"id": "self_shroud_08",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"The crimson is mine. It marks a role I held among my kin — a keeper. A guardian of young ones and wanderers. The shroud is what I wear when I do not yet know who is watching.\"",
+		"text": "\"The crimson is mine. It marks a role I held among my kin: a keeper. A guardian of young ones and wanderers. The shroud is what I wear when I do not yet know who is watching.\"",
 		"next": "self_shroud_09"
 	},
 	{
@@ -796,7 +796,7 @@
 		"id": "self_murn_02",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"We are large. We live long. We carry things — people, stories, purpose — and we do not set them down easily.\"",
+		"text": "\"We are large. We live long. We carry things: people, stories, purpose, and we do not set them down easily.\"",
 		"next": "self_murn_03"
 	},
 	{
@@ -825,7 +825,7 @@
 		"id": "self_origin_02",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"I left after a dispute. Ritual practice — how songs should be kept, who may hold them, whether the old forms still served a purpose or had become chains.\"",
+		"text": "\"I left after a dispute. Ritual practice: how songs should be kept, who may hold them, whether the old forms still served a purpose or had become chains.\"",
 		"next": "self_origin_03"
 	},
 	{
@@ -898,7 +898,7 @@
 	{
 		"id": "flirt_self_looks_03",
 		"type": "narration",
-		"text": "She repeats the words as though tasting them. Her posture doesn't change, but something in the way she holds your gaze shifts — just slightly softer.",
+		"text": "She repeats the words as though tasting them. Her posture doesn't change, but something in the way she holds your gaze shifts, just slightly softer.",
 		"next": "flirt_self_looks_04"
 	},
 	{
@@ -922,7 +922,7 @@
 	{
 		"id": "flirt_self_eyes_02",
 		"type": "narration",
-		"text": "A low, quiet sound rumbles through her chest. Not quite a laugh. She leans forward slightly, and the lamplight catches the reflective surface of her eyes — twin pools of black glass holding your face in miniature.",
+		"text": "A low, quiet sound rumbles through her chest. Not quite a laugh. She leans forward slightly, and the lamplight catches the reflective surface of her eyes, twin pools of black glass holding your face in miniature.",
 		"next": "flirt_self_eyes_03"
 	},
 	{
@@ -960,13 +960,13 @@
 		"id": "flirt_self_touch_03",
 		"clear": true,
 		"type": "narration",
-		"text": "She extends her forearm toward you. The crimson wrap ends just past the elbow, and below it soft, dense fur runs in a warm band from her wrist to the crook of her arm. You press your palm against it. It is impossibly soft — thick and warm, like pressing your hand into something alive and patient.",
+		"text": "She extends her forearm toward you. The crimson wrap ends just past the elbow, and below it soft, dense fur runs in a warm band from her wrist to the crook of her arm. You press your palm against it. It is impossibly soft, thick and warm, like pressing your hand into something alive and patient.",
 		"next": "flirt_self_touch_04"
 	},
 	{
 		"id": "flirt_self_touch_04",
 		"type": "narration",
-		"text": "Her breath catches. Just barely. Her fingers curl once, then open again. A low vibration hums through her arm beneath your touch — not a sound, something deeper.",
+		"text": "Her breath catches, just barely. Her fingers curl once, then open again. A low vibration hums through her arm beneath your touch, not quite a sound, something deeper.",
 		"next": "flirt_self_touch_05"
 	},
 	{
@@ -996,7 +996,7 @@
 		"id": "sex_initiate",
 		"clear": true,
 		"type": "narration",
-		"text": "The words leave your mouth before you can dress them up. You want to be close to her. Closer than sitting. Closer than talking.",
+		"text": "The words leave your mouth before you can dress them up. You want to be close to her, closer than sitting, closer than talking.",
 		"next": "sex_initiate_02"
 	},
 	{
@@ -1015,7 +1015,7 @@
 	{
 		"id": "sex_initiate_npc_02",
 		"type": "narration",
-		"text": "A sound leaves her — not a laugh, but something lower. Warm. A quiet vibration that rolls through her chest and into the air between you. Her whiskers drift forward, brushing your cheek.",
+		"text": "A sound leaves her, not a laugh but something lower and warm. A quiet vibration that rolls through her chest and into the air between you. Her whiskers drift forward, brushing your cheek.",
 		"next": "sex_initiate_npc_03"
 	},
 	{
@@ -1055,7 +1055,7 @@
 	{
 		"id": "sex_sitclose_01",
 		"type": "narration",
-		"text": "You don't move toward her. You sit. Close enough to feel the warmth radiating off her body, close enough that her breath stirs your hair. She watches you settle without moving herself. Those dark eyes hold you — patient, entirely unbothered by the distance.",
+		"text": "You don't move toward her. You sit, close enough to feel the warmth radiating off her body, close enough that her breath stirs your hair. She watches you settle without moving herself, her dark eyes patient, entirely unbothered by the distance.",
 		"next": "sex_sitclose_02"
 	},
 	{
@@ -1068,7 +1068,7 @@
 	{
 		"id": "sex_sitclose_03",
 		"type": "narration",
-		"text": "After a moment one broad arm settles across your shoulders. Not pulling you in — just resting there. You lean into it. She takes your weight without comment. Her heartbeat is slow and steady against your temple. The lamps burn low. Neither of you speaks.",
+		"text": "After a moment one broad arm settles across your shoulders, not pulling you in, just resting there. You lean into it, and she takes your weight without comment. Her heartbeat is slow and steady against your temple. The lamps burn low, and neither of you speaks.",
 		"next": "sex_sitclose_04"
 	},
 	{
@@ -1090,7 +1090,7 @@
 	{
 		"id": "sex_entry_back_02",
 		"type": "narration",
-		"text": "Her posture doesn't change. Her expression doesn't shift. She simply lets the moment pass — easy as breathing — and settles back into the quiet of the hall.",
+		"text": "Her posture doesn't change, and her expression doesn't shift. She simply lets the moment pass, easy as breathing, and settles back into the quiet of the hall.",
 		"next": "main_hub"
 	},
 
@@ -1105,19 +1105,19 @@
 		"id": "sex_disrobe",
 		"clear": true,
 		"type": "narration",
-		"text": "She rises, and the room shrinks around her. Standing at full height, her head nearly grazes the ceiling. Her broad hands move to the ties of her crimson wrap. She loosens them with slow, certain fingers — no hesitation, no performance. The cloth parts and slides away from her shoulders, pooling at her feet in a heavy whisper of fabric.",
+		"text": "She rises, and the room shrinks around her. Standing at full height, her head nearly grazes the ceiling. Her broad hands move to the ties of her crimson wrap. She loosens them with slow, certain fingers, no hesitation, no performance. The cloth parts and slides away from her shoulders, pooling at her feet in a heavy whisper of fabric.",
 		"next": "sex_disrobe_02"
 	},
 	{
 		"id": "sex_disrobe_02",
 		"type": "narration",
-		"text": "Without the cloth, her body fills your vision. Broad and warm, heavy with soft curves — wide hips, a thick waist, full breasts that sit close against her chest. The fur you touched earlier runs in bands along her neck, her forearms, her outer thighs. The skin between is smooth and dark, catching the lamplight like oiled stone. Between her legs, where the fur thins, a heavy, warm cleft rests beneath a low mound — closed, soft, barely visible in the low light.",
+		"text": "Without the cloth, her body fills your vision. Broad and warm, heavy with soft curves: wide hips, a thick waist, full breasts that sit close against her chest. The fur you touched earlier runs in bands along her neck, her forearms, her outer thighs. The skin between is smooth and dark, catching the lamplight like oiled stone. Between her legs, where the fur thins, a heavy, warm cleft rests beneath a low mound, closed, soft, barely visible in the low light.",
 		"next": "sex_disrobe_03"
 	},
 	{
 		"id": "sex_disrobe_03",
 		"type": "narration",
-		"text": "She looks down at you with her black mirror-eyes. Her muzzle parts slightly. A breath leaves her — slow, deliberate, already knowing what comes next.",
+		"text": "She looks down at you with her black mirror-eyes. Her muzzle parts slightly, and a breath leaves her, slow and deliberate, already knowing what comes next.",
 		"next": "sex_disrobe_04"
 	},
 	{
@@ -1145,7 +1145,7 @@
 		"id": "sex_player_undress",
 		"clear": true,
 		"type": "narration",
-		"text": "You pull your clothes off. The air in the hall is warm but you still feel the shift against your bare skin. Standing naked in front of her, the difference in scale is immediate — her thigh is wider than your torso, her hands could wrap your entire waist. She does not look away.",
+		"text": "You pull your clothes off. The air in the hall is warm but you still feel the shift against your bare skin. Standing naked in front of her, the difference in scale is immediate: her thigh is wider than your torso, her hands could wrap your entire waist. She does not look away.",
 		"next": "sex_player_undress_02"
 	},
 	{
@@ -1225,7 +1225,7 @@
 		"id": "sex_she_leads",
 		"clear": true,
 		"type": "narration",
-		"text": "You don't move. You let her take you in. Her hand slides down from your jaw, over your neck, across your chest. Her fingers spread wide — one hand nearly spanning your entire ribcage. She traces you like something she's learning, pressing gently at your collarbone, your stomach, your hips.",
+		"text": "You don't move. You let her take you in. Her hand slides down from your jaw, over your neck, across your chest. Her fingers spread wide, one hand nearly spanning your entire ribcage. She traces you like something she's learning, pressing gently at your collarbone, your stomach, your hips.",
 		"next": "sex_she_leads_02"
 	},
 	{
@@ -1249,7 +1249,7 @@
 		"id": "sex_she_leads_03",
 		"clear": true,
 		"type": "narration",
-		"text": "She pulls you against her. Your face presses into the fur at her throat. Her arms fold around your back and you are enveloped — heat, softness, the faint vibration of something deep inside her chest. You feel her heartbeat. Slow. Steady. Much slower than yours.",
+		"text": "She pulls you against her. Your face presses into the fur at her throat. Her arms fold around your back and you are enveloped in heat, softness, the faint vibration of something deep inside her chest. You feel her heartbeat, slow and steady, much slower than yours.",
 		"next": "sex_she_leads_04"
 	},
 	{
@@ -1270,14 +1270,14 @@
 		"id": "sex_kiss",
 		"clear": true,
 		"type": "narration",
-		"text": "You step forward and reach up. Your hands find the fur along her jaw. She lowers her head, and you press your mouth against her double-lobed muzzle. The texture is strange — smooth, warm, wider than your lips can cover. Her whiskers brush your temples and cheeks, twitching softly.",
+		"text": "You step forward and reach up. Your hands find the fur along her jaw. She lowers her head, and you press your mouth against her double-lobed muzzle. The texture is strange: smooth, warm, wider than your lips can cover. Her whiskers brush your temples and cheeks, twitching softly.",
 		"next": "sex_kiss_02"
 	},
 	{
 		"id": "sex_kiss_02",
 		"clear": true,
 		"type": "narration",
-		"text": "A low vibration rolls through her body into yours. Her muzzle parts slightly and you feel wet warmth — her tongue, broad and slow, tracing across your lower lip. Her hand cradles the back of your head, holding you in place with gentle authority.",
+		"text": "A low vibration rolls through her body into yours. Her muzzle parts slightly and you feel wet warmth: her tongue, broad and slow, tracing across your lower lip. Her hand cradles the back of your head, holding you in place with gentle authority.",
 		"next": "sex_kiss_03"
 	},
 	{
@@ -1308,13 +1308,13 @@
 		"id": "sex_touch_breasts",
 		"clear": true,
 		"type": "narration",
-		"text": "You reach forward and press both hands against her chest. Her breasts are heavy, full, warm through the soft skin. Your fingers sink into the yielding flesh. She exhales — a slow, drawn-out sound that vibrates through her ribcage and into your palms.",
+		"text": "You reach forward and press both hands against her chest. Her breasts are heavy, full, warm through the soft skin. Your fingers sink into the yielding flesh. She exhales, a slow, drawn-out sound that vibrates through her ribcage and into your palms.",
 		"next": "sex_touch_breasts_02"
 	},
 	{
 		"id": "sex_touch_breasts_02",
 		"type": "narration",
-		"text": "Her nipples are broad and dark, slightly raised. As your thumbs brush across them they stiffen quickly. She shudders once. A faint bead of translucent liquid appears at the tip of one nipple — warm, sweet-smelling.",
+		"text": "Her nipples are broad and dark, slightly raised. As your thumbs brush across them they stiffen quickly. She shudders once. A faint bead of translucent liquid appears at the tip of one nipple, warm and sweet-smelling.",
 		"next": "sex_touch_breasts_03"
 	},
 	{
@@ -1338,7 +1338,7 @@
 		"id": "sex_touch_breasts_04",
 		"clear": true,
 		"type": "narration",
-		"text": "She watches you for a moment with those dark, still eyes — something quiet and amused in them. Then her hand covers yours and presses it more firmly against her breast. The bead grows and begins to run in a thin line between your fingers. Warm. Slightly sweet, faintly mineral.",
+		"text": "She watches you for a moment with those dark, still eyes, something quiet and amused in them. Then her hand covers yours and presses it more firmly against her breast. The bead grows and begins to run in a thin line between your fingers, warm, slightly sweet, faintly mineral.",
 		"next": "sex_touch_breasts_05"
 	},
 	{
@@ -1372,7 +1372,7 @@
 		"id": "sex_nursing",
 		"clear": true,
 		"type": "narration",
-		"text": "You lean forward and close your mouth around her nipple. Her milk flows immediately — warm, thick, faintly sweet with an undertone of something mineral and clean. Your tongue presses against the firm nub and the flow increases. Your jaw works slowly, drawing it out in gentle pulses.",
+		"text": "You lean forward and close your mouth around her nipple. Her milk flows immediately, warm, thick, faintly sweet with an undertone of something mineral and clean. Your tongue presses against the firm nub and the flow increases. Your jaw works slowly, drawing it out in gentle pulses.",
 		"next": "sex_nursing_02"
 	},
 	{
@@ -1399,7 +1399,7 @@
 	{
 		"id": "sex_nursing_tend_01",
 		"type": "narration",
-		"text": "You stop thinking about what comes next. Your jaw works slowly. Your hands relax. You feel the shift happen in yourself — the moment where it stops being a choice and starts being something you are simply doing. She notices. Her head tilts down. She looks at you against her breast.",
+		"text": "You stop thinking about what comes next. Your jaw works slowly, and your hands relax. You feel the shift happen in yourself, the moment where it stops being a choice and starts being something you are simply doing. She notices, her head tilting down to look at you against her breast.",
 		"next": "sex_nursing_tend_02"
 	},
 	{
@@ -1412,7 +1412,7 @@
 	{
 		"id": "sex_nursing_tend_03",
 		"type": "narration",
-		"text": "Her hand leaves your hair. Traces slowly down your spine, across the small of your back, settling at your hip. She cups you there — large, warm, holding you in place without pressure. Then her other hand comes around your front. Her thumb moves in slow deliberate strokes across your stomach. Lower.",
+		"text": "Her hand leaves your hair and traces slowly down your spine, across the small of your back, settling at your hip. She cups you there, large and warm, holding you in place without pressure. Then her other hand comes around your front, her thumb moving in slow, deliberate strokes across your stomach, lower and lower.",
 		"next": "sex_nursing_tend_mid"
 	},
 
@@ -1425,7 +1425,7 @@
 				"next": "sex_nursing_tend_04"
 			},
 			{
-				"text": "> (Pull back — you need more than this.)",
+				"text": "> (Pull back. You need more than this.)",
 				"next": "sex_mainact_choice"
 			}
 		]
@@ -1434,7 +1434,7 @@
 	{
 		"id": "sex_nursing_tend_04",
 		"type": "narration",
-		"text": "Her fingers find you hard, still leaking against her belly. She wraps her grip around you in the same unhurried way she does everything — broad, warm, fully present. She strokes. Slow. Long. Her palm rolls over your tip with each pass.",
+		"text": "Her fingers find you hard, still leaking against her belly. She wraps her grip around you in the same unhurried way she does everything, broad, warm, fully present. She strokes slowly, long pulls, her palm rolling over your tip with each pass.",
 		"next": "sex_nursing_tend_05"
 	},
 	{
@@ -1447,7 +1447,7 @@
 	{
 		"id": "sex_nursing_tend_06",
 		"type": "narration",
-		"text": "She holds you to her breast and tends to you. One hand cradling your head in place. The other working you in that same even rhythm. The milk flows steady with each pull of your mouth. Your hips begin to rock against her grip — small, helpless motions. She lets them. Gives you a little more pressure on the return stroke.",
+		"text": "She holds you to her breast and tends to you, one hand cradling your head in place, the other working you in that same even rhythm. The milk flows steady with each pull of your mouth. Your hips begin to rock against her grip in small, helpless motions. She lets them, giving you a little more pressure on the return stroke.",
 		"next": "sex_nursing_tend_finish"
 	},
 
@@ -1460,7 +1460,7 @@
 				"next": "sex_nursing_tend_climax"
 			},
 			{
-				"text": "> (Pull free — you want to be inside her.)",
+				"text": "> (Pull free. You want to be inside her.)",
 				"next": "sex_mainact_choice"
 			}
 		]
@@ -1470,7 +1470,7 @@
 		"id": "sex_nursing_tend_climax",
 		"clear": true,
 		"type": "narration",
-		"text": "You come at her breast. Your body draws inward — mouth locked tight, hips shuddering forward into her grip, fingers clutching at whatever you can reach of her. Your cock pulses in thick, shaking beats, cum running in warm lines between her fingers. She strokes you through every one. Pressure steady. Rhythm unchanged.",
+		"text": "You come at her breast. Your body draws inward, mouth locked tight, hips shuddering forward into her grip, fingers clutching at whatever you can reach of her. Your cock pulses in thick, shaking beats, cum running in warm lines between her fingers. She strokes you through every one, pressure steady, rhythm unchanged.",
 		"next": "sex_nursing_tend_climax_02"
 	},
 	{
@@ -1483,7 +1483,7 @@
 	{
 		"id": "sex_nursing_tend_climax_03",
 		"type": "narration",
-		"text": "When the last tremor passes she draws you closer, not away. Your mouth slips from her nipple. She guides it back, gently. A thread of milk and saliva connects your lower lip to the nub before she settles you against her breast again — not with hunger now, just warmth. She keeps her hand wrapped loosely around your softening cock, holding you there. The mess between your bodies is warm. She makes no move to clean it.",
+		"text": "When the last tremor passes she draws you closer, not away. Your mouth slips from her nipple. She guides it back, gently. A thread of milk and saliva connects your lower lip to the nub before she settles you against her breast again, not with hunger now, just warmth. She keeps her hand wrapped loosely around your softening cock, holding you there. The mess between your bodies is warm. She makes no move to clean it.",
 		"next": "sex_catchbreath"
 	},
 	{
@@ -1497,7 +1497,7 @@
 		"id": "sex_nursing_04",
 		"clear": true,
 		"type": "narration",
-		"text": "Her voice is low and close, her mouth near the top of your head. Her fingers card through your hair with slow, repetitive strokes. You feel yourself going loose — limbs heavy, pulse steady, the world narrowed to her warmth and the rhythmic pull of your mouth.",
+		"text": "Her voice is low and close, her mouth near the top of your head. Her fingers card through your hair with slow, repetitive strokes. You feel yourself going loose: limbs heavy, pulse steady, the world narrowed to her warmth and the rhythmic pull of your mouth.",
 		"next": "sex_nursing_05"
 	},
 	{
@@ -1548,7 +1548,7 @@
 	{
 		"id": "sex_mainact_back_02",
 		"type": "narration",
-		"text": "She draws you in without question — one broad arm around your back, holding you against her chest for a long moment. Her warmth is the same as it always is. She makes no mention of what was begun.",
+		"text": "She draws you in without question, one broad arm around your back holding you against her chest for a long moment. Her warmth is the same as it always is. She makes no mention of what was begun.",
 		"next": "sex_mainact_back_03"
 	},
 	{
@@ -1563,7 +1563,7 @@
 		"id": "sex_oral",
 		"clear": true,
 		"type": "narration",
-		"text": "She guides you to sit on the pallet, your back against the wall. Then she lowers herself in front of you, settling on her stomach, her massive body stretched across the floor. Her face is level with your groin. Her breath washes over your skin — warm, damp, unhurried.",
+		"text": "She guides you to sit on the pallet, your back against the wall. Then she lowers herself in front of you, settling on her stomach, her massive body stretched across the floor. Her face is level with your groin. Her breath washes over your skin, warm, damp, unhurried.",
 		"next": "sex_oral_02"
 	},
 	{
@@ -1577,13 +1577,13 @@
 		"id": "sex_oral_03",
 		"clear": true,
 		"type": "narration",
-		"text": "Her muzzle parts and her tongue emerges — broad, dark, wet. It slides under your cock from base to tip in one slow, full stroke. The texture is soft and slightly rough at the same time, every surface of her tongue pressing against you with deliberate pressure. Your hips jerk. She places one hand flat on your stomach, holding you still.",
+		"text": "Her muzzle parts and her tongue emerges, broad, dark, wet. It slides under your cock from base to tip in one slow, full stroke. The texture is soft and slightly rough at the same time, every surface of her tongue pressing against you with deliberate pressure. Your hips jerk. She places one hand flat on your stomach, holding you still.",
 		"next": "sex_oral_04"
 	},
 	{
 		"id": "sex_oral_04",
 		"type": "narration",
-		"text": "She takes you into her mouth. The warmth is immediate and overwhelming — her muzzle is wide enough to engulf your entire length without effort. Her tongue wraps around your shaft, rippling along the underside in slow waves. Saliva pools around the base as she begins a deep, steady suction.",
+		"text": "She takes you into her mouth. The warmth is immediate and overwhelming: her muzzle is wide enough to engulf your entire length without effort. Her tongue wraps around your shaft, rippling along the underside in slow waves. Saliva pools around the base as she begins a deep, steady suction.",
 		"next": "sex_oral_beat"
 	},
 	{
@@ -1617,7 +1617,7 @@
 	{
 		"id": "sex_oral_07",
 		"type": "narration",
-		"text": "She murmurs around your cock. The sound reverberates through your entire pelvis. Her tongue does something complex beneath your glans — a rolling pressure that makes your vision swim. She is patient. Thorough. She treats this like tending to something precious.",
+		"text": "She murmurs around your cock. The sound reverberates through your entire pelvis. Her tongue does something complex beneath your glans, a rolling pressure that makes your vision swim. She is patient and thorough, treating this like tending to something precious.",
 		"next": "sex_oral_climax_choice"
 	},
 
@@ -1625,7 +1625,7 @@
 		"id": "sex_penetrate",
 		"clear": true,
 		"type": "narration",
-		"text": "She lies back on the wide pallet, pulling you with her. On her back she is vast — her body a landscape of curves and warmth. She parts her thighs and you settle between them. The cleft between her legs has opened, glistening in the lamplight. The folds are dark, soft, slick with a clear fluid that has a faintly sweet scent.",
+		"text": "She lies back on the wide pallet, pulling you with her. On her back she is vast, her body a landscape of curves and warmth. She parts her thighs and you settle between them. The cleft between her legs has opened, glistening in the lamplight. The folds are dark, soft, slick with a clear fluid that has a faintly sweet scent.",
 		"next": "sex_penetrate_02"
 	},
 	{
@@ -1639,13 +1639,13 @@
 		"id": "sex_penetrate_03",
 		"clear": true,
 		"type": "narration",
-		"text": "You press the head of your cock against her opening. The folds part around your tip, slick and yielding, and the heat that greets you makes your breath catch. You push forward. Her body takes you in — not tight in the way you expected, but firm, enveloping, her inner walls gripping you in rolling contractions that pull you deeper with each inch.",
+		"text": "You press the head of your cock against her opening. The folds part around your tip, slick and yielding, and the heat that greets you makes your breath catch. You push forward. Her body takes you in, not tight in the way you expected, but firm, enveloping, her inner walls gripping you in rolling contractions that pull you deeper with each inch.",
 		"next": "sex_penetrate_04"
 	},
 	{
 		"id": "sex_penetrate_04",
 		"type": "narration",
-		"text": "She exhales. A long, full-bodied sound. Her hand finds the back of your head and presses your face into her chest. You are buried inside her to the hilt, surrounded by heat and pressure and the overwhelming scent of her body — mineral, sweet, alive.",
+		"text": "She exhales, a long, full-bodied sound. Her hand finds the back of your head and presses your face into her chest. You are buried inside her to the hilt, surrounded by heat and pressure and the overwhelming scent of her body: mineral, sweet, alive.",
 		"next": "sex_penetrate_beat"
 	},
 	{
@@ -1669,7 +1669,7 @@
 		"id": "sex_penetrate_06",
 		"clear": true,
 		"type": "narration",
-		"text": "You begin to thrust. Her insides grip and release in rhythm with your movements — not passive, but actively working your cock, the muscular walls squeezing in deliberate waves. Each push bottoms out against something soft and deep. Her hips rock beneath you, her massive body adjusting angle and pressure to meet every motion you make.",
+		"text": "You begin to thrust. Her insides grip and release in rhythm with your movements, not passive but actively working your cock, the muscular walls squeezing in deliberate waves. Each push bottoms out against something soft and deep. Her hips rock beneath you, her massive body adjusting angle and pressure to meet every motion you make.",
 		"next": "sex_penetrate_07"
 	},
 	{
@@ -1697,7 +1697,7 @@
 		"id": "sex_grind_03",
 		"clear": true,
 		"type": "narration",
-		"text": "She shifts her hips and the wet folds press around your shaft from both sides. Not inside — between. The slick heat grips you in a soft, rolling pressure as she begins to rock. Her belly pushes against your lower back with each motion, her breasts pressing into your shoulder blades. Your cock slides through her folds in long, slow strokes, the head catching against her opening on each pass without entering.",
+		"text": "She shifts her hips and the wet folds press around your shaft from both sides, not inside but between. The slick heat grips you in a soft, rolling pressure as she begins to rock. Her belly pushes against your lower back with each motion, her breasts pressing into your shoulder blades. Your cock slides through her folds in long, slow strokes, the head catching against her opening on each pass without entering.",
 		"next": "sex_grind_04"
 	},
 	{
@@ -1727,7 +1727,7 @@
 	{
 		"id": "sex_grind_06",
 		"type": "narration",
-		"text": "The friction builds. Each pass of her folds drags slick heat along your entire length. Her wetness coats you thoroughly, dripping down onto the pallet beneath you both. Her hips quicken their pace, and her breath comes faster — warm gusts against the back of your neck.",
+		"text": "The friction builds. Each pass of her folds drags slick heat along your entire length. Her wetness coats you thoroughly, dripping down onto the pallet beneath you both. Her hips quicken their pace, and her breath comes faster, warm gusts against the back of your neck.",
 		"next": "sex_grind_climax_choice"
 	},
 
@@ -1750,7 +1750,7 @@
 		"id": "sex_oral_climax",
 		"clear": true,
 		"type": "narration",
-		"text": "Your orgasm rises fast and hits hard. Your hips buck upward, pushing deeper into her mouth. She takes it without flinching. Your cock pulses against her tongue, thick ropes of cum flooding her throat. She swallows each one — steady, deliberate, her tongue pressing firmly against your shaft to draw every drop from you.",
+		"text": "Your orgasm rises fast and hits hard. Your hips buck upward, pushing deeper into her mouth. She takes it without flinching. Your cock pulses against her tongue, thick ropes of cum flooding her throat. She swallows each one, steady, deliberate, her tongue pressing firmly against your shaft to draw every drop from you.",
 		"next": "sex_oral_climax_02"
 	},
 	{
@@ -1817,7 +1817,7 @@
 		"id": "sex_penetrate_climax_inside",
 		"clear": true,
 		"type": "narration",
-		"text": "You bury yourself as deep as you can and let go. Your cock jerks inside her, pumping thick, hot cum into her body. Her inner walls clamp down in response — firm, rhythmic contractions that milk your shaft with each pulse. She holds you tightly against her chest, one hand cupping the back of your head.",
+		"text": "You bury yourself as deep as you can and let go. Your cock jerks inside her, pumping thick, hot cum into her body. Her inner walls clamp down in response, firm, rhythmic contractions that milk your shaft with each pulse. She holds you tightly against her chest, one hand cupping the back of your head.",
 		"next": "sex_penetrate_climax_inside_02"
 	},
 	{
@@ -1830,7 +1830,7 @@
 	{
 		"id": "sex_penetrate_climax_inside_03",
 		"type": "narration",
-		"text": "Your orgasm stretches longer than expected — her body pulling it from you in slow, deep waves. Your hips twitch against her with each spasm. When it finally fades, you collapse against her chest, utterly spent. You feel your cum slowly beginning to leak from around your softening cock, pooling between your bodies.",
+		"text": "Your orgasm stretches longer than expected, her body pulling it from you in slow, deep waves. Your hips twitch against her with each spasm. When it finally fades, you collapse against her chest, utterly spent. You feel your cum slowly beginning to leak from around your softening cock, pooling between your bodies.",
 		"next": "sex_catchbreath"
 	},
 
@@ -1838,21 +1838,21 @@
 		"id": "sex_penetrate_climax_inside_nat20",
 		"clear": true,
 		"type": "narration",
-		"text": "You bury yourself and let go — but she moves first. Her hips drive up hard, once, and the angle takes you deeper than you have been all night. Her thighs lock around the backs of yours. What follows is not the measured grip you have felt from her — it is involuntary, a deep clenching that starts where your cock ends and radiates outward, her inner walls seizing and releasing in long rolling spasms that pull the cum from you in waves you are not choosing to give. She is coming too. You feel it — the heat of her flooding around you, her fluids and yours mixing somewhere too deep to reach. Both of you shaking. Neither of you in control.",
+		"text": "You bury yourself and let go, but she moves first. Her hips drive up hard, once, and the angle takes you deeper than you have been all night. Her thighs lock around the backs of yours. What follows is not the measured grip you have felt from her: it is involuntary, a deep clenching that starts where your cock ends and radiates outward, her inner walls seizing and releasing in long rolling spasms that pull the cum from you in waves you are not choosing to give. She is coming too. You feel the heat of her flooding around you, her fluids and yours mixing somewhere too deep to reach. Both of you are shaking, and neither of you is in control.",
 		"next": "sex_penetrate_climax_inside_nat20_02"
 	},
 	{
 		"id": "sex_penetrate_climax_inside_nat20_02",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"Stay — stay — don't — just—\"",
+		"text": "\"Stay... stay... don't... just...\"",
 		"command": "@ADD_REPUTATION nautinto 100",
 		"next": "sex_penetrate_climax_inside_nat20_03"
 	},
 	{
 		"id": "sex_penetrate_climax_inside_nat20_03",
 		"type": "narration",
-		"text": "She stops. The words cut off and the hall fills with the sound of her breathing — ragged, pulled tight, nothing like the slow steadiness you have come to know from her. Her grip on your back does not ease. Her muzzle is pressed hard against the top of your head and stays there, trembling once, faintly. When she finally exhales it is long and unsteady, and by the end of it she is still again. She does not explain. Whatever came out of her in those few seconds stays exactly where it landed.",
+		"text": "She stops. The words cut off and the hall fills with the sound of her breathing, ragged, pulled tight, nothing like the slow steadiness you have come to know from her. Her grip on your back does not ease. Her muzzle is pressed hard against the top of your head and stays there, trembling once, faintly. When she finally exhales it is long and unsteady, and by the end of it she is still again. She does not explain, and whatever came out of her in those few seconds stays exactly where it landed.",
 		"set_flag": "nautinto_lost_composure",
 		"flag_type": "knowledge",
 		"next": "sex_catchbreath"
@@ -1904,14 +1904,14 @@
 		"id": "sex_grind_climax_inside",
 		"clear": true,
 		"type": "narration",
-		"text": "On the next stroke your tip catches her opening and you thrust upward. You slide inside — hot, slick, immediately gripping. She gasps against the back of your neck, arms tightening around you. Two deep thrusts and you are done. Your cock kicks inside her as you cum, warmth flooding her in heavy pulses.",
+		"text": "On the next stroke your tip catches her opening and you thrust upward. You slide inside, hot, slick, immediately gripping. She gasps against the back of your neck, arms tightening around you. Two deep thrusts and you are done, your cock kicking inside her as you cum, warmth flooding her in heavy pulses.",
 		"next": "sex_grind_climax_inside_02"
 	},
 	{
 		"id": "sex_grind_climax_inside_02",
 		"type": "npc",
 		"name": "Nautinto",
-		"text": "\"Oh — there you are. I can feel you. All of you. Do not hold back.\"",
+		"text": "\"Oh, there you are. I can feel you. All of you. Do not hold back.\"",
 		"next": "sex_grind_climax_inside_03"
 	},
 	{
@@ -1925,7 +1925,7 @@
 		"id": "sex_grind_climax_between",
 		"clear": true,
 		"type": "narration",
-		"text": "You cum between her folds. It erupts in thick, pressured bursts — her slick labia trapping and spreading your release across both of you. Her wetness and yours mix in warm pulses, coating your shaft, her inner thighs, the pallet beneath. She grinds against you through it, drawing out every last spasm with slow, heavy pressure.",
+		"text": "You cum between her folds. It erupts in thick, pressured bursts, her slick labia trapping and spreading your release across both of you. Her wetness and yours mix in warm pulses, coating your shaft, her inner thighs, the pallet beneath. She grinds against you through it, drawing out every last spasm with slow, heavy pressure.",
 		"next": "sex_grind_climax_between_02"
 	},
 	{
@@ -1957,7 +1957,7 @@
 		"id": "sex_aftermath",
 		"clear": true,
 		"type": "narration",
-		"text": "For a long time neither of you moves. The oil lamps flicker. The hall is quiet except for the sound of your breathing and hers — yours fast and shallow, hers deep and steady. She holds you against her body, her heartbeat a low, slow drum against your ear.",
+		"text": "For a long time neither of you moves. The oil lamps flicker. The hall is quiet except for the sound of your breathing and hers, yours fast and shallow, hers deep and steady. She holds you against her body, her heartbeat a low, slow drum against your ear.",
 		"command": "@RECORD_SPECIES_SEX nautinto",
 		"set_flag": "sexed_nautinto",
 		"flag_type": "sex",
@@ -1966,7 +1966,7 @@
 	{
 		"id": "sex_aftermath_02",
 		"type": "narration",
-		"text": "Her hand moves slowly through your hair. Her whiskers brush across your forehead. She murmurs something low — not words, or not words you know. A sound meant for no one but you.",
+		"text": "Her hand moves slowly through your hair. Her whiskers brush across your forehead. She murmurs something low, not words, or not words you know, a sound meant for no one but you.",
 		"next": "sex_aftermath_03"
 	},
 	{
@@ -2037,7 +2037,7 @@
 		"clear": true,
 		"type": "narration",
 		"name": "Nautinto",
-		"text": "You dress slowly. A smear of dried fluid catches on the inside of your thigh — you wipe it away without thinking. Nautinto watches you with quiet attention, making no move to rush. She pulls her crimson wraps back on with practiced ease, the geometric sigils settling into their familiar patterns.",
+		"text": "You dress slowly. A smear of dried fluid catches on the inside of your thigh; you wipe it away without thinking. Nautinto watches you with quiet attention, making no move to rush. She pulls her crimson wraps back on with practiced ease, the geometric sigils settling into their familiar patterns.",
 		"command": "@SHOW_PORTRAIT base",
 		"next": "sex_getdressed_02"
 	},

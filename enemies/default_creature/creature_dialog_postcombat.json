@@ -24,19 +24,45 @@
 			},
 			{
 				"text": "> Inspect the defeated creature",
-				"next": "creature_approach_01",
-				"hide_if": {
-					"any_of": [
-						{ "content_disabled": "feral" },
-						{ "content_disabled": "violence" }
-					]
-				}
+				"next": "creature_inspect_01"
 			},
 			{
 				"text": "> Leave it",
 				"next": "creature_leave_01"
 			}
 		]
+	},
+	{
+		"id": "creature_inspect_01",
+		"type": "narration",
+		"text": "<Player actions to inspect the defeated creature without anything sexual yet, physical state, wounds, breathing, general condition. Example:> You crouch beside the winded beast. Its silver skin heaves with each ragged breath, its muscles twitching weakly from exhaustion. <Describe its appearance further>. It tracks you with tired, half-lidded eyes, too spent to do more than watch.",
+		"next": "creature_inspect_choice"
+	},
+	{
+		"id": "creature_inspect_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Determine its sex",
+				"next": "creature_determinesex_clinical",
+				"show_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Determine its sex",
+				"next": "creature_determinesex_feral",
+				"hide_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Leave it be",
+				"next": "creature_leave_01"
+			}
+		]
+	},
+	{
+		"id": "creature_determinesex_clinical",
+		"type": "narration",
+		"text": "<Player actions to clinically determine the sex of the defeated <Creature>, without eroticizing it, physical markers only. Example:> You check for the traits that separate the sexes in its kind: body proportions, coloration, any visible dimorphism. The markers are consistent with <a specific sex>. It gives a weak, tired grunt at the handling but has no strength left to resist.",
+		"next": "creature_leave_01"
 	},
 	{
 		"id": "creature_loot_01",
@@ -64,20 +90,26 @@
 		]
 	},
 	{
-		"id": "creature_approach_01",
+		"id": "creature_determinesex_feral",
 		"type": "narration",
 		"text": "You kneel beside the defeated beast, your shadow falling over its trembling form. It gives a weak, garbled whimper as you grab its shoulder and forcefully push it onto its back. It tries to thrash, but it has no strength left to fight you off. You trace your palm down its stomach, feeling the rapid, exhausted thumping of its heartbeat against your hand. As your fingers reach between its sprawled hind legs, you find a puffy slit and a tight orifice winking slowly underneath its tail.[nb]Even in its beaten, pathetic state, the musky scent of coconut oil wafts up heavily from its groin. You watch as a purple, bulbous tip begins to peek out from its slit, its body betraying its exhaustion by already leaking clear, viscous fluid onto its bruised silver thighs.",
 		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP 1 ; @SHOW_SCENE capture_inspect",
 		"clear": true,
-		"next": "creature_sex_choice_init"
+		"next": "creature_go_further_choice"
 	},
 	{
-		"id": "creature_sex_choice_init",
+		"id": "creature_go_further_choice",
 		"type": "choice",
 		"options": [
 			{
-				"text": "Have your way with the defeated creature",
-				"next": "creature_sex_init"
+				"text": "> Go further",
+				"next": "creature_sex_init",
+				"hide_if": {
+					"any_of": [
+						{ "content_disabled": "feral" },
+						{ "content_disabled": "violence" }
+					]
+				}
 			},
 			{
 				"text": "> Stop and leave",

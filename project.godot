@@ -31,6 +31,7 @@ GameUI="*res://Scenes/UI/GameUI.tscn"
 MusicPlayer="*res://Scripts/autoload/music_player.tscn"
 SFXPlayer="*res://Scripts/autoload/sfx_player.tscn"
 AmbiencePlayer="*res://Scripts/autoload/ambience_player.tscn"
+SaveManager="*res://Scripts/autoload/save_manager.gd"
 
 [debug]
 

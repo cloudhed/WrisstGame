@@ -22,7 +22,9 @@ var _roll_buttons: Dictionary = {}
 
 func _build_ability_buttons() -> void:
 	var container: VBoxContainer = VBoxContainer.new()
-	container.position = Vector2(1602, 650)
+	# Keep the bottom of this menu clear of the scene-placed buttons
+	# (ReshuffleToggleButton starts at y=779 in debug_panel.tscn).
+	container.position = Vector2(1602, 590)
 	debug_ui.add_child(container)
 
 	for ability: String in ["body", "mind", "soul"]:
@@ -43,6 +45,30 @@ func _build_ability_buttons() -> void:
 			btn.add_theme_color_override("font_hover_color", col.lightened(0.25))
 			btn.add_theme_color_override("font_pressed_color", col.darkened(0.2))
 			row.add_child(btn)
+
+	# --- Save / Load row ---
+	var save_row: HBoxContainer = HBoxContainer.new()
+	container.add_child(save_row)
+
+	var save_lbl: Label = Label.new()
+	save_lbl.text = "Save:"
+	save_lbl.custom_minimum_size = Vector2(48, 0)
+	save_row.add_child(save_lbl)
+
+	var save_actions: Array[Array] = [
+		["Save",            _on_save_pressed,     Color(0.4, 0.85, 0.4)],
+		["Load",            _on_load_pressed,     Color(0.4, 0.7, 1.0)],
+		["New Game (wipe)", _on_new_game_pressed, Color(0.95, 0.4, 0.4)],
+	]
+	for action_data: Array in save_actions:
+		var save_btn: Button = Button.new()
+		save_btn.text = action_data[0]
+		save_btn.pressed.connect(action_data[1])
+		var save_col: Color = action_data[2]
+		save_btn.add_theme_color_override("font_color", save_col)
+		save_btn.add_theme_color_override("font_hover_color", save_col.lightened(0.25))
+		save_btn.add_theme_color_override("font_pressed_color", save_col.darkened(0.2))
+		save_row.add_child(save_btn)
 
 	# --- Roll override row ---
 	var roll_row: HBoxContainer = HBoxContainer.new()
@@ -72,6 +98,18 @@ func _build_ability_buttons() -> void:
 		_roll_buttons[mode] = btn
 
 	_refresh_roll_buttons()
+
+
+func _on_save_pressed() -> void:
+	SaveManager.save_game()
+
+
+func _on_load_pressed() -> void:
+	SaveManager.load_game()
+
+
+func _on_new_game_pressed() -> void:
+	SaveManager.new_game()
 
 
 func _on_roll_override(mode: String) -> void:
@@ -117,6 +155,7 @@ func _process(delta):
 
 func _unhandled_input(ev):
 	if ev.is_action_pressed("escape") and not ev.is_echo():
+		SaveManager.save_game()  # escape quits the game — autosave first
 		get_tree().quit()
 		return
 
@@ -140,6 +179,7 @@ func _refresh_debug_controls() -> void:
 	reshuffle_toggle_button.text = "Deck reshuffle: %s" % GameState.get_debug_reshuffle_mode_label()
 	feral_toggle_button.text = "Feral content: %s" % ("OFF" if GameState.content_settings["feral"] else "ON")
 	violence_toggle_button.text = "Violence content: %s" % ("OFF" if GameState.content_settings["violence"] else "ON")
+	_refresh_roll_buttons()  # roll override can change when a save is loaded
 
 
 func _update_debug_info():

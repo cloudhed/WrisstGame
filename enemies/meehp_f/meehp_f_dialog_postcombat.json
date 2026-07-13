@@ -29,14 +29,8 @@
 				"next": "meehp_loot_01"
 			},
 			{
-				"text": "> Overpower and inspect the defeated beast",
-				"next": "meehp_approach_01",
-				"hide_if": {
-					"any_of": [
-						{ "content_disabled": "feral" },
-						{ "content_disabled": "violence" }
-					]
-				}
+				"text": "> Inspect the defeated beast",
+				"next": "meehp_inspect_01"
 			},
 			{
 				"text": "> Leave",
@@ -45,19 +39,52 @@
 		]
 	},
 	{
-		"id": "meehp_approach_01",
+		"id": "meehp_inspect_01",
 		"type": "narration",
-		"text": "You kneel beside the defeated beast. Her instinct flares, and she lets out a sharp, clacking growl, weakly kicking one of her hind claws to keep you back. You drop your weight onto her hips, immediately pinning her down. She thrashes beneath you, her dry hide shifting against the dirt, but her stamina is entirely spent. You grab her thick, muscular thighs and forcefully spread them wide. Her frills flutter in panic and anger as you expose her slick, heavy primary slit and the tighter, secondary vent just above it.",
-		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
-		"next": "meehp_sex_choice_init"
+		"text": "You crouch beside the winded creature. Up close her frills are thinner than they looked from a distance, veined and still twitching in short, erratic pulses. Her four eyes track you individually before settling together. The overlapping dry-brown and green patches of her hide run in a tight, layered pattern down her narrow torso, sweat-slicked from the fight. Her circular mouth hangs open, small teeth ringing the dark center, each breath rattling through it. Her digitigrade legs are splayed wide beneath her, muscle still trembling from exertion.",
+		"next": "meehp_inspect_choice"
 	},
 	{
-		"id": "meehp_sex_choice_init",
+		"id": "meehp_inspect_choice",
 		"type": "choice",
 		"options": [
 			{
-				"text": "Have your way with the defeated Meehp",
-				"next": "meehp_sex_init"
+				"text": "> Determine its sex",
+				"next": "meehp_determinesex_clinical",
+				"show_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Determine its sex",
+				"next": "meehp_determinesex_feral",
+				"hide_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Leave it be",
+				"next": "meehp_postcombat_leave"
+			}
+		]
+	},
+	{
+		"id": "meehp_determinesex_clinical",
+		"type": "narration",
+		"text": "You check for the traits that separate the sexes in her kind: the width of the hip girdle, the set of the hind claws, the pattern density along the frill base. The markers are consistent with a female. She snaps her jaw weakly at the handling but has no strength left to resist.",
+		"next": "meehp_postcombat_leave"
+	},
+	{
+		"id": "meehp_determinesex_feral",
+		"type": "narration",
+		"text": "You kneel beside the defeated beast. Her instinct flares, and she lets out a sharp, clacking growl, weakly kicking one of her hind claws to keep you back. You drop your weight onto her hips, immediately pinning her down. She thrashes beneath you, her dry hide shifting against the dirt, but her stamina is entirely spent. You grab her thick, muscular thighs and forcefully spread them wide. Her frills flutter in panic and anger as you expose her slick, heavy primary slit and the tighter, secondary vent just above it.",
+		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro ; @SHOW_SCENE meehp_inspect_genitals",
+		"next": "meehp_go_further_choice"
+	},
+	{
+		"id": "meehp_go_further_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Go further",
+				"next": "meehp_sex_init",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Stop and leave",

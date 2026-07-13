@@ -20,13 +20,13 @@
 	{
 		"id": "murisk_precombat_unknown",
 		"type": "narration",
-		"text": "Something large lies coiled ahead, translucent and pale, faintly lit from within by a slow, sickly pulse. Its body is composed of heavy, overlapping rings. It has no eyes you can find. Then a sound reaches you — your last footstep, played back hollow and wet from a blunt circular opening at one end. It stops. The pale glow dims.",
+		"text": "Something large lies coiled ahead, translucent and pale, faintly lit from within by a slow, sickly pulse. Its body is composed of heavy, overlapping rings. It has no eyes you can find. Then a sound reaches you, your last footstep, played back hollow and wet from a blunt circular opening at one end. It stops. The pale glow dims.",
 		"next": "murisk_precombat_choice"
 	},
 	{
 		"id": "murisk_precombat",
 		"type": "narration",
-		"text": "A Murisk lies coiled ahead, its heavy translucent rings pulsing with a dim bioluminescence. It emits a warped replay of your most recent footstep from its circular mouth — hollow and slightly wrong — then goes still. Its feeding seam is sealed shut along the underside. It hasn't moved.",
+		"text": "A Murisk lies coiled ahead, its heavy translucent rings pulsing with a dim bioluminescence. It emits a warped replay of your most recent footstep from its circular mouth, hollow and slightly wrong, then goes still. Its feeding seam is sealed shut along the underside. It hasn't moved.",
 		"next": "murisk_precombat_choice"
 	},
 	{
@@ -51,7 +51,7 @@
 	{
 		"id": "murisk_observe",
 		"type": "narration",
-		"text": "You hold still and watch. Its coils are thick — each segment the width of your torso, stacked in a heavy spiral. The pale skin is translucent enough that you can see shifting fluid inside, and the bioluminescence comes from that interior, not the surface. The blunt terminus at one end houses the circular mouth: no teeth, no tongue you can identify, just a wide, dark opening that issues another copy of your breathing back at you, compressed and wet. A longitudinal seam runs along the underside of the thickest coil. It twitches faintly, independent of the rest of the body.",
+		"text": "You hold still and watch. Its coils are thick, each segment the width of your torso, stacked in a heavy spiral. The pale skin is translucent enough that you can see shifting fluid inside, and the bioluminescence comes from that interior, not the surface. The blunt terminus at one end houses the circular mouth: no teeth, no tongue you can identify, just a wide, dark opening that issues another copy of your breathing back at you, compressed and wet. A longitudinal seam runs along the underside of the thickest coil. It twitches faintly, independent of the rest of the body.",
 		"set_flag": "observed_murisk",
 		"flag_type": "temp",
 		"next": "murisk_precombat_choice"

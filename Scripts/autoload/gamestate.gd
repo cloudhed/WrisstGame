@@ -10,6 +10,7 @@ signal logbook_updated(entry_id: String)
 signal fallback_equipped
 signal combat_debug_settings_changed
 signal health_changed(current: int, maximum: int)
+signal state_restored  # bulk state change (save loaded / new game) — UI should refresh silently, no toasts
 
 @export var grant_debug_starting_items: bool = true
 @export var debug_immediate_discard_reshuffle: bool = false
@@ -99,16 +100,20 @@ func _ready():
 			print("✅ player_stats loaded from player.tres (HP: %d/%d)" % [player_stats.health, player_stats.max_health])
 
 	if grant_debug_starting_items:
-		var debug_armor: EquipableItem = load("res://Resources/Items/Equipment/Armor/debugger_armor.tres")
-		var debug_weapon: EquipableItem = load("res://Resources/Items/Equipment/Weapons/debugger_weapon.tres")
-		var debug_trinket: EquipableItem = load("res://Resources/Items/Equipment/Trinkets/debugger_trinket.tres")
-		var debug_longstick: EquipableItem = load("res://Resources/Items/Equipment/Weapons/long_stick_weapon.tres")
-		add_item(debug_armor)
-		add_item(debug_weapon)
-		add_item(debug_longstick)
-		add_item(debug_trinket)
-	
+		_grant_debug_starting_items()
+
 	check_and_equip_fallback()
+
+
+func _grant_debug_starting_items() -> void:
+	var debug_armor: EquipableItem = load("res://Resources/Items/Equipment/Armor/debugger_armor.tres")
+	var debug_weapon: EquipableItem = load("res://Resources/Items/Equipment/Weapons/debugger_weapon.tres")
+	var debug_trinket: EquipableItem = load("res://Resources/Items/Equipment/Trinkets/debugger_trinket.tres")
+	var debug_longstick: EquipableItem = load("res://Resources/Items/Equipment/Weapons/long_stick_weapon.tres")
+	add_item(debug_armor)
+	add_item(debug_weapon)
+	add_item(debug_longstick)
+	add_item(debug_trinket)
 
 
 func _ensure_fallback_items_loaded() -> void:
@@ -447,6 +452,175 @@ func heal_player_full() -> void:
 		return
 	set_player_health(player_stats.max_health)
 	print("💚 Full heal → %d/%d" % [player_stats.health, player_stats.max_health])
+
+
+# ─────────────────────────────────────────────────────────────
+# Save / load serialization — called by SaveManager.
+# Items and equipment are stored as their .tres resource paths, so a loaded
+# item is the same cached Resource instance the rest of the game uses
+# (which keeps `slot.item == item` identity checks working).
+
+func to_dict() -> Dictionary:
+	var inventory_out: Array = []
+	for slot in player_inventory:
+		var item: InventoryItem = slot.get("item")
+		if item == null or item.resource_path.is_empty():
+			push_warning("💾 Inventory item without a resource path can't be saved — skipped.")
+			continue
+		inventory_out.append({"path": item.resource_path, "amount": int(slot.get("amount", 1))})
+
+	var trinket_paths: Array = []
+	for trinket in equipped_trinkets:
+		if trinket != null and not trinket.resource_path.is_empty():
+			trinket_paths.append(trinket.resource_path)
+
+	return {
+		"player_name": player_name,
+		"player_gender": player_gender,
+		"content_settings": content_settings.duplicate(),
+		"health": player_stats.health if player_stats != null else -1,
+		"currency": {"ore": player_ore, "crowns": player_crowns, "drots": player_drots},
+		"inventory": inventory_out,
+		"equipment": {
+			"weapon": _equipped_path(equipped_weapon),
+			"armor": _equipped_path(equipped_armor),
+			"offhand": _equipped_path(equipped_offhand),
+			"trinkets": trinket_paths,
+		},
+		"flags": {
+			"quest": quest_flags.duplicate(),
+			"dialog": dialog_flags.duplicate(),
+			"event": event_flags.duplicate(),
+			"knowledge": knowledge_flags.duplicate(),
+			"sex": sex_flags.duplicate(),
+			"temp": temp_flags.duplicate(),
+		},
+		"npc_reputation": npc_reputation.duplicate(),
+		"npc_horny": npc_horny.duplicate(),
+		"logbook": logbook_entries.duplicate(),
+		"is_night": is_night,
+		"statistics": player_statistics.to_dict() if player_statistics != null else {},
+		"debug": {
+			"immediate_discard_reshuffle": debug_immediate_discard_reshuffle,
+		},
+	}
+
+
+func from_dict(data: Dictionary) -> void:
+	player_name = str(data.get("player_name", player_name))
+	player_gender = str(data.get("player_gender", player_gender))
+
+	# Only copy known content-setting keys so stale save data can't add new ones.
+	var loaded_content: Dictionary = data.get("content_settings", {})
+	for key in content_settings:
+		content_settings[key] = bool(loaded_content.get(key, content_settings[key]))
+
+	var currency: Dictionary = data.get("currency", {})
+	player_ore = int(currency.get("ore", 0))
+	player_crowns = int(currency.get("crowns", 0))
+	player_drots = int(currency.get("drots", 0))
+
+	player_inventory.clear()
+	for entry in data.get("inventory", []):
+		var item := _load_saved_item(str(entry.get("path", "")))
+		if item != null:
+			player_inventory.append({"item": item, "amount": int(entry.get("amount", 1))})
+
+	var equipment: Dictionary = data.get("equipment", {})
+	equipped_weapon = _load_saved_item(str(equipment.get("weapon", ""))) as EquipableItem
+	equipped_armor = _load_saved_item(str(equipment.get("armor", ""))) as EquipableItem
+	equipped_offhand = _load_saved_item(str(equipment.get("offhand", ""))) as EquipableItem
+	equipped_trinkets.clear()
+	for trinket_path in equipment.get("trinkets", []):
+		var trinket := _load_saved_item(str(trinket_path)) as EquipableItem
+		if trinket != null:
+			equipped_trinkets.append(trinket)
+
+	var flags: Dictionary = data.get("flags", {})
+	quest_flags = flags.get("quest", {})
+	dialog_flags = flags.get("dialog", {})
+	event_flags = flags.get("event", {})
+	knowledge_flags = flags.get("knowledge", {})
+	sex_flags = flags.get("sex", {})
+	temp_flags = flags.get("temp", {})
+
+	npc_reputation = _coerce_int_values(data.get("npc_reputation", {}))
+	npc_horny = _coerce_int_values(data.get("npc_horny", {}))
+	logbook_entries = data.get("logbook", {})
+	is_night = bool(data.get("is_night", false))
+
+	if player_statistics == null:
+		player_statistics = PLAYER_STATISTICS_SCRIPT.new()
+	player_statistics.from_dict(data.get("statistics", {}))
+
+	var debug_settings: Dictionary = data.get("debug", {})
+	debug_immediate_discard_reshuffle = bool(debug_settings.get("immediate_discard_reshuffle", debug_immediate_discard_reshuffle))
+
+	check_and_equip_fallback()  # covers missing gear + emits fallback_equipped for the UI
+	var saved_health := int(data.get("health", -1))
+	if saved_health >= 0:
+		set_player_health(saved_health)
+
+	# Silent bulk refresh — money_changed would toast "gained 0" popups here.
+	combat_debug_settings_changed.emit()
+	state_restored.emit()
+	print("💾 GameState restored from save data.")
+
+
+## Wipe all progress back to a fresh start. Called by SaveManager.new_game().
+func reset_for_new_game() -> void:
+	player_ore = 0
+	player_crowns = 0
+	player_drots = 0
+	player_inventory.clear()
+	equipped_weapon = null
+	equipped_armor = null
+	equipped_offhand = null
+	equipped_trinkets.clear()
+	quest_flags.clear()
+	dialog_flags.clear()
+	event_flags.clear()
+	knowledge_flags.clear()
+	sex_flags.clear()
+	temp_flags.clear()
+	npc_reputation.clear()
+	npc_horny.clear()
+	logbook_entries.clear()
+	is_night = false
+	last_scene_id = ""
+	return_to_scene = null
+	pending_dialog_scene_data = null
+	player_statistics = PLAYER_STATISTICS_SCRIPT.new()
+
+	# Same setup a first boot gets.
+	if grant_debug_starting_items:
+		_grant_debug_starting_items()
+	check_and_equip_fallback()
+	heal_player_full()
+
+	state_restored.emit()  # silent bulk refresh — no "gained 0" toasts
+	print("🔄 GameState reset for new game.")
+
+
+func _equipped_path(item: EquipableItem) -> String:
+	return item.resource_path if item != null else ""
+
+
+func _load_saved_item(path: String) -> InventoryItem:
+	if path.is_empty():
+		return null
+	if not ResourceLoader.exists(path):
+		push_warning("💾 Saved item no longer exists in the project: " + path)
+		return null
+	return load(path) as InventoryItem
+
+
+func _coerce_int_values(src: Dictionary) -> Dictionary:
+	# JSON round-trips every number as a float — convert them back to ints.
+	var out := {}
+	for key in src:
+		out[key] = int(src[key])
+	return out
 
 
 func toggle_debug_immediate_discard_reshuffle() -> void:

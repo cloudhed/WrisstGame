@@ -47,7 +47,7 @@
 	{
 		"id": "shenche_postcombat_loot",
 		"type": "narration",
-		"text": "You step around the downed creature and check the surrounding area. Where it was foraging there's a section of stripped bark — and beneath it, a dense cluster of pale mushrooms and a coil of translucent shed skin from some smaller thing it had been consuming. You take what looks useful and leave the rest.",
+		"text": "You step around the downed creature and check the surrounding area. Where it was foraging there's a section of stripped bark, and beneath it, a dense cluster of pale mushrooms and a coil of translucent shed skin from some smaller thing it had been consuming. You take what looks useful and leave the rest.",
 		"clear": true,
 		"next": "shenche_postcombat_loot_give"
 	},
@@ -72,7 +72,7 @@
 	{
 		"id": "shenche_postcombat_approach",
 		"type": "narration",
-		"text": "You crouch beside it. As you get close, the neck lifts off the ground — a slow, effortful arc — and the flat head swings toward you. The mandibles spread partway. The feelers extend and taste the air near your boots, then retract. The neck drops back down. It hasn't got the strength to hold it up. You can see the seam on the underside of the abdomen, in the soft tissue between the rear legs — a vertical split in the chitin, slightly parted, leaking a thin clear film that pools in the crease where its body meets the dirt.",
+		"text": "You crouch beside it. As you get close, the neck lifts off the ground, a slow, effortful arc, and the flat head swings toward you. The mandibles spread partway. The feelers extend and taste the air near your boots, then retract. The neck drops back down. It hasn't got the strength to hold it up. You can see the seam on the underside of the abdomen, in the soft tissue between the rear legs: a vertical split in the chitin, slightly parted, leaking a thin clear film that pools in the crease where its body meets the dirt.",
 		"command": "@PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro ; @SHOW_SCENE postcombat_approach",
 		"clear": true,
 		"next": "shenche_postcombat_approach_choice"
@@ -95,7 +95,7 @@
 	{
 		"id": "shenche_postcombat_sex_init",
 		"type": "narration",
-		"text": "You reach between its rear legs. The seam is parted, the ridged lips flushed violet, pulsing in slow contractions — an involuntary rhythm, independent of everything else going on in the body around it. When your fingers brush the edge, one of its hind legs scrapes weakly against the dirt and the clicking starts up again, low and broken. It tries to shift its weight away. It can't. The fluid runs freely over your knuckles, warm and thin.",
+		"text": "You reach between its rear legs. The seam is parted, the ridged lips flushed violet, pulsing in slow contractions, an involuntary rhythm, independent of everything else going on in the body around it. When your fingers brush the edge, one of its hind legs scrapes weakly against the dirt and the clicking starts up again, low and broken. It tries to shift its weight away. It can't. The fluid runs freely over your knuckles, warm and thin.",
 		"command": "@MUSIC_CLIP choices",
 		"clear": true,
 		"next": "shenche_postcombat_sex_choice"
@@ -117,7 +117,7 @@
 	{
 		"id": "shenche_postcombat_sex_start",
 		"type": "narration",
-		"text": "You press your cock against the parted lips. They give under the pressure — the ridged inner lining flattening, drawing you in. The broken clicking spikes into a rapid, uneven staccato. Its free foreleg drags against the roots in a slow scraping motion, looking for purchase that isn't there. The walls inside contract around you — tight, directional, catching hard on the outstroke. Its body is doing what it does. The creature barely has the strength to hold its neck up.",
+		"text": "You press your cock against the parted lips. They give under the pressure: the ridged inner lining flattening, drawing you in. The broken clicking spikes into a rapid, uneven staccato. Its free foreleg drags against the roots in a slow scraping motion, looking for purchase that isn't there. The walls inside contract around you, tight, directional, catching hard on the outstroke. Its body is doing what it does. The creature barely has the strength to hold its neck up.",
 		"command": "@MUSIC_CLIP love ; @SHOW_SCENE postcombat_malesex_top_start",
 		"next": "shenche_postcombat_sex_start_choice"
 	},
@@ -138,7 +138,7 @@
 	{
 		"id": "shenche_postcombat_sex_ongoing",
 		"type": "narration",
-		"text": "You find a rhythm. The walls inside still contract in peristaltic waves — reduced, but present — each outstroke dragged against the ridges, each instroke releasing into slick warmth. You grip the edge of the upper chitin plate to brace yourself, warm and dry under your palm. The Shenche's foreleg keeps scraping. Its head lifts twice, mandibles snapping once at the air nowhere near you, then drops back into the leaf litter. It's got no coordination left. The fluid splashes lightly between your bodies with each thrust, running down the inside of its legs.",
+		"text": "You find a rhythm. The walls inside still contract in peristaltic waves, reduced but present, each outstroke dragged against the ridges, each instroke releasing into slick warmth. You grip the edge of the upper chitin plate to brace yourself, warm and dry under your palm. The Shenche's foreleg keeps scraping. Its head lifts twice, mandibles snapping once at the air nowhere near you, then drops back into the leaf litter. It's got no coordination left. The fluid splashes lightly between your bodies with each thrust, running down the inside of its legs.",
 		"command": "@SHOW_SCENE postcombat_malesex_top_ongoing",
 		"next": "shenche_postcombat_sex_ongoing_choice"
 	},
@@ -159,7 +159,7 @@
 	{
 		"id": "shenche_postcombat_sex_pre_climax",
 		"type": "narration",
-		"text": "You drive deeper on the next stroke and hold. The ring at the back closes around your tip in a long, sustained clench. The peristaltic waves tighten one band at a time, a slow cascade from the entrance inward. The Shenche's rear legs scrabble against the dirt in a weak, involuntary spasm — its body responding to stimulation it has no way to process right now. The clicking drops to a constant low drone. Your knuckles go white against the chitin plate.",
+		"text": "You drive deeper on the next stroke and hold. The ring at the back closes around your tip in a long, sustained clench. The peristaltic waves tighten one band at a time, a slow cascade from the entrance inward. The Shenche's rear legs scrabble against the dirt in a weak, involuntary spasm, its body responding to stimulation it has no way to process right now. The clicking drops to a constant low drone. Your knuckles go white against the chitin plate.",
 		"command": "@MUSIC_CLIP climax",
 		"next": "shenche_postcombat_sex_climax_choice"
 	},
@@ -180,14 +180,14 @@
 	{
 		"id": "shenche_postcombat_sex_climax_inside",
 		"type": "narration",
-		"text": "You let go. Your cock pulses in deep surges, pumping your seed into it. The inner chamber clamps around your tip and holds — slow, rhythmic, milking each pulse inward. The peristaltic waves draw toward the back, pulling your spend deeper into the body. You slump forward against the abdomen, cheek pressed against warm chitin, breathing hard. Its foreleg gives one last weak scrape, then stops. When you finally slide free, the seam stays open, your spend and its fluid running together into the dirt below.",
+		"text": "You let go. Your cock pulses in deep surges, pumping your seed into it. The inner chamber clamps around your tip and holds: slow, rhythmic, milking each pulse inward. The peristaltic waves draw toward the back, pulling your spend deeper into the body. You slump forward against the abdomen, cheek pressed against warm chitin, breathing hard. Its foreleg gives one last weak scrape, then stops. When you finally slide free, the seam stays open, your spend and its fluid running together into the dirt below.",
 		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE postcombat_malesex_top_climax_inside",
 		"next": "shenche_postcombat_sex_aftermath"
 	},
 	{
 		"id": "shenche_postcombat_sex_climax_outside",
 		"type": "narration",
-		"text": "You pull free — the ridges dragging all the way — and finish against the soft belly. Thick streaks land across the green nodules and run down between them in pale lines. The Shenche's legs twitch once, a weak involuntary spasm. The seam pulses slowly around nothing.",
+		"text": "You pull free, the ridges dragging all the way, and finish against the soft belly. Thick streaks land across the green nodules and run down between them in pale lines. The Shenche's legs twitch once, a weak involuntary spasm. The seam pulses slowly around nothing.",
 		"command": "@MUSIC_CLIP breath ; @SHOW_SCENE postcombat_malesex_top_climax_outside",
 		"next": "shenche_postcombat_sex_aftermath"
 	},
@@ -200,7 +200,7 @@
 	{
 		"id": "shenche_postcombat_sex_aftermath",
 		"type": "narration",
-		"text": "You straighten up. The Shenche's legs have shifted — one hind leg pulling in by inches, the other still splayed. Its neck moves in a slow arc. The clicking resumes, faint and uneven. It's coming back around. You pull your clothes on and step away before it gets there.",
+		"text": "You straighten up. The Shenche's legs have shifted: one hind leg pulling in by inches, the other still splayed. Its neck moves in a slow arc. The clicking resumes, faint and uneven. It's coming back around. You pull your clothes on and step away before it gets there.",
 		"command": "@SHOW_SCENE postcombat_malesex_top_aftermath ; @RECORD_SPECIES_SEX shenche",
 		"set_flag": "sexed_shenche",
 		"flag_type": "sex",
@@ -209,7 +209,7 @@
 	{
 		"id": "shenche_postcombat_leave",
 		"type": "narration",
-		"text": "You adjust your gear and move away from the downed Shenche. Its clicking follows you between the trees for a while — faint and irregular — then stops.",
+		"text": "You adjust your gear and move away from the downed Shenche. Its clicking follows you between the trees for a while, faint and irregular, then stops.",
 		"command": "@HIDE_SCENE ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
 		"next": "shenche_postcombat_end"
 	},

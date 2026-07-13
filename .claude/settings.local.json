@@ -65,7 +65,18 @@
       "Bash(grep -E \"\\\\.gd$\")",
       "Bash(grep -r add_player_dud_tiles /d/Projects/Godot/wrisst_test --include=*.tres --include=*.gd)",
       "Bash(find /d/Projects/Godot/wrisst_test -type f \\\\\\(-name *.md -o -name *.txt -o -name *README* \\\\\\))",
-      "Bash(xargs ls:*)"
+      "Bash(xargs ls:*)",
+      "Bash(python3)",
+      "PowerShell(& \"D:\\\\Program Files\\\\Godot\\\\Godot_v4.4-stable_win64_console.exe\" --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" --check-only --script \"res://Scripts/autoload/save_manager.gd\" 2>&1)",
+      "PowerShell(& \"D:\\\\Program Files\\\\Godot\\\\Godot v4.4.exe\" --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" --check-only --script \"res://Scripts/autoload/save_manager.gd\" 2>&1)",
+      "PowerShell(& \"D:\\\\Program Files\\\\Godot\\\\Godot v4.4.exe\" --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" --script res://test_save_roundtrip.gd -- save 2>&1 | Select-String -Pattern \"TEST|SCRIPT ERROR|💾|Failed\" | Select-Object -First 15; \"exit=$LASTEXITCODE\")",
+      "PowerShell($savePath = \"$env:APPDATA\\\\Godot\\\\app_userdata\\\\Wrisst_test\\\\save_0.json\"; if \\(Test-Path $savePath\\) { Remove-Item $savePath -Confirm:$false }; & \"D:\\\\Program Files\\\\Godot\\\\Godot v4.4.exe\" --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" res://test_save_roundtrip.tscn -- save 2>&1 | Select-String -Pattern \"TEST|SCRIPT ERROR\" | Select-Object -First 10; \"exit=$LASTEXITCODE\")",
+      "PowerShell(& \"D:\\\\Program Files\\\\Godot\\\\Godot v4.4.exe\" --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" res://test_save_roundtrip.tscn -- load 2>&1 | Select-String -Pattern \"TEST|SCRIPT ERROR|SaveManager\" | Select-Object -First 10; \"exit=$LASTEXITCODE\")",
+      "PowerShell(Get-Content \"$env:APPDATA\\\\Godot\\\\app_userdata\\\\Wrisst_test\\\\save_0.json\" -TotalCount 40)",
+      "PowerShell(Remove-Item \"d:\\\\Projects\\\\Godot\\\\wrisst_test\\\\test_save_roundtrip.gd\", \"d:\\\\Projects\\\\Godot\\\\wrisst_test\\\\test_save_roundtrip.tscn\", \"$env:APPDATA\\\\Godot\\\\app_userdata\\\\Wrisst_test\\\\save_0.json\" -Confirm:$false; & \"D:\\\\Program Files\\\\Godot\\\\Godot v4.4.exe\" --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" --quit 2>&1 | Select-String -Pattern \"SCRIPT ERROR\" | Select-Object -First 5; \"final boot check exit=$LASTEXITCODE\")",
+      "PowerShell($savePath = \"$env:APPDATA\\\\Godot\\\\app_userdata\\\\Wrisst_test\\\\save_0.json\"; if \\(Test-Path $savePath\\) { Remove-Item $savePath -Confirm:$false }; $g = \"D:\\\\Program Files\\\\Godot\\\\Godot v4.4.exe\"; & $g --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" res://test_save_roundtrip.tscn -- save 2>&1 | Select-String -Pattern \"TEST|SCRIPT ERROR\" | Select-Object -First 8; \"save exit=$LASTEXITCODE\"; & $g --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" res://test_save_roundtrip.tscn -- load 2>&1 | Select-String -Pattern \"TEST|SCRIPT ERROR|Drots\" | Select-Object -First 8; \"load exit=$LASTEXITCODE\")",
+      "PowerShell(Remove-Item \"d:\\\\Projects\\\\Godot\\\\wrisst_test\\\\test_save_roundtrip.gd\", \"d:\\\\Projects\\\\Godot\\\\wrisst_test\\\\test_save_roundtrip.tscn\", \"$env:APPDATA\\\\Godot\\\\app_userdata\\\\Wrisst_test\\\\save_0.json\" -Confirm:$false; \"cleaned up\")",
+      "PowerShell(& \"D:\\\\Program Files\\\\Godot\\\\Godot v4.4.exe\" --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" --quit 2>&1 | Select-String -Pattern \"SCRIPT ERROR\" | Select-Object -First 5; \"boot check exit=$LASTEXITCODE\")"
     ],
     "additionalDirectories": [
       "d:\\Projects\\Godot\\wrisst_test\\Scenes\\UI"

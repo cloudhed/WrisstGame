@@ -188,7 +188,7 @@
 		"type": "choice",
 		"options": [
 			{
-				"text": "> Inspect the creature closer/<Determine sex>",
+				"text": "> Inspect the creature closer",
 				"next": "creature_inspect"
 			},
 			{
@@ -227,6 +227,11 @@
 		"options": [
 			{
 				"text": "> Determine the <Creature>'s sex",
+				"next": "creature_inspect_determinesex_clinical",
+				"show_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Determine the <Creature>'s sex",
 				"next": "creature_inspect_determinesex",
 				"hide_if": { "content_disabled": "feral" }
 			},
@@ -235,6 +240,12 @@
 				"next": "creature_inspect_leave"
 			}
 		]
+	},
+	{
+		"id": "creature_inspect_determinesex_clinical",
+		"type": "narration",
+		"text": "<Player actions to clinically determine the <Creature>'s sex without eroticizing it, physical markers only. Example:> You check for the traits that separate the sexes in its kind: body proportions, coloration, any visible dimorphism. Based on what you can see, the markers are consistent with <a specific sex>. It shows no reaction beyond a soft, distracted grunt, too absorbed in <lure> to care.",
+		"next": "creature_inspect_leave"
 	},
 	{
 		"id": "creature_inspect_determinesex",
@@ -250,7 +261,8 @@
 		"options": [
 			{
 				"text": "> Touch the erection",
-				"next": "creature_inspect_02"
+				"next": "creature_inspect_02",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Back away",
@@ -747,8 +759,7 @@
 		"options": [
 			{
 				"text": "> Inspect the tied-up creature closer",
-				"next": "creature_capture_inspect",
-				"hide_if": { "content_disabled": "feral" }
+				"next": "creature_capture_inspect_01"
 			},
 			{
 				"text": "> <Loot the creature>",
@@ -788,20 +799,53 @@
 		"next": "creature_end"
 	},
 	{
-		"id": "creature_capture_inspect",
+		"id": "creature_capture_inspect_01",
+		"type": "narration",
+		"text": "<Player actions to inspect the restrained creature without anything sexual yet, physical state, restraints, breathing, general condition. Example:> You circle the bound <Creature>, looking it over. The ropes hold firm around its limbs, and its chest rises and falls in exhausted, uneven breaths. <Describe its appearance further>. It watches you with tired, half-lidded eyes, too spent to do anything but track your movement.",
+		"next": "creature_capture_inspect_choice"
+	},
+	{
+		"id": "creature_capture_inspect_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Determine its sex",
+				"next": "creature_capture_determinesex_clinical",
+				"show_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Determine its sex",
+				"next": "creature_capture_determinesex_feral",
+				"hide_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Leave it be",
+				"next": "creature_capture_leave"
+			}
+		]
+	},
+	{
+		"id": "creature_capture_determinesex_clinical",
+		"type": "narration",
+		"text": "<Player actions to clinically determine the sex of the bound <Creature>, without eroticizing it, physical markers only. Example:> You check for the traits that separate the sexes in its kind: body proportions, coloration, any visible dimorphism. The markers are consistent with <a specific sex>. It gives a weak, tired grunt at the handling but doesn't have the strength to resist.",
+		"next": "creature_capture_leave"
+	},
+	{
+		"id": "creature_capture_determinesex_feral",
 		"type": "narration",
 		"text": "<Further Player actions to inspect, describing the body, smell and noises of the <Creature> similar to the normal Inspect but with the creature tired and tied up. Example:> As the <Creature> now lies at your feet helpless and tied-up, you're free to inspect it without it fighting back. You turn the <Creature> on its back and run the palm of your hand against its belly. <Descriptions of tactile feel, smell, reactions from Creature>. Your fingers trace their way down to a small puffy slit in-between its hindlegs, and right below the slit, just underneath its tail, you see a tight orifice winking slowly.[nb]A meek gurgling groan escapes the bound <Creature> as it senses the pressure of your hands around its apparent genitals, and you see the hint of something purple and glistening start to emerge from the slit.",
 		"command": "@SHOW_SCENE inspect",
 		"clear": true,
-		"next": "creature_capture_sex_choice_init"
+		"next": "creature_capture_go_further_choice"
 	},
 	{
-		"id": "creature_capture_sex_choice_init",
+		"id": "creature_capture_go_further_choice",
 		"type": "choice",
 		"options": [
 			{
-				"text": "Have your way with the tied-up creature",
-				"next": "creature_capture_sex_init"
+				"text": "> Go further",
+				"next": "creature_capture_sex_init",
+				"hide_if": { "content_disabled": "feral" }
 			},
 			{
 				"text": "> Stop",

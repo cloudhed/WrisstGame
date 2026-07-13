@@ -9,7 +9,7 @@
   {
 	"id": "btlgt_intro",
 	"type": "narration",
-	"text": "You wake to heat on your cheek and a sharp tug in your chest. Your muscles ache. Your mouth tastes like copper and salt. The sand is gone—there's moss beneath your back now, damp and cool.",
+	"text": "You wake to heat on your cheek and a sharp tug in your chest. Your muscles ache. Your mouth tastes like copper and salt. The sand is gone, and there's moss beneath your back now, damp and cool.",
 	"next": "btlgt_intro_choice"
   },
   {
@@ -25,7 +25,7 @@
   {
 	"id": "btlgt_fire_scene",
 	"type": "narration",
-	"text": "A fire crackles ahead of you. It's a large fire. Too large for one person. Orange light flickers against roots and low fog. Someone's speaking—casual, rhythmic, already mid-thought.",
+	"text": "A fire crackles ahead of you. It's a large fire, too large for one person. Orange light flickers against roots and low fog. Someone's speaking, casual and rhythmic, already mid-thought.",
 	"next": "btlgt_fire_scene_2"
   },
   {
@@ -38,7 +38,7 @@
   {
 	"id": "btlgt_fire_scene_3",
 	"type": "narration",
-	"text": "A small figure squats beside the fire, knees spread, tail curled against his side. His skin glistens faintly—smooth, amphibian-dark, flecked with old scars or moss-stains. One hand grips a long walking stick jabbed into the dirt. The other stirs a steaming tin cup set atop a flat rock.",
+	"text": "A small figure squats beside the fire, knees spread, tail curled against his side. His skin glistens faintly, smooth, amphibian-dark, flecked with old scars or moss-stains. One hand grips a long walking stick jabbed into the dirt. The other stirs a steaming tin cup set atop a flat rock.",
 	"next": "btlgt_show_portrait_squat"
   },
   {
@@ -89,7 +89,7 @@
   {
 	"id": "btlgt_teqqellon_04",
 	"type": "narration",
-	"text": "His eyes flick your way. Wide. Too wide. Reflecting the fire like polished stone.",
+	"text": "His eyes flick your way, wide, too wide, reflecting the fire like polished stone.",
 	"clear": true,
 	"next": "btlgt_exposition_01"
   },
@@ -137,7 +137,7 @@
 	"id": "btlgt_oldmire_mutter",
 	"type": "npc",
 	"name": "Bitalgut",
-	"text": "\"Havet-ni moi. Oshet-ni su-sui. Ucruss... mi-la halla.\"",
+	"text": "\"[b]Havet-ni moi. Oshet-ni su-sui. Ucruss... mi-la halla.[/b]\"",
 	"next": "btlgt_show_portrait_squat_talk"
   },
   {
@@ -358,7 +358,7 @@
   {
 	"id": "bitalgut_human_response_narr",
 	"type": "narration",
-	"text": "Bitalgut tilts his head. Not confused—more like he’s checking if you just told a joke.",
+	"text": "Bitalgut tilts his head, not confused, more like he’s checking if you just told a joke.",
 	"next": "bitalgut_human_response"
   },
   {
@@ -413,7 +413,7 @@
 	"id": "bitalgut_logbook",
 	"type": "npc",
 	"name": "Bitalgut",
-	"text": "\"Here. Took it off a dead courier. Pages are clean. Start writing, [b]Bolk[/b]. What you see, what you fight, what you hug — put it down.\"",
+	"text": "\"Here. Took it off a dead courier. Pages are clean. Start writing, [b]Bolk[/b]. What you see, what you fight, what you hug, put it down.\"",
 	"next": "bitalgut_logbook_narr_2"
   },
   {
@@ -480,7 +480,7 @@
 	"id": "bitalgut_departure_2",
 	"type": "npc",
 	"name": "Bitalgut",
-	"text": "\"Follow the bark-scars—four in a row, like claw marks but too clean. North. Means you’re close. There will be a scar in the ground. Rift. You’ll see stone. Tall. Too proud to crumble. That’s Caarth. Big city.\"",
+	"text": "\"Follow the bark-scars, four in a row, like claw marks but too clean. North. Means you’re close. There will be a scar in the ground. Rift. You’ll see stone. Tall. Too proud to crumble. That’s Caarth. Big city.\"",
 	"next": "bitalgut_departure_narr_2"
   },
   {

@@ -2,7 +2,7 @@
 	{
 		"id": "murisk_loss_intro",
 		"type": "narration",
-		"text": "You're on the ground. The Murisk has a coil across your legs — not crushing, just weight, enough to keep you still. Its bioluminescent segments pulse close to your face. Then your own grunt comes back at you through its circular mouth: hollow, wet, delayed by half a beat.",
+		"text": "You're on the ground. The Murisk has a coil across your legs, not crushing, just weight, enough to keep you still. Its bioluminescent segments pulse close to your face. Then your own grunt comes back at you through its circular mouth: hollow, wet, delayed by half a beat.",
 		"next": "murisk_loss_choice"
 	},
 	{
@@ -22,19 +22,19 @@
 	{
 		"id": "murisk_loss_still",
 		"type": "narration",
-		"text": "You stop moving. The echo stops too. The coil rests against you, heavy and warm. Its feeding seam parts slightly against your leg — not penetrating, just contact, tasting whatever it can read from your skin. Its blunt head lifts a few inches, then lowers again.",
+		"text": "You stop moving. The echo stops too. The coil rests against you, heavy and warm. Its feeding seam parts slightly against your leg, not penetrating, just contact, tasting whatever it can read from your skin. Its blunt head lifts a few inches, then lowers again.",
 		"next": "murisk_loss_resolve"
 	},
 	{
 		"id": "murisk_loss_pull",
 		"type": "narration",
-		"text": "Your knee shifts. The Murisk's coil tightens — once, firm — then your own sharp exhale bounces back at you through its circular mouth, held half a beat longer than you made it. You go still.",
+		"text": "Your knee shifts. The Murisk's coil tightens, once, firm, then your own sharp exhale bounces back at you through its circular mouth, held half a beat longer than you made it. You go still.",
 		"next": "murisk_loss_resolve"
 	},
 	{
 		"id": "murisk_loss_resolve",
 		"type": "narration",
-		"text": "The coil slowly draws back. Its bioluminescence dims from stressed-pale to a slow, rhythmic throb. The feeding seam closes. It doesn't retreat so much as it simply loses interest — coiling inward, the glow going dark by segment.",
+		"text": "The coil slowly draws back. Its bioluminescence dims from stressed-pale to a slow, rhythmic throb. The feeding seam closes. It doesn't retreat so much as it simply loses interest, coiling inward, the glow going dark by segment.",
 		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
 		"next": "murisk_loss_end"
 	},

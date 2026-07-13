@@ -55,7 +55,7 @@
 	{
 		"id": "meehp_observe",
 		"type": "narration",
-		"text": "You hold still and watch. The creature is tall — head above yours when its neck straightens fully. Its body is narrow and upright, the digitigrade legs thick with muscle at the thigh. The hide runs in overlapping patches of dry brown and faded green. No arms, no wings. The frills beneath its jaw hang loose, spreading and pulling closed in short bursts, processing your scent. Its circular mouth is shut. Small, irregular clacks come from somewhere inside it.",
+		"text": "You hold still and watch. The creature is tall, head above yours when its neck straightens fully. Its body is narrow and upright, the digitigrade legs thick with muscle at the thigh. The hide runs in overlapping patches of dry brown and faded green. No arms, no wings. The frills beneath its jaw hang loose, spreading and pulling closed in short bursts, processing your scent. Its circular mouth is shut. Small, irregular clacks come from somewhere inside it.",
 		"set_flag": "observed_meehp",
 		"flag_type": "temp",
 		"next": "meehp_precombat_choice"
@@ -63,7 +63,7 @@
 	{
 		"id": "meehp_approach",
 		"type": "narration",
-		"text": "You take a slow step forward. Her neck swings toward you — faster than you expected. The frills snap wide open beneath her jaw, full display, each one rigid. Her four eyes pull into alignment. Her hind claws press deep. A sharp clacking builds in her throat.",
+		"text": "You take a slow step forward. Her neck swings toward you, faster than you expected. The frills snap wide open beneath her jaw, full display, each one rigid. Her four eyes pull into alignment. Her hind claws press deep. A sharp clacking builds in her throat.",
 		"command": "@STOP_ALL_AMBIENCE ; @PLAY_MUSIC res://Audio/Music/Encounters/Sex_Feral_Interactive.tres ; @MUSIC_CLIP intro",
 		"clear": true,
 		"next": "meehp_approach_02"
@@ -71,7 +71,7 @@
 	{
 		"id": "meehp_approach_02",
 		"type": "narration",
-		"text": "She holds the display — frills spread, head low and forward — but doesn't charge. You're close enough to see the small teeth ringing the inside of her circular mouth. Her nostrils work along the jaw line in short pulls, sampling you carefully. The clacking drops to a slow, steady pulse. She's reading whether you'll hold or break.",
+		"text": "She holds the display, frills spread, head low and forward, but doesn't charge. You're close enough to see the small teeth ringing the inside of her circular mouth. Her nostrils work along the jaw line in short pulls, sampling you carefully. The clacking drops to a slow, steady pulse. She's reading whether you'll hold or break.",
 		"next": "meehp_approach_choice"
 	},
 	{

@@ -485,7 +485,7 @@
 	{
 		"id": "v1_hj_pichidi_reaches",
 		"type": "narration",
-		"text": "Their gaze drops to your waist. The movement of their hand is utterly devoid of hesitation—a smooth, predatory strike across the space between you. Their fingers feel like cold river clay as they hook the fabric of your trousers and pull, testing the give with heavy, mechanical strength.",
+		"text": "Their gaze drops to your waist. The movement of their hand is utterly devoid of hesitation, a smooth, predatory strike across the space between you. Their fingers feel like cold river clay as they hook the fabric of your trousers and pull, testing the give with heavy, mechanical strength.",
 		"next": "v1_hj_choice"
 	},
 	{
@@ -576,7 +576,7 @@
 	{
 		"id": "v1_hj_act_start",
 		"type": "narration",
-		"text": "Your erection springs free, hot in the damp chill. Pichidi locks their fingers around your base immediately. The temperature contrast is violently sharp—your warm pulsing erection wrapped in their clay-cool, unyielding grip. They squeeze hard, testing the girth, and a sharp breath hisses through their blue-tipped teeth.",
+		"text": "Your erection springs free, hot in the damp chill. Pichidi locks their fingers around your base immediately. The temperature contrast is violently sharp: your warm pulsing erection wrapped in their clay-cool, unyielding grip. They squeeze hard, testing the girth, and a sharp breath hisses through their blue-tipped teeth.",
 		"clear": true,
 		"next": "v1_hj_pichidi_react"
 	},
@@ -924,7 +924,7 @@
 	{
 		"id": "routeA_narration_01",
 		"type": "narration",
-		"text": "They straddle you. Their compact frame is deceptively heavy. The slick entrance of their hole presses against the head of your erection. It feels bizarre—smooth, tight-edged, and drastically cooler than your own skin. They hold themselves there, letting your heat bleed into them.",
+		"text": "They straddle you. Their compact frame is deceptively heavy. The slick entrance of their hole presses against the head of your erection. It feels bizarre, smooth, tight-edged, and drastically cooler than your own skin. They hold themselves there, letting your heat bleed into them.",
 		"next": "routeA_micro_01"
 	},
 	{
@@ -1240,7 +1240,7 @@
 	{
 		"id": "routeC_deh_glim_01",
 		"type": "narration",
-		"text": "Pichidi takes you into their mouth. The interior is shocking—cool, heavily ribbed, and completely lacking softness. Their blue-tipped teeth graze your shaft as their tongue swirls, tasting the salt and heat of your strange flesh. They swallow the length of you, applying a crushing, rhythmic suction.",
+		"text": "Pichidi takes you into their mouth. The interior is shocking, cool, heavily ribbed, and completely lacking softness. Their blue-tipped teeth graze your shaft as their tongue swirls, tasting the salt and heat of your strange flesh. They swallow the length of you, applying a crushing, rhythmic suction.",
 		"next": "routeC_deh_glim_02"
 	},
 	{
@@ -1361,7 +1361,7 @@
 	{
 		"id": "routeD_missionary_02",
 		"type": "narration",
-		"text": "You kneel between their thighs and lower your weight over them. The temperature contrast is absolute—your chest, burning like a furnace, pressed flush against their clay-cool skin. Pichidi's breath hitches. Their cool hands hesitate in the air before settling flat against your shoulder blades.",
+		"text": "You kneel between their thighs and lower your weight over them. The temperature contrast is absolute: your chest, burning like a furnace, pressed flush against their clay-cool skin. Pichidi's breath hitches. Their cool hands hesitate in the air before settling flat against your shoulder blades.",
 		"next": "routeD_missionary_npc"
 	},
 	{
@@ -1674,7 +1674,7 @@
 	{
 		"id": "cuddle_fall_asleep",
 		"type": "narration",
-		"text": "You wrap around their frame. Their skin feels like riverbed clay—cool and exceedingly smooth. They press their back into your heat, letting out a long, slow breath as the dark sewer finally goes entirely quiet. You drift off.",
+		"text": "You wrap around their frame. Their skin feels like riverbed clay, cool and exceedingly smooth. They press their back into your heat, letting out a long, slow breath as the dark sewer finally goes entirely quiet. You drift off.",
 		"next": "cuddle_commands"
 	},
 	{
@@ -1800,13 +1800,13 @@
 		"set_flag": "pichidi_found_endah",
 		"flag_type": "knowledge",
 		"name": "Pichidi",
-		"text": "They lift their head, their pale eyes blown wide with what could only be assumed as hormone-addled confusion. \"Other ways? Have-I the [b]nah[/b] for breeding — [b]fim[/b] moi, already dripping for you. Have-I the [b]endah[/b] for waste. Have-I mouth for eating. What more do [b]bolk[/b] need? Are you wanting to [b]bac[/b] my ears?\"",
+		"text": "They lift their head, their pale eyes blown wide with what could only be assumed as hormone-addled confusion. \"Other ways? Have-I the [b]nah[/b] for breeding, [b]fim[/b] moi, already dripping for you. Have-I the [b]endah[/b] for waste. Have-I mouth for eating. What more do [b]bolk[/b] need? Are you wanting to [b]bac[/b] my ears?\"",
 		"next": "brood_free_use_hub"
 	},
 	{
 		"id": "brood_kiss_01",
 		"type": "narration",
-		"text": "You cup their cool, mauve-rose face and press your mouth to theirs. Pichidi goes completely rigid. Their lips are firm and taste intensely of raw minerals and copper. They don't kiss back—they clearly have no instinct for it. When you part their lips with your tongue, their sharp, blue-tipped teeth clink against yours in a clumsy, bewildered collision.",
+		"text": "You cup their cool, mauve-rose face and press your mouth to theirs. Pichidi goes completely rigid. Their lips are firm and taste intensely of raw minerals and copper. They don't kiss back. They clearly have no instinct for it. When you part their lips with your tongue, their sharp, blue-tipped teeth clink against yours in a clumsy, bewildered collision.",
 		"next": "brood_kiss_npc"
 	},
 	{

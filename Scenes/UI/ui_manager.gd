@@ -59,6 +59,7 @@ func _ready():
 
 	GameState.inventory_changed.connect(_on_inventory_changed)
 	GameState.money_changed.connect(_on_money_changed)
+	GameState.state_restored.connect(_on_state_restored)
 	GameState.fallback_equipped.connect(_update_equipped_labels)
 	GameState.logbook_updated.connect(_on_logbook_updated)
 
@@ -155,6 +156,8 @@ func _refresh_inventory():
 func _on_inventory_changed(action: String, item):
 	if inv_screen.visible:
 		_refresh_inventory()
+	if item == null:
+		return  # bulk change (save loaded / new game) — nothing to toast
 	if action == "add":
 		notify("'%s' added" % item.name)
 	else:
@@ -297,6 +300,16 @@ func notify(text: String, duration: float = 2.0):
 
 func _on_hide_timer_timeout():
 	popup_panel.visible = false
+
+
+func _on_state_restored() -> void:
+	# Bulk state change (save loaded / new game) — refresh everything, no toasts.
+	current_ore_label.text = "Öre: %d %s" % [GameState.player_ore, GameState.ORE_SYMBOL]
+	current_crowns.text = "Crowns: %d %s" % [GameState.player_crowns, GameState.CROWN_SYMBOL]
+	current_drots.text = "Drots: %d %s" % [GameState.player_drots, GameState.DROT_SYMBOL]
+	_update_equipped_labels()
+	if inv_screen.visible:
+		_refresh_inventory()
 
 
 func _on_money_changed(currency: String, new_amount: int) -> void:

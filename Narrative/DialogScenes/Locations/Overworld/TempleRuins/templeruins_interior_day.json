@@ -28,13 +28,13 @@
     {
         "id": "interior_firsttime_entry",
         "type": "narration",
-        "text": "Inside, the air is warm and close. The curved walls are smooth, amber-pale in the light of several small oil lamps set into shallow recesses. The ceiling vaults overhead — organic, uneven, nothing like a built thing. Cloth hangings fall from high up, woven with patterns you do not recognise. Geometric. Deliberate.\n\nThe smell is oil and dry mineral stone and something faintly smoky. Someone lives here. The small signs of it are everywhere — worn cloth, a low pallet, a few clay vessels arranged with care.",
+        "text": "Inside, the air is warm and close. The curved walls are smooth, amber-pale in the light of several small oil lamps set into shallow recesses. The ceiling vaults overhead, organic and uneven, nothing like a built thing. Cloth hangings fall from high up, woven with deliberate geometric patterns you don't recognise.\n\nThe smell is oil and dry mineral stone and something faintly smoky. Someone lives here, and the small signs of it are everywhere: worn cloth, a low pallet, a few clay vessels arranged with care.",
         "next": "interior_firsttime_figure"
     },
     {
         "id": "interior_firsttime_figure",
         "type": "narration",
-        "text": "A shape moves in the far shadow.\n\nTall. Very tall — it has to lower its head slightly near the far wall. Broad, wrapped in layers of woven cloth, hem-stitched with the same geometric marks as the hangings. The shroud covers everything. Large dark eyes peer out from a narrow gap in the cloth, catching the lamp light — still, and watching.",
+        "text": "A shape moves in the far shadow. It's tall, tall enough that it has to lower its head slightly near the far wall, and broad, wrapped in layers of woven cloth hem-stitched with the same geometric marks as the hangings. The shroud covers everything except a narrow gap, where large dark eyes peer out, catching the lamp light, still and watching.",
 		"clear": true,
         "next": "interior_nautinto_oh"
     },
@@ -267,7 +267,7 @@
         "id": "nautinto_the_ask_b",
         "type": "npc",
         "name": "Nautinto",
-        "text": "\"Teqqellon slime. Three portions should be enough. The creature leaves it on tide-stones after it feeds — you will recognise it. Translucent. Faintly warm.\"",
+        "text": "\"Teqqellon slime. Three portions should be enough. The creature leaves it on tide-stones after it feeds, and you'll recognise it: translucent, faintly warm.\"",
         "next": "nautinto_the_ask_c"
     },
     {
@@ -436,7 +436,7 @@
         "type": "choice",
         "options": [
             {
-                "text": "> Yes — here. (3x teqqellon slime, 1x shenche loot)",
+                "text": "> Yes, here. (3x teqqellon slime, 1x shenche loot)",
                 "next": "nautinto_delivery",
                 "show_if": {
                     "all_of": [
@@ -470,7 +470,7 @@
     {
         "id": "nautinto_delivery_inspect",
         "type": "narration",
-        "text": "The cloth shifts. Long fingers — broad at the knuckle, careful — examine what you have brought. A long pause.",
+        "text": "The cloth shifts. Long fingers, broad at the knuckle and careful, examine what you have brought. A long pause.",
         "next": "nautinto_delivery_verdict"
     },
     {

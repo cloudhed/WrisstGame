@@ -25,8 +25,7 @@
 			},
 			{
 				"text": "> Inspect the creature more closely",
-				"next": "teqqellon_approach_01",
-				"hide_if": { "content_disabled": "feral" }
+				"next": "teqqellon_inspect_01"
 			},
 			{
 				"text": "> Leave it",
@@ -35,10 +34,58 @@
 		]
 	},
 	{
-		"id": "teqqellon_approach_01",
+		"id": "teqqellon_inspect_01",
+		"type": "narration",
+		"text": "You crouch beside the defeated Teqqellon. Its teal mass is still quivering, the membrane pulling taut and slack in slow waves over the slime beneath. Through the translucent surface you can make out the segmented lilac core, four lobes pulsing in an uneven, stressed sequence. The surface has no visible eyes, mouth, or limbs, just the membrane, the slime, and the core drifting slowly within it.",
+		"next": "teqqellon_inspect_choice"
+	},
+	{
+		"id": "teqqellon_inspect_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Determine its sex",
+				"next": "teqqellon_determinesex_clinical",
+				"show_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Determine its sex",
+				"next": "teqqellon_determinesex_feral",
+				"hide_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Leave it be",
+				"next": "teqqellon_leave_01"
+			}
+		]
+	},
+	{
+		"id": "teqqellon_determinesex_clinical",
+		"type": "narration",
+		"text": "You look the creature over for anything that would indicate a sex. There's no external structure resembling one, no visible reproductive anatomy, no dimorphism you can identify. Whatever the Teqqellon's biology does along those lines, it isn't something you can determine by looking.",
+		"next": "teqqellon_leave_01"
+	},
+	{
+		"id": "teqqellon_determinesex_feral",
 		"type": "narration",
 		"text": "You kneel in the wet sand. The creature’s surface membrane creates soft ripples as you press your thumb against it. The membrane yields as your finger enters its gelatinous body, the ripples now localized around your finger, almost like its massaging your digit. The quad-lobe core shivers and seem to sense your intrusion as it floats through the slime closer to your point of entry, but doesn't fight back.",
-		"next": "teqqellon_penetrate_choice"
+		"command": "@SHOW_SCENE teqqellon_inspect_membrane",
+		"next": "teqqellon_go_further_choice"
+	},
+	{
+		"id": "teqqellon_go_further_choice",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Go further",
+				"next": "teqqellon_penetrate_choice",
+				"hide_if": { "content_disabled": "feral" }
+			},
+			{
+				"text": "> Stop and leave",
+				"next": "teqqellon_leave_01"
+			}
+		]
 	},
 	{
 		"id": "teqqellon_penetrate_choice",

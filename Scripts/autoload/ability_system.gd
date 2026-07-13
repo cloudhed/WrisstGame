@@ -92,6 +92,7 @@ func get_save_data() -> Dictionary:
 	return {
 		"tier_values": tier_values.duplicate(),
 		"assignments": assignments.duplicate(),
+		"roll_override": roll_override,
 	}
 
 
@@ -100,3 +101,4 @@ func load_save_data(data: Dictionary) -> void:
 		tier_values = data["tier_values"].duplicate()
 	if data.has("assignments"):
 		assignments = data["assignments"].duplicate()
+	roll_override = str(data.get("roll_override", roll_override))

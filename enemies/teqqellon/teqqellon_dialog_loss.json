@@ -11,13 +11,42 @@
 		"options": [
 			{
 				"text": "> [Stay awake]",
-				"next": "teqqellon_loss_stay_awake"
+				"next": "teqqellon_loss_stay_awake",
+				"hide_if": {
+					"any_of": [
+						{ "content_disabled": "feral" },
+						{ "content_disabled": "violence" }
+					]
+				}
 			},
 			{
 				"text": "> [Pass out]",
-				"next": "teqqellon_loss_pass_out"
+				"next": "teqqellon_loss_pass_out",
+				"hide_if": {
+					"any_of": [
+						{ "content_disabled": "feral" },
+						{ "content_disabled": "violence" }
+					]
+				}
+			},
+			{
+				"text": "> Stay still and wait it out",
+				"next": "teqqellon_loss_filtered",
+				"show_if": {
+					"any_of": [
+						{ "content_disabled": "feral" },
+						{ "content_disabled": "violence" }
+					]
+				}
 			}
 		]
+	},
+	{
+		"id": "teqqellon_loss_filtered",
+		"type": "narration",
+		"text": "You go still and let your weight sink into the sand. The Teqqellon's mass shifts over your hips, its membrane pressing cool and heavy against you, the lilac core drifting close through the slime. It holds there for a long moment, pulsing in that same stressed rhythm, seeming to read something from the contact. Then, gradually, the pulse slows. The mass eases off your legs and withdraws, retreating back into a low heap a few feet away.",
+		"command": "@FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE",
+		"next": "teqqellon_loss_end"
 	},
 	{
 		"id": "teqqellon_loss_stay_awake",

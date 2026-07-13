@@ -70,7 +70,7 @@
 	{
 		"id": "night_repeat_entry",
 		"type": "narration",
-		"text": "The Windbreak is quiet again. One oil lamp holds the bar in amber, and the wind presses against the shutters in those same low notes. Tavo is at the bar — same place, same apron, same motion — and he looks up when you come in.",
+		"text": "The Windbreak is quiet again. One oil lamp holds the bar in amber, and the wind presses against the shutters in those same low notes. Tavo is at the bar, same place, same apron, same motion, and he looks up when you come in.",
 		"next": "night_repeat_tavo"
 	},
 	{
@@ -296,7 +296,7 @@
 	{
 		"id": "flirt_night_rough_02",
 		"type": "narration",
-		"text": "He looks up from the counter — something in the question catches on him and holds him there a beat — before he looks back down.",
+		"text": "He looks up from the counter, something in the question catches on him and holds him there a beat, before he looks back down.",
 		"next": "flirt_night_rough_03"
 	},
 	{
@@ -482,7 +482,7 @@
 	{
 		"id": "flirt_night_gaze_03",
 		"type": "narration",
-		"text": "You don't answer — you hold the look and let the silence stretch.[p]The fire ticks in the grate. The wind moves across the shutters.",
+		"text": "You don't answer. You hold the look and let the silence stretch.[p]The fire ticks in the grate. The wind moves across the shutters.",
 		"next": "flirt_night_gaze_04"
 	},
 	{
@@ -517,7 +517,7 @@
 	{
 		"id": "tavo_initiate_04",
 		"type": "narration",
-		"text": "He rounds the counter.[p]Moves into your space the way he moves through his kitchen — like he has a right to be exactly where he is. He stops close. Closer than he's ever stood. His head comes to your chest. He tilts it up.",
+		"text": "He rounds the counter.[p]Moves into your space the way he moves through his kitchen, like he has a right to be exactly where he is. He stops close, closer than he's ever stood. His head comes to your chest, and he tilts it up.",
 		"next": "tavo_initiate_05"
 	},
 	{
@@ -537,7 +537,7 @@
 				"next": "sex_bj_start"
 			},
 			{
-				"text": "> [Grab his wrist. Don't pull — just hold it.]",
+				"text": "> [Grab his wrist. Don't pull, just hold it.]",
 				"next": "sex_wrist_attempt",
 				"show_if": {
 					"all_of": [
@@ -568,20 +568,20 @@
 	{
 		"id": "sex_wrist_attempt_02",
 		"type": "narration",
-		"text": "His ears flatten. His wide eyes snap from your hand to your face. The look isn't anger. It's something closer to alarm — the look of someone whose hand just got read.",
+		"text": "His ears flatten. His wide eyes snap from your hand to your face. The look isn't anger. It's something closer to alarm, the look of someone whose hand just got read.",
 		"next": "sex_wrist_attempt_03"
 	},
 	{
 		"id": "sex_wrist_attempt_03",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"What do you think you're—\"",
+		"text": "\"What do you think you're...\"",
 		"next": "sex_wrist_attempt_04"
 	},
 	{
 		"id": "sex_wrist_attempt_04",
 		"type": "narration",
-		"text": "He twists his wrist free. Fast. One practiced motion — you feel the calluses scrape across your palm and then he's out, already pivoting, already taking the space back.",
+		"text": "He twists his wrist free, fast, one practiced motion. You feel the calluses scrape across your palm and then he's out, already pivoting, already taking the space back.",
 		"next": "sex_wrist_attempt_05"
 	},
 	{
@@ -631,13 +631,13 @@
 		"id": "sex_bj_04",
 		"clear": true,
 		"type": "narration",
-		"text": "He gets his hand into your hair. Not a request. His other hand deals with his clothing with the same efficiency he applies to everything — waistband loosened, fabric pulled aside in one motion.[p]His cock is still extending. Slender, glossy, the ribs along the underside flushing darker as it stiffens against the amber light. The warmth coming off his body hits your face before anything else does.",
+		"text": "He gets his hand into your hair. Not a request. His other hand deals with his clothing with the same efficiency he applies to everything: waistband loosened, fabric pulled aside in one motion.[p]His cock is still extending. Slender, glossy, the ribs along the underside flushing darker as it stiffens against the amber light. The warmth coming off his body hits your face before anything else does.",
 		"next": "sex_bj_05"
 	},
 	{
 		"id": "sex_bj_05",
 		"type": "narration",
-		"text": "He pushes your head forward.[p]Your lips part around the tip. He's warm, the taste faintly mineral — clean fur and something sharper underneath. The ribbing drags across your tongue as he slides in, each ridge catching and releasing. He's fully hard now. The last ridge presses past your teeth and a sound cuts off in his throat.",
+		"text": "He pushes your head forward.[p]Your lips part around the tip. He's warm, the taste faintly mineral, clean fur and something sharper underneath. The ribbing drags across your tongue as he slides in, each ridge catching and releasing. He's fully hard now. The last ridge presses past your teeth and a sound cuts off in his throat.",
 		"next": "sex_bj_mid_choice"
 	},
 	{
@@ -661,7 +661,7 @@
 	{
 		"id": "sex_bj_stop_early",
 		"type": "narration",
-		"text": "You pull off. His hand tightens in your hair — reflex — then lets go.[p]You get to your feet. He stares at you, breathing hard, cock still wet and rigid in the lamplight.",
+		"text": "You pull off. His hand tightens in your hair, reflex, then lets go.[p]You get to your feet. He stares at you, breathing hard, cock still wet and rigid in the lamplight.",
 		"next": "sex_bj_stop_early_02"
 	},
 	{
@@ -682,13 +682,13 @@
 		"id": "sex_bj_06",
 		"clear": true,
 		"type": "narration",
-		"text": "He sets the pace. Short, controlled thrusts — shallow at first, testing, then deeper as his grip tightens. He fucks your mouth the way he runs his kitchen: precise, no wasted motion. Each push meets the back of your throat and pulls back just far enough for you to breathe.[p]His composure holds for a while. His breathing stays measured. His hips keep rhythm.",
+		"text": "He sets the pace: short, controlled thrusts, shallow at first, testing, then deeper as his grip tightens. He fucks your mouth the way he runs his kitchen: precise, no wasted motion. Each push meets the back of your throat and pulls back just far enough for you to breathe.[p]His composure holds for a while. His breathing stays measured. His hips keep rhythm.",
 		"next": "sex_bj_07"
 	},
 	{
 		"id": "sex_bj_07",
 		"type": "narration",
-		"text": "Then it starts to crack.[p]A low click from his throat. Involuntary. His grip in your hair shifts — tighter, less controlled. His thrusts lose their clean rhythm by fractions, pushing deeper, holding longer. A hissed consonant escapes between his teeth. Not trade-tongue. Something older.",
+		"text": "Then it starts to crack.[p]A low click from his throat. Involuntary. His grip in your hair shifts, tighter, less controlled. His thrusts lose their clean rhythm by fractions, pushing deeper, holding longer. A hissed consonant escapes between his teeth. Not trade-tongue. Something older.",
 		"next": "sex_bj_08_choice"
 	},
 	{
@@ -700,7 +700,7 @@
 				"next": "sex_bj_08"
 			},
 			{
-				"text": "> (Grab his thigh — match his rhythm)",
+				"text": "> (Grab his thigh, match his rhythm)",
 				"next": "sex_bj_08"
 			}
 		]
@@ -709,14 +709,14 @@
 		"id": "sex_bj_08",
 		"clear": true,
 		"type": "narration",
-		"text": "His hips snap forward harder now. The ribbing bumps against the roof of your mouth with every stroke. Saliva pools around his shaft and runs down your chin. His free hand fumbles behind him for the counter edge — misses — grabs it on the second try. His knees are starting to shake.",
+		"text": "His hips snap forward harder now. The ribbing bumps against the roof of your mouth with every stroke. Saliva pools around his shaft and runs down your chin. His free hand fumbles behind him for the counter edge, misses, grabs it on the second try. His knees are starting to shake.",
 		"next": "sex_bj_09"
 	},
 	{
 		"id": "sex_bj_09",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"—[i]kkt[/i]— don't— don't stop—\"",
+		"text": "\"...[i]kkt[/i]... don't... don't stop...\"",
 		"next": "sex_bj_preclimx_check"
 	},
 
@@ -756,7 +756,7 @@
 	{
 		"id": "sex_bj_climax",
 		"type": "narration",
-		"text": "His thighs tense against the sides of your face. You feel his cock swell — the ridges thickening, a heavy pulse running through the shaft. His hips push forward one last time, hard, and hold.[p]He comes with his knuckles white in your hair. His cock pulses against your tongue in short, thick spurts — warm, slightly bitter. A sound escapes him. Not a word. Breath cut hard through clenched teeth. His whole body locks, trembles once, and slowly releases.",
+		"text": "His thighs tense against the sides of your face. You feel his cock swell: the ridges thickening, a heavy pulse running through the shaft. His hips push forward one last time, hard, and hold.[p]He comes with his knuckles white in your hair. His cock pulses against your tongue in short, thick spurts, warm, slightly bitter. A sound escapes him. Not a word. Breath cut hard through clenched teeth. His whole body locks, trembles once, and slowly releases.",
 		"set_flag": "tavo_night_sex_bj",
 		"flag_type": "sex",
 		"next": "sex_bj_climax_02"
@@ -802,7 +802,7 @@
 	{
 		"id": "sex_bj_end_only",
 		"type": "narration",
-		"text": "You get back to your feet.[p]He's already pulling himself together — adjusting and straightening in one efficient motion. He looks at you, then looks away.",
+		"text": "You get back to your feet.[p]He's already pulling himself together, adjusting and straightening in one efficient motion. He looks at you, then looks away.",
 		"set_flag": "tavo_night_sex_happened",
 		"flag_type": "sex",
 		"command": "@RECORD_SPECIES_SEX noteri",
@@ -822,19 +822,19 @@
 		"id": "sex_deny_02",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"Wh— the fuck— get back—\"",
+		"text": "\"Wh... the fuck... get back...\"",
 		"next": "sex_deny_03"
 	},
 	{
 		"id": "sex_deny_03",
 		"type": "narration",
-		"text": "His hand grabs for your hair. You catch his wrist. This time he doesn't twist free — his grip has gone weak, his coordination stolen by the orgasm that didn't come. His cock bobs between you, flushed dark, the ridges engorged, a thick bead of fluid welling at the tip and stretching toward the flagstone.",
+		"text": "His hand grabs for your hair. You catch his wrist. This time he doesn't twist free. His grip has gone weak, his coordination stolen by the orgasm that didn't come. His cock bobs between you, flushed dark, the ridges engorged, a thick bead of fluid welling at the tip and stretching toward the flagstone.",
 		"next": "sex_deny_04"
 	},
 	{
 		"id": "sex_deny_04",
 		"type": "narration",
-		"text": "His whole body is shaking. You can see his pulse in his throat. His ears are flat, eyes glassy, and his hips keep twitching forward in small, desperate jerks — searching for friction that isn't there.",
+		"text": "His whole body is shaking. You can see his pulse in his throat. His ears are flat, eyes glassy, and his hips keep twitching forward in small, desperate jerks, searching for friction that isn't there.",
 		"next": "sex_deny_04_choice"
 	},
 	{
@@ -854,7 +854,7 @@
 	{
 		"id": "sex_deny_mercy",
 		"type": "narration",
-		"text": "You let go of his wrist. Your hand closes around his cock — slick, rigid, pulsing. One stroke. Two. He comes on the third with a strangled click, spilling hot over your knuckles. His knees buckle. He catches himself on the counter.",
+		"text": "You let go of his wrist. Your hand closes around his cock: slick, rigid, pulsing. One stroke. Two. He comes on the third with a strangled click, spilling hot over your knuckles. His knees buckle. He catches himself on the counter.",
 		"next": "sex_deny_mercy_02"
 	},
 	{
@@ -894,7 +894,7 @@
 		"id": "sex_deny_07",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"—hhn— don't— that's not—\"",
+		"text": "\"...hhn... don't... that's not...\"",
 		"next": "sex_deny_08_choice"
 	},
 	{
@@ -914,7 +914,7 @@
 	{
 		"id": "sex_deny_relent",
 		"type": "narration",
-		"text": "You bring your mouth back up. His cock slides past your lips and he shoves your head down immediately, graceless and shaking. He comes in three thrusts — hot, thick, filling your mouth before you're ready.",
+		"text": "You bring your mouth back up. His cock slides past your lips and he shoves your head down immediately, graceless and shaking. He comes in three thrusts, hot and thick, filling your mouth before you're ready.",
 		"next": "sex_deny_relent_02"
 	},
 	{
@@ -947,13 +947,13 @@
 		"id": "sex_deny_09",
 		"clear": true,
 		"type": "narration",
-		"text": "You press your tongue flat against his hole.[p]He gasps. Sharp, strangled. The muscle clenches against you, then slowly, grudgingly, opens. You push the tip in. He shudders from his ears to his tail — the sensation layering on top of the denied orgasm still coiled tight in his gut.",
+		"text": "You press your tongue flat against his hole.[p]He gasps. Sharp, strangled. The muscle clenches against you, then slowly, grudgingly, opens. You push the tip in. He shudders from his ears to his tail, the sensation layering on top of the denied orgasm still coiled tight in his gut.",
 		"next": "sex_deny_10"
 	},
 	{
 		"id": "sex_deny_10",
 		"type": "narration",
-		"text": "You work him open with your mouth. Patient. Thorough. Every stroke of your tongue earns a new sound — clicks that stutter, half-swallowed trills, a hiss through clenched teeth. His cock drools constantly now, a steady line of clear fluid running down the shaft and dripping off the tip onto your forehead. He's so hard it looks painful.",
+		"text": "You work him open with your mouth, patient and thorough. Every stroke of your tongue earns a new sound: clicks that stutter, half-swallowed trills, a hiss through clenched teeth. His cock drools constantly now, a steady line of clear fluid running down the shaft and dripping off the tip onto your forehead. He's so hard it looks painful.",
 		"next": "sex_deny_11_choice"
 	},
 	{
@@ -973,7 +973,7 @@
 	{
 		"id": "sex_deny_stroke_mercy",
 		"type": "narration",
-		"text": "Your hand wraps around his cock while your tongue stays buried. One slow stroke and his whole body convulses. The second stroke sends him over — cum spurting in thick arcs across your wrist, his stomach, the floor. His hole spasms around your tongue in wild, rhythmic clenches. A trill tears from his chest, high and uncontrolled.",
+		"text": "Your hand wraps around his cock while your tongue stays buried. One slow stroke and his whole body convulses. The second stroke sends him over, cum spurting in thick arcs across your wrist, his stomach, the floor. His hole spasms around your tongue in wild, rhythmic clenches. A trill tears from his chest, high and uncontrolled.",
 		"next": "sex_deny_stroke_mercy_02"
 	},
 	{
@@ -999,7 +999,7 @@
 	{
 		"id": "sex_deny_11",
 		"type": "narration",
-		"text": "His hand finds your hair. Not gripping. Just resting there, fingers curling and uncurling without rhythm. He's braced against the counter with the other hand, knuckles bone-white, head tipping back. Every few seconds his hips jerk involuntarily — still chasing the climax you stole.",
+		"text": "His hand finds your hair. Not gripping. Just resting there, fingers curling and uncurling without rhythm. He's braced against the counter with the other hand, knuckles bone-white, head tipping back. Every few seconds his hips jerk involuntarily, still chasing the climax you stole.",
 		"next": "sex_deny_12"
 	},
 	{
@@ -1036,27 +1036,27 @@
 		"id": "sex_deny_doggy_start",
 		"clear": true,
 		"type": "narration",
-		"text": "You grab his hips and spin him. He yelps — a raw, undignified sound, pure Nöteri — and his chest hits the counter. His claws scrabble at the bar surface. His ass pushes back on reflex, hole clenching and unclenching in the cold air, still wet and open from your tongue.",
+		"text": "You grab his hips and spin him. He yelps, a raw, undignified sound, pure Nöteri, and his chest hits the counter. His claws scrabble at the bar surface. His ass pushes back on reflex, hole clenching and unclenching in the cold air, still wet and open from your tongue.",
 		"next": "sex_deny_doggy_02"
 	},
 	{
 		"id": "sex_deny_doggy_02",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"—wait— you can't just—\"",
+		"text": "\"...wait... you can't just...\"",
 		"next": "sex_deny_doggy_03"
 	},
 	{
 		"id": "sex_deny_doggy_03",
 		"type": "narration",
-		"text": "You can. You line up and push in.[p]The head slides past the loosened ring and his whole body bucks against the counter. A sound punches out of him — deep, guttural, nothing like a word. His hole is hot and slick and opens for you in a slow, clutching pull that sucks you deeper. You sink to the hilt in one stroke.",
+		"text": "You can. You line up and push in.[p]The head slides past the loosened ring and his whole body bucks against the counter. A sound punches out of him, deep, guttural, nothing like a word. His hole is hot and slick and opens for you in a slow, clutching pull that sucks you deeper. You sink to the hilt in one stroke.",
 		"next": "sex_deny_doggy_04"
 	},
 	{
 		"id": "sex_deny_doggy_04",
 		"clear": true,
 		"type": "narration",
-		"text": "He comes the instant you bottom out.[p]His denied orgasm rips through him. His cock erupts against the underside of the counter — thick, heavy ropes splattering the wood he built with his own hands. His body seizes around your shaft in crushing, rhythmic contractions that squeeze you so hard your vision swims. A broken, clicking wail tears from his throat, muffled against his own forearm.",
+		"text": "He comes the instant you bottom out.[p]His denied orgasm rips through him. His cock erupts against the underside of the counter, thick, heavy ropes splattering the wood he built with his own hands. His body seizes around your shaft in crushing, rhythmic contractions that squeeze you so hard your vision swims. A broken, clicking wail tears from his throat, muffled against his own forearm.",
 		"next": "sex_deny_doggy_05_choice"
 	},
 	{
@@ -1076,27 +1076,27 @@
 	{
 		"id": "sex_deny_doggy_05_gentle",
 		"type": "narration",
-		"text": "You hold still inside him. His body clenches and unclenches around you in waves as the orgasm rolls through — each spasm wringing his cock dry against the underside of the bar. His sounds taper to clicks, then silence. Just breathing.",
+		"text": "You hold still inside him. His body clenches and unclenches around you in waves as the orgasm rolls through, each spasm wringing his cock dry against the underside of the bar. His sounds taper to clicks, then silence. Just breathing.",
 		"next": "sex_deny_doggy_06"
 	},
 	{
 		"id": "sex_deny_doggy_05",
 		"type": "narration",
-		"text": "You don't wait for it to finish. You thrust through it.[p]Each push drives another spurt from his cock. Cum runs down the inside of the counter, pools on the flagstone, drips from the bar edge. The wet slap of your hips against his ass echoes in the empty room. His sounds dissolve into raw Nöteri — rapid clicks, a high whine, a trill that breaks every time you drive forward.",
+		"text": "You don't wait for it to finish. You thrust through it.[p]Each push drives another spurt from his cock. Cum runs down the inside of the counter, pools on the flagstone, drips from the bar edge. The wet slap of your hips against his ass echoes in the empty room. His sounds dissolve into raw Nöteri: rapid clicks, a high whine, a trill that breaks every time you drive forward.",
 		"next": "sex_deny_doggy_06"
 	},
 	{
 		"id": "sex_deny_doggy_06",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"—[i]Holdet[/i]— hhn— [i]holdet[/i]—\"",
+		"text": "\"...[i]Holdet[/i]... hhn... [i]holdet[/i]...\"",
 		"next": "sex_deny_doggy_07"
 	},
 	{
 		"id": "sex_deny_doggy_07",
 		"clear": true,
 		"type": "narration",
-		"text": "His orgasm hasn't stopped. Or it ended and another one started — you can't tell and neither can he. His body is clenching in waves, milking your cock in deep, involuntary pulses. The counter is soaked. His cock still twitches weakly against the wood, dripping the last of what he has.",
+		"text": "His orgasm hasn't stopped. Or it ended and another one started, you can't tell and neither can he. His body is clenching in waves, milking your cock in deep, involuntary pulses. The counter is soaked. His cock still twitches weakly against the wood, dripping the last of what he has.",
 		"next": "sex_deny_doggy_climax_choice"
 	},
 	{
@@ -1116,7 +1116,7 @@
 	{
 		"id": "sex_deny_doggy_08",
 		"type": "narration",
-		"text": "You grab his hips and bury yourself deep. Your own climax hits hard — thick, heavy pulses flooding his insides. His hole clamps down one final time, wringing you dry. A shattered moan rattles out of him as the warmth spreads inside, and his claws drag white lines across the bar surface.",
+		"text": "You grab his hips and bury yourself deep. Your own climax hits hard: thick, heavy pulses flooding his insides. His hole clamps down one final time, wringing you dry. A shattered moan rattles out of him as the warmth spreads inside, and his claws drag white lines across the bar surface.",
 		"next": "sex_deny_doggy_09"
 	},
 	{
@@ -1160,27 +1160,27 @@
 		"id": "sex_deny_doggy_round2",
 		"clear": true,
 		"type": "narration",
-		"text": "You grab his hips and haul him back from the counter.[p]He barely registers the motion — a slurred sound, hands sliding off the wood — and then you've already spun him. He sways. His eyes are open, barely tracking. One ear is still pressed flat from where his face was against the bar.",
+		"text": "You grab his hips and haul him back from the counter.[p]He barely registers the motion, a slurred sound, hands sliding off the wood, and then you've already spun him. He sways. His eyes are open, barely tracking. One ear is still pressed flat from where his face was against the bar.",
 		"next": "sex_deny_doggy_round2_02"
 	},
 	{
 		"id": "sex_deny_doggy_round2_02",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"—wh—\"",
+		"text": "\"...wh...\"",
 		"next": "sex_deny_doggy_round2_03"
 	},
 	{
 		"id": "sex_deny_doggy_round2_03",
 		"type": "narration",
-		"text": "You get your hands under his thighs and lift.[p]His paws go to your shoulders on reflex — then higher, finding your neck, fingers closing there. Not for anything except balance. His weight settles against your chest, hole clenching on nothing, still slick and full.[p]You push back inside him standing.",
+		"text": "You get your hands under his thighs and lift.[p]His paws go to your shoulders on reflex, then higher, finding your neck, fingers closing there. Not for anything except balance. His weight settles against your chest, hole clenching on nothing, still slick and full.[p]You push back inside him standing.",
 		"next": "sex_deny_doggy_round2_04"
 	},
 	{
 		"id": "sex_deny_doggy_round2_04",
 		"clear": true,
 		"type": "narration",
-		"text": "There's nothing for him to brace against. No counter, no floor, no surface. Just your hands on his thighs and gravity driving him down onto every thrust.[p]He stops making sounds with shapes. It's trill, continuous, breaking apart every time you bottom out. His paws tighten on your neck each time you fill him — not from want, just from the need to stay upright. His cock, spent and half-soft, twitches against your stomach with every deep stroke.[p]The second orgasm hits dry and devastating. His body seizes around you. His paws spasm hard against your neck. You come a moment later, buried deep, and he barely reacts — just a small catch in his breathing, like a hiccup.[p]His paws slide off your neck. All the weight of him goes slack at once.",
+		"text": "There's nothing for him to brace against. No counter, no floor, no surface. Just your hands on his thighs and gravity driving him down onto every thrust.[p]He stops making sounds with shapes. It's trill, continuous, breaking apart every time you bottom out. His paws tighten on your neck each time you fill him, not from want, just from the need to stay upright. His cock, spent and half-soft, twitches against your stomach with every deep stroke.[p]The second orgasm hits dry and devastating. His body seizes around you. His paws spasm hard against your neck. You come a moment later, buried deep, and he barely reacts, just a small catch in his breathing, like a hiccup.[p]His paws slide off your neck. All the weight of him goes slack at once.",
 		"next": "sex_deny_doggy_round2_05"
 	},
 	{
@@ -1226,7 +1226,7 @@
 		"id": "sex_deny_lift_start",
 		"clear": true,
 		"type": "narration",
-		"text": "Your hands go under his thighs. He's light — dense but short — and you lift him clean off the floor. His legs hook around your waist on instinct, claws digging into your shoulders. His eyes go wide. His denied cock presses hot and rigid against your stomach, leaking in a constant trickle.",
+		"text": "Your hands go under his thighs. He's light, dense but short, and you lift him clean off the floor. His legs hook around your waist on instinct, claws digging into your shoulders. His eyes go wide. His denied cock presses hot and rigid against your stomach, leaking in a constant trickle.",
 		"next": "sex_deny_lift_02"
 	},
 	{
@@ -1239,7 +1239,7 @@
 		"id": "sex_deny_lift_03",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"You— what the fuck—\"",
+		"text": "\"You... what the fuck...\"",
 		"next": "sex_deny_lift_04"
 	},
 	{
@@ -1252,7 +1252,7 @@
 		"id": "sex_deny_lift_05",
 		"clear": true,
 		"type": "narration",
-		"text": "He comes before you're halfway in.[p]The denied orgasm tears through him the instant your cock fills him. His whole body arches. His cock erupts between your bodies — thick, violent spurts hitting his own chest, his chin, your shirt, painting both of you in heavy ropes. His hole locks down in crushing waves, pulling you deeper even as he shakes apart.",
+		"text": "He comes before you're halfway in.[p]The denied orgasm tears through him the instant your cock fills him. His whole body arches. His cock erupts between your bodies, thick, violent spurts hitting his own chest, his chin, your shirt, painting both of you in heavy ropes. His hole locks down in crushing waves, pulling you deeper even as he shakes apart.",
 		"next": "sex_deny_lift_06"
 	},
 	{
@@ -1278,27 +1278,27 @@
 	{
 		"id": "sex_deny_lift_07_slow",
 		"type": "narration",
-		"text": "You stay buried. Your arms tighten around him. He shakes against your chest, cock pulsing weakly between you, each aftershock squeezing your shaft. His breathing hitches. His claws ease their grip. You wait until the last tremor passes, then roll your hips — slow, deliberate.",
+		"text": "You stay buried. Your arms tighten around him. He shakes against your chest, cock pulsing weakly between you, each aftershock squeezing your shaft. His breathing hitches. His claws ease their grip. You wait until the last tremor passes, then roll your hips, slow and deliberate.",
 		"next": "sex_deny_lift_08"
 	},
 	{
 		"id": "sex_deny_lift_07",
 		"type": "narration",
-		"text": "You don't wait for it to end. You thrust. Deep. His back arches off the bar. Another spurt of cum squeezes from his cock between your pressed-together bodies — thick, warm, smearing across both your stomachs. His hole is still clenching in orgasm around your shaft and every stroke drags through the aftershocks.",
+		"text": "You don't wait for it to end. You thrust. Deep. His back arches off the bar. Another spurt of cum squeezes from his cock between your pressed-together bodies, thick, warm, smearing across both your stomachs. His hole is still clenching in orgasm around your shaft and every stroke drags through the aftershocks.",
 		"next": "sex_deny_lift_08"
 	},
 	{
 		"id": "sex_deny_lift_08",
 		"clear": true,
 		"type": "narration",
-		"text": "You set a rhythm. Slow, deep, each push pressing him flat against the counter. He's got nothing left to fight with. His composure was gone before you lifted him. What's left is just body — gasping, gripping, hips jerking to meet yours in motions he's never practiced. An involuntary trill rolls from his chest, high and broken.",
+		"text": "You set a rhythm. Slow, deep, each push pressing him flat against the counter. He's got nothing left to fight with. His composure was gone before you lifted him. What's left is just body: gasping, gripping, hips jerking to meet yours in motions he's never practiced. An involuntary trill rolls from his chest, high and broken.",
 		"next": "sex_deny_lift_09"
 	},
 	{
 		"id": "sex_deny_lift_09",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"—[i]Holdet[/i]— don't— don't stop—\"",
+		"text": "\"...[i]Holdet[/i]... don't... don't stop...\"",
 		"next": "sex_deny_lift_climax_choice"
 	},
 	{
@@ -1318,13 +1318,13 @@
 	{
 		"id": "sex_deny_lift_10",
 		"type": "narration",
-		"text": "You bury yourself deep. Your own climax hits — thick, heavy pulses flooding his insides. His hole clamps down one last time, holding you in, and a small stunned sound falls out of him as the warmth spreads. His legs tighten around your waist. His face stays pressed against your shoulder.",
+		"text": "You bury yourself deep. Your own climax hits, thick, heavy pulses flooding his insides. His hole clamps down one last time, holding you in, and a small stunned sound falls out of him as the warmth spreads. His legs tighten around your waist. His face stays pressed against your shoulder.",
 		"next": "sex_deny_lift_11"
 	},
 	{
 		"id": "sex_deny_lift_10_outside",
 		"type": "narration",
-		"text": "You pull free. His hole clenches on nothing. You come against his stomach, his cock, his thighs — thick ropes mixing with the mess he already made. He flinches at the heat. His legs stay locked around your waist, holding you close even as you finish outside him.",
+		"text": "You pull free. His hole clenches on nothing. You come against his stomach, his cock, his thighs, thick ropes mixing with the mess he already made. He flinches at the heat. His legs stay locked around your waist, holding you close even as you finish outside him.",
 		"next": "sex_deny_lift_11"
 	},
 	{
@@ -1362,27 +1362,27 @@
 		"id": "sex_deny_lift_round2",
 		"clear": true,
 		"type": "narration",
-		"text": "You roll your hips. He flinches against you — a choked trill ripping from his chest. He tries to squirm back but you hold his thighs and he's pinned between you and the bar. His hole flutters around your cock, still swollen, still full of your cum.",
+		"text": "You roll your hips. He flinches against you, a choked trill ripping from his chest. He tries to squirm back but you hold his thighs and he's pinned between you and the bar. His hole flutters around your cock, still swollen, still full of your cum.",
 		"next": "sex_deny_lift_round2_02"
 	},
 	{
 		"id": "sex_deny_lift_round2_02",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "\"...I can't—\"",
+		"text": "\"...I can't...\"",
 		"next": "sex_deny_lift_round2_03"
 	},
 	{
 		"id": "sex_deny_lift_round2_03",
 		"type": "narration",
-		"text": "He can.[p]You thrust. Harder than before. The counter creaks. His body is open and wrecked, offering nothing but wet heat. The sounds are obscene — cum squelching with every push, dripping from where you meet, running in warm lines down the counter's edge. His sounds are pure Nöteri now. Clicks that crack into whimpers. A trill that spikes every time you bottom out.",
+		"text": "He can.[p]You thrust. Harder than before. The counter creaks. His body is open and wrecked, offering nothing but wet heat. The sounds are obscene: cum squelching with every push, dripping from where you meet, running in warm lines down the counter's edge. His sounds are pure Nöteri now. Clicks that crack into whimpers. A trill that spikes every time you bottom out.",
 		"next": "sex_deny_lift_round2_04"
 	},
 	{
 		"id": "sex_deny_lift_round2_04",
 		"clear": true,
 		"type": "narration",
-		"text": "His second orgasm hits like a wall.[p]His mouth opens and nothing comes out. His cock jerks — almost dry, thin and watery — but his insides seize around your shaft so hard everything goes white. You come inside him again, grinding deep, and he shakes through it with his eyes squeezed shut and both fists knotted in your shirt.[p]He collapses forward against your shoulder. Dead weight. Breathing ragged and wet against your neck. His legs slide from your waist and dangle off the counter edge. Tail limp. Completely boneless.",
+		"text": "His second orgasm hits like a wall.[p]His mouth opens and nothing comes out. His cock jerks, almost dry, thin and watery, but his insides seize around your shaft so hard everything goes white. You come inside him again, grinding deep, and he shakes through it with his eyes squeezed shut and both fists knotted in your shirt.[p]He collapses forward against your shoulder. Dead weight. Breathing ragged and wet against your neck. His legs slide from your waist and dangle off the counter edge. Tail limp. Completely boneless.",
 		"set_flag": ["tavo_night_sex_top", "tavo_night_sex_happened"],
 		"flag_type": "sex",
 		"command": "@RECORD_SPECIES_SEX noteri",
@@ -1422,7 +1422,7 @@
 		"id": "sex_bar_start",
 		"clear": true,
 		"type": "narration",
-		"text": "He reaches down, gets hold of your arm, and turns you.[p]Not a shove. A direction. You go over the counter without quite deciding to — chest against the cold slab wood, face to the side.",
+		"text": "He reaches down, gets hold of your arm, and turns you.[p]Not a shove. A direction. You go over the counter without quite deciding to, chest against the cold slab wood, face to the side.",
 		"next": "sex_bar_02"
 	},
 	{
@@ -1435,7 +1435,7 @@
 	{
 		"id": "sex_bar_02b",
 		"type": "narration",
-		"text": "His hands deal with the rest of it quickly. He has recovered faster than seems fair, and he is exactly the right height for this — the counter puts you precisely where he needs you.",
+		"text": "His hands deal with the rest of it quickly. He has recovered faster than seems fair, and he is exactly the right height for this: the counter puts you precisely where he needs you.",
 		"next": "sex_bar_03_choice"
 	},
 	{
@@ -1477,14 +1477,14 @@
 	{
 		"id": "sex_bar_03",
 		"type": "narration",
-		"text": "His hands are on your hips before anything else — not gripping yet, just placed. Knowing where things are.",
+		"text": "His hands are on your hips before anything else, not gripping yet, just placed. Knowing where things are.",
 		"next": "sex_bar_04"
 	},
 	{
 		"id": "sex_bar_04",
 		"clear": true,
 		"type": "narration",
-		"text": "He pushes your trousers down just far enough. Cool air hits your skin. Then his cock — slender, hot, the ribbing catching at the rim of your hole. He doesn't wait for permission he already has. One steady push and he's inside.[p]The ridges drag past the ring one by one. Each bump sends a shock up your spine. He sinks in to the base and holds.",
+		"text": "He pushes your trousers down just far enough. Cool air hits your skin. Then his cock, slender, hot, the ribbing catching at the rim of your hole. He doesn't wait for permission he already has. One steady push and he's inside.[p]The ridges drag past the ring one by one. Each bump sends a shock up your spine. He sinks in to the base and holds.",
 		"next": "sex_bar_05"
 	},
 	{
@@ -1518,13 +1518,13 @@
 		"id": "sex_bar_06",
 		"clear": true,
 		"type": "narration",
-		"text": "He doesn't narrate. He barely breathes louder. But you hear it start to give — a hissed consonant behind you. Then another. A click he swallows. His grip on your hip tightens by degrees, pulling you back onto each thrust.[p]Your cock aches against the cold underside of the counter. You feel him adjust every time you shift — tracking your reactions, finding what makes your breath catch, and repeating it without comment.",
+		"text": "He doesn't narrate. He barely breathes louder. But you hear it start to give, a hissed consonant behind you. Then another. A click he swallows. His grip on your hip tightens by degrees, pulling you back onto each thrust.[p]Your cock aches against the cold underside of the counter. You feel him adjust every time you shift, tracking your reactions, finding what makes your breath catch, and repeating it without comment.",
 		"next": "sex_bar_07"
 	},
 	{
 		"id": "sex_bar_07",
 		"type": "narration",
-		"text": "The attention is the warmth. Even now — hips snapping, breathing ragged — he notices everything. His free hand shifts to the small of your back. The angle changes. The next thrust hits deeper.",
+		"text": "The attention is the warmth. Even now, hips snapping, breathing ragged, he notices everything. His free hand shifts to the small of your back. The angle changes. The next thrust hits deeper.",
 		"next": "sex_bar_07_choice"
 	},
 	{
@@ -1552,14 +1552,14 @@
 		"id": "sex_bar_08",
 		"clear": true,
 		"type": "narration",
-		"text": "He's close. You can tell from the shift — the rhythm tightening, each thrust shorter, harder. His breathing finally breaks into something fully audible. Clipped. Cut short. His hand on your hip is bruise-tight.",
+		"text": "He's close. You can tell from the shift: the rhythm tightening, each thrust shorter, harder. His breathing finally breaks into something fully audible. Clipped. Cut short. His hand on your hip is bruise-tight.",
 		"next": "sex_bar_09"
 	},
 	{
 		"id": "sex_bar_09",
 		"type": "npc",
 		"name": "Tavo-Pavo",
-		"text": "Short sounds. Hissed syllables not quite words. His grip on your hip tightens hard enough to leave marks.[p]Then, clearly: \"—[i]Holdet—[/i]\"",
+		"text": "Short sounds. Hissed syllables not quite words. His grip on your hip tightens hard enough to leave marks.[p]Then, clearly: \"...[i]Holdet...[/i]\"",
 		"next": "sex_bar_climax_choice"
 	},
 	{
@@ -1588,13 +1588,13 @@
 	{
 		"id": "sex_bar_10",
 		"type": "narration",
-		"text": "He buries himself deep and holds. You feel him pulse inside you — hot, thick, each spasm pressing the ridges hard against your inner walls. His hand flattens against your lower back, holding you still while he empties himself in a series of short, tight jerks. A long, shuddering exhale escapes through his teeth.[p]He holds the position until the last twitch fades.",
+		"text": "He buries himself deep and holds. You feel him pulse inside you, hot and thick, each spasm pressing the ridges hard against your inner walls. His hand flattens against your lower back, holding you still while he empties himself in a series of short, tight jerks. A long, shuddering exhale escapes through his teeth.[p]He holds the position until the last twitch fades.",
 		"next": "sex_bar_11"
 	},
 	{
 		"id": "sex_bar_10_outside",
 		"type": "narration",
-		"text": "You shift forward. He pulls free at the last second — a strangled click escaping his teeth — and comes across the small of your back. Hot, thick spurts landing on your skin, your waistband, the counter beneath you. His hand grips your hip hard enough to bruise as his body shudders through it.",
+		"text": "You shift forward. He pulls free at the last second, a strangled click escaping his teeth, and comes across the small of your back. Hot, thick spurts landing on your skin, your waistband, the counter beneath you. His hand grips your hip hard enough to bruise as his body shudders through it.",
 		"next": "sex_bar_11"
 	},
 	{
@@ -1653,7 +1653,7 @@
 	{
 		"id": "sex_aftermath_03",
 		"type": "narration",
-		"text": "He goes to the back shelf and comes back with something — a plate of cold flatbread and dried black-root, leftover from dinner service. He sets it in front of you without a word.",
+		"text": "He goes to the back shelf and comes back with something: a plate of cold flatbread and dried black-root, leftover from dinner service. He sets it in front of you without a word.",
 		"next": "sex_aftermath_tavo"
 	},
 	{
@@ -1729,7 +1729,7 @@
 	{
 		"id": "night_leave",
 		"type": "narration",
-		"text": "The Windbreak door swings shut behind you.[p]The mountain cold moves in immediately, pressing against your skin. Through the shut door, Tavo is still working — moving through the last of it the way he always does.",
+		"text": "The Windbreak door swings shut behind you.[p]The mountain cold moves in immediately, pressing against your skin. Through the shut door, Tavo is still working, moving through the last of it the way he always does.",
 		"command": "@HIDE_PORTRAIT ; @FADE_MUSIC_OUT ; @STOP_ALL_AMBIENCE ; @LOCATION_CHANGE klyftet",
 		"clear": true,
 		"next": "night_leave_end"

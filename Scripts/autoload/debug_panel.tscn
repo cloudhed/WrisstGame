@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2x4i21774ytb"]
 
 [ext_resource type="Theme" uid="uid://b83wp6l46xi84" path="res://Themes/GameUI_theme.tres" id="1_cvteg"]
-[ext_resource type="Script" path="res://Scripts/autoload/debug_panel.gd" id="2_letyd"]
+[ext_resource type="Script" uid="uid://bivey5rpiuku5" path="res://Scripts/autoload/debug_panel.gd" id="2_letyd"]
 
 [node name="DebugPanel" type="Control"]
 layout_mode = 3
@@ -45,23 +45,23 @@ grow_horizontal = 0
 horizontal_alignment = 2
 
 [node name="ReshuffleToggleButton" type="Button" parent="DebugUI"]
-offset_left = 1602.0
+offset_left = 1516.0
 offset_top = 779.0
-offset_right = 1916.0
+offset_right = 1830.0
 offset_bottom = 814.0
 text = "Deck reshuffle"
 
 [node name="FeralToggleButton" type="Button" parent="DebugUI"]
-offset_left = 1602.0
+offset_left = 1516.0
 offset_top = 820.0
-offset_right = 1916.0
+offset_right = 1830.0
 offset_bottom = 855.0
 text = "Feral content"
 
 [node name="ViolenceToggleButton" type="Button" parent="DebugUI"]
-offset_left = 1602.0
+offset_left = 1516.0
 offset_top = 861.0
-offset_right = 1916.0
+offset_right = 1830.0
 offset_bottom = 896.0
 text = "Violence content"
 

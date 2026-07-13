@@ -95,19 +95,19 @@
 	{
 		"id": "hotbaths_inspect",
 		"type": "narration",
-		"text": "The hotbaths’s interior greets you with its warmth and dim, flickering light. A glass-shielded lantern glows above the front desk, aided by a few glowstones nestled into the cracked walls. To your right, the treatment alcoves stand quiet—curtains faded and stained, one still shifting gently as if someone just stepped out.[nb]The small wooden cart sits nearby with its towels, bottles, and warm basin. The scent in the room curls around you—oil, herbs, stone soap, and that ever-present trace of something animal.",
+		"text": "The hotbaths’s interior greets you with its warmth and dim, flickering light. A glass-shielded lantern glows above the front desk, aided by a few glowstones nestled into the cracked walls. To your right, the treatment alcoves stand quiet, curtains faded and stained, one still shifting gently as if someone just stepped out.[nb]The small wooden cart sits nearby with its towels, bottles, and warm basin. The scent in the room curls around you: oil, herbs, stone soap, and that ever-present trace of something animal.",
 		"next": "hotbaths_sign_choice"
 	},
 	{
 		"id": "hotbaths_inspect_pick_new",
 		"type": "narration",
-		"text": "The lighting is dim and flickering, provided by a single glass-shielded lantern mounted above the front desk and a few recessed glowstones tucked into wall-cracks. To the right, three treatment alcoves line the wall, each curtained off with faded cloth dyed in uneven purples and browns. The curtains are stained from repeated washing and hang slightly askew. One sways gently as if recently used.[nb]A small wooden cart sits nearby, stocked with folded towels, small clay bottles, and a basin of warm water. The scent in the room is layered—heat-treated oil, faint herbs, stone soap, and something slightly animal beneath it all.",
+		"text": "The lighting is dim and flickering, provided by a single glass-shielded lantern mounted above the front desk and a few recessed glowstones tucked into wall-cracks. To the right, three treatment alcoves line the wall, each curtained off with faded cloth dyed in uneven purples and browns. The curtains are stained from repeated washing and hang slightly askew. One sways gently as if recently used.[nb]A small wooden cart sits nearby, stocked with folded towels, small clay bottles, and a basin of warm water. The scent in the room is layered: heat-treated oil, faint herbs, stone soap, and something slightly animal beneath it all.",
 		"next": "hotbaths_inspect_pick_new02"
 	},
 	{
 		"id": "hotbaths_inspect_pick_new02",
 		"type": "narration",
-		"text": "A row of low wooden benches hugs the left-hand wall. One is covered in a folded coat and satchel, neither belonging to you. A cracked ceramic cup sits forgotten on the floor beneath it, dried leaves stuck to its rim. The desk in front of you is cluttered but organized—wax tablets stacked in a tray, a few rolls of coiled twine, a chipped inkstone, and a short reed-cut stylus. A small bell, half-collapsed from denting, rests near the edge.",
+		"text": "A row of low wooden benches hugs the left-hand wall. One is covered in a folded coat and satchel, neither belonging to you. A cracked ceramic cup sits forgotten on the floor beneath it, dried leaves stuck to its rim. The desk in front of you is cluttered but organized: wax tablets stacked in a tray, a few rolls of coiled twine, a chipped inkstone, and a short reed-cut stylus. A small bell, half-collapsed from denting, rests near the edge.",
 		"set_flag": "hotbaths_hasinspected",
 		"flag_type": "dialog",
 		"next": "hotbaths_sign_choice_new"

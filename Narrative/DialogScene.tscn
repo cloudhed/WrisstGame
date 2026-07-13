@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://xyxvn2yghvwa"]
+[gd_scene load_steps=7 format=3 uid="uid://xyxvn2yghvwa"]
 
 [ext_resource type="Script" path="res://Scripts/dialog/dialog_manager.gd" id="1_a8n6i"]
+[ext_resource type="Resource" uid="uid://bddgxod67ufrs" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_day.tres" id="2_3jfb8"]
 [ext_resource type="PackedScene" uid="uid://cbpihauqeos3w" path="res://Narrative/zone_container.tscn" id="3_6br8l"]
 [ext_resource type="PackedScene" uid="uid://bsauxo1g05656" path="res://Narrative/mist_container.tscn" id="5_sdxh1"]
 [ext_resource type="Script" uid="uid://bii1koy5ss3sq" path="res://Scripts/dialog/dialog_line_spawner.gd" id="6_l6df8"]
@@ -15,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_a8n6i")
+dialog_scene_data = ExtResource("2_3jfb8")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
