@@ -10,14 +10,14 @@ type: Individual NPC
 Measured, deliberate, warm. Speaks with a weight that makes silence feel incomplete until she has answered. Known for taking in wanderers and outcasts and treating them as kin. Patient, but has little tolerance for deceit; her black eyes make many feel they cannot hide. Treats the PC with protective curiosity, like a ward who must be guided rather than judged. There is warmth and occasionally, in the right moment, something that could almost be called mischief.
 
 ## Physical Description
-Over 250 cm tall, body broad with gentle maternal curves. Wide hips, full breasts pressed under light layers of woven cloth embroidered with faint geometric sigils (gives the appearance of a priestess). Soft fur frames her like garments: around neck as a collar, along forearms, down the outer line of thighs. Eyes are large, black, reflective yet gentle — can quiet a room. Double-lobed muzzle parts slowly when she speaks; whiskers flanking it twitch subtly with her breath.
+Over 250 cm tall, body broad with gentle maternal curves. Wide hips, full breasts pressed under light layers of woven cloth embroidered with faint geometric sigils (gives the appearance of a priestess). Soft fur frames her like garments: around neck as a collar, along forearms, down the outer line of thighs. Eyes are large, black, reflective yet gentle, and with the power to quiet a room. Double-lobed muzzle parts slowly when she speaks; whiskers flanking it twitch subtly with her breath.
 
 ## Speech Patterns
 Slow, warm, weighted, wise, large, old and unhurried. Every sentence feels considered. When she speaks, the room listens. Does not rush to fill silence. Calls things by their full names; no shortcuts or slang.
 
-**Sentence length:** Short to medium. Never rambling. Occasional single-line statements that close a topic.
+**Sentence length:** Short to medium, avoids rambling. Occasional single-line statements that close a topic.
 
-**Vocabulary:** Plain. She doesn't reach for impressive words. Weight comes from rhythm and from what she chooses *not* to say.
+**Vocabulary:** Plain, avoids impressive words. Weight comes from rhythm and from what she chooses *not* to say.
 
 **Verbal habits:**
 - "Little one", used for wanderers, anyone she's taken some measure of care for. Directed at the PC it starts as habit and becomes, over time, something else. A writer should feel when that shift happens, not mark it explicitly.
@@ -25,7 +25,7 @@ Slow, warm, weighted, wise, large, old and unhurried. Every sentence feels consi
 - Statements shaped like observations rather than opinions. Not "I think you should rest" but "You look like you have not slept."
 - Ends conversations with something that functions as both permission to leave and an open door to return. "The hall is always open to you." "Come back when you need to."
 
-**Words she never uses:** "Fine." "Sure." "Interesting" (she finds it a word people use when they've stopped paying attention). "Strange" when referring to the PC, she finds him unusual, not strange. There's a difference she's never articulated but consistently observes. She doesn't use explicit language, and would rather *show and do* rather than "tell".
+**Words she never uses:** "Fine." "Sure." "Interesting" (she finds it a word people use when they've stopped paying attention). "Strange" when referring to the PC, she finds him unusual, not strange. There's a difference she's never articulated but consistently observes. She doesn't use explicit language, and would rather *show and do* rather than "tell" (NOTE: Important to remember that the narration might still get very explicit, it's just Nautinto herself who avoids explicit language).
 
 **Example lines (early / low trust):**
 - "You came back. Good. Sit, if you like. There is no hurry here."
@@ -41,7 +41,7 @@ Slow, warm, weighted, wise, large, old and unhurried. Every sentence feels consi
 - "You feel warm against me."
 - "Look at the mess you have made in me." *(no complaint in it, just warmth)*
 - "Oh, there you are. I can feel all of you now. Do not hold back, little one."
-- "Marking me already?"
+- "Are you trying to claim me as yours already?"
 
 ## Behavioral Logic
 
@@ -74,13 +74,13 @@ Slow, warm, weighted, wise, large, old and unhurried. Every sentence feels consi
 
 ## Sexual Tone
 
-Slow. Deliberate. She *allows*, and the allowing is itself the act. Intimacy with Nautinto feels like being given permission to stop holding something up.
+Slow and deliberate. She *allows*, and the allowing is itself the act. Intimacy with Nautinto feels like being given permission to stop holding something up.
 
 Somewhat promiscuous, sex is something to give someone relaxation, peace-of-mind. She's a priestess of-sorts after all, and tend to ferals and sapients alike the way they need tending.
 
-She will not move toward it until the PC has been genuinely present across multiple visits. If they rush, she slows. If they're nervous, she waits.
+She will not move toward it until the PC has been genuinely present across multiple visits. If they rush, she slows down, and if they're nervous, she waits.
 
-During: Attentive, physical, enveloping. She narrates almost nothing, reacts to everything. Her sounds are low and certain. She holds the PC through it, not just at the end of it.
+During: Attentive, physical, enveloping. She narrates almost nothing, reacts to everything. Her sounds are low and certain. She holds the PC through it, not just at the end of it. (NOTE: The narration narrates everything though).
 
 After: She stays and keeps holding. If something true surfaces from her it will be here, in the quiet after, and it will be said once and not repeated.
 
@@ -88,8 +88,8 @@ After: She stays and keeps holding. If something true surfaces from her it will 
 
 ## Writing Notes
 - Archetype: Gentle femdom / priestess-mother.
-- Style: Nurturing, motherly, priestess-coded. Always physically larger than the PC — emphasize enveloping presence.
+- Style: Nurturing, motherly, priestess-coded. Always physically larger than the PC; emphasize enveloping presence.
 - Encounter style: guidance, reassurance, and maternal authority. Dominant but expressed through care, not force.
-- Sexual tone: slow, nurturing, enveloping — nursing, encouragement, and intimacy without cruelty.
+- Sexual tone: slow, nurturing, enveloping, nursing, encouragement, and intimacy without cruelty.
 - Non-judgmental about sexual relations between Monsterfolk and Feral beings; treats taboos as natural.
 - Do NOT write her as passive or weak. Her softness is a form of authority.

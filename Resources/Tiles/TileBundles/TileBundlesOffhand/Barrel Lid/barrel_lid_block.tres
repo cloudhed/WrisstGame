@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://dec51jg465fbr" path="res://Assets/UI/ui_shield.png" id="2_icon"]
+[ext_resource type="Script" path="res://Resources/Tiles/Generic/block_tile.gd" id="3_script"]
+[ext_resource type="Texture2D" uid="uid://4blmsmmfytuf" path="res://Assets/UI/icons/icon_defend_mini.png" id="4_ttip"]
+[ext_resource type="AudioStream" uid="uid://b4fj6sw6h3g7d" path="res://Audio/SFX/sfx_hit_block2_iron_hit.wav" id="5_sfx"]
+
+[resource]
+script = ExtResource("3_script")
+id = "barrel_lid_block"
+type = 1
+target = 0
+cost = 1
+exile_on_play = false
+effect_amount = 2
+secondary_effect_amount = 0
+background = ExtResource("1_bg")
+icon = ExtResource("2_icon")
+tooltip_icon = ExtResource("4_ttip")
+tooltip_source_label = "Barrel Lid"
+tooltip_text = "[b]Cost: 1[/b]\\n Get behind the lid to Block [b][color=dodgerblue]{effect_amount}[/color][/b]."
+message_template = "[b]You[/b] duck behind the barrel lid and Block [b][color=dodgerblue]{amount}[/color][/b]!"
+sound = ExtResource("5_sfx")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

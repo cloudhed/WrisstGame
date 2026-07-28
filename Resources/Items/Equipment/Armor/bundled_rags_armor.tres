@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+equip_type = "armor"
+hand_slot = "none"
+armor_points = 2
+name = "Bundled Rags"
+description = "Layers of scavenged cloth, knotted and wound tight enough to turn a glancing blow. It's not much, it itches, and you found it in the kind of camp folk leave in a hurry — but 'not much' still beats nothing at all."
+item_type = "equipable"
+is_stackable = false
+max_stack = 1
+hidden_from_inventory = false
+sell_price_ore = 6
+sell_price_crowns = 0
+sell_price_drots = 0
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

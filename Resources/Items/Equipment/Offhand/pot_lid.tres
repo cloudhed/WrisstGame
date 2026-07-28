@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=6 format=3]
+
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
+[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="2_bundle"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="3_tile"]
+[ext_resource type="Resource" path="res://Resources/Tiles/TileBundles/TileBundlesOffhand/Pot Lid/pot_lid_block.tres" id="4_block"]
+
+[sub_resource type="Resource" id="Resource_bundle"]
+script = ExtResource("2_bundle")
+tiles = Array[ExtResource("3_tile")]([ExtResource("4_block"), ExtResource("4_block"), ExtResource("4_block")])
+metadata/_custom_type_script = "uid://c814t8855evro"
+
+[resource]
+script = ExtResource("1_item")
+equip_type = "offhand"
+hand_slot = "1-handed"
+tile_bundle = SubResource("Resource_bundle")
+armor_points = 0
+name = "Pot Lid"
+description = "A heavy iron pot lid with a good solid handle. Small, but it's real metal — and real metal stops things. Also, faintly and apparently forever, it smells of stew."
+item_type = "equipable"
+is_stackable = false
+max_stack = 1
+hidden_from_inventory = false
+sell_price_ore = 14
+sell_price_crowns = 0
+sell_price_drots = 0
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

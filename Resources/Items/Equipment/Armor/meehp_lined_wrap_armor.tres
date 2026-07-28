@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+equip_type = "armor"
+hand_slot = "none"
+armor_points = 5
+name = "Meehp-lined Wrap"
+description = "Nautinto took the coarse Meehp fur you brought her and worked it into this wrap without a word — the way she does everything, like it was already decided. Warm, quiet, and tougher than it looks. \"Wear it,\" was all she said."
+item_type = "equipable"
+is_stackable = false
+max_stack = 1
+hidden_from_inventory = false
+sell_price_ore = 40
+sell_price_crowns = 0
+sell_price_drots = 0
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

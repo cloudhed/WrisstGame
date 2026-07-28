@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=8 format=3]
+
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
+[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="2_bundle"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="3_tile"]
+[ext_resource type="Resource" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Driftwood Bough/bough_strike.tres" id="4_strike"]
+[ext_resource type="Resource" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Driftwood Bough/bough_tap.tres" id="5_tap"]
+[ext_resource type="Resource" path="res://Resources/Tiles/Generic/swing_miss.tres" id="6_miss"]
+
+[sub_resource type="Resource" id="Resource_bundle"]
+script = ExtResource("2_bundle")
+tiles = Array[ExtResource("3_tile")]([ExtResource("4_strike"), ExtResource("4_strike"), ExtResource("4_strike"), ExtResource("5_tap"), ExtResource("5_tap"), ExtResource("5_tap"), ExtResource("6_miss"), ExtResource("6_miss")])
+metadata/_custom_type_script = "uid://c814t8855evro"
+
+[resource]
+script = ExtResource("1_item")
+equip_type = "weapon"
+hand_slot = "2-handed"
+tile_bundle = SubResource("Resource_bundle")
+armor_points = 0
+name = "Driftwood Bough"
+description = "The tide left this one for you — a great waterlogged limb, smooth and grey and dense as stone. You can swing it, then set it down like a wall in the same breath. The sea makes a better weaponsmith than any forge Klyftet's got left."
+item_type = "equipable"
+is_stackable = false
+max_stack = 1
+hidden_from_inventory = false
+sell_price_ore = 34
+sell_price_crowns = 0
+sell_price_drots = 0
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

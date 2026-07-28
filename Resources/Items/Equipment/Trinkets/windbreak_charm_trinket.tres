@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=6 format=3]
+
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
+[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="2_bundle"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="3_tile"]
+[ext_resource type="Resource" path="res://Resources/Tiles/TileBundles/TileBundlesTrinket/Windbreak Charm/windbreak_guard.tres" id="4_tile"]
+
+[sub_resource type="Resource" id="Resource_bundle"]
+script = ExtResource("2_bundle")
+tiles = Array[ExtResource("3_tile")]([ExtResource("4_tile")])
+metadata/_custom_type_script = "uid://c814t8855evro"
+
+[resource]
+script = ExtResource("1_item")
+equip_type = "trinket"
+hand_slot = "none"
+tile_bundle = SubResource("Resource_bundle")
+armor_points = 0
+name = "Windbreak Charm"
+description = "A knot of cord and a worn bone bead, the sort of thing Tavo-Pavo presses on regulars he'd never admit to worrying about. \"For luck,\" he grumbled, plainly meaning something else. Rubbing it does settle the nerves."
+item_type = "equipable"
+is_stackable = false
+max_stack = 1
+hidden_from_inventory = false
+sell_price_ore = 16
+sell_price_crowns = 0
+sell_price_drots = 0
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://db65nugcco2e3" path="res://Assets/UI/tile_stickhit.png" id="2_icon"]
+[ext_resource type="Script" path="res://Resources/Tiles/Generic/attack_tile.gd" id="3_script"]
+[ext_resource type="Texture2D" uid="uid://bp08yx8c03uy3" path="res://Assets/UI/icons/icon_attack_mini.png" id="4_ttip"]
+[ext_resource type="AudioStream" uid="uid://b2lcgove03ygd" path="res://Audio/SFX/tile_sfx/wood_hit.ogg" id="5_sfx"]
+
+[resource]
+script = ExtResource("3_script")
+id = "mallet_bash"
+type = 0
+target = 1
+cost = 1
+exile_on_play = false
+effect_amount = 3
+secondary_effect_amount = 0
+background = ExtResource("1_bg")
+icon = ExtResource("2_icon")
+tooltip_icon = ExtResource("4_ttip")
+tooltip_source_label = "Miner's Mallet"
+tooltip_text = "[b]Cost: 1[/b]\\n Bash for [b][color=darkred]{effect_amount}[/color][/b] damage."
+message_template = "[b]You[/b] bring the mallet down on the [b]{target_name}[/b] for [b][color=darkred]{amount}[/color][/b] damage!"
+sound = ExtResource("5_sfx")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

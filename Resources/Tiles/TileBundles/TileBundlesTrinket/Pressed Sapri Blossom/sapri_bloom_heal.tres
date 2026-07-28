@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://d0gatuciw4bfr" path="res://Assets/UI/ui_icon_heart.png" id="2_icon"]
+[ext_resource type="Script" path="res://Resources/Tiles/Generic/heal_tile.gd" id="3_script"]
+[ext_resource type="AudioStream" uid="uid://bdf24usukcenm" path="res://Audio/SFX/sfx_hit_high.wav" id="4_sfx"]
+[ext_resource type="Texture2D" uid="uid://28sa3spftnrs" path="res://Assets/UI/icons/icon_health_mini.png" id="5_ttip"]
+
+[resource]
+script = ExtResource("3_script")
+id = "sapri_bloom_heal"
+type = 2
+target = 0
+cost = 1
+exile_on_play = false
+effect_amount = 4
+secondary_effect_amount = 0
+background = ExtResource("1_bg")
+icon = ExtResource("2_icon")
+tooltip_icon = ExtResource("5_ttip")
+tooltip_source_label = "Pressed Sapri Blossom"
+tooltip_text = "[b]Cost: 1[/b]\\n Breathe it in to recover [b][color=dark_green]{effect_amount}[/color][/b] health."
+message_template = "[b]You[/b] crush the pressed blossom under your nose; its sharp green scent steadies you and you recover [b][color=dark_green]{amount}[/color][/b] health."
+sound = ExtResource("4_sfx")
+metadata/_custom_type_script = "uid://gape1d7i5cw0"

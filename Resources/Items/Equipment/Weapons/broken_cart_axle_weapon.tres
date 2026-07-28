@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=7 format=3]
+
+[ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
+[ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="2_bundle"]
+[ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="3_tile"]
+[ext_resource type="Resource" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Broken Cart Axle/axle_swing.tres" id="4_hit"]
+[ext_resource type="Resource" path="res://Resources/Tiles/Generic/swing_miss.tres" id="5_miss"]
+
+[sub_resource type="Resource" id="Resource_bundle"]
+script = ExtResource("2_bundle")
+tiles = Array[ExtResource("3_tile")]([ExtResource("4_hit"), ExtResource("4_hit"), ExtResource("4_hit"), ExtResource("5_miss"), ExtResource("5_miss"), ExtResource("5_miss"), ExtResource("5_miss"), ExtResource("5_miss")])
+metadata/_custom_type_script = "uid://c814t8855evro"
+
+[resource]
+script = ExtResource("1_item")
+equip_type = "weapon"
+hand_slot = "2-handed"
+tile_bundle = SubResource("Resource_bundle")
+armor_points = 0
+name = "Broken Cart Axle"
+description = "Snapped clean off some abandoned wagon and left to rust in the ruts. Ugly, cheap to swing, and about as graceful as a length of wagon has any right to be. It lands often enough to matter — and misses often enough to keep you humble."
+item_type = "equipable"
+is_stackable = false
+max_stack = 1
+hidden_from_inventory = false
+sell_price_ore = 24
+sell_price_crowns = 0
+sell_price_drots = 0
+metadata/_custom_type_script = "uid://bvo3h06fcka4k"

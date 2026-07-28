@@ -628,31 +628,40 @@ The tendrils touch something deep within you, sending a powerful wave of pleasur
 You feel fluid begin moving through you, pulled gently upward by the slow, steady pulsing inside. Your cock twitches, throbbing in response to each careful squeeze. The sensation of your seed being drawn upward from deep within your body grows stronger.
 Your orgasm comes slowly, stretched out by the continuous stimulation. You groan as your cum is steadily pulled from you, flowing in long, steady pulses. Each pulse is matched by the internal rhythm of the Teqqellon’s tendrils, which continue gently massaging deep inside your pelvis.
 Your body shudders, overwhelmed by the constant pull. Warm fluid continues to flow steadily from you, each wave softer but still intense. Your vision blurs. Your hands tighten reflexively in the Teqqellon’s slick surface. As pleasure continues washing through you, consciousness slowly slips away.
+
+________________
 📖 Bestiary Entry: The Murrisk
-Classification : Subterranean Echo-Worm  Habitat : Deep Underground – The Old Mine, Root-Cellars, Damp Fissures  Designation : "Feral Harvester"
-"It listens to your pleasure. Then it repeats it back to you, hollow and wet, while it drinks you dry."
+Classification : Subterranean Worm  Habitat : Deep Underground – The Old Mine, Damp Fissures  Designation : "Feral Harvester"
+"It listens to your pleasure, while it drinks you dry."
+
+________________
 ​Description : The Murrisk is a massive, blind, worm-ish creature that thrives in the total darkness of the Old Mine.
-​Its body is composed of heavy, translucent coils with segmented rings that twitch faintly.
-​Its pale skin glows from within, pulsing with a faint, sickly bioluminescence that reveals the shifting fluids inside.
-​It possesses no eyes; instead, it navigates via vibration and sound.
-​Its "head" is a blunt, heavy terminus featuring a circular mouth capable of crude mimicry—it catches sounds (like groans or footsteps) and issues them back, distorted and hollow.
-​Hidden within its cloacal seam is a specialized feeding organ: a warm, flexible tube acting as a "straw-like collector" designed for precise urethral insertion and extraction.
+ ​Its body is composed of heavy, translucent coils with segmented rings that twitch faintly.
+ ​Its pale skin glows from within, pulsing with a faint, sickly bioluminescence that reveals the shifting fluids inside.
+ ​It possesses no eyes; instead, it navigates via vibration and sound.
+ ​Its "head" is a blunt, heavy terminus featuring a circular mouth capable of crude mimicry; it catches sounds (like groans or footsteps) and issues them back, distorted and hollow.
+ ​Hidden within its cloacal seam is a specialized feeding organ: a warm, flexible tube acting as a "straw-like collector" designed for precise insertion and extraction.
+
+________________
 ​Behavior :
 ​Heavy Ambusher: It uses its significant weight to block tunnels or pin prey against walls.
 ​Acoustic Mimicry: It echoes the sounds of its prey, likely to confuse them or communicate satisfaction during feeding.
-​Harvesting Cycle: It does not mate in a traditional sense; it harvests. It locks the prey's glans into a "quivering chamber" while the internal tube drains fluids directly from the source.
+​Harvesting Cycle: It does not mate in a traditional sense, but rather harvests. It locks the prey's glans/clitoris/g-spot/prostate into a "quivering chamber" while the internal tube drains fluids directly from the source.
 ​Post-Coital: Once satisfied (or "full"), it enters a lethargic state, its body pulsing in a slow, heavy rhythm as it digests the essence it extracted.
-​🌑 Murrisk Encounter: "The Hollow Echo"
-The Murrisk’s heavy, translucent coils shift beneath you. Segmented rings twitch faintly, the pale skin glowing faintly from within. You press your cock into the soft cloacal seam. The walls tighten instantly.
-​You push deeper. The slick tunnel clamps irregularly, rough bands squeezing your shaft with heavy, wet friction. The deeper you go, the stranger the sensation becomes.
+________________
+
+
+​🌑 Murrisk Encounter: "The Worm and the Seed"
+The Murrisk’s heavy, translucent coils shift beneath you. Segmented rings twitch faintly, the pale skin glowing faintly from within. You press your cock into the soft cloacal seam and the internal walls tighten instantly with a squelching noise.
+​You push deeper into the the slick tunnel of the giant worm as it clamps irregularly, rough bands squeezing your shaft with heavy, wet friction. The deeper you go, the stranger the sensation becomes.
 ​Your tip meets something new. A soft, pulsing ring grips only your glans. The internal walls slacken around the shaft, leaving your length free, but the glans is locked inside a tight, quivering chamber.
-​The chamber pulses once. Then again. Slow, milking contractions pull at your cock head with patient, irresistible force.
-​You groan. Your body tenses, hips jerking. The Murisk answers your sound half a beat later, its heavy mouth lifting and issuing back your distorted moan, muffled and hollow.
-​You shudder as the milking intensifies. Then you feel it. A thin, soft structure—a warm, flexible tube—presses directly into your slit. The straw-like collector slides deeper, slipping into your urethra with unnatural ease.
-​You freeze, gasping. The soft tube begins to coax, suck, and pull.
-​A deep, rippling pulse draws the first thick thread of semen from your cock. The collector does not stop. Pulse by pulse, it gently drains you, rhythmically extracting and “swallowing” each load with perfect precision.
-​The sensation pushes you over the edge. You spasm violently. The milking chamber clenches tightly, preventing you from pulling away. You release again, the soft tube sucking each surge directly from inside you.
-​You cannot stop it. Your balls ache as the Murisk replays your orgasm in smaller, successive echoes. Each wave comes faster, sharper, and weaker than the last. The tube keeps working, pulling thinner and thinner threads of fluid from deep within your cock.
-​You pant, trembling. Your hips twitch involuntarily with each final draining pull. The soft straw never loses rhythm. Only when your body finally stops producing does the tube withdraw slowly, leaving your tip sensitive and leaking.
-​The milking chamber releases your cock with a slick pop. You slump forward, barely able to move.
-​The Murisk settles again beneath you. Its heavy body pulses faintly in that slow, terrible heartbeat rhythm. Its purpose is fulfilled. You are left empty and shaking, thoroughly harvested.
+​The chamber pulses once, and twice. Slow, milking contractions pull at your cock head with patient, irresistible force, as micro vibrations flutter against the aching head of your penis. In the daze it almost feels like the small fluttering of butterfly wings gently tickling your glans.
+​You groan as your body tenses up, making your hips jerk upward. The Murisk answers your sound half a beat later, its heavy mouth lifting and issuing back your distorted moan.
+​You shudder as the milking intensifies. Then you feel something else. A thin, soft structure, almost like a warm, flexible tube, presses directly into your now slimey and slick slit. The straw-like collector easily slides deeper, slipping into your urethra with unnatural ease.
+​You freeze and gasp as the soft tube begins to coax, suck, and pull.
+​A deep, rippling pulse draws the first thick thread of semen from your cock. Pulse by pulse, it gently drains you, rhythmically extracting and swallowing each load with precision.
+​The sensation pushes you over the edge. You spasm violently as the milking chamber clenches tightly, preventing you from pulling away. You cum again, the soft tube sucking each surge directly from inside you.
+Your balls ache as the Murisk replays your orgasm in smaller, successive echoes. Each wave comes faster, sharper, and weaker than the last. The tube keeps working, pulling thinner and thinner threads of fluid from deep within your balls.
+​You can only pant and tremble, as your hips twitch involuntarily with each final draining pull. Only when your body finally stops giving the worm your seed does the tube withdraw slowly, leaving your tip sensitive and leaking.
+​The milking chamber releases your cock with a slick squelch, and you slump forward, barely able to move.
+​The Murrisk settles beneath you. Its heavy body pulses faintly in that slow, terrible heartbeat rhythm. You are left empty and shaking, thoroughly harvested.

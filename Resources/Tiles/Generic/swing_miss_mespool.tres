@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RandomMessagePool" format=3]
+
+[ext_resource type="Script" uid="uid://431wyyo4h25x" path="res://Scripts/resources/random_message_pool.gd" id="1_pool"]
+
+[resource]
+script = ExtResource("1_pool")
+messages = Array[String](["Your swing goes wide. The air remains undefeated.", "You misjudge the distance and connect with a whole lot of nothing.", "A clumsy miss. Somewhere, a weaponsmith you'll never meet sighs.", "It slips in your grip and the blow lands nowhere useful.", "Close! But 'close' doesn't leave a mark."])
+metadata/_custom_type_script = "uid://431wyyo4h25x"
