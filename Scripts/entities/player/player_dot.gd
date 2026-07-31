@@ -148,9 +148,15 @@ func get_highest_priority_biome() -> IslandBiome:
 
 
 func _get_biome_speed_modifier() -> float:
-	var modifier = 1.0
+	# The slowest overlapping biome wins, so terrain like Mountains still applies its
+	# penalty underneath the island-wide Grasslands catch-all (which sits at 1.0).
+	# `speed_modifier` is an exported property on every IslandBiome subclass — not a
+	# method — so read it with get(), which returns null if a biome ever omits it.
+	var modifier := 1.0
 	for biome in current_biomes:
-		modifier = min(modifier, biome.get_speed_modifier() if biome.has_method("get_speed_modifier") else 1.0)
+		var biome_speed: Variant = biome.get("speed_modifier")
+		if biome_speed != null:
+			modifier = min(modifier, float(biome_speed))
 	return modifier
 
 
