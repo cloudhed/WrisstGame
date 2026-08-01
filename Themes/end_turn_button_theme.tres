@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bwmsf3im26hm3" path="res://Assets/Fonts/HyperlegibleNext-Italic.ttf" id="3_61om4"]
 [ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="4_a7wix"]
 [ext_resource type="StyleBox" uid="uid://cfn0o30rgf3r0" path="res://Themes/style_box_flat_ui.tres" id="5_a8wwb"]
-[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="6_g1657"]
+[ext_resource type="FontFile" uid="uid://cnsv175mln0um" path="res://Assets/Fonts/Harbour Regular.ttf" id="6_o2hv2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2hv2"]
 bg_color = Color(0.635771, 0.666767, 0.659254, 1)
@@ -22,7 +22,7 @@ border_width_bottom = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n2vt"]
 
 [resource]
-default_font = ExtResource("6_g1657")
+default_font = ExtResource("6_o2hv2")
 default_font_size = 18
 Button/colors/font_color = Color(0.099986, 0.099986, 0.099986, 1)
 Button/font_sizes/font_size = 20

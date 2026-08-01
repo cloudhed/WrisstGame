@@ -110,6 +110,13 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray()
 
+[file_customization]
+
+folder_colors={
+"res://Narrative/": "teal",
+"res://Resources/Items/": "orange"
+}
+
 [inkgd]
 
 register_templates=true

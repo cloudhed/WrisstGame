@@ -19,7 +19,10 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var icon: Texture
 @export var tooltip_icon: Texture
 @export var tooltip_source_label: String = "Unknown source"
-@export_multiline var tooltip_text: String = "[center]Do [i]Thing/i] for [b][color=green]{effect_amount}[/color][/b] points.[/center]"
+# Fallback tooltip for a tile that has not had its own written yet. Matches the house format:
+# "[b][i]Cost: N[/i][/b] <sentence>", left-aligned, with the amount colored by effect type
+# (damage darkred, block dodgerblue, heal dark_green).
+@export_multiline var tooltip_text: String = "[b][i]Cost: {cost}[/i][/b] Do [i]Thing[/i] for [b][color=darkred]{effect_amount}[/color][/b] points."
 @export_multiline var message_template: String = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=green]{amount}[/color][/b] points!"
 @export var message_pool_resource: RandomMessagePool
 @export_group("Tile SFX")
@@ -48,7 +51,9 @@ func get_random_message_template() -> String:
 func get_formatted_tooltip_text() -> String:
 	return tooltip_text.format({
 		"amount": effect_amount,
-		"effect_amount": effect_amount
+		"effect_amount": effect_amount,
+		"secondary_effect_amount": secondary_effect_amount,
+		"cost": cost
 	})
 
 

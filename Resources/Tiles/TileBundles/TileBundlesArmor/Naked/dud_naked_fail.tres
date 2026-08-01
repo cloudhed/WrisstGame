@@ -15,8 +15,7 @@ effect_amount = 0
 secondary_effect_amount = 0
 background = ExtResource("1_6ujia")
 tooltip_source_label = "Dud Fail"
-tooltip_text = "[b]Cost: 1[/b]
-Dud fail[/center]"
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] A dud, and nothing comes of it."
 message_template = "Dud fail"
 sound = ExtResource("3_la8mk")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

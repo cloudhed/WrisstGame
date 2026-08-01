@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dre0giwru7and"]
+[gd_scene load_steps=6 format=3 uid="uid://dre0giwru7and"]
 
 [ext_resource type="Script" uid="uid://dlton7nom1a0x" path="res://Scenes/UI/Logbook/logbook_screen.gd" id="1_script"]
 [ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="2_header"]
+[ext_resource type="FontFile" uid="uid://cnsv175mln0um" path="res://Assets/Fonts/Harbour Regular.ttf" id="2_r6dto"]
 [ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="3_body"]
 
 [sub_resource type="StyleBoxFlat" id="logbook_panel"]
@@ -56,7 +57,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.94, 0.9, 0.78, 1)
-theme_override_fonts/font = ExtResource("2_header")
+theme_override_fonts/font = ExtResource("2_r6dto")
 theme_override_font_sizes/font_size = 26
 text = "Logbook"
 

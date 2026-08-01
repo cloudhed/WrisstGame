@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://c1p0164at7n2g"]
 
-[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="1_ygo56"]
+[ext_resource type="FontFile" uid="uid://cnsv175mln0um" path="res://Assets/Fonts/Harbour Regular.ttf" id="1_5ymv8"]
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="2_5ymv8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ygo56"]
@@ -9,13 +9,13 @@
 texture = ExtResource("2_5ymv8")
 
 [resource]
-default_font = ExtResource("1_ygo56")
+default_font = ExtResource("1_5ymv8")
 default_font_size = 32
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.4)
 Label/colors/font_texture = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 64
-Label/fonts/font = ExtResource("1_ygo56")
+Label/fonts/font = ExtResource("1_5ymv8")
 Label/styles/normal = SubResource("StyleBoxEmpty_ygo56")
 Panel/styles/panel = SubResource("StyleBoxTexture_rsgho")

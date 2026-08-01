@@ -19,7 +19,7 @@ background = ExtResource("1_bg")
 icon = ExtResource("2_icon")
 tooltip_icon = ExtResource("4_ttip")
 tooltip_source_label = "Windbreak Charm"
-tooltip_text = "[b]Cost: 1[/b]\\n Steady yourself to Block [b][color=dodgerblue]{effect_amount}[/color][/b]."
-message_template = "[b]You[/b] thumb the little charm — Tavo-Pavo's gruff \"mind yourself\" rings in your ears — and you steady up to Block [b][color=dodgerblue]{amount}[/color][/b]."
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] Steady yourself to Block [b][color=dodgerblue]{effect_amount}[/color][/b]."
+message_template = "[b]You[/b] thumb the little charm, Tavo-Pavo's gruff \"mind yourself\" ringing in your ears, and you steady up to Block [b][color=dodgerblue]{amount}[/color][/b]."
 sound = ExtResource("5_sfx")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

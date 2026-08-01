@@ -1,0 +1,193 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckoem6b3xj40c"]
+
+[ext_resource type="Script" uid="uid://g1m7yg7uasm4" path="res://Scenes/UI/Inventory/item_inspector.gd" id="1_inspector"]
+[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="3_body"]
+[ext_resource type="FontFile" uid="uid://cnsv175mln0um" path="res://Assets/Fonts/Harbour Regular.ttf" id="3_tkfwg"]
+
+[sub_resource type="StyleBoxLine" id="divider_style"]
+color = Color(0.7, 0.55, 0.25, 0.55)
+grow_begin = 4.0
+grow_end = 4.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="btn_hover"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0.26, 0.44, 0.28, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.42, 0.66, 0.44, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="btn_disabled"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0.22, 0.22, 0.2, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.35, 0.35, 0.33, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="btn_pressed"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0.16, 0.28, 0.18, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.293244, 0.495061, 0.316758, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="btn_normal"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0.2, 0.34, 0.22, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.293244, 0.495061, 0.316758, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="ItemInspector" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+script = ExtResource("1_inspector")
+
+[node name="EmptyLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.55, 0.52, 0.47, 1)
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 16
+text = "Select an item to inspect it."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkfwg")
+theme_override_font_sizes/font_size = 28
+text = "Item Name"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TypeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.55, 0.48, 1)
+theme_override_fonts/font = ExtResource("3_tkfwg")
+theme_override_font_sizes/font_size = 13
+text = "Weapon"
+horizontal_alignment = 1
+
+[node name="TopDivider" type="HSeparator" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/separator = SubResource("divider_style")
+
+[node name="StatList" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="StatRowTemplate" type="HBoxContainer" parent="StatList"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="StatLabel" type="Label" parent="StatList/StatRowTemplate"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.72, 0.68, 0.6, 1)
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 15
+text = "Label"
+
+[node name="StatValue" type="Label" parent="StatList/StatRowTemplate"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_body")
+theme_override_font_sizes/font_size = 15
+text = "Value"
+horizontal_alignment = 2
+
+[node name="TileStrip" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="TileRow" type="HBoxContainer" parent="TileStrip"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MidDivider" type="HSeparator" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/separator = SubResource("divider_style")
+
+[node name="DescriptionScroll" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="DescriptionScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.86, 0.82, 0.72, 1)
+theme_override_fonts/normal_font = ExtResource("3_body")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="ActionButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.55, 0.55, 0.52, 1)
+theme_override_colors/font_color = Color(0.88, 0.92, 0.84, 1)
+theme_override_fonts/font = ExtResource("3_tkfwg")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/focus = SubResource("btn_hover")
+theme_override_styles/disabled = SubResource("btn_disabled")
+theme_override_styles/hover = SubResource("btn_hover")
+theme_override_styles/pressed = SubResource("btn_pressed")
+theme_override_styles/normal = SubResource("btn_normal")
+text = "Equip"

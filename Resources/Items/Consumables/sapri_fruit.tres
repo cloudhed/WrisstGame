@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_nlsri")
-name = "Slime Glob"
-description = "A fizzy aquamarine glob of slime."
-item_type = "misc"
+name = "Sapri Fruit"
+description = "The fruit of the sapri bloom, small and firm, with a waxy rind that splits under your thumbnail. The flesh inside carries the same sharp scent as the flowers, though it is sweeter and slower on the tongue. Nautinto's people eat them fresh when they can get them, and press the blossoms for the days they cannot."
+item_type = "consumable"
 is_stackable = true
 max_stack = 99
 hidden_from_inventory = false

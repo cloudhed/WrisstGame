@@ -12,13 +12,14 @@ id = "debug_armor_block"
 type = 1
 target = 0
 cost = 1
+exile_on_play = false
 effect_amount = 8
 secondary_effect_amount = 0
 background = ExtResource("1_y0ww7")
 icon = ExtResource("2_y0ww7")
 tooltip_icon = ExtResource("5_yjvph")
 tooltip_source_label = "Armor of the Debugger"
-tooltip_text = "[b]Cost: 1[/b] [center]Do [i]Thing[/i] for [b][color=red]{amount} or {effect_amount}[/color][/b] points.[/center]"
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] Debug plating holds the line to Block [b][color=dodgerblue]{effect_amount}[/color][/b]."
 message_template = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] points!"
 sound = ExtResource("4_y0ww7")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

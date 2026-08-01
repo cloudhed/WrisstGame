@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scenes/UI/Inventory/inventory_category_section.gd" id="1_section"]
+[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="2_header"]
+
+[sub_resource type="StyleBoxEmpty" id="header_flat"]
+content_margin_left = 2.0
+content_margin_top = 0.0
+content_margin_right = 2.0
+content_margin_bottom = 0.0
+
+[node name="InventoryCategorySection" type="VBoxContainer"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("1_section")
+
+[node name="HeaderButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_header")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("header_flat")
+theme_override_styles/hover = SubResource("header_flat")
+theme_override_styles/pressed = SubResource("header_flat")
+theme_override_styles/focus = SubResource("header_flat")
+theme_override_styles/disabled = SubResource("header_flat")
+text = "Category (-)"
+flat = true
+alignment = 0
+
+[node name="IndentMargin" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="RowContainer" type="VBoxContainer" parent="IndentMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1

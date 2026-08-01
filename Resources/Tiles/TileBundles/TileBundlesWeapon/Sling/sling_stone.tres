@@ -19,7 +19,7 @@ background = ExtResource("1_bg")
 icon = ExtResource("2_icon")
 tooltip_icon = ExtResource("4_ttip")
 tooltip_source_label = "Sling"
-tooltip_text = "[b]Cost: 1[/b]\\n Loose a stone for [b][color=darkred]{effect_amount}[/color][/b] damage — when it lands."
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] Loose a stone for [b][color=darkred]{effect_amount}[/color][/b] damage, when it lands."
 message_template = "[b]Your[/b] stone cracks into the [b]{target_name}[/b] for [b][color=darkred]{amount}[/color][/b] damage!"
 sound = ExtResource("5_sfx")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

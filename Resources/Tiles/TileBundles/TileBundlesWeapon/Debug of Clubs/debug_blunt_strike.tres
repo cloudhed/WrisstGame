@@ -11,12 +11,13 @@ id = "blunt_debug_strike"
 type = 0
 target = 1
 cost = 1
+exile_on_play = false
 effect_amount = 8
 secondary_effect_amount = 0
 background = ExtResource("1_itnl8")
 icon = ExtResource("2_a6v58")
 tooltip_source_label = "Club of Debug"
-tooltip_text = "[b]Cost: 1[/b] [center]Do [i]Thing[/i] for [b][color=red]{amount} or {effect_amount}[/color][/b] points.[/center]"
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] A blunt debug strike for [b][color=darkred]{effect_amount}[/color][/b] damage."
 message_template = "[b]{source_name}[/b] affects [b]{target_name}[/b] for [b][color=red]{amount}[/color][/b] points!"
 sound = ExtResource("4_a6v58")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

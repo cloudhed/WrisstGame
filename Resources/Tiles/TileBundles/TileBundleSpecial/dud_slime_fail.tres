@@ -17,8 +17,7 @@ secondary_effect_amount = 0
 background = ExtResource("1_dnbtd")
 icon = ExtResource("2_wp826")
 tooltip_source_label = "Slimed"
-tooltip_text = "[b]Cost: 1[/b]
-Pocket full of slime. Play tile to remove."
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] Your pocket is full of slime. Play the tile to be rid of it."
 message_template = "Naked and cold, you just stand there, trembling with adrenaline."
 sound = ExtResource("4_rxj7j")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

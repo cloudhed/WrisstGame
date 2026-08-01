@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EquipableItem" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=2 format=3 uid="uid://c0k1p0nvt15fo"]
 
 [ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
 
@@ -8,7 +8,7 @@ equip_type = "armor"
 hand_slot = "none"
 armor_points = 8
 name = "Chitin-Plated Jerkin"
-description = "Shenche plates, cleaned and lashed into overlapping rows across a leather backing — Nautinto's patient work, from what you dragged back to the hall. Hard as fired clay and nearly as heavy. Very little gets through it now."
+description = "Hard as fired clay and nearly as heavy. Very little gets through it now."
 item_type = "equipable"
 is_stackable = false
 max_stack = 1

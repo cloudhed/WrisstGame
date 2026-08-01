@@ -11,9 +11,39 @@ func _get_starter_deck() -> TilePile:
 			push_error("❌ Failed to load starter deck: " + STARTER_DECK_PATH)
 	return _starter_deck_cache
 
+## The tiles the player's current gear contributes, with no side effects.
+##
+## Offhands (shields) contribute tiles; armor deliberately does NOT, because it
+## is passive armor_points instead.
+##
+## Do NOT call get_logical_deck() from UI code. It equips fallback gear, which
+## emits fallback_equipped, which re-enters the UI refresh and recurses. Use
+## this instead: it is the same tile list without the equipping.
+func get_preview_tiles() -> Array[Tile]:
+	var tiles: Array[Tile] = []
+
+	if GameState.equipped_weapon and GameState.equipped_weapon.tile_bundle:
+		tiles.append_array(GameState.equipped_weapon.tile_bundle.tiles)
+
+	if GameState.equipped_offhand and GameState.equipped_offhand.tile_bundle:
+		tiles.append_array(GameState.equipped_offhand.tile_bundle.tiles)
+
+	for trinket in GameState.equipped_trinkets:
+		if trinket.tile_bundle:
+			tiles.append_array(trinket.tile_bundle.tiles)
+
+	if tiles.is_empty():
+		# No equipment contributes anything? Fall back to the starter deck.
+		var starter_deck: TilePile = _get_starter_deck()
+		if starter_deck != null:
+			tiles.append_array(starter_deck.tiles)
+
+	return tiles
+
+
 func get_logical_deck() -> TilePile:
 	var combined_deck := TilePile.new()
-	
+
 # Equip fallback armor if none
 	if GameState.equipped_armor == null:
 		GameState.equip_armor(GameState.FALLBACK_ARMOR)
@@ -24,34 +54,8 @@ func get_logical_deck() -> TilePile:
 		GameState.equip_weapon(GameState.FALLBACK_WEAPON)
 		print("🧤 Fallback weapon equipped:", GameState.FALLBACK_WEAPON.name)
 
-
-	var added_any: bool = false
-
-
-	if GameState.equipped_weapon and GameState.equipped_weapon.tile_bundle:
-		for tile in GameState.equipped_weapon.tile_bundle.tiles:
-			combined_deck.add_tile(tile)
-			added_any = true
-
-	# Offhand (shields) contribute tiles to the deck; armor does NOT (passive armor_points instead)
-	if GameState.equipped_offhand and GameState.equipped_offhand.tile_bundle:
-		for tile in GameState.equipped_offhand.tile_bundle.tiles:
-			combined_deck.add_tile(tile)
-			added_any = true
-
-	for trinket in GameState.equipped_trinkets:
-		if trinket.tile_bundle:
-			for tile in trinket.tile_bundle.tiles:
-				combined_deck.add_tile(tile)
-				added_any = true
-
-	if not added_any:
-		# No equipment? Use fallback starter deck
-		var starter_deck: TilePile = _get_starter_deck()
-		if starter_deck == null:
-			return combined_deck
-		for tile in starter_deck.tiles:
-			combined_deck.add_tile(tile)
+	for tile in get_preview_tiles():
+		combined_deck.add_tile(tile)
 
 	return combined_deck
 

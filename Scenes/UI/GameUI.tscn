@@ -1,36 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://da0p1vc21wthm"]
+[gd_scene load_steps=14 format=3 uid="uid://da0p1vc21wthm"]
 
 [ext_resource type="Script" uid="uid://dk4mquk7rtogq" path="res://Scenes/UI/ui_manager.gd" id="1_script"]
-[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="2_header"]
 [ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="3_body"]
 [ext_resource type="PackedScene" uid="uid://cnuyeim88cd6g" path="res://Scenes/UI/tooltip.tscn" id="4_tooltip"]
 [ext_resource type="PackedScene" uid="uid://dre0giwru7and" path="res://Scenes/UI/Logbook/logbook_screen.tscn" id="5_logbook"]
+[ext_resource type="FontFile" uid="uid://cnsv175mln0um" path="res://Assets/Fonts/Harbour Regular.ttf" id="5_sinwf"]
+[ext_resource type="Script" uid="uid://cnfgxahma2ykk" path="res://Scenes/UI/Inventory/inventory_screen.gd" id="6_invscreen"]
+[ext_resource type="PackedScene" uid="uid://ckoem6b3xj40c" path="res://Scenes/UI/Inventory/item_inspector.tscn" id="7_inspector"]
+[ext_resource type="Texture2D" uid="uid://br866bjlqpy6n" path="res://Assets/UI/frames/panel_frame_placeholder.png" id="8_frame"]
+[ext_resource type="Script" uid="uid://dghlff3hjqtni" path="res://Scenes/UI/Inventory/tile_pile_panel.gd" id="9_tilepile"]
 
-[sub_resource type="StyleBoxFlat" id="panel_style"]
-bg_color = Color(0.29, 0.17168, 0.1421, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.293244, 0.495061, 0.316758, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="accent_style"]
+[sub_resource type="StyleBoxFlat" id="accent_fill"]
 bg_color = Color(0.22, 0.18, 0.16, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.7, 0.55, 0.25, 1)
-border_blend = true
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="panel_fill"]
+bg_color = Color(0.134683, 0.0691001, 0.052715, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxLine" id="divider_style"]
+color = Color(0.7, 0.55, 0.25, 0.55)
+grow_begin = 4.0
+grow_end = 4.0
+thickness = 2
 
 [sub_resource type="StyleBoxFlat" id="notif_style"]
 content_margin_left = 16.0
@@ -64,6 +62,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
+script = ExtResource("6_invscreen")
 
 [node name="MainMargin" type="MarginContainer" parent="UIContainer/InventoryScreen"]
 layout_mode = 1
@@ -85,100 +84,90 @@ theme_override_constants/separation = 12
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="CurrencyPanel" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("panel_style")
-
-[node name="Margin" type="MarginContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 8
-
-[node name="HBox" type="HBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="Header" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin/HBox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_header")
-theme_override_font_sizes/font_size = 20
-text = "Your Coin"
-
-[node name="CurrentOreLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin/HBox"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_body")
-theme_override_font_sizes/font_size = 16
-text = "Öre: 0 ◆"
-
-[node name="CurrentCrownsLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin/HBox"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_body")
-theme_override_font_sizes/font_size = 16
-text = "Crowns: 0 ◇"
-
-[node name="CurrentDrotsLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/CurrencyPanel/Margin/HBox"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_body")
-theme_override_font_sizes/font_size = 16
-text = "Drots: 0 ◈"
-
 [node name="EquipmentPanel" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow"]
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("accent_style")
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("accent_fill")
 
 [node name="Margin" type="MarginContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
 
 [node name="VBox" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="Header" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_header")
-theme_override_font_sizes/font_size = 20
-text = "Equipment"
-horizontal_alignment = 1
+theme_override_constants/separation = 0
 
 [node name="EquippedArmorLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_body")
-theme_override_font_sizes/font_size = 15
-text = "Equipped Armor:"
+theme_override_font_sizes/font_size = 13
+text = "Armor:"
 
 [node name="EquippedWeaponLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_body")
-theme_override_font_sizes/font_size = 15
-text = "Equipped Weapon:"
+theme_override_font_sizes/font_size = 13
+text = "Weapon:"
 
 [node name="EquippedOffhandLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_body")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 13
 text = "Offhand:"
 
 [node name="EquippedTrinketsLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel/Margin/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_body")
-theme_override_font_sizes/font_size = 15
-text = "Equipped Trinket(s):"
+theme_override_font_sizes/font_size = 13
+text = "Trinket(s):"
+
+[node name="Frame" type="NinePatchRect" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow/EquipmentPanel"]
+layout_mode = 2
+texture = ExtResource("8_frame")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TitleLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_fonts/font = ExtResource("5_sinwf")
+theme_override_font_sizes/font_size = 34
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeaderSpacer" type="Control" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow"]
+custom_minimum_size = Vector2(368, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CloseButton" type="Button" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/TopRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_hover_color = Color(0.95, 0.82, 0.35, 1)
+theme_override_colors/font_color = Color(0.7, 0.65, 0.55, 1)
+theme_override_fonts/font = ExtResource("5_sinwf")
+theme_override_font_sizes/font_size = 22
+text = "X"
+flat = true
 
 [node name="MiddleRow" type="HBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox"]
 layout_mode = 2
@@ -187,48 +176,139 @@ size_flags_stretch_ratio = 4.0
 theme_override_constants/separation = 12
 
 [node name="ItemsPanel" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow"]
+custom_minimum_size = Vector2(380, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("panel_style")
+theme_override_styles/panel = SubResource("panel_fill")
 
 [node name="Margin" type="MarginContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
 
 [node name="VBox" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin"]
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="Header" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_header")
+theme_override_fonts/font = ExtResource("5_sinwf")
 theme_override_font_sizes/font_size = 20
-text = "Your Items"
+text = "Inventory"
 horizontal_alignment = 1
 
+[node name="CurrencyRow" type="HBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CurrentOreLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox/CurrencyRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.84, 0.62, 1)
+theme_override_fonts/font = ExtResource("5_sinwf")
+theme_override_font_sizes/font_size = 17
+text = "◆ 0"
+
+[node name="CurrentCrownsLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox/CurrencyRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.84, 0.62, 1)
+theme_override_fonts/font = ExtResource("5_sinwf")
+theme_override_font_sizes/font_size = 17
+text = "◇ 0"
+
+[node name="CurrentDrotsLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox/CurrencyRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.84, 0.62, 1)
+theme_override_fonts/font = ExtResource("5_sinwf")
+theme_override_font_sizes/font_size = 17
+text = "◈ 0"
+
+[node name="HeaderDivider" type="HSeparator" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("divider_style")
+
 [node name="ScrollContainer" type="ScrollContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="ItemContainer" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox/ScrollContainer"]
+[node name="CategoryContainer" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel/Margin/VBox/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 4
+theme_override_constants/separation = 6
 
-[node name="TilePanel" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow"]
+[node name="Frame" type="NinePatchRect" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsPanel"]
+layout_mode = 2
+texture = ExtResource("8_frame")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ItemsInspector" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow"]
+custom_minimum_size = Vector2(380, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("panel_style")
+size_flags_stretch_ratio = 1.2
+theme_override_styles/panel = SubResource("panel_fill")
+
+[node name="Margin" type="MarginContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsInspector"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsInspector/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Header" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsInspector/Margin/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_sinwf")
+theme_override_font_sizes/font_size = 20
+text = "Item Inspector"
+horizontal_alignment = 1
+
+[node name="ItemInspector" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsInspector/Margin/VBox" instance=ExtResource("7_inspector")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Frame" type="NinePatchRect" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/ItemsInspector"]
+layout_mode = 2
+texture = ExtResource("8_frame")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TilePanel" type="PanelContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.2
+theme_override_styles/panel = SubResource("panel_fill")
+script = ExtResource("9_tilepile")
 
 [node name="Margin" type="MarginContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
 
 [node name="VBox" type="VBoxContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin"]
 layout_mode = 2
@@ -236,7 +316,7 @@ theme_override_constants/separation = 4
 
 [node name="Header" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin/VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_header")
+theme_override_fonts/font = ExtResource("5_sinwf")
 theme_override_font_sizes/font_size = 20
 text = "Tile Pile"
 horizontal_alignment = 1
@@ -250,7 +330,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_body")
 theme_override_font_sizes/font_size = 15
-text = "Tiles in Deck: "
+text = "Tiles in Pile: 0"
 
 [node name="PilePowerLabel" type="Label" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin/VBox/TileLabelHbox"]
 unique_name_in_owner = true
@@ -258,7 +338,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_body")
 theme_override_font_sizes/font_size = 15
-text = "Pile Power:"
+text = "Pile Power: 0"
+horizontal_alignment = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel/Margin/VBox"]
 layout_mode = 2
@@ -270,10 +351,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 34
 theme_override_constants/v_separation = 29
-columns = 6
+columns = 4
+
+[node name="Frame" type="NinePatchRect" parent="UIContainer/InventoryScreen/MainMargin/MainVBox/MiddleRow/TilePanel"]
+layout_mode = 2
+texture = ExtResource("8_frame")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="LogbookScreen" parent="UIContainer" instance=ExtResource("5_logbook")]
 unique_name_in_owner = true
+visible = false
 
 [node name="Tooltip" parent="UIContainer" instance=ExtResource("4_tooltip")]
 offset_right = 366.0
@@ -300,7 +392,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.2, 0.15, 0.1, 0.5)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
-theme_override_fonts/font = ExtResource("2_header")
+theme_override_fonts/font = ExtResource("5_sinwf")
 theme_override_font_sizes/font_size = 28
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,4 +1,16 @@
-# Implementation Plan
+# Implementation Plan — COMPLETED / HISTORICAL
+
+> **Status: done and closed. This is not an active plan.**
+>
+> Phase 1 executed in March 2026 — see `final_migration_report_phase1.md`
+> (`broken_refs=0`, 38 files archived). The remaining later-phase ideas in this document
+> (`PathRegistry`, `MigrationReferenceChecker`, further folder normalization) were
+> **deliberately abandoned** — see the deferred list in `ROADMAP.md`.
+>
+> One follow-up from this migration is still open and tracked in `ROADMAP.md`:
+> gate overworld movement input while `GameUI` is open.
+>
+> Kept for reference on why the current folder structure looks the way it does.
 
 [Overview]
 Reorganize the Godot project into a feature-first, predictable structure that keeps behavior stable while making files faster to find and safer to maintain.

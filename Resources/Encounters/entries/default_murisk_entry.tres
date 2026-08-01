@@ -6,7 +6,7 @@
 script = ExtResource("1_entry_script")
 enemy_stats_path = "res://enemies/murisk_n/murisk_n_enemy.tres"
 weight = 1.0
-allowed_biomes = PackedStringArray("Plains", "Forest")
+allowed_biomes = PackedStringArray("Mire")
 allowed_time_periods = PackedStringArray()
 min_hour = -1
 max_hour = -1

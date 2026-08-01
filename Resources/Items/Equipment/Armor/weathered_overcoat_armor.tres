@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EquipableItem" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=2 format=3 uid="uid://4uhkpb7nn3vb"]
 
 [ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
 
@@ -8,7 +8,7 @@ equip_type = "armor"
 hand_slot = "none"
 armor_points = 3
 name = "Weathered Overcoat"
-description = "A long coat somebody shed and never came back for, left stiff with mine-dust and weather. Thick enough to blunt a few knocks — and it has pockets, which is more than you can say for going without."
+description = "A long coat somebody shed and never came back for, left stiff with dust and weather. Thick enough to blunt a few knocks."
 item_type = "equipable"
 is_stackable = false
 max_stack = 1

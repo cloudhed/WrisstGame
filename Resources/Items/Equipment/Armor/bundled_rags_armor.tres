@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EquipableItem" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=2 format=3 uid="uid://c8yem42c3yx2w"]
 
 [ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
 
@@ -8,7 +8,7 @@ equip_type = "armor"
 hand_slot = "none"
 armor_points = 2
 name = "Bundled Rags"
-description = "Layers of scavenged cloth, knotted and wound tight enough to turn a glancing blow. It's not much, it itches, and you found it in the kind of camp folk leave in a hurry — but 'not much' still beats nothing at all."
+description = "Layers of scavenged cloth, knotted and wound tight. It's not much, but \"not much\" is better than nothing."
 item_type = "equipable"
 is_stackable = false
 max_stack = 1

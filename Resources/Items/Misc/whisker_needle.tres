@@ -6,7 +6,7 @@
 script = ExtResource("1_s04de")
 name = "Whisker Needle"
 description = "A semi-opaque long whisker. Don't prick yourself, it's sharp."
-item_type = "misc"
+item_type = "material"
 is_stackable = true
 max_stack = 99
 hidden_from_inventory = false

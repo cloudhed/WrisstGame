@@ -24,21 +24,21 @@
 		"id": "test_trap_dodged_clean",
 		"type": "narration",
 		"clear": false,
-		"text": "[Standalone check — Body DC 11 — NAT 20][p]Your body moves before your mind catches up. You clear the wire with a foot to spare and land in a low crouch, heart steady.",
+		"text": "[Standalone check | Body DC 11 | NAT 20][p]Your body moves before your mind catches up. You clear the wire with a foot to spare and land in a low crouch, heart steady.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_trap_cleared",
 		"type": "narration",
 		"clear": false,
-		"text": "[Standalone check — Body DC 11 — Success][p]You catch the glint of wire in time and step over it. Clean enough.",
+		"text": "[Standalone check | Body DC 11 | Success][p]You catch the glint of wire in time and step over it, clean enough.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_trap_hit",
 		"type": "narration",
 		"clear": false,
-		"text": "[Standalone check — Body DC 11 — Fail][p]You clip the wire. A loose stone crashes down from the lintel and grazes your shoulder. You stumble through.",
+		"text": "[Standalone check | Body DC 11 | Fail][p]You clip the wire. A loose stone crashes down from the lintel and grazes your shoulder. You stumble through.",
 		"next": "test_hub"
 	},
 
@@ -71,7 +71,7 @@
 				"on_nat20": "test_lock_silent"
 			},
 			{
-				"text": "> [Study the mechanism — you see exactly how it works]",
+				"text": "> [Study the mechanism, since you see exactly how it works]",
 				"show_if": { "ability_tier": { "mind": "high" } },
 				"next": "test_mechanism_read"
 			},
@@ -92,7 +92,7 @@
 				"next": "test_soul_walk"
 			},
 			{
-				"text": "> [Force the lock — break it if you have to]",
+				"text": "> [Force the lock, and break it if you have to]",
 				"hide_if": { "ability_tier": { "body": "low" } },
 				"check": { "ability": "body", "dc": 16 },
 				"on_success": "test_forced",
@@ -118,84 +118,84 @@
 		"id": "test_ripped",
 		"type": "narration",
 		"clear": false,
-		"text": "[Body: High — no roll][p]You close both hands around the door frame and pull. The hinges groan, then tear free. The door comes away in your hands and you toss it aside.",
+		"text": "[Body: High | no roll][p]You close both hands around the door frame and pull. The hinges groan, then tear free. The door comes away in your hands and you toss it aside.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_splintered",
 		"type": "narration",
 		"clear": false,
-		"text": "[Choice check — Body DC 13 — NAT 20][p]Your shoulder hits the door like a ram. The frame explodes outward in a shower of splinters. You walk through without breaking stride.",
+		"text": "[Choice check | Body DC 13 | NAT 20][p]Your shoulder hits the door like a ram. The frame explodes outward in a shower of splinters. You walk through without breaking stride.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_forced",
 		"type": "narration",
 		"clear": false,
-		"text": "[Choice check — Body DC 13 — Success][p]Three solid hits. On the third, the latch gives and the door grinds open.",
+		"text": "[Choice check | Body DC 13 | Success][p]Three solid hits, and on the third the latch gives and the door grinds open.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_bounced",
 		"type": "narration",
 		"clear": false,
-		"text": "[Choice check — Body — Fail][p]The door doesn't give. Your shoulder aches. The iron doesn't care.",
+		"text": "[Choice check | Body | Fail][p]The door doesn't give, your shoulder aches, and the iron doesn't care.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_lock_silent",
 		"type": "narration",
 		"clear": false,
-		"text": "[Choice check — Mind DC 12 — NAT 20, bonus_if stacked][p]The tumblers roll one by one without a sound. The door swings open before anyone could have heard a thing.",
+		"text": "[Choice check | Mind DC 12 | NAT 20, bonus_if stacked][p]The tumblers roll one by one without a sound. The door swings open before anyone could have heard a thing.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_lock_picked",
 		"type": "narration",
 		"clear": false,
-		"text": "[Choice check — Mind DC 12 — Success, bonus_if stacked][p]Methodical turns, patient pressure. A soft click. The lock opens.",
+		"text": "[Choice check | Mind DC 12 | Success, bonus_if stacked][p]Methodical turns and patient pressure, then a soft click as the lock opens.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_lockpick_snapped",
 		"type": "narration",
 		"clear": false,
-		"text": "[Choice check — Mind DC 12 — Fail][p]The pick catches on something and snaps off inside the keyhole. You're left holding half a tool.",
+		"text": "[Choice check | Mind DC 12 | Fail][p]The pick catches on something and snaps off inside the keyhole. You're left holding half a tool.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_mechanism_read",
 		"type": "narration",
 		"clear": false,
-		"text": "[Mind: High — no roll][p]You run your eye over the lock plate. Simple three-tumbler construction. Worn. You know exactly what it would take to open it — and exactly how long.",
+		"text": "[Mind: High | no roll][p]You run your eye over the lock plate. Simple three-tumbler construction, worn down with use. You know exactly what it would take to open it, and exactly how long.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_listened_heard",
 		"type": "narration",
 		"clear": false,
-		"text": "[Choice check — Mind DC 10 — Success][p]You press your ear to the iron. Breathing. Slow and measured — whatever is on the other side is waiting, not searching.",
+		"text": "[Choice check | Mind DC 10 | Success][p]You press your ear to the iron. Something breathes on the other side, slow and measured, and whatever it is has settled in to wait.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_listened_nothing",
 		"type": "narration",
 		"clear": false,
-		"text": "[Choice check — Mind DC 10 — Fail][p]You press your ear to the iron. Nothing you can make out — either silence, or you're not listening the right way.",
+		"text": "[Choice check | Mind DC 10 | Fail][p]You press your ear to the iron. Nothing you can make out, whether from silence or from listening the wrong way.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_soul_walk",
 		"type": "narration",
 		"clear": false,
-		"text": "[Soul: High + scouted_door flag — all_of — no roll][p]You push the door open without hesitation. You already knew it would give. You already knew what was behind it.",
+		"text": "[Soul: High + scouted_door flag | all_of | no roll][p]You push the door open without hesitation, because you already knew it would give, and you already knew what was behind it.",
 		"next": "test_hub"
 	},
 	{
 		"id": "test_scouted",
 		"type": "narration",
 		"clear": false,
-		"text": "[hide_if: picked — sets flag — option disappears after this][p]You work over the door carefully. Standard lock, worn hinges, no warding. The space beyond is still. You file it away.",
+		"text": "[hide_if: picked | sets flag | option disappears after this][p]You work over the door carefully. Standard lock, worn hinges, no warding. The space beyond is still. You file it away.",
 		"set_flag": "scouted_door",
 		"flag_type": "temp",
 		"next": "test_hub"
@@ -224,7 +224,7 @@
 				"on_fail": "test_tier_low_fail"
 			},
 			{
-				"text": "> [Roll flat — pure luck, no ability score (DC 11)]",
+				"text": "> [Roll flat, pure luck with no ability score (DC 11)]",
 				"check": { "ability": "flat", "dc": 11 },
 				"on_success": "test_tier_flat_success",
 				"on_fail": "test_tier_flat_fail"
@@ -240,21 +240,21 @@
 		"id": "test_tier_high_nat20",
 		"type": "narration",
 		"clear": false,
-		"text": "[HIGH tier roll — DC 15 — NAT 20][p]Whatever your best is, you just hit its ceiling. Effortless.",
+		"text": "[HIGH tier roll | DC 15 | NAT 20][p]Whatever your best is, you just hit its ceiling, effortlessly.",
 		"next": "test_tier_hub"
 	},
 	{
 		"id": "test_tier_high_success",
 		"type": "narration",
 		"clear": false,
-		"text": "[HIGH tier roll — DC 15 — Success][p]Your strongest stat carried you over the line.",
+		"text": "[HIGH tier roll | DC 15 | Success][p]Your strongest stat carried you over the line.",
 		"next": "test_tier_hub"
 	},
 	{
 		"id": "test_tier_high_fail",
 		"type": "narration",
 		"clear": false,
-		"text": "[HIGH tier roll — DC 15 — Fail][p]Even your best wasn't enough this time.",
+		"text": "[HIGH tier roll | DC 15 | Fail][p]Even your best wasn't enough this time.",
 		"next": "test_tier_hub"
 	},
 
@@ -262,14 +262,14 @@
 		"id": "test_tier_mid_success",
 		"type": "narration",
 		"clear": false,
-		"text": "[MID tier roll — DC 12 — Success][p]Average, but it got you there.",
+		"text": "[MID tier roll | DC 12 | Success][p]Average, but it got you there.",
 		"next": "test_tier_hub"
 	},
 	{
 		"id": "test_tier_mid_fail",
 		"type": "narration",
 		"clear": false,
-		"text": "[MID tier roll — DC 12 — Fail][p]Middle-of-the-road wasn't quite enough.",
+		"text": "[MID tier roll | DC 12 | Fail][p]Middle-of-the-road wasn't quite enough.",
 		"next": "test_tier_hub"
 	},
 
@@ -277,14 +277,14 @@
 		"id": "test_tier_low_success",
 		"type": "narration",
 		"clear": false,
-		"text": "[LOW tier roll — DC 8 — Success][p]Your worst stat scraped through. The bar was low.",
+		"text": "[LOW tier roll | DC 8 | Success][p]Your worst stat scraped through, though the bar was low.",
 		"next": "test_tier_hub"
 	},
 	{
 		"id": "test_tier_low_fail",
 		"type": "narration",
 		"clear": false,
-		"text": "[LOW tier roll — DC 8 — Fail][p]Even an easy task trips you up where you're weakest.",
+		"text": "[LOW tier roll | DC 8 | Fail][p]Even an easy task trips you up where you're weakest.",
 		"next": "test_tier_hub"
 	},
 
@@ -292,14 +292,14 @@
 		"id": "test_tier_flat_success",
 		"type": "narration",
 		"clear": false,
-		"text": "[FLAT roll — DC 11 — Success][p]Pure luck. No skill, no stat — just the dice.",
+		"text": "[FLAT roll | DC 11 | Success][p]Pure luck, with the dice doing all the work.",
 		"next": "test_tier_hub"
 	},
 	{
 		"id": "test_tier_flat_fail",
 		"type": "narration",
 		"clear": false,
-		"text": "[FLAT roll — DC 11 — Fail][p]Pure luck. The dice weren't in your favor.",
+		"text": "[FLAT roll | DC 11 | Fail][p]Pure luck, and the dice weren't in your favor.",
 		"next": "test_tier_hub"
 	},
 

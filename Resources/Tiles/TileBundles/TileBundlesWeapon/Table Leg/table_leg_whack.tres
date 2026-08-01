@@ -19,7 +19,7 @@ background = ExtResource("1_bg")
 icon = ExtResource("2_icon")
 tooltip_icon = ExtResource("4_ttip")
 tooltip_source_label = "Table Leg"
-tooltip_text = "[b]Cost: 1[/b]\\n Whack for [b][color=darkred]{effect_amount}[/color][/b] damage."
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] Whack for [b][color=darkred]{effect_amount}[/color][/b] damage."
 message_template = "[b]You[/b] clock the [b]{target_name}[/b] with a table leg for [b][color=darkred]{amount}[/color][/b] damage!"
 sound = ExtResource("5_sfx")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

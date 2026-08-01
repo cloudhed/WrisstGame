@@ -12,13 +12,14 @@ id = "naked_panicked_dodge"
 type = 1
 target = 0
 cost = 1
+exile_on_play = false
 effect_amount = 2
 secondary_effect_amount = 0
 background = ExtResource("1_neddp")
 icon = ExtResource("2_cfj6p")
 tooltip_icon = ExtResource("5_4tdwp")
 tooltip_source_label = "Naked"
-tooltip_text = "[b]Cost: 1[/b] [center]Gain [b][color=blue]{effect_amount}[/color][/b] block.[/center]"
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] Twist aside to Block [b][color=dodgerblue]{effect_amount}[/color][/b]."
 message_template = "[b]{source_name}[/b] raises their arms in front of their face and prepares to block for [b][color=blue]{amount}[/color][/b] damage."
 sound = ExtResource("4_neddp")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

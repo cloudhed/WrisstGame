@@ -18,7 +18,7 @@ background = ExtResource("1_c86dg")
 icon = ExtResource("2_lyf2l")
 tooltip_icon = ExtResource("5_gqkhx")
 tooltip_source_label = "Unarmed"
-tooltip_text = "[b]Cost: 1[/b] [center]Strike for [b][color=darkred]{amount}[/color][/b] damage.[/center]"
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] Flail for [b][color=darkred]{effect_amount}[/color][/b] damage."
 message_template = "[b]{source_name}[/b] strikes [b]{target_name}[/b] for [b][color=darkred]{amount}[/color][/b] damage!"
 sound = ExtResource("4_aqw8e")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

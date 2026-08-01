@@ -19,7 +19,7 @@ background = ExtResource("1_bg")
 icon = ExtResource("2_icon")
 tooltip_icon = ExtResource("4_ttip")
 tooltip_source_label = "Lucky Ore Chip"
-tooltip_text = "[b]Cost: 1[/b]\\n Flick the chip for [b][color=darkred]{effect_amount}[/color][/b] damage."
-message_template = "[b]You[/b] flick the lucky ore chip at the [b]{target_name}[/b] — it pings off them just right for [b][color=darkred]{amount}[/color][/b] damage!"
+tooltip_text = "[b][i]Cost: {cost}[/i][/b] Flick the chip for [b][color=darkred]{effect_amount}[/color][/b] damage."
+message_template = "[b]You[/b] flick the lucky ore chip at the [b]{target_name}[/b], and it pings off them just right for [b][color=darkred]{amount}[/color][/b] damage!"
 sound = ExtResource("5_sfx")
 metadata/_custom_type_script = "uid://gape1d7i5cw0"

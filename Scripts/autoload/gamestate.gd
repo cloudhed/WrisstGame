@@ -319,6 +319,9 @@ func unequip_offhand() -> void:
 
 func unequip_trinket(item: EquipableItem) -> void:
 	equipped_trinkets.erase(item)
+	# Every other equip and unequip path emits this, and the inventory relies on
+	# it to refresh. Without it, removing a trinket left the UI stale.
+	fallback_equipped.emit()
 
 
 func check_and_equip_fallback() -> void:

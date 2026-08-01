@@ -48,7 +48,7 @@
 	{
 		"id": "intro_first_time",
 		"type": "narration",
-		"text": "You step into Klyftet for the first time — or what you can see of it. Lanterna lights flicker along the main road, but most of the stalls and side streets are dark and shuttered. The wind carries a chill.\n\nThe pass town is quieter than you expected.",
+		"text": "You step into Klyftet for the first time, or what you can see of it. Lanterna lights flicker along the main road, but most of the stalls and side streets are dark and shuttered. The wind carries a chill.\n\nThe pass town is quieter than you expected.",
 		"clear": true,
 		"next": "set_entered_klyftet"
 	},
@@ -118,7 +118,7 @@
 	{
 		"id": "inn_exterior_narration",
 		"type": "narration",
-		"text": "The Windbreak looms ahead. Warm light spills from its windows — the only welcoming glow on this stretch of street.",
+		"text": "The Windbreak looms ahead. Warm light spills from its windows, the only welcoming glow on this stretch of street.",
 		"clear_flag": ["visiting_inn"],
 		"clear": false,
 		"next": "inn_hub"
