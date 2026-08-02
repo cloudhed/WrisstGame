@@ -664,6 +664,14 @@ discovery_flag = "Found_Tree"
 fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Overworld/Old Tree/oldtree_day.tres"
 debug_logging = true
 
+[node name="OverworldEncounterTrigger_KemenWoods" parent="mapLocations" instance=ExtResource("5_5arl6")]
+position = Vector2(620, 640)
+prompt_active = "Enter the woods"
+prompt_after_discovery = "Visit Kemen Woods"
+discovery_flag = "Found_KemenWoods"
+fallback_dialog_scene_path = "res://Narrative/DialogScenes/Locations/Overworld/KemenWoods/kemenwoods_intro.tres"
+debug_logging = true
+
 [node name="OverworldCombatTrigger_Creature" parent="mapLocations" instance=ExtResource("2_w08pr")]
 position = Vector2(289, 635)
 prompt_active = "Encounter Creature"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckoem6b3xj40c"]
+[gd_scene load_steps=10 format=3 uid="uid://ckoem6b3xj40c"]
 
 [ext_resource type="Script" uid="uid://g1m7yg7uasm4" path="res://Scenes/UI/Inventory/item_inspector.gd" id="1_inspector"]
+[ext_resource type="FontFile" uid="uid://cywcgpjvajmm5" path="res://Assets/Fonts/Anomoly Regular.ttf" id="2_ikk71"]
 [ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="3_body"]
 [ext_resource type="FontFile" uid="uid://cnsv175mln0um" path="res://Assets/Fonts/Harbour Regular.ttf" id="3_tkfwg"]
 
@@ -89,14 +90,34 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.55, 0.52, 0.47, 1)
-theme_override_fonts/font = ExtResource("3_body")
+theme_override_fonts/font = ExtResource("2_ikk71")
 theme_override_font_sizes/font_size = 16
 text = "Select an item to inspect it."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="ContentScroll" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Content" type="VBoxContainer" parent="ContentScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="IconRect" type="TextureRect" parent="ContentScroll/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="ContentScroll/Content"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkfwg")
@@ -105,7 +126,7 @@ text = "Item Name"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="TypeLabel" type="Label" parent="."]
+[node name="TypeLabel" type="Label" parent="ContentScroll/Content"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.55, 0.48, 1)
@@ -114,22 +135,30 @@ theme_override_font_sizes/font_size = 13
 text = "Weapon"
 horizontal_alignment = 1
 
-[node name="TopDivider" type="HSeparator" parent="."]
+[node name="TopDivider" type="HSeparator" parent="ContentScroll/Content"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/separator = SubResource("divider_style")
 
-[node name="StatList" type="VBoxContainer" parent="."]
+[node name="StatList" type="HBoxContainer" parent="ContentScroll/Content"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="StatColumn" type="VBoxContainer" parent="ContentScroll/Content/StatList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 theme_override_constants/separation = 3
 
-[node name="StatRowTemplate" type="HBoxContainer" parent="StatList"]
+[node name="StatRowTemplate" type="HBoxContainer" parent="ContentScroll/Content/StatList/StatColumn"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="StatLabel" type="Label" parent="StatList/StatRowTemplate"]
+[node name="StatLabel" type="Label" parent="ContentScroll/Content/StatList/StatColumn/StatRowTemplate"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.72, 0.68, 0.6, 1)
@@ -137,41 +166,48 @@ theme_override_fonts/font = ExtResource("3_body")
 theme_override_font_sizes/font_size = 15
 text = "Label"
 
-[node name="StatValue" type="Label" parent="StatList/StatRowTemplate"]
+[node name="StatValue" type="Label" parent="ContentScroll/Content/StatList/StatColumn/StatRowTemplate"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_body")
 theme_override_font_sizes/font_size = 15
 text = "Value"
 horizontal_alignment = 2
 
-[node name="TileStrip" type="ScrollContainer" parent="."]
+[node name="StatColumnB" type="VBoxContainer" parent="ContentScroll/Content/StatList"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-vertical_scroll_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 3
 
-[node name="TileRow" type="HBoxContainer" parent="TileStrip"]
+[node name="TileStrip" type="ScrollContainer" parent="ContentScroll/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+vertical_scroll_mode = 3
+
+[node name="TileRow" type="HBoxContainer" parent="ContentScroll/Content/TileStrip"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="MidDivider" type="HSeparator" parent="."]
+[node name="MidDivider" type="HSeparator" parent="ContentScroll/Content"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/separator = SubResource("divider_style")
 
-[node name="DescriptionScroll" type="ScrollContainer" parent="."]
+[node name="DescriptionScroll" type="ScrollContainer" parent="ContentScroll/Content"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
 
-[node name="DescriptionLabel" type="RichTextLabel" parent="DescriptionScroll"]
+[node name="DescriptionLabel" type="RichTextLabel" parent="ContentScroll/Content/DescriptionScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.86, 0.82, 0.72, 1)
-theme_override_fonts/normal_font = ExtResource("3_body")
+theme_override_fonts/normal_font = ExtResource("2_ikk71")
 theme_override_font_sizes/normal_font_size = 15
 bbcode_enabled = true
 fit_content = true

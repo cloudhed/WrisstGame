@@ -74,7 +74,7 @@ func _update_display() -> void:
 			price_parts.append("%d cr" % (item.sell_price_crowns * amount))
 		if item.sell_price_drots > 0:
 			price_parts.append("%d dr" % (item.sell_price_drots * amount))
-	price_label.text = ", ".join(price_parts) if not price_parts.is_empty() else "—"
+	price_label.text = ", ".join(price_parts) if not price_parts.is_empty() else "no value"
 
 	# Direction arrow (only visible in barter window)
 	if source == "barter":

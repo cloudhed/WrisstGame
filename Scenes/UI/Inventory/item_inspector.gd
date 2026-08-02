@@ -18,10 +18,16 @@ var _is_equipped: bool = false
 var _tile_card_scene: PackedScene = null
 
 @onready var empty_label: Label = %EmptyLabel
+## Holds everything above the action button. The button sits outside it, so no
+## amount of content can ever push the button out from under the cursor.
+@onready var content_scroll: ScrollContainer = %ContentScroll
+@onready var icon_rect: TextureRect = %IconRect
 @onready var name_label: Label = %NameLabel
 @onready var type_label: Label = %TypeLabel
 @onready var top_divider: HSeparator = %TopDivider
-@onready var stat_list: VBoxContainer = %StatList
+@onready var stat_list: HBoxContainer = %StatList
+@onready var stat_column: VBoxContainer = %StatColumn
+@onready var stat_column_b: VBoxContainer = %StatColumnB
 @onready var stat_row_template: HBoxContainer = %StatRowTemplate
 @onready var tile_strip: ScrollContainer = %TileStrip
 @onready var tile_row: HBoxContainer = %TileRow
@@ -42,9 +48,8 @@ func clear() -> void:
 	_clear_tile_strip()
 
 	empty_label.visible = true
-	for node in [name_label, type_label, top_divider, stat_list, tile_strip,
-			mid_divider, description_scroll, action_button]:
-		node.visible = false
+	content_scroll.visible = false
+	action_button.visible = false
 
 
 func show_item(p_item: InventoryItem, p_is_equipped: bool) -> void:
@@ -56,10 +61,17 @@ func show_item(p_item: InventoryItem, p_is_equipped: bool) -> void:
 	_is_equipped = p_is_equipped
 
 	empty_label.visible = false
+	content_scroll.visible = true
 	for node in [name_label, type_label, top_divider]:
 		node.visible = true
 
 	var category_id := ItemCategory.classify(item)
+
+	# Most items have no icon yet, so the slot collapses rather than leaving a
+	# 96px hole above the name.
+	icon_rect.texture = item.icon
+	icon_rect.visible = item.icon != null
+
 	name_label.text = item.name
 	name_label.add_theme_color_override("font_color", ItemCategory.color(category_id))
 	type_label.text = _type_line(category_id)
@@ -83,15 +95,24 @@ func _type_line(category_id: String) -> String:
 	return ItemCategory.singular_name(category_id)
 
 
+## Fills the stat block, splitting the lines across two columns.
+##
+## Two columns rather than one because the panel is wider than a single
+## label-and-value pair needs, and halving the row count halves how far the
+## description below shifts between a one-line material and a nine-line weapon.
 func _rebuild_stats() -> void:
-	for child in stat_list.get_children():
-		if child == stat_row_template:
-			continue
-		stat_list.remove_child(child)
-		child.queue_free()
+	for column in [stat_column, stat_column_b]:
+		for child in column.get_children():
+			if child == stat_row_template:
+				continue
+			column.remove_child(child)
+			child.queue_free()
 
 	var lines := ItemStatFormatter.get_stat_lines(item)
-	for line in lines:
+	var first_column_count := int(ceil(lines.size() / 2.0))
+
+	for i in lines.size():
+		var line: Dictionary = lines[i]
 		var row := stat_row_template.duplicate() as HBoxContainer
 		# duplicate() copies the scene-unique-name flag, which would then clash
 		# with the template's own name in the owner.
@@ -101,7 +122,11 @@ func _rebuild_stats() -> void:
 		var value_label := row.get_child(1) as Label
 		value_label.text = line.value
 		value_label.add_theme_color_override("font_color", Color(line.color))
-		stat_list.add_child(row)
+
+		if i < first_column_count:
+			stat_column.add_child(row)
+		else:
+			stat_column_b.add_child(row)
 
 	stat_list.visible = not lines.is_empty()
 	mid_divider.visible = not lines.is_empty()

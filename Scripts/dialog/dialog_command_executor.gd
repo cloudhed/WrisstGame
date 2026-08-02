@@ -18,14 +18,20 @@ func execute(cmd: String, context: Dictionary = {}) -> void:
 				context["line_spawner"].clear_lines()
 			if context.has("choice_box") and context["choice_box"]:
 				context["choice_box"].hide()
+		# Each portrait slot is the same logic pointed at a different TextureRect,
+		# so the dispatcher just names which context key holds that slot's node.
 		"SHOW_PORTRAIT":
-			_show_character_portrait(context)
+			_show_character_portrait(context, "portrait_node")
 		"HIDE_PORTRAIT":
-			_hide_character_portrait(context)
+			_hide_character_portrait(context, "portrait_node")
 		"SHOW_EXTRA":
-			_show_character_extra(context)
+			_show_character_portrait(context, "portrait2_node")
 		"HIDE_EXTRA":
-			_hide_character_extra(context)
+			_hide_character_portrait(context, "portrait2_node")
+		"SHOW_EXTRA2":
+			_show_character_portrait(context, "portrait3_node")
+		"HIDE_EXTRA2":
+			_hide_character_portrait(context, "portrait3_node")
 		"SHOW_SLIDESHOW":
 			_show_slideshow(context)
 		"HIDE_SLIDESHOW":
@@ -239,15 +245,21 @@ func _handle_game_state_command(cmd: String, context: Dictionary = {}) -> void:
 
 
 # === PORTRAITS ===
+#
+# The scene has three portrait slots (Main, Extra, Extra2), and they behave
+# identically. `slot_key` is the context key that holds the TextureRect for the
+# slot the command targets, so a fourth slot only needs a node in
+# DialogScene.tscn, a context entry, and two match arms above.
 
-func _show_character_portrait(context: Dictionary) -> void:
+## Fades the named character's portrait into one slot, replacing whatever it held.
+func _show_character_portrait(context: Dictionary, slot_key: String) -> void:
 	var char_name: String = context.get("name", "")
 	var raw_cmd: String = context.get("raw_command", "")
-	var char_port_main: TextureRect = context.get("portrait_node")
+	var slot: TextureRect = context.get(slot_key)
 	var character_map: Dictionary = context.get("character_map", {})
 
-	if char_port_main == null:
-		print("❌ portrait_node is missing in context!")
+	if slot == null:
+		print("❌ %s is missing in context!" % slot_key)
 		return
 
 	var parts := raw_cmd.split(" ")
@@ -255,7 +267,7 @@ func _show_character_portrait(context: Dictionary) -> void:
 	if parts.size() > 1:
 		portrait_id = parts[1]
 	else:
-		print("❌ Missing portrait ID in SHOW_PORTRAIT command:", raw_cmd)
+		print("❌ Missing portrait ID in command:", raw_cmd)
 		return
 
 	var character_res := character_map.get(char_name) as CharacterResource
@@ -279,91 +291,29 @@ func _show_character_portrait(context: Dictionary) -> void:
 		return
 
 	# 🎭 Fade out current portrait if one is shown
-	if char_port_main.visible and char_port_main.modulate.a > 0.0:
-		var fade_out := char_port_main.create_tween()
-		fade_out.tween_property(char_port_main, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	if slot.visible and slot.modulate.a > 0.0:
+		var fade_out := slot.create_tween()
+		fade_out.tween_property(slot, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		await fade_out.finished
 
 	# 🖼️ Switch to new texture
-	char_port_main.texture = selected_texture
-	char_port_main.modulate.a = 0.0
-	char_port_main.show()
+	slot.texture = selected_texture
+	slot.modulate.a = 0.0
+	slot.show()
 
 	# 🌅 Fade in new portrait
-	var fade_in := char_port_main.create_tween()
-	fade_in.tween_property(char_port_main, "modulate:a", 1.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	var fade_in := slot.create_tween()
+	fade_in.tween_property(slot, "modulate:a", 1.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
-func _hide_character_portrait(context: Dictionary) -> void:
-	var char_port_main: TextureRect = context.get("portrait_node")
-	if char_port_main and char_port_main.visible:
-		var tween: Tween = char_port_main.create_tween()
-		tween.tween_property(char_port_main, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+## Fades one portrait slot out and hides it, leaving the other slots untouched.
+func _hide_character_portrait(context: Dictionary, slot_key: String) -> void:
+	var slot: TextureRect = context.get(slot_key)
+	if slot and slot.visible:
+		var tween: Tween = slot.create_tween()
+		tween.tween_property(slot, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		await tween.finished
-		char_port_main.hide()
-
-#EXTRA PORTRAIT
-func _show_character_extra(context: Dictionary) -> void:
-	var char_name: String = context.get("name", "")
-	var raw_cmd: String = context.get("raw_command", "")
-	var char_port_extra: TextureRect = context.get("portrait2_node")
-	var character_map: Dictionary = context.get("character_map", {})
-
-	if char_port_extra == null:
-		print("❌ portrait2_node is missing in context!")
-		return
-
-	var parts := raw_cmd.split(" ")
-	var portrait_id: String = ""
-	if parts.size() > 1:
-		portrait_id = parts[1]
-	else:
-		print("❌ Missing portrait ID in SHOW_EXTRA command:", raw_cmd)
-		return
-
-	var character_res := character_map.get(char_name) as CharacterResource
-	if character_res == null:
-		print("❌ Character not found or wrong type for:", char_name)
-		return
-
-	if character_res.portrait == null:
-		print("❌ No portrait deck found for character:", char_name)
-		return
-
-	# 🔍 Find portrait by ID
-	var selected_texture: Texture2D = null
-	for entry in character_res.portrait.portraits:
-		if entry.id == portrait_id:
-			selected_texture = entry.portrait
-			break
-
-	if selected_texture == null:
-		print("❌ Portrait ID not found in deck:", portrait_id)
-		return
-
-	# 🎭 Fade out current portrait if one is shown
-	if char_port_extra.visible and char_port_extra.modulate.a > 0.0:
-		var fade_out := char_port_extra.create_tween()
-		fade_out.tween_property(char_port_extra, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-		await fade_out.finished
-
-	# 🖼️ Switch to new texture
-	char_port_extra.texture = selected_texture
-	char_port_extra.modulate.a = 0.0
-	char_port_extra.show()
-
-	# 🌅 Fade in new portrait
-	var fade_in := char_port_extra.create_tween()
-	fade_in.tween_property(char_port_extra, "modulate:a", 1.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-
-
-func _hide_character_extra(context: Dictionary) -> void:
-	var char_port_extra: TextureRect = context.get("portrait2_node")
-	if char_port_extra and char_port_extra.visible:
-		var tween: Tween = char_port_extra.create_tween()
-		tween.tween_property(char_port_extra, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-		await tween.finished
-		char_port_extra.hide()
+		slot.hide()
 
 
 # === STATIC SLIDESHOW ===

@@ -197,7 +197,7 @@ debug_color = Color(0.775963, 0.440196, 0.0144619, 0.42)
 
 [node name="Hotspot_FocusMarket" type="Area2D" parent="Hotspots" groups=["hotspots"]]
 script = ExtResource("7_irn2s")
-unlocked_dialog_id = "switch_market_intro"
+unlocked_dialog_id = "market_intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Hotspot_FocusMarket"]
 position = Vector2(246.5, 696)

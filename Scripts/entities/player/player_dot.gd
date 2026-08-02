@@ -8,6 +8,12 @@ static var _active_player_dot_id: int = 0
 @export var step_size := 3
 @export var debug_encounter_restore: bool = true
 
+@export_group("Debug")
+## Speed multiplier applied while the fast-move debug toggle is on (Shift).
+@export var debug_fast_move_multiplier: float = 4.0
+## Set false to disable the Shift toggle entirely, e.g. before a build.
+@export var debug_fast_move_enabled: bool = true
+
 @onready var distance_label = get_tree().get_root().get_node("overworld_node/CanvasLayer/DistanceLabel")
 @onready var coord_label = get_tree().get_root().get_node("overworld_node/CanvasLayer/CoordLabel")
 @onready var debug_gui = get_tree().get_root().get_node("overworld_node/CanvasLayer")
@@ -39,6 +45,9 @@ var can_move := true
 var stats: CharacterStats = null
 var _restore_freeze_frames: int = 0
 var _is_primary_player_dot: bool = true
+
+## Debug fast-move state. Latched by Shift, so it stays on until toggled off again.
+var _fast_move_active: bool = false
 
 
 func _is_canonical_overworld_player_dot() -> bool:
@@ -92,6 +101,23 @@ func _exit_tree() -> void:
 		_active_player_dot_id = 0
 
 
+## 🐞 DEBUG: Shift latches a movement-speed boost on and off, and suppresses random
+## encounters while it is on so you can cross the map without being interrupted.
+## Only the canonical overworld dot listens, so disabled duplicates can't steal the input.
+func _unhandled_input(event: InputEvent) -> void:
+	if not debug_fast_move_enabled or not _is_primary_player_dot:
+		return
+
+	if event.is_action_pressed("debug_fast_move") and not event.is_echo():
+		_fast_move_active = not _fast_move_active
+		get_viewport().set_input_as_handled()
+		print("🏃 Debug fast move: %s (x%.1f, encounters %s)" % [
+			"ON" if _fast_move_active else "OFF",
+			debug_fast_move_multiplier if _fast_move_active else 1.0,
+			"paused" if _fast_move_active else "live",
+		])
+
+
 func _physics_process(_delta: float) -> void:
 	if _restore_freeze_frames > 0:
 		_restore_freeze_frames -= 1
@@ -112,13 +138,20 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	var initial_position = position
-	var speed_modifier = _get_biome_speed_modifier()
+	var speed_modifier = _get_biome_speed_modifier() * _get_debug_speed_multiplier()
 	velocity = input_vector.normalized() * move_speed * speed_modifier
 	move_and_slide()
-	distance_in_pixel += position.distance_to(initial_position)
-	
+
+	# 🐞 DEBUG: while fast move is on, don't bank the distance travelled. Encounters are
+	# driven purely by this counter, so freezing it suppresses them without touching the
+	# encounter system, and the step count you had before the toggle is preserved.
+	if not _is_fast_move_on():
+		distance_in_pixel += position.distance_to(initial_position)
+
 	# coordinates
 	coord_label.text = "Pos: %d, %d" % [round(position.x), round(position.y)]
+	if _is_fast_move_on():
+		coord_label.text += "  🏃 x%.1f (no encounters)" % debug_fast_move_multiplier
 
 
 # Biome Management
@@ -158,6 +191,18 @@ func _get_biome_speed_modifier() -> float:
 		if biome_speed != null:
 			modifier = min(modifier, float(biome_speed))
 	return modifier
+
+
+## 🐞 DEBUG: true only when the toggle is both enabled and latched on. Single source of
+## truth so the speed boost and the encounter suppression can never disagree.
+func _is_fast_move_on() -> bool:
+	return debug_fast_move_enabled and _fast_move_active
+
+
+## 🐞 DEBUG: multiplies the biome modifier rather than replacing it, so terrain penalties
+## still apply while the toggle is on and slow ground stays noticeably slow.
+func _get_debug_speed_multiplier() -> float:
+	return debug_fast_move_multiplier if _is_fast_move_on() else 1.0
 
 
 func _update_biome_display() -> void:

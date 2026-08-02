@@ -26,6 +26,9 @@ var _tile_card_scene: PackedScene
 
 @onready var shop_name_label: Label = %ShopNameLabel
 
+@onready var stat_column: VBoxContainer = %StatColumn
+@onready var stat_column_b: VBoxContainer = %StatColumnB
+@onready var stat_row_template: HBoxContainer = %StatRowTemplate
 @onready var player_item_list: VBoxContainer = %PlayerItemList
 @onready var barter_item_list: VBoxContainer = %BarterItemList
 @onready var shop_item_list: VBoxContainer = %ShopItemList
@@ -94,18 +97,46 @@ func _update_shop_name() -> void:
 
 # --- Currency display ---
 
+## Öre always shows; crowns and drots appear only once the player has some,
+## matching the inventory screen.
+##
+## The Balance panel deliberately does NOT do this. It is a live readout that
+## changes with every item added to the trade, and labels appearing and
+## vanishing mid-trade would make the row jump under the player's eye.
 func _refresh_player_currency() -> void:
 	player_ore_label.text = "%d %s" % [GameState.player_ore, GameState.ORE_SYMBOL]
 	player_crowns_label.text = "%d %s" % [GameState.player_crowns, GameState.CROWN_SYMBOL]
 	player_drots_label.text = "%d %s" % [GameState.player_drots, GameState.DROT_SYMBOL]
+	player_crowns_label.visible = GameState.player_crowns > 0
+	player_drots_label.visible = GameState.player_drots > 0
 
 
 # --- Player inventory panel ---
 
+## Groups a list the same way the inventory does, weapons then armor then
+## offhand and so on, and alphabetically inside each group.
+##
+## This gives the grouping benefit without spending a header plus indent on
+## every category, which would cost more vertical space than these short lists
+## can afford. Swap in inventory_category_section.tscn if the lists ever grow
+## long enough to want collapsing.
+func _sort_by_category(entries: Array) -> void:
+	entries.sort_custom(func(a, b) -> bool:
+		var ia: int = ItemCategory.ORDER.find(ItemCategory.classify(a.item))
+		var ib: int = ItemCategory.ORDER.find(ItemCategory.classify(b.item))
+		if ia != ib:
+			return ia < ib
+		return a.item.name.naturalnocasecmp_to(b.item.name) < 0
+	)
+
+
 func _refresh_player_items() -> void:
 	_clear_children(player_item_list)
 
-	for slot in GameState.player_inventory:
+	var sorted_inventory: Array = GameState.player_inventory.duplicate()
+	_sort_by_category(sorted_inventory)
+
+	for slot in sorted_inventory:
 		var item: InventoryItem = slot.item
 		var amount: int = slot.amount
 
@@ -137,7 +168,11 @@ func _refresh_shop_items() -> void:
 	if shop_inventory == null:
 		return
 
-	for entry in shop_inventory.shop_items:
+	# ShopItemEntry exposes .item, so it sorts with the same comparator.
+	var sorted_wares: Array = shop_inventory.shop_items.duplicate()
+	_sort_by_category(sorted_wares)
+
+	for entry in sorted_wares:
 		if entry.item == null:
 			continue
 
@@ -488,30 +523,101 @@ func _on_slot_unhovered(_slot: BarterItemSlot) -> void:
 		_clear_tile_preview()
 
 
+## Fills the bottom strip with everything known about one item.
+##
+## Driven by hover, and pinned by right click, so inspecting costs no clicks and
+## never competes with the left click that adds an item to the trade.
+##
+## Stats come from ItemStatFormatter, the same source the inventory's Item
+## Inspector uses, so both screens always quote identical numbers.
 func _show_tile_preview(item: InventoryItem) -> void:
 	_clear_tile_preview()
 
+	if item == null:
+		return
+
+	tile_preview_label.text = item.name
+	_build_stat_rows(item)
+
+	# Materials and key items have no bundle, so the strip is just their stats.
 	if not item is EquipableItem:
-		tile_preview_label.text = "Equipment Tiles"
 		return
 
 	var equip := item as EquipableItem
 	if equip.tile_bundle == null or equip.tile_bundle.tiles.is_empty():
-		tile_preview_label.text = "Equipment Tiles"
 		return
 
-	tile_preview_label.text = "%s — Tiles" % item.name
-
+	# Deduplicated with a count beneath, the same way the inventory's inspector
+	# shows a bundle. Keeps a twelve-tile weapon down to four cards, so the row
+	# stays one line and the strip never needs to scroll in practice.
+	var distinct: Array[Tile] = []
+	var counts: Dictionary = {}
 	for tile in equip.tile_bundle.tiles:
+		if tile == null:
+			continue
+		if counts.has(tile):
+			counts[tile] += 1
+		else:
+			counts[tile] = 1
+			distinct.append(tile)
+
+	for tile in distinct:
+		var column := VBoxContainer.new()
+		column.add_theme_constant_override("separation", 2)
+
 		var card: Node = _tile_card_scene.instantiate()
 		card.tile = tile
-		tile_preview_grid.add_child(card)
+		column.add_child(card)
+
+		var count_label := Label.new()
+		count_label.text = "x%d" % counts[tile]
+		count_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		count_label.add_theme_font_size_override("font_size", 14)
+		count_label.add_theme_color_override("font_color", Color(0.72, 0.68, 0.6))
+		column.add_child(count_label)
+
+		tile_preview_grid.add_child(column)
+
+
+## Duplicates the hidden template row per stat line, so every font and colour
+## stays in the scene file rather than being hardcoded here.
+##
+## Lines are split across two columns. This panel is wide and short, so filling
+## it sideways keeps a nine-line weapon the same height as a one-line material,
+## which is what stops the strip resizing under the cursor.
+func _build_stat_rows(item: InventoryItem) -> void:
+	var lines := ItemStatFormatter.get_stat_lines(item)
+	var first_column_count := int(ceil(lines.size() / 2.0))
+
+	for i in lines.size():
+		var line: Dictionary = lines[i]
+		var row := stat_row_template.duplicate() as HBoxContainer
+		# duplicate() carries the scene-unique-name flag, which would then clash
+		# with the template's own name in the owner.
+		row.unique_name_in_owner = false
+		row.visible = true
+		(row.get_child(0) as Label).text = line.label
+		var value_label := row.get_child(1) as Label
+		value_label.text = line.value
+		value_label.add_theme_color_override("font_color", Color(line.color))
+
+		if i < first_column_count:
+			stat_column.add_child(row)
+		else:
+			stat_column_b.add_child(row)
 
 
 func _clear_tile_preview() -> void:
 	tile_preview_label.text = "Equipment Tiles"
 	for child in tile_preview_grid.get_children():
+		tile_preview_grid.remove_child(child)
 		child.queue_free()
+	for column in [stat_column, stat_column_b]:
+		for child in column.get_children():
+			if child == stat_row_template:
+				continue
+			column.remove_child(child)
+			child.queue_free()
 
 
 # --- Helpers ---

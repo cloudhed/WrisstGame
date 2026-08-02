@@ -12,6 +12,14 @@ signal slot_clicked(slot: InventoryItemSlot)
 ## Double click. Equips or unequips without going via the inspector button.
 signal slot_activated(slot: InventoryItemSlot)
 
+## Whether hovering a row pops the shared tooltip.
+##
+## Off by default: the Item Inspector already shows this item's name, type,
+## stats and description, so the tooltip only gets in the way of reading it.
+## Tick this in inventory_item_slot.tscn to bring it back. Tiles have their own
+## tooltip via tile_grid_card.gd and are unaffected either way.
+@export var show_hover_tooltip: bool = false
+
 ## Painted behind the row. Assigned in the scene so no colour is hardcoded here.
 @export var style_normal: StyleBox
 @export var style_hover: StyleBox
@@ -112,11 +120,12 @@ func _notification(what: int) -> void:
 	elif what == NOTIFICATION_MOUSE_EXIT:
 		_hovered = false
 		_apply_visual_state()
-		Events.tooltip_hide_requested.emit()
+		if show_hover_tooltip:
+			Events.tooltip_hide_requested.emit()
 
 
 func _show_tooltip() -> void:
-	if item == null:
+	if not show_hover_tooltip or item == null:
 		return
 	var tip_text: String = item.description if not item.description.is_empty() else item.name
 	Events.tile_tooltip_requested.emit(

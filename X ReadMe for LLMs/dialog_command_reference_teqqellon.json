@@ -19,14 +19,33 @@
     "id": "ref_intro",
     "type": "narration",
     "text": "A Teqqellon shifts in the tidepool. [@SHOW_EXTRA alert] This file is the command reference.",
+    "name": "teqqellon",
+    "next": "ref_portrait_slots"
+  },
+
+  {
+    "_comment": "PORTRAITS — There are three independent slots. @SHOW_PORTRAIT fills CharacterPortraitMain (drawn in front), @SHOW_EXTRA fills CharacterPortraitExtra (middle), @SHOW_EXTRA2 fills CharacterPortraitExtra2 (back). IMPORTANT: every slot looks up its <portrait_id> in the portrait deck of THIS node's 'name' character, so a node without a 'name' silently shows nothing. To put two different characters on screen at once, use one command node per character, as below.",
+    "id": "ref_portrait_slots",
+    "type": "command",
+    "name": "teqqellon",
+    "command": "@SHOW_PORTRAIT neutral ; @SHOW_EXTRA alert",
+    "next": "ref_portrait_slot_three"
+  },
+
+  {
+    "_comment": "PORTRAITS — Second character into the back slot. Separate node because 'name' changed. Slots do not clear each other, so the two nodes above and this one leave three portraits stacked on screen.",
+    "id": "ref_portrait_slot_three",
+    "type": "command",
+    "name": "grate",
+    "command": "@SHOW_EXTRA2 closed",
     "next": "ref_portrait_cleanup"
   },
 
   {
-    "_comment": "Hide portrait/extra and static slideshow.",
+    "_comment": "PORTRAITS — Hiding is per-slot and needs no 'name'. Hide all three plus the static slideshow.",
     "id": "ref_portrait_cleanup",
     "type": "command",
-    "command": "@HIDE_EXTRA ; @HIDE_PORTRAIT ; @HIDE_SLIDESHOW",
+    "command": "@HIDE_EXTRA2 ; @HIDE_EXTRA ; @HIDE_PORTRAIT ; @HIDE_SLIDESHOW",
     "next": "ref_scene_slides"
   },
 

@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://umryxaon5vew" path="res://Assets/UI/ui_sword.png" id="3_xljor"]
 [ext_resource type="Script" uid="uid://bmgiulnoxvqf5" path="res://Scenes/TileUI/tile_states/tile_base_state.gd" id="4_18qtx"]
 [ext_resource type="Texture2D" uid="uid://bwfim6kxa4gj3" path="res://Assets/Sprites/Particles/particle_watercolor_med.png" id="4_x0i70"]
-[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="5_4mhft"]
 [ext_resource type="Script" uid="uid://befi7jv3qj0wu" path="res://Scenes/TileUI/tile_states/tile_hover_state.gd" id="5_xeywo"]
 [ext_resource type="Script" uid="uid://c66kmifc6qwxg" path="res://Scenes/TileUI/tile_states/tile_clicked_state.gd" id="6_xljor"]
 [ext_resource type="Script" uid="uid://cyi1bcx3rujnr" path="res://Scenes/TileUI/tile_states/tile_dragging_state.gd" id="7_75cnn"]
+[ext_resource type="FontFile" uid="uid://cnsv175mln0um" path="res://Assets/Fonts/Harbour Regular.ttf" id="7_x0i70"]
 [ext_resource type="Script" uid="uid://bfaicwbobvo2c" path="res://Scenes/TileUI/tile_states/tile_released_state.gd" id="8_w1bd1"]
 [ext_resource type="AudioStream" uid="uid://c16wqkevk8kkc" path="res://Audio/SFX/tile_sfx/tile_foley_randomizer.tres" id="9_0v5jh"]
 [ext_resource type="Script" uid="uid://b70x6362s50uc" path="res://Scenes/TileUI/tile_states/tile_aiming_state.gd" id="11_w1bd1"]
@@ -176,7 +176,7 @@ theme_override_colors/font_color = Color(0.611765, 0.717647, 0.690196, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0.635294, 0.427451, 0.207843, 1)
 theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("5_4mhft")
+theme_override_fonts/font = ExtResource("7_x0i70")
 theme_override_font_sizes/font_size = 64
 text = "1"
 horizontal_alignment = 1

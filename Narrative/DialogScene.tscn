@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://xyxvn2yghvwa"]
 
-[ext_resource type="Script" path="res://Scripts/dialog/dialog_manager.gd" id="1_a8n6i"]
+[ext_resource type="Script" uid="uid://bjf6b1p05ub8o" path="res://Scripts/dialog/dialog_manager.gd" id="1_a8n6i"]
 [ext_resource type="Resource" uid="uid://bddgxod67ufrs" path="res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_day.tres" id="2_3jfb8"]
 [ext_resource type="PackedScene" uid="uid://cbpihauqeos3w" path="res://Narrative/zone_container.tscn" id="3_6br8l"]
 [ext_resource type="PackedScene" uid="uid://bsauxo1g05656" path="res://Narrative/mist_container.tscn" id="5_sdxh1"]
@@ -28,6 +28,13 @@ expand_mode = 2
 [node name="ZoneContainer" parent="." instance=ExtResource("3_6br8l")]
 
 [node name="CharacterContainer" type="Node2D" parent="."]
+
+[node name="CharacterPortraitExtra2" type="TextureRect" parent="CharacterContainer"]
+visible = false
+light_mask = 3
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="CharacterPortraitExtra" type="TextureRect" parent="CharacterContainer"]
 visible = false

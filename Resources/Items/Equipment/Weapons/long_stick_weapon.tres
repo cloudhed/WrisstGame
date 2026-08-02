@@ -6,12 +6,12 @@
 [ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="3_beg6s"]
 [ext_resource type="Resource" uid="uid://2ypvnstw0l5s" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_smack.tres" id="4_beg6s"]
 [ext_resource type="Resource" uid="uid://chgvxbs5v02nn" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_2hsmack.tres" id="5_iqfoy"]
-[ext_resource type="Resource" uid="uid://4hswreosnca7" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Unarmed/unarmed_fail.tres" id="7_dmi4f"]
 [ext_resource type="Resource" uid="uid://coum1ucna0o7c" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_weaksmack.tres" id="8_1lqhy"]
+[ext_resource type="Resource" path="res://Resources/Tiles/Generic/swing_miss.tres" id="8_saoru"]
 
 [sub_resource type="Resource" id="Resource_iqfoy"]
 script = ExtResource("2_757jb")
-tiles = Array[ExtResource("3_beg6s")]([ExtResource("4_beg6s"), ExtResource("4_beg6s"), ExtResource("8_1lqhy"), ExtResource("8_1lqhy"), ExtResource("8_1lqhy"), ExtResource("8_1lqhy"), ExtResource("5_iqfoy"), ExtResource("7_dmi4f"), ExtResource("7_dmi4f"), ExtResource("7_dmi4f"), ExtResource("7_dmi4f"), ExtResource("7_dmi4f")])
+tiles = Array[ExtResource("3_beg6s")]([ExtResource("4_beg6s"), ExtResource("4_beg6s"), ExtResource("8_1lqhy"), ExtResource("8_1lqhy"), ExtResource("8_1lqhy"), ExtResource("8_1lqhy"), ExtResource("5_iqfoy"), ExtResource("8_saoru"), ExtResource("8_saoru"), ExtResource("8_saoru"), ExtResource("8_saoru"), ExtResource("8_saoru")])
 metadata/_custom_type_script = "uid://c814t8855evro"
 
 [resource]

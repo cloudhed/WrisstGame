@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://8miyci6curga"]
 
 [ext_resource type="Script" uid="uid://cxj1wlu03rrv4" path="res://Scenes/UI/Barter/quantity_popup.gd" id="1_popup"]
-[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="2_header"]
-[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="3_body"]
+[ext_resource type="FontFile" uid="uid://cnsv175mln0um" path="res://Assets/Fonts/Harbour Regular.ttf" id="2_dhg6h"]
+[ext_resource type="FontFile" uid="uid://bjy4obd8t48tc" path="res://Assets/Fonts/Anomoly Bold.ttf" id="3_aeyu1"]
 
 [node name="QuantityPopup" type="PanelContainer"]
 custom_minimum_size = Vector2(240, 140)
@@ -32,7 +32,7 @@ theme_override_constants/separation = 10
 
 [node name="HeaderLabel" type="Label" parent="MarginContainer/VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_header")
+theme_override_fonts/font = ExtResource("2_dhg6h")
 theme_override_font_sizes/font_size = 22
 text = "How many?"
 horizontal_alignment = 1
@@ -46,7 +46,7 @@ alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_body")
+theme_override_fonts/font = ExtResource("3_aeyu1")
 theme_override_font_sizes/font_size = 18
 text = "-"
 
@@ -54,7 +54,7 @@ text = "-"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_body")
+theme_override_fonts/font = ExtResource("2_dhg6h")
 theme_override_font_sizes/font_size = 20
 text = "1"
 horizontal_alignment = 1
@@ -64,7 +64,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_body")
+theme_override_fonts/font = ExtResource("3_aeyu1")
 theme_override_font_sizes/font_size = 18
 text = "+"
 
@@ -77,7 +77,7 @@ alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_body")
+theme_override_fonts/font = ExtResource("3_aeyu1")
 theme_override_font_sizes/font_size = 14
 text = "MAX"
 
@@ -85,7 +85,7 @@ text = "MAX"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_body")
+theme_override_fonts/font = ExtResource("3_aeyu1")
 theme_override_font_sizes/font_size = 14
 text = "OK"
 
@@ -93,6 +93,6 @@ text = "OK"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_body")
+theme_override_fonts/font = ExtResource("3_aeyu1")
 theme_override_font_sizes/font_size = 14
 text = "Cancel"

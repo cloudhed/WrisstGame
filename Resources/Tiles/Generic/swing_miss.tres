@@ -1,8 +1,8 @@
-[gd_resource type="Resource" load_steps=5 format=3]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cdlgey7exvtj7"]
 
 [ext_resource type="Texture2D" uid="uid://i71ehd3hl3eq" path="res://Assets/UI/tile_base.png" id="1_bg"]
-[ext_resource type="Script" path="res://Resources/Tiles/Generic/miss_tile.gd" id="2_script"]
-[ext_resource type="Resource" path="res://Resources/Tiles/Generic/swing_miss_mespool.tres" id="3_pool"]
+[ext_resource type="Script" uid="uid://l8268uflo8sv" path="res://Resources/Tiles/Generic/miss_tile.gd" id="2_script"]
+[ext_resource type="Resource" uid="uid://d4cc04i0vwk3r" path="res://Resources/Tiles/Generic/swing_miss_mespool.tres" id="3_pool"]
 [ext_resource type="AudioStream" uid="uid://bclmqond51wxr" path="res://Audio/SFX/tile_sfx/tile_release1.wav" id="4_sfx"]
 
 [resource]

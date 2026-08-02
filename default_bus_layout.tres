@@ -1,4 +1,7 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://c3lxmb1tqs6hn"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://c3lxmb1tqs6hn"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_j3pel"]
+resource_name = "Limiter"
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
@@ -10,6 +13,8 @@ wet = 1.0
 
 [resource]
 bus/0/volume_db = -0.328256
+bus/0/effect/0/effect = SubResource("AudioEffectLimiter_j3pel")
+bus/0/effect/0/enabled = true
 bus/1/name = &"music"
 bus/1/solo = false
 bus/1/mute = false

@@ -48,6 +48,7 @@ func initialize(
 	# 🔌 Make sure these are in context so commands can access them
 	context["portrait_node"] = context.get("portrait_node", null)
 	context["portrait2_node"] = context.get("portrait2_node", null)
+	context["portrait3_node"] = context.get("portrait3_node", null)
 	context["slideshow_node"] = context.get("slideshow_node", null)
 	context["slide_container"] = context.get("slide_container", null)
 
@@ -445,6 +446,7 @@ func handle_command(cmd: String) -> void:
 		command_context["slide_container"] = context.get("slide_container", null)
 		command_context["portrait_node"] = context.get("portrait_node", null)
 		command_context["portrait2_node"] = context.get("portrait2_node", null)
+		command_context["portrait3_node"] = context.get("portrait3_node", null)
 		command_context["slideshow_node"] = context.get("slideshow_node", null)
 
 		command_executor.execute(raw_cmd.trim_prefix("@"), command_context)

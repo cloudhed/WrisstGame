@@ -12,6 +12,7 @@ const OLDMINE_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Oldm
 const TEMPLE_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_day.tres"
 const TEMPLE_INTERIOR_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/TempleRuins/templeruins_interior_day.tres"
 const SEWERS_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Sewers/Sewers_Day.tres"
+const MARKET_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Klyftet/Market/Market_Intro.tres"
 const KEMENWOODS_INTRO_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/KemenWoods/kemenwoods_intro.tres"
 const KEMENWOODS_DAY_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/KemenWoods/kemenwoods_day.tres"
 const KEMENWOODS_NIGHT_SCENE_PATH := "res://Narrative/DialogScenes/Locations/Overworld/KemenWoods/kemenwoods_night.tres"
@@ -109,5 +110,6 @@ func _get_kemenwoods_scene() -> DialogSceneResource:
 
 
 func _get_market_scene() -> DialogSceneResource:
-	print("get_market_scene")
-	return
+	# The market only has a day scene so far. When a night variant exists, branch on
+	# GameState.is_night here the way _get_klyftet_scene() does.
+	return _load_scene_cached(MARKET_SCENE_PATH)

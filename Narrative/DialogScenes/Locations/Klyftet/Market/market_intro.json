@@ -1,0 +1,571 @@
+[
+	{
+		"id": "visiting_market",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE wind res://Audio/Ambience/Klyftet/klyftet_wind.mp3",
+		"set_flag": "visiting_market",
+		"flag_type": "temp",
+		"clear": true,
+		"next": "enter_market"
+	},
+	{
+		"id": "enter_market",
+		"type": "logic",
+		"check_flags": {
+			"flags": ["market_entered_once"],
+			"on_success": "market_enter_repeat",
+			"on_fail": "market_enter_first"
+		}
+	},
+	{
+		"id": "market_enter_first",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE wind res://Audio/Ambience/Klyftet/klyftet_wind.mp3",
+		"set_flag": "market_entered_once",
+		"flag_type": "event",
+		"next": "market_desc_first"
+	},
+	{
+		"id": "market_enter_repeat",
+		"type": "command",
+		"command": "@PLAY_AMBIENCE wind res://Audio/Ambience/Klyftet/klyftet_wind.mp3",
+		"next": "market_desc_repeat"
+	},
+	{
+		"id": "market_desc_first",
+		"type": "narration",
+		"text": "The market is a bustling hub of activity, filled with Monsterfolk of all shapes and sizes. The cool wind carries scents of spices, baked goods, and the occasional whiff of something less pleasant. Stalls and tents line the area, each one offering a unique array of goods, from fresh produce to handcrafted trinkets. The chatter of merchants and customers invites you to explore further.",
+		"next": "market_interruption"
+	},
+	{
+		"id": "market_desc_repeat",
+		"type": "narration",
+		"text": "You find yourself back in the lively market, where the air is filled with the mingling scents of spices and baked goods. The stalls are bustling with Monsterfolk, each offering their wares with animated gestures and calls.",
+		"set_flag": "visiting_market",
+		"flag_type": "temp",
+		"next": "market_choice_hub"
+	},
+	{
+		"id": "market_interruption",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "Before you've figured out what to do next, you notice a sturdy Monster hurrying towards you. As it gets closer, you notice its large, gaping mouth full of teeth. It stops dead in its tracks only a few meters away and stands completelystill.",
+		"next": "market_interruption_SHOW"
+	},
+	{
+		"id": "market_interruption_SHOW",
+		"type": "command",
+		"name": "Rupaaa",
+		"command": "@SHOW_PORTRAIT rupaaa_base",
+		"clear": false,
+		"next": "market_interruption_02"
+	},
+	{
+		"id": "market_interruption_02",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "It doesn't move or speak, but it's clearly observing you.",
+		"next": "market_interruption_CHOICE"
+	},
+	{
+		"id": "market_interruption_CHOICE",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Um, hello?",
+				"next": "market_interruption_answer"
+			},
+			{
+				"text": "> What's with the staring?",
+				"next": "market_interruption_answer"
+			},
+			{
+				"text": "> [Stay silent]",
+				"next": "market_interruption_silent"
+			},
+
+			{
+				"text": "> [Leave]",
+				"next": "market_interruption_leave"
+			}
+		]
+	},
+
+	{
+		"id": "market_interruption_answer",
+		"type": "npc",
+		"name": "Rupaaa",
+		"clear": true,
+		"text": "\"It speaks.\" The Monster snarls around the words without any of it landing as a threat, and something in the set of its shoulders reads as satisfied. \"Good. I had budgeted for silence, and silence is a poor return on a walk across a square.\"",
+		"next": "market_interruption_answer_02"
+	},
+	{
+		"id": "market_interruption_answer_02",
+		"type": "npc",
+		"name": "Rupaaa",
+		"clear": true,
+		"text": "\"Rupaaa.\" The Monster pauses and puts one of its broad hands flat against its chest, enthusiastically enough to make the metal pieces stitched along its garb chime along with the introduction. \"Rupaaa, of the stall by the western wall, which is the good stall, and which you have not yet visited.\"",
+		"next": "market_interruption_answer_03"
+	},
+	{
+		"id": "market_interruption_answer_03",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "It pauses. \"Which is a matter of considerable oversight!\"",
+		"next": "market_rupaaa_CHOICE"
+	},
+
+	{
+		"id": "market_interruption_silent",
+		"type": "narration",
+		"clear": true,
+		"text": "You keep your mouth shut and let the silence run. [nb] The wind scrapes between the stalls while the Monster waits you out with the patience of something that has done this many times before, and its tail curls once against the stone.",
+		"next": "market_interruption_silent_02"
+	},
+	{
+		"id": "market_interruption_silent_02",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "\"Better.\" The Monster inclines its narrow head, and the metal pieces along its garb settle with the motion. \"You do not fill a quiet with noise. That is rarer here than you would think.\"",
+		"next": "market_interruption_silent_03"
+	},
+	{
+		"id": "market_interruption_silent_03",
+		"type": "npc",
+		"name": "Rupaaa",
+		"clear": true,
+		"text": "\"Rupaaa, of the stall by the western wall.\" It hands the name over the way you would hand over something valuable. \"And you are coming to see it.\"",
+		"next": "market_rupaaa_CHOICE"
+	},
+
+	{
+		"id": "market_interruption_leave",
+		"type": "narration",
+		"clear": true,
+		"text": "You turn back toward the square. [nb] Behind you the metal pieces chime once as the Monster lets you go without a word of protest, and you get the distinct sense that the stall by the western wall will still be there whenever you decide otherwise.",
+		"next": "market_leave"
+	},
+
+	{
+		"id": "market_rupaaa_CHOICE",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> Whatever you're selling, I can't pay for it.",
+				"hide_if": "picked",
+				"next": "market_rupaaa_cantpay"
+			},
+			{
+				"text": "> Why the western wall?",
+				"hide_if": "picked",
+				"next": "market_rupaaa_westwall"
+			},
+			{
+				"text": "> [Follow it]",
+				"next": "market_follow"
+			},
+			{
+				"text": "> I have somewhere to be.",
+				"next": "market_interruption_leave"
+			}
+		]
+	},
+	{
+		"id": "market_rupaaa_cantpay",
+		"type": "npc",
+		"name": "Rupaaa",
+		"clear": true,
+		"text": "\"Nobody can pay for it.\" The Monster seems entirely untroubled by this. \"That is what makes it worth the price. Looking, on the other hand, is free, and I have never once charged for looking.\"",
+		"next": "market_rupaaa_CHOICE"
+	},
+	{
+		"id": "market_rupaaa_westwall",
+		"type": "npc",
+		"name": "Rupaaa",
+		"clear": true,
+		"text": "\"Because the western wall breaks the split-howl.\" It gestures up at the cliff behind it without looking. \"Goods that stand in that wind all day reach the buyer tasting of wind. We settled it in an afternoon.\"",
+		"next": "market_rupaaa_westwall_02"
+	},
+	{
+		"id": "market_rupaaa_westwall_02",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "It pauses. \"Baaaku will tell you otherwise. Baaaku was asleep.\"",
+		"next": "market_rupaaa_CHOICE"
+	},
+
+	{
+		"id": "market_follow",
+		"type": "narration",
+		"clear": true,
+		"text": "You fall in behind the Monster as it crosses the square with the unhurried ceremony of something leading a procession of one. [nb] Traders step out of its way without being asked, and the metal along its garb keeps time the whole distance.",
+		"next": "market_stall_ZONE"
+	},
+	{
+		"id": "market_stall_ZONE",
+		"type": "command",
+		"name": "Rupaaa",
+		"command": "@SHOW_ZONE Klyftet/Market/KlyftetExtMarketKraaalDay ; @SHOW_EXTRA2 store_open ; @SHOW_PORTRAIT rupaaa_base",
+		"clear": true,
+		"next": "market_stall_arrive"
+	},
+	{
+		"id": "market_stall_arrive",
+		"type": "narration",
+		"text": "The stall turns out to be a cart. [nb] An enormous flat-bedded wheelbarrow stands with its sides folded down into counters, loaded with rope and tools and clay jars in rows so exact they look measured, and the whole thing balances on one heavy wheel that could be walked out of Klyftet inside a minute. [nb] Two tents lean against the cliff wall behind it, where the stairs to the upper levels climb past into the rock.",
+		"next": "market_baaaku_APPEAR"
+	},
+	{
+		"id": "market_baaaku_APPEAR",
+		"type": "command",
+		"name": "Baaaku",
+		"command": "@SHOW_EXTRA baaaku_base",
+		"clear": false,
+		"next": "market_baaaku_cutin"
+	},
+	{
+		"id": "market_baaaku_cutin",
+		"type": "npc",
+		"name": "Baaaku",
+		"clear": true,
+		"text": "\"Rope, tools, or contraband. That's the order people want them in.\" A second Kraaal is working the rows without once appearing to look up, paler and dustier than the first and moving at roughly twice the speed. \"You're not rope.\"",
+		"next": "market_baaaku_cutin_02"
+	},
+	{
+		"id": "market_baaaku_cutin_02",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"Baaaku. Don't buy anything the other one tells you is rare.\"",
+		"set_flag": "kraaal_met",
+		"flag_type": "knowledge",
+		"next": "market_pitch_CHOICE"
+	},
+
+	{
+		"id": "market_pitch_CHOICE",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> So what do you actually sell?",
+				"hide_if": "picked",
+				"next": "market_pitch_wares"
+			},
+			{
+				"text": "> Are you two related?",
+				"hide_if": "picked",
+				"next": "market_pitch_related"
+			},
+			{
+				"text": "> [Let them argue]",
+				"next": "market_pitch_argue"
+			},
+			{
+				"text": "> [Step back from the cart]",
+				"next": "market_kraaal_leave"
+			}
+		]
+	},
+	{
+		"id": "market_pitch_wares",
+		"type": "npc",
+		"name": "Rupaaa",
+		"clear": true,
+		"text": "\"What we sell is whatever Klyftet has run out of by the time Klyftet notices. Salve. Cord. Lamp oil in the cold months.\" Rupaaa lays one claw flat on the cart as though swearing an oath on it. \"The price is what the price is, and the price is that.\"",
+		"next": "market_pitch_wares_02"
+	},
+	{
+		"id": "market_pitch_wares_02",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"That means we buy cheap off the ore-runners and sell it back before the next caravan.\" Baaaku does not look up from the cord. \"Same thing, fewer words: You want the salve. Everyone off the road wants the salve.\"",
+		"next": "market_slip_setup"
+	},
+	{
+		"id": "market_pitch_argue",
+		"type": "narration",
+		"clear": true,
+		"text": "You say nothing and let them go. [nb] Inside of a minute the two of them are arguing about the price of lamp oil in front of you as though you have already left, and Rupaaa builds its case in long deliberate turns while Baaaku dismantles each one before it finishes. [nb] Somewhere in the middle of it they land on a number that neither of them contests.",
+		"next": "market_pitch_argue_02"
+	},
+	{
+		"id": "market_pitch_argue_02",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"Eleven öre.\" Baaaku turns back to you without any change of pace. \"It was always going to be eleven. Rupaaa just likes to come up with the numbers himself.\"",
+		"next": "market_slip_setup"
+	},
+	{
+		"id": "market_pitch_related",
+		"type": "npc",
+		"name": "Baaaku",
+		"clear": true,
+		"text": "\"Personal questions?\" Baaaaku turns to you and his jaws click a few times. \"Do you have anything to trade for answers?\"",
+		"next": "market_pitch_related_02"
+	},
+	{
+		"id": "market_pitch_related_02",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "Rupaaa chimes in as he spreads both hands over his garb covering his belly. \"What my brother means is that questions of that kind carry a price, and you have not yet opened an account with us.\"",
+		"next": "market_pitch_CHOICE"
+	},
+
+	{
+		"id": "market_slip_setup",
+		"type": "narration",
+		"clear": true,
+		"text": "Rupaaa draws itself up with the air of something about to make an announcement, and the metal along its garb goes quiet with it.",
+		"next": "market_slip_rupaaa"
+	},
+	{
+		"id": "market_slip_rupaaa",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "\"And soon there will be a great deal more than this on the counter.\" Rupaaa leans in over the folded-down side of the cart. \"There is a quantity of very good scavenged wares sitting in the dark, four hundred paces from where you are standing right now, and the whole town has agreed to forget about it.\"",
+		"next": "market_slip_rupaaa_02"
+	},
+	{
+		"id": "market_slip_rupaaa_02",
+		"type": "npc",
+		"name": "Rupaaa",
+		"clear": true,
+		"text": "\"The old mine still has its teeth in it, and what is down there is probably worth more than everything on this cart, and we intend to have the-\"",
+		"next": "market_slip_baaaku"
+	},
+	{
+		"id": "market_slip_baaaku",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"Rupaaa.\" With a hiss Baaaku cuts in, and Rupaaa's maw snaps shut with a click. \"Don't go running your mouth to every stranger we meet.\"",
+		"next": "market_slip_baaaku_02"
+	},
+	{
+		"id": "market_slip_baaaku_02",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"Stock. Counter. Now.\"",
+		"set_flag": "kraaal_mine_hinted",
+		"flag_type": "knowledge",
+		"next": "market_slip_after"
+	},
+	{
+		"id": "market_slip_after",
+		"type": "narration",
+		"text": "Rupaaa closes its maw around the rest of the sentence with visible effort and fiddles with the hem of his garbs. [nb] Baaaku goes back to sorting cord as though nothing had been said at all, and neither of them looks at you.",
+		"next": "market_kraaal_hub"
+	},
+
+	{
+		"id": "market_kraaal_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> About that mine.",
+				"show_if": { "has_flag": "kraaal_mine_hinted" },
+				"hide_if": { "has_any_flag": ["kraaal_mine_offered", "kraaal_mine_guard_known"] },
+				"check": { "ability": "soul", "dc": 13 },
+				"bonus_if": [
+					{ "has_flag": "kraaal_traded", "bonus": 3 }
+				],
+				"on_fail": "market_press_fail",
+				"on_success": "market_press_success",
+				"on_nat20": "market_press_nat20"
+			},
+			{
+				"text": "> How did the two of you end up here?",
+				"hide_if": "picked",
+				"next": "market_ask_them"
+			},
+			{
+				"text": "> What is this place?",
+				"hide_if": "picked",
+				"next": "market_ask_klyftet"
+			},
+			{
+				"text": "> [Trade]",
+				"next": "market_kraaal_BARTER"
+			},
+			{
+				"text": "> [Step back from the cart]",
+				"next": "market_kraaal_leave"
+			}
+		]
+	},
+
+	{
+		"id": "market_ask_them",
+		"type": "npc",
+		"name": "Rupaaa",
+		"clear": true,
+		"text": "\"We came in during the shortage, two cycles back.\" Rupaaa settles into the telling of it. \"There was a platform standing empty by the western wall, and by the evening of that same day there was not.\"",
+		"next": "market_ask_them_02"
+	},
+	{
+		"id": "market_ask_them_02",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"Took it in an hour.\" Baaaku does not look up. \"The telling takes a day because a day sounds earned.\"",
+		"next": "market_kraaal_hub"
+	},
+	{
+		"id": "market_ask_klyftet",
+		"type": "npc",
+		"name": "Baaaku",
+		"clear": true,
+		"text": "\"Small, cold, honest.\" Baaaku answers before you have finished asking. \"Pay what you owe and nobody here cares what you are. Miss twice and you'll learn how fast this place talks.\"",
+		"next": "market_ask_klyftet_02"
+	},
+	{
+		"id": "market_ask_klyftet_02",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "\"Baaaku is being brief again.\" Rupaaa waves this off with one broad hand. \"Klyftet survives on reputation the way other towns survive on walls. Yours has not been written yet, which is worth more than öre, and you are spending it right now by standing here.\"",
+		"next": "market_kraaal_hub"
+	},
+
+	{
+		"id": "market_press_fail",
+		"type": "narration",
+		"clear": true,
+		"text": "You push, and it lands harder than you meant it to. [nb] Baaaku's hands keep moving through the cord without a pause, while Rupaaa discovers something at the far end of the cart that urgently needs its attention.",
+		"next": "market_press_fail_02"
+	},
+	{
+		"id": "market_press_fail_02",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"Don't know what you think you heard.\" Baaaku still does not look up. \"Rupaaa talks. It's a condition.\"",
+		"next": "market_kraaal_hub"
+	},
+	{
+		"id": "market_press_success",
+		"type": "narration",
+		"clear": true,
+		"text": "You put the question down between you and leave it there without leaning on it, which turns out to be the right way to do it. [nb] Baaaku sets the cord aside and turns its narrow head toward you properly for the first time since you walked up.",
+		"next": "market_press_success_02"
+	},
+	{
+		"id": "market_press_success_02",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"There's a guard on that fence in daylight.\" It offers nothing else alongside it. \"That's all you're getting today. Work out for yourself why I gave you that much.\"",
+		"command": "@add_reputation rupaaa 10 ; @add_reputation baaaku 10",
+		"set_flag": "kraaal_mine_guard_known",
+		"flag_type": "knowledge",
+		"next": "market_kraaal_hub"
+	},
+	{
+		"id": "market_press_nat20",
+		"type": "narration",
+		"clear": true,
+		"text": "Baaaku stops moving, which is the first time it has been still since you walked up. [nb] Rupaaa stops as well, so that for the first time all day the two of them arrive at the same place without arguing their way to it, and the cart goes very quiet.",
+		"next": "market_press_nat20_02"
+	},
+	{
+		"id": "market_press_nat20_02",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"Guard on the fence by day. Nothing on it by night.\" Baaaku drops its voice low enough that the next stall won't catch it. \"We can't go in ourselves. We're known here.\"",
+		"next": "market_press_nat20_03"
+	},
+	{
+		"id": "market_press_nat20_03",
+		"type": "npc",
+		"name": "Rupaaa",
+		"clear": true,
+		"text": "\"A Kraaal that gets caught stops being trusted, and a Kraaal that is not trusted is finished here.\" Rupaaa says it quietly, which is the strangest thing it has done since you met it. \"You, on the other hand, are nobody at all yet.\"",
+		"next": "market_press_nat20_04"
+	},
+	{
+		"id": "market_press_nat20_04",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "\"We're one bad season off unbacked.\" The word costs Baaaku something on the way out. \"You don't know what that means yet. I'd rather you didn't learn it from watching us.\"",
+		"command": "@add_reputation rupaaa 25 ; @add_reputation baaaku 25",
+		"set_flag": "kraaal_mine_offered",
+		"flag_type": "knowledge",
+		"next": "market_kraaal_hub"
+	},
+
+	{
+		"id": "market_kraaal_BARTER",
+		"type": "command",
+		"command": "@OPEN_BARTER res://Resources/Shops/Klyftet/klyftet_market_shop.tres",
+		"set_flag": "kraaal_traded",
+		"flag_type": "event",
+		"clear": true,
+		"next": "market_kraaal_hub"
+	},
+	{
+		"id": "market_kraaal_leave",
+		"type": "narration",
+		"clear": true,
+		"text": "You step back from the cart. [nb] Rupaaa raises one broad hand in a farewell that takes considerably longer than it needs to, while Baaaku has already turned to the next customer.",
+		"next": "market_leave"
+	},
+
+	{
+		"id": "market_choice_hub",
+		"type": "choice",
+		"options": [
+			{
+				"text": "> [Go to the Kraaal cart]",
+				"show_if": { "has_flag": "kraaal_met" },
+				"next": "market_return_stall"
+			},
+			{
+				"text": "> [Look around the stalls]",
+				"hide_if": "picked",
+				"next": "market_look_around"
+			},
+			{
+				"text": "> [Head back into town]",
+				"next": "market_leave"
+			}
+		]
+	},
+	{
+		"id": "market_look_around",
+		"type": "narration",
+		"clear": true,
+		"text": "You take a slow circuit of the square. [nb] A small mammal-looking Monster is selling dried meat out of a barrel with the lid propped open, two merchants are arguing over the weight of a sack, and another hammers a few more nails into a wooden pole holding one corner of the stall-tarp just before a large gust of wind blows in from the lake and rattles every hanging item in the whole market for a moment before it moves on.",
+		"next": "market_choice_hub"
+	},
+	{
+		"id": "market_return_stall",
+		"type": "command",
+		"name": "Rupaaa",
+		"command": "@SHOW_ZONE Klyftet/Market/KlyftetExtMarketKraaalDay ; @SHOW_EXTRA2 store_open ; @SHOW_PORTRAIT rupaaa_base ; @SHOW_EXTRA baaaku_base",
+		"clear": true,
+		"next": "market_return_greet"
+	},
+	{
+		"id": "market_return_greet",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "\"You again.\" Rupaaa sounds pleased about it. \" I suspected you would return.\"",
+		"next": "market_return_greet_02"
+	},
+	{
+		"id": "market_return_greet_02",
+		"type": "npc",
+		"name": "Baaaku",
+		"text": "Baaaku does not look up from the rows. \"That is a lie. I said you would come back, and Rupaaa said you would not.\"",
+		"next": "market_return_greet_03"
+	},
+	{
+		"id": "market_return_greet_03",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "Rupaaa's head snaps in his brother's direction, and you can only assume he's glaring.\"Nevertheless, you're back!\"",
+		"next": "market_kraaal_hub"
+	},
+
+	{
+		"id": "market_leave",
+		"type": "command",
+		"command": "@STOP_AMBIENCE wind ; @LOCATION_CHANGE klyftet",
+		"clear": true,
+		"next": "market_choice_hub"
+	}
+]

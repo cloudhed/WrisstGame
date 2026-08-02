@@ -43,6 +43,7 @@ size_flags_horizontal = 3
 mouse_filter = 0
 theme_override_styles/panel = SubResource("slot_normal")
 script = ExtResource("1_slot")
+show_hover_tooltip = false
 style_normal = SubResource("slot_normal")
 style_hover = SubResource("slot_hover")
 style_selected = SubResource("slot_selected")

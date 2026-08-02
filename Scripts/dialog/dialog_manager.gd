@@ -20,6 +20,7 @@ extends Node
 
 @onready var char_portrait: TextureRect = $CharacterContainer/CharacterPortraitMain
 @onready var char_extra: TextureRect = $CharacterContainer/CharacterPortraitExtra
+@onready var char_extra2: TextureRect = $CharacterContainer/CharacterPortraitExtra2
 
 @onready var dialog_ui_layer: CanvasLayer = $CanvasLayer
 
@@ -103,6 +104,7 @@ func start_dialog(data: DialogSceneResource) -> void:
 				"dialog_manager": self,
 				"portrait_node": char_portrait,         # ✅ ADD THIS
 				"portrait2_node": char_extra,           # ✅ AND THIS
+				"portrait3_node": char_extra2,          # ✅ THIRD SLOT (@SHOW_EXTRA2)
 				"slideshow_node": slideshow_image,
 				"slide_container": slide_container
 			}
@@ -180,44 +182,60 @@ func load_additional_dialog(relative_path: String) -> void:
 		push_error("❌ Failed to load additional dialog from: " + full_path)
 
 
-func show_character_portrait(name: String) -> void:
-	var character = character_map.get(name)
-	if character and character.portrait:
-		char_portrait.texture = character.portrait
-		char_portrait.modulate.a = 0.0
-		char_portrait.show()
-		var tween: Tween = create_tween()
-		tween.tween_property(char_portrait, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	else:
-		print("❌ No character or portrait found for:", name)
-
-
-func hide_character_portrait() -> void:
-	if char_portrait.visible:
-		var tween: Tween = create_tween()
-		tween.tween_property(char_portrait, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-		await tween.finished
-		char_portrait.hide()
-
-
-func show_character_extra(name: String) -> void:
-	var character = character_map.get(name)
-	if character and character.portrait:
-		char_extra.texture = character.portrait
-		char_extra.modulate.a = 0.0
-		char_extra.show()
-		var tween: Tween = create_tween()
-		tween.tween_property(char_extra, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	else:
-		print("❌ No character or portrait found for:", name)
-
-
-func hide_character_extra() -> void:
-	if char_extra.visible:
-		var tween: Tween = create_tween()
-		tween.tween_property(char_extra, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-		await tween.finished
-		char_extra.hide()
+# ┌───────────────────────────────────────────────────────────────────────────┐
+# │ 🗑️ FLAGGED FOR DELETION (commented out 2026-08-02)                        │
+# │                                                                           │
+# │ These four portrait helpers are dead code. Nothing in the project calls    │
+# │ them: no GDScript caller, no .tscn signal connection, no string dispatch   │
+# │ via call()/has_method(). Portraits are driven entirely by the @SHOW_*/     │
+# │ @HIDE_* dialog commands in dialog_command_executor.gd instead.             │
+# │                                                                           │
+# │ They are also stale. They assign `character.portrait` straight to          │
+# │ TextureRect.texture, which dates from when CharacterResource.portrait was  │
+# │ a Texture2D. It is a PortraitDeck now (see character_resource.gd, where     │
+# │ the old Texture2D export is still commented out), so these would fail at   │
+# │ runtime even if something did call them.                                   │
+# │                                                                           │
+# │ DELETE THIS WHOLE BLOCK once a play session confirms nothing broke.        │
+# └───────────────────────────────────────────────────────────────────────────┘
+#func show_character_portrait(name: String) -> void:
+	#var character = character_map.get(name)
+	#if character and character.portrait:
+		#char_portrait.texture = character.portrait
+		#char_portrait.modulate.a = 0.0
+		#char_portrait.show()
+		#var tween: Tween = create_tween()
+		#tween.tween_property(char_portrait, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	#else:
+		#print("❌ No character or portrait found for:", name)
+#
+#
+#func hide_character_portrait() -> void:
+	#if char_portrait.visible:
+		#var tween: Tween = create_tween()
+		#tween.tween_property(char_portrait, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		#await tween.finished
+		#char_portrait.hide()
+#
+#
+#func show_character_extra(name: String) -> void:
+	#var character = character_map.get(name)
+	#if character and character.portrait:
+		#char_extra.texture = character.portrait
+		#char_extra.modulate.a = 0.0
+		#char_extra.show()
+		#var tween: Tween = create_tween()
+		#tween.tween_property(char_extra, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	#else:
+		#print("❌ No character or portrait found for:", name)
+#
+#
+#func hide_character_extra() -> void:
+	#if char_extra.visible:
+		#var tween: Tween = create_tween()
+		#tween.tween_property(char_extra, "modulate:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		#await tween.finished
+		#char_extra.hide()
 
 
 func _set_hotspots_enabled(enabled: bool) -> void:
@@ -234,7 +252,8 @@ func disable_dialog_ui():
 	zone_container.set_process_input(false)
 	char_portrait.hide()
 	char_extra.hide()
-	
+	char_extra2.hide()
+
 
 func enable_dialog_ui():
 	dialog_ui_layer.visible = true
@@ -243,6 +262,7 @@ func enable_dialog_ui():
 	zone_container.set_process_input(true)
 	char_portrait.show()
 	char_extra.show()
+	char_extra2.show()
 
 
 func clear_visuals() -> void:
@@ -258,6 +278,9 @@ func clear_visuals() -> void:
 
 	char_extra.texture = null
 	char_extra.hide()
+
+	char_extra2.texture = null
+	char_extra2.hide()
 
 	# 🧹 Clear slideshow image
 	slideshow_image.texture = null
@@ -276,7 +299,7 @@ func clear_visuals() -> void:
 
 	# 🧹 Clear any leftover characters
 	for child in character_container.get_children():
-		if child != char_portrait and child != char_extra:
+		if child != char_portrait and child != char_extra and child != char_extra2:
 			child.queue_free()
 
 	print("🧼 Visuals cleared for new dialog scene.")

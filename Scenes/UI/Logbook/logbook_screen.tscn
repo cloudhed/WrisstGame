@@ -1,26 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dre0giwru7and"]
+[gd_scene load_steps=4 format=3 uid="uid://dre0giwru7and"]
 
 [ext_resource type="Script" uid="uid://dlton7nom1a0x" path="res://Scenes/UI/Logbook/logbook_screen.gd" id="1_script"]
-[ext_resource type="FontFile" uid="uid://lpeonags85nx" path="res://Assets/Fonts/GrenzeGotisch-Black.ttf" id="2_header"]
-[ext_resource type="FontFile" uid="uid://cnsv175mln0um" path="res://Assets/Fonts/Harbour Regular.ttf" id="2_r6dto"]
-[ext_resource type="FontFile" uid="uid://bk3fjoib1e7ip" path="res://Assets/Fonts/HyperlegibleNext-Regular.ttf" id="3_body"]
-
-[sub_resource type="StyleBoxFlat" id="logbook_panel"]
-content_margin_left = 20.0
-content_margin_top = 16.0
-content_margin_right = 20.0
-content_margin_bottom = 16.0
-bg_color = Color(0.2, 0.13, 0.1, 0.97)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.293244, 0.495061, 0.316758, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[ext_resource type="Theme" uid="uid://mbd5kd88580t" path="res://Themes/wrisst_ui.tres" id="2_theme"]
+[ext_resource type="PackedScene" uid="uid://ba7wxq3nfk8vd" path="res://Scenes/UI/panel_frame.tscn" id="3_frame"]
 
 [node name="LogbookScreen" type="Panel"]
 anchors_preset = 15
@@ -29,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
+theme = ExtResource("2_theme")
 script = ExtResource("1_script")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -44,61 +27,64 @@ custom_minimum_size = Vector2(420, 520)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("logbook_panel")
 
-[node name="VBox" type="VBoxContainer" parent="CenterContainer/BookPanel"]
+[node name="Margin" type="MarginContainer" parent="CenterContainer/BookPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/BookPanel/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="HeaderRow" type="HBoxContainer" parent="CenterContainer/BookPanel/VBox"]
+[node name="HeaderRow" type="HBoxContainer" parent="CenterContainer/BookPanel/Margin/VBox"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/BookPanel/VBox/HeaderRow"]
+[node name="TitleLabel" type="Label" parent="CenterContainer/BookPanel/Margin/VBox/HeaderRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.94, 0.9, 0.78, 1)
-theme_override_fonts/font = ExtResource("2_r6dto")
+size_flags_vertical = 1
+theme_type_variation = &"ScreenTitle"
 theme_override_font_sizes/font_size = 26
 text = "Logbook"
 
-[node name="CloseButton" type="Button" parent="CenterContainer/BookPanel/VBox/HeaderRow"]
+[node name="CloseButton" type="Button" parent="CenterContainer/BookPanel/Margin/VBox/HeaderRow"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0.95, 0.82, 0.35, 1)
-theme_override_colors/font_color = Color(0.7, 0.65, 0.55, 1)
-theme_override_fonts/font = ExtResource("2_header")
-theme_override_font_sizes/font_size = 20
+size_flags_vertical = 0
+theme_type_variation = &"CloseButton"
 text = "X"
 flat = true
 
-[node name="Divider" type="HSeparator" parent="CenterContainer/BookPanel/VBox"]
+[node name="Divider" type="HSeparator" parent="CenterContainer/BookPanel/Margin/VBox"]
 layout_mode = 2
-theme_override_constants/separation = 4
 
-[node name="SectionLabel" type="Label" parent="CenterContainer/BookPanel/VBox"]
+[node name="SectionLabel" type="Label" parent="CenterContainer/BookPanel/Margin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.55, 0.48, 1)
-theme_override_fonts/font = ExtResource("3_body")
-theme_override_font_sizes/font_size = 13
+theme_type_variation = &"MutedLabel"
 text = "-- TASKS --"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/BookPanel/VBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/BookPanel/Margin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="EntryList" type="VBoxContainer" parent="CenterContainer/BookPanel/VBox/ScrollContainer"]
+[node name="EntryList" type="VBoxContainer" parent="CenterContainer/BookPanel/Margin/VBox/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="EmptyLabel" type="Label" parent="CenterContainer/BookPanel/VBox"]
+[node name="EmptyLabel" type="Label" parent="CenterContainer/BookPanel/Margin/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.47, 0.42, 1)
-theme_override_fonts/font = ExtResource("3_body")
+theme_type_variation = &"MutedLabel"
 theme_override_font_sizes/font_size = 14
 text = "No entries yet. Talk to others. Touch grass."
 horizontal_alignment = 1
+
+[node name="Frame" parent="CenterContainer/BookPanel" instance=ExtResource("3_frame")]

@@ -168,7 +168,7 @@
     {
         "id": "market_intro",
         "type": "narration",
-        "text": "The bustling market full of different kinds of Monsterfolk makes you nervous. Better to stay away for now until you've found your footing in this strange world.",
+        "text": "The bustling market full of different kinds of Monsterfolk, and for a split-second you hesitate.",
 		"clear": true,
         "next": "market_choice"
     },
@@ -178,16 +178,16 @@
 		"clear": true,
 		"options": [
 			{
-				"text": "> Buy",
-				"next": "market_BARTER"
+				"text": "> [Go to the market]",
+				"next": "enter_market_narration"
 			},
 			{
 				"text": "> [DEBUG] +128 all currency",
 				"next": "debug_add_currency"
 			},
 			{
-				"text": "> [Leave]",
-				"next": "leave_nocontact_01"
+				"text": "> [Change your mind]",
+				"next": "intro_choice_hub"
 			}
 		]
 	},
@@ -197,6 +197,20 @@
 		"command": "@add_ore 128 ; @add_crowns 2 ; @add_drots 1 ; @add_item Misc/creature_loot 6 ; @add_item Misc/slime_glob 13 ; @add_item Misc/whisker_needle 111",
 		"next": "market_choice"
 	},
+	{
+		"id": "enter_market_narration",
+		"type": "narration",
+		"text": "You walk towards the market.",
+		"clear": false,
+		"next": "enter_market"
+	},
+    {
+        "id": "enter_market",
+        "type": "command",
+        "command": "@LOCATION_CHANGE market",
+		"clear": true,
+        "next": "intro_choice_hub"
+    },
     {
         "id": "market_BARTER",
         "type": "command",
@@ -360,7 +374,7 @@
     {
         "id": "switch_inn_exterior_intro_hide_portrait",
         "type": "command",
-        "command": "@HIDE_PORTRAIT ; HIDE_EXTRA",
+        "command": "@HIDE_PORTRAIT ; @HIDE_EXTRA",
 		"clear": true,
         "next": "switch_inn_exterior_intro"
     },

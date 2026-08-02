@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b333pim2vobex"]
 
 [ext_resource type="Script" uid="uid://cysfbek55vafi" path="res://Scripts/ui/combat/damage_popup.gd" id="1_8xje2"]
-[ext_resource type="FontFile" uid="uid://q7ie3cje7c1y" path="res://Assets/Fonts/HyperlegibleNext-ExtraBold.ttf" id="2_hqkma"]
 [ext_resource type="Material" uid="uid://br0rftn2wq10v" path="res://Themes/unshaded_material.tres" id="2_uovfa"]
+[ext_resource type="FontFile" uid="uid://bjy4obd8t48tc" path="res://Assets/Fonts/Anomoly Bold.ttf" id="3_uovfa"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hqkma"]
 light_mode = 1
@@ -25,6 +25,6 @@ offset_bottom = 23.0
 theme_override_colors/font_shadow_color = Color(0.393086, 0.393086, 0.393085, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_outline_size = 73
-theme_override_fonts/font = ExtResource("2_hqkma")
+theme_override_fonts/font = ExtResource("3_uovfa")
 theme_override_font_sizes/font_size = 128
 text = "10"

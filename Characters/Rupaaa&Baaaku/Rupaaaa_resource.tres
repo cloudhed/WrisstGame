@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://dln2007o31nrt"]
+
+[ext_resource type="Resource" uid="uid://dbppc1fme3xxb" path="res://Characters/Rupaaa&Baaaku/Rupaaaa&Baaaku_portraits/Rupaaa&Baaaku_portrait_deck.tres" id="1_ecsxg"]
+[ext_resource type="Script" uid="uid://dqihe2ny7afn" path="res://Scripts/resources/character_resource.gd" id="2_y0j08"]
+
+[resource]
+script = ExtResource("2_y0j08")
+name = &"Rupaaa"
+display_name = "Rupaaa"
+portrait = ExtResource("1_ecsxg")
+color = Color(0.60912, 0.704418, 0.577524, 1)
+speech_bubble_color = Color(0.0997333, 0.0396, 0.22, 0.784314)
+speech_bubble_font_size = 22
+stats = {}
+default_flags = {}
+metadata/_custom_type_script = "uid://dqihe2ny7afn"

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogSceneResource" load_steps=9 format=3 uid="uid://cg0aavdxxqko7"]
+
+[ext_resource type="Script" path="res://Scripts/entities/CharacterEntry.gd" id="1_2n5ny"]
+[ext_resource type="Resource" uid="uid://bf3h6jxnipn25" path="res://Characters/Rupaaa&Baaaku/Baaaaku_resource.tres" id="3_c8jj3"]
+[ext_resource type="Resource" uid="uid://dln2007o31nrt" path="res://Characters/Rupaaa&Baaaku/Rupaaaa_resource.tres" id="3_rupaa"]
+[ext_resource type="Script" uid="uid://5m151tkuttgt" path="res://Narrative/dialog_scene_resource.gd" id="6_urx1w"]
+[ext_resource type="PackedScene" uid="uid://dwrlhl7qcoiuk" path="res://Narrative/DialogScenes/Locations/Klyftet/Market/KlyftetExtMarketDay.tscn" id="7_p0vmw"]
+
+[sub_resource type="Resource" id="Resource_rupaa"]
+script = ExtResource("1_2n5ny")
+id = &"Rupaaa"
+character_resource = ExtResource("3_rupaa")
+metadata/_custom_type_script = "uid://cgc7i24b66gt8"
+
+[sub_resource type="Resource" id="Resource_c8imv"]
+script = ExtResource("1_2n5ny")
+id = &"Baaaku"
+character_resource = ExtResource("3_c8jj3")
+metadata/_custom_type_script = "uid://cgc7i24b66gt8"
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_mg2vs"]
+
+[resource]
+script = ExtResource("6_urx1w")
+zone_scene = ExtResource("7_p0vmw")
+music = SubResource("AudioStreamInteractive_mg2vs")
+sfx_library = {}
+dialogue_path = "res://Narrative/DialogScenes/Locations/Klyftet/Market/market_intro.json"
+characters = Array[ExtResource("1_2n5ny")]([SubResource("Resource_rupaa"), SubResource("Resource_c8imv")])
+flags_required = Array[String]([])
+flags_set_on_start = {}
+metadata/_custom_type_script = "uid://5m151tkuttgt"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgkpmtmspfop4"]
+[gd_scene load_steps=5 format=3 uid="uid://bgkpmtmspfop4"]
 
 [ext_resource type="Theme" uid="uid://bq6onie4e1pjk" path="res://Themes/narrative_theme.tres" id="1_b6tns"]
 [ext_resource type="Script" uid="uid://kcgfuo01bp82" path="res://Scenes/UI/narration_box.gd" id="1_mp87l"]
 [ext_resource type="Theme" uid="uid://by10iex6r6prc" path="res://Themes/narrative_choice_theme.tres" id="3_o380u"]
+[ext_resource type="FontFile" uid="uid://cywcgpjvajmm5" path="res://Assets/Fonts/Anomoly Regular.ttf" id="4_f27x4"]
 
 [node name="NarrationBox" type="Control"]
 custom_minimum_size = Vector2(800, 90)
@@ -36,6 +37,7 @@ offset_right = 1.0
 offset_bottom = 203.0
 mouse_filter = 2
 theme = ExtResource("3_o380u")
+theme_override_fonts/normal_font = ExtResource("4_f27x4")
 bbcode_enabled = true
 text = "You’ve "
 fit_content = true

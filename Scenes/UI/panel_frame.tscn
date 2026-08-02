@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba7wxq3nfk8vd"]
+
+[ext_resource type="Texture2D" uid="uid://br866bjlqpy6n" path="res://Assets/UI/frames/panel_frame_placeholder.png" id="1_frame"]
+
+[node name="PanelFrame" type="NinePatchRect"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_frame")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
