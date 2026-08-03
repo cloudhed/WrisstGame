@@ -351,7 +351,8 @@
 	{
 		"id": "market_slip_after",
 		"type": "narration",
-		"text": "Rupaaa closes its maw around the rest of the sentence with visible effort and fiddles with the hem of his garbs. [nb] Baaaku goes back to sorting cord as though nothing had been said at all, and neither of them looks at you.",
+		"clear": true,
+		"text": "Rupaaa closes its maw around the rest of the sentence with visible effort and fiddles with the hem of his garbs. [nb] Baaaku goes back to sorting rope as though nothing had been said at all, and neither of them looks at you.",
 		"next": "market_kraaal_hub"
 	},
 
@@ -537,20 +538,39 @@
 		"name": "Rupaaa",
 		"command": "@SHOW_ZONE Klyftet/Market/KlyftetExtMarketKraaalDay ; @SHOW_EXTRA2 store_open ; @SHOW_PORTRAIT rupaaa_base ; @SHOW_EXTRA baaaku_base",
 		"clear": true,
-		"next": "market_return_greet"
+		"next": "market_return_LOGIC"
+	},
+	{
+		"id": "market_return_LOGIC",
+		"type": "logic",
+		"logic_type": "check_flags",
+		"check_flags": {
+			"flags": ["kraaal_return_greeted"],
+			"on_success": "market_return_short",
+			"on_fail": "market_return_greet"
+		}
+	},
+	{
+		"id": "market_return_short",
+		"type": "npc",
+		"name": "Rupaaa",
+		"text": "\"Back again!\" Rupaaa raises one broad hand in greeting and carries on arranging the shop.",
+		"next": "market_kraaal_hub"
 	},
 	{
 		"id": "market_return_greet",
 		"type": "npc",
 		"name": "Rupaaa",
-		"text": "\"You again.\" Rupaaa sounds pleased about it. \" I suspected you would return.\"",
+		"set_flag": "kraaal_return_greeted",
+		"flag_type": "knowledge",
+		"text": "\"You again!\" Rupaaa sounds pleased about it. \"I suspected you would return.\"",
 		"next": "market_return_greet_02"
 	},
 	{
 		"id": "market_return_greet_02",
 		"type": "npc",
 		"name": "Baaaku",
-		"text": "Baaaku does not look up from the rows. \"That is a lie. I said you would come back, and Rupaaa said you would not.\"",
+		"text": "Baaaku does not look up from the rows. \"That is a lie. [i]I[/i] said you would come back, and Rupaaa said you would [b]not.[/b]\"",
 		"next": "market_return_greet_03"
 	},
 	{

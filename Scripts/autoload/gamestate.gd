@@ -2,7 +2,9 @@ extends Node
 
 const PLAYER_STATISTICS_SCRIPT := preload("res://Scripts/autoload/player_statistics.gd")
 
-signal money_changed(currency: String, new_amount: int)
+## `delta` is signed: positive when the player gained, negative when they spent.
+## Listeners that only paint a wallet total can ignore it; the toast reports it.
+signal money_changed(currency: String, new_amount: int, delta: int)
 signal reputation_changed(npc_id: String, new_value: int)
 signal horny_changed(npc_id: String, new_value: int)
 signal inventory_changed(action: String, item)
@@ -50,6 +52,15 @@ var player_statistics: Resource = null
 const ORE_SYMBOL: String    = "◆"
 const CROWN_SYMBOL: String  = "◇"
 const DROT_SYMBOL: String   = "◈"
+
+## Keyed by the currency ids money_changed emits, so anything reacting to that
+## signal can name a currency without a match block of its own. The symbols above
+## stay the only place a currency glyph is written down.
+const CURRENCY_NAMES := {
+	"ore": "Öre",
+	"crowns": "Crowns",
+	"drots": "Drots",
+}
 
 var player_ore: int = 0
 var player_crowns: int = 0
@@ -133,7 +144,7 @@ func _ensure_fallback_items_loaded() -> void:
 func add_ore(amount: int) -> void:
 	player_ore += amount
 	print("💰 Öre +%d → Total: %d" % [amount, player_ore])
-	emit_signal("money_changed", "ore", player_ore)
+	money_changed.emit("ore", player_ore, amount)
 
 func remove_ore(amount: int) -> bool:
 	if amount > player_ore:
@@ -141,14 +152,14 @@ func remove_ore(amount: int) -> bool:
 		return false
 	player_ore -= amount
 	print("💸 Öre -%d → Total: %d" % [amount, player_ore])
-	emit_signal("money_changed", "ore", player_ore)
+	money_changed.emit("ore", player_ore, -amount)
 	return true
 
 
 func add_crowns(amount: int) -> void:
 	player_crowns += amount
 	print("💰 Crowns +%d → Total: %d" % [amount, player_crowns])
-	emit_signal("money_changed", "crowns", player_crowns)
+	money_changed.emit("crowns", player_crowns, amount)
 
 func remove_crowns(amount: int) -> bool:
 	if amount > player_crowns:
@@ -156,14 +167,14 @@ func remove_crowns(amount: int) -> bool:
 		return false
 	player_crowns -= amount
 	print("💸 Crowns -%d → Total: %d" % [amount, player_crowns])
-	emit_signal("money_changed", "crowns", player_crowns)
+	money_changed.emit("crowns", player_crowns, -amount)
 	return true
 
 
 func add_drots(amount: int) -> void:
 	player_drots += amount
 	print("💰 Drots +%d → Total: %d" % [amount, player_drots])
-	emit_signal("money_changed", "drots", player_drots)
+	money_changed.emit("drots", player_drots, amount)
 
 func remove_drots(amount: int) -> bool:
 	if amount > player_drots:
@@ -171,7 +182,7 @@ func remove_drots(amount: int) -> bool:
 		return false
 	player_drots -= amount
 	print("💸 Drots -%d → Total: %d" % [amount, player_drots])
-	emit_signal("money_changed", "drots", player_drots)
+	money_changed.emit("drots", player_drots, -amount)
 	return true
 
 

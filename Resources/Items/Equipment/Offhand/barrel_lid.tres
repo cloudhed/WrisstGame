@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
 [ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="2_bundle"]
 [ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="3_tile"]
-[ext_resource type="Resource" path="res://Resources/Tiles/TileBundles/TileBundlesOffhand/Barrel Lid/barrel_lid_block.tres" id="4_block"]
+[ext_resource type="Resource" uid="uid://cvuyq1rkeo0be" path="res://Resources/Tiles/TileBundles/TileBundlesOffhand/Barrel Lid/barrel_lid_block.tres" id="4_block"]
 
 [sub_resource type="Resource" id="Resource_bundle"]
 script = ExtResource("2_bundle")

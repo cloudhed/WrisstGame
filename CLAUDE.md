@@ -37,6 +37,16 @@ All sheets are in `X ReadMe for LLMs/CharacterSheets/`.
 | Bwavrek | `Bwavrek.md` | Bwavrek hotbaths owner; disciplined, blunt, physically imposing, capitalist |
 | Pichidi | `Pichidi.md` | Ichmi sewer-dweller; no established connections; recurring sexual partner option |
 
+**Companion notes (proposals, not canon):** `RupaaaAndBaaaku_Backstory_WIP.md` is the deep
+well for the Kraaal brothers, covering their full history, the Old Mine angle for SQ03, their
+read on Caarth, and every line of dialogue worked out in advance. Read it with
+`Kraaal_species.md`, which now holds the species-wide half of the same pass (perception, cast
+and station, casting, backing, names, records, customs). Both separate *what is true* from
+*what they'd say* from *what they don't know*, so a PC follow-up has an answer waiting instead
+of being invented mid-scene. `RupaaaAndBaaaku.md` wins on any conflict, and **Part Twelve** of
+the backstory file lists everything still unapproved, including species-wide inventions that
+would affect every Kraaal.
+
 ---
 
 ## Shared Language Reference

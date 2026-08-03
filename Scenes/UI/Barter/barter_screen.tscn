@@ -342,7 +342,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 24
 
 [node name="StatScroll" type="ScrollContainer" parent="Background/MainMargin/MainVBox/BottomRow/TilePreviewPanel/Margin/VBox/PreviewBody"]
-custom_minimum_size = Vector2(620, 0)
+custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
@@ -356,14 +356,13 @@ theme_override_constants/separation = 24
 
 [node name="StatColumn" type="VBoxContainer" parent="Background/MainMargin/MainVBox/BottomRow/TilePreviewPanel/Margin/VBox/PreviewBody/StatScroll/StatColumns"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(298, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 2
 
 [node name="StatRowTemplate" type="HBoxContainer" parent="Background/MainMargin/MainVBox/BottomRow/TilePreviewPanel/Margin/VBox/PreviewBody/StatScroll/StatColumns/StatColumn"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 12
 
@@ -381,7 +380,7 @@ horizontal_alignment = 2
 
 [node name="StatColumnB" type="VBoxContainer" parent="Background/MainMargin/MainVBox/BottomRow/TilePreviewPanel/Margin/VBox/PreviewBody/StatScroll/StatColumns"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(298, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 2

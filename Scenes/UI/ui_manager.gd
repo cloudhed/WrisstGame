@@ -19,6 +19,9 @@ const BARTER_SCREEN_PATH := "res://Scenes/UI/Barter/barter_screen.tscn"
 var _barter_screen_scene: PackedScene = null
 var barter_screen: BarterScreen = null
 
+## Currency changes waiting to be toasted: {currency: delta}.
+var _pending_money: Dictionary = {}
+
 
 func _ready():
 	popup_panel.visible = false
@@ -112,8 +115,35 @@ func _on_hide_timer_timeout():
 	popup_panel.visible = false
 
 
-func _on_money_changed(currency: String, new_amount: int) -> void:
-	notify("%s: %d" % [currency.capitalize(), new_amount])
+## Reports the change only. The running total is already on the wallet panel of
+## every screen that can spend money, so repeating it here just gave the eye two
+## numbers to tell apart.
+##
+## A confirmed trade settles öre, crowns and drots in the same frame, and one
+## notify() per currency would leave only the last one on screen. Changes are
+## collected and flushed once, deferred, so a trade produces a single toast
+## naming every currency that moved.
+func _on_money_changed(currency: String, _new_amount: int, delta: int) -> void:
+	if delta == 0:
+		return
+	if _pending_money.is_empty():
+		_flush_money_toast.call_deferred()
+	_pending_money[currency] = _pending_money.get(currency, 0) + delta
+
+
+func _flush_money_toast() -> void:
+	var parts: PackedStringArray = []
+
+	for currency in _pending_money:
+		var delta: int = _pending_money[currency]
+		if delta == 0:
+			continue  # gained and spent the same amount in one frame
+		var currency_name: String = GameState.CURRENCY_NAMES.get(currency, currency.capitalize())
+		parts.append("%+d %s" % [delta, currency_name])
+
+	_pending_money.clear()
+	if not parts.is_empty():
+		notify(", ".join(parts))
 
 
 func _on_reputation_changed(npc_id: String, new_value: int) -> void:

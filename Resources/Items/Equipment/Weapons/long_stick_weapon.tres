@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://2ypvnstw0l5s" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_smack.tres" id="4_beg6s"]
 [ext_resource type="Resource" uid="uid://chgvxbs5v02nn" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_2hsmack.tres" id="5_iqfoy"]
 [ext_resource type="Resource" uid="uid://coum1ucna0o7c" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Long Stick/stick_weaksmack.tres" id="8_1lqhy"]
-[ext_resource type="Resource" path="res://Resources/Tiles/Generic/swing_miss.tres" id="8_saoru"]
+[ext_resource type="Resource" uid="uid://cdlgey7exvtj7" path="res://Resources/Tiles/Generic/swing_miss.tres" id="8_saoru"]
 
 [sub_resource type="Resource" id="Resource_iqfoy"]
 script = ExtResource("2_757jb")

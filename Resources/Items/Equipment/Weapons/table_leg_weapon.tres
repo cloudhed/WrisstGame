@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="EquipableItem" load_steps=7 format=3]
+[gd_resource type="Resource" script_class="EquipableItem" load_steps=7 format=3 uid="uid://bixo5cpgiemcs"]
 
 [ext_resource type="Script" uid="uid://bvo3h06fcka4k" path="res://Resources/Items/equipable_item.gd" id="1_item"]
 [ext_resource type="Script" uid="uid://c814t8855evro" path="res://Resources/Tiles/TileBundles/tile_bundle.gd" id="2_bundle"]
 [ext_resource type="Script" uid="uid://gape1d7i5cw0" path="res://Scripts/resources/tile.gd" id="3_tile"]
 [ext_resource type="Resource" path="res://Resources/Tiles/TileBundles/TileBundlesWeapon/Table Leg/table_leg_whack.tres" id="4_hit"]
-[ext_resource type="Resource" path="res://Resources/Tiles/Generic/swing_miss.tres" id="5_miss"]
+[ext_resource type="Resource" uid="uid://cdlgey7exvtj7" path="res://Resources/Tiles/Generic/swing_miss.tres" id="5_miss"]
 
 [sub_resource type="Resource" id="Resource_bundle"]
 script = ExtResource("2_bundle")

@@ -407,7 +407,7 @@ func _refresh_currency() -> void:
 	current_drots_label.visible = GameState.player_drots > 0
 
 
-func _on_money_changed(currency: String, new_amount: int) -> void:
+func _on_money_changed(currency: String, new_amount: int, _delta: int) -> void:
 	match currency:
 		"ore":
 			current_ore_label.text = "%s %d" % [GameState.ORE_SYMBOL, new_amount]

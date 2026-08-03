@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShopInventory" load_steps=21 format=3 uid="uid://bcrojfkv732ex"]
+[gd_resource type="Resource" script_class="ShopInventory" load_steps=19 format=3 uid="uid://bcrojfkv732ex"]
 
 [ext_resource type="Script" uid="uid://cfaewlk18jkla" path="res://Resources/Shops/shop_inventory.gd" id="1_4uajf"]
 [ext_resource type="Script" uid="uid://b25q2b6tn43rr" path="res://Resources/Shops/shop_item_entry.gd" id="2_15ti7"]
@@ -6,11 +6,10 @@
 [ext_resource type="Resource" uid="uid://dtrvile7gieh0" path="res://Resources/Items/Consumables/lockpick.tres" id="5_7kena"]
 [ext_resource type="Resource" uid="uid://bl3tkb6fogvxd" path="res://Resources/Items/Equipment/Weapons/long_stick_weapon.tres" id="6_p38d0"]
 [ext_resource type="Resource" uid="uid://bb6hyr02t7qn5" path="res://Resources/Items/Misc/rusty_key.tres" id="6_x71wr"]
-[ext_resource type="Resource" path="res://Resources/Items/Equipment/Offhand/wooden_shield.tres" id="7_18xpo"]
-[ext_resource type="Resource" path="res://Resources/Items/Equipment/Weapons/table_leg_weapon.tres" id="8_tableleg"]
-[ext_resource type="Resource" path="res://Resources/Items/Equipment/Offhand/barrel_lid.tres" id="9_barrellid"]
-[ext_resource type="Resource" path="res://Resources/Items/Equipment/Armor/bundled_rags_armor.tres" id="10_bundledrags"]
-[ext_resource type="Resource" path="res://Resources/Items/Equipment/Trinkets/lucky_ore_chip_trinket.tres" id="11_orechip"]
+[ext_resource type="Resource" uid="uid://bixo5cpgiemcs" path="res://Resources/Items/Equipment/Weapons/table_leg_weapon.tres" id="8_tableleg"]
+[ext_resource type="Resource" uid="uid://hq8ty0bhuqpd" path="res://Resources/Items/Equipment/Offhand/barrel_lid.tres" id="9_barrellid"]
+[ext_resource type="Resource" uid="uid://c8yem42c3yx2w" path="res://Resources/Items/Equipment/Armor/bundled_rags_armor.tres" id="10_bundledrags"]
+[ext_resource type="Resource" uid="uid://b72hj57ukyyit" path="res://Resources/Items/Equipment/Trinkets/lucky_ore_chip_trinket.tres" id="11_orechip"]
 
 [sub_resource type="Resource" id="Resource_w8jjr"]
 script = ExtResource("2_15ti7")
@@ -48,16 +47,6 @@ item = ExtResource("6_p38d0")
 stock = 1
 buy_price_ore = 0
 buy_price_crowns = 48
-buy_price_drots = 0
-is_unique = true
-metadata/_custom_type_script = "uid://b25q2b6tn43rr"
-
-[sub_resource type="Resource" id="Resource_7kena"]
-script = ExtResource("2_15ti7")
-item = ExtResource("7_18xpo")
-stock = 1
-buy_price_ore = 5
-buy_price_crowns = 0
 buy_price_drots = 0
 is_unique = true
 metadata/_custom_type_script = "uid://b25q2b6tn43rr"
@@ -106,5 +95,5 @@ metadata/_custom_type_script = "uid://b25q2b6tn43rr"
 script = ExtResource("1_4uajf")
 shop_name = "Rupaaa & Baaaku"
 markup_percent = 15.0
-shop_items = Array[ExtResource("2_15ti7")]([SubResource("Resource_w8jjr"), SubResource("Resource_yprka"), SubResource("Resource_wcnl5"), SubResource("Resource_18xpo"), SubResource("Resource_7kena"), SubResource("Resource_tableleg"), SubResource("Resource_barrellid"), SubResource("Resource_bundledrags"), SubResource("Resource_orechip")])
+shop_items = Array[ExtResource("2_15ti7")]([SubResource("Resource_w8jjr"), SubResource("Resource_yprka"), SubResource("Resource_wcnl5"), SubResource("Resource_18xpo"), SubResource("Resource_tableleg"), SubResource("Resource_barrellid"), SubResource("Resource_bundledrags"), SubResource("Resource_orechip")])
 metadata/_custom_type_script = "uid://cfaewlk18jkla"

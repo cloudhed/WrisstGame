@@ -36,10 +36,10 @@
       "Bash(echo \"---exit:$?\")",
       "Bash(\"d:/Program Files/Godot/Godot v4.4.exe\" --headless --check-only --script Scripts/dialog/dialog_manager.gd)",
       "Bash(\"d:/Program Files/Godot/Godot v4.4.exe\" --headless --check-only --script Scripts/entities/player/player_dot.gd)",
-      "Bash(\"d:/Program Files/Godot/Godot v4.4.exe\" --headless --script Tools/_tmp_input_check.gd)"
+      "Bash(\"d:/Program Files/Godot/Godot v4.4.exe\" --headless --script Tools/_tmp_input_check.gd)",
+      "Bash(python \"C:\\\\Users\\\\hisak\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Projects-Godot-wrisst-test\\\\fac55d42-bb05-4970-8ab6-99822e87452a\\\\scratchpad\\\\bubbles.py\")"
     ],
-    "deny": [
-    ],
+    "deny": [],
     "additionalDirectories": [
       "d:\\Projects\\Godot\\wrisst_test\\Scenes\\UI"
     ]
