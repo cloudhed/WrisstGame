@@ -101,19 +101,32 @@ leaning on rather than inventing new hooks.
 Tavo-Pavo sends the PC to the Hotbaths to deliver goods to Minttärä "for reasons." She has
 a problem.
 
-**Working theory (not locked):** Minttärä is trying to escape her work. She was on her
-pilgrimage, needed something, and borrowed to get it — borrowed from **Bwavrek** — which
-put her in debt she's now working off at his Hotbaths. She can't continue her pilgrimage
-until it's cleared. Several possible solutions, branching.
+**Working theory (refined 2026-08-04, still not locked):** Minttärä arrived in Klyftet
+stranded and broke, and **Bwavrek** advanced her the passage, a replacement heat stone,
+food, and her first nights of lodging. She has been working it off ever since. She can't
+close her pilgrimage while the account is open.
+
+**The premise turns on a number nobody has said.** Bwavrek's ledger is honest and always
+has been. Minttärä is a trained record keeper who could read it in a minute, and in three
+cycles she has never asked the total, because asking would turn the night he took her in
+into a transaction. He has never volunteered it, because naming a figure to a worker who
+hasn't asked is pressure, and he doesn't do that to people who are performing. So the PC's
+job is **not an audit and there is no fraud**. It's getting a number spoken aloud between
+two people who both consider asking to be beneath them.
 
 **Open questions:**
-- Is she fleeing, or negotiating? Not decided.
-- What did she borrow for? Undefined.
+- ~~Is she fleeing, or negotiating?~~ Negotiating. She will not leave an account unsettled.
+- ~~What did she borrow for?~~ Passage, heat stone, food, and lodging on arrival.
 - What are the solution branches, and what does each cost?
+- Does the debt ever get an on-screen figure, or does it stay unquantified and get settled
+  some other way?
 
 **Existing material:** Minttärä intro dialogue written; sheets exist for Minttärä,
 Tavo-Pavo, and Bwavrek. Her pilgrimage backstory and the Bwavrek-took-her-in detail are
 already canon in the knowledge database — this quest is consistent with it.
+`Polloka_Minttara_Backstory_WIP.md` holds her full history, the vent-bucket accident, and
+her Caarth knowledge as proposals. **Its Part Five makes MQ decisions about Caarth and
+needs a ruling before use.**
 
 ### SQ02 — The Disturbed Lake
 

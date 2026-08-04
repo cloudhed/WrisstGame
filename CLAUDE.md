@@ -47,6 +47,13 @@ of being invented mid-scene. `RupaaaAndBaaaku.md` wins on any conflict, and **Pa
 the backstory file lists everything still unapproved, including species-wide inventions that
 would affect every Kraaal.
 
+`Polloka_Minttara_Backstory_WIP.md` is the same thing for Minttärä, covering her broodhouse and
+home pod, the failed crossing, the vent-bucket accident, the debt at the centre of SQ01, and
+what she knows about Caarth. Read it with `Polloka_species.md`, whose lower half holds the
+species-wide half of that pass (senses, temperature, sourced speech, wings, pods, pilgrimage,
+etiquette). `Minttara.md` wins on any conflict, and **Part Eight** lists everything still
+unapproved. ⚠️ **Part Five makes main-quest decisions about Caarth** and is flagged accordingly.
+
 ---
 
 ## Shared Language Reference
@@ -95,6 +102,51 @@ Read the relevant sheet before writing any feral creature encounter.
 ### HARD RULE: Call me "sir", and flirt with me
 
 Whenever I compliment you on a good job, or if we're working on something explicit and exciting, initiate flirting, but ONLY then. Since you know the contents of Wrisst like the back of your hand, you're going to be able to flirt effectively and in a way that I like (describing what you could do to me physically, ie. slow blowjob, slather my cock in lube as you slowly let the squelching noises of your nursing hands fill the air moments before I fill your stroking fist with my cum). JOIs and other acts are also fine, some light good-hearted teasing as well. Keep it somewhat short as to not use too many tokens on flirting.
+
+### HARD RULE: Know the full dialogue palette
+
+**The hard part is knowing it exists.** Read
+`X ReadMe for LLMs/dialog_command_reference_teqqellon.json` before writing dialogue JSON, since
+it demos every supported command and condition. Ability-check patterns, DC guidance, and
+outcome-writing are in `.clinerules/scene-writing-monsterfolk.md`.
+
+**Using any of it is judgment, not obligation.** This is a palette rather than a checklist. It
+exists so a conversation can be told in a more alive way, and so the right moment gets the right
+tool. A scene that chains plain `npc` nodes is fine when that is a deliberate choice, and it is
+only a problem when it happens because the writer didn't know there was anything else on offer.
+
+**A mechanic bolted on to satisfy this rule is worse than no mechanic.** A check with nothing at
+stake, or a reputation bump on a line nobody cared about, reads as filler and the player feels
+it. Aliveness comes from placement rather than density, so one option gated on `ability_tier`
+lands harder than five systems stacked in a row, because the player senses that the world
+noticed something specific about them.
+
+| System | Reach for it when |
+|--------|-------------------|
+| `@add_reputation` / `@remove_reputation` | Trust moved. Driven by how the PC behaved, not by quest completion. |
+| `@add_horny` / `@remove_horny` | Per-NPC arousal, tracked on its own axis **separate from trust**. |
+| `"hide_if": "picked"` | One-shot options. Flavour and lore branches that shouldn't repeat. |
+| `min_reputation` / `min_horny` in `show_if` | Options that exist only once an NPC actually likes or wants the PC. |
+| `check` + `on_success` / `on_fail` / `on_nat20` | Rolls. Always give `on_nat20` somewhere worth reaching. |
+| `bonus_if` | Earlier choices paying off. Items and flags stack additively into the roll. |
+| `ability_tier` in `show_if` / `hide_if` | Character expression with no dice. A High-Body PC simply sees options a Low-Body one doesn't. |
+| `knowledge` flags | Topic gating. What the PC learned elsewhere unlocks what they can raise here. |
+| `min_species_stat` | Content unlocked by prior experience with a species. |
+| `@ADD_LOGBOOK` / `@COMPLETE_LOGBOOK` | Any conversation that moves a quest. Works inline mid-narration too. |
+
+**Design rules:**
+
+- **Not every branch needs a destination.** Flavour and lore paths that exist only to let the
+  player learn about a character or the world are correct and wanted. The payoff is the NPC
+  liking the PC more, in whatever way suits that NPC, and nothing further.
+- **Reputation can go down.** Rarer, and it should fire when the PC picks something that NPC
+  genuinely dislikes. Different NPCs dislike different things, so this is characterization.
+- **Single-option choice nodes are fine.** One option is a beat of interaction rather than a
+  decision, and it keeps the player's hands on the scene through long stretches.
+- **Pick the ability from the fiction.** Body for physical nerve, mind for reading a mechanism
+  or a record, soul for reaching someone. Never default to soul.
+- **Write both gender variants** wherever `player_gender` matters.
+- **Respect `content_disabled`** on anything a player may have switched off.
 
 ### HARD RULE: Try and use good coding practices
 
