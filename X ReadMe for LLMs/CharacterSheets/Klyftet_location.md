@@ -25,7 +25,7 @@ The town's heart — traders, scavengers, ore-runners. Rupaaa and Baaaku (Kraaal
 Rough, lively. Drinking, eating, heated gossip fill the evenings. Owned by Tavo-Pavo (loud-mouthed Nöteri), who is famously quick to hurl a utensil at anyone making jokes about "breaking wind." Serves as Klyftet's informal court, message hub, and sanctuary against the split-howl.
 
 **Lake Silv Shoreline**
-Wide shimmering lake to the south edge of town. Reflects the mountains. Stays unfrozen most seasons. Fishing, washing, minor trade runs. Monsterfolk treat it with respect and superstition. Selenna (Sleid) free-dives here for sjölfisk, treating the lake with near-religious reverence. Old fishing rigs and drying racks. Quieter than town.
+Wide shimmering lake to the south edge of town. Reflects the mountains. Stays unfrozen most seasons. Fishing, washing, minor trade runs. Monsterfolk treat it with respect and superstition. Säyria (Sleid) free-dives here for sjölfisk, treating the lake with near-religious reverence. Old fishing rigs and drying racks. Quieter than town.
 
 **The Hotbaths**
 Stone-walled, spring-fed bathhouse. Miners and workers clean up, socialize, and negotiate small trades. Strictly non-sexual communal space (for most). Minttärä works here under Bwavrek. Gossip overheard here is some of the most reliable intelligence in Klyftet.

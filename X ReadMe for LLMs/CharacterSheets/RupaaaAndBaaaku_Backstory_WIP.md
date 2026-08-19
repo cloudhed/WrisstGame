@@ -609,7 +609,7 @@ consistently miss, since Pöllöka move quietly and quiet reads as absence. Rupa
 by greeting her far too loudly. Baaaku has fixed a token to the counter boards so it rings when
 they flex, purely so they know when she arrives, and he has told nobody it is for her.
 
-**Selenna.** Professional respect, from a distance. She trades sjölfisk sparingly and does not
+**Säyria.** Professional respect, from a distance. She trades sjölfisk sparingly and does not
 haggle or chat. Both brothers regard working blind underwater as an extraordinary thing to do
 voluntarily.
 

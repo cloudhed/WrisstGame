@@ -130,7 +130,7 @@ needs a ruling before use.**
 
 ### SQ02 — The Disturbed Lake
 
-**Giver:** Selenna *(name not final)* · **Location:** Lake Silv shoreline
+**Giver:** Säyria · **Location:** Lake Silv shoreline
 
 *Sjölfisk* are disappearing — numbers dropping. Serious, because they're one of the
 village's most important resources.
@@ -143,20 +143,21 @@ village's most important resources.
    dumped experiments, which trickled into the lake
 5. The reveal: **look up** — sjölfisk with wings, flying high into the sky. (Reachable
    earlier via clues for observant players)
-6. Stop them somehow → report to Selenna
+6. Stop them somehow → report to Säyria
 
 **Outcomes:** kill / help / something else — not decided. Either the lake reverts, or
-Selenna adapts and takes up flyfishing or bow-and-arrow.
+Säyria adapts and takes up flyfishing or bow-and-arrow.
 
 **Open questions:**
-- Selenna's final name
 - What "stopping them" actually means mechanically, and how many endings
 - Is the alchemist a new species, or an existing one?
 
-**Existing material:** Selenna has a full sheet — Sleid, free-diver, speaks in slow
-measures, treats the lake with reverence others read as superstition. *Sjölfisk* are
+**Existing material:** Säyria has a full sheet — Sleid, free-diver, speaks in slow
+measures, treats the lake with reverence others read as superstition. She was renamed
+from Selenna and redesigned as a crustacean; her sheet and the master database carry the
+new body, and Sleid is unchanged as the species name. *Sjölfisk* are
 already canon: *"soft-bodied creatures that glow faintly in the deep water,"* which
-Selenna free-dives for and sells sparingly. The old story doc also had a random encounter
+Säyria free-dives for and sells sparingly. The old story doc also had a random encounter
 **"Silv Surface Lights"** (shoreline, night, eerie) — that's a ready-made clue delivery
 vector for the winged-fisk reveal.
 
@@ -185,11 +186,63 @@ Temple Ruins, Kemen Woods, Old Tree
 
 **NPCs with written content:** Bitalgut (intro), Minttärä (intro)
 
-**NPCs with sheets + art but no dialogue:** Tavo-Pavo, Bwavrek, Nautinto, Selenna,
+**NPCs with sheets + art but no dialogue:** Tavo-Pavo, Bwavrek, Nautinto, Säyria,
 Rupaaa & Baaaku, Pichidi
 
 **Creatures with full pre/post/loss dialogue:** Meehp, Teqqellon, Murrisk, Shenche,
 plus a default-creature fallback set
+
+---
+
+## Parked Designs
+
+Designed enough not to lose, deliberately **not** scheduled. Both came out of the August 2026
+Teraurge comparison pass.
+
+### The Klyftet talk network
+
+Sex and other notable PC behaviour currently terminates in a flag. It should become something
+the town says back to the PC.
+
+**The design problem is that Klyftet has no widely-connected partner.** Pichidi has no
+established connections at all, and the rest are known to a handful of people each. So the
+network cannot hang off *who the PC slept with*. It has to hang off **hubs** — the NPCs whose
+job is hearing things:
+
+| Hub | Hears about | Why it's plausible |
+|-----|-------------|--------------------|
+| **Tavo-Pavo** | Anyone who drinks or lodges at the Windbreak | Innkeeper. Distributed attention is already his species trait |
+| **Rupaaa & Baaaku** | Anything that moves through the marketplace | Two merchants who bicker for a living and already trade in records |
+| **Bwavrek** | Minttärä specifically | They share a workplace and he holds her account. This one is nearly free |
+
+**Rules if it gets built:**
+- A hub reacts in character rather than reporting neutrally. Tavo-Pavo's read on the same news is not the brothers' read.
+- Reaching a hub takes a plausible route. Bwavrek noticing something about his own worker is free; the marketplace knowing what happened in the sewers is not.
+- The PC gets a way to ask for discretion, and it should sometimes be honoured and sometimes not, depending on the hub.
+- Nothing here should gate quest progress. It is texture and reputation, and that is the whole point.
+
+**Prerequisite:** at least two NPCs with written intimate content and a reason to be talked
+about. Not true today.
+
+### ~~`asked_node` dialogue condition~~ — rejected 2026-08-11
+
+Considered, then rejected on inspection. **Not a "later" item, a "no" item.**
+
+Teraurge's `showif.index_is` is its single most common condition, but it does not mean "the
+player asked this earlier." It means **"which of this block's alternate text lines is currently
+on screen."** Their authoring format packs several NPC lines and *one shared option list* into a
+block, and `index_is` is the key that decompresses it.
+
+Our format has no such compression: every `choice` node owns its own `options` array (39 of them
+in `sewers_day.json`, each with a private list). A follow-up is therefore made unreachable by
+simply living on the node the answer points to. The graph already says it.
+
+The one case that does need a condition is a **hub** option gated on knowledge acquired
+elsewhere, and there a `knowledge` flag is correct, since it has to survive leaving and
+returning. A conversation-scoped condition would be actively wrong for it.
+
+Cost of our approach versus theirs: one extra choice node per link. Benefit: no condition to get
+wrong. Accepted trade.
 
 ---
 
@@ -206,5 +259,6 @@ Do not start these until the loop has been played daily for a couple of weeks.
 - Anything past Klyftet on the road to Caarth
 - A formal quest engine with tracked quest objects — flags + logbook are enough for three
   side quests and one main thread
+- The Klyftet talk network (see [Parked Designs](#parked-designs))
 - Reworking the knowledge database doc — acknowledged as worth doing eventually, since
   parts have been superseded, but the bestiary examples and writing rules are good as-is

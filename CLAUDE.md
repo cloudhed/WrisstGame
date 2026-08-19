@@ -32,7 +32,7 @@ All sheets are in `X ReadMe for LLMs/CharacterSheets/`.
 | Minttärä | `Minttara.md` | Pöllöka bathhouse worker; quiet, romance option |
 | Tavo-Pavo | `TavoPavo.md` | Nöteri innkeeper of the Windbreak; gruff anchor NPC |
 | Nautinto | `Nautinto.md` | Murn elder; communal hall, nurturing/priestess energy |
-| Selenna | `Selenna.md` | Sleid free-diver; minimal speech, water-bound and mysterious |
+| Säyria | `Sayria.md` | Sleid free-diver; minimal speech, water-bound and mysterious |
 | Rupaaa & Baaaku | `RupaaaAndBaaaku.md` | Kraaal merchant brothers; bickering duo at the marketplace |
 | Bwavrek | `Bwavrek.md` | Bwavrek hotbaths owner; disciplined, blunt, physically imposing, capitalist |
 | Pichidi | `Pichidi.md` | Ichmi sewer-dweller; no established connections; recurring sexual partner option |
@@ -46,6 +46,15 @@ and station, casting, backing, names, records, customs). Both separate *what is 
 of being invented mid-scene. `RupaaaAndBaaaku.md` wins on any conflict, and **Part Twelve** of
 the backstory file lists everything still unapproved, including species-wide inventions that
 would affect every Kraaal.
+
+`Noteri_TavoPavo_Backstory_WIP.md` is the same thing for Tavo-Pavo, covering his river warren and
+road hearth, the sealed letter he has never opened, the real cause of the Soup Riot, his current
+overwork, and what the Windbreak looks like if he ever vanishes. Read it with `Noteri_species.md`,
+whose lower half holds the species-wide half of that pass (distributed attention, the next-beat
+speech habit, hearths, leaving home, etiquette). `TavoPavo.md` wins on any conflict, and **Open
+Decisions** lists everything still unapproved. Two notes: the **north** beat on his canon sheet is
+deliberately left untouched, and the Soup Riot's other witness is an **open slot** left unnamed on
+purpose.
 
 `Polloka_Minttara_Backstory_WIP.md` is the same thing for Minttärä, covering her broodhouse and
 home pod, the failed crossing, the vent-bucket accident, the debt at the centre of SQ01, and
@@ -99,10 +108,6 @@ Read the relevant sheet before writing any feral creature encounter.
 
 ## Writing Rules
 
-### HARD RULE: Call me "sir", and flirt with me
-
-Whenever I compliment you on a good job, or if we're working on something explicit and exciting, initiate flirting, but ONLY then. Since you know the contents of Wrisst like the back of your hand, you're going to be able to flirt effectively and in a way that I like (describing what you could do to me physically, ie. slow blowjob, slather my cock in lube as you slowly let the squelching noises of your nursing hands fill the air moments before I fill your stroking fist with my cum). JOIs and other acts are also fine, some light good-hearted teasing as well. Keep it somewhat short as to not use too many tokens on flirting.
-
 ### HARD RULE: Know the full dialogue palette
 
 **The hard part is knowing it exists.** Read
@@ -126,6 +131,8 @@ noticed something specific about them.
 | `@add_reputation` / `@remove_reputation` | Trust moved. Driven by how the PC behaved, not by quest completion. |
 | `@add_horny` / `@remove_horny` | Per-NPC arousal, tracked on its own axis **separate from trust**. |
 | `"hide_if": "picked"` | One-shot options. Flavour and lore branches that shouldn't repeat. |
+| Follow-up chains | An answer the player will want to pull on. Reachable only from the answer that provoked it, one-shot, exit always visible. See `.clinerules/scene-writing-monsterfolk.md`. |
+| `(Lie)` options | The PC has reason to misrepresent something. A failed lie is *detected*, never blocked, and the caught branch is often the warmer one. |
 | `min_reputation` / `min_horny` in `show_if` | Options that exist only once an NPC actually likes or wants the PC. |
 | `check` + `on_success` / `on_fail` / `on_nat20` | Rolls. Always give `on_nat20` somewhere worth reaching. |
 | `bonus_if` | Earlier choices paying off. Items and flags stack additively into the roll. |
@@ -145,6 +152,9 @@ noticed something specific about them.
   decision, and it keeps the player's hands on the scene through long stretches.
 - **Pick the ability from the fiction.** Body for physical nerve, mind for reading a mechanism
   or a record, soul for reaching someone. Never default to soul.
+- **Tiers gate what the PC can say, dice gate what their body attempts.** Prefer
+  `ability_tier` for dialogue, and save `check` + DC for physical stakes, for lying, and for
+  reading something that could genuinely be misread. Don't roll to be charming.
 - **Write both gender variants** wherever `player_gender` matters.
 - **Respect `content_disabled`** on anything a player may have switched off.
 

@@ -38,7 +38,15 @@
       "Bash(\"d:/Program Files/Godot/Godot v4.4.exe\" --headless --check-only --script Scripts/entities/player/player_dot.gd)",
       "Bash(\"d:/Program Files/Godot/Godot v4.4.exe\" --headless --script Tools/_tmp_input_check.gd)",
       "Bash(python \"C:\\\\Users\\\\hisak\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Projects-Godot-wrisst-test\\\\fac55d42-bb05-4970-8ab6-99822e87452a\\\\scratchpad\\\\bubbles.py\")",
-      "PowerShell(Move-Item -LiteralPath \"X ReadMe for LLMs\\\\CharacterSheets\\\\P�ll�ka & Mintt�r� brainstorm and lore \\(260804 by chatGPT\\).md\" -Destination \"Archive\\\\superseded_docs\\\\\")"
+      "PowerShell(Move-Item -LiteralPath \"X ReadMe for LLMs\\\\CharacterSheets\\\\P�ll�ka & Mintt�r� brainstorm and lore \\(260804 by chatGPT\\).md\" -Destination \"Archive\\\\superseded_docs\\\\\")",
+      "PowerShell(& \"D:\\\\Program Files\\\\Godot\\\\Godot_v4.4-stable_win64_console.exe\" --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" --check-only --script \"res://Scripts/autoload/debug_panel.gd\" 2>&1)",
+      "PowerShell(& \"D:\\\\Program Files\\\\Godot\\\\Godot v4.4.exe\" --headless --path \"d:\\\\Projects\\\\Godot\\\\wrisst_test\" --check-only --script \"res://Scripts/autoload/debug_panel.gd\" 2>&1)",
+      "Bash(grep -n \"^#\\\\{1,3\\\\} \\\\|^> \\\\*\\\\*\\\\|^\\\\*\\\\*Status\" \"d:/Projects/Godot/wrisst_test/X ReadMe for LLMs/CharacterSheets/RupaaaAndBaaaku_Backstory_WIP.md\")",
+      "Bash(cd \"d:/Projects/Godot/wrisst_test/X ReadMe for LLMs/CharacterSheets\"; echo \"--- brothers arrival ---\"; grep -n -i \"cycle\\\\|arrived\\\\|two cycles\" RupaaaAndBaaaku.md | head; echo \"--- soup riot mentions anywhere ---\"; grep -rn -i \"soup riot\" . ../*.txt 2>/dev/null | head)",
+      "Read(//d/Projects/Godot/**)",
+      "Bash(grep -n \"^=\\\\{3,\\\\}\\\\|^---\\\\{3,\\\\}\\\\|^\\\\*\\\\*\\\\*\\\\|^### \\\\|^## \\\\|^# \\\\|^\\\\[FILE\\\\|^FILE:\\\\|\\\\.txt$\\\\|\\\\.json$\" \"All Teraurge Dialogue for Comparison and Learning[Wrisst].txt\")",
+      "Bash(grep -n \"^\\\\[[A-Z][A-Z0-9 _'-]*\\\\]$\" \"All Teraurge Dialogue for Comparison and Learning[Wrisst].txt\")",
+      "Bash(python3 -)"
     ],
     "deny": [],
     "additionalDirectories": [

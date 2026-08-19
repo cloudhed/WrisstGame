@@ -72,7 +72,7 @@ Short and broad-shouldered, built like a quarry-runner who never stopped. Carrie
 ## Story Beats / Arc Notes
 - Klyftet's unofficial social hub. The Windbreak is where information, alliances, and tensions pass through.
 - History is a stitched mess of caravan brawls, busted kitchens, and unnamed border towns. He doesn't discuss origin.
-- Built the Windbreak with scavenged stone; held it through snow-turns, gang incursions, and the infamous Soup riot.
+- Acquired the Windbreak as a damaged building and repaired it himself; held it through snow-turns, gang incursions, and the infamous Soup riot. The split stove plate behind the main hearth is still held together with metal straps.
 - Potential: stable early/mid-game anchor; may vanish suddenly after a townwide crisis — investigation trigger.
 - Potential: very old friends with Bitalgut; reacts to the name before he can stop himself and won't discuss it around others. The why is sealed and no one will ask.
 - Potential: sexual partner (see below).
@@ -87,7 +87,7 @@ Short and broad-shouldered, built like a quarry-runner who never stopped. Carrie
 
 **Nautinto:** Mutual, unspoken arrangement. He sends the ones who need more than a meal to her. She sends the truly lost to the Windbreak first. They've never discussed this.
 
-**Selenna:** He leaves food near the docks sometimes. Doesn't mention it to anyone. She doesn't either.
+**Säyria:** He leaves food near the docks sometimes. Doesn't mention it to anyone. She doesn't either.
 
 **Rupaaa & Baaaku:** He tolerates them. He keeps their tab accurate because it's easier than arguing. They respect this.
 

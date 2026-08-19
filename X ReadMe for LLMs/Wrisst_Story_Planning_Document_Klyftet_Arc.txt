@@ -207,7 +207,7 @@ SQ-A3 “Threaded Crowns” (Rupaaa & Baaaku)
 * Help settle a trade dispute without collapsing market confidence.
 * Payoff: dynamic shop stock and discount branch.
 
-SQ-A4 “Deep Quiet” (Selenna)
+SQ-A4 “Deep Quiet” (Säyria)
 * Assist in controlled shoreline dives and retrievals.
 * Payoff: access to lake-only materials and night dialogue scenes.
 
@@ -392,12 +392,12 @@ Night shoreline, low wind, repeating light under water.
 Player Choices:
 * Observe and log
 * Enter water zone
-* Bring Selenna later
+* Bring Säyria later
 
 Micro-Resolution:
 * Solo observe: map marker + rumor line unlocked.
 * Enter alone: risk encounter + rare material chance.
-* Return with Selenna: safer retrieval + relationship progression.
+* Return with Säyria: safer retrieval + relationship progression.
 
 ________________________________________________________________________________
 

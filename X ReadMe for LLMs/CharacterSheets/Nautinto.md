@@ -66,7 +66,7 @@ Slow, warm, weighted, wise, large, old and unhurried. Every sentence feels consi
 
 **Bwavrek:** She understands how he works. She doesn't entirely approve. She would help him without being asked in a crisis and they both know it.
 
-**Selenna:** The closest thing to a peer she has in Klyftet. Occasional long silences by the lake. Neither names it friendship, which is perhaps why it functions as one.
+**Säyria:** The closest thing to a peer she has in Klyftet. Occasional long silences by the lake. Neither names it friendship, which is perhaps why it functions as one.
 
 **Rupaaa & Baaaku:** She buys from them without negotiating. This unsettles them.
 

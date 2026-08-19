@@ -1,142 +1,164 @@
 extends Control
 
+## In-game debug overlay, toggled with the `debug_input` action.
+##
+## Every control in the right-hand column is declared as data here and built at
+## runtime by `_build_controls()`, so adding a debug tool costs one row in a table
+## instead of a hand-placed node with hand-picked pixel coordinates.
+## `debug_panel.tscn` is a layout shell only, and should stay that way: containers
+## own all positioning, which is what keeps the panel's parts from overlapping.
+
 @onready var debug_ui: CanvasLayer = $DebugUI
-@onready var debug_text: Label = $DebugUI/DebugText
-@onready var flags_text: Label = $DebugUI/FlagsText
-@onready var reshuffle_toggle_button: Button = $DebugUI/ReshuffleToggleButton
-@onready var feral_toggle_button: Button = $DebugUI/FeralToggleButton
-@onready var violence_toggle_button: Button = $DebugUI/ViolenceToggleButton
+@onready var debug_text: Label = %DebugText
+@onready var flags_area: Control = %FlagsArea
+@onready var flags_row: HBoxContainer = %FlagsRow
+@onready var controls: VBoxContainer = %Controls
 
+# ─────────────────────────────────────────────────────────────
+# Button palette — new controls pick a mood rather than an RGB triplet.
+const COLOR_HIGH := Color(1.0, 0.55, 0.0)
+const COLOR_LOW := Color(0.0, 0.78, 0.78)
+const COLOR_GOOD := Color(0.3, 0.9, 0.3)
+const COLOR_INFO := Color(0.4, 0.7, 1.0)
+const COLOR_DANGER := Color(0.9, 0.25, 0.25)
+const COLOR_NEUTRAL := Color(0.8, 0.8, 0.8)
 
-func _ready():
-	debug_ui.visible = true
-	if GameState.has_signal("combat_debug_settings_changed") and not GameState.combat_debug_settings_changed.is_connected(_refresh_debug_controls):
-		GameState.combat_debug_settings_changed.connect(_refresh_debug_controls)
-	_refresh_debug_controls()
-	_build_ability_buttons()
+const ABILITIES := ["body", "mind", "soul"]
 
+## Content-warning toggles: [GameState.content_settings key, button label].
+const CONTENT_TOGGLES := [
+	["feral", "Feral content"],
+	["violence", "Violence content"],
+]
 
-## Roll override toggle buttons — keyed by mode string.
+## Roll override buttons: [AbilitySystem.roll_override mode, label, colour].
+const ROLL_MODES := [
+	["nat1", "Nat1", COLOR_DANGER],
+	["rng", "RNG", COLOR_NEUTRAL],
+	["nat20", "Nat20", COLOR_GOOD],
+]
+
+## Flag dump sections: [heading, GameState property, icon].
+const FLAG_SECTIONS := [
+	["Quest Flags", "quest_flags", "✅"],
+	["Dialog Flags", "dialog_flags", "💬"],
+	["Event Flags", "event_flags", "🎯"],
+	["Knowledge Flags", "knowledge_flags", "📚"],
+	["Sex Flags", "sex_flags", "🔥"],
+	["Temp Flags", "temp_flags", "⏱️"],
+]
+
+## Roll override buttons, keyed by mode string.
 var _roll_buttons: Dictionary = {}
 
+## One flag column per FLAG_SECTIONS entry, in the same order.
+var _flag_labels: Array[Label] = []
 
-func _build_ability_buttons() -> void:
-	var container: VBoxContainer = VBoxContainer.new()
-	# Keep the bottom of this menu clear of the scene-placed buttons
-	# (ReshuffleToggleButton starts at y=779 in debug_panel.tscn).
-	container.position = Vector2(1602, 590)
-	debug_ui.add_child(container)
+## Live-labelled toggles: [button, label_callable]. The callable is re-run on
+## every refresh, so a toggle always reads its state straight from GameState.
+var _toggles: Array[Array] = []
 
-	for ability: String in ["body", "mind", "soul"]:
-		var row: HBoxContainer = HBoxContainer.new()
-		container.add_child(row)
 
-		var lbl: Label = Label.new()
-		lbl.text = ability.capitalize() + ":"
-		lbl.custom_minimum_size = Vector2(48, 0)
-		row.add_child(lbl)
+func _ready() -> void:
+	debug_ui.visible = true
+	_build_controls()
+	if not GameState.combat_debug_settings_changed.is_connected(_refresh_debug_controls):
+		GameState.combat_debug_settings_changed.connect(_refresh_debug_controls)
+	_refresh_debug_controls()
 
-		for tier: String in ["high", "low"]:
-			var btn: Button = Button.new()
-			btn.text = "Set " + tier.capitalize()
-			btn.pressed.connect(_on_ability_override.bind(ability, tier))
-			var col: Color = Color(1.0, 0.55, 0.0) if tier == "high" else Color(0.0, 0.78, 0.78)
-			btn.add_theme_color_override("font_color", col)
-			btn.add_theme_color_override("font_hover_color", col.lightened(0.25))
-			btn.add_theme_color_override("font_pressed_color", col.darkened(0.2))
-			row.add_child(btn)
 
-	# --- Save / Load row ---
-	var save_row: HBoxContainer = HBoxContainer.new()
-	container.add_child(save_row)
+# ─────────────────────────────────────────────────────────────
+# Control construction
+# ─────────────────────────────────────────────────────────────
 
-	var save_lbl: Label = Label.new()
-	save_lbl.text = "Save:"
-	save_lbl.custom_minimum_size = Vector2(48, 0)
-	save_row.add_child(save_lbl)
+func _build_controls() -> void:
+	# --- Ability tier overrides ---
+	for ability: String in ABILITIES:
+		var row: HBoxContainer = _add_row(ability.capitalize() + ":")
+		row.add_child(_make_button("Set High", _on_ability_override.bind(ability, "high"), COLOR_HIGH))
+		row.add_child(_make_button("Set Low", _on_ability_override.bind(ability, "low"), COLOR_LOW))
 
-	var save_actions: Array[Array] = [
-		["Save",            _on_save_pressed,     Color(0.4, 0.85, 0.4)],
-		["Load",            _on_load_pressed,     Color(0.4, 0.7, 1.0)],
-		["New Game (wipe)", _on_new_game_pressed, Color(0.95, 0.4, 0.4)],
-	]
-	for action_data: Array in save_actions:
-		var save_btn: Button = Button.new()
-		save_btn.text = action_data[0]
-		save_btn.pressed.connect(action_data[1])
-		var save_col: Color = action_data[2]
-		save_btn.add_theme_color_override("font_color", save_col)
-		save_btn.add_theme_color_override("font_hover_color", save_col.lightened(0.25))
-		save_btn.add_theme_color_override("font_pressed_color", save_col.darkened(0.2))
-		save_row.add_child(save_btn)
+	# --- Save / load ---
+	var save_row: HBoxContainer = _add_row("Save:")
+	save_row.add_child(_make_button("Save", SaveManager.save_game, COLOR_GOOD))
+	save_row.add_child(_make_button("Load", SaveManager.load_game, COLOR_INFO))
+	save_row.add_child(_make_button("New Game (wipe)", SaveManager.new_game, COLOR_DANGER))
 
-	# --- Roll override row ---
-	var roll_row: HBoxContainer = HBoxContainer.new()
-	container.add_child(roll_row)
-
-	var roll_lbl: Label = Label.new()
-	roll_lbl.text = "Roll:"
-	roll_lbl.custom_minimum_size = Vector2(48, 0)
-	roll_row.add_child(roll_lbl)
-
-	var modes: Array[Array] = [
-		["nat1",  "Nat1",  Color(0.9, 0.2, 0.2)],
-		["rng",   "RNG",   Color(0.8, 0.8, 0.8)],
-		["nat20", "Nat20", Color(0.2, 0.9, 0.2)],
-	]
-	for mode_data: Array in modes:
-		var mode: String  = mode_data[0]
-		var label: String = mode_data[1]
-		var col: Color    = mode_data[2]
-		var btn: Button = Button.new()
-		btn.text = label
-		btn.pressed.connect(_on_roll_override.bind(mode))
-		btn.add_theme_color_override("font_color", col)
-		btn.add_theme_color_override("font_hover_color", col.lightened(0.25))
-		btn.add_theme_color_override("font_pressed_color", col.darkened(0.2))
+	# --- Roll override ---
+	var roll_row: HBoxContainer = _add_row("Roll:")
+	for mode_data: Array in ROLL_MODES:
+		var mode: String = mode_data[0]
+		var btn: Button = _make_button(mode_data[1], _on_roll_override.bind(mode), mode_data[2])
 		roll_row.add_child(btn)
 		_roll_buttons[mode] = btn
 
-	_refresh_roll_buttons()
+	# --- Toggles ---
+	_add_toggle(
+		func() -> String: return "Deck reshuffle: %s" % GameState.get_debug_reshuffle_mode_label(),
+		GameState.toggle_debug_immediate_discard_reshuffle
+	)
+	for entry: Array in CONTENT_TOGGLES:
+		var key: String = entry[0]
+		var label: String = entry[1]
+		_add_toggle(
+			func() -> String: return "%s: %s" % [label, "OFF" if GameState.content_settings[key] else "ON"],
+			func() -> void: GameState.content_settings[key] = not GameState.content_settings[key]
+		)
 
 
-func _on_save_pressed() -> void:
-	SaveManager.save_game()
+## Adds a labelled row to the control column and hands it back for buttons.
+func _add_row(label_text: String) -> HBoxContainer:
+	var row: HBoxContainer = HBoxContainer.new()
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	controls.add_child(row)
+
+	var lbl: Label = Label.new()
+	lbl.text = label_text
+	lbl.custom_minimum_size = Vector2(48, 0)
+	row.add_child(lbl)
+	return row
 
 
-func _on_load_pressed() -> void:
-	SaveManager.load_game()
+## The single place a debug button is born.
+func _make_button(text: String, on_pressed: Callable, color: Color) -> Button:
+	var btn: Button = Button.new()
+	btn.text = text
+	btn.pressed.connect(on_pressed)
+	btn.add_theme_color_override("font_color", color)
+	btn.add_theme_color_override("font_hover_color", color.lightened(0.25))
+	btn.add_theme_color_override("font_pressed_color", color.darkened(0.2))
+	return btn
 
 
-func _on_new_game_pressed() -> void:
-	SaveManager.new_game()
+## Registers a toggle whose label is recomputed on every refresh. `on_pressed`
+## runs before the refresh, so the new state is what gets drawn.
+func _add_toggle(label_fn: Callable, on_pressed: Callable) -> void:
+	var btn: Button = _make_button("", on_pressed, COLOR_NEUTRAL)
+	btn.pressed.connect(_refresh_debug_controls)
+	controls.add_child(btn)
+	_toggles.append([btn, label_fn])
 
+
+# ─────────────────────────────────────────────────────────────
+# Actions
+# ─────────────────────────────────────────────────────────────
 
 func _on_roll_override(mode: String) -> void:
 	AbilitySystem.roll_override = mode
 	_refresh_roll_buttons()
 
 
-func _refresh_roll_buttons() -> void:
-	var active_mode: String = AbilitySystem.roll_override
-	for mode: String in _roll_buttons:
-		var btn: Button = _roll_buttons[mode]
-		var is_active: bool = mode == active_mode
-		btn.flat = not is_active
-		btn.disabled = is_active
-
-
 func _on_ability_override(ability: String, tier: String) -> void:
 	var current_high: String = ""
-	var current_low: String  = ""
-	for a: String in ["body", "mind", "soul"]:
+	var current_low: String = ""
+	for a: String in ABILITIES:
 		match AbilitySystem.get_tier(a):
 			"high": current_high = a
-			"low":  current_low  = a
+			"low": current_low = a
 
 	# Pick the best partner so the constraint (one high, one low) is always satisfied.
 	var others: Array[String] = []
-	for a: String in ["body", "mind", "soul"]:
+	for a: String in ABILITIES:
 		if a != ability:
 			others.append(a)
 
@@ -148,42 +170,61 @@ func _on_ability_override(ability: String, tier: String) -> void:
 		AbilitySystem.assign_abilities(new_high, ability)
 
 
-func _process(delta):
+# ─────────────────────────────────────────────────────────────
+# Refresh
+# ─────────────────────────────────────────────────────────────
+
+func _refresh_debug_controls() -> void:
+	if _toggles.is_empty():
+		return  # GameState can emit before _build_controls() runs during startup
+	for entry: Array in _toggles:
+		var btn: Button = entry[0]
+		var label_fn: Callable = entry[1]
+		btn.text = label_fn.call()
+	_refresh_roll_buttons()  # roll override can change when a save is loaded
+
+
+func _refresh_roll_buttons() -> void:
+	var active_mode: String = AbilitySystem.roll_override
+	for mode: String in _roll_buttons:
+		var btn: Button = _roll_buttons[mode]
+		var is_active: bool = mode == active_mode
+		btn.flat = not is_active
+		btn.disabled = is_active
+
+
+# ─────────────────────────────────────────────────────────────
+# Input / visibility
+# ─────────────────────────────────────────────────────────────
+
+func _process(_delta: float) -> void:
 	if debug_ui.visible:
 		_update_debug_info()
 
 
-func _unhandled_input(ev):
+func _unhandled_input(ev: InputEvent) -> void:
 	if ev.is_action_pressed("escape") and not ev.is_echo():
 		SaveManager.save_game()  # escape quits the game — autosave first
 		get_tree().quit()
 		return
 
-	# Toggle debug panel on debug_input action
 	if ev.is_action_pressed("debug_input"):
 		_toggle_debug_panel()
 
 
-func _toggle_debug_panel():
+func _toggle_debug_panel() -> void:
 	debug_ui.visible = not debug_ui.visible
 	if debug_ui.visible:
 		_refresh_debug_controls()
 		_update_debug_info()
-#		_refresh_inventory()
-		pass
 
 
-func _refresh_debug_controls() -> void:
-	if not is_instance_valid(reshuffle_toggle_button):
-		return
-	reshuffle_toggle_button.text = "Deck reshuffle: %s" % GameState.get_debug_reshuffle_mode_label()
-	feral_toggle_button.text = "Feral content: %s" % ("OFF" if GameState.content_settings["feral"] else "ON")
-	violence_toggle_button.text = "Violence content: %s" % ("OFF" if GameState.content_settings["violence"] else "ON")
-	_refresh_roll_buttons()  # roll override can change when a save is loaded
+# ─────────────────────────────────────────────────────────────
+# Readout
+# ─────────────────────────────────────────────────────────────
 
-
-func _update_debug_info():
-	var core_info = ""
+func _update_debug_info() -> void:
+	var core_info: String = ""
 	core_info += "%s %s\n" % ["🌙" if GameState.is_night else "☀️", "Night" if GameState.is_night else "Day"]
 	core_info += "💾 Player: %s (%s)\n" % [GameState.player_name, GameState.player_gender]
 	core_info += "💰 Crowns: %d\n" % GameState.player_crowns
@@ -193,7 +234,6 @@ func _update_debug_info():
 	core_info += "🗡️ Weapon: %s\n" % (GameState.equipped_weapon.resource_path if GameState.equipped_weapon else "None")
 	core_info += "🛡️ Armor: %s\n" % (GameState.equipped_armor.resource_path if GameState.equipped_armor else "None")
 	core_info += "🃏 Deck reshuffle: %s\n" % GameState.get_debug_reshuffle_mode_label()
-
 
 	core_info += "🎲 Body: %s(%d)  Mind: %s(%d)  Soul: %s(%d)\n" % [
 		AbilitySystem.get_tier("body"), AbilitySystem.get_score("body"),
@@ -215,53 +255,56 @@ func _update_debug_info():
 	if combat and combat.player and combat.player.stats and combat.player.stats.has_method("get_debug_status_summary"):
 		core_info += "☠️ Combat statuses: %s\n" % combat.player.stats.get_debug_status_summary()
 
-	debug_ui.get_node("DebugText").text = core_info
-
-	# FLAG DUMP
-	var flag_text = "[Quest Flags]\n"
-	for key in GameState.quest_flags.keys():
-		if GameState.quest_flags[key]:
-			flag_text += "✅ %s\n" % key
-
-	flag_text += "\n[Dialog Flags]\n"
-	for key in GameState.dialog_flags.keys():
-		if GameState.dialog_flags[key]:
-			flag_text += "💬 %s\n" % key
-
-	flag_text += "\n[Event Flags]\n"
-	for key in GameState.event_flags.keys():
-		if GameState.event_flags[key]:
-			flag_text += "🎯 %s\n" % key
-
-	flag_text += "\n[Knowledge Flags]\n"
-	for key in GameState.knowledge_flags.keys():
-		if GameState.knowledge_flags[key]:
-			flag_text += "📚 %s\n" % key
-
-	flag_text += "\n[Sex Flags]\n"
-	for key in GameState.sex_flags.keys():
-		if GameState.sex_flags[key]:
-			flag_text += "🔥 %s\n" % key
-
-	flag_text += "\n[Temp Flags]\n"
-	for key in GameState.temp_flags.keys():
-		if GameState.temp_flags[key]:
-			flag_text += "⏱️ %s\n" % key
-
-	debug_ui.get_node("FlagsText").text = flag_text
+	debug_text.text = core_info
+	_refresh_flag_labels()
 
 
-func _on_reshuffle_toggle_button_pressed() -> void:
-	GameState.toggle_debug_immediate_discard_reshuffle()
-	_refresh_debug_controls()
-	_update_debug_info()
+## The flag dump is laid out newspaper-style: filled down one column, then
+## wrapped into the next. A single stacked list outgrows the screen as soon as a
+## save has real progress in it, so wrapping is what keeps the whole dump visible
+## without the panel's other parts having to give up any room.
+func _refresh_flag_labels() -> void:
+	var lines: PackedStringArray = _build_flag_lines()
+	var per_column: int = _flag_lines_per_column()
+	var needed: int = maxi(1, ceili(float(lines.size()) / float(per_column)))
+	_ensure_flag_columns(needed)
+
+	for i: int in _flag_labels.size():
+		var lbl: Label = _flag_labels[i]
+		lbl.visible = i < needed
+		if not lbl.visible:
+			continue
+		var start: int = i * per_column
+		var end: int = mini(start + per_column, lines.size())
+		lbl.text = "\n".join(lines.slice(start, end))
 
 
-func _on_feral_toggle_button_pressed() -> void:
-	GameState.content_settings["feral"] = not GameState.content_settings["feral"]
-	_refresh_debug_controls()
+## Every flag line in display order, headings included, one entry per line.
+func _build_flag_lines() -> PackedStringArray:
+	var lines: PackedStringArray = []
+	for section: Array in FLAG_SECTIONS:
+		lines.append("[%s]" % section[0])
+		var flags: Dictionary = GameState.get(section[1])
+		for key in flags:
+			if flags[key]:
+				lines.append("%s %s" % [section[2], key])
+		lines.append("")
+	return lines
 
 
-func _on_violence_toggle_button_pressed() -> void:
-	GameState.content_settings["violence"] = not GameState.content_settings["violence"]
-	_refresh_debug_controls()
+## How many lines fit in one column, measured from the theme rather than guessed,
+## so a font change can't quietly push the dump off the bottom again.
+func _flag_lines_per_column() -> int:
+	var font: Font = flags_row.get_theme_font("font", "Label")
+	var font_size: int = flags_row.get_theme_font_size("font_size", "Label")
+	var line_height: float = font.get_height(font_size) + flags_row.get_theme_constant("line_spacing", "Label")
+	return maxi(1, int(flags_area.size.y / maxf(line_height, 1.0)))
+
+
+## Columns are created on demand and then reused, since this runs every frame.
+func _ensure_flag_columns(count: int) -> void:
+	while _flag_labels.size() < count:
+		var lbl: Label = Label.new()
+		lbl.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		flags_row.add_child(lbl)
+		_flag_labels.append(lbl)

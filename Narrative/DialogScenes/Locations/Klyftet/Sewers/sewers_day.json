@@ -1582,7 +1582,7 @@
 	{
 		"id": "post_sex_inspect_boxes",
 		"type": "narration",
-		"text": "You peer into the discarded wooden crates near their makeshift camp. They're filled with strange, silvery fish that smell faintly of the lake above. Selenna's sjölfisk, most likely. It seems Pichidi has been raiding the docks while everyone sleeps.",
+		"text": "You peer into the discarded wooden crates near their makeshift camp. They're filled with strange, silvery fish that smell faintly of the lake above. Säyria's sjölfisk, most likely. It seems Pichidi has been raiding the docks while everyone sleeps.",
 		"next": "post_sex_hub"
 	},
 

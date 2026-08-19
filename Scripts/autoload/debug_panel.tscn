@@ -17,54 +17,50 @@ script = ExtResource("2_letyd")
 [node name="DebugUI" type="CanvasLayer" parent="."]
 layer = 10
 
-[node name="ActiveFlags" type="RichTextLabel" parent="DebugUI"]
-visible = false
+[node name="Layout" type="MarginContainer" parent="DebugUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Rows" type="VBoxContainer" parent="DebugUI/Layout"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="FlagsArea" type="Control" parent="DebugUI/Layout/Rows"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 231
-text = "DEBUG"
+mouse_filter = 2
 
-[node name="DebugText" type="Label" parent="DebugUI"]
-offset_top = 862.0
-offset_right = 40.0
-offset_bottom = 885.0
-
-[node name="FlagsText" type="Label" parent="DebugUI"]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="FlagsRow" type="HBoxContainer" parent="DebugUI/Layout/Rows/FlagsArea"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -116.0
-offset_right = -76.0
-offset_bottom = 23.0
-grow_horizontal = 0
-horizontal_alignment = 2
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/separation = 28
 
-[node name="ReshuffleToggleButton" type="Button" parent="DebugUI"]
-offset_left = 1516.0
-offset_top = 779.0
-offset_right = 1830.0
-offset_bottom = 814.0
-text = "Deck reshuffle"
+[node name="BottomRow" type="HBoxContainer" parent="DebugUI/Layout/Rows"]
+layout_mode = 2
+mouse_filter = 2
 
-[node name="FeralToggleButton" type="Button" parent="DebugUI"]
-offset_left = 1516.0
-offset_top = 820.0
-offset_right = 1830.0
-offset_bottom = 855.0
-text = "Feral content"
+[node name="DebugText" type="Label" parent="DebugUI/Layout/Rows/BottomRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
 
-[node name="ViolenceToggleButton" type="Button" parent="DebugUI"]
-offset_left = 1516.0
-offset_top = 861.0
-offset_right = 1830.0
-offset_bottom = 896.0
-text = "Violence content"
-
-[connection signal="pressed" from="DebugUI/ReshuffleToggleButton" to="." method="_on_reshuffle_toggle_button_pressed"]
-[connection signal="pressed" from="DebugUI/FeralToggleButton" to="." method="_on_feral_toggle_button_pressed"]
-[connection signal="pressed" from="DebugUI/ViolenceToggleButton" to="." method="_on_violence_toggle_button_pressed"]
+[node name="Controls" type="VBoxContainer" parent="DebugUI/Layout/Rows/BottomRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
