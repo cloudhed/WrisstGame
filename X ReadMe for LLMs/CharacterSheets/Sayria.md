@@ -1,9 +1,9 @@
 ---
-name: Selenna
+name: Säyria
 type: Individual NPC
 ---
 
-# Selenna
+# Säyria
 **Species:** Sleid | **Role:** Free-diver, lake-keeper, reluctant threshold guardian | **Location:** Klyftet — Lake Silv Shoreline
 
 ## Personality & Voice
@@ -14,7 +14,7 @@ She arrived alone. She claimed the northern docks quickly. She has never explain
 There is something she hears at the bottom of Lake Silv. She has decided not to talk about it. If the PC presses, she will look at them for a long time before saying something that is technically an answer but isn't.
 
 ## Physical Description
-Tall, with a long curved neck and a blade-like head angled slightly forward — she looks like she's always already moving toward something. Large luminous violet eyes that reflect even the weakest light, giving her the sense of seeing in conditions where others are blind. Skin smooth and lake-dark with fine bands of violet and green that shimmer when she moves. Bat-like fin structures along her arms connected by strong translucent webbing — folded at rest, they extend her reach considerably when spread. Long muscular legs, wide webbed two-toed feet that move together with the fluid economy of something designed for water. Folded dorsal ridges along her back fan open during dives. Wears minimal wrapcloth, tight-fitting, oil-treated, clings flat regardless of who's watching. On land she moves slowly and deliberately. In the water: large, sweeping, completely elsewhere.
+Tall and narrow, built as a standing column of plate with no neck to speak of. A broad bilobed carapace hood caps her head and overhangs slightly forward, so she carries a constant sense of already moving toward something. Large luminous violet eyes sit low and wide in the shell and reflect even the weakest light, giving her the sense of seeing in conditions where others are blind. Long violet antennae trail from beneath the hood and past her body, moving without pause as they read the water and the air. Her shell is lake-dark, deep teal banded and accented with violet, and it shimmers when she moves. Segmented armor stacks down her front from throat to hip. Four long thin violet limbs carry her, delicate over stone and superb in water. A fan of stiff plates closes the end of her body, folded flat when she walks and spreading during dives. Wears minimal wrapcloth, tight-fitting, oil-treated, clings flat regardless of who's watching. On land she moves slowly and deliberately. In the water: large, sweeping, completely elsewhere.
 
 ## Speech Patterns
 
@@ -40,16 +40,16 @@ Tall, with a long curved neck and a blade-like head angled slightly forward — 
 
 **Example lines (first contact / low trust):**
 - *"The north dock is mine."*
-- *"Sjölfisk. Not for sale today."*
-- (A look. You understand you are on the edge of her territory.)
+- *"Sjölfisk. I'm not selling any today."*
+- (She gives you a long unbroken gaze. You understand you are on the edge of her territory.)
 
 **Example lines (established presence):**
-- *"You came back."* — four-second pause. *"Sit if you want."*
-- *"Don't touch the water here. Not yet."*
-- *"You're quieter than last time."* — this is approval.
+- *"You came back."* — four-second pause. *"Have a seat if you feel like it."*
+- *"Please don't touch the water there. You'll have to wait a bit."*
+- *"You're quieter now than last time."* — this is approval.
 
 **Example lines (trust / verge of the real thing):**
-- *"There is something below that has heard you."* — said without alarm.
+- *"There is something below the waves that has heard you."* — said without alarm.
 - *"Come back at low tide."* — the closest she gets to an invitation.
 
 ## Behavioral Logic
@@ -77,7 +77,6 @@ Tall, with a long curved neck and a blade-like head angled slightly forward — 
 - Potential: holds knowledge of something dormant or forbidden at the lake's deepest point — something only she hears.
 - Potential: gatekeeper to water-linked mutations or knowledge, possibly already adapted in ways the PC could eventually access.
 - Potential: reacts with force or disappears entirely if someone takes too much from the lake.
-- Potential: marks the PC as water-bound through ritual or sex, without explanation.
 
 ## Relationships to Other NPCs
 
@@ -85,15 +84,15 @@ Tall, with a long curved neck and a blade-like head angled slightly forward — 
 
 **Tavo-Pavo:** Food occasionally appears near the docks. Neither mentions this.
 
-**Nautinto:** The closest thing to a peer she has in Klyftet. Long silences by the water. Neither has named it friendship.
+**Nautinto:** The closest thing to a peer she has around the area of Klyftet. Long silences by the water. Neither has named it friendship.
 
-**Bwavrek:** She has no particular opinion of him except that he doesn't bother the lake.
+**Bwavrek:** She has no particular opinion of him as long as he doesn't bother the lake,.
 
 ## Sexual Tone
 
-Non-verbal, physical, and ritualistic. Intimacy with Selenna does not feel like invitation — it feels like being chosen, and the choosing is the act. She does not lead toward it with conversation. She moves toward it the way she moves into a dive: with purpose and no announcement.
+Non-verbal, physical, and ritualistic. She does not lead toward it with conversation. She moves toward it the way she moves into a dive: with purpose and no announcement.
 
-She is not gentle in a soft sense, but she is precise. She attends to the PC the way she attends to the water: with full presence, without performance.
+She is not gentle in a soft sense, but she is precise. She attends to the PC the way she attends to the water: with full presence, without performance. She shudders from your body heat.
 
 Afterward, she does not speak immediately. She may not speak at all. This is not coldness. She is still fully there. The silence is part of it.
 
