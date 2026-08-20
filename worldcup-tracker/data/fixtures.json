@@ -1,0 +1,2191 @@
+{
+ "name": "FIFA World Cup 2026",
+ "generated": "from openfootball/worldcup.json (public domain)",
+ "count": 104,
+ "matches": [
+  {
+   "id": 1,
+   "utcKickoff": "2026-06-11T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 1",
+   "group": "Group A",
+   "home": {
+    "name": "Mexico",
+    "code": "MEX",
+    "flag": "🇲🇽",
+    "tbd": false
+   },
+   "away": {
+    "name": "South Africa",
+    "code": "RSA",
+    "flag": "🇿🇦",
+    "tbd": false
+   },
+   "venue": "Mexico City"
+  },
+  {
+   "id": 2,
+   "utcKickoff": "2026-06-12T02:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 1",
+   "group": "Group A",
+   "home": {
+    "name": "South Korea",
+    "code": "KOR",
+    "flag": "🇰🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "Czech Republic",
+    "code": "CZE",
+    "flag": "🇨🇿",
+    "tbd": false
+   },
+   "venue": "Guadalajara (Zapopan)"
+  },
+  {
+   "id": 7,
+   "utcKickoff": "2026-06-12T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 2",
+   "group": "Group B",
+   "home": {
+    "name": "Canada",
+    "code": "CAN",
+    "flag": "🇨🇦",
+    "tbd": false
+   },
+   "away": {
+    "name": "Bosnia & Herzegovina",
+    "code": "BIH",
+    "flag": "🇧🇦",
+    "tbd": false
+   },
+   "venue": "Toronto"
+  },
+  {
+   "id": 19,
+   "utcKickoff": "2026-06-13T01:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 2",
+   "group": "Group D",
+   "home": {
+    "name": "USA",
+    "code": "USA",
+    "flag": "🇺🇸",
+    "tbd": false
+   },
+   "away": {
+    "name": "Paraguay",
+    "code": "PAR",
+    "flag": "🇵🇾",
+    "tbd": false
+   },
+   "venue": "Los Angeles (Inglewood)"
+  },
+  {
+   "id": 8,
+   "utcKickoff": "2026-06-13T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 3",
+   "group": "Group B",
+   "home": {
+    "name": "Qatar",
+    "code": "QAT",
+    "flag": "🇶🇦",
+    "tbd": false
+   },
+   "away": {
+    "name": "Switzerland",
+    "code": "SUI",
+    "flag": "🇨🇭",
+    "tbd": false
+   },
+   "venue": "San Francisco Bay Area (Santa Clara)"
+  },
+  {
+   "id": 13,
+   "utcKickoff": "2026-06-13T22:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 3",
+   "group": "Group C",
+   "home": {
+    "name": "Brazil",
+    "code": "BRA",
+    "flag": "🇧🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "Morocco",
+    "code": "MAR",
+    "flag": "🇲🇦",
+    "tbd": false
+   },
+   "venue": "New York/New Jersey (East Rutherford)"
+  },
+  {
+   "id": 14,
+   "utcKickoff": "2026-06-14T01:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 3",
+   "group": "Group C",
+   "home": {
+    "name": "Haiti",
+    "code": "HAI",
+    "flag": "🇭🇹",
+    "tbd": false
+   },
+   "away": {
+    "name": "Scotland",
+    "code": "SCO",
+    "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "tbd": false
+   },
+   "venue": "Boston (Foxborough)"
+  },
+  {
+   "id": 20,
+   "utcKickoff": "2026-06-14T04:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 3",
+   "group": "Group D",
+   "home": {
+    "name": "Australia",
+    "code": "AUS",
+    "flag": "🇦🇺",
+    "tbd": false
+   },
+   "away": {
+    "name": "Turkey",
+    "code": "TUR",
+    "flag": "🇹🇷",
+    "tbd": false
+   },
+   "venue": "Vancouver"
+  },
+  {
+   "id": 25,
+   "utcKickoff": "2026-06-14T17:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 4",
+   "group": "Group E",
+   "home": {
+    "name": "Germany",
+    "code": "GER",
+    "flag": "🇩🇪",
+    "tbd": false
+   },
+   "away": {
+    "name": "Curaçao",
+    "code": "CUW",
+    "flag": "🇨🇼",
+    "tbd": false
+   },
+   "venue": "Houston"
+  },
+  {
+   "id": 31,
+   "utcKickoff": "2026-06-14T20:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 4",
+   "group": "Group F",
+   "home": {
+    "name": "Netherlands",
+    "code": "NED",
+    "flag": "🇳🇱",
+    "tbd": false
+   },
+   "away": {
+    "name": "Japan",
+    "code": "JPN",
+    "flag": "🇯🇵",
+    "tbd": false
+   },
+   "venue": "Dallas (Arlington)"
+  },
+  {
+   "id": 26,
+   "utcKickoff": "2026-06-14T23:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 4",
+   "group": "Group E",
+   "home": {
+    "name": "Ivory Coast",
+    "code": "CIV",
+    "flag": "🇨🇮",
+    "tbd": false
+   },
+   "away": {
+    "name": "Ecuador",
+    "code": "ECU",
+    "flag": "🇪🇨",
+    "tbd": false
+   },
+   "venue": "Philadelphia"
+  },
+  {
+   "id": 32,
+   "utcKickoff": "2026-06-15T02:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 4",
+   "group": "Group F",
+   "home": {
+    "name": "Sweden",
+    "code": "SWE",
+    "flag": "🇸🇪",
+    "tbd": false
+   },
+   "away": {
+    "name": "Tunisia",
+    "code": "TUN",
+    "flag": "🇹🇳",
+    "tbd": false
+   },
+   "venue": "Monterrey (Guadalupe)"
+  },
+  {
+   "id": 43,
+   "utcKickoff": "2026-06-15T16:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 5",
+   "group": "Group H",
+   "home": {
+    "name": "Spain",
+    "code": "ESP",
+    "flag": "🇪🇸",
+    "tbd": false
+   },
+   "away": {
+    "name": "Cape Verde",
+    "code": "CPV",
+    "flag": "🇨🇻",
+    "tbd": false
+   },
+   "venue": "Atlanta"
+  },
+  {
+   "id": 37,
+   "utcKickoff": "2026-06-15T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 5",
+   "group": "Group G",
+   "home": {
+    "name": "Belgium",
+    "code": "BEL",
+    "flag": "🇧🇪",
+    "tbd": false
+   },
+   "away": {
+    "name": "Egypt",
+    "code": "EGY",
+    "flag": "🇪🇬",
+    "tbd": false
+   },
+   "venue": "Seattle"
+  },
+  {
+   "id": 44,
+   "utcKickoff": "2026-06-15T22:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 5",
+   "group": "Group H",
+   "home": {
+    "name": "Saudi Arabia",
+    "code": "KSA",
+    "flag": "🇸🇦",
+    "tbd": false
+   },
+   "away": {
+    "name": "Uruguay",
+    "code": "URU",
+    "flag": "🇺🇾",
+    "tbd": false
+   },
+   "venue": "Miami (Miami Gardens)"
+  },
+  {
+   "id": 38,
+   "utcKickoff": "2026-06-16T01:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 5",
+   "group": "Group G",
+   "home": {
+    "name": "Iran",
+    "code": "IRN",
+    "flag": "🇮🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "New Zealand",
+    "code": "NZL",
+    "flag": "🇳🇿",
+    "tbd": false
+   },
+   "venue": "Los Angeles (Inglewood)"
+  },
+  {
+   "id": 49,
+   "utcKickoff": "2026-06-16T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 6",
+   "group": "Group I",
+   "home": {
+    "name": "France",
+    "code": "FRA",
+    "flag": "🇫🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "Senegal",
+    "code": "SEN",
+    "flag": "🇸🇳",
+    "tbd": false
+   },
+   "venue": "New York/New Jersey (East Rutherford)"
+  },
+  {
+   "id": 50,
+   "utcKickoff": "2026-06-16T22:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 6",
+   "group": "Group I",
+   "home": {
+    "name": "Iraq",
+    "code": "IRQ",
+    "flag": "🇮🇶",
+    "tbd": false
+   },
+   "away": {
+    "name": "Norway",
+    "code": "NOR",
+    "flag": "🇳🇴",
+    "tbd": false
+   },
+   "venue": "Boston (Foxborough)"
+  },
+  {
+   "id": 55,
+   "utcKickoff": "2026-06-17T01:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 6",
+   "group": "Group J",
+   "home": {
+    "name": "Argentina",
+    "code": "ARG",
+    "flag": "🇦🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "Algeria",
+    "code": "DZA",
+    "flag": "🇩🇿",
+    "tbd": false
+   },
+   "venue": "Kansas City"
+  },
+  {
+   "id": 56,
+   "utcKickoff": "2026-06-17T04:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 6",
+   "group": "Group J",
+   "home": {
+    "name": "Austria",
+    "code": "AUT",
+    "flag": "🇦🇹",
+    "tbd": false
+   },
+   "away": {
+    "name": "Jordan",
+    "code": "JOR",
+    "flag": "🇯🇴",
+    "tbd": false
+   },
+   "venue": "San Francisco Bay Area (Santa Clara)"
+  },
+  {
+   "id": 61,
+   "utcKickoff": "2026-06-17T17:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 7",
+   "group": "Group K",
+   "home": {
+    "name": "Portugal",
+    "code": "POR",
+    "flag": "🇵🇹",
+    "tbd": false
+   },
+   "away": {
+    "name": "DR Congo",
+    "code": "COD",
+    "flag": "🇨🇩",
+    "tbd": false
+   },
+   "venue": "Houston"
+  },
+  {
+   "id": 67,
+   "utcKickoff": "2026-06-17T20:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 7",
+   "group": "Group L",
+   "home": {
+    "name": "England",
+    "code": "ENG",
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "tbd": false
+   },
+   "away": {
+    "name": "Croatia",
+    "code": "CRO",
+    "flag": "🇭🇷",
+    "tbd": false
+   },
+   "venue": "Dallas (Arlington)"
+  },
+  {
+   "id": 68,
+   "utcKickoff": "2026-06-17T23:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 7",
+   "group": "Group L",
+   "home": {
+    "name": "Ghana",
+    "code": "GHA",
+    "flag": "🇬🇭",
+    "tbd": false
+   },
+   "away": {
+    "name": "Panama",
+    "code": "PAN",
+    "flag": "🇵🇦",
+    "tbd": false
+   },
+   "venue": "Toronto"
+  },
+  {
+   "id": 62,
+   "utcKickoff": "2026-06-18T02:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 7",
+   "group": "Group K",
+   "home": {
+    "name": "Uzbekistan",
+    "code": "UZB",
+    "flag": "🇺🇿",
+    "tbd": false
+   },
+   "away": {
+    "name": "Colombia",
+    "code": "COL",
+    "flag": "🇨🇴",
+    "tbd": false
+   },
+   "venue": "Mexico City"
+  },
+  {
+   "id": 3,
+   "utcKickoff": "2026-06-18T16:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 8",
+   "group": "Group A",
+   "home": {
+    "name": "Czech Republic",
+    "code": "CZE",
+    "flag": "🇨🇿",
+    "tbd": false
+   },
+   "away": {
+    "name": "South Africa",
+    "code": "RSA",
+    "flag": "🇿🇦",
+    "tbd": false
+   },
+   "venue": "Atlanta"
+  },
+  {
+   "id": 9,
+   "utcKickoff": "2026-06-18T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 8",
+   "group": "Group B",
+   "home": {
+    "name": "Switzerland",
+    "code": "SUI",
+    "flag": "🇨🇭",
+    "tbd": false
+   },
+   "away": {
+    "name": "Bosnia & Herzegovina",
+    "code": "BIH",
+    "flag": "🇧🇦",
+    "tbd": false
+   },
+   "venue": "Los Angeles (Inglewood)"
+  },
+  {
+   "id": 10,
+   "utcKickoff": "2026-06-18T22:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 8",
+   "group": "Group B",
+   "home": {
+    "name": "Canada",
+    "code": "CAN",
+    "flag": "🇨🇦",
+    "tbd": false
+   },
+   "away": {
+    "name": "Qatar",
+    "code": "QAT",
+    "flag": "🇶🇦",
+    "tbd": false
+   },
+   "venue": "Vancouver"
+  },
+  {
+   "id": 4,
+   "utcKickoff": "2026-06-19T01:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 8",
+   "group": "Group A",
+   "home": {
+    "name": "Mexico",
+    "code": "MEX",
+    "flag": "🇲🇽",
+    "tbd": false
+   },
+   "away": {
+    "name": "South Korea",
+    "code": "KOR",
+    "flag": "🇰🇷",
+    "tbd": false
+   },
+   "venue": "Guadalajara (Zapopan)"
+  },
+  {
+   "id": 21,
+   "utcKickoff": "2026-06-19T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 9",
+   "group": "Group D",
+   "home": {
+    "name": "USA",
+    "code": "USA",
+    "flag": "🇺🇸",
+    "tbd": false
+   },
+   "away": {
+    "name": "Australia",
+    "code": "AUS",
+    "flag": "🇦🇺",
+    "tbd": false
+   },
+   "venue": "Seattle"
+  },
+  {
+   "id": 15,
+   "utcKickoff": "2026-06-19T22:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 9",
+   "group": "Group C",
+   "home": {
+    "name": "Scotland",
+    "code": "SCO",
+    "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "tbd": false
+   },
+   "away": {
+    "name": "Morocco",
+    "code": "MAR",
+    "flag": "🇲🇦",
+    "tbd": false
+   },
+   "venue": "Boston (Foxborough)"
+  },
+  {
+   "id": 16,
+   "utcKickoff": "2026-06-20T00:30:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 9",
+   "group": "Group C",
+   "home": {
+    "name": "Brazil",
+    "code": "BRA",
+    "flag": "🇧🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "Haiti",
+    "code": "HAI",
+    "flag": "🇭🇹",
+    "tbd": false
+   },
+   "venue": "Philadelphia"
+  },
+  {
+   "id": 22,
+   "utcKickoff": "2026-06-20T03:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 9",
+   "group": "Group D",
+   "home": {
+    "name": "Turkey",
+    "code": "TUR",
+    "flag": "🇹🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "Paraguay",
+    "code": "PAR",
+    "flag": "🇵🇾",
+    "tbd": false
+   },
+   "venue": "San Francisco Bay Area (Santa Clara)"
+  },
+  {
+   "id": 33,
+   "utcKickoff": "2026-06-20T17:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 10",
+   "group": "Group F",
+   "home": {
+    "name": "Netherlands",
+    "code": "NED",
+    "flag": "🇳🇱",
+    "tbd": false
+   },
+   "away": {
+    "name": "Sweden",
+    "code": "SWE",
+    "flag": "🇸🇪",
+    "tbd": false
+   },
+   "venue": "Houston"
+  },
+  {
+   "id": 27,
+   "utcKickoff": "2026-06-20T20:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 10",
+   "group": "Group E",
+   "home": {
+    "name": "Germany",
+    "code": "GER",
+    "flag": "🇩🇪",
+    "tbd": false
+   },
+   "away": {
+    "name": "Ivory Coast",
+    "code": "CIV",
+    "flag": "🇨🇮",
+    "tbd": false
+   },
+   "venue": "Toronto"
+  },
+  {
+   "id": 28,
+   "utcKickoff": "2026-06-21T00:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 10",
+   "group": "Group E",
+   "home": {
+    "name": "Ecuador",
+    "code": "ECU",
+    "flag": "🇪🇨",
+    "tbd": false
+   },
+   "away": {
+    "name": "Curaçao",
+    "code": "CUW",
+    "flag": "🇨🇼",
+    "tbd": false
+   },
+   "venue": "Kansas City"
+  },
+  {
+   "id": 34,
+   "utcKickoff": "2026-06-21T04:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 10",
+   "group": "Group F",
+   "home": {
+    "name": "Tunisia",
+    "code": "TUN",
+    "flag": "🇹🇳",
+    "tbd": false
+   },
+   "away": {
+    "name": "Japan",
+    "code": "JPN",
+    "flag": "🇯🇵",
+    "tbd": false
+   },
+   "venue": "Monterrey (Guadalupe)"
+  },
+  {
+   "id": 45,
+   "utcKickoff": "2026-06-21T16:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 11",
+   "group": "Group H",
+   "home": {
+    "name": "Spain",
+    "code": "ESP",
+    "flag": "🇪🇸",
+    "tbd": false
+   },
+   "away": {
+    "name": "Saudi Arabia",
+    "code": "KSA",
+    "flag": "🇸🇦",
+    "tbd": false
+   },
+   "venue": "Atlanta"
+  },
+  {
+   "id": 39,
+   "utcKickoff": "2026-06-21T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 11",
+   "group": "Group G",
+   "home": {
+    "name": "Belgium",
+    "code": "BEL",
+    "flag": "🇧🇪",
+    "tbd": false
+   },
+   "away": {
+    "name": "Iran",
+    "code": "IRN",
+    "flag": "🇮🇷",
+    "tbd": false
+   },
+   "venue": "Los Angeles (Inglewood)"
+  },
+  {
+   "id": 46,
+   "utcKickoff": "2026-06-21T22:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 11",
+   "group": "Group H",
+   "home": {
+    "name": "Uruguay",
+    "code": "URU",
+    "flag": "🇺🇾",
+    "tbd": false
+   },
+   "away": {
+    "name": "Cape Verde",
+    "code": "CPV",
+    "flag": "🇨🇻",
+    "tbd": false
+   },
+   "venue": "Miami (Miami Gardens)"
+  },
+  {
+   "id": 40,
+   "utcKickoff": "2026-06-22T01:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 11",
+   "group": "Group G",
+   "home": {
+    "name": "New Zealand",
+    "code": "NZL",
+    "flag": "🇳🇿",
+    "tbd": false
+   },
+   "away": {
+    "name": "Egypt",
+    "code": "EGY",
+    "flag": "🇪🇬",
+    "tbd": false
+   },
+   "venue": "Vancouver"
+  },
+  {
+   "id": 57,
+   "utcKickoff": "2026-06-22T17:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 12",
+   "group": "Group J",
+   "home": {
+    "name": "Argentina",
+    "code": "ARG",
+    "flag": "🇦🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "Austria",
+    "code": "AUT",
+    "flag": "🇦🇹",
+    "tbd": false
+   },
+   "venue": "Dallas (Arlington)"
+  },
+  {
+   "id": 51,
+   "utcKickoff": "2026-06-22T21:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 12",
+   "group": "Group I",
+   "home": {
+    "name": "France",
+    "code": "FRA",
+    "flag": "🇫🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "Iraq",
+    "code": "IRQ",
+    "flag": "🇮🇶",
+    "tbd": false
+   },
+   "venue": "Philadelphia"
+  },
+  {
+   "id": 52,
+   "utcKickoff": "2026-06-23T00:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 12",
+   "group": "Group I",
+   "home": {
+    "name": "Norway",
+    "code": "NOR",
+    "flag": "🇳🇴",
+    "tbd": false
+   },
+   "away": {
+    "name": "Senegal",
+    "code": "SEN",
+    "flag": "🇸🇳",
+    "tbd": false
+   },
+   "venue": "New York/New Jersey (East Rutherford)"
+  },
+  {
+   "id": 58,
+   "utcKickoff": "2026-06-23T03:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 12",
+   "group": "Group J",
+   "home": {
+    "name": "Jordan",
+    "code": "JOR",
+    "flag": "🇯🇴",
+    "tbd": false
+   },
+   "away": {
+    "name": "Algeria",
+    "code": "DZA",
+    "flag": "🇩🇿",
+    "tbd": false
+   },
+   "venue": "San Francisco Bay Area (Santa Clara)"
+  },
+  {
+   "id": 63,
+   "utcKickoff": "2026-06-23T17:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 13",
+   "group": "Group K",
+   "home": {
+    "name": "Portugal",
+    "code": "POR",
+    "flag": "🇵🇹",
+    "tbd": false
+   },
+   "away": {
+    "name": "Uzbekistan",
+    "code": "UZB",
+    "flag": "🇺🇿",
+    "tbd": false
+   },
+   "venue": "Houston"
+  },
+  {
+   "id": 69,
+   "utcKickoff": "2026-06-23T20:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 13",
+   "group": "Group L",
+   "home": {
+    "name": "England",
+    "code": "ENG",
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "tbd": false
+   },
+   "away": {
+    "name": "Ghana",
+    "code": "GHA",
+    "flag": "🇬🇭",
+    "tbd": false
+   },
+   "venue": "Boston (Foxborough)"
+  },
+  {
+   "id": 70,
+   "utcKickoff": "2026-06-23T23:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 13",
+   "group": "Group L",
+   "home": {
+    "name": "Panama",
+    "code": "PAN",
+    "flag": "🇵🇦",
+    "tbd": false
+   },
+   "away": {
+    "name": "Croatia",
+    "code": "CRO",
+    "flag": "🇭🇷",
+    "tbd": false
+   },
+   "venue": "Toronto"
+  },
+  {
+   "id": 64,
+   "utcKickoff": "2026-06-24T02:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 13",
+   "group": "Group K",
+   "home": {
+    "name": "Colombia",
+    "code": "COL",
+    "flag": "🇨🇴",
+    "tbd": false
+   },
+   "away": {
+    "name": "DR Congo",
+    "code": "COD",
+    "flag": "🇨🇩",
+    "tbd": false
+   },
+   "venue": "Guadalajara (Zapopan)"
+  },
+  {
+   "id": 11,
+   "utcKickoff": "2026-06-24T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 14",
+   "group": "Group B",
+   "home": {
+    "name": "Switzerland",
+    "code": "SUI",
+    "flag": "🇨🇭",
+    "tbd": false
+   },
+   "away": {
+    "name": "Canada",
+    "code": "CAN",
+    "flag": "🇨🇦",
+    "tbd": false
+   },
+   "venue": "Vancouver"
+  },
+  {
+   "id": 12,
+   "utcKickoff": "2026-06-24T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 14",
+   "group": "Group B",
+   "home": {
+    "name": "Bosnia & Herzegovina",
+    "code": "BIH",
+    "flag": "🇧🇦",
+    "tbd": false
+   },
+   "away": {
+    "name": "Qatar",
+    "code": "QAT",
+    "flag": "🇶🇦",
+    "tbd": false
+   },
+   "venue": "Seattle"
+  },
+  {
+   "id": 17,
+   "utcKickoff": "2026-06-24T22:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 14",
+   "group": "Group C",
+   "home": {
+    "name": "Scotland",
+    "code": "SCO",
+    "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "tbd": false
+   },
+   "away": {
+    "name": "Brazil",
+    "code": "BRA",
+    "flag": "🇧🇷",
+    "tbd": false
+   },
+   "venue": "Miami (Miami Gardens)"
+  },
+  {
+   "id": 18,
+   "utcKickoff": "2026-06-24T22:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 14",
+   "group": "Group C",
+   "home": {
+    "name": "Morocco",
+    "code": "MAR",
+    "flag": "🇲🇦",
+    "tbd": false
+   },
+   "away": {
+    "name": "Haiti",
+    "code": "HAI",
+    "flag": "🇭🇹",
+    "tbd": false
+   },
+   "venue": "Atlanta"
+  },
+  {
+   "id": 5,
+   "utcKickoff": "2026-06-25T01:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 14",
+   "group": "Group A",
+   "home": {
+    "name": "Czech Republic",
+    "code": "CZE",
+    "flag": "🇨🇿",
+    "tbd": false
+   },
+   "away": {
+    "name": "Mexico",
+    "code": "MEX",
+    "flag": "🇲🇽",
+    "tbd": false
+   },
+   "venue": "Mexico City"
+  },
+  {
+   "id": 6,
+   "utcKickoff": "2026-06-25T01:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 14",
+   "group": "Group A",
+   "home": {
+    "name": "South Africa",
+    "code": "RSA",
+    "flag": "🇿🇦",
+    "tbd": false
+   },
+   "away": {
+    "name": "South Korea",
+    "code": "KOR",
+    "flag": "🇰🇷",
+    "tbd": false
+   },
+   "venue": "Monterrey (Guadalupe)"
+  },
+  {
+   "id": 29,
+   "utcKickoff": "2026-06-25T20:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 15",
+   "group": "Group E",
+   "home": {
+    "name": "Curaçao",
+    "code": "CUW",
+    "flag": "🇨🇼",
+    "tbd": false
+   },
+   "away": {
+    "name": "Ivory Coast",
+    "code": "CIV",
+    "flag": "🇨🇮",
+    "tbd": false
+   },
+   "venue": "Philadelphia"
+  },
+  {
+   "id": 30,
+   "utcKickoff": "2026-06-25T20:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 15",
+   "group": "Group E",
+   "home": {
+    "name": "Ecuador",
+    "code": "ECU",
+    "flag": "🇪🇨",
+    "tbd": false
+   },
+   "away": {
+    "name": "Germany",
+    "code": "GER",
+    "flag": "🇩🇪",
+    "tbd": false
+   },
+   "venue": "New York/New Jersey (East Rutherford)"
+  },
+  {
+   "id": 35,
+   "utcKickoff": "2026-06-25T23:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 15",
+   "group": "Group F",
+   "home": {
+    "name": "Japan",
+    "code": "JPN",
+    "flag": "🇯🇵",
+    "tbd": false
+   },
+   "away": {
+    "name": "Sweden",
+    "code": "SWE",
+    "flag": "🇸🇪",
+    "tbd": false
+   },
+   "venue": "Dallas (Arlington)"
+  },
+  {
+   "id": 36,
+   "utcKickoff": "2026-06-25T23:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 15",
+   "group": "Group F",
+   "home": {
+    "name": "Tunisia",
+    "code": "TUN",
+    "flag": "🇹🇳",
+    "tbd": false
+   },
+   "away": {
+    "name": "Netherlands",
+    "code": "NED",
+    "flag": "🇳🇱",
+    "tbd": false
+   },
+   "venue": "Kansas City"
+  },
+  {
+   "id": 23,
+   "utcKickoff": "2026-06-26T02:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 15",
+   "group": "Group D",
+   "home": {
+    "name": "Turkey",
+    "code": "TUR",
+    "flag": "🇹🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "USA",
+    "code": "USA",
+    "flag": "🇺🇸",
+    "tbd": false
+   },
+   "venue": "Los Angeles (Inglewood)"
+  },
+  {
+   "id": 24,
+   "utcKickoff": "2026-06-26T02:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 15",
+   "group": "Group D",
+   "home": {
+    "name": "Paraguay",
+    "code": "PAR",
+    "flag": "🇵🇾",
+    "tbd": false
+   },
+   "away": {
+    "name": "Australia",
+    "code": "AUS",
+    "flag": "🇦🇺",
+    "tbd": false
+   },
+   "venue": "San Francisco Bay Area (Santa Clara)"
+  },
+  {
+   "id": 53,
+   "utcKickoff": "2026-06-26T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 16",
+   "group": "Group I",
+   "home": {
+    "name": "Norway",
+    "code": "NOR",
+    "flag": "🇳🇴",
+    "tbd": false
+   },
+   "away": {
+    "name": "France",
+    "code": "FRA",
+    "flag": "🇫🇷",
+    "tbd": false
+   },
+   "venue": "Boston (Foxborough)"
+  },
+  {
+   "id": 54,
+   "utcKickoff": "2026-06-26T19:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 16",
+   "group": "Group I",
+   "home": {
+    "name": "Senegal",
+    "code": "SEN",
+    "flag": "🇸🇳",
+    "tbd": false
+   },
+   "away": {
+    "name": "Iraq",
+    "code": "IRQ",
+    "flag": "🇮🇶",
+    "tbd": false
+   },
+   "venue": "Toronto"
+  },
+  {
+   "id": 47,
+   "utcKickoff": "2026-06-27T00:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 16",
+   "group": "Group H",
+   "home": {
+    "name": "Cape Verde",
+    "code": "CPV",
+    "flag": "🇨🇻",
+    "tbd": false
+   },
+   "away": {
+    "name": "Saudi Arabia",
+    "code": "KSA",
+    "flag": "🇸🇦",
+    "tbd": false
+   },
+   "venue": "Houston"
+  },
+  {
+   "id": 48,
+   "utcKickoff": "2026-06-27T00:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 16",
+   "group": "Group H",
+   "home": {
+    "name": "Uruguay",
+    "code": "URU",
+    "flag": "🇺🇾",
+    "tbd": false
+   },
+   "away": {
+    "name": "Spain",
+    "code": "ESP",
+    "flag": "🇪🇸",
+    "tbd": false
+   },
+   "venue": "Guadalajara (Zapopan)"
+  },
+  {
+   "id": 41,
+   "utcKickoff": "2026-06-27T03:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 16",
+   "group": "Group G",
+   "home": {
+    "name": "Egypt",
+    "code": "EGY",
+    "flag": "🇪🇬",
+    "tbd": false
+   },
+   "away": {
+    "name": "Iran",
+    "code": "IRN",
+    "flag": "🇮🇷",
+    "tbd": false
+   },
+   "venue": "Seattle"
+  },
+  {
+   "id": 42,
+   "utcKickoff": "2026-06-27T03:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 16",
+   "group": "Group G",
+   "home": {
+    "name": "New Zealand",
+    "code": "NZL",
+    "flag": "🇳🇿",
+    "tbd": false
+   },
+   "away": {
+    "name": "Belgium",
+    "code": "BEL",
+    "flag": "🇧🇪",
+    "tbd": false
+   },
+   "venue": "Vancouver"
+  },
+  {
+   "id": 71,
+   "utcKickoff": "2026-06-27T21:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 17",
+   "group": "Group L",
+   "home": {
+    "name": "Panama",
+    "code": "PAN",
+    "flag": "🇵🇦",
+    "tbd": false
+   },
+   "away": {
+    "name": "England",
+    "code": "ENG",
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "tbd": false
+   },
+   "venue": "New York/New Jersey (East Rutherford)"
+  },
+  {
+   "id": 72,
+   "utcKickoff": "2026-06-27T21:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 17",
+   "group": "Group L",
+   "home": {
+    "name": "Croatia",
+    "code": "CRO",
+    "flag": "🇭🇷",
+    "tbd": false
+   },
+   "away": {
+    "name": "Ghana",
+    "code": "GHA",
+    "flag": "🇬🇭",
+    "tbd": false
+   },
+   "venue": "Philadelphia"
+  },
+  {
+   "id": 65,
+   "utcKickoff": "2026-06-27T23:30:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 17",
+   "group": "Group K",
+   "home": {
+    "name": "Colombia",
+    "code": "COL",
+    "flag": "🇨🇴",
+    "tbd": false
+   },
+   "away": {
+    "name": "Portugal",
+    "code": "POR",
+    "flag": "🇵🇹",
+    "tbd": false
+   },
+   "venue": "Miami (Miami Gardens)"
+  },
+  {
+   "id": 66,
+   "utcKickoff": "2026-06-27T23:30:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 17",
+   "group": "Group K",
+   "home": {
+    "name": "DR Congo",
+    "code": "COD",
+    "flag": "🇨🇩",
+    "tbd": false
+   },
+   "away": {
+    "name": "Uzbekistan",
+    "code": "UZB",
+    "flag": "🇺🇿",
+    "tbd": false
+   },
+   "venue": "Atlanta"
+  },
+  {
+   "id": 59,
+   "utcKickoff": "2026-06-28T02:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 17",
+   "group": "Group J",
+   "home": {
+    "name": "Algeria",
+    "code": "DZA",
+    "flag": "🇩🇿",
+    "tbd": false
+   },
+   "away": {
+    "name": "Austria",
+    "code": "AUT",
+    "flag": "🇦🇹",
+    "tbd": false
+   },
+   "venue": "Kansas City"
+  },
+  {
+   "id": 60,
+   "utcKickoff": "2026-06-28T02:00:00Z",
+   "stage": "group",
+   "stageLabel": "Group Stage",
+   "round": "Matchday 17",
+   "group": "Group J",
+   "home": {
+    "name": "Jordan",
+    "code": "JOR",
+    "flag": "🇯🇴",
+    "tbd": false
+   },
+   "away": {
+    "name": "Argentina",
+    "code": "ARG",
+    "flag": "🇦🇷",
+    "tbd": false
+   },
+   "venue": "Dallas (Arlington)"
+  },
+  {
+   "id": 73,
+   "utcKickoff": "2026-06-28T19:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "2A",
+    "code": "2A",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "2B",
+    "code": "2B",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Los Angeles (Inglewood)"
+  },
+  {
+   "id": 76,
+   "utcKickoff": "2026-06-29T17:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1C",
+    "code": "1C",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "2F",
+    "code": "2F",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Houston"
+  },
+  {
+   "id": 74,
+   "utcKickoff": "2026-06-29T20:30:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1E",
+    "code": "1E",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "3A/B/C/D/F",
+    "code": "3A/",
+    "flag": "🏳️",
+    "tbd": false
+   },
+   "venue": "Boston (Foxborough)"
+  },
+  {
+   "id": 75,
+   "utcKickoff": "2026-06-30T01:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1F",
+    "code": "1F",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "2C",
+    "code": "2C",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Monterrey (Guadalupe)"
+  },
+  {
+   "id": 78,
+   "utcKickoff": "2026-06-30T17:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "2E",
+    "code": "2E",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "2I",
+    "code": "2I",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Dallas (Arlington)"
+  },
+  {
+   "id": 77,
+   "utcKickoff": "2026-06-30T21:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1I",
+    "code": "1I",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "3C/D/F/G/H",
+    "code": "3C/",
+    "flag": "🏳️",
+    "tbd": false
+   },
+   "venue": "New York/New Jersey (East Rutherford)"
+  },
+  {
+   "id": 79,
+   "utcKickoff": "2026-07-01T01:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1A",
+    "code": "1A",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "3C/E/F/H/I",
+    "code": "3C/",
+    "flag": "🏳️",
+    "tbd": false
+   },
+   "venue": "Mexico City"
+  },
+  {
+   "id": 80,
+   "utcKickoff": "2026-07-01T16:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1L",
+    "code": "1L",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "3E/H/I/J/K",
+    "code": "3E/",
+    "flag": "🏳️",
+    "tbd": false
+   },
+   "venue": "Atlanta"
+  },
+  {
+   "id": 82,
+   "utcKickoff": "2026-07-01T20:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1G",
+    "code": "1G",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "3A/E/H/I/J",
+    "code": "3A/",
+    "flag": "🏳️",
+    "tbd": false
+   },
+   "venue": "Seattle"
+  },
+  {
+   "id": 81,
+   "utcKickoff": "2026-07-02T00:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1D",
+    "code": "1D",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "3B/E/F/I/J",
+    "code": "3B/",
+    "flag": "🏳️",
+    "tbd": false
+   },
+   "venue": "San Francisco Bay Area (Santa Clara)"
+  },
+  {
+   "id": 84,
+   "utcKickoff": "2026-07-02T19:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1H",
+    "code": "1H",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "2J",
+    "code": "2J",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Los Angeles (Inglewood)"
+  },
+  {
+   "id": 83,
+   "utcKickoff": "2026-07-02T23:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "2K",
+    "code": "2K",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "2L",
+    "code": "2L",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Toronto"
+  },
+  {
+   "id": 85,
+   "utcKickoff": "2026-07-03T03:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1B",
+    "code": "1B",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "3E/F/G/I/J",
+    "code": "3E/",
+    "flag": "🏳️",
+    "tbd": false
+   },
+   "venue": "Vancouver"
+  },
+  {
+   "id": 88,
+   "utcKickoff": "2026-07-03T18:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "2D",
+    "code": "2D",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "2G",
+    "code": "2G",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Dallas (Arlington)"
+  },
+  {
+   "id": 86,
+   "utcKickoff": "2026-07-03T22:00:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1J",
+    "code": "1J",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "2H",
+    "code": "2H",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Miami (Miami Gardens)"
+  },
+  {
+   "id": 87,
+   "utcKickoff": "2026-07-04T01:30:00Z",
+   "stage": "r32",
+   "stageLabel": "Round of 32",
+   "round": "Round of 32",
+   "group": null,
+   "home": {
+    "name": "1K",
+    "code": "1K",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "3D/E/I/J/L",
+    "code": "3D/",
+    "flag": "🏳️",
+    "tbd": false
+   },
+   "venue": "Kansas City"
+  },
+  {
+   "id": 90,
+   "utcKickoff": "2026-07-04T17:00:00Z",
+   "stage": "r16",
+   "stageLabel": "Round of 16",
+   "round": "Round of 16",
+   "group": null,
+   "home": {
+    "name": "W73",
+    "code": "W73",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W75",
+    "code": "W75",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Houston"
+  },
+  {
+   "id": 89,
+   "utcKickoff": "2026-07-04T21:00:00Z",
+   "stage": "r16",
+   "stageLabel": "Round of 16",
+   "round": "Round of 16",
+   "group": null,
+   "home": {
+    "name": "W74",
+    "code": "W74",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W77",
+    "code": "W77",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Philadelphia"
+  },
+  {
+   "id": 91,
+   "utcKickoff": "2026-07-05T20:00:00Z",
+   "stage": "r16",
+   "stageLabel": "Round of 16",
+   "round": "Round of 16",
+   "group": null,
+   "home": {
+    "name": "W76",
+    "code": "W76",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W78",
+    "code": "W78",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "New York/New Jersey (East Rutherford)"
+  },
+  {
+   "id": 92,
+   "utcKickoff": "2026-07-06T00:00:00Z",
+   "stage": "r16",
+   "stageLabel": "Round of 16",
+   "round": "Round of 16",
+   "group": null,
+   "home": {
+    "name": "W79",
+    "code": "W79",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W80",
+    "code": "W80",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Mexico City"
+  },
+  {
+   "id": 93,
+   "utcKickoff": "2026-07-06T19:00:00Z",
+   "stage": "r16",
+   "stageLabel": "Round of 16",
+   "round": "Round of 16",
+   "group": null,
+   "home": {
+    "name": "W83",
+    "code": "W83",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W84",
+    "code": "W84",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Dallas (Arlington)"
+  },
+  {
+   "id": 94,
+   "utcKickoff": "2026-07-07T00:00:00Z",
+   "stage": "r16",
+   "stageLabel": "Round of 16",
+   "round": "Round of 16",
+   "group": null,
+   "home": {
+    "name": "W81",
+    "code": "W81",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W82",
+    "code": "W82",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Seattle"
+  },
+  {
+   "id": 95,
+   "utcKickoff": "2026-07-07T16:00:00Z",
+   "stage": "r16",
+   "stageLabel": "Round of 16",
+   "round": "Round of 16",
+   "group": null,
+   "home": {
+    "name": "W86",
+    "code": "W86",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W88",
+    "code": "W88",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Atlanta"
+  },
+  {
+   "id": 96,
+   "utcKickoff": "2026-07-07T20:00:00Z",
+   "stage": "r16",
+   "stageLabel": "Round of 16",
+   "round": "Round of 16",
+   "group": null,
+   "home": {
+    "name": "W85",
+    "code": "W85",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W87",
+    "code": "W87",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Vancouver"
+  },
+  {
+   "id": 97,
+   "utcKickoff": "2026-07-09T20:00:00Z",
+   "stage": "qf",
+   "stageLabel": "Quarter-final",
+   "round": "Quarter-final",
+   "group": null,
+   "home": {
+    "name": "W89",
+    "code": "W89",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W90",
+    "code": "W90",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Boston (Foxborough)"
+  },
+  {
+   "id": 98,
+   "utcKickoff": "2026-07-10T19:00:00Z",
+   "stage": "qf",
+   "stageLabel": "Quarter-final",
+   "round": "Quarter-final",
+   "group": null,
+   "home": {
+    "name": "W93",
+    "code": "W93",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W94",
+    "code": "W94",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Los Angeles (Inglewood)"
+  },
+  {
+   "id": 99,
+   "utcKickoff": "2026-07-11T21:00:00Z",
+   "stage": "qf",
+   "stageLabel": "Quarter-final",
+   "round": "Quarter-final",
+   "group": null,
+   "home": {
+    "name": "W91",
+    "code": "W91",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W92",
+    "code": "W92",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Miami (Miami Gardens)"
+  },
+  {
+   "id": 100,
+   "utcKickoff": "2026-07-12T01:00:00Z",
+   "stage": "qf",
+   "stageLabel": "Quarter-final",
+   "round": "Quarter-final",
+   "group": null,
+   "home": {
+    "name": "W95",
+    "code": "W95",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W96",
+    "code": "W96",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Kansas City"
+  },
+  {
+   "id": 101,
+   "utcKickoff": "2026-07-14T19:00:00Z",
+   "stage": "sf",
+   "stageLabel": "Semi-final",
+   "round": "Semi-final",
+   "group": null,
+   "home": {
+    "name": "W97",
+    "code": "W97",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W98",
+    "code": "W98",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Dallas (Arlington)"
+  },
+  {
+   "id": 102,
+   "utcKickoff": "2026-07-15T19:00:00Z",
+   "stage": "sf",
+   "stageLabel": "Semi-final",
+   "round": "Semi-final",
+   "group": null,
+   "home": {
+    "name": "W99",
+    "code": "W99",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W100",
+    "code": "W100",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Atlanta"
+  },
+  {
+   "id": 103,
+   "utcKickoff": "2026-07-18T21:00:00Z",
+   "stage": "third",
+   "stageLabel": "Third place",
+   "round": "Match for third place",
+   "group": null,
+   "home": {
+    "name": "L101",
+    "code": "L101",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "L102",
+    "code": "L102",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "Miami (Miami Gardens)"
+  },
+  {
+   "id": 104,
+   "utcKickoff": "2026-07-19T19:00:00Z",
+   "stage": "final",
+   "stageLabel": "Final",
+   "round": "Final",
+   "group": null,
+   "home": {
+    "name": "W101",
+    "code": "W101",
+    "flag": "❓",
+    "tbd": true
+   },
+   "away": {
+    "name": "W102",
+    "code": "W102",
+    "flag": "❓",
+    "tbd": true
+   },
+   "venue": "New York/New Jersey (East Rutherford)"
+  }
+ ]
+}
